@@ -10,9 +10,18 @@ return [
         'user' => [
             'class' => 'dektrium\user\Module',
             'enableUnconfirmedLogin' => true,
-            'confirmWithin' => 21600,
+            'enableGeneratingPassword' => true,
+            'enableConfirmation' => true,
+            'confirmWithin' => 86400,
             'cost' => 12,
-            'admins' => ['admin']
+            'admins' => ['admin'],
+            'mailer' => [
+                'sender'                => 'perffectgame@gmail.com', // or ['no-reply@myhost.com' => 'Sender name']
+                'welcomeSubject'        => 'Welcome subject',
+                'confirmationSubject'   => 'Confirmation subject',
+                'reconfirmationSubject' => 'Email change subject',
+                'recoverySubject'       => 'Recovery subject',
+            ],
         ],
     ],
 ];
