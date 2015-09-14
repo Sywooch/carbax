@@ -13,9 +13,15 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
-        'user' => [
-            'identityClass' => 'common\models\User',
-            'enableAutoLogin' => true,
+        'request' => [
+            'baseUrl' => '/secure',
+        ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+                
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
