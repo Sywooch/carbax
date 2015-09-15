@@ -5,6 +5,18 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'authClientCollection' => [
+            'class'   => \yii\authclient\Collection::className(),
+            'clients' => [
+                // here is the list of clients you want to use
+                // you can read more in the "Available clients" section
+                'vkontakte' => [
+                    'class'        => 'dektrium\user\clients\VKontakte',
+                    'clientId'     => '5070404',
+                    'clientSecret' => 'G3roNgQHsxBmE7mL2QYB',
+                ]
+            ],
+        ],
     ],
     'modules' => [
         'user' => [

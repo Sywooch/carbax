@@ -19,7 +19,10 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName'  => false,
             'rules'           => [
-
+                'login' => 'user/security/login',
+                'register' => 'user/registration/register',
+                'logout' => 'user/security/logout',
+                'profile' => 'user/settings/profile',
             ],
         ],
         'log' => [
