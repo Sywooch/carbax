@@ -17,12 +17,15 @@ return [
                 ]
             ],
         ],
+        'yandexMapsApi' => [
+            'class' => 'mirocow\yandexmaps\Api',
+        ],
     ],
     'modules' => [
         'user' => [
             'class' => 'dektrium\user\Module',
             'enableUnconfirmedLogin' => true,
-            'enableGeneratingPassword' => true,
+            'enableGeneratingPassword' => false,
             'enableConfirmation' => true,
             'confirmWithin' => 86400,
             'cost' => 12,
