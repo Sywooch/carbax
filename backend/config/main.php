@@ -17,6 +17,8 @@ return [
         ],
         'service_type' => [
             'class' => 'backend\modules\service_type\ServiceType',
+        'service_types' => [
+            'class' => 'backend\modules\service_types\Service_types',
         ],
     ],
     'components' => [
@@ -28,6 +30,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'service_type' => 'service_type/service_type',
+                'service_types' => '/service_types/service_types',
             ],
         ],
         'log' => [
