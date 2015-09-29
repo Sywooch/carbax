@@ -11,7 +11,11 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'group_services' => [
+            'class' => 'backend\modules\group_services\Group_services',
+        ],
+    ],
     'components' => [
         'request' => [
             'baseUrl' => '/secure',
@@ -20,7 +24,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                
+                'group_services' => 'group_services/group_services'
             ],
         ],
         'log' => [

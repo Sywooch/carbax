@@ -19,7 +19,11 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName'  => false,
             'rules'           => [
-
+                '' => 'mainpage/mainpage',
+                'login' => 'user/security/login',
+                'register' => 'user/registration/register',
+                'logout' => 'user/security/logout',
+                'profile' => 'user/settings/profile',
             ],
         ],
         'log' => [
@@ -33,6 +37,14 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+    ],
+    'modules' => [
+        'mainpage' => [
+            'class' => 'frontend\modules\mainpage\Mainpage',
+        ],
+        'garage' => [
+            'class' => 'frontend\modules\garage\Garage',
         ],
     ],
     'params' => $params,

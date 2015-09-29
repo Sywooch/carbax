@@ -23,11 +23,50 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+
 <?php $this->beginBody() ?>
+
+<header class="header">
+    <div class="header__leftSide">
+        <ul class="header__leftSide__menu">
+            <a href="#nowhere">
+                <li><i class="header__leftSide__menu__write"></i></li>
+            </a>
+            <a href="#nowhere">
+                <li>AutoTech1</li>
+            </a>
+            <a href="#nowhere">
+                <li><i class="header__leftSide__menu__squares"></i></li>
+            </a>
+            <a href="#nowhere">
+                <li>Купить <i class="header__leftSide__menu__vip">Vip</i></li>
+            </a>
+        </ul>
+    </div>
+    <div class="header__rightSide">
+        <ul class="header__rightSide__menu">
+            <a href="#nowhere">
+                <li><i class="header__rightSide__menu__mail"></i></li>
+            </a>
+            <a href="#nowhere">
+                <li><i class="header__rightSide__menu__goods"></i>Товары <span>(1)</span></li>
+            </a>
+            <a href="#nowhere">
+                <li><i class="header__rightSide__menu__stock"></i>Акции</li>
+            </a>
+            <a href="#nowhere">
+                <li>Мои сервисы</li>
+            </a>
+            <a href="#nowhere">
+                <li><i class="header__rightSide__menu__logout"></i></li>
+            </a>
+        </ul>
+    </div>
+</header>
 
 <div class="wrap">
     <?php
-    NavBar::begin([
+/*    NavBar::begin([
         'brandLabel' => 'My Company',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
@@ -40,12 +79,17 @@ AppAsset::register($this);
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => 'Signup', 'url' => ['/register']];
+        $menuItems[] = ['label' => 'Login', 'url' => ['/login']];
     } else {
         $menuItems[] = [
             'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-            'url' => ['/site/logout'],
+            'url' => ['/logout'],
+            'linkOptions' => ['data-method' => 'post']
+        ];
+        $menuItems[] = [
+            'label' => 'Profile',
+            'url' => ['/profile'],
             'linkOptions' => ['data-method' => 'post']
         ];
     }
@@ -54,7 +98,7 @@ AppAsset::register($this);
         'items' => $menuItems,
     ]);
     NavBar::end();
-    ?>
+    */?>
 
     <div class="container">
         <?= Breadcrumbs::widget([
@@ -66,10 +110,43 @@ AppAsset::register($this);
 </div>
 
 <footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+    <div class="contain">
+        <div class="footer__logo">
+            <div class="footer__logo-img">
+                <img src="<?= \yii\helpers\Url::base() ?>/media/img/sedan4.png" alt="">
+            </div>
+            <div class="footer__logo-desc">
+                <h1>CARBAX<span class="orange">.RU</span></h1>
+                <p>ремонт и обслуживание авто</p>
+            </div>
+        </div>
+        <div class="footer__nav">
+            <ul class="footer__nav-autoteh"><span class="orange">TechAuto</span>
+                <li><a href="#nowhere">Сообщения</a></li>
+                <li><a href="#nowhere">Мой счет</a></li>
+                <li><a href="#nowhere">Настройки</a></li>
+                <li><a href="#nowhere">Выход</a></li>
+            </ul>
+            <ul class="footer__nav-about">
+                <span>О проекте:</span>
+                <li><a href="#nowhere">Правила сайта</a></li>
+                <li><a href="#nowhere">Советы</a></li>
+                <li><a href="#nowhere">Контакты</a></li>
+                <li><a href="#nowhere">Реклама</a></li>
+            </ul>
+        </div>
+        <div class="footer__contacts">
+            <h3>8-<span class="orange">800</span>-234-21-12</h3>
+            <h3>8-<span class="orange">495</span>-222-44-44</h3>
+            <div class="soc">
+                <a href="#nowhere"><i class="soc__vk-b"></i></a>
+                <a href="#nowhere"><i class="soc__fb-b"></i></a>
+                <a href="#nowhere"><i class="soc__tw-b"></i></a>
+                <a href="#nowhere"><i class="soc__lj-b"></i></a>
+                <a href="#nowhere"><i class="soc__ok-b"></i></a>
+                <a href="#nowhere"><i class="soc__gp-b"></i></a>
+            </div>
+        </div>
     </div>
 </footer>
 
