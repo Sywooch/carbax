@@ -17,6 +17,7 @@ return [
         ],
         'service_type' => [
             'class' => 'backend\modules\service_type\ServiceType',
+        ],
         'service_types' => [
             'class' => 'backend\modules\service_types\Service_types',
         ],
