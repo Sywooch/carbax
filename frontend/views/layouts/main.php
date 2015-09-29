@@ -65,40 +65,40 @@ AppAsset::register($this);
 </header>
 
 <div class="wrap">
-<!--    --><?php
-//    NavBar::begin([
-//        'brandLabel' => 'My Company',
-//        'brandUrl' => Yii::$app->homeUrl,
-//        'options' => [
-//            'class' => 'navbar-inverse navbar-fixed-top',
-//        ],
-//    ]);
-//    $menuItems = [
-//        ['label' => 'Home', 'url' => ['/site/index']],
-//        ['label' => 'About', 'url' => ['/site/about']],
-//        ['label' => 'Contact', 'url' => ['/site/contact']],
-//    ];
-//    if (Yii::$app->user->isGuest) {
-//        $menuItems[] = ['label' => 'Signup', 'url' => ['/register']];
-//        $menuItems[] = ['label' => 'Login', 'url' => ['/login']];
-//    } else {
-//        $menuItems[] = [
-//            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-//            'url' => ['/logout'],
-//            'linkOptions' => ['data-method' => 'post']
-//        ];
-//        $menuItems[] = [
-//            'label' => 'Profile',
-//            'url' => ['/profile'],
-//            'linkOptions' => ['data-method' => 'post']
-//        ];
-//    }
-//    echo Nav::widget([
-//        'options' => ['class' => 'navbar-nav navbar-right'],
-//        'items' => $menuItems,
-//    ]);
-//    NavBar::end();
-//    ?>
+    <?php
+    NavBar::begin([
+        'brandLabel' => 'My Company',
+        'brandUrl' => Yii::$app->homeUrl,
+        'options' => [
+            'class' => 'navbar-inverse navbar-fixed-top',
+        ],
+    ]);
+    $menuItems = [
+        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'About', 'url' => ['/site/about']],
+        ['label' => 'Contact', 'url' => ['/site/contact']],
+    ];
+    if (Yii::$app->user->isGuest) {
+        $menuItems[] = ['label' => 'Signup', 'url' => ['/register']];
+        $menuItems[] = ['label' => 'Login', 'url' => ['/login']];
+    } else {
+        $menuItems[] = [
+            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+            'url' => ['/logout'],
+            'linkOptions' => ['data-method' => 'post']
+        ];
+        $menuItems[] = [
+            'label' => 'Profile',
+            'url' => ['/profile'],
+            'linkOptions' => ['data-method' => 'post']
+        ];
+    }
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => $menuItems,
+    ]);
+    NavBar::end();
+    ?>
 
     <div class="container">
         <?= Breadcrumbs::widget([

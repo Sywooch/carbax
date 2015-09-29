@@ -43,6 +43,9 @@ return [
         'mainpage' => [
             'class' => 'frontend\modules\mainpage\Mainpage',
         ],
+        'garage' => [
+            'class' => 'frontend\modules\garage\Garage',
+        ],
     ],
     'params' => $params,
 ];

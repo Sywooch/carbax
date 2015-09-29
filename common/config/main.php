@@ -25,7 +25,7 @@ return [
         'user' => [
             'class' => 'dektrium\user\Module',
             'enableUnconfirmedLogin' => true,
-            'enableGeneratingPassword' => false,
+            'enableGeneratingPassword' => true,
             'enableConfirmation' => true,
             'confirmWithin' => 86400,
             'cost' => 12,
