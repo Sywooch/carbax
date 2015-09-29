@@ -27,7 +27,8 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'service_types' => '/service_types/service_types',
+                'service_types' => 'service_types/service_types',
+                'group_services' => 'group_services/group_services',
             ],
         ],
         'log' => [

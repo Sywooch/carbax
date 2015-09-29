@@ -26,8 +26,22 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <?php
-    NavBar::begin([
+    <nav role='navigation'>
+        <ul>
+            <li><a href="#">Сервисы</a>
+                <ul>
+                    <li><?= Html::a('Типы услуг', ['/service_types']) ?></li>
+                    <li><?= Html::a('Группы услуг', ['/group_services']) ?></li>
+                </ul>
+            </li>
+
+        </ul>
+    </nav>
+
+
+
+<!--    --><?php
+/*    NavBar::begin([
         'brandLabel' => 'My Company',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
@@ -51,7 +65,7 @@ AppAsset::register($this);
         'items' => $menuItems,
     ]);
     NavBar::end();
-    ?>
+    */?>
 
     <div class="container">
         <?= Breadcrumbs::widget([
