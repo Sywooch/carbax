@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\group_services\models\Group_services */
+/* @var $model backend\modules\service_types\models\Service_types */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Группы услуг', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Виды услуг', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="group-services-view">
+<div class="service-types-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'name',
+            'group_id',
         ],
     ]) ?>
 
