@@ -30,6 +30,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'service_type' => 'service_type/service_type',
+                'group_services' => 'group_services/group_services',
                 'service_types' => '/service_types/service_types',
             ],
         ],
