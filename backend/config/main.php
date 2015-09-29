@@ -15,6 +15,9 @@ return [
         'group_services' => [
             'class' => 'backend\modules\group_services\Group_services',
         ],
+        'service_types' => [
+            'class' => 'backend\modules\service_types\Service_types',
+        ],
     ],
     'components' => [
         'request' => [
@@ -24,7 +27,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                
+                'service_types' => '/service_types/service_types',
             ],
         ],
         'log' => [

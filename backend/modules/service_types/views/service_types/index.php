@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\modules\group_services\models\Group_servicesSearch */
+/* @var $searchModel backend\modules\service_types\models\Service_typesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Группы услуг';
+$this->title = 'Типы услуг';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="group-services-index">
+<div class="service-types-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Создать новую группу услуг', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать тип услуги', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -27,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
+            'group_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
