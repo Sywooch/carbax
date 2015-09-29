@@ -21,6 +21,9 @@ return [
         'service_types' => [
             'class' => 'backend\modules\service_types\Service_types',
         ],
+        'brand_cars' => [
+            'class' => 'backend\modules\brand_cars\Brand_cars',
+        ],
     ],
     'components' => [
         'request' => [
@@ -33,6 +36,7 @@ return [
                 'service_type' => 'service_type/service_type',
                 'group_services' => 'group_services/group_services',
                 'service_types' => '/service_types/service_types',
+                'brand_cars' => 'brand_cars/brand_cars',
             ],
         ],
         'log' => [
