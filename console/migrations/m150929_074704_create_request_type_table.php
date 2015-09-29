@@ -12,7 +12,7 @@ class m150929_074704_create_request_type_table extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('request_type', [
+        $this->createTable('{{%request_type}}', [
             'id' => Schema::TYPE_PK,
             'name' => Schema::TYPE_STRING . '(255) NOT NULL'
         ], $tableOptions);
@@ -20,7 +20,7 @@ class m150929_074704_create_request_type_table extends Migration
 
     public function down()
     {
-        $this->dropTable('request_type');
+        $this->dropTable('{{%request_type}}');
     }
 
     /*
