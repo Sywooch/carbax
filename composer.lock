@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "109bf7882aff1e50d015a2825433a570",
+    "hash": "cfdeb27e8d4596106d20c51a3fbaca1c",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -404,6 +404,47 @@
                 "html"
             ],
             "time": "2013-11-30 08:25:19"
+        },
+        {
+            "name": "mirocow/yii2-yandex-maps",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mirocow/yii2-yandex-maps.git",
+                "reference": "c1ff84a600d8c7dd1c53a23b5cf871ea5c2ced24"
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-0": {
+                    "mirocow\\yandexmaps\\": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mirocow",
+                    "email": "mr.mirocow@gmail.com",
+                    "homepage": "http://www.mirocow.com"
+                }
+            ],
+            "description": "Yii 2 yandex map module",
+            "keywords": [
+                "map",
+                "yandex",
+                "yii",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/Mirocow/yii2-yandex-maps/issues?state=open",
+                "wiki": "http://www.yiidoc.com/wiki/",
+                "source": "https://github.com/Mirocow/yii2-yandex-maps"
+            },
+            "time": "2015-08-19 01:59:14"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1102,7 +1143,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "dektrium/yii2-user": 20
+        "dektrium/yii2-user": 20,
+        "mirocow/yii2-yandex-maps": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
