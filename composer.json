@@ -13,7 +13,12 @@
         "source": "https://github.com/yiisoft/yii2"
     },
     "minimum-stability": "stable",
-
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/mirocow/yii2-yandex-maps.git"
+        }
+    ],
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.6",

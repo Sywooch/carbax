@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f9405cc12c065db52d18bf7ccfe9f85e",
+    "hash": "cfdeb27e8d4596106d20c51a3fbaca1c",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -446,6 +446,11 @@
                 "yii",
                 "yii2"
             ],
+            "support": {
+                "issues": "https://github.com/Mirocow/yii2-yandex-maps/issues?state=open",
+                "wiki": "http://www.yiidoc.com/wiki/",
+                "source": "https://github.com/Mirocow/yii2-yandex-maps"
+            },
             "time": "2015-08-19 01:59:14"
         },
         {
