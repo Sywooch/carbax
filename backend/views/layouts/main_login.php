@@ -26,48 +26,48 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <nav role='navigation'>
+    <!--<nav role='navigation'>
         <ul>
             <li><a href="/secure">Главная</a></li>
             <li><a href="#">Услуги</a>
                 <ul>
-                    <li><?= Html::a('Виды услуг', ['/service_types']) ?></li>
-                    <li><?= Html::a('Группы услуг', ['/group_services']) ?></li>
+                    <li><?/*= Html::a('Виды услуг', ['/service_types']) */?></li>
+                    <li><?/*= Html::a('Группы услуг', ['/group_services']) */?></li>
                 </ul>
             </li>
-            <li><?= Html::a('Марки авто', ['/brand_cars']) ?></li>
-            <li><?= Html::a('Типы сервисов', ['/service_type']) ?></li>
+            <li><?/*= Html::a('Марки авто', ['/brand_cars']) */?></li>
+            <li><?/*= Html::a('Типы сервисов', ['/service_type']) */?></li>
         </ul>
-    </nav>
+    </nav>-->
 
 
 
-<!--    --><?php
-/*    NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = [
-            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-            'url' => ['/site/logout'],
-            'linkOptions' => ['data-method' => 'post']
+    <!--    --><?php
+    /*    NavBar::begin([
+            'brandLabel' => 'My Company',
+            'brandUrl' => Yii::$app->homeUrl,
+            'options' => [
+                'class' => 'navbar-inverse navbar-fixed-top',
+            ],
+        ]);
+        $menuItems = [
+            ['label' => 'Home', 'url' => ['/site/index']],
         ];
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    */?>
+        if (Yii::$app->user->isGuest) {
+            $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        } else {
+            $menuItems[] = [
+                'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                'url' => ['/site/logout'],
+                'linkOptions' => ['data-method' => 'post']
+            ];
+        }
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-right'],
+            'items' => $menuItems,
+        ]);
+        NavBar::end();
+        */?>
 
     <div class="container">
         <?= Breadcrumbs::widget([

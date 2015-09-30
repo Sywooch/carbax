@@ -25,9 +25,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            /*'id',*/
             'name',
-            'group_id',
+
+            [
+                'attribute' => 'group_id',
+                'label' => 'Группа услуг',
+                'format' => 'html',
+                'value' => function($model){
+                    $group = \common\models\db\AddFieldsGroup::find()->where(['id'=>$model->group_id])->one();
+                    return $group->name;
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

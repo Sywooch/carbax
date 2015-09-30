@@ -2,6 +2,9 @@
 
 namespace backend\modules\service_type\controllers;
 
+use common\classes\Debug;
+use common\models\db\AddFieldsGroup;
+use common\models\db\ServiceTypeGroup;
 use Yii;
 use common\models\db\ServiceType;
 use backend\modules\service_type\models\ServiceTypeSearch;
@@ -61,12 +64,25 @@ class Service_typeController extends Controller
     public function actionCreate()
     {
         $model = new ServiceType();
+        $group = AddFieldsGroup::find()->all();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        foreach($group as $g){
+            $gr[$g->id] = $g->name;
+        }
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->save();
+            foreach($_POST[group] as $p){
+                $stp = new ServiceTypeGroup();
+                $stp->service_type_id = $model->id;
+                $stp->add_fields_group_id = $p;
+                $stp->save();
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'group' => $gr,
             ]);
         }
     }
@@ -81,11 +97,34 @@ class Service_typeController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $group = AddFieldsGroup::find()->all();
+        foreach($group as $g){
+            $gr[$g->id] = $g->name;
+        }
+
+        $selected = ServiceTypeGroup::find()->where(['service_type_id'=>$id])->all();
+        foreach($selected as $s){
+            $sel[] = $s->add_fields_group_id;
+        }
+
+        //Debug::prn('<br><br><br><br><br>');
+        //Debug::prn($selected);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->save();
+            $delServiceTypeGroup = new ServiceTypeGroup();
+            $delServiceTypeGroup->deleteAll(['service_type_id'=>$id]);
+            foreach($_POST[group] as $p){
+                $stp = new ServiceTypeGroup();
+                $stp->service_type_id = $model->id;
+                $stp->add_fields_group_id = $p;
+                $stp->save();
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'group' => $gr,
+                'selected' => $sel,
             ]);
         }
     }

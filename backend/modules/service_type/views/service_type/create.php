@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\db\ServiceType */
 
-$this->title = 'Create Service Type';
-$this->params['breadcrumbs'][] = ['label' => 'Service Types', 'url' => ['index']];
+$this->title = 'Добавить Тип сервиса';
+$this->params['breadcrumbs'][] = ['label' => 'Типы сервисов', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="service-type-create">
@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'group' => $group,
     ]) ?>
 
 </div>
