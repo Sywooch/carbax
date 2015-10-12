@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'css/font-awesome.min.css',
         'css/fotorama.css',
+        'css/style.css',
     ];
     public $js = [
         'js/bootstrap.js',

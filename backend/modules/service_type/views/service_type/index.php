@@ -28,6 +28,15 @@ $this->params['breadcrumbs'][] = $this->title;
             /*'id',*/
             'name',
 
+            [
+                'attribute' => 'icon',
+                'label' => 'Ярлык',
+                'format' => 'html',
+                'value' => function($model){
+                    return Html::img(\yii\helpers\Url::base().$model->icon, ['width'=>'100px']);
+                }
+            ],
+
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

@@ -9,7 +9,7 @@ function initialize() {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         scrollwheel: false
     };
-    var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);    
+    var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
     var image = '../img/service_icon.png';
     var myLatLng = new google.maps.LatLng(55.662561,37.540873);
     var beachMarker = new google.maps.Marker({
@@ -34,15 +34,15 @@ window.onload = loadScript;
 
 jQuery(document).ready(function($) {
     var img = $('.example-image');
-    setTimeout(function() { 
-    img.each(function(){
-        var heightEl = $(this).height();
-        var topEl = (330 - heightEl)/2 ;
-        $(this).css({
-            top: topEl        
+    setTimeout(function() {
+        img.each(function(){
+            var heightEl = $(this).height();
+            var topEl = (330 - heightEl)/2 ;
+            $(this).css({
+                top: topEl
+            });
         });
-    });
-    }, 3000);   
+    }, 3000);
 });
 
 jQuery(document).ready(function($) {
@@ -55,31 +55,43 @@ jQuery(document).ready(function($) {
         });
     });
     /*txt.each(function(){
-    var heightEl = $(this).height();
-    
-    });*/
-$(function() {
+     var heightEl = $(this).height();
 
-    $(window).scroll(function() {
-        if($(this).scrollTop() != 0) {
-            $('#toTop').fadeIn();
-        } else {
-            $('#toTop').fadeOut();
-        }
-    });
-    $('#toTop').click(function() {
-        $('body,html').animate({scrollTop: 0}, 1000);
-    });
+     });*/
+    $(function() {
 
-    $('.smoothScroll').click(function(event) {
-        event.preventDefault();        
-        var href=$(this).attr('href');
-        var target=$(href);
-        var top=target.offset().top;
-        console.log(top);
-        $('html,body').animate({
-            scrollTop: top
-        }, 1000);
+        $(window).scroll(function() {
+            if($(this).scrollTop() != 0) {
+                $('#toTop').fadeIn();
+            } else {
+                $('#toTop').fadeOut();
+            }
+        });
+        $('#toTop').click(function() {
+            $('body,html').animate({scrollTop: 0}, 1000);
+        });
+
+        $('.smoothScroll').click(function(event) {
+            event.preventDefault();
+            var href=$(this).attr('href');
+            var target=$(href);
+            var top=target.offset().top;
+            console.log(top);
+            $('html,body').animate({
+                scrollTop: top
+            }, 1000);
+        });
     });
 });
+
+$( ".first__but--but" ).click(function() {
+    $(".first-nav").slideToggle('slow');
+});
+
+$( ".header--request--open" ).click(function() {
+    $(".head-nav").slideToggle('slow');
+});
+
+$( ".menu-open-flag" ).click(function() {
+    $(".side-nav").slideToggle('slow');
 });

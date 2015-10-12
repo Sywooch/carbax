@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $name
+ * @property string $icon
  *
  * @property ServiceTypeGroup[] $serviceTypeGroups
  * @property Services[] $services
@@ -30,7 +31,8 @@ class ServiceType extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['name'], 'string', 'max' => 255]
+            [['name'], 'string', 'max' => 255],
+            [['icon'], 'safe']
         ];
     }
 
@@ -59,5 +61,14 @@ class ServiceType extends \yii\db\ActiveRecord
     public function getServices()
     {
         return $this->hasMany(Services::className(), ['service_type_id' => 'id']);
+    }
+
+    /**
+     * Текст текст
+     * @return bool
+     * @param string
+     */
+    public function test($str){
+
     }
 }

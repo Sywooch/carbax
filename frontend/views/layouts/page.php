@@ -3,6 +3,8 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use frontend\widgets\CommercBanners;
+use frontend\widgets\TogglePrivateOfficeLeft;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -13,7 +15,7 @@ use common\widgets\Alert;
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
@@ -40,12 +42,9 @@ AppAsset::register($this);
         <a href="#" class="header--messages">Мои сообщения <span>(1)</span></a>
         <a href="#" class="header--sales"><span>Спецпредложения</span></a>
         <div class="header--request">
-            <label for="menu-open-flag" class="header--request--open" role="presentation">
-                ЗАЯВКА НА СЕРВИС +
-            </label>
-            <input type="checkbox" id="menu-open-flag" class="sr-only" aria-label="Menu Visibility">
-            <nav class="main-nav" role="navigation">
-                <ul class="main-nav__list">
+            <a href="#" class="header--request--open">ЗАЯВКА НА СЕРВИС +</a>
+            <nav class="head-nav" role="navigation">
+                <ul class="head-nav__list">
                     <li><a href="#">Автосалон</a></li>
                     <li><a href="#">Диски</a></li>
                     <li><a href="#">Шиномонтаж</a></li>
@@ -62,17 +61,24 @@ AppAsset::register($this);
         <a href="#" class="header--logout"></a>
     </div>
 </header>
-
-<div class="wrap">
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+<section class="singleImg"></section>
+<section class="single_wrapper">
+    <div class="contain">
+        <?= TogglePrivateOfficeLeft::widget(); ?>
+        <div class="wrap">
+            <div class="container">
+                <?= Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]) ?>
+                <?= Alert::widget() ?>
+                <?= $content ?>
+            </div>
+        </div>
+        <?= CommercBanners::widget(); ?>
     </div>
-</div>
+</section>
 
+<!-- ___________________ФУТЕР_______________________ -->
 <footer class="footer">
     <div class="contain">
         <div class="footer__logo">
@@ -115,6 +121,6 @@ AppAsset::register($this);
 </footer>
 
 <?php $this->endBody() ?>
-</body>
+    </body>
 </html>
 <?php $this->endPage() ?>

@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = 'Редактировать';
         'model' => $model,
         'group' => $group,
         'selected' => $selected,
+        'icon' => $icon,
     ]) ?>
 
 </div>

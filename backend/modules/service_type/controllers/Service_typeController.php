@@ -5,12 +5,14 @@ namespace backend\modules\service_type\controllers;
 use common\classes\Debug;
 use common\models\db\AddFieldsGroup;
 use common\models\db\ServiceTypeGroup;
+use common\models\forms\IconsForm;
 use Yii;
 use common\models\db\ServiceType;
 use backend\modules\service_type\models\ServiceTypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * Service_typeController implements the CRUD actions for ServiceType model.
@@ -65,12 +67,22 @@ class Service_typeController extends Controller
     {
         $model = new ServiceType();
         $group = AddFieldsGroup::find()->all();
+        $icon = new IconsForm();
 
         foreach($group as $g){
             $gr[$g->id] = $g->name;
         }
 
         if ($model->load(Yii::$app->request->post())) {
+
+            // Загрузка иконки
+            if($icon->load(Yii::$app->request->post())){
+                $file = UploadedFile::getInstance($icon, 'icon_s');
+                $file->saveAs('icons/' . $file->baseName . '.' . $file->extension);
+                $model->icon = 'icons/' . $file->baseName . '.' . $file->extension;
+            }
+            //
+
             $model->save();
             foreach($_POST[group] as $p){
                 $stp = new ServiceTypeGroup();
@@ -83,6 +95,7 @@ class Service_typeController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'group' => $gr,
+                'icon' => $icon,
             ]);
         }
     }
@@ -96,6 +109,7 @@ class Service_typeController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $icon = new IconsForm();
 
         $group = AddFieldsGroup::find()->all();
         foreach($group as $g){
@@ -110,6 +124,15 @@ class Service_typeController extends Controller
         //Debug::prn('<br><br><br><br><br>');
         //Debug::prn($selected);
         if ($model->load(Yii::$app->request->post())) {
+
+            // Загрузка иконки
+            if($icon->load(Yii::$app->request->post())){
+                $file = UploadedFile::getInstance($icon, 'icon_s');
+                $file->saveAs('icons/' . $file->baseName . '.' . $file->extension);
+                $model->icon = 'icons/' . $file->baseName . '.' . $file->extension;
+            }
+            //
+
             $model->save();
             $delServiceTypeGroup = new ServiceTypeGroup();
             $delServiceTypeGroup->deleteAll(['service_type_id'=>$id]);
@@ -125,6 +148,7 @@ class Service_typeController extends Controller
                 'model' => $model,
                 'group' => $gr,
                 'selected' => $sel,
+                'icon' => $icon,
             ]);
         }
     }

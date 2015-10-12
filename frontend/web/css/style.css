@@ -1,0 +1,22 @@
+.serviceItem {
+    display: block;
+    height: 70px;
+    margin: 20px;
+    float: left;
+    width: 200px;
+}
+
+.serviceIcon, .serviceLink {
+    float: left;
+}
+
+.serviceLink {
+    margin: 22px 0 0 15px;
+}
+
+.wrap {
+    /*margin-left: 200px;*/
+    float: left;
+    width: 55%;
+    padding: 20px;
+}

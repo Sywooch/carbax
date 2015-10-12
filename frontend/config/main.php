@@ -24,6 +24,7 @@ return [
                 'register' => 'user/registration/register',
                 'logout' => 'user/security/logout',
                 'profile' => 'user/settings/profile',
+                'select_service' => 'services/services/select_service'
             ],
         ],
         'log' => [
@@ -45,6 +46,12 @@ return [
         ],
         'garage' => [
             'class' => 'frontend\modules\garage\Garage',
+        ],
+        'services' => [
+            'class' => 'frontend\modules\services\Services',
+        ],
+        'office' => [
+            'class' => 'frontend\modules\office\Office',
         ],
     ],
     'params' => $params,
