@@ -40,12 +40,9 @@ AppAsset::register($this);
         <a href="#" class="header--messages">Мои сообщения <span>(1)</span></a>
         <a href="#" class="header--sales"><span>Спецпредложения</span></a>
         <div class="header--request">
-            <label for="menu-open-flag" class="header--request--open" role="presentation">
-                ЗАЯВКА НА СЕРВИС +
-            </label>
-            <input type="checkbox" id="menu-open-flag" class="sr-only" aria-label="Menu Visibility">
-            <nav class="main-nav" role="navigation">
-                <ul class="main-nav__list">
+            <a href="#" class="header--request--open">ЗАЯВКА НА СЕРВИС +</a>
+            <nav class="head-nav" role="navigation">
+                <ul class="head-nav__list">
                     <li><a href="#">Автосалон</a></li>
                     <li><a href="#">Диски</a></li>
                     <li><a href="#">Шиномонтаж</a></li>
@@ -62,16 +59,18 @@ AppAsset::register($this);
         <a href="#" class="header--logout"></a>
     </div>
 </header>
-
-<div class="wrap">
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+<section class="filter">
+    <div class="wrap">
+        <div class="container">
+            <?= Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+            <?= Alert::widget() ?>
+            <?= $content ?>
+        </div>
     </div>
-</div>
+
+</section>
 
 <footer class="footer">
     <div class="contain">
