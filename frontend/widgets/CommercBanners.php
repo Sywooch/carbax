@@ -8,12 +8,15 @@
 
 namespace frontend\widgets;
 
-
 use yii\base\Widget;
 
 class CommercBanners extends Widget
 {
+    public $print = 'yes';
+
     public function run(){
-        return $this->render('banners');
+        if($this->print == 'yes'){
+            return $this->render('banners');
+        }
     }
 }

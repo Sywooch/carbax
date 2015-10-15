@@ -2129,10 +2129,6 @@ ul {
 .side-nav__list li:hover {
     background-color: #2B2B2B; }
 
-.addAllServices {
-    width: 75%;
-    margin: 25px auto;
-    border-collapse: collapse; }
 .addAllServices tr {
     background: #DCDCDC; }
 .addAllServices tr:nth-child(odd) {
@@ -2151,3 +2147,12 @@ ul {
     padding: 10px; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+
+/*  Мои стили  */
+.addAllServices {
+    /*width: 75%;
+    margin: 25px auto;*/
+    border-collapse: collapse;
+}

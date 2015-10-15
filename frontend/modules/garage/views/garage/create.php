@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model frontend\modules\garage\models\Garage */
 
-$this->title = 'Create Garage';
-$this->params['breadcrumbs'][] = ['label' => 'Garages', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Добавить авто';
+/*$this->params['breadcrumbs'][] = ['label' => 'Garages', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;*/
 ?>
 <div class="garage-create">
 

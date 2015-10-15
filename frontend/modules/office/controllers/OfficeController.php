@@ -13,6 +13,8 @@ use yii\web\Controller;
 
 class OfficeController extends Controller
 {
+    public $layout = 'page';
+
     public function actionIndex()
     {
         return $this->render('index');

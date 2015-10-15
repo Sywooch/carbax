@@ -2,6 +2,4 @@
     <div class="sbar-r__commerc"></div>
     <div class="sbar-r__commerc"></div>
     <div class="sbar-r__commerc"></div>
-    <div class="sbar-r__commerc"></div>
-    <div class="sbar-r__commerc"></div>
 </div>

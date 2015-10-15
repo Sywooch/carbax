@@ -6,6 +6,8 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model frontend\modules\garage\models\Garage */
 /* @var $form yii\widgets\ActiveForm */
+
+$this->registerCssFile('/css/bootstrap_cast.min.css');
 ?>
 
 <div class="garage-form">
@@ -28,7 +30,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model,'type_car')->radioList(['1'=>'Легковая','2'=>'Грузовая','3'=>'Мото']);?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Редактировать', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

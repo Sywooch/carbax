@@ -10,7 +10,7 @@ function initialize() {
         scrollwheel: false
     };
     var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-    var image = '../img/service_icon.png';
+    var image = '/media/img/service_icon.png';
     var myLatLng = new google.maps.LatLng(55.662561,37.540873);
     var beachMarker = new google.maps.Marker({
         position: myLatLng,
@@ -46,6 +46,10 @@ jQuery(document).ready(function($) {
 });
 
 jQuery(document).ready(function($) {
+    $('#addAddress').on('click', function(){
+       $('<input type="text" name="address[]" class="addContent__adress" placeholder="Адрес автосервиса">').insertBefore('#firstAddress');
+    });
+
     var txt = $('.advantages__block__text');
     txt.each(function(){
         var h = $(this).height();

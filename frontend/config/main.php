@@ -24,7 +24,10 @@ return [
                 'register' => 'user/registration/register',
                 'logout' => 'user/security/logout',
                 'profile' => 'user/settings/profile',
-                'select_service' => 'services/services/select_service'
+                'select_service' => 'services/services/select_service',
+                'office' => 'office/office',
+                'garage' => 'garage/garage',
+                'add' => 'services/services/add',
             ],
         ],
         'log' => [

@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model frontend\modules\garage\models\Garage */
 
-$this->title = 'Update Garage: ' . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Garages', 'url' => ['index']];
+$this->title = 'Редактировать авто: ' . ' ' . $model->id;
+/*$this->params['breadcrumbs'][] = ['label' => 'Garages', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Update';*/
 ?>
 <div class="garage-update">
 

@@ -17,13 +17,14 @@ class ServicesController extends Controller
 {
     public $layout = 'page';
 
+
     public function actionIndex()
     {
         return $this->render('index');
     }
 
     public function actionAdd(){
-
+        return $this->render('add');
     }
 
     public function actionSelect_service(){
@@ -34,6 +35,6 @@ class ServicesController extends Controller
 
     public function actionMy_services(){
         $serviceTypeId = $_GET['service_id'];
-        Debug::prn($serviceTypeId);
+        return $this->render('my_services', ['serviceTypeId'=>$serviceTypeId]);
     }
 }

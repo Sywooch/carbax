@@ -6,6 +6,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
@@ -27,13 +28,24 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <header class="header">
+    <?php
+    if(Yii::$app->user->isGuest):
+    ?>
+    <div class="header__container">
+        <div class="loginLinks">
+            <?=Html::a('Регистрация', Url::to('/register'), ['class'=>'regHeaderLink']) ." | ". Html::a('Вход', Url::to('/login'), ['class'=>'regHeaderLink']);?>
+        </div>
+    </div>
+    <?php
+    else:
+    ?>
     <div class="header__container">
         <a href="#" class="header--logo">
-            <img src="<?= \yii\helpers\Url::base() ?>/media/img/smalllogo.png" alt="">
+            <img src="<?= Url::base() ?>/media/img/smalllogo.png" alt="">
             <h5>Car<span class="orange">bax</span></h5>
         </a>
         <a href="#" class="header--autotext">Autotext</a>
-        <a href="#" class="header--perscab">Личный кабинет</a>
+        <a href="<?=Url::to('/office')?>" class="header--perscab">Личный кабинет</a>
         <form action="#" class="header--region">
             <input type="text" class="header--region--box" placeholder="Москва">
         </form>
@@ -56,8 +68,12 @@ AppAsset::register($this);
                 </ul>
             </nav>
         </div>
-        <a href="#" class="header--logout"></a>
+        <?=Html::a('', [Url::to('/logout')], ['class'=>'header--logout', 'data'=>['method' => 'post']]);?>
+        <!--<a href="#" class="header--logout"></a>-->
     </div>
+    <?php
+    endif
+    ?>
 </header>
 <section class="filter">
     <div class="wrap">
@@ -76,7 +92,7 @@ AppAsset::register($this);
     <div class="contain">
         <div class="footer__logo">
             <div class="footer__logo-img">
-                <img src="<?= \yii\helpers\Url::base() ?>/media/img/sedan4.png" alt="">
+                <img src="<?= Url::base() ?>/media/img/sedan4.png" alt="">
             </div>
             <div class="footer__logo-desc">
                 <h1>CARBAX<span class="orange">.RU</span></h1>

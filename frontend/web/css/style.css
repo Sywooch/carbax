@@ -3,7 +3,7 @@
     height: 70px;
     margin: 20px;
     float: left;
-    width: 200px;
+    width: 220px;
 }
 
 .serviceIcon, .serviceLink {
@@ -12,11 +12,49 @@
 
 .serviceLink {
     margin: 22px 0 0 15px;
+    width: 140px;
 }
 
 .wrap {
     /*margin-left: 200px;*/
+    /*float: left;*/
+    /*width: 55%;*/
+    /*padding: 20px;*/
+    min-height: 400px;
+}
+
+.wrap-page {
+    /*margin-left: 200px;*/
     float: left;
     width: 55%;
     padding: 20px;
+    min-height: 400px;
+}
+
+.h2-left {
+    float: left;
+    width: 100%;
+}
+
+.regHeaderLink {
+    color: white;
+}
+
+.loginLinks {
+    position: absolute;
+    right: 30px;
+    width: 160px;
+    color: white;
+}
+
+.garage-create {
+    width: 40%;
+}
+
+.addServiceBtn {
+    margin: 20px;
+}
+
+.addContent {
+    width: 90%!important;
 }

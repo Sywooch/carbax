@@ -14,6 +14,8 @@ use yii\filters\VerbFilter;
  */
 class GarageController extends Controller
 {
+    public $layout = 'page';
+
     public function behaviors()
     {
         return [
