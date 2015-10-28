@@ -21,12 +21,17 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'css/font-awesome.min.css',
         'css/fotorama.css',
+        'css/jquery.datetimepicker.css',
         'css/style.css',
     ];
     public $js = [
         'js/bootstrap.js',
         'js/bootstrap.min.js',
         'js/fotorama.js',
+        'https://api-maps.yandex.ru/2.1/?lang=ru_RU',
+        'js/jquery.datetimepicker.full.min.js',
+        'js/datapic.js',
+/*        'js/mg.js',*/
         'js/script.js',
     ];
     public $depends = [

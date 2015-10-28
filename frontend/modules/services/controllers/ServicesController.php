@@ -10,11 +10,36 @@ namespace frontend\modules\services\controllers;
 
 
 use common\classes\Debug;
+use common\models\db\BrandCars;
 use common\models\db\ServiceType;
+use common\models\db\ServiceTypeGroup;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 
 class ServicesController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'add_to_sql' => ['post'],
+                ],
+            ],
+        ];
+    }
+
+    public function beforeAction($action)
+    {
+        if ($action->id == 'add_to_sql') {
+            Yii::$app->controller->enableCsrfValidation = false;
+        }
+
+        return parent::beforeAction($action);
+    }
+
     public $layout = 'page';
 
 
@@ -24,7 +49,12 @@ class ServicesController extends Controller
     }
 
     public function actionAdd(){
-        return $this->render('add');
+        $brandCars = BrandCars::find()->all();
+        return $this->render('add', ['brands' => $brandCars, 'field_group' => $this->get_group($_GET['service_type'])]);
+    }
+
+    public function actionAdd_to_sql(){
+        Debug::prn($_POST);
     }
 
     public function actionSelect_service(){
@@ -36,5 +66,10 @@ class ServicesController extends Controller
     public function actionMy_services(){
         $serviceTypeId = $_GET['service_id'];
         return $this->render('my_services', ['serviceTypeId'=>$serviceTypeId]);
+    }
+
+    public function get_group($serviceTypeId){
+        $groups = ServiceTypeGroup::find()->where(['service_type_id'=>$serviceTypeId])->all();
+        return $this->render('fields_group', ['groups' => $groups]);
     }
 }

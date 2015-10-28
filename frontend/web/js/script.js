@@ -2,16 +2,16 @@
 
 function initialize() {
 
-    var myLatlng = new google.maps.LatLng(55.662561,37.540873);
+    var myLatlng = new google.maps.LatLng(55.662561, 37.540873);
     var mapOptions = {
-        center: new google.maps.LatLng(55.662561,37.540873),
+        center: new google.maps.LatLng(55.662561, 37.540873),
         zoom: 17,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         scrollwheel: false
     };
     var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
     var image = '/media/img/service_icon.png';
-    var myLatLng = new google.maps.LatLng(55.662561,37.540873);
+    var myLatLng = new google.maps.LatLng(55.662561, 37.540873);
     var beachMarker = new google.maps.Marker({
         position: myLatLng,
         map: map,
@@ -29,15 +29,12 @@ function loadScript() {
 window.onload = loadScript;
 
 
-
-
-
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
     var img = $('.example-image');
-    setTimeout(function() {
-        img.each(function(){
+    setTimeout(function () {
+        img.each(function () {
             var heightEl = $(this).height();
-            var topEl = (330 - heightEl)/2 ;
+            var topEl = (330 - heightEl) / 2;
             $(this).css({
                 top: topEl
             });
@@ -45,15 +42,80 @@ jQuery(document).ready(function($) {
     }, 3000);
 });
 
-jQuery(document).ready(function($) {
-    $('#addAddress').on('click', function(){
-       $('<input type="text" name="address[]" class="addContent__adress" placeholder="Адрес автосервиса">').insertBefore('#firstAddress');
+jQuery(document).ready(function ($) {
+    ymaps.ready(init);
+    var myMap,
+        myPlacemark;
+
+    function init() {
+         myMap = new ymaps.Map("map", {
+         center: [55.76, 37.64],
+         zoom: 7
+         });
+
+    }
+
+    $(document).on('focusout', '.addContent__adress', function () {
+        if($(this).val() != ''){
+            $('#map').empty();
+            var myMap;
+
+            var myGeocoder = ymaps.geocode($(this).val());
+            myGeocoder.done(
+                function (res) {
+                    myMap = new ymaps.Map("map", {
+                        center: [res.geoObjects.get(0).geometry.getCoordinates()[0], res.geoObjects.get(0).geometry.getCoordinates()[1]],
+                        zoom: 7
+                    });
+
+                    var i = 0;
+                    $('.addContent__adress').each(function () {
+                        var text = $(this).val();
+                        var objects = ymaps.geoQuery(ymaps.geocode(text));
+                        objects.addToMap(myMap);
+                        i = i + 1;
+                    });
+                }
+            );
+        }
+    });
+
+    $(document).on('click', '#delAddress', function(){
+        $(this).prev().remove();
+        $(this).remove();
+
+        $('#map').empty();
+        var myMap;
+
+        var myGeocoder = ymaps.geocode($('.addContent__adress').val());
+        console.log(myGeocoder);
+        myGeocoder.done(
+            function (res) {
+                myMap = new ymaps.Map("map", {
+                    center: [res.geoObjects.get(0).geometry.getCoordinates()[0], res.geoObjects.get(0).geometry.getCoordinates()[1]],
+                    zoom: 7
+                });
+
+                var i = 0;
+                $('.addContent__adress').each(function () {
+                    var text = $(this).val();
+                    var objects = ymaps.geoQuery(ymaps.geocode(text));
+                    objects.addToMap(myMap);
+                    i = i + 1;
+                });
+            }
+        );
+
+    });
+
+    $('#addAddress').on('click', function () {
+        $('<a href="#nowhere" id="delAddress" class="addContent__adress-add">-</a><input type="text" name="address[]" class="addContent__adress" placeholder="Адрес автосервиса">').insertBefore('#firstAddress');
     });
 
     var txt = $('.advantages__block__text');
-    txt.each(function(){
+    txt.each(function () {
         var h = $(this).height();
-        var t = (320 - h)/2 ;
+        var t = (320 - h) / 2;
         $(this).css({
             top: t
         });
@@ -62,24 +124,24 @@ jQuery(document).ready(function($) {
      var heightEl = $(this).height();
 
      });*/
-    $(function() {
+    $(function () {
 
-        $(window).scroll(function() {
-            if($(this).scrollTop() != 0) {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() != 0) {
                 $('#toTop').fadeIn();
             } else {
                 $('#toTop').fadeOut();
             }
         });
-        $('#toTop').click(function() {
+        $('#toTop').click(function () {
             $('body,html').animate({scrollTop: 0}, 1000);
         });
 
-        $('.smoothScroll').click(function(event) {
+        $('.smoothScroll').click(function (event) {
             event.preventDefault();
-            var href=$(this).attr('href');
-            var target=$(href);
-            var top=target.offset().top;
+            var href = $(this).attr('href');
+            var target = $(href);
+            var top = target.offset().top;
             console.log(top);
             $('html,body').animate({
                 scrollTop: top
@@ -88,14 +150,38 @@ jQuery(document).ready(function($) {
     });
 });
 
-$( ".first__but--but" ).click(function() {
+$(".first__but--but").click(function () {
     $(".first-nav").slideToggle('slow');
 });
 
-$( ".header--request--open" ).click(function() {
+$(".header--request--open").click(function () {
     $(".head-nav").slideToggle('slow');
 });
 
-$( ".menu-open-flag" ).click(function() {
+$(".menu-open-flag").click(function () {
     $(".side-nav").slideToggle('slow');
 });
+
+function reloadMap(){
+    $('#map').empty();
+    var myMap;
+
+    var myGeocoder = ymaps.geocode($(this).val());
+    console.log(myGeocoder);
+    myGeocoder.done(
+        function (res) {
+            myMap = new ymaps.Map("map", {
+                center: [res.geoObjects.get(0).geometry.getCoordinates()[0], res.geoObjects.get(0).geometry.getCoordinates()[1]],
+                zoom: 7
+            });
+
+            var i = 0;
+            $('.addContent__adress').each(function () {
+                var text = $(this).val();
+                var objects = ymaps.geoQuery(ymaps.geocode(text));
+                objects.addToMap(myMap);
+                i = i + 1;
+            });
+        }
+    );
+}

@@ -28,6 +28,7 @@ return [
                 'office' => 'office/office',
                 'garage' => 'garage/garage',
                 'add' => 'services/services/add',
+                'add_to_sql' => 'services/services/add_to_sql',
             ],
         ],
         'log' => [

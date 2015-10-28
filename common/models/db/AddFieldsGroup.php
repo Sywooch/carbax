@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $name
+ * @property string $label
  *
  * @property AdditionalFields[] $additionalFields
  * @property RequestTypeGroup[] $requestTypeGroups
@@ -30,8 +31,8 @@ class AddFieldsGroup extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['name'], 'string', 'max' => 255]
+            [['name', 'label'], 'required'],
+            [['name', 'label'], 'string', 'max' => 255]
         ];
     }
 
@@ -43,6 +44,7 @@ class AddFieldsGroup extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Название',
+            'label' => 'Ярлык',
         ];
     }
 
