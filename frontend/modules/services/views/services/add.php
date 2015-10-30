@@ -120,7 +120,7 @@ $this->title = "Добавить сервис";
                 <label for="<?=$b->id?>"><span></span><?=$b->name?></label>
                 <?php endforeach ?>
             </div>
-            <?= $field_group ?>
+
             <div class="addContent--save">
                 <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
             </div>

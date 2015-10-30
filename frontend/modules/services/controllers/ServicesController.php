@@ -50,7 +50,7 @@ class ServicesController extends Controller
 
     public function actionAdd(){
         $brandCars = BrandCars::find()->all();
-        return $this->render('add', ['brands' => $brandCars, 'field_group' => $this->get_group($_GET['service_type'])]);
+        return $this->render('add', ['brands' => $brandCars]);
     }
 
     public function actionAdd_to_sql(){
