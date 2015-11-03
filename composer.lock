@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cfdeb27e8d4596106d20c51a3fbaca1c",
+    "hash": "314405633cfae41ef04dfe9ccf03df5e",
+    "content-hash": "93a05a5321afc2e85bac8f04e97a83d9",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -403,47 +404,6 @@
                 "html"
             ],
             "time": "2013-11-30 08:25:19"
-        },
-        {
-            "name": "mirocow/yii2-yandex-maps",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mirocow/yii2-yandex-maps.git",
-                "reference": "c1ff84a600d8c7dd1c53a23b5cf871ea5c2ced24"
-            },
-            "require": {
-                "yiisoft/yii2": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-0": {
-                    "mirocow\\yandexmaps\\": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mirocow",
-                    "email": "mr.mirocow@gmail.com",
-                    "homepage": "http://www.mirocow.com"
-                }
-            ],
-            "description": "Yii 2 yandex map module",
-            "keywords": [
-                "map",
-                "yandex",
-                "yii",
-                "yii2"
-            ],
-            "support": {
-                "issues": "https://github.com/Mirocow/yii2-yandex-maps/issues?state=open",
-                "wiki": "http://www.yiidoc.com/wiki/",
-                "source": "https://github.com/Mirocow/yii2-yandex-maps"
-            },
-            "time": "2015-08-19 01:59:14"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -947,6 +907,47 @@
             "time": "2013-11-01 13:02:21"
         },
         {
+            "name": "serhatozles/yii2-simplehtmldom",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/serhatozles/yii2-simplehtmldom.git",
+                "reference": "64f36d1ff3ec9bff04b06f98c1648b5fea326554"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/serhatozles/yii2-simplehtmldom/zipball/64f36d1ff3ec9bff04b06f98c1648b5fea326554",
+                "reference": "64f36d1ff3ec9bff04b06f98c1648b5fea326554",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "serhatozles\\simplehtmldom\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "serhatozles",
+                    "email": "serhatozles@gmail.com"
+                }
+            ],
+            "description": "Simple HTML Dom",
+            "keywords": [
+                "extension",
+                "simplehtmldom",
+                "yii2"
+            ],
+            "time": "2014-12-01 19:14:07"
+        },
+        {
             "name": "yiisoft/yii2-codeception",
             "version": "2.0.4",
             "source": {
@@ -1143,7 +1144,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "dektrium/yii2-user": 20,
-        "mirocow/yii2-yandex-maps": 20
+        "serhatozles/yii2-simplehtmldom": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
