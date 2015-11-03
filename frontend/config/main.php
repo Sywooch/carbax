@@ -57,6 +57,9 @@ return [
         'office' => [
             'class' => 'frontend\modules\office\Office',
         ],
+        'news' => [
+            'class' => 'frontend\modules\news\News',
+        ],
     ],
     'params' => $params,
 ];

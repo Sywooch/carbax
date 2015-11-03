@@ -13,25 +13,19 @@
         "source": "https://github.com/yiisoft/yii2"
     },
     "minimum-stability": "stable",
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/mirocow/yii2-yandex-maps.git"
-        }
-    ],
     "require": {
         "php": ">=5.4.0",
-        "yiisoft/yii2": ">=2.0.6",
+        "yiisoft/yii2": "*",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
-        "dektrium/yii2-user": "0.9.*@dev",
-        "mirocow/yii2-yandex-maps" : "*@dev"
+        "dektrium/yii2-user": "0.9.*@dev"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
         "yiisoft/yii2-debug": "*",
         "yiisoft/yii2-gii": "*",
-        "yiisoft/yii2-faker": "*"
+        "yiisoft/yii2-faker": "*",
+        "serhatozles/yii2-simplehtmldom": "dev-master"
     },
     "config": {
         "process-timeout": 1800
