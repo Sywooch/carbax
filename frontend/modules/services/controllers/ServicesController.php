@@ -50,7 +50,7 @@ class ServicesController extends Controller
 
     public function actionAdd(){
         $brandCars = BrandCars::find()->all();
-        $this->view->params['banners'] = 'yes';
+        $this->view->params['bannersHide'] = false;
         return $this->render('add', ['brands' => $brandCars]);
     }
 

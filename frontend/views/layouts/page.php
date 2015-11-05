@@ -15,9 +15,7 @@ use common\widgets\Alert;
 
 AppAsset::register($this);
 
-if(!$this->params['banners']){
-    $this->params['banners'] = 'yes';
-}
+
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>
@@ -70,17 +68,17 @@ if(!$this->params['banners']){
 <section class="singleImg"></section>
 <section class="single_wrapper">
     <div class="contain">
-        <?= TogglePrivateOfficeLeft::widget(); ?>
-        <!--<div class="wrap-page">-->
-
-                    <?= Breadcrumbs::widget([
-                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                    ]) ?>
-                    <?= Alert::widget() ?>
-                    <?= $content ?>
-
-        <!--</div>-->
-        <?= CommercBanners::widget(['print'=>$this->params['banners']]); ?>
+        <?= TogglePrivateOfficeLeft::widget(['print'=>$this->params['officeHide']]); ?>
+        <div class="wrap-page">
+            <div class="container">
+                <?= Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]) ?>
+                <?= Alert::widget() ?>
+                <?= $content ?>
+            </div>
+        </div>
+        <?= CommercBanners::widget(['print'=>$this->params['bannersHide']]); ?>
     </div>
 </section>
 

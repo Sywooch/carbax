@@ -23,6 +23,7 @@ class AppAsset extends AssetBundle
         'css/fotorama.css',
         'css/jquery.datetimepicker.css',
         'css/style.css',
+        'css/evgeniy-styles.css',
     ];
     public $js = [
         'js/bootstrap.js',
