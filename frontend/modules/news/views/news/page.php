@@ -3,10 +3,11 @@
 use yii\widgets\LinkPager;
 
 $this->title = 'Новости';
+
+$this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => ['page']];
 ?>
-<div class="news filter__container">
-	<div class="contain">
-		<div class="news__news-list">
+<div class="news_page">
+	<div class="news__news-list">
 		<?php
 		$i=0;
 		foreach($models as $n):
@@ -29,7 +30,7 @@ $this->title = 'Новости';
 			?>
 			</div>
 		<?php endif ?>
-		
+
 		<?php
 		endforeach;
 		?>
@@ -39,10 +40,6 @@ $this->title = 'Новости';
 		<?php
 			// display pagination
 			echo LinkPager::widget(['pagination' => $pages,]); ?>
-		</div>
-		<div class="news__ad-block">
-			
-		</div>
 	</div>
 </div>
 
