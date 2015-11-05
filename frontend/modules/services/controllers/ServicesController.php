@@ -50,6 +50,7 @@ class ServicesController extends Controller
 
     public function actionAdd(){
         $brandCars = BrandCars::find()->all();
+        $this->view->params['banners'] = 'yes';
         return $this->render('add', ['brands' => $brandCars]);
     }
 
@@ -59,7 +60,6 @@ class ServicesController extends Controller
 
     public function actionSelect_service(){
         $serviceTypes = ServiceType::find()->all();
-
         return $this->render('select', ['service' => $serviceTypes]);
     }
 

@@ -1,4 +1,6 @@
 <?php
+use frontend\modules\services\widgets\GetAllGroupById;
+
 $this->title = "Добавить сервис";
 ?>
 
@@ -120,7 +122,52 @@ $this->title = "Добавить сервис";
                 <label for="<?=$b->id?>"><span></span><?=$b->name?></label>
                 <?php endforeach ?>
             </div>
+            <?= GetAllGroupById::widget(['groupId' => $_GET['service_type']]) ?>
+            <div class="singleContent__services">
+                <div class="singleContent__services-comfort">
+                    <h3>Зона комфорта</h3>
+                    <div class="singleContent__services-comfort-block">
+                        <input type="checkbox" value="None" id="wc" name="check"/>
+                        <label for="wc"><i class="icon icon__wc"></i>Туалет<span></span></label>
 
+                        <input type="checkbox" value="None" id="bankomat" name="check"/>
+                        <label for="bankomat"><i class="icon icon__bankomat"></i>Банкомат<span></span></label>
+
+                        <input type="checkbox" value="None" id="wifi" name="check" />
+                        <label for="wifi"><i class="icon icon__wifi"></i>Wi-Fi <span></span></label>
+
+                        <input type="checkbox" value="None" id="cafe" name="check" />
+                        <label for="cafe"><i class="icon icon__cafe"></i>Кафе <span></span></label>
+
+                        <input type="checkbox" value="None" id="shiny" name="check" />
+                        <label for="shiny"><i class="icon icon__shiny"></i>Подкачка шин<span></span></label>
+
+                        <input type="checkbox" value="None" id="postpay" name="check" />
+                        <label for="postpay"><i class="icon icon__postpay"></i>Постоплата<span></span></label>
+                    </div>
+
+                    <div class="singleContent__services-comfort-block">
+                        <input type="checkbox" value="None" id="coffemachine" name="check"/>
+                        <label for="coffemachine"><i class="icon icon__coffemachine"></i>Кофе-автомат<span></span></label>
+
+                        <input type="checkbox" value="None" id="store" name="check"/>
+                        <label for="store"><i class="icon icon__store"></i>Магазин<span></span></label>
+
+                        <input type="checkbox" value="None" id="payment" name="check" />
+                        <label for="payment"><i class="icon icon__payment"></i>Оплата картой<span></span></label>
+
+                        <input type="checkbox" value="None" id="parking" name="check" />
+                        <label for="parking"><i class="icon icon__parking"></i>Парковка для клиентов<span></span></label>
+
+                        <input type="checkbox" value="None" id="terminal" name="check" />
+                        <label for="terminal"><i class="icon icon__terminal"></i>Терминал оплаты<span></span></label>
+
+                        <input type="checkbox" value="None" id="restzone" name="check" />
+                        <label for="restzone"><i class="icon icon__restzone"></i>Зона отдыха<span></span></label>
+                    </div>
+
+                </div>
+            </div>
             <div class="addContent--save">
                 <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
             </div>

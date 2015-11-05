@@ -71,15 +71,15 @@ if(!$this->params['banners']){
 <section class="single_wrapper">
     <div class="contain">
         <?= TogglePrivateOfficeLeft::widget(); ?>
-        <div class="wrap-page">
-            <div class="container">
-                <?= Breadcrumbs::widget([
-                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                ]) ?>
-                <?= Alert::widget() ?>
-                <?= $content ?>
-            </div>
-        </div>
+        <!--<div class="wrap-page">-->
+
+                    <?= Breadcrumbs::widget([
+                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                    ]) ?>
+                    <?= Alert::widget() ?>
+                    <?= $content ?>
+
+        <!--</div>-->
         <?= CommercBanners::widget(['print'=>$this->params['banners']]); ?>
     </div>
 </section>
