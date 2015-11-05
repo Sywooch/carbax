@@ -41,10 +41,16 @@ class NewsController extends \yii\web\Controller
 	         'pages' => $pages,
 	    ]);
 	}
-	public function actionView()
-	{
+	public function actionView($id)
+	{	$this->view->params['officeHide'] = true;
+		$this->view->params['bannersHide'] = false;
+		//$news = News::find()->where(['id'=>$id])->one();
+		$news = News::findOne($id);
+		$news->views++;
+		$news->save();
+		//Debug::prn($news);
 		return $this->render('view', [
-			'model' => $this->findModel($id),
+			'news' => $news
 		]);
 	}
 
