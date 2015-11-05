@@ -6,7 +6,11 @@ use yii\base\Widget;
 
 class TogglePrivateOfficeLeft extends Widget
 {
+    public $print;
+
     public function run(){
-        return $this->render('tpol');
+        if(!$this->print){
+            return $this->render('tpol');
+        }
     }
 }

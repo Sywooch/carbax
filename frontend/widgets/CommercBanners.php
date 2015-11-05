@@ -12,10 +12,10 @@ use yii\base\Widget;
 
 class CommercBanners extends Widget
 {
-    public $print = 'yes';
+    public $print;
 
     public function run(){
-        if($this->print == 'yes'){
+        if(!$this->print){
             return $this->render('banners');
         }
     }

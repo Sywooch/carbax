@@ -138,7 +138,9 @@ class NewsController extends Controller
 
            $short_description = (array)$it->description;
            $model->short_description = $short_description[0];
-           $model->dt_add = time();
+           $dt_add = (array)$it->pubDate;
+           $dt_add_timecode = strtotime($dt_add[0]);
+           $model->dt_add = $dt_add_timecode;
            Debug::prn($model);
            $model->save();
         }
