@@ -11,6 +11,7 @@ $this->title = 'Гараж';
 /*$this->params['breadcrumbs'][] = $this->title;*/
 ?>
 <div class="garage-index">
+    <section class="main-container">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -61,5 +62,5 @@ $this->title = 'Гараж';
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); */?>
-
+</section>
 </div>

@@ -12,7 +12,7 @@ class m151027_081313_add_field_add_fields_group extends Migration
 
     public function down()
     {
-        $this->dropColumn('service_type', 'label');
+        $this->dropColumn('add_fields_group', 'label');
     }
 
     /*

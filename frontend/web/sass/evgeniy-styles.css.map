@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,gBAAgB;EACf,KAAK,EAAE,IAAI;EACX,KAAK,EAAE,KAAK;;AAEb,SAAS;EACR,KAAK,EAAE,KAAK;EACZ,KAAK,EAAE,KAAK;;AAIX,cAAG;EACJ,OAAO,EAAE,YAAY",
+"sources": ["evgeniy-styles.scss"],
+"names": [],
+"file": "evgeniy-styles.css"
+}

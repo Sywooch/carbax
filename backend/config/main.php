@@ -27,6 +27,9 @@ return [
         'media' => [
             'class' => 'backend\modules\media\Media',
         ],
+         'news' => [
+            'class' => 'backend\modules\news\News',
+        ],
     ],
     'components' => [
         'request' => [

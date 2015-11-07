@@ -26,8 +26,7 @@
 .wrap-page {
     /*margin-left: 200px;*/
     float: left;
-    width: 55%;
-    padding: 20px;
+    width: 60%;
     min-height: 400px;
 }
 
@@ -56,5 +55,15 @@
 }
 
 .addContent {
-    width: 90%!important;
+    /*width: 90%!important;*/
+}
+
+.singleContent__desc h3 {
+    display: block;
+    width: 100%;
+    float: left;
+}
+
+.header--region--box {
+    line-height: 23px;
 }

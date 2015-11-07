@@ -1,28 +1,28 @@
 @charset "UTF-8";
 @font-face {
     font-family: 'HelveticaNeueCyrThin';
-    src: url("/media/fonts/HelveticaNeueCyrThin.eot");
-    src: url("/media/fonts/HelveticaNeueCyrThin.eot") format("embedded-opentype"), url("/media/fonts/HelveticaNeueCyrThin.woff2") format("woff2"), url("/media/fonts/HelveticaNeueCyrThin.woff") format("woff"), url("/media/fonts/HelveticaNeueCyrThin.ttf") format("truetype"), url("/media/fonts/HelveticaNeueCyrThin.svg#HelveticaNeueCyrThin") format("svg"); }
+    src: url("../fonts/HelveticaNeueCyrThin.eot");
+    src: url("../fonts/HelveticaNeueCyrThin.eot") format("embedded-opentype"), url("../fonts/HelveticaNeueCyrThin.woff2") format("woff2"), url("../fonts/HelveticaNeueCyrThin.woff") format("woff"), url("../fonts/HelveticaNeueCyrThin.ttf") format("truetype"), url("../fonts/HelveticaNeueCyrThin.svg#HelveticaNeueCyrThin") format("svg"); }
 @font-face {
     font-family: 'HelveticaNeueCyrLight';
-    src: url("/media/fonts/HelveticaNeueCyrLight.eot");
-    src: url("/media/fonts/HelveticaNeueCyrLight.eot") format("embedded-opentype"), url("/media/fonts/HelveticaNeueCyrLight.woff2") format("woff2"), url("/media/fonts/HelveticaNeueCyrLight.woff") format("woff"), url("/media/fonts/HelveticaNeueCyrLight.ttf") format("truetype"), url("/media/fonts/HelveticaNeueCyrLight.svg#HelveticaNeueCyrLight") format("svg"); }
+    src: url("../fonts/HelveticaNeueCyrLight.eot");
+    src: url("../fonts/HelveticaNeueCyrLight.eot") format("embedded-opentype"), url("../fonts/HelveticaNeueCyrLight.woff2") format("woff2"), url("../fonts/HelveticaNeueCyrLight.woff") format("woff"), url("../fonts/HelveticaNeueCyrLight.ttf") format("truetype"), url("../fonts/HelveticaNeueCyrLight.svg#HelveticaNeueCyrLight") format("svg"); }
 @font-face {
     font-family: 'HelveticaNeueCyrBlack';
-    src: url("/media/fonts/HelveticaNeueCyrBlack.eot");
-    src: url("/media/fonts/HelveticaNeueCyrBlack.eot") format("embedded-opentype"), url("/media/fonts/HelveticaNeueCyrBlack.woff2") format("woff2"), url("/media/fonts/HelveticaNeueCyrBlack.woff") format("woff"), url("/media/fonts/HelveticaNeueCyrBlack.ttf") format("truetype"), url("/media/fonts/HelveticaNeueCyrBlack.svg#HelveticaNeueCyrBlack") format("svg"); }
+    src: url("../fonts/HelveticaNeueCyrBlack.eot");
+    src: url("../fonts/HelveticaNeueCyrBlack.eot") format("embedded-opentype"), url("../fonts/HelveticaNeueCyrBlack.woff2") format("woff2"), url("../fonts/HelveticaNeueCyrBlack.woff") format("woff"), url("../fonts/HelveticaNeueCyrBlack.ttf") format("truetype"), url("../fonts/HelveticaNeueCyrBlack.svg#HelveticaNeueCyrBlack") format("svg"); }
 @font-face {
     font-family: 'HelveticaNeueCyrBold';
-    src: url("/media/fonts/HelveticaNeueCyrBold.eot");
-    src: url("/media/fonts/HelveticaNeueCyrBold.eot") format("embedded-opentype"), url("/media/fonts/HelveticaNeueCyrBold.woff2") format("woff2"), url("/media/fonts/HelveticaNeueCyrBold.woff") format("woff"), url("/media/fonts/HelveticaNeueCyrBold.ttf") format("truetype"), url("/media/fonts/HelveticaNeueCyrBold.svg#HelveticaNeueCyrBold") format("svg"); }
+    src: url("../fonts/HelveticaNeueCyrBold.eot");
+    src: url("../fonts/HelveticaNeueCyrBold.eot") format("embedded-opentype"), url("../fonts/HelveticaNeueCyrBold.woff2") format("woff2"), url("../fonts/HelveticaNeueCyrBold.woff") format("woff"), url("../fonts/HelveticaNeueCyrBold.ttf") format("truetype"), url("../fonts/HelveticaNeueCyrBold.svg#HelveticaNeueCyrBold") format("svg"); }
 @font-face {
     font-family: 'HelveticaNeueCyrMedium';
-    src: url("/media/fonts/HelveticaNeueCyrMedium.eot");
-    src: url("/media/fonts/HelveticaNeueCyrMedium.eot") format("embedded-opentype"), url("/media/fonts/HelveticaNeueCyrMedium.woff2") format("woff2"), url("/media/fonts/HelveticaNeueCyrMedium.woff") format("woff"), url("/media/fonts/HelveticaNeueCyrMedium.ttf") format("truetype"), url("/media/fonts/HelveticaNeueCyrMedium.svg#HelveticaNeueCyrMedium") format("svg"); }
+    src: url("../fonts/HelveticaNeueCyrMedium.eot");
+    src: url("../fonts/HelveticaNeueCyrMedium.eot") format("embedded-opentype"), url("../fonts/HelveticaNeueCyrMedium.woff2") format("woff2"), url("../fonts/HelveticaNeueCyrMedium.woff") format("woff"), url("../fonts/HelveticaNeueCyrMedium.ttf") format("truetype"), url("../fonts/HelveticaNeueCyrMedium.svg#HelveticaNeueCyrMedium") format("svg"); }
 @font-face {
     font-family: 'HelveticaNeueCyrThin';
-    src: url("/media/fonts/HelveticaNeueCyrThin.eot");
-    src: url("/media/fonts/HelveticaNeueCyrThin.eot") format("embedded-opentype"), url("/media/fonts/HelveticaNeueCyrThin.woff2") format("woff2"), url("/media/fonts/HelveticaNeueCyrThin.woff") format("woff"), url("/media/fonts/HelveticaNeueCyrThin.ttf") format("truetype"), url("/media/fonts/HelveticaNeueCyrThin.svg#HelveticaNeueCyrThin") format("svg"); }
+    src: url("../fonts/HelveticaNeueCyrThin.eot");
+    src: url("../fonts/HelveticaNeueCyrThin.eot") format("embedded-opentype"), url("../fonts/HelveticaNeueCyrThin.woff2") format("woff2"), url("../fonts/HelveticaNeueCyrThin.woff") format("woff"), url("../fonts/HelveticaNeueCyrThin.ttf") format("truetype"), url("../fonts/HelveticaNeueCyrThin.svg#HelveticaNeueCyrThin") format("svg"); }
 .soc a {
     position: relative; }
 .soc a i {
@@ -223,6 +223,70 @@ input[type="checkbox"] + label {
     background-image: url("/media/img/voit.png");
     background-repeat: no-repeat;
     background-position: 50%; }
+.icon_b {
+    display: block;
+    float: left;
+    position: relative;
+    background-repeat: no-repeat;
+    margin-right: 25px;
+    width: 63px;
+    height: 63px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    -o-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #ff6b00;
+    background-position: 50% 50%;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear; }
+.icon_b_autosalon {
+    background-image: url("/media/img/autosalon.png"); }
+.icon_b_shinomontaj {
+    background-image: url("/media/img/shinomontaj.png"); }
+.icon_b_shiny_discki {
+    background-image: url("/media/img/shiny_discki.png"); }
+.icon_b_evacuator {
+    background-image: url("/media/img/evacuator.png"); }
+.icon_b_tuning {
+    background-image: url("/media/img/tuning.png"); }
+.icon_b_autoschool {
+    background-image: url("/media/img/autoschool.png"); }
+.icon_b_strah {
+    background-image: url("/media/img/strah.png"); }
+.icon_b_zapravka {
+    background-image: url("/media/img/zapravka.png"); }
+.icon_b_avtomoyka {
+    background-image: url("/media/img/avtomoyka.png"); }
+.icon_b_autoserv {
+    background-image: url("/media/img/autoserv.png"); }
+.icon_b_avtostore {
+    background-image: url("/media/img/avtostore.png"); }
+.icon_b_avtorazbor {
+    background-image: url("/media/img/avtorazbor.png"); }
+
+.counter {
+    display: block;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    line-height: 25px;
+    width: 25px;
+    height: 25px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    -o-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #191919;
+    color: #FFF;
+    font-family: "HelveticaNeueCyrLight";
+    text-align: center; }
 
 .header {
     display: block;
@@ -1447,7 +1511,7 @@ input[type="checkbox"] + label {
 .sbar-l__selection input[type="radio"]:checked + label, .add__sbar-l__selection input[type="radio"]:checked + label {
     color: #ff6b00; }
 
-.singleContent, .addContent {
+.singleContent, .addContent, .main-container {
     display: block;
     float: left;
     position: relative;
@@ -2374,7 +2438,8 @@ input[type="checkbox"] + label {
     z-index: 0;
     background: #000; }
 .add__sbar-l .logo h4 {
-    font-size: 16px;
+    font-size: 15px;
+    padding-left: 1px;
     text-align: right;
     color: #FFF;
     margin: 0;
@@ -2430,8 +2495,8 @@ input[type="checkbox"] + label {
 .side-nav {
     position: absolute;
     top: 49px;
-    width: 104%;
-    margin-left: -4%;
+    width: 108%;
+    margin-left: -8%;
     background: #000;
     color: #fff;
     padding: 0;
@@ -2474,7 +2539,31 @@ input[type="checkbox"] + label {
 .addAllServices td {
     padding: 10px; }
 
+.main-container .busines-type h3 {
+    text-transform: uppercase; }
+.main-container .busines-type--link {
+    display: block;
+    float: left;
+    width: 40%;
+    margin-right: 5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    line-height: 63px;
+    color: #1B1B1B;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear; }
+.main-container .busines-type--link:hover {
+    color: #1B1B1B;
+    text-decoration: underline; }
+.main-container .busines-type--link:hover .icon_b {
+    background-color: #cc5600; }
+
 /*# sourceMappingURL=style.css.map */
+
 
 
 
