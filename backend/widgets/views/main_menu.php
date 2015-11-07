@@ -13,5 +13,6 @@ use yii\helpers\Html;
         <li><?= Html::a('Марки авто', ['/brand_cars']) ?></li>
         <li><?= Html::a('Типы сервисов', ['/service_type']) ?></li>
         <li><?= Html::a('Пользователи', ['/user/admin/index']) ?></li>
+        <li><?= Html::a('Медиа-менеджер', ['/media']) ?></li>
     </ul>
 </nav>

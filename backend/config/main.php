@@ -24,6 +24,9 @@ return [
         'brand_cars' => [
             'class' => 'backend\modules\brand_cars\Brand_cars',
         ],
+        'media' => [
+            'class' => 'backend\modules\media\Media',
+        ],
     ],
     'components' => [
         'request' => [
