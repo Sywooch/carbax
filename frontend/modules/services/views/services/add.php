@@ -6,6 +6,7 @@ $this->title = "Добавить сервис";
 
 <div class="addContent">
     <form id="addForm" action="add_to_sql" method="post">
+        <input type="hidden" name="service_type" value="<?= $_GET['service_type'] ?>">
         <input type="text" name="title" class="addContent__title" placeholder="Название автосервиса">
         <input type="text" name="address[]" class="addContent__adress" placeholder="Адрес автосервиса">
 
@@ -127,7 +128,7 @@ $this->title = "Добавить сервис";
                 <div class="singleContent__services-comfort">
                     <h3>Зона комфорта</h3>
                     <div class="singleContent__services-comfort-block">
-                        <input type="checkbox" value="None" id="wc" name="check"/>
+                        <input type="checkbox" value="None" id="wc" name="comfort"/>
                         <label for="wc"><i class="icon icon__wc"></i>Туалет<span></span></label>
 
                         <input type="checkbox" value="None" id="bankomat" name="check"/>

@@ -69,15 +69,11 @@ AppAsset::register($this);
 <section class="single_wrapper">
     <div class="contain">
         <?= TogglePrivateOfficeLeft::widget(['print'=>$this->params['officeHide']]); ?>
-        <div class="wrap-page">
-            <div class="container">
                 <?= Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                 ]) ?>
                 <?= Alert::widget() ?>
                 <?= $content ?>
-            </div>
-        </div>
         <?= CommercBanners::widget(['print'=>$this->params['bannersHide']]); ?>
     </div>
 </section>

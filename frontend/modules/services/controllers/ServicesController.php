@@ -11,6 +11,7 @@ namespace frontend\modules\services\controllers;
 
 use common\classes\Debug;
 use common\models\db\BrandCars;
+use common\models\db\Services;
 use common\models\db\ServiceType;
 use common\models\db\ServiceTypeGroup;
 use Yii;
@@ -56,6 +57,14 @@ class ServicesController extends Controller
 
     public function actionAdd_to_sql(){
         Debug::prn($_POST);
+        $service = new Services();
+        $service->name = $_POST['title'];
+        $service->description = $_POST['text'];
+        $service->service_type_id = $_POST['service_type'];
+        $service->website = $_POST['website'];
+        $service->email = $_POST['mailadress'];
+        $service->user_id = Yii::$app->user->id;
+        //$service->save();
     }
 
     public function actionSelect_service(){
