@@ -30,6 +30,9 @@ return [
          'news' => [
             'class' => 'backend\modules\news\News',
         ],
+        'comfort_zone' => [
+            'class' => 'backend\modules\comfort_zone\Comfort_zone',
+        ],
     ],
     'components' => [
         'request' => [
@@ -43,6 +46,7 @@ return [
                 'group_services' => 'group_services/group_services',
                 'service_types' => '/service_types/service_types',
                 'brand_cars' => 'brand_cars/brand_cars',
+                'comfort_zone' => '/comfort_zone/comfort_zone/',
             ],
         ],
         'log' => [
