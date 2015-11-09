@@ -2,6 +2,7 @@
 
 namespace backend\modules\news\controllers;
 
+use serhatozles\simplehtmldom\SimpleHTMLDom;
 use Yii;
 use common\models\db\News;
 use common\classes\Debug;
@@ -119,13 +120,14 @@ class NewsController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
     public function actionParse_news()
     {
-        
+        $modelNewsOld = News::find()->count();
         $xml = simplexml_load_file('http://www.gazeta.ru/export/rss/auto.xml');
         foreach ($xml->channel->item as $it){
            $model = new News();
-           $html = \serhatozles\simplehtmldom\SimpleHTMLDom::file_get_html($it->link);// ($it->link);
+           $html = SimpleHTMLDom::file_get_html($it->link);// ($it->link);
            $element=$html->find('.main_pick img');
 
            $model->img_url = $element[0]->src;
@@ -141,8 +143,14 @@ class NewsController extends Controller
            $dt_add = (array)$it->pubDate;
            $dt_add_timecode = strtotime($dt_add[0]);
            $model->dt_add = $dt_add_timecode;
-           Debug::prn($model);
+//           Debug::prn($model);
            $model->save();
+
         }
+        $modelNewsNew = News::find()->count();
+        $newsCount = $modelNewsNew - $modelNewsOld;
+        return $this->render('parser', [
+            'news' => $newsCount
+        ]);
     }
 }

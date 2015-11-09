@@ -48,4 +48,9 @@
       .news_page .pagination li.disabled {
         color: #000; }
 
+.news__more-link {
+  clear: both;
+  display: block;
+  text-align: center; }
+
 /*# sourceMappingURL=evgeniy-styles.css.map */
