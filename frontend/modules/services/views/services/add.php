@@ -1,5 +1,6 @@
 <?php
 use frontend\modules\services\widgets\GetAllGroupById;
+use frontend\widgets\ComfortZone;
 
 $this->title = "Добавить сервис";
 ?>
@@ -124,7 +125,8 @@ $this->title = "Добавить сервис";
                 <?php endforeach ?>
             </div>
             <?= GetAllGroupById::widget(['groupId' => $_GET['service_type']]) ?>
-            <div class="singleContent__services">
+            <?= ComfortZone::widget()?>
+            <!--<div class="singleContent__services">
                 <div class="singleContent__services-comfort">
                     <h3>Зона комфорта</h3>
                     <div class="singleContent__services-comfort-block">
@@ -168,7 +170,7 @@ $this->title = "Добавить сервис";
                     </div>
 
                 </div>
-            </div>
+            </div>-->
             <div class="addContent--save">
                 <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
             </div>
