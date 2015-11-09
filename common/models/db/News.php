@@ -13,6 +13,7 @@ use Yii;
  * @property string $img_url
  * @property string $description
  * @property string $short_description
+ * @property integer $views
  * @property integer $dt_add
  */
 class News extends \yii\db\ActiveRecord
@@ -32,7 +33,7 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             [['title','description'], 'required'],
-            [['user_id', 'dt_add'], 'integer'],
+            [['user_id', 'dt_add', 'views'], 'integer'],
             [['description', 'short_description'], 'string'],
             [['title', 'img_url'], 'string', 'max' => 255],
             [['title'], 'unique']
@@ -52,6 +53,7 @@ class News extends \yii\db\ActiveRecord
             'description' => 'Новость',
             'short_description' => 'Превью новости',
             'dt_add' => 'Дата добавления',
+            'views' => 'Просмотры',
         ];
     }
 }

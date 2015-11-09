@@ -76,13 +76,13 @@ class Service_typeController extends Controller
         if ($model->load(Yii::$app->request->post())) {
 
             // Загрузка иконки
-            if($icon->load(Yii::$app->request->post())){
+           /* if($icon->load(Yii::$app->request->post())){
                 $file = UploadedFile::getInstance($icon, 'icon_s');
                 $file->saveAs('icons/' . $file->baseName . '.' . $file->extension);
                 $model->icon = 'icons/' . $file->baseName . '.' . $file->extension;
-            }
+            }*/
             //
-
+            $model->icon = $_POST['mediaUploadInputFile'];
             $model->save();
             foreach($_POST[group] as $p){
                 $stp = new ServiceTypeGroup();
@@ -126,13 +126,13 @@ class Service_typeController extends Controller
         if ($model->load(Yii::$app->request->post())) {
 
             // Загрузка иконки
-            if($icon->load(Yii::$app->request->post())){
+            /*if($icon->load(Yii::$app->request->post())){
                 $file = UploadedFile::getInstance($icon, 'icon_s');
                 $file->saveAs('icons/' . $file->baseName . '.' . $file->extension);
                 $model->icon = 'icons/' . $file->baseName . '.' . $file->extension;
-            }
+            }*/
             //
-
+            $model->icon = $_POST['mediaUploadInputFile'];
             $model->save();
             $delServiceTypeGroup = new ServiceTypeGroup();
             $delServiceTypeGroup->deleteAll(['service_type_id'=>$id]);

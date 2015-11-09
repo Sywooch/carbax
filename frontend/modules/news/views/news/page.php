@@ -1,12 +1,14 @@
-<?php 
+<?php
 
+use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
 $this->title = 'Новости';
+
+$this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => ['page']];
 ?>
-<div class="news filter__container">
-	<div class="contain">
-		<div class="news__news-list">
+<div class="news_page">
+	<div class="news__news-list">
 		<?php
 		$i=0;
 		foreach($models as $n):
@@ -16,10 +18,10 @@ $this->title = 'Новости';
 		<?php endif ?>
 				<div class="news__block">
 					<img src="<?= $n->img_url?>" alt="">
-					<a href="#" class="news__block-title"><?= $n->title ?></a>
+					<a href="<?= Url::to(['news/view', 'id' => $n->id])?>" class="news__block-title"><?= $n->title ?></a>
 					<!-- <div class="news-description"><?= $n->description?></div> -->
 					<!-- <div class="news-date-add"><?= date('d-m-Y H:i', $n->dt_add) ?></div> -->
-					<a href="#nowhere" class="news__block-eye"><i></i>1102</a>
+					<a href="#nowhere" class="news__block-eye"><i></i><?=$n->views?></a>
 				</div>
 
 		<?php 
@@ -29,7 +31,7 @@ $this->title = 'Новости';
 			?>
 			</div>
 		<?php endif ?>
-		
+
 		<?php
 		endforeach;
 		?>
@@ -39,10 +41,6 @@ $this->title = 'Новости';
 		<?php
 			// display pagination
 			echo LinkPager::widget(['pagination' => $pages,]); ?>
-		</div>
-		<div class="news__ad-block">
-			
-		</div>
 	</div>
 </div>
 

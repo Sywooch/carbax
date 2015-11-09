@@ -69,11 +69,19 @@ AppAsset::register($this);
 <section class="single_wrapper">
     <div class="contain">
         <?= TogglePrivateOfficeLeft::widget(['print'=>$this->params['officeHide']]); ?>
-                <?= Breadcrumbs::widget([
-                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                ]) ?>
-                <?= Alert::widget() ?>
-                <?= $content ?>
+
+        <?=
+        Breadcrumbs::widget([
+            'homeLink' => [
+                'label' => "",
+                'url' => Yii::$app->homeUrl,
+                'template' => "<li><b><a href='/'><img src='/frontend/web/media/img/breadcrumbs-home-image.png'></a></b></li>",
+            ],
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+           ])
+        ?>
+        <?= Alert::widget() ?>
+        <?= $content ?>
         <?= CommercBanners::widget(['print'=>$this->params['bannersHide']]); ?>
     </div>
 </section>

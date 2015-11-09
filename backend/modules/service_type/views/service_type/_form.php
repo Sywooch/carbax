@@ -23,12 +23,15 @@ use yii\widgets\ActiveForm;
     }
 
     ?>
+
     <?= Html::label('Группа услуг', 'group'); ?>
     <?= Html::dropDownList('group', $sel, $group, ['id'=>'group', 'class'=>'form-control', 'multiple'=>'multiple']); ?>
     <br>
    <!-- <?/*= Html::label('Ярлык', 'icon'); */?>
     --><?/*= Html::fileInput('icon',null,['id'=>'icon','class'=>'form-control']) */?>
-    <?= $form->field($icon, 'icon_s')->fileInput()->label('Ярлык') ?>
+    <button class="btn btn-primary" data-toggle="modal" data-target=".media_upload">Выберите изображение</button>
+    <div class="media__upload_img"><img src="/secure/<?=$model->icon;?>" width="100px"/><input id="mediaUploadInputFile" name="mediaUploadInputFile" type="hidden" value="<?=$model->icon;?>"/></div>
+   <!-- --><?/*= $form->field($icon, 'icon_s')->fileInput()->label('Ярлык') */?>
     <br>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Редактировать', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
