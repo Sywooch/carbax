@@ -12,9 +12,12 @@ namespace frontend\modules\services\controllers;
 use common\classes\Debug;
 use common\models\db\AddFieldsGroup;
 use common\models\db\Address;
+use common\models\db\AutoType;
 use common\models\db\BrandCars;
 use common\models\db\ComfortZone;
+use common\models\db\Phone;
 use common\models\db\ServiceAddFields;
+use common\models\db\ServiceAutoType;
 use common\models\db\ServiceComfortZone;
 use common\models\db\Services;
 use common\models\db\ServiceType;
@@ -79,6 +82,23 @@ class ServicesController extends Controller
             $cz->service_id = $service->id;
             $cz->comfort_zone_id = $zone;
             $cz->save();
+        }
+
+        //Добавляем типы авто
+        foreach($_POST['workWith'] as $autoType){
+            $at = new ServiceAutoType();
+            $at->service_id = $service->id;
+            $at->auto_type_id = $autoType;
+            $at->save();
+        }
+
+        //Добавляем телефоны
+       // Debug::prn($_POST['phoneNumber']);
+        foreach($_POST['phoneNumber'] as $ph){
+            $phone = new Phone();
+            $phone->service_id = $service->id;
+            $phone->number = $ph;
+            $phone->save();
         }
 
         //Добавляем дополнительные поля

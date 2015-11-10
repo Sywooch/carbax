@@ -111,6 +111,16 @@ jQuery(document).ready(function ($) {
     $('#addAddress').on('click', function () {
         $('<a href="#nowhere" id="delAddress" class="addContent__adress-add">-</a><input type="text" name="address[]" class="addContent__adress" placeholder="Адрес автосервиса">').insertBefore('#firstAddress');
     });
+    $('#addContentPhone').on('click', function () {
+        $('<a href="#nowhere" id="delPhone" class="addContent__cont-add">-</a><div class="cleared"></div><label for="phonenumber_last"></label><input type="text" class="addContent__cont" name="phoneNumber[]">').insertBefore('#firstPhone');
+    });
+
+    $(document).on('click', '#delPhone', function() {
+        $(this).next().next().next().remove();
+        $(this).next().next().remove();
+        $(this).next().remove();
+        $(this).remove();
+    });
 
     var txt = $('.advantages__block__text');
     txt.each(function () {
