@@ -6,6 +6,7 @@ $this->title = "Добавить сервис";
 ?>
 
 <div class="addContent">
+
     <form id="addForm" action="add_to_sql" method="post">
         <input type="hidden" name="service_type" value="<?= $_GET['service_type'] ?>">
         <input type="text" name="title" class="addContent__title" placeholder="Название автосервиса">
@@ -33,6 +34,7 @@ $this->title = "Добавить сервис";
                 <input id="datetimepicker_to-mo" type="text" class="addContent__time" name="openTime[mo][to]">
                 <input type="checkbox" id="round-the-clock-mo" name="openTime[mo][round]"/>
                 <label for="round-the-clock-mo"><span></span>Круглосуточно</label>
+                <input type="hidden" value="mo" name="openTime[mo][weekDay]">
             </div>
             <div class="singleContent__desc--line">
                 <div class="weekday">
@@ -43,6 +45,7 @@ $this->title = "Добавить сервис";
                 <input id="datetimepicker_to-tu" type="text" class="addContent__time" name="openTime[tu][to]">
                 <input type="checkbox" id="round-the-clock-tu" name="openTime[tu][round]"/>
                 <label for="round-the-clock-tu"><span></span>Круглосуточно</label>
+                <input type="hidden" value="tu" name="openTime[tu][weekDay]">
             </div>
 
             <div class="singleContent__desc--line">
@@ -54,6 +57,7 @@ $this->title = "Добавить сервис";
                 <input id="datetimepicker_to-we" type="text" class="addContent__time" name="openTime[we][to]">
                 <input type="checkbox" id="round-the-clock-we" name="openTime[we][round]"/>
                 <label for="round-the-clock-we"><span></span>Круглосуточно</label>
+                <input type="hidden" value="we" name="openTime[we][weekDay]">
             </div>
             <div class="singleContent__desc--line">
                 <div class="weekday">
@@ -64,6 +68,7 @@ $this->title = "Добавить сервис";
                 <input id="datetimepicker_to-th" type="text" class="addContent__time" name="openTime[th][to]">
                 <input type="checkbox" id="round-the-clock-th" name="openTime[th][round]"/>
                 <label for="round-the-clock-th"><span></span>Круглосуточно</label>
+                <input type="hidden" value="th" name="openTime[th][weekDay]">
             </div>
             <div class="singleContent__desc--line">
                 <div class="weekday">
@@ -74,6 +79,7 @@ $this->title = "Добавить сервис";
                 <input id="datetimepicker_to-fr" type="text" class="addContent__time" name="openTime[fr][to]">
                 <input type="checkbox" id="round-the-clock-fr" name="openTime[fr][round]"/>
                 <label for="round-the-clock-fr"><span></span>Круглосуточно</label>
+                <input type="hidden" value="fr" name="openTime[fr][weekDay]">
             </div>
             <div class="singleContent__desc--line">
                 <div class="weekday">
@@ -84,6 +90,7 @@ $this->title = "Добавить сервис";
                 <input id="datetimepicker_to-sa" type="text" class="addContent__time" name="openTime[sa][to]">
                 <input type="checkbox" id="round-the-clock-sa" name="openTime[sa][round]"/>
                 <label for="round-the-clock-sa"><span></span>Круглосуточно</label>
+                <input type="hidden" value="sa" name="openTime[sa][weekDay]">
             </div>
 
             <div class="singleContent__desc--line">
@@ -95,6 +102,7 @@ $this->title = "Добавить сервис";
                 <input id="datetimepicker_to-su" type="text" class="addContent__time" name="openTime[su][to]">
                 <input type="checkbox" id="round-the-clock-su" name="openTime[su][round]"/>
                 <label for="round-the-clock-su"><span></span>Круглосуточно</label>
+                <input type="hidden" value="su" name="openTime[su][weekDay]">
             </div>
             <div class="singleContent__desc--contacts">
                 <h3>Контакты</h3>
@@ -126,51 +134,27 @@ $this->title = "Добавить сервис";
             </div>
             <?= GetAllGroupById::widget(['groupId' => $_GET['service_type']]) ?>
             <?= ComfortZone::widget()?>
-            <!--<div class="singleContent__services">
-                <div class="singleContent__services-comfort">
-                    <h3>Зона комфорта</h3>
-                    <div class="singleContent__services-comfort-block">
-                        <input type="checkbox" value="None" id="wc" name="comfort"/>
-                        <label for="wc"><i class="icon icon__wc"></i>Туалет<span></span></label>
-
-                        <input type="checkbox" value="None" id="bankomat" name="check"/>
-                        <label for="bankomat"><i class="icon icon__bankomat"></i>Банкомат<span></span></label>
-
-                        <input type="checkbox" value="None" id="wifi" name="check" />
-                        <label for="wifi"><i class="icon icon__wifi"></i>Wi-Fi <span></span></label>
-
-                        <input type="checkbox" value="None" id="cafe" name="check" />
-                        <label for="cafe"><i class="icon icon__cafe"></i>Кафе <span></span></label>
-
-                        <input type="checkbox" value="None" id="shiny" name="check" />
-                        <label for="shiny"><i class="icon icon__shiny"></i>Подкачка шин<span></span></label>
-
-                        <input type="checkbox" value="None" id="postpay" name="check" />
-                        <label for="postpay"><i class="icon icon__postpay"></i>Постоплата<span></span></label>
-                    </div>
-
-                    <div class="singleContent__services-comfort-block">
-                        <input type="checkbox" value="None" id="coffemachine" name="check"/>
-                        <label for="coffemachine"><i class="icon icon__coffemachine"></i>Кофе-автомат<span></span></label>
-
-                        <input type="checkbox" value="None" id="store" name="check"/>
-                        <label for="store"><i class="icon icon__store"></i>Магазин<span></span></label>
-
-                        <input type="checkbox" value="None" id="payment" name="check" />
-                        <label for="payment"><i class="icon icon__payment"></i>Оплата картой<span></span></label>
-
-                        <input type="checkbox" value="None" id="parking" name="check" />
-                        <label for="parking"><i class="icon icon__parking"></i>Парковка для клиентов<span></span></label>
-
-                        <input type="checkbox" value="None" id="terminal" name="check" />
-                        <label for="terminal"><i class="icon icon__terminal"></i>Терминал оплаты<span></span></label>
-
-                        <input type="checkbox" value="None" id="restzone" name="check" />
-                        <label for="restzone"><i class="icon icon__restzone"></i>Зона отдыха<span></span></label>
-                    </div>
-
+            <div class="singleContent__worksWith">
+                <h3>Работаем</h3>
+                <div class="singleContent__worksWith-block">
+                    <h4>С грузовыми авто</h4>
+                    <img src="/media/img/gruz.png" alt="">
+                    <input type="checkbox" id="gruz" value="gruz" name="workWith[]" />
+                    <label for="gruz"><span></span></label>
                 </div>
-            </div>-->
+                <div class="singleContent__worksWith-block">
+                    <h4>С легковыми авто</h4>
+                    <img src="/media/img/sedan.png" alt="">
+                    <input type="checkbox" id="sedan" value="sedan" name="workWith[]"/>
+                    <label for="sedan"><span></span></label>
+                </div>
+                <div class="singleContent__worksWith-block">
+                    <h4>С мототехникой</h4>
+                    <img src="/media/img/velo.png" alt="">
+                    <input type="checkbox" id="velo" value="velo" name="workWith[]" />
+                    <label for="velo"><span></span></label>
+                </div>
+            </div>
             <div class="addContent--save">
                 <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
             </div>

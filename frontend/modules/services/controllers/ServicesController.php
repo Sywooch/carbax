@@ -10,10 +10,16 @@ namespace frontend\modules\services\controllers;
 
 
 use common\classes\Debug;
+use common\models\db\AddFieldsGroup;
+use common\models\db\Address;
 use common\models\db\BrandCars;
+use common\models\db\ComfortZone;
+use common\models\db\ServiceAddFields;
+use common\models\db\ServiceComfortZone;
 use common\models\db\Services;
 use common\models\db\ServiceType;
 use common\models\db\ServiceTypeGroup;
+use common\models\db\WorkHours;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -56,7 +62,8 @@ class ServicesController extends Controller
     }
 
     public function actionAdd_to_sql(){
-        Debug::prn($_POST);
+        //Debug::prn($_POST);
+        //Добавляем сервис
         $service = new Services();
         $service->name = $_POST['title'];
         $service->description = $_POST['text'];
@@ -64,7 +71,55 @@ class ServicesController extends Controller
         $service->website = $_POST['website'];
         $service->email = $_POST['mailadress'];
         $service->user_id = Yii::$app->user->id;
-        //$service->save();
+        $service->save();
+
+        //Добавляем зоны комфорта
+        foreach ($_POST['comfort'] as $zone) {
+            $cz = new ServiceComfortZone();
+            $cz->service_id = $service->id;
+            $cz->comfort_zone_id = $zone;
+            $cz->save();
+        }
+
+        //Добавляем дополнительные поля
+        $groups = ServiceTypeGroup::find()->where(['service_type_id'=>$_POST['service_type']])->all();
+        foreach($groups as $group){
+            $gr = AddFieldsGroup::find()->where(['id' => $group->add_fields_group_id])->one();
+            foreach($_POST[$gr->label] as $label){
+                $saf = new ServiceAddFields();
+                $saf->service_id = $service->id;
+                $saf->add_fields_id = $label;
+                $saf->save();
+            }
+        }
+
+        //Добавляем время работы
+        foreach ($_POST['openTime'] as $openTime) {
+            if(isset($openTime['day'])){
+                $work = new WorkHours();
+                $work->service_id = $service->id;
+                $work->day = $openTime['weekDay'];
+                if(isset($openTime['round'])){
+                    $work->{'24h'} = 1;
+                }
+                else {
+                    $work->hours_from = $openTime['from'];
+                    $work->hours_to = $openTime['to'];
+                }
+                $work->save();
+            }
+        }
+
+        //Добавляем адреса
+        foreach ($_POST['address'] as $address) {
+            $ar = new Address();
+            $ar->service_id = $service->id;
+            $ar->address = $address;
+            Debug::prn($ar);
+            $ar->save();
+        }
+
+
     }
 
     public function actionSelect_service(){

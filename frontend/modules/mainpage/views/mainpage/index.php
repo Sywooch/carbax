@@ -417,34 +417,6 @@ use frontend\modules\news\widgets\NewsWidgetFront;
     </div>
 </section>
 <?= NewsWidgetFront::widget()?>
-<!--<section class="news">
-    <div class="contain">
-        <h1 class="blockTitle orange">Новости из мира авто</h1>
-        <div class="news__block">
-            <img src="<?/*= \yii\helpers\Url::base() */?>/media/img/img.png" alt="">
-            <small>Статьи  /  Автоправо</small>
-            <a href="#nowhere" class="news__block-title">Как ГИБДД бойкотирует медсправки
-                и что с этим делать</a>
-            <a href="#nowhere" class="news__block-eye"><i></i>1102</a>
-            <a href="#nowhere" class="news__block-comment"><i></i>1102</a>
-        </div>
-        <div class="news__block">
-            <img src="<?/*= \yii\helpers\Url::base() */?>/media/img/img1.png" alt="">
-            <small>Статьи  /  Автоправо</small>
-            <a href="#nowhere" class="news__block-title">Как ГИБДД бойкотирует медсправки
-                и что с этим делать</a>
-            <a href="#nowhere" class="news__block-eye"><i></i>1102</a>
-            <a href="#nowhere" class="news__block-comment"><i></i>1102</a>
-        </div>
-        <div class="news__block">
-            <img src="<?/*= \yii\helpers\Url::base() */?>/media/img/img2.png" alt="">
-            <small>Статьи  /  Автоправо</small>
-            <a href="#nowhere" class="news__block-title">Как ГИБДД бойкотирует медсправки
-                и что с этим делать</a>
-            <a href="#nowhere" class="news__block-eye"><i></i>1102</a>
-            <a href="#nowhere" class="news__block-comment"><i></i>1102</a>
-        </div>
-    </div>
-</section>-->
+
 
 
