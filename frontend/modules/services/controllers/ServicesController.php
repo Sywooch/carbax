@@ -62,7 +62,7 @@ class ServicesController extends Controller
     }
 
     public function actionAdd_to_sql(){
-        //Debug::prn($_POST);
+        Debug::prn($_POST);
         //Добавляем сервис
         $service = new Services();
         $service->name = $_POST['title'];
@@ -115,7 +115,7 @@ class ServicesController extends Controller
             $ar = new Address();
             $ar->service_id = $service->id;
             $ar->address = $address;
-            Debug::prn($ar);
+            //Debug::prn($ar);
             $ar->save();
         }
 

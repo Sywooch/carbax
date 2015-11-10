@@ -118,7 +118,7 @@ $this->title = "Добавить сервис";
                 <div class="singleContent__desc--line">
                     <label for="phonenumber_last"></label>
                     <input type="text" class="addContent__cont" name="phoneNumber[]">
-                    <!--<a href="#nowhere" class="addContent__cont-add">+</a>-->
+                    <a href="#nowhere" class="addContent__cont-add">+</a>
                 </div>
                 <div class="singleContent__desc--line">
                     <label for="mailadress">Почта</label>
