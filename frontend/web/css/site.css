@@ -87,7 +87,7 @@ a {
     text-decoration: none; }
 a:hover, a:focus, a:active {
     outline: none;
-    text-decoration: none; }
+    text-decoration: none;  }
 
 ul {
     list-style-type: none; }
