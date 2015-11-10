@@ -1,5 +1,6 @@
 <?php
 use frontend\modules\services\widgets\GetAllGroupById;
+use frontend\widgets\AutoType;
 use frontend\widgets\ComfortZone;
 
 $this->title = "Добавить сервис";
@@ -134,7 +135,8 @@ $this->title = "Добавить сервис";
             </div>
             <?= GetAllGroupById::widget(['groupId' => $_GET['service_type']]) ?>
             <?= ComfortZone::widget()?>
-            <div class="singleContent__worksWith">
+            <?= AutoType::widget()?>
+            <!--<div class="singleContent__worksWith">
                 <h3>Работаем</h3>
                 <div class="singleContent__worksWith-block">
                     <h4>С грузовыми авто</h4>
@@ -154,7 +156,7 @@ $this->title = "Добавить сервис";
                     <input type="checkbox" id="velo" value="velo" name="workWith[]" />
                     <label for="velo"><span></span></label>
                 </div>
-            </div>
+            </div>-->
             <div class="addContent--save">
                 <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
             </div>

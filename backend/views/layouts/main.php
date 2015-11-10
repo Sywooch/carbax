@@ -86,6 +86,17 @@ AppAsset::register($this);
         </div>
     </div>
 </div>
+
+<div class="modal fade bs-example-modal-sm-rename" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <p>Введите название папки</p>
+            <input type="text" class="media__rename_folder" name="media__name_folder" id=""/>
+            <button class="media__rename__folder">Переименовать</button>
+        </div>
+    </div>
+</div>
+
 <?php $this->endBody() ?>
 </body>
 </html>
