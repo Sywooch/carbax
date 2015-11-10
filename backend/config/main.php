@@ -33,6 +33,9 @@ return [
         'comfort_zone' => [
             'class' => 'backend\modules\comfort_zone\Comfort_zone',
         ],
+        'auto_type' => [
+            'class' => 'backend\modules\auto_type\Auto_type',
+        ],
     ],
     'components' => [
         'request' => [
