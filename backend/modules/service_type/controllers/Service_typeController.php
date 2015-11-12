@@ -161,6 +161,7 @@ class Service_typeController extends Controller
      */
     public function actionDelete($id)
     {
+        ServiceTypeGroup::deleteAll(['service_type_id'=>$id]);
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

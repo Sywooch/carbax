@@ -3,6 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use common\models\db\User;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -44,7 +45,7 @@ AppAsset::register($this);
             <img src="<?= Url::base() ?>/media/img/smalllogo.png" alt="">
             <h5>Car<span class="orange">bax</span></h5>
         </a>
-        <a href="#" class="header--autotext">Autotext</a>
+        <a href="#" class="header--autotext"><?= User::getLogin(Yii::$app->user->id);?></a>
         <a href="<?=Url::to('/office')?>" class="header--perscab">Личный кабинет</a>
         <form action="#" class="header--region">
             <input type="text" class="header--region--box" placeholder="Москва">
@@ -100,7 +101,7 @@ AppAsset::register($this);
             </div>
         </div>
         <div class="footer__nav">
-            <ul class="footer__nav-autoteh"><span class="orange">TechAuto</span>
+            <ul class="footer__nav-autoteh"><span class="orange"><?= User::getLogin(Yii::$app->user->id);?></span>
                 <li><a href="#nowhere">Сообщения</a></li>
                 <li><a href="#nowhere">Мой счет</a></li>
                 <li><a href="#nowhere">Настройки</a></li>

@@ -12,9 +12,12 @@ namespace frontend\modules\services\controllers;
 use common\classes\Debug;
 use common\models\db\AddFieldsGroup;
 use common\models\db\Address;
+use common\models\db\AutoType;
 use common\models\db\BrandCars;
 use common\models\db\ComfortZone;
+use common\models\db\Phone;
 use common\models\db\ServiceAddFields;
+use common\models\db\ServiceAutoType;
 use common\models\db\ServiceComfortZone;
 use common\models\db\Services;
 use common\models\db\ServiceType;
@@ -81,16 +84,36 @@ class ServicesController extends Controller
             $cz->save();
         }
 
+        //Добавляем типы авто
+        foreach($_POST['workWith'] as $autoType){
+            $at = new ServiceAutoType();
+            $at->service_id = $service->id;
+            $at->auto_type_id = $autoType;
+            $at->save();
+        }
+
+        //Добавляем телефоны
+       // Debug::prn($_POST['phoneNumber']);
+        foreach($_POST['phoneNumber'] as $ph){
+            $phone = new Phone();
+            $phone->service_id = $service->id;
+            $phone->number = $ph;
+            $phone->save();
+        }
+
         //Добавляем дополнительные поля
         $groups = ServiceTypeGroup::find()->where(['service_type_id'=>$_POST['service_type']])->all();
         foreach($groups as $group){
             $gr = AddFieldsGroup::find()->where(['id' => $group->add_fields_group_id])->one();
-            foreach($_POST[$gr->label] as $label){
-                $saf = new ServiceAddFields();
-                $saf->service_id = $service->id;
-                $saf->add_fields_id = $label;
-                $saf->save();
+            if(isset($_POST[$gr->label])){
+                foreach($_POST[$gr->label] as $label){
+                    $saf = new ServiceAddFields();
+                    $saf->service_id = $service->id;
+                    $saf->add_fields_id = $label;
+                    $saf->save();
+                }
             }
+
         }
 
         //Добавляем время работы

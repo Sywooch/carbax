@@ -506,7 +506,7 @@ use frontend\modules\news\widgets\NewsWidgetFront;
                 <div class="whatIs__block-img "><img src="<?= \yii\helpers\Url::base() ?>/media/img/whatis2.png" alt=""></div>
                 <div class="whatIs__block-text">
                     <h3>Надежность</h3>
-                    <p>Надежный партнер межде Вами и автосервисом.</p>
+                    <p>Надежный партнер между Вами и автосервисом.</p>
                 </div>
             </div>
         </div>

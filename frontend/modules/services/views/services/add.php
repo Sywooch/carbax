@@ -117,8 +117,8 @@ $this->title = "Добавить сервис";
                 </div>
                 <div class="singleContent__desc--line">
                     <label for="phonenumber_last"></label>
-                    <input type="text" class="addContent__cont" name="phoneNumber[]">
-                    <a href="#nowhere" class="addContent__cont-add">+</a>
+                    <input type="text" class="addContent__cont" name="phoneNumber[]"> <span id="firstPhone"></span>
+                    <a href="#nowhere" id="addContentPhone" class="addContent__cont-add">+</a>
                 </div>
                 <div class="singleContent__desc--line">
                     <label for="mailadress">Почта</label>
@@ -136,27 +136,6 @@ $this->title = "Добавить сервис";
             <?= GetAllGroupById::widget(['groupId' => $_GET['service_type']]) ?>
             <?= ComfortZone::widget()?>
             <?= AutoType::widget()?>
-            <!--<div class="singleContent__worksWith">
-                <h3>Работаем</h3>
-                <div class="singleContent__worksWith-block">
-                    <h4>С грузовыми авто</h4>
-                    <img src="/media/img/gruz.png" alt="">
-                    <input type="checkbox" id="gruz" value="gruz" name="workWith[]" />
-                    <label for="gruz"><span></span></label>
-                </div>
-                <div class="singleContent__worksWith-block">
-                    <h4>С легковыми авто</h4>
-                    <img src="/media/img/sedan.png" alt="">
-                    <input type="checkbox" id="sedan" value="sedan" name="workWith[]"/>
-                    <label for="sedan"><span></span></label>
-                </div>
-                <div class="singleContent__worksWith-block">
-                    <h4>С мототехникой</h4>
-                    <img src="/media/img/velo.png" alt="">
-                    <input type="checkbox" id="velo" value="velo" name="workWith[]" />
-                    <label for="velo"><span></span></label>
-                </div>
-            </div>-->
             <div class="addContent--save">
                 <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
             </div>
