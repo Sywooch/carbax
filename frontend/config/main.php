@@ -43,6 +43,10 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'ipgeobase' => [
+            'class' => 'himiklab\ipgeobase\IpGeoBase',
+            'useLocalDB' => false,
+        ],
     ],
     'modules' => [
         'mainpage' => [
@@ -59,6 +63,9 @@ return [
         ],
         'news' => [
             'class' => 'frontend\modules\news\News',
+        ],
+        'offers' => [
+            'class' => 'frontend\modules\offers\Offers',
         ],
     ],
     'params' => $params,
