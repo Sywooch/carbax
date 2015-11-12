@@ -67,7 +67,6 @@ class ServicesController extends Controller
 
     public function actionAdd_to_sql(){
         //Добавляем сервис
-        //Debug::prn($_POST);
         $service = new Services();
         $service->name = $_POST['title'];
         $service->description = $_POST['text'];
