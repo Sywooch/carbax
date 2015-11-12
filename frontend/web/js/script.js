@@ -1,5 +1,4 @@
 /*-------------GOOGLE MAPS-----------------*/
-
 function initialize() {
 
     var myLatlng = new google.maps.LatLng(55.662561, 37.540873);
@@ -158,6 +157,9 @@ jQuery(document).ready(function ($) {
             }, 1000);
         });
     });
+    setTimeout(function() {
+        $('#serviceInfo').fadeOut('fast');
+    }, 5000);
 });
 
 $(".first__but--but").click(function () {
