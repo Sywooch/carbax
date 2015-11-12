@@ -14,6 +14,7 @@ use yii\helpers\Html;
             <ul>
                 <li><?= Html::a('Марки авто', ['/brand_cars']) ?></li>
                 <li><?= Html::a('Комфорт зоны', ['/comfort_zone']) ?></li>
+                <li><?= Html::a('Типы авто', ['/auto_type']) ?></li>
                 <li><?= Html::a('Новости', ['/news']) ?></li>
             </ul>
         </li>

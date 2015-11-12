@@ -12,6 +12,7 @@ use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use common\models\db\User;
 
 AppAsset::register($this);
 
@@ -32,12 +33,23 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <header class="header">
+    <?php
+    if(Yii::$app->user->isGuest):
+        ?>
+        <div class="header__container">
+            <div class="loginLinks">
+                <?=Html::a('Регистрация', Url::to('/register'), ['class'=>'regHeaderLink']) ." | ". Html::a('Вход', Url::to('/login'), ['class'=>'regHeaderLink']);?>
+            </div>
+        </div>
+        <?php
+    else:
+    ?>
     <div class="header__container">
         <a href="/" class="header--logo">
             <img src="<?= Url::base() ?>/media/img/smalllogo.png" alt="">
             <h5>Car<span class="orange">bax</span></h5>
         </a>
-        <a href="#" class="header--autotext">Autotext</a>
+        <a href="#" class="header--autotext"><a href="#" class="header--autotext"><?= User::getLogin(Yii::$app->user->id);?></a></a>
         <a href="<?=Url::to('/office')?>" class="header--perscab">Личный кабинет</a>
         <form action="#" class="header--region">
             <input type="text" class="header--region--box" placeholder="Москва">
@@ -64,6 +76,9 @@ AppAsset::register($this);
         <?=Html::a('', [Url::to('/logout')], ['class'=>'header--logout', 'data'=>['method' => 'post']]);?>
         <!--<a href="<?/*=Url::to('/logout')*/?>" class="header--logout"></a>-->
     </div>
+        <?php
+    endif
+    ?>
 </header>
 <section class="singleImg"></section>
 <section class="single_wrapper">
@@ -99,7 +114,7 @@ AppAsset::register($this);
             </div>
         </div>
         <div class="footer__nav">
-            <ul class="footer__nav-autoteh"><span class="orange">TechAuto</span>
+            <ul class="footer__nav-autoteh"><span class="orange"><?= User::getLogin(Yii::$app->user->id);?></span>
                 <li><a href="#nowhere">Сообщения</a></li>
                 <li><a href="#nowhere">Мой счет</a></li>
                 <li><a href="#nowhere">Настройки</a></li>
