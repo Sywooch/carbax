@@ -3,6 +3,8 @@
 namespace frontend\models;
 
 use Yii;
+use yii\base\Model;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "offers".
@@ -26,6 +28,8 @@ class Offers extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public $img_url;
+
     public static function tableName()
     {
         return 'offers';
@@ -37,10 +41,11 @@ class Offers extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['service_id', 'img_url', 'description', 'short_description'], 'required'],
+            [['service_id', 'description', 'short_description'], 'required'],
             [['service_id', 'new_price', 'old_price', 'region_id'], 'integer'],
             [['description', 'short_description'], 'string'],
-            [['title', 'img_url', 'discount'], 'string', 'max' => 255]
+            [['title', 'discount'], 'string', 'max' => 255],
+            [['img_url'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg']
         ];
     }
 
@@ -70,5 +75,14 @@ class Offers extends \yii\db\ActiveRecord
     public function getService()
     {
         return $this->hasOne(Services::className(), ['id' => 'service_id']);
+    }
+    public function upload()
+    {
+        if ($this->validate()) {
+            $this->img_url->saveAs('uploads/' . $this->img_url->baseName . '.' . $this->img_url->extension);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

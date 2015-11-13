@@ -34,6 +34,7 @@ class AppAsset extends AssetBundle
         'js/datapic.js',
 /*        'js/mg.js',*/
         'js/script.js',
+        'js/jquery-ui.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

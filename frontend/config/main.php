@@ -43,10 +43,7 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'ipgeobase' => [
-            'class' => 'himiklab\ipgeobase\IpGeoBase',
-            'useLocalDB' => false,
-        ],
+
     ],
     'modules' => [
         'mainpage' => [
