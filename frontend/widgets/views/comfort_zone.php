@@ -11,7 +11,7 @@
                 <?php
             endif;
             ?>
-            <input type="checkbox" value="<?= $c->id ?>" id="comfort_<?= $c->id ?>" name="comfort[]"/>
+            <input type="checkbox" <?php if($c->id == $czs[$c->id]->comfort_zone_id){echo 'checked';}?> value="<?= $c->id ?>" id="comfort_<?= $c->id ?>" name="comfort[]"/>
             <label for="comfort_<?= $c->id ?>"><i class="icon icon__wc" style="background-image: url('<?= $c->img_ulr ?>')"></i><?= $c->name ?><span></span></label>
             <?php
             $i++;

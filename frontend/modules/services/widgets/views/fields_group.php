@@ -13,7 +13,7 @@ use common\models\db\AdditionalFields;
         $services = AdditionalFields::find()->where(['group_id' => $gr->id])->all();
         foreach($services as $s):
     ?>
-        <input type="checkbox" id="<?=$gr->id."_".$s->id?>" name="<?= $gr->label ?>[]" value="<?= $s->id ?>"/>
+        <input type="checkbox" id="<?=$gr->id."_".$s->id?>" <?php if($s->id == $select[$s->id]->add_fields_id){echo 'checked';}?> name="<?= $gr->label ?>[]" value="<?= $s->id ?>"/>
         <label for="<?=$gr->id."_".$s->id?>"><span></span><?= $s->name ?></label>
         <?php
         endforeach;

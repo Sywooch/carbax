@@ -51,7 +51,6 @@ jQuery(document).ready(function ($) {
          center: [55.76, 37.64],
          zoom: 7
          });
-
     }
 
     $(document).on('focusout', '.addContent__adress', function () {
@@ -115,9 +114,9 @@ jQuery(document).ready(function ($) {
     });
 
     $(document).on('click', '#delPhone', function() {
-        $(this).next().next().next().remove();
-        $(this).next().next().remove();
-        $(this).next().remove();
+        $(this).prev().prev().prev().remove();
+        $(this).prev().prev().remove();
+        $(this).prev().remove();
         $(this).remove();
     });
 
