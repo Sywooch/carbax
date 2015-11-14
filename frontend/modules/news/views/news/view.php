@@ -1,5 +1,7 @@
 <?php
 
+use himiklab\ipgeobase\IpGeoBase;
+
 $this->title = $news->title;
 $this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => ['page']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -18,3 +20,7 @@ $checking=$news->img_url;
 
     </div>
 </div>
+<?php /*
+$IpGeoBase = new IpGeoBase();
+$IpGeoBase->updateDB()
+*/?>

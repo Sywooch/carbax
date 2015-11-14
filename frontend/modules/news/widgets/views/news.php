@@ -1,6 +1,8 @@
 <?php
-    use yii\helpers\Url;
-    use yii\widgets\LinkPager;
+use app\models\GeobaseRegion;
+use yii\helpers\Url;
+use yii\jui\AutoComplete;
+use yii\widgets\LinkPager;
 ?>
 <section class="news">
     <div class="contain">
@@ -20,4 +22,16 @@ endforeach
 ?>
         <a class="news__more-link news__block-title" href="<?= Url::to(['/news/news/page'])?>">Посмотреть все новости</a>
     </div
+<!--        echo $_SERVER["REMOTE_ADDR"];-->
+<!--        --><?php //var_dump(Yii::$app->ipgeobase->getLocation('109.110.64.1'));
+//        $model = GeobaseRegion::find()->all();
+//        echo AutoComplete::widget([
+//            'model' => $model,
+//            'attribute' => 'country',
+//            'clientOptions' => [
+//                'source' => ['USA', 'RUS'],
+//            ],
+//        ]);
+//        ?>
+
 </section>
