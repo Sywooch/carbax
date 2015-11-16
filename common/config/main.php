@@ -5,6 +5,10 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'ipgeobase' => [
+            'class' => 'himiklab\ipgeobase\IpGeoBase',
+            'useLocalDB' => true,
+        ],
         'authClientCollection' => [
             'class'   => \yii\authclient\Collection::className(),
             'clients' => [

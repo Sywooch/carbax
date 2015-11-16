@@ -130,7 +130,7 @@ $this->title = "Добавить сервис";
             <div class="singleContent__desc--carbrands">
                 <h3>Марки автомобилей</h3>
                 <?php foreach($brands as $b): ?>
-                <input type="checkbox" id="<?=$b->id?>" name="brands[]" value="<?=$b->name?>"/>
+                <input type="checkbox" id="<?=$b->id?>" name="brands[]" value="<?=$b->id?>"/>
                 <label for="<?=$b->id?>"><span></span><?=$b->name?></label>
                 <?php endforeach ?>
             </div>

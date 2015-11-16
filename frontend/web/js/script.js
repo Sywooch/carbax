@@ -1,5 +1,4 @@
 /*-------------GOOGLE MAPS-----------------*/
-
 function initialize() {
 
     var myLatlng = new google.maps.LatLng(55.662561, 37.540873);
@@ -57,6 +56,8 @@ jQuery(document).ready(function ($) {
 
     var map = new Map({ center:[39.923562,35.820755], zoom:4 });
     map.mapInit();
+
+
 
     $(document).on('focusout', '.addContent__adress', function () {
         if($(this).val() != ''){
@@ -119,9 +120,9 @@ jQuery(document).ready(function ($) {
     });
 
     $(document).on('click', '#delPhone', function() {
-        $(this).next().next().next().remove();
-        $(this).next().next().remove();
-        $(this).next().remove();
+        $(this).prev().prev().prev().remove();
+        $(this).prev().prev().remove();
+        $(this).prev().remove();
         $(this).remove();
     });
 
@@ -161,6 +162,9 @@ jQuery(document).ready(function ($) {
             }, 1000);
         });
     });
+    setTimeout(function() {
+        $('#serviceInfo').fadeOut('fast');
+    }, 5000);
 });
 
 $(".first__but--but").click(function () {
