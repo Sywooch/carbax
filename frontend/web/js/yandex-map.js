@@ -12,18 +12,18 @@ function Map( options ) {
     this.map;
 
     this.mapInit = function(){
-        ymaps.ready(init);
         var center = this.center;
         var zoom = this.zoom;
         var element = this.element;
         var myMap;
-        function init(){
+        var t = ymaps.ready(function(){
             myMap = new ymaps.Map(element, {
                 center: center,
                 zoom: zoom
             });
-        }
-
+            console.log(myMap);
+        });
+        console.log(t);
         /*function init(){
             myMap = new ymaps.Map(element, {
                 center: center,
@@ -31,11 +31,13 @@ function Map( options ) {
             });
             console.log(myMap);
         };*/
-        console.log(myMap);
+
     }
 
     this.addToMap = function(mapObj, address){
 
     }
+
+
     //console.log(this.option);
 };

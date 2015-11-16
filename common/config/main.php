@@ -1,6 +1,7 @@
 <?php
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
+    'name'=>'Carbax',
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -35,8 +36,8 @@ return [
             'cost' => 12,
             'admins' => ['admin'],
             'mailer' => [
-                'sender'                => 'perffectgame@gmail.com', // or ['no-reply@myhost.com' => 'Sender name']
-                'welcomeSubject'        => 'Welcome subject',
+                'sender'                => 'admin@carbax.ru', // or ['no-reply@myhost.com' => 'Sender name']
+                'welcomeSubject'        => 'Добро пожаловать',
                 'confirmationSubject'   => 'Confirmation subject',
                 'reconfirmationSubject' => 'Email change subject',
                 'recoverySubject'       => 'Recovery subject',

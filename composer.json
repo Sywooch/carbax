@@ -26,7 +26,8 @@
         "yiisoft/yii2-debug": "*",
         "yiisoft/yii2-gii": "*",
         "yiisoft/yii2-faker": "*",
-        "serhatozles/yii2-simplehtmldom": "dev-master"
+        "serhatozles/yii2-simplehtmldom": "dev-master",
+        "yiisoft/yii2-swiftmailer": "~2.0.0"
     },
     "config": {
         "process-timeout": 1800
