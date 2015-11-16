@@ -69,6 +69,9 @@ return [
         'offers' => [
             'class' => 'frontend\modules\offers\Offers',
         ],
+        'flea_market' => [
+            'class' => 'frontend\modules\flea_market\Flea_market',
+        ],
     ],
     'params' => $params,
 ];
