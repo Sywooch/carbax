@@ -23,7 +23,7 @@ $this->registerCssFile('/css/bootstrap_btn.min.css');
         <tr>
             <td><a href="/services/services/view_service?service_id=<?=$serv->id;?>"><b><?=$serv->name;?></b></a>, <?=$address->address;?> </td>
             <td class="addAllServices__control">
-                <a href="#nowhere">редактировать </a>/
+                <a href="/services/services/edit_service?service_id=<?=$serv->id;?>&service_type=<?=$serviceTypeId?>">редактировать </a>/
                 <a href="/services/services/del_service?service_id=<?=$serv->id;?>&service_type=<?=$serviceTypeId?>" data-confirm="Вы действительно хотите удалить?">удалить</a>
             </td>
         </tr>

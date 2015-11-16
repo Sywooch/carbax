@@ -9,11 +9,16 @@ $params = array_merge(
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
+    'language' => 'ru-RU',
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request'      => [
             'baseUrl' => '',
+        ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'useFileTransport' => false,
         ],
         'urlManager'   => [
             'enablePrettyUrl' => true,
@@ -63,6 +68,9 @@ return [
         ],
         'offers' => [
             'class' => 'frontend\modules\offers\Offers',
+        ],
+        'flea_market' => [
+            'class' => 'frontend\modules\flea_market\Flea_market',
         ],
     ],
     'params' => $params,

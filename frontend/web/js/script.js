@@ -42,6 +42,7 @@ jQuery(document).ready(function ($) {
 });
 
 jQuery(document).ready(function ($) {
+
     $('#offers-region_id').on('change', function(){
         $.post(
             "/offers/offers/get_city",
@@ -59,7 +60,7 @@ jQuery(document).ready(function ($) {
     });
 
 
-    ymaps.ready(init);
+    /*ymaps.ready(init);
     var myMap,
         myPlacemark;
 
@@ -69,7 +70,12 @@ jQuery(document).ready(function ($) {
          zoom: 7
          });
 
-    }
+    }*/
+
+    var map = new Map({ center:[39.923562,35.820755], zoom:4 });
+    map.mapInit();
+
+
 
     $(document).on('focusout', '.addContent__adress', function () {
         if($(this).val() != ''){
@@ -94,6 +100,28 @@ jQuery(document).ready(function ($) {
                 }
             );
         }
+    });
+
+    $('#manSelect').on('change', function(){
+        $.ajax({
+            type: 'POST',
+            url: "/flea_market/default/get_model",
+            data: 'mfa_id=' + $(this).val(),
+            success: function (data) {
+                $('#modelBox').html(data);
+            }
+        });
+    });
+
+    $(document).on('change', '#modSelect', function(){
+        $.ajax({
+            type: 'POST',
+            url: "/flea_market/default/get_types",
+            data: 'mod_id=' + $(this).val(),
+            success: function (data) {
+                $('#typesBox').html(data);
+            }
+        });
     });
 
     $(document).on('click', '#delAddress', function(){
@@ -132,9 +160,9 @@ jQuery(document).ready(function ($) {
     });
 
     $(document).on('click', '#delPhone', function() {
-        $(this).next().next().next().remove();
-        $(this).next().next().remove();
-        $(this).next().remove();
+        $(this).prev().prev().prev().remove();
+        $(this).prev().prev().remove();
+        $(this).prev().remove();
         $(this).remove();
     });
 
