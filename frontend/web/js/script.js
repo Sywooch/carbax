@@ -43,7 +43,7 @@ jQuery(document).ready(function ($) {
 });
 
 jQuery(document).ready(function ($) {
-    ymaps.ready(init);
+    /*ymaps.ready(init);
     var myMap,
         myPlacemark;
 
@@ -53,7 +53,10 @@ jQuery(document).ready(function ($) {
          zoom: 7
          });
 
-    }
+    }*/
+
+    var map = new Map({ center:[39.923562,35.820755], zoom:4 });
+    map.mapInit();
 
     $(document).on('focusout', '.addContent__adress', function () {
         if($(this).val() != ''){

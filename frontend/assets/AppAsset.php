@@ -31,8 +31,10 @@ class AppAsset extends AssetBundle
         'js/fotorama.js',
         'https://api-maps.yandex.ru/2.1/?lang=ru_RU',
         'js/jquery.datetimepicker.full.min.js',
+        'js/jquery-ui.min.js',
         'js/datapic.js',
 /*        'js/mg.js',*/
+        'js/yandex-map.js',
         'js/script.js',
     ];
     public $depends = [

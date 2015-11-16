@@ -2,6 +2,7 @@
 use frontend\modules\services\widgets\GetAllGroupById;
 use frontend\widgets\AutoType;
 use frontend\widgets\ComfortZone;
+use yii\helpers\ArrayHelper;
 
 $this->title = "Добавить сервис";
 ?>
