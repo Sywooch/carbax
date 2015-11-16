@@ -1,10 +1,8 @@
 <?php
 
-namespace frontend\models;
+namespace common\models\db;
 
 use Yii;
-use yii\base\Model;
-use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "offers".
@@ -19,6 +17,7 @@ use yii\web\UploadedFile;
  * @property integer $old_price
  * @property string $discount
  * @property integer $region_id
+ * @property integer $city_id
  * @property integer $dt_add
  *
  * @property Services $service
@@ -28,8 +27,6 @@ class Offers extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public $img_url;
-
     public static function tableName()
     {
         return 'offers';
@@ -42,10 +39,9 @@ class Offers extends \yii\db\ActiveRecord
     {
         return [
             [['service_id', 'description', 'short_description'], 'required'],
-            [['service_id', 'new_price', 'old_price', 'region_id'], 'integer'],
+            [['service_id', 'new_price', 'old_price', 'region_id', 'city_id', 'dt_add'], 'integer'],
             [['description', 'short_description'], 'string'],
-            [['title', 'discount'], 'string', 'max' => 255],
-            [['img_url'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg']
+            [['title', 'img_url', 'discount'], 'string', 'max' => 255]
         ];
     }
 
@@ -56,15 +52,16 @@ class Offers extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'service_id' => 'Service ID',
-            'img_url' => 'Img Url',
-            'description' => 'Description',
-            'short_description' => 'Short Description',
-            'new_price' => 'New Price',
-            'old_price' => 'Old Price',
-            'discount' => 'Discount',
-            'region_id' => 'Region ID',
+            'title' => 'Заголовок',
+            'service_id' => 'Сервис',
+            'img_url' => 'Изображение',
+            'description' => 'Описание',
+            'short_description' => 'Короткое описание',
+            'new_price' => 'Новая цена',
+            'old_price' => 'Старая цена',
+            'discount' => 'Скидка',
+            'region_id' => 'Регион',
+            'city_id' => 'Город',
             'dt_add' => 'Dt Add',
         ];
     }
@@ -75,14 +72,5 @@ class Offers extends \yii\db\ActiveRecord
     public function getService()
     {
         return $this->hasOne(Services::className(), ['id' => 'service_id']);
-    }
-    public function upload()
-    {
-        if ($this->validate()) {
-            $this->img_url->saveAs('uploads/' . $this->img_url->baseName . '.' . $this->img_url->extension);
-            return true;
-        } else {
-            return false;
-        }
     }
 }

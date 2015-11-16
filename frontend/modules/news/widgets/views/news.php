@@ -20,18 +20,6 @@ foreach($news as $n):
     <?php
 endforeach
 ?>
-        <a class="news__more-link news__block-title" href="<?= Url::to(['/news/news/page'])?>">Посмотреть все новости</a>
+        <a class="news__more-link news__block-title" href="<?= Url::to(['/news/news/'])?>">Посмотреть все новости</a>
     </div
-<!--        echo $_SERVER["REMOTE_ADDR"];-->
-<!--        --><?php //var_dump(Yii::$app->ipgeobase->getLocation('109.110.64.1'));
-//        $model = GeobaseRegion::find()->all();
-//        echo AutoComplete::widget([
-//            'model' => $model,
-//            'attribute' => 'country',
-//            'clientOptions' => [
-//                'source' => ['USA', 'RUS'],
-//            ],
-//        ]);
-//        ?>
-
 </section>

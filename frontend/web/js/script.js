@@ -42,6 +42,23 @@ jQuery(document).ready(function ($) {
 });
 
 jQuery(document).ready(function ($) {
+    $('#offers-region_id').on('change', function(){
+        $.post(
+            "/offers/offers/get_city",
+            {
+                region_id:$(this).val()
+            },
+            onAjaxSuccess
+        );
+
+        function onAjaxSuccess(data)
+        {
+            // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
+            $('.city').html(data);
+        }
+    });
+
+
     ymaps.ready(init);
     var myMap,
         myPlacemark;
