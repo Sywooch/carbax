@@ -74,6 +74,7 @@ jQuery(document).ready(function ($) {
 
 
     $('#manSelect').on('change', function(){
+        $('#typesBox').html('');
         $.ajax({
             type: 'POST',
             url: "/flea_market/default/get_model",
@@ -91,6 +92,47 @@ jQuery(document).ready(function ($) {
             data: 'mod_id=' + $(this).val(),
             success: function (data) {
                 $('#typesBox').html(data);
+            }
+        });
+    });
+
+    $('#regionSelect').on('change',function(){
+       // alert($(this).val());
+        $.ajax({
+            type: 'POST',
+            url: "/flea_market/default/get_city",
+            data: 'reg_id=' + $(this).val(),
+            success: function(data){
+                $('#addCity').html(data);
+            }
+        });
+    });
+
+    $('#addUserOrService').on('change',function(){
+        var id = $('input[name=userOrService]:checked').val();
+        if(id == 1){
+            $('#selectServiseWr').empty();
+        }else{
+            $.ajax({
+                type: 'POST',
+                url: "/flea_market/default/get_service",
+                data: 'id=' + id,
+                success: function(data){
+                    $('#selectServiseWr').html(data);
+                }
+            });
+        }
+    });
+
+    $('#autoTupeSelect').on('change',function(){
+        var id = $('#autoTupeSelect').attr('data-id');
+        alert(id);
+        $.ajax({
+            type: 'POST',
+            url: "/flea_market/default/get_parent_category",
+            data: 'id=' + id,
+            success: function(data){
+                $('#parent').html(data);
             }
         });
     });

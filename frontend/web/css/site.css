@@ -2657,3 +2657,8 @@ input[type="checkbox"] + label {
 .filter__container-select--check input[type="checkbox"]:checked + label {
     color: #ff6b00;
 }
+
+.userOrService input[type="radio"]{
+    display: block!important;
+    float: left;
+}
