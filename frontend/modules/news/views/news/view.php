@@ -3,7 +3,7 @@
 use himiklab\ipgeobase\IpGeoBase;
 
 $this->title = $news->title;
-$this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => ['page']];
+$this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $checking=$news->img_url;
 ?>

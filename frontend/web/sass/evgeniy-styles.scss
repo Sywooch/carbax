@@ -69,3 +69,70 @@
   display: block;
   text-align: center;
 }
+.clearfix:after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.offers-form{
+  input,textarea,select{
+    display: block;
+  }
+  input[type="text"],textarea,select{
+    width: 239px;
+    height: 30px;
+    border-radius: 3px / 4px;
+    -o-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #fff;
+    outline-style: none;
+    border: 1px solid #C6CCD2;
+    padding: 0 0px 0 10px;
+    margin-bottom: 15px;
+  }
+  .field-offers-img_url{
+    margin-bottom: 15px;
+  }
+  textarea{
+    width: 445px;
+    height: 190px;
+    resize: none;
+    margin-top: 0;
+    padding: 10px;
+  }
+  label{
+    font-family: "HelveticaNeueCyrMedium";
+    font-size: 15px;
+    margin: 10px 0;
+    display: block;
+  }
+  .btn{
+    display: block;
+    //line-height: 27px;
+    border: 0;
+    color: #fff;
+    font-family: "HelveticaNeueCyrMedium";
+    text-align: center;
+    font-size: 13px;
+    width: 111px;
+    height: 27px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    -ms-border-radius: 1px;
+    border-radius: 1px;
+    -o-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #ff6b00;
+    margin: 0 auto;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+    &:hover{
+      background-color: #cc5600;
+    }
+  }
+}

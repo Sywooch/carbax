@@ -19,27 +19,21 @@ class NewsController extends \yii\web\Controller
 	public $layout = 'page';
 
     public function actionIndex()
-    {
-    	$news = \common\models\db\News::find()->all();
-
-        return $this->render("index", ['news' => $news]);
-    }
-    public function actionPage()
 	{
 		$this->view->params['officeHide'] = true;
 		$this->view->params['bannersHide'] = false;
-	    $query = \common\models\db\News::find();
-	    $countQuery = clone $query;
-	    $pages = new Pagination(['totalCount' => $countQuery->count()]);
-	    $pages->pageSize = 8;
-	    $models = $query->offset($pages->offset)
-	        ->limit($pages->limit)
-	        
-	        ->all();			
-	    return $this->render('page', [
-	         'models' => $models,
-	         'pages' => $pages,
-	    ]);
+		$query = News::find();
+		$countQuery = clone $query;
+		$pages = new Pagination(['totalCount' => $countQuery->count()]);
+		$pages->pageSize = 8;
+		$models = $query->offset($pages->offset)
+			->limit($pages->limit)
+
+			->all();
+		return $this->render('index', [
+			'models' => $models,
+			'pages' => $pages,
+		]);
 	}
 	public function actionView($id)
 	{	$this->view->params['officeHide'] = true;
