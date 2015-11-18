@@ -1,12 +1,32 @@
-<div class="flea_market-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
-    <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
-</div>
+<?php
+$this->title = "Мои запчасти";
+$this->registerCssFile('/css/bootstrap_btn.min.css');
+?>
+<section class="main-container">
+    <?php
+    if (isset($info)) {
+        ?>
+        <div id="serviceInfo"><?= $info; ?></div>
+    <?php
+    }
+    ?>
+    <button onclick="location.href='/flea_market/default/add'" type="button" class="btn btn-success addServiceBtn">Добавить запчасть</button>
+    <table class="addAllServices">
+        <?php
+        foreach ($market as $mark) {
+            ?>
+            <tr>
+            <td>
+                <a href="#"><b><?=$mark->name?></b></a>
+            </td>
+            <td class="addAllServices__control">
+                <a href="#">редактировать </a>/
+                <a href="#" data-confirm="Вы действительно хотите удалить?">удалить</a>
+            </td>
+        </tr>
+        <?php    }
+
+        ?>
+
+    </table>
+</section>
