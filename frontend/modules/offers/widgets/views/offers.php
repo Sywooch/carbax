@@ -59,8 +59,8 @@ if($i!==3):
     <?php
     endif;
 //    $region = Yii::$app->ipgeobase->getLocation($_SERVER["REMOTE_ADDR"]);
-    $region = Yii::$app->ipgeobase->getLocation('5.153.133.222');
-    var_dump($region['region']);
+    /*$region = Yii::$app->ipgeobase->getLocation('5.153.133.222');
+    var_dump($region['region']);*/
     ?>
 
 </section>

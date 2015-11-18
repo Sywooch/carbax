@@ -12,30 +12,36 @@ function Map( options ) {
     this.map;
 
     this.mapInit = function(){
+        ymaps.ready(init);
         var center = this.center;
         var zoom = this.zoom;
         var element = this.element;
         var myMap;
-        var t = ymaps.ready(function(){
+        function init(){
             myMap = new ymaps.Map(element, {
                 center: center,
                 zoom: zoom
             });
-            console.log(myMap);
-        });
-        console.log(t);
-        /*function init(){
-            myMap = new ymaps.Map(element, {
-                center: center,
-                zoom: zoom
-            });
-            console.log(myMap);
-        };*/
-
+        }
     }
 
-    this.addToMap = function(mapObj, address){
-
+    this.addToMap = function(address){
+        ymaps.ready(init);
+        function init(){
+            var myGeocoder = ymaps.geocode(address[0]);
+            myGeocoder.done(
+                function (res) {
+                    var myMap = new ymaps.Map("map", {
+                        center: [res.geoObjects.get(0).geometry.getCoordinates()[0], res.geoObjects.get(0).geometry.getCoordinates()[1]],
+                        zoom: 7
+                    });
+                    address.forEach(function(a){
+                        var objects = ymaps.geoQuery(ymaps.geocode(a));
+                        objects.addToMap(myMap);
+                    });
+                }
+            );
+        }
     }
 
 

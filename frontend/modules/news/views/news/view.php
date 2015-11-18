@@ -20,7 +20,7 @@ $checking=$news->img_url;
 
     </div>
 </div>
-<?php /*
-$IpGeoBase = new IpGeoBase();
+<?php
+/*$IpGeoBase = new IpGeoBase();
 $IpGeoBase->updateDB()
 */?>

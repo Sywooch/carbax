@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model common\models\db\News */
 
 $this->title = 'Создать спецпредложение';
-$this->params['breadcrumbs'][] = ['label' => 'Offers', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Спецпредложения', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="offers-create">

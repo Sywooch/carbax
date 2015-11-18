@@ -72,35 +72,6 @@ jQuery(document).ready(function ($) {
 
     }*/
 
-    var map = new Map({ center:[39.923562,35.820755], zoom:4 });
-    map.mapInit();
-
-
-
-    $(document).on('focusout', '.addContent__adress', function () {
-        if($(this).val() != ''){
-            $('#map').empty();
-            var myMap;
-
-            var myGeocoder = ymaps.geocode($(this).val());
-            myGeocoder.done(
-                function (res) {
-                    myMap = new ymaps.Map("map", {
-                        center: [res.geoObjects.get(0).geometry.getCoordinates()[0], res.geoObjects.get(0).geometry.getCoordinates()[1]],
-                        zoom: 7
-                    });
-
-                    var i = 0;
-                    $('.addContent__adress').each(function () {
-                        var text = $(this).val();
-                        var objects = ymaps.geoQuery(ymaps.geocode(text));
-                        objects.addToMap(myMap);
-                        i = i + 1;
-                    });
-                }
-            );
-        }
-    });
 
     $('#manSelect').on('change', function(){
         $.ajax({

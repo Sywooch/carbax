@@ -50,7 +50,7 @@ $this->title = "Личный кабинет";
             <div class="serviceLink">История покупок</div>
         </div>
         <div class="serviceItem">
-            <div class="serviceIcon"><img src="<?= Url::base(true) ?>/media/img/procent.png" alt=""></div>
+            <div class="serviceIcon"><a href="<?= Url::to(['/offers/offers/create']) ?>"><img src="<?= Url::base(true) ?>/media/img/procent.png" alt=""></a></div>
             <div class="serviceLink">Создать акцию</div>
         </div>
     </div>
