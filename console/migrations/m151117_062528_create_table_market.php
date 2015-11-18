@@ -25,7 +25,9 @@ class m151117_062528_create_table_market extends Migration
             'descr' => Schema::TYPE_TEXT. ' NOT NULL',
             'price' => Schema::TYPE_STRING. ' NOT NULL',
             'dt_add' => Schema::TYPE_INTEGER. ' NOT NULL',
-            'id_auto_type' => Schema::TYPE_INTEGER. ' NOT NULL'
+            'id_auto_type' => Schema::TYPE_INTEGER. ' NOT NULL',
+            'category_id_all' => Schema::TYPE_STRING. ' NOT NULL',
+            'category_id' => Schema::TYPE_INTEGER. ' NOT NULL'
 
         ], $tableOptions);
     }

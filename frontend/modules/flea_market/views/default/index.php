@@ -17,7 +17,7 @@ $this->registerCssFile('/css/bootstrap_btn.min.css');
             ?>
             <tr>
             <td>
-                <a href="#"><b><?=$mark->name?></b></a>
+                <a href="/flea_market/default/view_product?id=<?=$mark->id?>"><b><?=$mark->name?></b></a>
             </td>
             <td class="addAllServices__control">
                 <a href="#">редактировать </a>/

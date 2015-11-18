@@ -77,8 +77,45 @@ class DefaultController extends Controller
         }else{
             $market->service_id = 0;
         }
+        foreach($_POST['sub_cat'] as $sc){
+            $market->category_id_all .= $sc.',';
+        }
+
+        $market->category_id = array_pop($_POST['sub_cat']);
+        $market->id_auto_type = $_POST['autotype'];
         $market->user_id = Yii::$app->user->id;
         $market->save();
+    }
+
+    public function actionView_product(){
+        $product = Market::find()->where(['id'=>$_GET['id']])->one();
+        $nameTypeAuto = CategoriesAuto::find()->where(['id'=>$product->id_auto_type])->one();
+        $marka = TofManufacturers::find()->where(['mfa_id'=>$product->man_id])->one();
+        $model = TofModels::find()->where(['mod_id'=>$product->model_id])->one();
+        $type = TofTypes::find()->where(['typ_id'=>$product->type_id])->one();
+        $region = GeobaseRegion::find()->where(['id'=>$product->region_id])->one();
+        $city = GeobaseCity::find()->where(['id'=>$product->city_id])->one();
+        $category = explode(',',$product->category_id_all);
+        array_pop($category);
+        $nameCat = CategoriesAuto::find()->where(['id'=>$product->id_auto_type])->one()->name;
+
+        foreach ($category as $cat) {
+            //Debug::prn($cat);
+            $nameCat .= ' / '.TofSearchTree::find()->where(['str_id_parent'=>$cat])->one()->str_des;
+        }
+
+        //Debug::prn($region);
+        return $this->render('view_product',
+            [
+                'product' => $product,
+                'nametype' => $nameTypeAuto,
+                'marka' => $marka,
+                'model' => $model,
+                'type' => $type,
+                'region' => $region,
+                'city' => $city,
+                'category' => $nameCat,
+            ]);
     }
 
     public function actionGet_model(){
