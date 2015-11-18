@@ -43,6 +43,24 @@ jQuery(document).ready(function ($) {
 
 jQuery(document).ready(function ($) {
 
+    $(document).on('change', '.catSel', function(){
+        $(this).nextAll().remove();
+        if($(this).hasClass('firstCatSel')){
+            var cat_id = 10001;
+        }
+        else {
+            var cat_id = $(this).val();
+        }
+        $.ajax({
+            type: 'POST',
+            url: "/flea_market/default/get_cat",
+            data: 'cat_id=' + cat_id,
+            success: function (data) {
+                $('#categoryBox').append(data);
+            }
+        });
+    });
+
     $('#offers-region_id').on('change', function(){
         $.post(
             "/offers/offers/get_city",

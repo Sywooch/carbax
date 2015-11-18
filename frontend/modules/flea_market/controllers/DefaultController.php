@@ -50,7 +50,7 @@ class DefaultController extends Controller
     }
 
     public function actionAdd(){
-        $tofMan = TofManufacturers::find()->all();
+        $tofMan = TofManufacturers::find()->orderBy('mfa_brand')->all();
         $region = GeobaseRegion::find()->all();
         $autoType = CategoriesAuto::find()->all();
         return $this->render('add',
@@ -105,5 +105,12 @@ class DefaultController extends Controller
     public function actionGet_parent_category(){
         $parent = TofSearchTree::find()->where(['str_id_parent'=>$_POST['id']])->all();
         echo Html::dropDownList('parentCategory',0,ArrayHelper::map($parent,'id','str_des'),['class'=>'addContent__adress']);
+    }
+
+    public function actionGet_cat(){
+        $cat = TofSearchTree::find()->where(['str_id_parent'=>$_POST['cat_id']])->all();
+        if($cat){
+            echo Html::dropDownList('sub_cat[]',0,ArrayHelper::map($cat, 'str_id', 'str_des'),['class'=>'addContent__adress catSel','prompt'=>'Выберите Категорию']);
+        }
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use common\classes\Debug;
+use frontend\modules\flea_market\widgets\CategoryProductTecDoc;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -15,10 +16,9 @@ $this->title = "Добавить товар";
         <?= Html::dropDownList('manufactures',0, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])?>
         <span id="modelBox"></span>
         <span id="typesBox"></span>
-
         <?= Html::dropDownList('region',0,ArrayHelper::map($region,'id','name'),['class'=>'addContent__adress','id'=>'regionSelect','prompt'=>'Выберите регион'])?>
         <span id="addCity"></span>
-        <?= Html::dropDownList('autotype',0,ArrayHelper::map($autotype,'id','name'),['class'=>'addContent__adress','id'=>'autoTupeSelect','data-id'=>'10001','prompt'=>'Выберите категорию'])?>
+        <?= CategoryProductTecDoc::widget()?>
         <span id="parent"></span>
         <div class="singleContent__desc">
             <h3>Описание</h3>
