@@ -150,4 +150,8 @@ class DefaultController extends Controller
             echo Html::dropDownList('sub_cat[]',0,ArrayHelper::map($cat, 'str_id', 'str_des'),['class'=>'addContent__adress catSel','prompt'=>'Выберите Категорию']);
         }
     }
+
+    public function actionSearch(){
+        Debug::prn($_GET);
+    }
 }

@@ -2,6 +2,7 @@
 /* @var $this yii\web\View */
 use frontend\modules\news\widgets\NewsWidgetFront;
 use frontend\modules\offers\widgets\OffersWidgetFront;
+use frontend\widgets\FleaMarketSearch;
 
 ?>
 
@@ -193,8 +194,8 @@ use frontend\modules\offers\widgets\OffersWidgetFront;
         </div>
     </div>
 </section>
-
-<section class="filter">
+<?= FleaMarketSearch::widget() ?>
+<!--<section class="filter">
 <div class="contain">
 <h2 class="blockTitle-left">Поиск - барахолка</h2>
 <div class="filter__searchline">
@@ -210,7 +211,7 @@ use frontend\modules\offers\widgets\OffersWidgetFront;
             <option value="">Автомобили</option>
             <option value="">Автомобили</option>
         </select>
-        <select name="" id="">
+        <!--<select name="" id="">
             <option selected disabled>Автомобили</option>
             <option value="">Автомобили</option>
             <option value="">Автомобили</option>
@@ -218,8 +219,8 @@ use frontend\modules\offers\widgets\OffersWidgetFront;
         <input type="submit" class="filter__searchline--but" value="Найти">
         <input type="button" class="filter__searchline--but" value="На карте">
     </form>
-</div>
-<div class="filter__typesearch">
+</div>-->
+<!--<div class="filter__typesearch">
     <div class="filter__typesearch--box">
         <select name="" id="">
             <option selected disabled>Все</option>
@@ -242,7 +243,7 @@ use frontend\modules\offers\widgets\OffersWidgetFront;
             <option value="">Мотоциклы и мототехника</option>
         </select>
     </div>
-</div>
+</div>-->
 </div>
 </section>
 <?= OffersWidgetFront::widget()?>
