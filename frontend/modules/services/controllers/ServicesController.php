@@ -162,7 +162,7 @@ class ServicesController extends Controller
             }
         }
         $serviceTypeId = $_POST['service_type'];
-        $service = Services::find()->where(['service_type_id'=>$serviceTypeId])->all();
+        $service = Services::find()->where(['service_type_id'=>$serviceTypeId,'user_id'=>Yii::$app->user->id])->all();
 
         return $this->render('my_services',
             [
@@ -239,7 +239,6 @@ class ServicesController extends Controller
     }
 
     public function actionUpdate_to_sql(){
-        Debug::prn($_POST);
         $this->cleaning_tables_relations($_POST['service_id']);
         $service = new Services();
         $serv = $service->find()->where(['id' => $_POST['service_id']])->one();
@@ -332,7 +331,7 @@ class ServicesController extends Controller
             }
         }
         $serviceTypeId = $_POST['service_type'];
-        $service = Services::find()->where(['service_type_id'=>$serviceTypeId])->all();
+        $service = Services::find()->where(['service_type_id'=>$serviceTypeId,'user_id'=>Yii::$app->user->id])->all();
 
         return $this->render('my_services',
             [
@@ -347,7 +346,7 @@ class ServicesController extends Controller
         $servicId = $_GET['service_id'];
         $serviceTypeId = $_GET['service_type'];
         $this->del_service($servicId);
-        $service = Services::find()->where(['service_type_id'=>$serviceTypeId])->all();
+        $service = Services::find()->where(['service_type_id'=>$serviceTypeId,'user_id'=>Yii::$app->user->id])->all();
 
         return $this->render('my_services',
             [
@@ -364,7 +363,7 @@ class ServicesController extends Controller
 
     public function actionMy_services(){
         $serviceTypeId = $_GET['service_id'];
-        $service = Services::find()->where(['service_type_id'=>$serviceTypeId])->all();
+        $service = Services::find()->where(['service_type_id'=>$serviceTypeId,'user_id'=>Yii::$app->user->id])->all();
         return $this->render('my_services',
             [
                 'serviceTypeId'=>$serviceTypeId,
