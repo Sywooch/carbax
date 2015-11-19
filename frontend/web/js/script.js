@@ -77,6 +77,17 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    $('.updateCat').on('click',function(){
+        $('div.categoryProduct').remove();
+        $.ajax({
+            type: 'POST',
+            url: "/flea_market/default/show_cat",
+            success: function (data) {
+                $('#parent').append(data);
+            }
+        });
+    });
+
 
     /*ymaps.ready(init);
     var myMap,
