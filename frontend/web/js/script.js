@@ -43,6 +43,15 @@ jQuery(document).ready(function ($) {
 
 jQuery(document).ready(function ($) {
 
+    (function($) {
+        $(function() {
+            jQuery('#listColumn').columnize({
+                columns: 4,
+                min: 2
+            });
+        })
+    })(jQuery)
+
     $(document).on('change', '.catSel', function(){
         $(this).nextAll().remove();
         if($(this).hasClass('firstCatSel')){
@@ -75,17 +84,6 @@ jQuery(document).ready(function ($) {
             // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
             $('.city').html(data);
         }
-    });
-
-    $('.updateCat').on('click',function(){
-        $('div.categoryProduct').remove();
-        $.ajax({
-            type: 'POST',
-            url: "/flea_market/default/show_cat",
-            success: function (data) {
-                $('#parent').append(data);
-            }
-        });
     });
 
 
