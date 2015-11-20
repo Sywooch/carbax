@@ -176,6 +176,7 @@ class DefaultController extends Controller
                 'category' => $nameCat,
             ]);
     }
+    
 
     public function actionUpdate_to_sql()
     {
