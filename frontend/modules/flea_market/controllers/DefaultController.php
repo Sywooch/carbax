@@ -120,7 +120,7 @@ class DefaultController extends Controller
             //Debug::prn($cat);
             $nameCat .= ' / ' . TofSearchTree::find()->where(['str_id_parent' => $cat])->one()->str_des;
         }
-        
+
         return $this->render('view_product',
             [
                 'product' => $product,
