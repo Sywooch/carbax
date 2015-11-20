@@ -179,7 +179,6 @@ class DefaultController extends Controller
 
     public function actionUpdate_to_sql()
     {
-        // Debug::prn($_POST);
         $product = Market::find()->where(['id' => $_POST['idproduct']])->one();
         $product->name = $_POST['title'];
         $product->man_id = $_POST['manufactures'];
