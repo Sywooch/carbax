@@ -15,6 +15,7 @@ use Yii;
  * @property string $short_description
  * @property integer $views
  * @property integer $dt_add
+ * @property integer $cat_id
  */
 class News extends \yii\db\ActiveRecord
 {
@@ -33,7 +34,7 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             [['title','description'], 'required'],
-            [['user_id', 'dt_add', 'views'], 'integer'],
+            [['user_id', 'dt_add', 'views','cat_id'], 'integer'],
             [['description', 'short_description'], 'string'],
             [['title', 'img_url'], 'string', 'max' => 255],
             [['title'], 'unique']

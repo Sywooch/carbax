@@ -117,8 +117,8 @@ class DefaultController extends Controller
         $nameCat = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one()->name;
 
         foreach ($category as $cat) {
-            //Debug::prn($cat);
-            $nameCat .= ' / ' . TofSearchTree::find()->where(['str_id_parent' => $cat])->one()->str_des;
+            Debug::prn($cat);
+            $nameCat .= ' / ' . TofSearchTree::find()->where(['str_id' => $cat])->one()->str_des;
         }
 
         return $this->render('view_product',

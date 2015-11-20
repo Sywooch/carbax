@@ -22,7 +22,9 @@ class Media
                         }
                         if (filetype($dir . $file) == 'file') {
                             //Debug::prn($dir.$file);
-                            $file_dir[] = "<a class='file' href='#' pathFile='$dir$file'><img src='/secure/$dir$file' class='media__img' /><span>$file</span></a>";
+                            $protokol = $_SERVER['SERVER_PROTOCOL'];
+                            $host = "http://".$_SERVER['HTTP_HOST'];
+                            $file_dir[] = "<a class='file' href='#' pathFile='$host/secure/$dir$file'><img src='/secure/$dir$file' class='media__img' /><span>$file</span></a>";
                         }
                     }
                 }

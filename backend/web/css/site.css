@@ -253,3 +253,7 @@ nav ul ul ul {
 .media_upload .modal-dialog .modal-content{
     min-height: 400px;
 }
+
+.media__upload_img{
+    padding: 10px;
+}

@@ -30,7 +30,7 @@ use yii\widgets\ActiveForm;
    <!-- <?/*= Html::label('Ярлык', 'icon'); */?>
     --><?/*= Html::fileInput('icon',null,['id'=>'icon','class'=>'form-control']) */?>
     <button class="btn btn-primary" data-toggle="modal" data-target=".media_upload">Выберите изображение</button>
-    <div class="media__upload_img"><img src="/secure/<?=$model->icon;?>" width="100px"/><input id="mediaUploadInputFile" name="mediaUploadInputFile" type="hidden" value="<?=$model->icon;?>"/></div>
+    <div class="media__upload_img"><img src="<?=$model->icon;?>" width="100px"/><input id="mediaUploadInputFile" name="mediaUploadInputFile" type="hidden" value="<?=$model->icon;?>"/></div>
    <!-- --><?/*= $form->field($icon, 'icon_s')->fileInput()->label('Ярлык') */?>
     <br>
     <div class="form-group">

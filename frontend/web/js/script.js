@@ -135,6 +135,18 @@ jQuery(document).ready(function ($) {
         });
     });
 
+    $('.updateCat').on('click',function(){
+        $('.categoryProduct').remove();
+        $.ajax({
+            type: 'POST',
+            url: "/flea_market/default/show_cat",
+            success: function(data){
+                $('#parent').html(data);
+            }
+        });
+        return false;
+    });
+
     $('#addUserOrService').on('change',function(){
         var id = $('input[name=userOrService]:checked').val();
         if(id == 1){
