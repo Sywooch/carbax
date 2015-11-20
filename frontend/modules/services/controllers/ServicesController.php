@@ -163,12 +163,11 @@ class ServicesController extends Controller
         }
         $serviceTypeId = $_POST['service_type'];
         $service = Services::find()->where(['service_type_id'=>$serviceTypeId,'user_id'=>Yii::$app->user->id])->all();
-
+        Yii::$app->session->setFlash('succcess','Сервис успешно добавлен');
         return $this->render('my_services',
             [
                 'serviceTypeId' => $serviceTypeId,
                 'service' => $service,
-                'info' => 'Сервис успешно добавлен',
             ]);
 
     }
@@ -332,12 +331,11 @@ class ServicesController extends Controller
         }
         $serviceTypeId = $_POST['service_type'];
         $service = Services::find()->where(['service_type_id'=>$serviceTypeId,'user_id'=>Yii::$app->user->id])->all();
-
+        Yii::$app->session->setFlash('succcess','Сервис успешно обновлен');
         return $this->render('my_services',
             [
                 'serviceTypeId' => $serviceTypeId,
                 'service' => $service,
-                'info' => 'Сервис успешно обновлен',
             ]);
 
     }
@@ -347,12 +345,11 @@ class ServicesController extends Controller
         $serviceTypeId = $_GET['service_type'];
         $this->del_service($servicId);
         $service = Services::find()->where(['service_type_id'=>$serviceTypeId,'user_id'=>Yii::$app->user->id])->all();
-
+        Yii::$app->session->setFlash('succcess','Сервис успешно удален');
         return $this->render('my_services',
             [
                 'serviceTypeId' => $serviceTypeId,
                 'service' => $service,
-                'info' => 'Сервис успешно удален',
             ]);
     }
 

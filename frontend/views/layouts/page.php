@@ -82,8 +82,6 @@ AppAsset::register($this);
 <section class="singleImg"></section>
 <section class="single_wrapper">
     <div class="contain">
-        <?= TogglePrivateOfficeLeft::widget(['print'=>$this->params['officeHide']]); ?>
-
         <?=
         Breadcrumbs::widget([
             'homeLink' => [
@@ -92,9 +90,10 @@ AppAsset::register($this);
                 'template' => "<li><b><a href='/'><img src='/frontend/web/media/img/breadcrumbs-home-image.png'></a></b></li>",
             ],
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-           ])
+        ])
         ?>
         <?= Alert::widget() ?>
+        <?= TogglePrivateOfficeLeft::widget(['print'=>$this->params['officeHide']]); ?>
         <?= $content ?>
         <?= CommercBanners::widget(['print'=>$this->params['bannersHide']]); ?>
     </div>

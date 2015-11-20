@@ -92,10 +92,10 @@ class DefaultController extends Controller
         $market->save();
 
         $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id])->all();
+        Yii::$app->session->setFlash('succcess','Товар успешно добавлен');
         return $this->render('index',
             [
                 'market' => $marketAll,
-                'info' => 'Товар успешно добавлен',
             ]);
     }
 
@@ -133,10 +133,10 @@ class DefaultController extends Controller
     public function actionProduct_delite(){
         Market::deleteAll(['id'=>$_GET['id']]);
         $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id])->all();
+        Yii::$app->session->setFlash('succcess','Товар успешно удален');
         return $this->render('index',
             [
                 'market' => $marketAll,
-                'info' => 'Товар успешно удален',
             ]);
     }
 
@@ -206,10 +206,10 @@ class DefaultController extends Controller
         $product->save();
 
         $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id])->all();
+        Yii::$app->session->setFlash('succcess','Товар успешно обновлен');
         return $this->render('index',
             [
                 'market' => $marketAll,
-                'info' => 'Товар успешно обновлен',
             ]);
 
     }

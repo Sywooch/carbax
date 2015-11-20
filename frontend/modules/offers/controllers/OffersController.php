@@ -19,14 +19,14 @@ use yii\web\UploadedFile;
 
 
 
-class OffersController extends \yii\web\Controller
+class OffersController extends Controller
 {
     public $layout = 'page';
 
     public function actionIndex()
     {
-        $this->view->params['officeHide'] = true;
-        $this->view->params['bannersHide'] = true;
+        /*$this->view->params['officeHide'] = true;
+        $this->view->params['bannersHide'] = true;*/
         $query = Offers::find();
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
@@ -43,8 +43,8 @@ class OffersController extends \yii\web\Controller
     public function actionCreate()
     {
 
-        $this->view->params['officeHide'] = true;
-        $this->view->params['bannersHide'] = true;
+        /*$this->view->params['officeHide'] = true;
+        $this->view->params['bannersHide'] = true;*/
         $model = new Offers();
 
         if ($model->load(Yii::$app->request->post() )&& $model->validate()) {
@@ -62,8 +62,8 @@ class OffersController extends \yii\web\Controller
     }
     public function actionView($id)
     {
-        $this->view->params['officeHide'] = true;
-        $this->view->params['bannersHide'] = true;
+        /*$this->view->params['officeHide'] = true;
+        $this->view->params['bannersHide'] = true;*/
         $model = Offers::findOne($id);
         return $this->render('view', [
             'model' => $model

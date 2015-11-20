@@ -5,6 +5,8 @@ use frontend\widgets\ComfortZone;
 use yii\helpers\ArrayHelper;
 
 $this->title = "Добавить сервис";
+$this->params['breadcrumbs'][] = ['label' => 'Мои сервисы', 'url' => ['select_service']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="addContent">
@@ -16,9 +18,6 @@ $this->title = "Добавить сервис";
 
         <span id="firstAddress"></span>
         <a href="#nowhere" id="addAddress" class="addContent__adress-add">+</a>
-        <!--<div class="singleContent__map">
-            <div id="map_canvas" style="width:100%; height:100%"></div>
-        </div>-->
         <div class="singleContent__map">
             <div id="map" style="width: 100%; height: 100%"></div>
         </div>

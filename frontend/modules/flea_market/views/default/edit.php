@@ -8,6 +8,12 @@ use yii\helpers\Url;
 $this->title = "Редактировать товар";
 ?>
 <div class="addContent">
+   <?php
+   $this->params['breadcrumbs'][] = ['label' => 'Запчасти', 'url' => ['index']];
+   $this->params['breadcrumbs'][] = $this->title;
+
+   ?>
+    <h1><?= Html::encode($this->title) ?></h1>
 <form id="addForm" action="<?= Url::to(['update_to_sql'])?>" method="post">
     <?= Html::input('hidden','idproduct',$product->id)?>
     <input type="text" name="title" class="addContent__title" placeholder="Название товара" value="<?=$product->name?>">

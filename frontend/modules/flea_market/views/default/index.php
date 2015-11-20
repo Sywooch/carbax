@@ -1,15 +1,17 @@
 <?php
+use yii\widgets\Breadcrumbs;
 $this->title = "Мои запчасти";
 $this->registerCssFile('/css/bootstrap_btn.min.css');
+$this->params['breadcrumbs'][] = $this->title;
 ?>
+
+
 <section class="main-container">
-    <?php
-    if (isset($info)) {
-        ?>
-        <div id="serviceInfo"><?= $info; ?></div>
-    <?php
-    }
-    ?>
+    <div class="ddd">
+
+        </div>
+
+    <h1><?= $this->title ?></h1>
     <button onclick="location.href='/flea_market/default/add'" type="button" class="btn btn-success addServiceBtn">Добавить запчасть</button>
     <table class="addAllServices">
         <?php
@@ -29,4 +31,5 @@ $this->registerCssFile('/css/bootstrap_btn.min.css');
         ?>
 
     </table>
+
 </section>

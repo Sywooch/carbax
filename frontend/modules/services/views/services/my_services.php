@@ -3,16 +3,9 @@ use common\models\db\Address;
 
 $this->title = "Мои сервисы";
 $this->registerCssFile('/css/bootstrap_btn.min.css');
+    $this->params['breadcrumbs'][] = $this->title;
 ?>
 <section class="main-container">
-    <?php
-        if(isset($info)){
-            ?>
-            <div id="serviceInfo"><?=$info;?></div>
-        <?php
-        }
-    ?>
-
     <button onclick="location.href='/add?service_type=<?=$serviceTypeId?>'" type="button" class="btn btn-success addServiceBtn">Добавить сервис</button>
 
     <table class="addAllServices">

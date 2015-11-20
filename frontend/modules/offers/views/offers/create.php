@@ -10,6 +10,7 @@ $this->title = 'Создать спецпредложение';
 $this->params['breadcrumbs'][] = ['label' => 'Спецпредложения', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<section class="main-container">
 <div class="offers-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -19,3 +20,4 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+</section>
