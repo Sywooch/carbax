@@ -8,9 +8,14 @@ use yii\helpers\Url;
 
 $this->title = "Добавить товар";
 ?>
-
+<section class="main-container">
 <div class="addContent">
+    <?php
+    $this->params['breadcrumbs'][] = ['label' => 'Запчасти', 'url' => ['index']];
+    $this->params['breadcrumbs'][] = $this->title;
 
+    ?>
+    <h1><?= Html::encode($this->title) ?></h1>
     <form id="addForm" action="<?= Url::to(['add_to_sql'])?>" method="post">
         <input type="text" name="title" class="addContent__title" placeholder="Название товара">
         <?= Html::dropDownList('manufactures',0, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])?>
@@ -34,3 +39,4 @@ $this->title = "Добавить товар";
         </div>
     </form>
 </div>
+</section>

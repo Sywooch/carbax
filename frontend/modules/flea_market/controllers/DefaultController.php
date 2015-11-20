@@ -93,11 +93,13 @@ class DefaultController extends Controller
         $market->user_id = Yii::$app->user->id;
         $market->save();
 
+        Yii::$app->session->setFlash('succcess','Товар успешно добавлен');
+
         $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id])->all();
+
         return $this->render('index',
             [
                 'market' => $marketAll,
-                'info' => 'Товар успешно добавлен',
             ]);
     }
 
@@ -133,14 +135,14 @@ class DefaultController extends Controller
             ]);
     }
 
-    public function actionProduct_delite()
-    {
-        Market::deleteAll(['id' => $_GET['id']]);
-        $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id])->all();
+
+    public function actionProduct_delite(){
+        Market::deleteAll(['id'=>$_GET['id']]);
+        $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id])->all();
+        Yii::$app->session->setFlash('succcess','Товар успешно удален');
         return $this->render('index',
             [
                 'market' => $marketAll,
-                'info' => 'Товар успешно удален',
             ]);
     }
 
@@ -209,12 +211,11 @@ class DefaultController extends Controller
 
         $product->user_id = Yii::$app->user->id;
         $product->save();
-
-        $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id])->all();
+        $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id])->all();
+        Yii::$app->session->setFlash('succcess','Товар успешно обновлен');
         return $this->render('index',
             [
                 'market' => $marketAll,
-                'info' => 'Товар успешно обновлен',
             ]);
 
     }

@@ -2,7 +2,6 @@
 
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
-
 $this->title = 'Спецпредложения';
 
 $this->params['breadcrumbs'][] = $this->title;

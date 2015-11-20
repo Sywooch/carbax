@@ -259,26 +259,3 @@ $(".menu-open-flag").click(function () {
     $(".side-nav").slideToggle('slow');
 });
 
-function reloadMap(){
-    $('#map').empty();
-    var myMap;
-
-    var myGeocoder = ymaps.geocode($(this).val());
-    console.log(myGeocoder);
-    myGeocoder.done(
-        function (res) {
-            myMap = new ymaps.Map("map", {
-                center: [res.geoObjects.get(0).geometry.getCoordinates()[0], res.geoObjects.get(0).geometry.getCoordinates()[1]],
-                zoom: 7
-            });
-
-            var i = 0;
-            $('.addContent__adress').each(function () {
-                var text = $(this).val();
-                var objects = ymaps.geoQuery(ymaps.geocode(text));
-                objects.addToMap(myMap);
-                i = i + 1;
-            });
-        }
-    );
-}

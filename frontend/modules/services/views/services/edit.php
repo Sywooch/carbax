@@ -5,6 +5,8 @@ use frontend\widgets\AutoType;
 use frontend\widgets\ComfortZone;
 
 $this->title = "Редактирование";
+$this->params['breadcrumbs'][] = ['label' => 'Мои сервисы', 'url' => ['select_service']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="addContent">

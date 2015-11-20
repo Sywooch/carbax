@@ -7,6 +7,12 @@ $this->registerCssFile('/css/bootstrap_btn.min.css');
 ?>
 
 <section class="main-container">
+    <?php
+    $this->params['breadcrumbs'][] = ['label' => 'Мои запчасти', 'url' => ['index']];
+    $this->params['breadcrumbs'][] = $this->title;
+
+    ?>
+    <h1><?= $this->title ?></h1>
     <h3>Название товара:</h3><?=$product->name;?>
     <h3>Марка:</h3><?=$marka->mfa_brand;?>
     <h3>Модель:</h3><?=$model->mod_name;?>

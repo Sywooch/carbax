@@ -7,6 +7,9 @@ use frontend\modules\services\widgets\PrintAdditionalFieldsByServisId;
 $this->title = $serviceName;
 $this->registerCssFile('/css/bootstrap_btn.min.css');
 
+    $this->params['breadcrumbs'][] = ['label' => 'Мои сервисы', 'url' => ['select_service']];
+    $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 
 <section class="main-container">
