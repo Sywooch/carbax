@@ -5,7 +5,7 @@ use yii\helpers\Html;
 if(isset($_GET['search'])){
     $sel['region'] = $_GET['region'];
     $sel['categ'] = $_GET['categ'];
-    $sel['manufactures'] = $_GET['categcateg'];
+    $sel['manufactures'] = $_GET['manufactures'];
     $sel['search'] = $_GET['search'];
 }
 else {

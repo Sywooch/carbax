@@ -264,7 +264,20 @@ class DefaultController extends Controller
         $this->view->params['officeHide'] = true;
         $this->view->params['bannersHide'] = true;
 
-        return $this->render('search');
+        $result = Market::find()->filterWhere([
+            'region_id' => $_GET['region'],
+            'man_id' => $_GET['manufactures']
+        ]);
+        if(!empty($_GET['search'])){
+            $result->andWhere(['like', 'name', $_GET['search']]);
+        }
+        if(!empty($_GET['categ'])){
+            $result->andWhere(['like', 'category_id_all', $_GET['categ']]);
+        }
+        $search = $result->all();
+        /*Debug::prn($search);*/
+
+        return $this->render('search', ['search'=>$search]);
     }
 
     public function actionShow_cat()

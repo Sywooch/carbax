@@ -97,3 +97,7 @@
 .cl-column li:first-letter{
     text-transform: uppercase;
 }
+
+.catPath {
+    margin-top: 25px;
+}
