@@ -89,3 +89,11 @@
     color: #4F8A10;
     background-color: #DFF2BF;
 }
+
+.cl-column li{
+    margin: 10px 0;
+}
+
+.cl-column li:first-letter{
+    text-transform: uppercase;
+}

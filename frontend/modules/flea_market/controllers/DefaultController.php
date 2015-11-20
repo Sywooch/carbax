@@ -260,7 +260,10 @@ class DefaultController extends Controller
 
     public function actionSearch()
     {
-        Debug::prn($_GET);
+        $this->view->params['officeHide'] = true;
+        $this->view->params['bannersHide'] = true;
+
+        return $this->render('search');
     }
 
     public function actionShow_cat()

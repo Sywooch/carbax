@@ -17,12 +17,14 @@ use yii\base\Widget;
 class FleaMarketSearch extends Widget
 {
 
+    public $title = true;
+
     public function run(){
         $cat = TofSearchTree::find()->where(['str_id_parent'=>'10001'])->all();
         $region = GeobaseRegion::find()->all();
         $manufactures = TofManufacturers::find()->all();
 
-        return $this->render('search', ['cat'=>$cat, 'region'=>$region, 'manufactures'=>$manufactures]);
+        return $this->render('search', ['cat'=>$cat, 'region'=>$region, 'manufactures'=>$manufactures, 'title'=>$this->title]);
     }
 
 }
