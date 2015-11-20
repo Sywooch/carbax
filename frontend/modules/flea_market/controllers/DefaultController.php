@@ -50,11 +50,12 @@ class DefaultController extends Controller
 
     public function actionIndex()
     {
-        $market = Market::find()->where(['user_id'=>Yii::$app->user->id])->all();
-        return $this->render('index',['market'=>$market]);
+        $market = Market::find()->where(['user_id' => Yii::$app->user->id])->all();
+        return $this->render('index', ['market' => $market]);
     }
 
-    public function actionAdd(){
+    public function actionAdd()
+    {
         $tofMan = TofManufacturers::find()->orderBy('mfa_brand')->all();
         $region = GeobaseRegion::find()->all();
         $autoType = CategoriesAuto::find()->all();
@@ -66,7 +67,8 @@ class DefaultController extends Controller
             ]);
     }
 
-    public function actionAdd_to_sql(){
+    public function actionAdd_to_sql()
+    {
         $market = new Market();
         $market->name = $_POST['title'];
         $market->man_id = $_POST['manufactures'];
@@ -77,13 +79,13 @@ class DefaultController extends Controller
         $market->descr = $_POST['descr'];
         $market->price = $_POST['price'];
         $market->dt_add = time();
-        if($_POST['userOrService'] == 2){
+        if ($_POST['userOrService'] == 2) {
             $market->service_id = $_POST['selectService'];
-        }else{
+        } else {
             $market->service_id = 0;
         }
-        foreach($_POST['sub_cat'] as $sc){
-            $market->category_id_all .= $sc.',';
+        foreach ($_POST['sub_cat'] as $sc) {
+            $market->category_id_all .= $sc . ',';
         }
 
         $market->category_id = array_pop($_POST['sub_cat']);
@@ -91,29 +93,32 @@ class DefaultController extends Controller
         $market->user_id = Yii::$app->user->id;
         $market->save();
 
-        $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id])->all();
         Yii::$app->session->setFlash('succcess','Товар успешно добавлен');
+
+        $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id])->all();
+
         return $this->render('index',
             [
                 'market' => $marketAll,
             ]);
     }
 
-    public function actionView_product(){
-        $product = Market::find()->where(['id'=>$_GET['id']])->one();
-        $nameTypeAuto = CategoriesAuto::find()->where(['id'=>$product->id_auto_type])->one();
-        $marka = TofManufacturers::find()->where(['mfa_id'=>$product->man_id])->one();
-        $model = TofModels::find()->where(['mod_id'=>$product->model_id])->one();
-        $type = TofTypes::find()->where(['typ_id'=>$product->type_id])->one();
-        $region = GeobaseRegion::find()->where(['id'=>$product->region_id])->one();
-        $city = GeobaseCity::find()->where(['id'=>$product->city_id])->one();
-        $category = explode(',',$product->category_id_all);
+    public function actionView_product()
+    {
+        $product = Market::find()->where(['id' => $_GET['id']])->one();
+        $nameTypeAuto = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one();
+        $marka = TofManufacturers::find()->where(['mfa_id' => $product->man_id])->one();
+        $model = TofModels::find()->where(['mod_id' => $product->model_id])->one();
+        $type = TofTypes::find()->where(['typ_id' => $product->type_id])->one();
+        $region = GeobaseRegion::find()->where(['id' => $product->region_id])->one();
+        $city = GeobaseCity::find()->where(['id' => $product->city_id])->one();
+        $category = explode(',', $product->category_id_all);
         array_pop($category);
-        $nameCat = CategoriesAuto::find()->where(['id'=>$product->id_auto_type])->one()->name;
+        $nameCat = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one()->name;
 
         foreach ($category as $cat) {
             //Debug::prn($cat);
-            $nameCat .= ' / '.TofSearchTree::find()->where(['str_id_parent'=>$cat])->one()->str_des;
+            $nameCat .= ' / ' . TofSearchTree::find()->where(['str_id_parent' => $cat])->one()->str_des;
         }
 
         //Debug::prn($region);
@@ -130,6 +135,7 @@ class DefaultController extends Controller
             ]);
     }
 
+
     public function actionProduct_delite(){
         Market::deleteAll(['id'=>$_GET['id']]);
         $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id])->all();
@@ -140,21 +146,22 @@ class DefaultController extends Controller
             ]);
     }
 
-    public function actionEdit_product(){
-        $product = Market::find()->where(['id'=>$_GET['id']])->one();
+    public function actionEdit_product()
+    {
+        $product = Market::find()->where(['id' => $_GET['id']])->one();
         $tofMan = TofManufacturers::find()->orderBy('mfa_brand')->all();
         $region = GeobaseRegion::find()->all();
         $autoType = CategoriesAuto::find()->all();
-        $model = TofModels::find()->where(['mod_mfa_id'=>$product->man_id])->all();
-        $type = TofTypes::find()->where(['typ_mod_id'=>$product->model_id])->all();
-        $city = GeobaseCity::find()->where(['region_id'=>$product->region_id])->all();
-        $category = explode(',',$product->category_id_all);
+        $model = TofModels::find()->where(['mod_mfa_id' => $product->man_id])->all();
+        $type = TofTypes::find()->where(['typ_mod_id' => $product->model_id])->all();
+        $city = GeobaseCity::find()->where(['region_id' => $product->region_id])->all();
+        $category = explode(',', $product->category_id_all);
         array_pop($category);
-        $nameCat = CategoriesAuto::find()->where(['id'=>$product->id_auto_type])->one()->name;
+        $nameCat = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one()->name;
 
         foreach ($category as $cat) {
             //Debug::prn($cat);
-            $nameCat .= ' / '.TofSearchTree::find()->where(['str_id_parent'=>$cat])->one()->str_des;
+            $nameCat .= ' / ' . TofSearchTree::find()->where(['str_id_parent' => $cat])->one()->str_des;
         }
 
         return $this->render('edit',
@@ -170,9 +177,10 @@ class DefaultController extends Controller
             ]);
     }
 
-    public function actionUpdate_to_sql(){
-       // Debug::prn($_POST);
-        $product = Market::find()->where(['id'=>$_POST['idproduct']])->one();
+    public function actionUpdate_to_sql()
+    {
+        // Debug::prn($_POST);
+        $product = Market::find()->where(['id' => $_POST['idproduct']])->one();
         $product->name = $_POST['title'];
         $product->man_id = $_POST['manufactures'];
         $product->model_id = $_POST['model'];
@@ -182,21 +190,20 @@ class DefaultController extends Controller
         $product->descr = $_POST['descr'];
         $product->price = $_POST['price'];
         $product->dt_add = time();
-        if($_POST['userOrService'] == 2){
+        if ($_POST['userOrService'] == 2) {
             $product->service_id = $_POST['selectService'];
-        }else{
+        } else {
             $product->service_id = 0;
         }
 
 
-        if(isset($_POST['category_id_all'])){
+        if (isset($_POST['category_id_all'])) {
             $product->category_id_all = $_POST['category_id_all'];
             $product->category_id = $_POST['category_id'];
             $product->id_auto_type = $_POST['id_auto_type'];
-        }
-        else{
-            foreach($_POST['sub_cat'] as $sc){
-                $product->category_id_all .= $sc.',';
+        } else {
+            foreach ($_POST['sub_cat'] as $sc) {
+                $product->category_id_all .= $sc . ',';
             }
             $product->category_id = array_pop($_POST['sub_cat']);
             $product->id_auto_type = $_POST['autotype'];
@@ -204,7 +211,6 @@ class DefaultController extends Controller
 
         $product->user_id = Yii::$app->user->id;
         $product->save();
-
         $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id])->all();
         Yii::$app->session->setFlash('succcess','Товар успешно обновлен');
         return $this->render('index',
@@ -214,40 +220,52 @@ class DefaultController extends Controller
 
     }
 
-    public function actionGet_model(){
-        $model = TofModels::find()->where(['mod_mfa_id'=>$_POST['mfa_id']])->all();
-        echo Html::dropDownList('model',0,ArrayHelper::map($model, 'mod_id', 'mod_name'), ['class'=>'addContent__adress', 'id'=>'modSelect','prompt'=>'Выберите модель']);
+    public function actionGet_model()
+    {
+        $model = TofModels::find()->where(['mod_mfa_id' => $_POST['mfa_id']])->all();
+        echo Html::dropDownList('model', 0, ArrayHelper::map($model, 'mod_id', 'mod_name'), ['class' => 'addContent__adress', 'id' => 'modSelect', 'prompt' => 'Выберите модель']);
     }
 
-    public function actionGet_types(){
-        $model = TofTypes::find()->where(['typ_mod_id'=>$_POST['mod_id']])->all();
-        echo Html::dropDownList('types',0,ArrayHelper::map($model, 'typ_id', 'typ_mmt_cds'), ['class'=>'addContent__adress','prompt'=>'Выберите тип']);
+    public function actionGet_types()
+    {
+        $model = TofTypes::find()->where(['typ_mod_id' => $_POST['mod_id']])->all();
+        echo Html::dropDownList('types', 0, ArrayHelper::map($model, 'typ_id', 'typ_mmt_cds'), ['class' => 'addContent__adress', 'prompt' => 'Выберите тип']);
     }
 
-    public function actionGet_city(){
-        $city = GeobaseCity::find()->where(['region_id'=>$_POST['reg_id']])->all();
-        echo Html::dropDownList('city',0,ArrayHelper::map($city,'id','name'),['class'=>'addContent__adress','prompt'=>'Выберите город']);
+    public function actionGet_city()
+    {
+        $city = GeobaseCity::find()->where(['region_id' => $_POST['reg_id']])->all();
+        echo Html::dropDownList('city', 0, ArrayHelper::map($city, 'id', 'name'), ['class' => 'addContent__adress', 'prompt' => 'Выберите город']);
 
     }
 
-    public function actionGet_service(){
-        $service = Services::find()->where(['user_id'=>Yii::$app->user->id])->all();
-        echo Html::dropDownList('selectService',0,ArrayHelper::map($service,'id','name'),['class'=>'addContent__adress','prompt'=>'Выберите сервис']);
+    public function actionGet_service()
+    {
+        $service = Services::find()->where(['user_id' => Yii::$app->user->id])->all();
+        echo Html::dropDownList('selectService', 0, ArrayHelper::map($service, 'id', 'name'), ['class' => 'addContent__adress', 'prompt' => 'Выберите сервис']);
     }
 
-    public function actionGet_parent_category(){
-        $parent = TofSearchTree::find()->where(['str_id_parent'=>$_POST['id']])->all();
-        echo Html::dropDownList('parentCategory',0,ArrayHelper::map($parent,'id','str_des'),['class'=>'addContent__adress']);
+    public function actionGet_parent_category()
+    {
+        $parent = TofSearchTree::find()->where(['str_id_parent' => $_POST['id']])->all();
+        echo Html::dropDownList('parentCategory', 0, ArrayHelper::map($parent, 'id', 'str_des'), ['class' => 'addContent__adress']);
     }
 
-    public function actionGet_cat(){
-        $cat = TofSearchTree::find()->where(['str_id_parent'=>$_POST['cat_id']])->all();
-        if($cat){
-            echo Html::dropDownList('sub_cat[]',0,ArrayHelper::map($cat, 'str_id', 'str_des'),['class'=>'addContent__adress catSel','prompt'=>'Выберите Категорию']);
+    public function actionGet_cat()
+    {
+        $cat = TofSearchTree::find()->where(['str_id_parent' => $_POST['cat_id']])->all();
+        if ($cat) {
+            echo Html::dropDownList('sub_cat[]', 0, ArrayHelper::map($cat, 'str_id', 'str_des'), ['class' => 'addContent__adress catSel', 'prompt' => 'Выберите Категорию']);
         }
     }
 
-    public function actionShow_cat(){
+    public function actionSearch()
+    {
+        Debug::prn($_GET);
+    }
+
+    public function actionShow_cat()
+    {
         echo CategoryProductTecDoc::widget();
     }
 }
