@@ -236,6 +236,6 @@ $(document).ready(function ($) {
 
     $(document).on('click','.select_img',function(){
         var path = $('.curent').attr('pathFile');
-        $('.media__upload_img').html('<img src="/secure/' + path + '"/><input id="mediaUploadInputFile" name="mediaUploadInputFile" type="hidden" value="'+path+'"/>');
+        $('.media__upload_img').html('<img src="' +path + '"/><input id="mediaUploadInputFile" name="mediaUploadInputFile" type="hidden" value="'+path+'"/>');
     });
 });

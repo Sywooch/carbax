@@ -37,6 +37,9 @@ return [
         'auto_type' => [
             'class' => 'backend\modules\auto_type\Auto_type',
         ],
+        'category_news' => [
+            'class' => 'backend\modules\category_news\Category_news',
+        ],
     ],
     'components' => [
         'request' => [
