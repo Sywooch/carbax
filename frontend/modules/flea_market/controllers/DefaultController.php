@@ -117,7 +117,7 @@ class DefaultController extends Controller
         $nameCat = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one()->name;
 
         foreach ($category as $cat) {
-            Debug::prn($cat);
+            //Debug::prn($cat);
             $nameCat .= ' / ' . TofSearchTree::find()->where(['str_id' => $cat])->one()->str_des;
         }
 
@@ -157,10 +157,10 @@ class DefaultController extends Controller
         $category = explode(',', $product->category_id_all);
         array_pop($category);
         $nameCat = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one()->name;
-
+        //Debug::prn($product->category_id_all);
         foreach ($category as $cat) {
             //Debug::prn($cat);
-            $nameCat .= ' / ' . TofSearchTree::find()->where(['str_id_parent' => $cat])->one()->str_des;
+            $nameCat .= ' / ' . TofSearchTree::find()->where(['str_id' => $cat])->one()->str_des;
         }
 
         return $this->render('edit',
@@ -200,6 +200,7 @@ class DefaultController extends Controller
             $product->category_id = $_POST['category_id'];
             $product->id_auto_type = $_POST['id_auto_type'];
         } else {
+            $product->category_id_all = '';
             foreach ($_POST['sub_cat'] as $sc) {
                 $product->category_id_all .= $sc . ',';
             }
@@ -209,8 +210,9 @@ class DefaultController extends Controller
 
         $product->user_id = Yii::$app->user->id;
         $product->save();
-        $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id])->all();
         Yii::$app->session->setFlash('succcess','Товар успешно обновлен');
+        $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id])->all();
+
         return $this->render('index',
             [
                 'market' => $marketAll,
