@@ -76,6 +76,7 @@ class Media
     }
 
     function create_folder($path,$nameFolder){
+        Debug::prn($path);
         $structure = $path.$nameFolder;
         if (!mkdir($structure, 0777, true)) {
             die('Не удалось создать директории...');

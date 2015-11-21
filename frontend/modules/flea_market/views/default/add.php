@@ -5,6 +5,10 @@ use frontend\modules\flea_market\widgets\CategoryProductTecDoc;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use kartik\file\FileInput;
+
+/*$this->registerCssFile('/css/bootstrap.min.css');*/
+/*$this->registerJsFile('/js/fileinput.min.js');*/
 
 $this->title = "Добавить товар";
 ?>
@@ -16,7 +20,7 @@ $this->title = "Добавить товар";
 
     ?>
     <h1><?= Html::encode($this->title) ?></h1>
-    <form id="addForm" action="<?= Url::to(['add_to_sql'])?>" method="post">
+    <form id="addForm" action="<?= Url::to(['add_to_sql'])?>" method="post" enctype="multipart/form-data">
         <input type="text" name="title" class="addContent__title" placeholder="Название товара">
         <?= Html::dropDownList('manufactures',0, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])?>
         <span id="modelBox"></span>
@@ -25,6 +29,20 @@ $this->title = "Добавить товар";
         <span id="addCity"></span>
         <?= CategoryProductTecDoc::widget()?>
         <span id="parent"></span>
+
+        <?php
+        echo '<label class="control-label">Добавить фото</label>';
+        echo FileInput::widget([
+            'name' => 'file[]',
+            'id' => 'input-4',
+            'attribute' => 'attachment_1',
+            'options' => ['multiple' => true]
+        ]);
+        ?>
+
+       <!-- <label class="control-label">Добавить фото</label>
+        <input id="input-4" type="file" multiple=true class="file-loading">-->
+
         <div class="singleContent__desc">
             <h3>Описание</h3>
             <?= Html::textarea('descr','',['class'=>'addContent__description'])?>

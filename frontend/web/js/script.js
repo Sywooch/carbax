@@ -42,6 +42,15 @@ jQuery(document).ready(function ($) {
 });
 
 jQuery(document).ready(function ($) {
+    $("#input-4").fileinput({
+        language: "ru",
+        showCaption: true,
+        maxFileCount: 5,
+        showRemove: false,
+        showUpload: false,
+        multiple: true,
+
+    });
 
     (function($) {
         $(function() {

@@ -56,6 +56,7 @@ class DefaultController extends Controller
 
     public function actionAdd()
     {
+
         $tofMan = TofManufacturers::find()->orderBy('mfa_brand')->all();
         $region = GeobaseRegion::find()->all();
         $autoType = CategoriesAuto::find()->all();
@@ -69,7 +70,7 @@ class DefaultController extends Controller
 
     public function actionAdd_to_sql()
     {
-        $market = new Market();
+        /*$market = new Market();
         $market->name = $_POST['title'];
         $market->man_id = $_POST['manufactures'];
         $market->model_id = $_POST['model'];
@@ -90,10 +91,23 @@ class DefaultController extends Controller
 
         $market->category_id = array_pop($_POST['sub_cat']);
         $market->id_auto_type = $_POST['autotype'];
-        $market->user_id = Yii::$app->user->id;
-        $market->save();
+        $market->user_id = Yii::$app->user->id;*/
+        //$market->save();
+        if(!file_exists('media/users/'.Yii::$app->user->id)){
+            Debug::prn(mkdir('media/users/'.Yii::$app->user->id.'/'));
+        }
+        if(!file_exists('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'))){
+            mkdir('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'));
+        }
+        $dir = 'media/users/'.Yii::$app->user->id.'/'.date('Y-m-d').'/';
+        $i = 0;
+        foreach($_FILES['file']['name'] as $file){
+            move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir.$file);
+            $i++;
+        }
+        Debug::prn($_FILES);
 
-        Yii::$app->session->setFlash('succcess','Товар успешно добавлен');
+        Yii::$app->session->setFlash('success','Товар успешно добавлен');
 
         $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id])->all();
 
