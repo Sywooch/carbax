@@ -12,10 +12,14 @@ use frontend\widgets\GetSubCategory;
     <div class="contain">
         <div class="fleamarket__ads--list">
             <?php foreach($search as $s): ?>
+                <?php
+                $img = \common\models\db\ProductImg::find()->where(['product_id'=>$s['id']])->one()->img;
+                $count = \common\models\db\ProductImg::find()->where(['product_id'=>$s['id']])->count();
+                ?>
                 <div class="fleamarket__ads__item">
                     <a href="#" class="fleamarket__ads__item--img">
-                        <img src="img/land-rover.png" alt="">
-                        <span class="fleamarket__ads__item--img--marker">9</span>
+                        <img src="/<?=$img?>" alt="">
+                        <span class="fleamarket__ads__item--img--marker"><?=$count?></span>
                     </a>
                     <div class="fleamarket__ads__item--desc">
                         <a class="fleamarket__ads__item--desc--star"></a>

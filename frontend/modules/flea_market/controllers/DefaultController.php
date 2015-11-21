@@ -7,6 +7,7 @@ use common\models\db\CategoriesAuto;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
 use common\models\db\Market;
+use common\models\db\ProductImg;
 use common\models\db\Services;
 use common\models\db\TofManufacturers;
 use common\models\db\TofModels;
@@ -71,7 +72,7 @@ class DefaultController extends Controller
 
     public function actionAdd_to_sql()
     {
-        /*$market = new Market();
+        $market = new Market();
         $market->name = $_POST['title'];
         $market->man_id = $_POST['manufactures'];
         $market->model_id = $_POST['model'];
@@ -92,10 +93,10 @@ class DefaultController extends Controller
 
         $market->category_id = array_pop($_POST['sub_cat']);
         $market->id_auto_type = $_POST['autotype'];
-        $market->user_id = Yii::$app->user->id;*/
-        //$market->save();
+        $market->user_id = Yii::$app->user->id;
+        $market->save();
         if(!file_exists('media/users/'.Yii::$app->user->id)){
-            Debug::prn(mkdir('media/users/'.Yii::$app->user->id.'/'));
+            mkdir('media/users/'.Yii::$app->user->id.'/');
         }
         if(!file_exists('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'))){
             mkdir('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'));
@@ -104,9 +105,13 @@ class DefaultController extends Controller
         $i = 0;
         foreach($_FILES['file']['name'] as $file){
             move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir.$file);
+            $img = new ProductImg();
+            $img->product_id = $market->id;
+            $img->img = $dir.$file;
+            $img->save();
             $i++;
         }
-        Debug::prn($_FILES);
+        //Debug::prn($_FILES);
 
         Yii::$app->session->setFlash('success','Товар успешно добавлен');
 
@@ -188,6 +193,7 @@ class DefaultController extends Controller
                 'type' => $type,
                 'city' => $city,
                 'category' => $nameCat,
+                'img' => ProductImg::find()->where(['product_id'=>$_GET['id']])->all()
             ]);
     }
 
@@ -225,6 +231,26 @@ class DefaultController extends Controller
 
         $product->user_id = Yii::$app->user->id;
         $product->save();
+
+        if(!empty($_FILES['file']['name'][0])){
+            ProductImg::deleteAll(['product_id' => $_POST['idproduct']]);
+            if(!file_exists('media/users/'.Yii::$app->user->id)){
+                mkdir('media/users/'.Yii::$app->user->id.'/');
+            }
+            if(!file_exists('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'))){
+                mkdir('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'));
+            }
+            $dir = 'media/users/'.Yii::$app->user->id.'/'.date('Y-m-d').'/';
+            $i = 0;
+            foreach($_FILES['file']['name'] as $file){
+                move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir.$file);
+                $img = new ProductImg();
+                $img->product_id = $product->id;
+                $img->img = $dir.$file;
+                $img->save();
+                $i++;
+            }
+        }
         Yii::$app->session->setFlash('success','Товар успешно обновлен');
         $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id])->all();
 

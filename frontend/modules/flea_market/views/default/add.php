@@ -12,7 +12,7 @@ use kartik\file\FileInput;
 
 $this->title = "Добавить товар";
 ?>
-<section class="main-container">
+<!--<section class="main-container">-->
 <div class="addContent">
     <?php
     $this->params['breadcrumbs'][] = ['label' => 'Запчасти', 'url' => ['index']];
@@ -29,21 +29,22 @@ $this->title = "Добавить товар";
         <span id="addCity"></span>
         <?= CategoryProductTecDoc::widget()?>
         <span id="parent"></span>
-
+        <div class="singleContent__desc">
         <?php
         echo '<label class="control-label">Добавить фото</label>';
         echo FileInput::widget([
             'name' => 'file[]',
             'id' => 'input-4',
             'attribute' => 'attachment_1',
-            'options' => ['multiple' => true]
+            'value' => '/media/img/1.png',
+            'options' => ['multiple' => true],
         ]);
         ?>
 
        <!-- <label class="control-label">Добавить фото</label>
         <input id="input-4" type="file" multiple=true class="file-loading">-->
 
-        <div class="singleContent__desc">
+
             <h3>Описание</h3>
             <?= Html::textarea('descr','',['class'=>'addContent__description'])?>
             <h3>Цена</h3>
@@ -57,4 +58,4 @@ $this->title = "Добавить товар";
         </div>
     </form>
 </div>
-</section>
+<!--</section>-->

@@ -42,6 +42,15 @@ jQuery(document).ready(function ($) {
 });
 
 jQuery(document).ready(function ($) {
+
+    if($('span').hasClass('img_link')){
+        var allImg = [];
+        $('.img_link').each(function(){
+            allImg.push('<img src="/'+ $(this).attr('data-img') +'" class="file-preview-image">');
+        });
+        console.log(allImg);
+    }
+
     $("#input-4").fileinput({
         language: "ru",
         showCaption: true,
@@ -49,6 +58,7 @@ jQuery(document).ready(function ($) {
         showRemove: false,
         showUpload: false,
         multiple: true,
+        initialPreview: allImg
 
     });
 

@@ -1,6 +1,7 @@
 <?php
 use common\models\db\Services;
 use frontend\modules\flea_market\widgets\CategoryProductTecDoc;
+use kartik\file\FileInput;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -14,7 +15,7 @@ $this->title = "Редактировать товар";
 
    ?>
     <h1><?= Html::encode($this->title) ?></h1>
-<form id="addForm" action="<?= Url::to(['update_to_sql'])?>" method="post">
+<form id="addForm" action="<?= Url::to(['update_to_sql'])?>" method="post" enctype="multipart/form-data">
     <?= Html::input('hidden','idproduct',$product->id)?>
     <input type="text" name="title" class="addContent__title" placeholder="Название товара" value="<?=$product->name?>">
     <?= Html::dropDownList('manufactures',$product->man_id, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])?>
@@ -34,6 +35,18 @@ $this->title = "Редактировать товар";
         </div>
 
         <span id="parent"></span>
+
+        <?php
+        echo '<label class="control-label">Добавить фото</label>';
+        echo FileInput::widget([
+            'name' => 'file[]',
+            'id' => 'input-4',
+            'attribute' => 'attachment_1',
+            'value' => '/media/img/1.png',
+            'options' => ['multiple' => true],
+        ]);
+        ?>
+
         <h3>Описание</h3>
         <?= Html::textarea('descr',$product->descr,['class'=>'addContent__description'])?>
         <h3>Цена</h3>
@@ -60,4 +73,7 @@ $this->title = "Редактировать товар";
         <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
     </div>
 </form>
+<?php foreach($img as $im): ?>
+    <span class="img_link" data-img="<?=$im['img']?>"></span>
+<?php endforeach; ?>
 </div>
