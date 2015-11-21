@@ -50,6 +50,7 @@ class DefaultController extends Controller
 
     public function actionIndex()
     {
+        //Yii::$app->session->setFlash('success','Товар успешно обновлен');
         $market = Market::find()->where(['user_id' => Yii::$app->user->id])->all();
         return $this->render('index', ['market' => $market]);
     }
@@ -152,7 +153,7 @@ class DefaultController extends Controller
     public function actionProduct_delite(){
         Market::deleteAll(['id'=>$_GET['id']]);
         $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id])->all();
-        Yii::$app->session->setFlash('succcess','Товар успешно удален');
+        Yii::$app->session->setFlash('ssuccess','Товар успешно удален');
         return $this->render('index',
             [
                 'market' => $marketAll,
@@ -174,7 +175,7 @@ class DefaultController extends Controller
         //Debug::prn($product->category_id_all);
         foreach ($category as $cat) {
             //Debug::prn($cat);
-            $nameCat .= ' / ' . TofSearchTree::find()->where(['str_id' => $cat])->one()->str_des;
+            $nameCat .= ' - ' . TofSearchTree::find()->where(['str_id' => $cat])->one()->str_des;
         }
 
         return $this->render('edit',
@@ -224,7 +225,7 @@ class DefaultController extends Controller
 
         $product->user_id = Yii::$app->user->id;
         $product->save();
-        Yii::$app->session->setFlash('succcess','Товар успешно обновлен');
+        Yii::$app->session->setFlash('success','Товар успешно обновлен');
         $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id])->all();
 
         return $this->render('index',
