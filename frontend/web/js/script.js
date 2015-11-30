@@ -43,24 +43,24 @@ jQuery(document).ready(function ($) {
 
 jQuery(document).ready(function ($) {
 
+
     if($('span').hasClass('img_link')){
         var allImg = [];
         $('.img_link').each(function(){
             allImg.push('<img src="/'+ $(this).attr('data-img') +'" class="file-preview-image">');
         });
-        console.log(allImg);
+        $("#input-4").fileinput({
+            language: "ru",
+            showCaption: true,
+            maxFileCount: 5,
+            showRemove: false,
+            showUpload: false,
+            multiple: true,
+            initialPreview: allImg
+        });
     }
 
-    $("#input-4").fileinput({
-        language: "ru",
-        showCaption: true,
-        maxFileCount: 5,
-        showRemove: false,
-        showUpload: false,
-        multiple: true,
-        initialPreview: allImg
 
-    });
 
     (function($) {
         $(function() {
@@ -106,19 +106,6 @@ jQuery(document).ready(function ($) {
     });
 
 
-    /*ymaps.ready(init);
-    var myMap,
-        myPlacemark;
-
-    function init() {
-         myMap = new ymaps.Map("map", {
-         center: [55.76, 37.64],
-         zoom: 7
-         });
-
-    }*/
-
-
     $('#manSelect').on('change', function(){
         $('#typesBox').html('');
         $.ajax({
@@ -140,6 +127,20 @@ jQuery(document).ready(function ($) {
                 $('#typesBox').html(data);
             }
         });
+    });
+
+    $(document).on('change', '#typeSelect', function(){
+        var prodType = $('#prodType').val();
+        if(prodType == 'zap'){
+            $.ajax({
+                type: 'POST',
+                url: "/flea_market/default/get_categ",
+                data: 'type_id=' + $(this).val(),
+                success: function (data) {
+                    $('#categBox').html(data);
+                }
+            });
+        }
     });
 
     $('#regionSelect').on('change',function(){
@@ -199,11 +200,14 @@ jQuery(document).ready(function ($) {
         $(this).prev().remove();
         $(this).remove();
 
+        var count = parseInt($('#addressCount').attr('count'), 10);
+        count = count - 1;
+        $('#addressCount').attr('count', count);
+
         $('#map').empty();
         var myMap;
 
         var myGeocoder = ymaps.geocode($('.addContent__adress').val());
-        console.log(myGeocoder);
         myGeocoder.done(
             function (res) {
                 myMap = new ymaps.Map("map", {
@@ -223,8 +227,16 @@ jQuery(document).ready(function ($) {
 
     });
 
+    $(document).on('click', '.addressEvent', function(){
+        $('#myModal').modal('show');
+    });
+
     $('#addAddress').on('click', function () {
-        $('<a href="#nowhere" id="delAddress" class="addContent__adress-add">-</a><input type="text" name="address[]" class="addContent__adress" placeholder="Адрес автосервиса">').insertBefore('#firstAddress');
+        var count = parseInt($('#addressCount').attr('count'), 10);
+        count = count + 1;
+        $('#addressCount').attr('count', count);
+
+        $('<a href="#nowhere" id="delAddress" class="addContent__adress-add">-</a><input type="text" name="address[' + count + '][]" class="addContent__adress addressEvent" placeholder="Адрес автосервиса">').insertBefore('#firstAddress');
     });
     $('#addContentPhone').on('click', function () {
         $('<a href="#nowhere" id="delPhone" class="addContent__cont-add">-</a><div class="cleared"></div><label for="phonenumber_last"></label><input type="text" class="addContent__cont" name="phoneNumber[]">').insertBefore('#firstPhone');

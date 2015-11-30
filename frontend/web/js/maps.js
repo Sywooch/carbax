@@ -13,8 +13,21 @@ jQuery(document).ready(function ($){
                 address.push($(this).val());
                 i = i + 1;
             });
-            map.addToMap(address);
+            map.addToMap(address, false);
         }
+    }
+
+    if(document.getElementById('main_map') !== null){
+        var center = [];
+        center.push($('#coordinates').attr('lat'));
+        center.push($('#coordinates').attr('lng'));
+
+        var map = new Map({
+            element:'main_map',
+            center: center,
+            zoom: 11
+        });
+        map.mapInit();
     }
 
 
@@ -29,8 +42,42 @@ jQuery(document).ready(function ($){
                 address.push($(this).val());
                 i = i + 1;
             });
-            map.addToMap(address);
+            map.addToMap(address, false);
         }
+    });
+
+    $('.main_category_to_map').on('click', function(){
+        $(this).toggleClass('mapFilterActivate');
+        var serviceTypeIds = '';
+        $('.mapFilterActivate').each(function(){
+            serviceTypeIds = serviceTypeIds + $(this).attr('service-type') + ',';
+        });
+        $.ajax({
+            type: 'POST',
+            url: "/mainpage/mainpage/get_address",
+            data: 'serviceTypeIds=' + serviceTypeIds.slice(0, -1),
+            success: function (data) {
+                /*console.log(data);*/
+                $('#setAddress').html(data);
+
+                var addresses = [];
+                $('.main_map_address').each(function(){
+                    addresses.push($(this).attr('address'));
+                });
+                console.log(addresses);
+
+                var center = [];
+                center.push($('#coordinates').attr('lat'));
+                center.push($('#coordinates').attr('lng'));
+                var map = new Map({
+                    element:'main_map',
+                    center: center,
+                    zoom: 11
+                });
+                $('#main_map').empty();
+                map.addToMap(addresses, true);
+            }
+        });
     });
 
 });

@@ -52,8 +52,13 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         //Yii::$app->session->setFlash('success','Товар успешно обновлен');
-        $market = Market::find()->where(['user_id' => Yii::$app->user->id])->all();
+        $market = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])->all();
         return $this->render('index', ['market' => $market]);
+    }
+
+    public function actionSale_auto(){
+        $market = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 1])->all();
+        return $this->render('sale_auto', ['market' => $market]);
     }
 
     public function actionAdd()
@@ -81,18 +86,29 @@ class DefaultController extends Controller
         $market->city_id = $_POST['city'];
         $market->descr = $_POST['descr'];
         $market->price = $_POST['price'];
+        if($_POST['prod_type'] == 'zap'){
+            $market->prod_type = 0;
+        }
+        else {
+            $market->prod_type = 1;
+        }
         $market->dt_add = time();
         if ($_POST['userOrService'] == 2) {
             $market->service_id = $_POST['selectService'];
         } else {
             $market->service_id = 0;
         }
-        foreach ($_POST['sub_cat'] as $sc) {
-            $market->category_id_all .= $sc . ',';
+        if(isset($_POST['sub_cat'])){
+            foreach ($_POST['sub_cat'] as $sc) {
+                $market->category_id_all .= $sc . ',';
+            }
+            $market->category_id = array_pop($_POST['sub_cat']);
         }
 
-        $market->category_id = array_pop($_POST['sub_cat']);
-        $market->id_auto_type = $_POST['autotype'];
+        if(isset($_POST['autotype'])){
+            $market->id_auto_type = $_POST['autotype'];
+        }
+
         $market->user_id = Yii::$app->user->id;
         $market->save();
         if(!file_exists('media/users/'.Yii::$app->user->id)){
@@ -208,6 +224,12 @@ class DefaultController extends Controller
         $product->city_id = $_POST['city'];
         $product->descr = $_POST['descr'];
         $product->price = $_POST['price'];
+        if($_POST['prod_type'] == 'zap'){
+            $product->prod_type = 0;
+        }
+        else {
+            $product->prod_type = 1;
+        }
         $product->dt_add = time();
         if ($_POST['userOrService'] == 2) {
             $product->service_id = $_POST['selectService'];
@@ -270,7 +292,11 @@ class DefaultController extends Controller
     public function actionGet_types()
     {
         $model = TofTypes::find()->where(['typ_mod_id' => $_POST['mod_id']])->all();
-        echo Html::dropDownList('types', 0, ArrayHelper::map($model, 'typ_id', 'typ_mmt_cds'), ['class' => 'addContent__adress', 'prompt' => 'Выберите тип']);
+        echo Html::dropDownList('types', 0, ArrayHelper::map($model, 'typ_id', 'typ_mmt_cds'), ['class' => 'addContent__adress', 'id' => 'typeSelect', 'prompt' => 'Выберите тип']);
+    }
+
+    public function actionGet_categ(){
+        echo CategoryProductTecDoc::widget();
     }
 
     public function actionGet_city()

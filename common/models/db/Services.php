@@ -79,6 +79,14 @@ class Services extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getAddress()
+    {
+        return $this->hasMany(Address::className(), ['service_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getOffers()
     {
         return $this->hasMany(Offers::className(), ['service_id' => 'id']);

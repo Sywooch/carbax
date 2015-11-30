@@ -21,7 +21,7 @@ class FleaMarketSearch extends Widget
 
     public function run(){
         $cat = TofSearchTree::find()->where(['str_id_parent'=>'10001'])->all();
-        $region = GeobaseRegion::find()->all();
+        $region = GeobaseRegion::find()->orderBy('name')->all();
         $manufactures = TofManufacturers::find()->orderBy('mfa_brand')->all();
 
         return $this->render('search', ['cat'=>$cat, 'region'=>$region, 'manufactures'=>$manufactures, 'title'=>$this->title]);

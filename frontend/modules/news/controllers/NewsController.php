@@ -28,7 +28,7 @@ class NewsController extends \yii\web\Controller
 		$pages->pageSize = 8;
 		$models = $query->offset($pages->offset)
 			->limit($pages->limit)
-
+			->orderBy('id DESC')
 			->all();
 		return $this->render('index', [
 			'models' => $models,

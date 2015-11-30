@@ -19,6 +19,7 @@ use Yii;
  * @property string $descr
  * @property string $price
  * @property integer $dt_add
+ * @property integer $prod_type
  */
 class Market extends \yii\db\ActiveRecord
 {

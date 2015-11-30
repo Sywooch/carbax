@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
     <h1><?= $this->title ?></h1>
-    <button onclick="location.href='/flea_market/default/add'" type="button" class="btn btn-success addServiceBtn">Добавить запчасть</button>
+    <button onclick="location.href='/flea_market/default/add?type=zap'" type="button" class="btn btn-success addServiceBtn">Добавить запчасть</button>
     <table class="addAllServices">
         <?php
         foreach ($market as $mark) {

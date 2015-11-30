@@ -9,9 +9,9 @@ class CategoryProductTecDoc extends Widget
 {
 
     public function run(){
-        /*$searchTree = TofSearchTree::find()->where(['str_id_parent'=>'10001'])->all();*/
-        $autotype = CategoriesAuto::find()->all();
-        return $this->render('category_tec_doc', ['autotype' => $autotype]);
+        $searchTree = TofSearchTree::find()->where(['str_id_parent'=>'10001'])->all();
+        /*$autotype = CategoriesAuto::find()->all();*/
+        return $this->render('category_tec_doc', ['searchTree' => $searchTree]);
     }
 
 }

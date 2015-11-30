@@ -2,11 +2,14 @@
 use frontend\modules\services\widgets\GetAllGroupById;
 use frontend\widgets\AutoType;
 use frontend\widgets\ComfortZone;
+use frontend\widgets\SelectAddress;
 use yii\helpers\ArrayHelper;
 
 $this->title = "Добавить сервис";
 $this->params['breadcrumbs'][] = ['label' => 'Мои сервисы', 'url' => ['select_service']];
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->registerCssFile('/css/bootstrap.min.css');
 ?>
 
 <div class="addContent">
@@ -14,7 +17,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <form id="addForm" action="add_to_sql" method="post">
         <input type="hidden" name="service_type" value="<?= $_GET['service_type'] ?>">
         <input type="text" name="title" class="addContent__title" placeholder="Название автосервиса">
-        <input type="text" name="address[]" class="addContent__adress" placeholder="Адрес автосервиса">
+
+        <input type="text" name="address[0][]" class="addContent__adress addressEvent" placeholder="Адрес автосервиса">
 
         <span id="firstAddress"></span>
         <a href="#nowhere" id="addAddress" class="addContent__adress-add">+</a>
@@ -140,5 +144,23 @@ $this->params['breadcrumbs'][] = $this->title;
                 <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
             </div>
         </div>
+        <span id="addressCount" count="0"></span>
     </form>
 </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Добавте адрес</h4>
+            </div>
+            <div class="modal-body">
+                <?= SelectAddress::widget() ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary">Добавить</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

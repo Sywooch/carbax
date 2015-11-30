@@ -1,5 +1,6 @@
 <?php
 use app\models\GeobaseRegion;
+use common\models\db\CategoryNews;
 use yii\helpers\Url;
 use yii\jui\AutoComplete;
 use yii\widgets\LinkPager;
@@ -14,6 +15,7 @@ foreach($news as $n):
     ?>
     <div class="news__block">
         <img src="<?=$n['img_url']?>" alt="">
+        <a href="#" class="orange"><?= CategoryNews::find()->where(['id'=>$n['cat_id']])->one()->name ?></a>
         <a href="<?= Url::to(['/news/news/view', 'id' => $n['id']])?>" class="news__block-title"><?=$n['title']?></a>
         <a href="#nowhere" class="news__block-eye"><i></i><?=$n['views']?></a>
     </div>

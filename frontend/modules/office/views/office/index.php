@@ -19,7 +19,7 @@ $this->title = "Личный кабинет";
             <div class="serviceLink">Заявка на запчасти</div>
         </div>
         <div class="serviceItem">
-            <div class="serviceIcon"><img src="<?= Url::base(true) ?>/media/img/sale_auto.png" alt=""></div>
+            <div class="serviceIcon"><a href="<?= Url::to(['/flea_market/default/sale_auto']) ?>"><img src="<?= Url::base(true) ?>/media/img/sale_auto.png" alt=""></a></div>
             <div class="serviceLink">Продать авто</div>
         </div>
         <div class="serviceItem">

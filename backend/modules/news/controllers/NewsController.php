@@ -147,6 +147,7 @@ class NewsController extends Controller
            $dt_add = (array)$it->pubDate;
            $dt_add_timecode = strtotime($dt_add[0]);
            $model->dt_add = $dt_add_timecode;
+            $model->cat_id = 1;
 //           Debug::prn($model);
            $model->save();
 

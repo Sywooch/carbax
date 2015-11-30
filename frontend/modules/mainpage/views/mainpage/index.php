@@ -1,5 +1,6 @@
 <?php
 /* @var $this yii\web\View */
+use frontend\modules\mainpage\widgets\MainPageMap;
 use frontend\modules\news\widgets\NewsWidgetFront;
 use frontend\modules\offers\widgets\OffersWidgetFront;
 use frontend\widgets\FleaMarketSearch;
@@ -35,55 +36,8 @@ use frontend\widgets\FleaMarketSearch;
 
 </section>
 
-<section class="filter">
+<!--<section class="filter">
     <div class="contain">
-        <!--<h2 class="blockTitle-left">Поиск - барахолка</h2>
-        <div class="filter__searchline">
-            <form action="">
-                <select name="" id="">
-                    <option selected disabled>Тип объявления</option>
-                    <option value="">Автомобили</option>
-                    <option value="">Автомобили</option>
-                </select>
-                <input type="text" class="filter__searchline--search" placeholder="Поиск по объявлениям">
-                <select name="" id="">
-                    <option selected disabled>Запчасти и аксессуары</option>
-                    <option value="">Автомобили</option>
-                    <option value="">Автомобили</option>
-                </select>
-                <select name="" id="">
-                    <option selected disabled>Автомобили</option>
-                    <option value="">Автомобили</option>
-                    <option value="">Автомобили</option>
-                </select>
-                <input type="submit" class="filter__searchline--but" value="Найти">
-                <input type="button" class="filter__searchline--but" value="На карте">
-            </form>
-        </div>
-        <div class="filter__typesearch">
-            <div class="filter__typesearch--box">
-                <select name="" id="">
-                    <option selected disabled>Все</option>
-                    <option value="">Мотоциклы и мототехника</option>
-                    <option value="">Мотоциклы и мототехника</option>
-                </select>
-                <select name="" id="">
-                    <option selected disabled>Мотоциклы и мототехника</option>
-                    <option value="">Мотоциклы и мототехника</option>
-                    <option value="">Мотоциклы и мототехника</option>
-                </select>
-                <select name="" id="">
-                    <option selected disabled>Грузовики и спецтехника</option>
-                    <option value="">Мотоциклы и мототехника</option>
-                    <option value="">Мотоциклы и мототехника</option>
-                </select>
-                <select name="" id="">
-                    <option selected disabled>Водный транспорт</option>
-                    <option value="">Мотоциклы и мототехника</option>
-                    <option value="">Мотоциклы и мототехника</option>
-                </select>
-            </div>
-        </div>-->
         <div class="filter__container">
             <h1 class="blockTitle">Фильтруйте поиск</h1>
             <aside class="filter__container--select">
@@ -147,44 +101,7 @@ use frontend\widgets\FleaMarketSearch;
                     </label>
                 </div>
             </aside>
-            <!--<aside class="filter__container--select">
-                <h3>Выберите пункт</h3>
-                <div class="filter__container-select--check">
-                    <input type="checkbox" id="checkbox01" name="checkbox" />
-                    <label for="checkbox01"><span></span>Клиент</label>
-
-                    <input type="checkbox" id="checkbox02" name="checkbox" />
-                    <label for="checkbox02"><span></span>Автосервис</label>
-
-                    <input type="checkbox" id="checkbox03" name="checkbox" />
-                    <label for="checkbox03"><span></span>Автомойка</label>
-
-                    <input type="checkbox" id="checkbox04" name="checkbox" />
-                    <label for="checkbox04"><span></span>Автотюнинг</label>
-
-                    <input type="checkbox" id="checkbox05" name="checkbox" />
-                    <label for="checkbox05"><span></span>Шиномонтаж</label>
-
-                    <input type="checkbox" id="checkbox06" name="checkbox" />
-                    <label for="checkbox06"><span></span>Эвакуатор</label>
-
-                    <input type="checkbox" id="checkbox07" name="checkbox" />
-                    <label for="checkbox07"><span></span>Подбор запчастей</label>
-
-                    <input type="checkbox" id="checkbox08" name="checkbox" />
-                    <label for="checkbox08"><span></span>Подбор дисков</label>
-
-                    <input type="checkbox" id="checkbox09" name="checkbox" />
-                    <label for="checkbox09"><span></span>Авторынок</label>
-
-                    <input type="checkbox" id="checkbox10" name="checkbox" />
-                    <label for="checkbox10"><span></span>Автоновости</label>
-
-                    <input type="checkbox" id="checkbox11" name="checkbox" />
-                    <label for="checkbox11"><span></span>Еще что-то</label>
-
-                </div>
-            </aside>-->
+            <?/*= MainPageMap::widget()*/?>
             <div class="filter__container--map">
                 <div class="filter__container--map--title">
                     <p>Результаты фильтра</p>
@@ -193,7 +110,8 @@ use frontend\widgets\FleaMarketSearch;
             </div>
         </div>
     </div>
-</section>
+</section>-->
+<?= MainPageMap::widget() ?>
 <?= FleaMarketSearch::widget() ?>
 <!--<section class="filter">
 <div class="contain">

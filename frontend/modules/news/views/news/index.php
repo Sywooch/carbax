@@ -1,5 +1,6 @@
 <?php
 
+use common\models\db\CategoryNews;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
@@ -18,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		<?php endif ?>
 			<div class="news__block">
 				<img src="<?= $n->img_url?>" alt="">
+				<a href="#" class="orange"><?= CategoryNews::find()->where(['id'=>$n['cat_id']])->one()->name ?></a>
 				<a href="<?= Url::to(['news/view', 'id' => $n->id])?>" class="news__block-title"><?= $n->title ?></a>
 				<!-- <div class="news-description"><?= $n->description?></div> -->
 				<!-- <div class="news-date-add"><?= date('d-m-Y H:i', $n->dt_add) ?></div> -->

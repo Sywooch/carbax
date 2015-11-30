@@ -21,13 +21,15 @@ $this->title = "Добавить товар";
     ?>
     <h1><?= Html::encode($this->title) ?></h1>
     <form id="addForm" action="<?= Url::to(['add_to_sql'])?>" method="post" enctype="multipart/form-data">
+        <input id="prodType" type="hidden" name="prod_type" value="<?=$_GET['type']?>">
         <input type="text" name="title" class="addContent__title" placeholder="Название товара">
         <?= Html::dropDownList('manufactures',0, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])?>
         <span id="modelBox"></span>
         <span id="typesBox"></span>
+        <span id="categBox"></span>
         <?= Html::dropDownList('region',0,ArrayHelper::map($region,'id','name'),['class'=>'addContent__adress','id'=>'regionSelect','prompt'=>'Выберите регион'])?>
         <span id="addCity"></span>
-        <?= CategoryProductTecDoc::widget()?>
+        <?/*= CategoryProductTecDoc::widget()*/?>
         <span id="parent"></span>
         <div class="singleContent__desc">
         <?php

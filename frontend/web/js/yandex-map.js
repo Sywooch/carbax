@@ -25,15 +25,24 @@ function Map( options ) {
         }
     }
 
-    this.addToMap = function(address){
+    this.addToMap = function(address, center){
         ymaps.ready(init);
+        var centerInit = this.center;
+        var element = this.element;
+        var zoom = this.zoom;
         function init(){
-            var myGeocoder = ymaps.geocode(address[0]);
+            if(center === false){
+                var centerAddress = address[0];
+            }
+            else {
+                var centerAddress = centerInit;
+            }
+            var myGeocoder = ymaps.geocode(centerAddress);
             myGeocoder.done(
                 function (res) {
-                    var myMap = new ymaps.Map("map", {
+                    var myMap = new ymaps.Map(element, {
                         center: [res.geoObjects.get(0).geometry.getCoordinates()[0], res.geoObjects.get(0).geometry.getCoordinates()[1]],
-                        zoom: 7
+                        zoom: zoom
                     });
                     address.forEach(function(a){
                         var objects = ymaps.geoQuery(ymaps.geocode(a));
