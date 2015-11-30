@@ -101,3 +101,11 @@
 .catPath {
     margin-top: 25px;
 }
+
+section.fleamarket__wrap_view {
+    display: block;
+    float: left;
+    position: relative;
+    width: 76%;
+    padding: 0 15px;
+}

@@ -23,7 +23,7 @@ use frontend\widgets\GetSubCategory;
                     </a>
                     <div class="fleamarket__ads__item--desc">
                         <a class="fleamarket__ads__item--desc--star"></a>
-                        <a href="#" class="fleamarket__ads__item--desc--title"><?=$s['name']?></a>
+                        <a href="/flea_market/default/view?id=<?=$s->id;?>" class="fleamarket__ads__item--desc--title"><?=$s['name']?></a>
                         <p class="fleamarket__ads__item--desc--price"><?=$s['price']?></p>
                         <p class="fleamarket__ads__item--desc--specification"><?=$s['descr']?></p>
                         <small class="fleamarket__ads__item--desc--contact">Автодилер</small>
