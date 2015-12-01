@@ -109,3 +109,218 @@ section.fleamarket__wrap_view {
     width: 76%;
     padding: 0 15px;
 }
+
+.fleamarket__headProductTop {
+    padding: 15px;
+    margin-top: 5px;
+}
+
+.fleamarket__cat_city {
+    display: block;
+    float: left;
+    width: 740px;
+    font-family: HelveticaNeueCyrLight;
+    font-size: 12.5px;
+}
+
+.fleamarket__views_product{
+    font-family: HelveticaNeueCyrLight;
+    font-size: 12.5px;
+}
+
+.fleamarket__views_product span{
+    color:#20527b;
+    text-decoration: underline;
+}
+
+.fleamarket__head h1{
+    font-family: 'HelveticaNeueCyrBold';
+    font-size: 21px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.fleamarket__created {
+    display: block;
+    float: left;
+    margin-right: 20px;
+}
+
+.fleamarket__head span{
+    background: url(../media/img/edit_close_product.png) no-repeat 0% 50%;
+    padding-left: 35px;
+}
+
+.fleamarket__head span a{
+    color: #ff6b00;
+}
+
+.price {
+    height: 40px;
+    border-bottom: 1px solid #cfcfcf;
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+.price span{
+    font-size: 15px;
+    color: #fff;
+    background: #ff6b00;
+    padding: 5px;
+    border-radius:5px;
+    margin-left: 165px;
+    font-family: "HelveticaNeueCyrBold";
+}
+
+.fleamarket__company{
+    margin-bottom: 15px;
+}
+
+.fleamarket__company span{
+    margin-left: 130px;
+}
+
+.fleamarket__contact_person span{
+    margin-left: 80px;
+}
+
+span.fleamarket__user_tel {
+    background: #e8e8e8 url(../media/img/tel.png) no-repeat 3% 50%;
+    border:1px solid #90a6b8;
+    border-radius: 12px;
+    color: #0c4370;
+    font-size: 13px;
+    font-family: HelveticaNeueCyrLight;
+    padding: 4px;
+    padding-left: 18px;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+
+span.fleamarket__user_mes{
+    background: #e8e8e8 url(../media/img/message.png) no-repeat 3% 50%;
+    border:1px solid #90a6b8;
+    border-radius: 12px;
+    color: #0c4370;
+    font-size: 13px;
+    font-family: HelveticaNeueCyrLight;
+    padding: 4px;
+    padding-left: 18px;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.fleamarket__user_contact {
+    margin: 10px 0;
+    display: block;
+    margin-left: 205px;
+}
+
+span.info {
+    display: none;
+}
+
+.fleamarket__city{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #cfcfcf;
+    padding-bottom: 15px;
+}
+
+.fleamarket__city span{
+    margin-left: 160px;
+}
+
+.fleamarket__type_product {
+    margin: 15px 0;
+}
+
+.fleamarket_product_description {
+    margin: 15px 0;
+}
+
+.fleamarket__number_ads {
+    color: #aaaaaa;
+}
+
+.fleamarket__slider {
+    margin: 15px 0;
+}
+
+.fleamarket__footer{
+    margin:15px 0;
+    background: #e8e8e8;
+    border:1px solid #90a6b8;
+    padding:7px;
+}
+.fleamarket__footer a{
+    font-size: 14px;
+    color:#0c4370;
+    text-decoration:underline;
+}
+
+a.write_seller{
+    background: url(../media/img/write_seller.png) no-repeat 0% 50%;
+    padding-left: 20px;
+    margin: 0 10px;
+}
+
+a.favorites_products{
+    background: url(../media/img/favorites_products.png) no-repeat 0% 50%;
+    padding-left: 20px;
+    margin: 0 10px;
+}
+
+a.complain_products{
+    background: url(../media/img/complain_products.png) no-repeat 0% 50%;
+    padding-left: 20px;
+    margin: 0 10px;
+}
+
+a.share_products{
+    background: url(../media/img/share_products.png) no-repeat 0% 50%;
+    padding-left: 20px;
+    margin: 0 10px;
+}
+
+.fleamarket__socseti {
+    float: right;
+    margin-right: 30px;
+}
+
+.fleamarket__similar_ads a{
+    display: inline-block;
+    margin-right: 40px;
+}
+
+.fleamarket__similar_ads_product_wr{
+    width:141px;
+}
+
+.fleamarket__similar_ads_product_wr img{
+    width: 141px;
+}
+
+span.fleamarket__similar_ads_product_name{
+    font-family: 'HelveticaNeueCyrBold';
+    display: block;
+    color: #0c4370;
+}
+
+span.fleamarket__similar_ads_product_price{
+    font-family: 'HelveticaNeueCyrLight';
+    color: #282828;
+    display: block;
+    margin: 5px 0;
+}
+
+span.fleamarket__similar_ads_product_city{
+    font-family: 'HelveticaNeueCyrLight';
+    color: #282828;
+    display: block;
+    font-size: 12px;
+}

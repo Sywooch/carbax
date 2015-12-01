@@ -1,6 +1,11 @@
 <?php
+use common\models\db\Services;
+use common\models\db\User;
+use frontend\modules\flea_market\widgets\SimilarAds;
 use frontend\widgets\FleaMarketSearch;
 
+$this->registerJsFile('http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js');
+$this->registerCssFile('http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css');
 
 echo FleaMarketSearch::widget(['title'=>false]);?>
 <div class="fleamarket__headProductTop">
@@ -9,32 +14,43 @@ echo FleaMarketSearch::widget(['title'=>false]);?>
         Все объявления в Санкт-Петербурге  /  Транспорт  /  Запчасти и аксессуары  /  Запчасти  /  Для автомобилей  /  Стекла
     </div>
     <div class="fleamarket__views_product">
-        Просмотров: <span>всего 780, сегодня 25</span>
+        Просмотров: <span><?=$product->views;?></span>
     </div>
 </div>
 <section class="fleamarket__wrap_view">
     <div class="contain_wr">
         <div class="fleamarket__head">
-            <h1>Land Rover Range Rover, 2006</h1>
-            <div class="fleamarket__created">Размещено сегодня в 11:51</div>
-            <span>Редактировать, закрыть, поднять объявление</span>
+            <h1><?=$product->name;?></h1>
+            <div class="fleamarket__created">Размещено <?=date('d.m.y в H:i:s',$product->dt_add);?></div>
+            <span>
+                <a href="#">Редактировать,</a> <a href="#">закрыть,</a> <a href="#">поднять</a> объявление</span>
         </div>
         <div class="fleamarket__slider">
-
+            <div class="fotorama" data-nav="thumbs">
+                <?php foreach ($images as $img) {
+                    ?>
+                    <img src="/<?=$img->img?>" alt="">
+                    <?php
+                }
+                ?>
+            </div>
         </div>
         <div class="fleamarketInfoProduct">
            <div class="price">
                Цена
-               <span>13300 руб.</span>
+               <span><?=$product->price;?> руб.</span>
            </div>
-
-            <div class="fleamarket__company">
-                Компания
-                <span>Мир автостекла <span class="fleamarket__onCarbax">на Carbax c 14 октября 2015</span></span>
-            </div>
+            <?php
+                if($product->service_id > 0){
+            ?>
+                <div class="fleamarket__company">
+                    Компания
+                    <span><?= Services::find()->where(['id'=>$product->service_id])->one()->name?> <!--<span class="fleamarket__onCarbax">на Carbax c 14 октября 2015</span>--></span>
+                </div>
+            <?php } ?>
             <div class="fleamarket__contact_person">
                 Контактное лицо
-                <span>Константин</span>
+                <span><?= User::find()->where(['id' => $product->user_id])->one()->username?></span>
                 <div class="fleamarket__user_contact">
                     <span class="fleamarket__user_tel">Показать телефон</span>
                     <span class="fleamarket__user_mes">Написать сообщение</span>
@@ -42,24 +58,34 @@ echo FleaMarketSearch::widget(['title'=>false]);?>
                 </div>
             </div>
             <div class="fleamarket__city">
-                Город <span>Москва</span>
+                Город <span><?= \common\models\db\GeobaseCity::find()->where(['id'=>$product->city_id])->one()->name;?></span>
             </div>
             <div class="fleamarket__type_product">
-                Вид товара: Запчасти / Для автомобилей / Стекла
+                Вид товара: <?=$category;?>
             </div>
             <div class="fleamarket_product_description">
-                Профессиональный установочный центр предлагает услуги по замене автостёкол. Лобовое стекло, боковое, заднее стекло с заменой сегодня! Тонировка. В наличии и на заказ автостекла практически на любой автомобиль, доставка по городу бесплатно.
-                Так же продажа и установка стёкол на спецтехнику
-                Работает выездная бригада.
+                <?=$product->descr;?>
             </div>
             <div class="fleamarket__number_ads">
-                Номер объявления: 6398547
+                Номер объявления:<?=$product->id;?>
             </div>
 
         </div>
 
-    <?php
-        \common\classes\Debug::prn($product);
-    ?>
     </div>
+    <div class="fleamarket__footer">
+        <a href="#" class="write_seller">Написать продавцу</a>
+        <a href="#" class="favorites_products">В избранное</a>
+        <a href="#" class="complain_products">Пожаловаться</a>
+        <a href="#" class="share_products">Поделиться</a>
+        <div class="fleamarket__socseti">
+            <a href="#"><img src="/media/img/vk.png" alt=""></a>
+            <a href="#"><img src="/media/img/ok.png" alt=""></a>
+            <a href="#"><img src="/media/img/fb.png" alt=""></a>
+            <a href="#"><img src="/media/img/gg.png" alt=""></a>
+            <a href="#"><img src="/media/img/tw.png" alt=""></a>
+            <a href="#"><img src="/media/img/mm.png" alt=""></a>
+        </div>
+    </div>
+    <?= SimilarAds::widget(['id'=>$product->id,'catid'=>$product->category_id]);?>
 </section>

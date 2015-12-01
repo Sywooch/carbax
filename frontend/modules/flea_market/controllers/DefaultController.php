@@ -354,8 +354,12 @@ class DefaultController extends Controller
 
 
     public function actionView(){
+        //$this->update($runValidation, $attributeNames) !== false;
         $this->view->params['officeHide'] = true;
         $product = Market::find()->where(['id' => $_GET['id']])->one();
+        //Debug::prn($product->views);
+        $product->updateCounters(['views'=>1]);
+
         $nameTypeAuto = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one();
         $marka = TofManufacturers::find()->where(['mfa_id' => $product->man_id])->one();
         $model = TofModels::find()->where(['mod_id' => $product->model_id])->one();
@@ -368,9 +372,9 @@ class DefaultController extends Controller
 
         foreach ($category as $cat) {
             //Debug::prn($cat);
-            $nameCat .= ' / ' . TofSearchTree::find()->where(['str_id' => $cat])->one()->str_des;
+            $nameCat .= ' - ' . TofSearchTree::find()->where(['str_id' => $cat])->one()->str_des;
         }
-
+        $images = ProductImg::find()->where(['product_id'=>$_GET['id']])->all();
         return $this->render('view',
             [
                 'product' => $product,
@@ -381,6 +385,7 @@ class DefaultController extends Controller
                 'region' => $region,
                 'city' => $city,
                 'category' => $nameCat,
+                'images' => $images,
             ]);
     }
 }
