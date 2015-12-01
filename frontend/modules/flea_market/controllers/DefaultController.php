@@ -131,7 +131,7 @@ class DefaultController extends Controller
 
         Yii::$app->session->setFlash('success','Товар успешно добавлен');
 
-        $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id])->all();
+        $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])->all();
 
         return $this->render('index',
             [
@@ -173,7 +173,7 @@ class DefaultController extends Controller
 
     public function actionProduct_delite(){
         Market::deleteAll(['id'=>$_GET['id']]);
-        $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id])->all();
+        $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id, 'prod_type' => 0])->all();
         Yii::$app->session->setFlash('ssuccess','Товар успешно удален');
         return $this->render('index',
             [
@@ -274,7 +274,7 @@ class DefaultController extends Controller
             }
         }
         Yii::$app->session->setFlash('success','Товар успешно обновлен');
-        $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id])->all();
+        $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id, 'prod_type' => 0])->all();
 
         return $this->render('index',
             [
@@ -350,5 +350,42 @@ class DefaultController extends Controller
     public function actionShow_cat()
     {
         echo CategoryProductTecDoc::widget();
+    }
+
+
+    public function actionView(){
+        //$this->update($runValidation, $attributeNames) !== false;
+        $this->view->params['officeHide'] = true;
+        $product = Market::find()->where(['id' => $_GET['id']])->one();
+        //Debug::prn($product->views);
+        $product->updateCounters(['views'=>1]);
+
+        $nameTypeAuto = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one();
+        $marka = TofManufacturers::find()->where(['mfa_id' => $product->man_id])->one();
+        $model = TofModels::find()->where(['mod_id' => $product->model_id])->one();
+        $type = TofTypes::find()->where(['typ_id' => $product->type_id])->one();
+        $region = GeobaseRegion::find()->where(['id' => $product->region_id])->one();
+        $city = GeobaseCity::find()->where(['id' => $product->city_id])->one();
+        $category = explode(',', $product->category_id_all);
+        array_pop($category);
+        $nameCat = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one()->name;
+
+        foreach ($category as $cat) {
+            //Debug::prn($cat);
+            $nameCat .= ' - ' . TofSearchTree::find()->where(['str_id' => $cat])->one()->str_des;
+        }
+        $images = ProductImg::find()->where(['product_id'=>$_GET['id']])->all();
+        return $this->render('view',
+            [
+                'product' => $product,
+                'nametype' => $nameTypeAuto,
+                'marka' => $marka,
+                'model' => $model,
+                'type' => $type,
+                'region' => $region,
+                'city' => $city,
+                'category' => $nameCat,
+                'images' => $images,
+            ]);
     }
 }
