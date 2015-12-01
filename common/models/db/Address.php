@@ -11,6 +11,8 @@ use Yii;
  * @property integer $service_id
  * @property string $address
  * @property string $geo
+ * @property string $region_id
+ * @property string $city_id
  *
  * @property Services $service
  */

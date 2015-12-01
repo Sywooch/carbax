@@ -197,12 +197,16 @@ jQuery(document).ready(function ($) {
     });
 
     $(document).on('click', '#delAddress', function(){
+        var id = $(this).prev().attr('id');
+        console.log(id);
         $(this).prev().remove();
         $(this).remove();
+        $('#' + id + '_region').remove();
+        $('#' + id + '_city').remove();
 
-        var count = parseInt($('#addressCount').attr('count'), 10);
+        /*var count = parseInt($('#addressCount').attr('count'), 10);
         count = count - 1;
-        $('#addressCount').attr('count', count);
+        $('#addressCount').attr('count', count);*/
 
         $('#map').empty();
         var myMap;
@@ -227,8 +231,57 @@ jQuery(document).ready(function ($) {
 
     });
 
+    $('#selectRegionWidget').on('change', function(){
+        var region = $(this).val();
+        $('#addressBoxWidget').html('');
+        $.ajax({
+            type: 'POST',
+            url: "/services/services/get_city_select",
+            data: 'region=' + region,
+            success: function(data){
+                $('#cityBoxWidget').html(data);
+            }
+        });
+    });
+
+    $(document).on('change','#selectCityWidget', function(){
+        $('#addressBoxWidget').html('<input id="inputAddressWidget" type="text" placeholder="Адрес">')
+    });
+
     $(document).on('click', '.addressEvent', function(){
+        var active = $('#addressCount').attr('active-id', $(this).attr('id'));
         $('#myModal').modal('show');
+    });
+
+    $('#addAddressTo').on('click', function(){
+        var region = $('#selectRegionWidget option:selected').text();
+        var regionId = $('#selectRegionWidget option:selected').val();
+        var city = $('#selectCityWidget option:selected').text();
+        var cityId = $('#selectCityWidget option:selected').val();
+        var address = $('#inputAddressWidget').val();
+        var active = $('#addressCount').attr('active-id');
+        var count = parseInt($('#addressCount').attr('count'), 10);
+
+        $('#' + active).val(region + ', г. ' + city + ', ' + address);
+        if(document.getElementById(active + '_region')!==null) {
+            $('#' + active + '_region').remove();
+            $('#' + active + '_city').remove();
+        }
+        $('#addressCount').append('<input type="hidden" id="' + active + '_region" name="address[' + count + '][regionId]" value="' + regionId + '">');
+        $('#addressCount').append('<input type="hidden" id="' + active + '_city" name="address[' + count + '][cityId]" value="' + cityId + '">');
+
+        var map = new Map();
+        $('#map').empty();
+
+        var address = [];
+        var i = 0;
+        $('.addContent__adress').each(function () {
+            address.push($(this).val());
+            i = i + 1;
+        });
+        map.addToMap(address, false);
+
+        $('#inputAddressWidget').val('');
     });
 
     $('#addAddress').on('click', function () {
@@ -236,7 +289,7 @@ jQuery(document).ready(function ($) {
         count = count + 1;
         $('#addressCount').attr('count', count);
 
-        $('<a href="#nowhere" id="delAddress" class="addContent__adress-add">-</a><input type="text" name="address[' + count + '][]" class="addContent__adress addressEvent" placeholder="Адрес автосервиса">').insertBefore('#firstAddress');
+        $('<a href="#nowhere" id="delAddress" class="addContent__adress-add">-</a><input type="text" name="address[' + count + '][title]" class="addContent__adress addressEvent" id="address_' + count + '" placeholder="Адрес автосервиса">').insertBefore('#firstAddress');
     });
     $('#addContentPhone').on('click', function () {
         $('<a href="#nowhere" id="delPhone" class="addContent__cont-add">-</a><div class="cleared"></div><label for="phonenumber_last"></label><input type="text" class="addContent__cont" name="phoneNumber[]">').insertBefore('#firstPhone');

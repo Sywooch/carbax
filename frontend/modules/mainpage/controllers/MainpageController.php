@@ -21,8 +21,9 @@ class MainpageController extends \yii\web\Controller
         $allTypeids = explode(',', $_POST['serviceTypeIds']);
         $services = Services::find()
             ->joinWith('address')
-            ->where(['service_type_id' => $allTypeids])
+            ->where(['service_type_id' => $allTypeids, 'address.city_id' => $_POST['cityId']])
             ->all();
+        //Debug::prn($services);
         $address = [];
         foreach($services as $s){
             if(!empty($s->address)){

@@ -3,10 +3,13 @@ use common\classes\Custom_function;
 use frontend\modules\services\widgets\GetAllGroupById;
 use frontend\widgets\AutoType;
 use frontend\widgets\ComfortZone;
+use frontend\widgets\SelectAddress;
 
 $this->title = "Редактирование";
 $this->params['breadcrumbs'][] = ['label' => 'Мои сервисы', 'url' => ['select_service']];
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->registerCssFile('/css/bootstrap.min.css');
 ?>
 
 <div class="addContent">
@@ -21,14 +24,14 @@ $this->params['breadcrumbs'][] = $this->title;
         $i = 1;
             foreach($address as $ad){
                 if($i == $count){ ?>
-                    <input type="text" name="address[]" class="addContent__adress" value="<?=$ad->address?>">
+                    <input type="text" id="address_<?=$i?>" name="address[<?=$i?>][title]" class="addContent__adress addressEvent" value="<?=$ad->address?>">
                     <span id="firstAddress"></span>
                     <a href="#nowhere" id="addAddress" class="addContent__adress-add">+</a>
                 <?php
                 }
                 else{
                     ?>
-                    <input type="text" name="address[]" class="addContent__adress" value="<?=$ad->address?>">
+                    <input type="text" id="address_<?=$i?>" name="address[<?=$i?>][title]" class="addContent__adress addressEvent" value="<?=$ad->address?>">
                     <a href="#nowhere" id="delAddress" class="addContent__adress-add">-</a>
                 <?php
                 }
@@ -160,5 +163,30 @@ $this->params['breadcrumbs'][] = $this->title;
                 <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
             </div>
         </div>
+        <span id="addressCount" count="<?=$count?>" active-id="">
+            <?php $i = 1; ?>
+            <?php foreach($address as $ad): ?>
+                <input type="hidden" id="address_<?=$i?>_region" name="address[<?=$i?>][regionId]" value="<?=$ad['region_id']?>">
+                <input type="hidden" id="address_<?=$i?>_city" name="address[<?=$i?>][cityId]" value="<?=$ad['city_id']?>">
+                <?php $i++; ?>
+            <?php endforeach; ?>
+        </span>
     </form>
 </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Добавте адрес</h4>
+            </div>
+            <div class="modal-body">
+                <?= SelectAddress::widget() ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                <button id="addAddressTo" data-dismiss="modal" type="button" class="btn btn-primary">Добавить</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

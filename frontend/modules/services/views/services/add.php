@@ -18,7 +18,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
         <input type="hidden" name="service_type" value="<?= $_GET['service_type'] ?>">
         <input type="text" name="title" class="addContent__title" placeholder="Название автосервиса">
 
-        <input type="text" name="address[0][]" class="addContent__adress addressEvent" placeholder="Адрес автосервиса">
+        <input type="text" id="address_0" name="address[0][title]" class="addContent__adress addressEvent" placeholder="Адрес автосервиса">
 
         <span id="firstAddress"></span>
         <a href="#nowhere" id="addAddress" class="addContent__adress-add">+</a>
@@ -144,7 +144,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
             </div>
         </div>
-        <span id="addressCount" count="0"></span>
+        <span id="addressCount" count="0" active-id=""></span>
     </form>
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
@@ -159,7 +159,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Добавить</button>
+                <button id="addAddressTo" data-dismiss="modal" type="button" class="btn btn-primary">Добавить</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
