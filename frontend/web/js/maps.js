@@ -31,7 +31,7 @@ jQuery(document).ready(function ($){
     }
 
 
-    $(document).on('focusout', '.addContent__adress', function () {
+    /*$(document).on('focusout', '.addContent__adress', function () {
         if($(this).val() != ''){
             var map = new Map();
             $('#map').empty();
@@ -44,9 +44,10 @@ jQuery(document).ready(function ($){
             });
             map.addToMap(address, false);
         }
-    });
+    });*/
 
     $('.main_category_to_map').on('click', function(){
+        var cityId = $('#coordinates').attr('cityId')
         $(this).toggleClass('mapFilterActivate');
         var serviceTypeIds = '';
         $('.mapFilterActivate').each(function(){
@@ -55,7 +56,7 @@ jQuery(document).ready(function ($){
         $.ajax({
             type: 'POST',
             url: "/mainpage/mainpage/get_address",
-            data: 'serviceTypeIds=' + serviceTypeIds.slice(0, -1),
+            data: 'serviceTypeIds=' + serviceTypeIds.slice(0, -1) + '&cityId=' + cityId,
             success: function (data) {
                 /*console.log(data);*/
                 $('#setAddress').html(data);

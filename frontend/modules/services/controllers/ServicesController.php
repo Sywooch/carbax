@@ -16,6 +16,7 @@ use common\models\db\Address;
 use common\models\db\AutoType;
 use common\models\db\BrandCars;
 use common\models\db\ComfortZone;
+use common\models\db\GeobaseCity;
 use common\models\db\Phone;
 use common\models\db\ServiceAddFields;
 use common\models\db\ServiceAutoType;
@@ -28,6 +29,7 @@ use common\models\db\WorkHours;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\web\Controller;
 
 class ServicesController extends Controller
@@ -80,6 +82,8 @@ class ServicesController extends Controller
         $service->email = $_POST['mailadress'];
         $service->user_id = Yii::$app->user->id;
         $service->save();
+
+        //Debug::prn($_POST);
 
         //Добавляем зоны комфорта
         if(isset($_POST['comfort'])) {
@@ -157,7 +161,9 @@ class ServicesController extends Controller
             foreach ($_POST['address'] as $address) {
                 $ar = new Address();
                 $ar->service_id = $service->id;
-                $ar->address = $address;
+                $ar->address = $address['title'];
+                $ar->region_id = $address['regionId'];
+                $ar->city_id = $address['cityId'];
                 $ar->save();
             }
         }
@@ -325,7 +331,9 @@ class ServicesController extends Controller
             foreach ($_POST['address'] as $address) {
                 $ar = new Address();
                 $ar->service_id = $serv->id;
-                $ar->address = $address;
+                $ar->address = $address['title'];
+                $ar->region_id = $address['regionId'];
+                $ar->city_id = $address['cityId'];
                 $ar->save();
             }
         }
@@ -395,5 +403,10 @@ class ServicesController extends Controller
         ServiceAutoType::deleteAll(['service_id'=>$id]);
         ServiceComfortZone::deleteAll(['service_id'=>$id]);
         ServiceBrandCars::deleteAll(['service_id'=>$id]);
+    }
+
+    public function actionGet_city_select(){
+        $city = GeobaseCity::find()->where(['region_id' => $_POST['region']])->all();
+        echo Html::dropDownList('city_widget', 0, ArrayHelper::map($city, 'id', 'name'), ['id'=>'selectCityWidget', 'prompt'=>'Город']);
     }
 }
