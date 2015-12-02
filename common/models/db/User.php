@@ -109,4 +109,9 @@ class User extends \yii\db\ActiveRecord
         $login = static::findOne($id);
         return $login->username;
     }
+
+    public function setPassword($password)
+    {
+        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
+    }
 }
