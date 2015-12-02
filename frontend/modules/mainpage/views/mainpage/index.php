@@ -4,6 +4,7 @@ use frontend\modules\mainpage\widgets\MainPageMap;
 use frontend\modules\news\widgets\NewsWidgetFront;
 use frontend\modules\offers\widgets\OffersWidgetFront;
 use frontend\widgets\FleaMarketSearch;
+use frontend\widgets\SelectRequestTypes;
 
 ?>
 
@@ -18,7 +19,9 @@ use frontend\widgets\FleaMarketSearch;
 
         <!-- <a href="#nowhere">Заявка на ремонт</a> -->
         <a href="#nowhere" class="first__but--but" >Оформить заявку</a>
-        <nav class="first-nav" role="navigation">
+       <?= SelectRequestTypes::widget(['classNav'=>'first-nav','classUl'=>'first-nav__list']); ?>
+
+        <!--<nav class="first-nav" role="navigation">
             <ul class="first-nav__list">
                 <li><a href="#">Автосалон</a></li>
                 <li><a href="#">Диски</a></li>
@@ -31,7 +34,7 @@ use frontend\widgets\FleaMarketSearch;
                 <li><a href="#">Запчасти</a></li>
                 <li><a href="#">Тюнинг</a></li>
             </ul>
-        </nav>
+        </nav>-->
     </div>
 
 </section>
