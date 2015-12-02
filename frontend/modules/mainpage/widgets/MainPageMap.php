@@ -13,7 +13,7 @@ use yii\base\Widget;
 class MainPageMap extends Widget
 {
     public function run(){
-        $ip = Yii::$app->ipgeobase->getLocation('89.223.27.255');
+        $ip = Yii::$app->ipgeobase->getLocation($_SERVER["REMOTE_ADDR"]);
         $regionId = GeobaseRegion::find()->where(['name' => $ip['region']])->one()->id;
         $cityId = GeobaseCity::find()->where(['region_id' => $regionId, 'name' => $ip['city']])->one()->id;
         //Debug::prn($cityId);
