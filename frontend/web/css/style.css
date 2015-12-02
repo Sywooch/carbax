@@ -324,3 +324,8 @@ span.fleamarket__similar_ads_product_city{
     display: block;
     font-size: 12px;
 }
+
+.profileElement {
+    margin: 10px 0 0 0;
+    font-weight: bold;
+}
