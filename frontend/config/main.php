@@ -72,6 +72,9 @@ return [
         'flea_market' => [
             'class' => 'frontend\modules\flea_market\Flea_market',
         ],
+        'profile' => [
+            'class' => 'frontend\modules\profile\Profile',
+        ],
     ],
     'params' => $params,
 ];
