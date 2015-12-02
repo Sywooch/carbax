@@ -75,6 +75,9 @@ return [
         'profile' => [
             'class' => 'frontend\modules\profile\Profile',
         ],
+        'request' => [
+            'class' => 'frontend\modules\request\Request',
+        ],
     ],
     'params' => $params,
 ];

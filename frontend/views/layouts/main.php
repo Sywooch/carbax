@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use common\models\db\User;
+use frontend\widgets\SelectRequestTypes;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -55,7 +56,8 @@ AppAsset::register($this);
         <a href="#" class="header--sales"><span>Спецпредложения</span></a>
         <div class="header--request">
             <a href="#" class="header--request--open">ЗАЯВКА НА СЕРВИС +</a>
-            <nav class="head-nav" role="navigation">
+            <?= SelectRequestTypes::widget(['classNav'=>'head-nav','classUl'=>'head-nav__list']); ?>
+            <!--<nav class="head-nav" role="navigation">
                 <ul class="head-nav__list">
                     <li><a href="#">Автосалон</a></li>
                     <li><a href="#">Диски</a></li>
@@ -68,7 +70,7 @@ AppAsset::register($this);
                     <li><a href="#">Запчасти</a></li>
                     <li><a href="#">Тюнинг</a></li>
                 </ul>
-            </nav>
+            </nav>-->
         </div>
         <?=Html::a('', [Url::to('/logout')], ['class'=>'header--logout', 'data'=>['method' => 'post']]);?>
         <!--<a href="#" class="header--logout"></a>-->

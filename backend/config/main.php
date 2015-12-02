@@ -40,6 +40,9 @@ return [
         'category_news' => [
             'class' => 'backend\modules\category_news\Category_news',
         ],
+        'request_type' => [
+            'class' => 'backend\modules\request_type\Request_type',
+        ],
     ],
     'components' => [
         'request' => [
@@ -55,6 +58,7 @@ return [
                 'brand_cars' => 'brand_cars/brand_cars',
                 'comfort_zone' => '/comfort_zone/comfort_zone/',
                 'news' => '/news/news',
+                'request_type' => '/request_type/request_type',
             ],
         ],
         'log' => [
