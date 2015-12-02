@@ -3,8 +3,8 @@
 namespace frontend\modules\profile\controllers;
 
 use common\classes\Debug;
-use common\models\db\User;
 use Yii;
+use common\models\db\User;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 
@@ -75,5 +75,13 @@ class DefaultController extends Controller
             [
                 'user' => User::find()->where(['id'=>Yii::$app->user->id])->one(),
             ]);
+    }
+
+    public function actionView($id = null){
+        $userId = ($id == null) ? Yii::$app->user->id : $id;
+
+        $user = User::find()->where(['id' => $userId])->one();
+
+        return $this->render('view', ['user' => $user]);
     }
 }
