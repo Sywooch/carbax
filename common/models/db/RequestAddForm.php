@@ -41,8 +41,9 @@ class RequestAddForm extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'form_type' => 'Form Type',
+            'form_type' => 'Тип формы',
             'key' => 'Key',
+            'name' => 'Название',
         ];
     }
 }

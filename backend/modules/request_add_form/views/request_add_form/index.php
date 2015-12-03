@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\request_add_form\models\RequestAddFormSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Request Add Forms';
+$this->title = 'Формы заявок';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="request-add-form-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Request Add Form', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать новую форму', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,9 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'name',
-            'key',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

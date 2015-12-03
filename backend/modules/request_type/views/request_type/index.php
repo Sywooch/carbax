@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\request_type\models\RequestTypeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Request Types';
+$this->title = 'Типы заявок';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="request-type-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Request Type', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать новый тип', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -24,8 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            
             'name',
 
             ['class' => 'yii\grid\ActionColumn'],
