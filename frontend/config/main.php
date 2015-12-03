@@ -78,6 +78,9 @@ return [
         'request' => [
             'class' => 'frontend\modules\request\Request',
         ],
+        'ajax' => [
+            'class' => 'frontend\modules\ajax\Ajax',
+        ],
     ],
     'params' => $params,
 ];

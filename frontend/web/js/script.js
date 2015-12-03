@@ -71,6 +71,22 @@ jQuery(document).ready(function ($) {
         })
     })(jQuery)
 
+    $(document).on('change', '#selectAutoWidget', function(){
+        $(this).nextAll().remove();
+        var id = $(this).val();
+        var type = $(this).attr('type');
+
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_auto",
+            data: 'id=' + id + '&type=' + type,
+            success: function (data) {
+                $('.selectCar').append(data);
+            }
+        });
+
+    });
+
     $(document).on('change', '.catSel', function(){
         $(this).nextAll().remove();
         if($(this).hasClass('firstCatSel')){

@@ -2,8 +2,11 @@
 
 namespace frontend\modules\garage\controllers;
 
+use common\classes\Debug;
+use common\models\db\Garage;
+use common\models\db\TofManufacturers;
+use common\models\db\TofModels;
 use Yii;
-use frontend\modules\garage\models\Garage;
 use frontend\modules\garage\models\GarageSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -28,20 +31,40 @@ class GarageController extends Controller
         ];
     }
 
+    public function beforeAction($action)
+    {
+        if ($action->id == 'index') {
+            Yii::$app->controller->enableCsrfValidation = false;
+        }
+
+        return parent::beforeAction($action);
+    }
+
     /**
      * Lists all Garage models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new GarageSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if(isset($_POST['manufactures'])){
+            $garage = new Garage();
+            $garage->comments = $_POST['comments'];
+            $garage->man_id = $_POST['manufactures'];
+            $garage->model_id = $_POST['models'];
+            $garage->type_id = $_POST['types'];
+            $garage->dt_add = time();
+            $garage->user_id = Yii::$app->user->id;
+
+            $manName = TofManufacturers::find()->where(['mfa_id'=>$_POST['manufactures']])->one()->mfa_brand;
+            $modelName = TofModels::find()->where(['mod_id' => $_POST['models']])->one()->mod_name;
+
+            $garage->title = $manName . ' / ' . $modelName;
+            $garage->save();
+        }
         $user = Yii::$app->user->id;
         $model = new Garage();
         $car = $model->find()->where(['user_id'=>$user])->all();
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
             'car' => $car,
         ]);
     }
@@ -69,15 +92,7 @@ class GarageController extends Controller
         $user = Yii::$app->user->id;
         $model->user_id = $user;
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            //$model->dt_add = time();
-            $model->save();
-            return $this->redirect(['index']);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
+        return $this->render('_form', ['model' => $model]);
     }
 
     /**
@@ -126,5 +141,9 @@ class GarageController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionAdd(){
+
     }
 }

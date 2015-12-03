@@ -65,7 +65,7 @@ class DefaultController extends Controller
     {
 
         $tofMan = TofManufacturers::find()->orderBy('mfa_brand')->all();
-        $region = GeobaseRegion::find()->all();
+        $region = GeobaseRegion::find()->orderBy('name')->all();
         $autoType = CategoriesAuto::find()->all();
         return $this->render('add',
             [

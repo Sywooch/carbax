@@ -9,6 +9,8 @@ use yii\grid\GridView;
 
 $this->title = 'Гараж';
 /*$this->params['breadcrumbs'][] = $this->title;*/
+
+$this->registerCssFile('/css/bootstrap.min.css');
 ?>
 <div class="garage-index">
     <section class="main-container">
@@ -20,47 +22,18 @@ $this->title = 'Гараж';
         <?= Html::a('Добавить автомобиль', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php
-        foreach ($car as $v){
-            if($v->type_car == 1){
-                $type = 'Легковой автомобиль';
-            }
-            if($v->type_car == 2){
-                $type = 'Грузовой автомобиль';
-            }
-            if($v->type_car == 3){
-                $type = 'Мотоцикл';
-            }
-    ?>
-        <div>
-            <?=$type;?><br />
-            <span>Марка: <?=$v->brand;?></span>
-            <span>Модель: <?=$v->models;?></span>
-            <span>Год выпуска: <?=$v->year;?></span>
-            <span>ДВС: <?=$v->dvs;?></span>
-            <span>КПП: <?=$v->kpp;?></span>
-            <a href="/garage/garage/delete?id=1" title="Delete" aria-label="Delete" data-confirm="Are you sure you want to delete this item?" data-method="post" data-pjax="0"><span class="glyphicon glyphicon-trash"></span></a>
-        </div>
-    <?php
-        }
-    ?>
-
-    <?/*= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'type_car',
-            'brand',
-            'models:ntext',
-            // 'year:ntext',
-            // 'dvs:ntext',
-            // 'kpp:ntext',
-            // 'dt_add:ntext',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); */?>
+    <h4>Мои авто</h4>
+    <table class="table table-bordered">
+    <?php foreach($car as $c): ?>
+        <tr>
+            <td>
+                <?=$c['title']?>
+            </td>
+            <td>
+                <?= Html::a('Удалить', ['delete', 'id'=>$c['id']], ['class' => 'btn btn-danger', 'data' => ['confirm' => 'Удалить авто?', 'method' => 'post',]]) ?>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </table>
 </section>
 </div>
