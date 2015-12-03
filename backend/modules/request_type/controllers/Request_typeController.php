@@ -2,7 +2,10 @@
 
 namespace backend\modules\request_type\controllers;
 
+use common\classes\Debug;
 use common\models\db\AddFieldsGroup;
+use common\models\db\RequestAddForm;
+use common\models\db\RequestTypeAddForm;
 use common\models\db\RequestTypeGroup;
 use Yii;
 use backend\modules\request_type\models\RequestType;
@@ -67,6 +70,12 @@ class Request_typeController extends Controller
         foreach($group as $g){
             $gr[$g->id] = $g->name;
         }
+
+        $form = RequestAddForm::find()->all();
+
+        foreach ($form as $f ) {
+            $fr[$f->id] = $f->name;
+        }
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $model->save();
             foreach($_POST[group] as $p){
@@ -75,11 +84,19 @@ class Request_typeController extends Controller
                 $stg->add_fields_group_id = $p;
                 $stg->save();
             }
+            foreach ($_POST['formType'] as $frt ) {
+                $rf = new RequestTypeAddForm();
+                $rf->request_type_id = $model->id;
+                $rf->add_form_id = $frt;
+                $rf->save();
+            }
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
                 'group' => $gr,
+                'form' => $fr,
             ]);
         }
     }
@@ -103,13 +120,40 @@ class Request_typeController extends Controller
             $sel[] = $s->add_fields_group_id;
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $form = RequestAddForm::find()->all();
+
+        foreach ($form as $f ) {
+            $fr[$f->id] = $f->name;
+        }
+
+        $selForm = RequestTypeAddForm::find()->where(['request_type_id'=>$id])->all();
+        foreach ($selForm as $sf) {
+            $selF[$sf->add_form_id] = $sf->add_form_id;
+        }
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->save();
+            RequestTypeGroup::deleteAll(['request_type_id'=>$model->id]);
+            RequestTypeAddForm::deleteAll(['request_type_id'=>$model->id]);
+            foreach($_POST[group] as $p){
+                $stg = new RequestTypeGroup();
+                $stg->request_type_id = $model->id;
+                $stg->add_fields_group_id = $p;
+                $stg->save();
+            }
+            foreach ($_POST['formType'] as $frt ) {
+                $rf = new RequestTypeAddForm();
+                $rf->request_type_id = $model->id;
+                $rf->add_form_id = $frt;
+                $rf->save();
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
                 'group' => $gr,
                 'selected' => $sel,
+                'formType' => $fr,
+                'selForm' =>  $selF,
             ]);
         }
     }

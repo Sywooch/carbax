@@ -28,6 +28,19 @@ use yii\widgets\ActiveForm;
     <?= Html::label('Группа услуг', 'group'); ?>
     <?= Html::dropDownList('group', $sel, $group, ['id'=>'group', 'class'=>'form-control', 'multiple'=>'multiple']); ?>
 
+    <?php
+    //\common\classes\Debug::prn($selForm);
+        if(isset($selForm)){
+            $selForm = $selForm;
+        }
+        else{
+            $selForm = null;
+        }
+
+    ?>
+
+    <?= Html::label('Выберите формы','formType');?>
+    <?= Html::dropDownList('formType',$selForm,$formType,['id'=>'formType','class'=>'form-control','multiple'=>'multiple']); ?>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

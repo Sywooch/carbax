@@ -9,6 +9,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 
 $this->registerCssFile('/css/bootstrap.min.css');
+
 ?>
 <section class="main-container">
     <div class="garage-create">

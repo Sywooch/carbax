@@ -18,6 +18,8 @@ $this->params['breadcrumbs'][] = 'Update';
         'model' => $model,
         'group' => $group,
         'selected' => $selected,
+        'formType' => $formType,
+        'selForm' =>  $selForm,
     ]) ?>
 
 </div>

@@ -18,8 +18,18 @@ use yii\helpers\Html;
                 <li><?= Html::a('Новости', ['/news']) ?></li>
             </ul>
         </li>
-        <li><?= Html::a('Типы заявок', ['/request_type']) ?></li>
+
         <li><?= Html::a('Типы сервисов', ['/service_type']) ?></li>
+
+        <li><a href="#">Заявки</a>
+            <ul>
+                <li><?= Html::a('Типы заявок', ['/request_type']) ?></li>
+                <li><?= Html::a('Формы заявок', ['/request_add_form']) ?></li>
+            </ul>
+        </li>
+
+
+
         <li><?= Html::a('Пользователи', ['/user/admin/index']) ?></li>
         <li><?= Html::a('Медиа-менеджер', ['/media']) ?></li>
 

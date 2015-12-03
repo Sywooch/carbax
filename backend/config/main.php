@@ -43,6 +43,9 @@ return [
         'request_type' => [
             'class' => 'backend\modules\request_type\Request_type',
         ],
+        'request_add_form' => [
+            'class' => 'backend\modules\request_add_form\Request_add_form',
+        ],
     ],
     'components' => [
         'request' => [
@@ -59,6 +62,7 @@ return [
                 'comfort_zone' => '/comfort_zone/comfort_zone/',
                 'news' => '/news/news',
                 'request_type' => '/request_type/request_type',
+                'request_add_form' => '/request_add_form/request_add_form'
             ],
         ],
         'log' => [
