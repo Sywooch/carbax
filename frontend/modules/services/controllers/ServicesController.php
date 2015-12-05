@@ -25,6 +25,7 @@ use common\models\db\ServiceComfortZone;
 use common\models\db\Services;
 use common\models\db\ServiceType;
 use common\models\db\ServiceTypeGroup;
+use common\models\db\TofManufacturers;
 use common\models\db\WorkHours;
 use Yii;
 use yii\filters\VerbFilter;
@@ -188,7 +189,7 @@ class ServicesController extends Controller
         $servicWS = $servic->website;
         $phone = Phone::find()->where(['service_id'=>$servicId])->all();
         $email = $servic->email;
-        $carBrands = BrandCars::find()->all();
+        $carBrands = ServiceBrandCars::find()->where(['service_id'=>$servicId])->all();
         $serviceComfortZone = ServiceComfortZone::find()->where(['service_id'=>$servicId])->all();
         foreach($serviceComfortZone as $cz){
             $comfortZone[] = ComfortZone::find()->where(['id'=>$cz->comfort_zone_id])->one();

@@ -4,6 +4,7 @@ use frontend\modules\services\widgets\GetAllGroupById;
 use frontend\widgets\AutoType;
 use frontend\widgets\ComfortZone;
 use frontend\widgets\SelectAddress;
+use frontend\widgets\SelectMultiplayAuto;
 
 $this->title = "Редактирование";
 $this->params['breadcrumbs'][] = ['label' => 'Мои сервисы', 'url' => ['select_service']];
@@ -141,15 +142,16 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 </div>
             </div>
             <div class="singleContent__desc--carbrands">
-                <h3>Марки автомобилей</h3>
+                <?= SelectMultiplayAuto::widget(['serviceId'=>$serviceID]);?>
+                <!--<h3>Марки автомобилей</h3>
                 <?php
-                foreach ($brends as $br ) { ?>
-                        <input type="checkbox" <?php if($br->id == $brendSelect[$br->id]->brand_cars_id){echo 'checked';}?> id="<?=$br->id?>" name="brands[]" value="<?=$br->id?>"/>
-                        <label for="<?=$br->id?>"><span></span><?=$br->name?></label>
-                <?php
-
+/*                foreach ($brends as $br ) { */?>
+                        <input type="checkbox" <?php /*if($br->id == $brendSelect[$br->id]->brand_cars_id){echo 'checked';}*/?> id="<?/*=$br->id*/?>" name="brands[]" value="<?/*=$br->id*/?>"/>
+                        <label for="<?/*=$br->id*/?>"><span></span><?/*=$br->name*/?></label>
+                --><?php
+/*
                 }
-                ?>
+                */?>
             </div>
 
             <?= GetAllGroupById::widget(

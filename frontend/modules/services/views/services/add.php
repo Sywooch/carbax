@@ -3,6 +3,7 @@ use frontend\modules\services\widgets\GetAllGroupById;
 use frontend\widgets\AutoType;
 use frontend\widgets\ComfortZone;
 use frontend\widgets\SelectAddress;
+use frontend\widgets\SelectMultiplayAuto;
 use yii\helpers\ArrayHelper;
 
 $this->title = "Добавить сервис";
@@ -131,11 +132,12 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 </div>
             </div>
             <div class="singleContent__desc--carbrands">
-                <h3>Марки автомобилей</h3>
-                <?php foreach($brands as $b): ?>
-                <input type="checkbox" id="<?=$b->id?>" name="brands[]" value="<?=$b->id?>"/>
-                <label for="<?=$b->id?>"><span></span><?=$b->name?></label>
-                <?php endforeach ?>
+                <!--<h3>Марки автомобилей</h3>
+                <?php /*foreach($brands as $b): */?>
+                <input type="checkbox" id="<?/*=$b->id*/?>" name="brands[]" value="<?/*=$b->id*/?>"/>
+                <label for="<?/*=$b->id*/?>"><span></span><?/*=$b->name*/?></label>
+                --><?php /*endforeach */?>
+                <?= SelectMultiplayAuto::widget(); ?>
             </div>
             <?= GetAllGroupById::widget(['groupId' => $_GET['service_type']]) ?>
             <?= ComfortZone::widget()?>

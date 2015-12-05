@@ -2,6 +2,7 @@
 
 use common\classes\Custom_function;
 use common\models\db\AddFieldsGroup;
+use common\models\db\TofManufacturers;
 use frontend\modules\services\widgets\PrintAdditionalFieldsByServisId;
 
 $this->title = $serviceName;
@@ -84,7 +85,7 @@ $this->registerCssFile('/css/bootstrap_btn.min.css');
                 <div class="singleContent__desc--carbrands">
                     <h3>Марки автомобилей</h3>
                     <?php foreach($carBrands as $cb):?>
-                        <div class="carBrands"><?=$cb->name;?></div>
+                        <div class="carBrands"><?= TofManufacturers::find()->where(['mfa_id'=>$cb->brand_cars_id])->one()->mfa_brand; ?></div>
                     <?php endforeach;?>
                 </div>
 
