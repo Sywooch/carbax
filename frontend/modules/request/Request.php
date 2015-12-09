@@ -2,6 +2,8 @@
 
 namespace frontend\modules\request;
 
+use yii\helpers\Url;
+
 class Request extends \yii\base\Module
 {
     public $controllerNamespace = 'frontend\modules\request\controllers';
@@ -11,5 +13,6 @@ class Request extends \yii\base\Module
         parent::init();
 
         // custom initialization code goes here
+        $this->layoutPath = Url::to('@frontend/views/layouts');
     }
 }

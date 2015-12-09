@@ -44,6 +44,7 @@ use yii\widgets\ActiveForm;
 
 
     <?= $form->field($model,'view_widget_auto')->checkbox(['label'=>'Отображать выбор марки авто']);?>
+    <?= $form->field($model,'view_category_auto')->checkbox(['label'=>'Отображать выбор категорий авто']);?>
 
 
    <!-- --><?/*= Html::checkbox('view_vidjet_auto',$ch,['label'=>'Отображать выбор марки авто']); */?>

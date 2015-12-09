@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use frontend\widgets\CommercBanners;
+use frontend\widgets\SelectRequestTypes;
 use frontend\widgets\TogglePrivateOfficeLeft;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
@@ -57,20 +58,7 @@ AppAsset::register($this);
         <a href="#" class="header--sales"><span>Спецпредложения</span></a>
         <div class="header--request">
             <a href="#" class="header--request--open">ЗАЯВКА НА СЕРВИС +</a>
-            <nav class="head-nav" role="navigation">
-                <ul class="head-nav__list">
-                    <li><a href="#">Автосалон</a></li>
-                    <li><a href="#">Диски</a></li>
-                    <li><a href="#">Шиномонтаж</a></li>
-                    <li><a href="#">Автомойка</a></li>
-                    <li><a href="#">Страхование</a></li>
-                    <li><a href="#">Эвакуатор</a></li>
-                    <li><a href="#">Шины</a></li>
-                    <li><a href="#">Автосервис</a></li>
-                    <li><a href="#">Запчасти</a></li>
-                    <li><a href="#">Тюнинг</a></li>
-                </ul>
-            </nav>
+            <?= SelectRequestTypes::widget(['classNav'=>'head-nav','classUl'=>'head-nav__list']); ?>
         </div>
         <?=Html::a('', [Url::to('/logout')], ['class'=>'header--logout', 'data'=>['method' => 'post']]);?>
         <!--<a href="<?/*=Url::to('/logout')*/?>" class="header--logout"></a>-->
