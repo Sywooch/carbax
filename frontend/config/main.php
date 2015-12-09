@@ -21,6 +21,7 @@ return [
             'useFileTransport' => false,
         ],
         'urlManager'   => [
+            'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName'  => false,
             'rules'           => [
@@ -34,6 +35,8 @@ return [
                 'garage' => 'garage/garage',
                 'add' => 'services/services/add',
                 'add_to_sql' => 'services/services/add_to_sql',
+                'request/<id:\d+>' => 'request/default/request/',
+                'send_request' => 'request/default/send_request/',
             ],
         ],
         'log' => [

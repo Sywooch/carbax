@@ -75,11 +75,11 @@ jQuery(document).ready(function ($) {
         $(this).nextAll().remove();
         var id = $(this).val();
         var type = $(this).attr('type');
-
+        var view = $('.selectCar').attr('data-view');
         $.ajax({
             type: 'POST',
             url: "/ajax/ajax/get_auto",
-            data: 'id=' + id + '&type=' + type,
+            data: 'id=' + id + '&type=' + type + '&view=' + view,
             success: function (data) {
                 $('.selectCar').append(data);
             }

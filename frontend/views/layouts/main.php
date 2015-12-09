@@ -43,7 +43,7 @@ AppAsset::register($this);
     else:
     ?>
     <div class="header__container">
-        <a href="#" class="header--logo">
+        <a href="/" class="header--logo">
             <img src="<?= Url::base() ?>/media/img/smalllogo.png" alt="">
             <h5>Car<span class="orange">bax</span></h5>
         </a>

@@ -14,6 +14,7 @@ use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
 use common\models\db\TofModels;
 use common\models\db\TofTypes;
+use frontend\modules\flea_market\widgets\CategoryProductTecDoc;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\web\Controller;
@@ -37,6 +38,11 @@ class AjaxController extends Controller
                 ArrayHelper::map(TofTypes::find()->where(['typ_mod_id' => $_POST['id']])->all(), 'typ_id', 'typ_mmt_cds'),
                 ['prompt' => 'Модель','class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typ']
             );
+        }
+        if($_POST['type'] == 'typ'){
+            if($_POST['view'] == 1) {
+                echo CategoryProductTecDoc::widget();
+            }
         }
     }
 

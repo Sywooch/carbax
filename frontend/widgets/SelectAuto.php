@@ -14,8 +14,13 @@ use yii\base\Widget;
 
 class SelectAuto extends Widget
 {
+    public $view = '1';
+
     public function run(){
         $man = TofManufacturers::find()->orderBy('mfa_brand')->all();
-        return $this->render('select_auto', ['man' => $man]);
+        return $this->render('select_auto', [
+            'man' => $man,
+            'view'=>$this->view,
+        ]);
     }
 }

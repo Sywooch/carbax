@@ -21,5 +21,4 @@ class ComfortZone extends Widget
                 'czs' => $comfortZoneSelect,
             ]);
     }
-
 }
