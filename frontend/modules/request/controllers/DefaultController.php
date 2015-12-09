@@ -59,6 +59,7 @@ class DefaultController extends Controller
 
         $request = new Request();
         $request->request_type_id = $_POST['request_type_id'];
+        $request->user_id = Yii::$app->user->id;
         $request->save();
         unset($_POST['request_type_id']);
 

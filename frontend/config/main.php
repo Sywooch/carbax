@@ -37,6 +37,7 @@ return [
                 'add_to_sql' => 'services/services/add_to_sql',
                 'request/<id:\d+>' => 'request/default/request/',
                 'send_request' => 'request/default/send_request/',
+                'message' => 'message/default',
             ],
         ],
         'log' => [
@@ -83,6 +84,9 @@ return [
         ],
         'ajax' => [
             'class' => 'frontend\modules\ajax\Ajax',
+        ],
+        'message' => [
+            'class' => 'frontend\modules\message\Message',
         ],
     ],
     'params' => $params,
