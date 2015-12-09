@@ -10,6 +10,8 @@ namespace frontend\modules\ajax\controllers;
 
 
 use common\classes\Debug;
+use common\models\db\GeobaseCity;
+use common\models\db\GeobaseRegion;
 use common\models\db\TofModels;
 use common\models\db\TofTypes;
 use yii\helpers\ArrayHelper;
@@ -36,6 +38,16 @@ class AjaxController extends Controller
                 ['prompt' => 'Модель','class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typ']
             );
         }
+    }
+
+    public function actionGet_region_select(){
+        $regions = GeobaseRegion::find()->orderBy('name')->all();
+        echo Html::dropDownList('region',0, ArrayHelper::map($regions, 'id', 'name'),['id'=>'selectRegionWidgetEdit', 'prompt'=>'Регион','class' => 'addContent__adress']);
+    }
+
+    public function actionGet_city_select(){
+        $city = GeobaseCity::find()->where(['region_id' => $_POST['id']])->all();
+        echo Html::dropDownList('city',0, ArrayHelper::map($city, 'id', 'name'), ['id'=>'selectCityWidgetEdit', 'prompt'=>'Город','class' => 'addContent__adress']);
     }
 
 }

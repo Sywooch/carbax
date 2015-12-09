@@ -87,6 +87,32 @@ jQuery(document).ready(function ($) {
 
     });
 
+    $(document).on('change', '#selectRegionWidgetEdit', function(){
+        $(this).nextAll().remove();
+        var id = $(this).val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_city_select",
+            data: 'id=' + id ,
+            success: function (data) {
+                $('.regionWidgetBox').append(data);
+            }
+        });
+    });
+
+    $(document).on('click', '#changeRegion', function(){
+        $('#hiddenRegionId').remove();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_region_select",
+            data: 'get=region',
+            success: function (data) {
+                $('.regionWidgetBox').html(data);
+            }
+        });
+        return false;
+    });
+
     $(document).on('change', '.catSel', function(){
         $(this).nextAll().remove();
         if($(this).hasClass('firstCatSel')){
