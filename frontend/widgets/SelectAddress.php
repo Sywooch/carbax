@@ -15,9 +15,11 @@ use yii\base\Widget;
 class SelectAddress extends Widget
 {
 
+    public $address = true;
+
     public function run(){
-        $regions = GeobaseRegion::find()->all();
-        return $this->render('select_address', ['regions' => $regions]);
+        $regions = GeobaseRegion::find()->orderBy('name')->all();
+        return $this->render('select_address', ['regions' => $regions, 'address' => $this->address]);
     }
 
 }

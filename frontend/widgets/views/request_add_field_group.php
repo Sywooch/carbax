@@ -11,8 +11,10 @@ foreach ($groups as $group):
        <?php $additionalFieldsields = AdditionalFields::find()->where(['group_id' => $gr->id])->all();?>
         <?php
         foreach ($additionalFieldsields as $s) {?>
-            <input type="checkbox" id="<?=$gr->id."_".$s->id?>"  name="<?= $gr->label ?>[]" value="<?= $s->id ?>"/>
-            <label for="<?=$gr->id."_".$s->id?>"><span></span><?= $s->name ?></label>
+            <div>
+                <input type="checkbox" id="<?=$gr->id."_".$s->id?>"  name="<?= $gr->label ?>[]" value="<?= $s->id ?>"/>
+                <label for="<?=$gr->id."_".$s->id?>"><span></span><?= $s->name ?></label>
+            </div>
            <?php }
 
         ?>

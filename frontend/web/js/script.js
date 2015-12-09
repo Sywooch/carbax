@@ -286,8 +286,24 @@ jQuery(document).ready(function ($) {
         });
     });
 
+    $('#selectAutoFromGarage').on('click', function(){
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_garage",
+            data: 'user=user',
+            success: function(data){
+                $('#selectAuto').html(data);
+            }
+        });
+
+        return false;
+    });
+
     $(document).on('change','#selectCityWidget', function(){
-        $('#addressBoxWidget').html('<input id="inputAddressWidget" type="text" placeholder="Адрес">')
+        var printAddress = $('#addressBoxWidget').attr('print-address');
+        if(printAddress == '1'){
+            $('#addressBoxWidget').html('<input class="addContent__adress" id="inputAddressWidget" type="text" placeholder="Адрес">')
+        }
     });
 
     $(document).on('click', '.addressEvent', function(){

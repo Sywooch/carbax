@@ -15,6 +15,7 @@ use common\models\db\GeobaseRegion;
 use common\models\db\TofModels;
 use common\models\db\TofTypes;
 use frontend\modules\flea_market\widgets\CategoryProductTecDoc;
+use frontend\widgets\SelectAutoFromGarage;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\web\Controller;
@@ -54,6 +55,10 @@ class AjaxController extends Controller
     public function actionGet_city_select(){
         $city = GeobaseCity::find()->where(['region_id' => $_POST['id']])->all();
         echo Html::dropDownList('city',0, ArrayHelper::map($city, 'id', 'name'), ['id'=>'selectCityWidgetEdit', 'prompt'=>'Город','class' => 'addContent__adress']);
+    }
+
+    public function actionGet_garage(){
+        echo SelectAutoFromGarage::widget();
     }
 
 }
