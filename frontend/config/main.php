@@ -38,6 +38,8 @@ return [
                 'request/<id:\d+>' => 'request/default/request/',
                 'send_request' => 'request/default/send_request/',
                 'message' => 'message/default',
+                'my_requests' => 'request/default/all_requests',
+                'request_type' => 'request/default/request_type',
             ],
         ],
         'log' => [

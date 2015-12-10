@@ -8,7 +8,9 @@ use frontend\widgets\RequestAddFieldGroup;
 use frontend\widgets\SelectAddress;
 use frontend\widgets\SelectAuto;
 use yii\helpers\Html;
-
+$this->title = "Добавить заявку";
+$this->params['breadcrumbs'][] = ['label' => 'Мои заявки', 'url' => ['/my_requests']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <section class="main-container">
     <form id="addForm" action="send_request" method="post">

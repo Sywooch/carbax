@@ -134,10 +134,27 @@ class DefaultController extends Controller
         return $this->render('send_request');
     }
 
+    public function actionAll_requests(){
+        $requests = Request::find()->where(['user_id' => Yii::$app->user->id])->all();
+        return $this->render('my_requests', ['requests' => $requests]);
+    }
+
+    public function actionDelete($id){
+        Request::deleteAll(['id' => $id]);
+        Yii::$app->session->setFlash('success','Заявка успешно удалена.');
+        $requests = Request::find()->where(['user_id' => Yii::$app->user->id])->all();
+        return $this->render('my_requests', ['requests' => $requests]);
+    }
+
     public function generateRequestMsg($info){
         $data['title'] = $info['title'];
         $data['descr'] = $info['comm'];
         $data['brand_car'] = $info['manufactures'];
         return $this->renderPartial('request_msg_tpl', $data);
+    }
+
+    public function actionRequest_type(){
+        $requestType = RequestType::find()->all();
+        return $this->render('request_type', ['requestType' => $requestType]);
     }
 }

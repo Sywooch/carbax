@@ -11,13 +11,13 @@ $this->title = "Личный кабинет";
             <div class="serviceLink">Гараж</div>
         </div>
         <div class="serviceItem">
-            <div class="serviceIcon"><img src="<?= Url::base(true) ?>/media/img/zakaz.png" alt=""></div>
-            <div class="serviceLink">Заявка на сервис</div>
+            <div class="serviceIcon"><a href="<?= Url::to(['/my_requests']) ?>"><img src="<?= Url::base(true) ?>/media/img/zakaz.png" alt=""></a></div>
+            <div class="serviceLink">Заявка</div>
         </div>
-        <div class="serviceItem">
-            <div class="serviceIcon"><img src="<?= Url::base(true) ?>/media/img/zap.png" alt=""></div>
+        <!--<div class="serviceItem">
+            <div class="serviceIcon"><img src="<?/*= Url::base(true) */?>/media/img/zap.png" alt=""></div>
             <div class="serviceLink">Заявка на запчасти</div>
-        </div>
+        </div>-->
         <div class="serviceItem">
             <div class="serviceIcon"><a href="<?= Url::to(['/flea_market/default/sale_auto']) ?>"><img src="<?= Url::base(true) ?>/media/img/sale_auto.png" alt=""></a></div>
             <div class="serviceLink">Продать авто</div>
