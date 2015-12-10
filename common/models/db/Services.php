@@ -111,6 +111,14 @@ class Services extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getservice_add_fields()
+    {
+        return $this->hasMany(ServiceAddFields::className(), ['service_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getServiceAutoTypes()
     {
         return $this->hasMany(ServiceAutoType::className(), ['service_id' => 'id']);
@@ -120,6 +128,14 @@ class Services extends \yii\db\ActiveRecord
      * @return \yii\db\ActiveQuery
      */
     public function getServiceBrandCars()
+    {
+        return $this->hasMany(ServiceBrandCars::className(), ['service_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getservice_brand_cars()
     {
         return $this->hasMany(ServiceBrandCars::className(), ['service_id' => 'id']);
     }

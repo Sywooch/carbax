@@ -10,6 +10,7 @@ use common\models\db\RequestAdditionalFields;
 use common\models\db\RequestType;
 use common\models\db\RequestTypeAddForm;
 use common\models\db\RequestTypeGroup;
+use common\models\db\Services;
 use common\models\db\ServiceTypeGroup;
 use Yii;
 use yii\filters\VerbFilter;
@@ -70,6 +71,8 @@ class DefaultController extends Controller
             $addRequest->value = $value;
             $addRequest->save();
         }
+
+        $fields = [];
         foreach($groups as $group){
             $gr = AddFieldsGroup::find()->where(['id' => $group->add_fields_group_id])->one();
             if(isset($_POST[$gr->label])) {
@@ -77,13 +80,42 @@ class DefaultController extends Controller
                     $saf = new RequestAdditionalFields();
                     $saf->request_id = $request->id;
                     $saf->add_field_id = $label;
+                    $fields[] = $label;
                     $saf->save();
                 }
             }
         }
 
+        /*$services = Services::find()
+            ->select('services.id, address.address, user_id, name, email, description, add_fields_id, address.region_id, address.city_id, brand_cars_id')
+            ->leftJoin('service_add_fields', '`service_add_fields`.`service_id`')
+            ->leftJoin('address', '`address`.`service_id` = `services`.`id`')
+            ->leftJoin('service_brand_cars', '`service_brand_cars`.`service_id` = `services`.`id`')
+            ->where([
+                'address.region_id' => $_POST['regions'],
+                'service_add_fields.add_fields_id' => $fields
+            ])
+            ->andWhere(['address.region_id' => $_POST['regions']])
+            ->andWhere(['address.city_id' => $_POST['city_widget']])
+            ->with('address')
+            ->with('service_brand_cars')
+            ->all();*/
 
+        $services = Services::find()
+            ->joinWith(['address', 'service_add_fields','service_brand_cars'])
+            ->where([
+                'address.region_id' => $_POST['regions'],
+                'address.city_id' => $_POST['city_widget'],
+                'service_brand_cars.brand_cars_id' => $_POST['manufactures'],
+                'service_add_fields.add_fields_id' => $fields
+            ])
+            ->all();
 
-        Debug::prn($_POST);
+        $ids = [];
+        foreach($services as $service){
+            $ids[] = $service->id;
+        }
+
+        return $this->render('send_request');
     }
 }
