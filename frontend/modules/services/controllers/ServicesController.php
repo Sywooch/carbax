@@ -28,6 +28,7 @@ use common\models\db\ServiceTypeGroup;
 use common\models\db\TofManufacturers;
 use common\models\db\WorkHours;
 use Yii;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -42,6 +43,15 @@ class ServicesController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'add_to_sql' => ['post'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
                 ],
             ],
         ];

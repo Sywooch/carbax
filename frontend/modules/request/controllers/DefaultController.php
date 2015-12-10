@@ -14,6 +14,7 @@ use common\models\db\RequestTypeGroup;
 use common\models\db\Services;
 use common\models\db\ServiceTypeGroup;
 use Yii;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 
@@ -28,6 +29,15 @@ class DefaultController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'send_request' => ['post'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
                 ],
             ],
         ];
@@ -63,6 +73,7 @@ class DefaultController extends Controller
         $request->request_type_id = $_POST['request_type_id'];
         $request->user_id = Yii::$app->user->id;
         $request->save();
+
         unset($_POST['request_type_id']);
 
         foreach ($_POST as $key=>$value) {
@@ -113,13 +124,20 @@ class DefaultController extends Controller
             ->all();
 
         $ids = [];
+        //Debug::prn($_POST);
         foreach($services as $service){
-            $send = SendingMessages::send_message($service->user_id, Yii::$app->user->id, 'Заявка на сервис ' . $service->name, 'Пришла заявка');
-            Debug::prn($send);
+            $msg = $this->generateRequestMsg($_POST);
+            SendingMessages::send_message($service->user_id, Yii::$app->user->id, 'Заявка на сервис ' . $service->name, $msg);
             $ids[] = $service->id;
         }
-        Debug::prn($ids);
 
         return $this->render('send_request');
+    }
+
+    public function generateRequestMsg($info){
+        $data['title'] = $info['title'];
+        $data['descr'] = $info['comm'];
+        $data['brand_car'] = $info['manufactures'];
+        return $this->renderPartial('request_msg_tpl', $data);
     }
 }
