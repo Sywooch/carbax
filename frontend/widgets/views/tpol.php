@@ -9,7 +9,7 @@
                <!-- <li><a href="">Изменить пароль</a></li>
                 <li><a href="#">Изменить e-mail</a></li>-->
                 <li><a href="/profile/default/edit_contacts">Изменить личные данные</a></li>
-                <li><a href="#">Сообщения</a></li>
+                <li><a href="<?=\yii\helpers\Url::to(['/message'])?>">Сообщения</a></li>
                 <li><a href="#">Купить <i class="header__leftSide__menu__vip">Vip</i></a></li>
                 <li><a href="#">Разместить акцию</a></li>
                 <li><a href="#">Разместить рекламу</a></li>

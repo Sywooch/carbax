@@ -27,7 +27,7 @@ $this->title = "Личный кабинет";
             <div class="serviceLink">Продать запчасти</div>
         </div>
         <div class="serviceItem">
-            <div class="serviceIcon"><img src="<?= Url::base(true) ?>/media/img/spec.png" alt=""></div>
+            <div class="serviceIcon"><a href="<?= Url::to(['/offers/offers/index']) ?>"><img src="<?= Url::base(true) ?>/media/img/spec.png" alt=""></a></div>
             <div class="serviceLink">Спецпредлжения</div>
         </div>
         <div class="serviceItem">
@@ -41,10 +41,10 @@ $this->title = "Личный кабинет";
             <div class="serviceIcon"><a href="<?=Url::to('select_service')?>"><img src="<?= Url::base(true) ?>/media/img/my_business.png" alt=""></a></div>
             <div class="serviceLink">Мой бизнес</div>
         </div>
-        <div class="serviceItem">
-            <div class="serviceIcon"><img src="<?= Url::base(true) ?>/media/img/my_zav.png" alt=""></div>
+        <!--<div class="serviceItem">
+            <div class="serviceIcon"><img src="<?/*= Url::base(true) */?>/media/img/my_zav.png" alt=""></div>
             <div class="serviceLink">Мой заявки</div>
-        </div>
+        </div>-->
         <div class="serviceItem">
             <div class="serviceIcon"><img src="<?= Url::base(true) ?>/media/img/sale_history.png" alt=""></div>
             <div class="serviceLink">История покупок</div>
