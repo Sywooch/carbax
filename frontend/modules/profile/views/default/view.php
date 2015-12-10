@@ -5,6 +5,7 @@ use yii\helpers\Html;
 $this->title = "Профиль " . $user['username'];
 $this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
 $this->params['breadcrumbs'][] = $this->title;
+$this->registerCssFile('/css/bootstrap.min.css');
 ?>
 
 <section class="main-container">
@@ -54,4 +55,5 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         <?php endif; ?>
     </div>
+    <a href="/message/default/send_message?from=<?=$_GET['id'];?>" class="btn btn-info btn-xs">Написать сообщение</a>
 </section>
