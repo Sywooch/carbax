@@ -222,6 +222,10 @@ span.fleamarket__user_mes{
 
 span.info {
     display: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 7px;
+    font-size: 13px;
 }
 
 .fleamarket__city{
