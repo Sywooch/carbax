@@ -3,6 +3,7 @@
 namespace frontend\modules\request\controllers;
 
 use common\classes\Debug;
+use common\classes\SendingMessages;
 use common\models\db\AddFieldsGroup;
 use common\models\db\Request;
 use common\models\db\RequestAddFieldValue;
@@ -113,8 +114,11 @@ class DefaultController extends Controller
 
         $ids = [];
         foreach($services as $service){
+            $send = SendingMessages::send_message($service->user_id, Yii::$app->user->id, 'Заявка на сервис ' . $service->name, 'Пришла заявка');
+            Debug::prn($send);
             $ids[] = $service->id;
         }
+        Debug::prn($ids);
 
         return $this->render('send_request');
     }

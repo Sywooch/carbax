@@ -54,7 +54,7 @@ AppAsset::register($this);
         <form action="#" class="header--region">
             <input type="text" class="header--region--box" placeholder="Москва">
         </form>
-        <a href="#" class="header--messages">Мои сообщения <span>(1)</span></a>
+        <a href="<?=Url::to(['/message'])?>" class="header--messages">Мои сообщения <span>(1)</span></a>
         <a href="#" class="header--sales"><span>Спецпредложения</span></a>
         <div class="header--request">
             <a href="#" class="header--request--open">ЗАЯВКА НА СЕРВИС +</a>
