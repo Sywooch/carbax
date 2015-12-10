@@ -10,7 +10,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
 ?>
 
 <section class="main-container">
-    <form action="send" method="post">
+    <form id="addForm" action="send" method="post">
         <p>Кому:
             <?= Html::textInput('message_to',(isset($_GET['from']) ? User::find()->where(['id'=>$_GET['from']])->one()->username : ''),['class'=>'message_to']); ?>
         </p>
@@ -21,7 +21,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
             <?= Html::textarea('content'); ?>
         </p>
         <div class="addContent--save">
-            <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
+            <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить</a>
         </div>
     </form>
 </section>
