@@ -6,12 +6,14 @@ use common\classes\Debug;
 use common\classes\SendingMessages;
 use common\models\db\Msg;
 use Yii;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 
 class DefaultController extends Controller
 {
     public $layout = 'page';
+
     public function behaviors()
     {
         return [
@@ -19,6 +21,15 @@ class DefaultController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'send' => ['post'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
                 ],
             ],
         ];
@@ -30,9 +41,9 @@ class DefaultController extends Controller
             Yii::$app->controller->enableCsrfValidation = false;
         }
 
-
         return parent::beforeAction($action);
     }
+
     public function actionIndex()
     {
         $inMsg = Msg::find()->where(['to'=>Yii::$app->user->id])->all();
