@@ -2960,7 +2960,9 @@ input[type="checkbox"] + label {
     display: block;
     float: left;
     position: relative;
-    width: 100%; }
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+}
 .filter__container--select h3 {
     font-family: "HelveticaNeueCyrMedium";
     margin-top: 0;
@@ -3040,4 +3042,31 @@ input[type="checkbox"] + label {
 
 .send_message{
     float: right;
+}
+
+.offers__block {
+    float: left;
+    width: 50%;
+    margin: 10px 0;
+}
+.offers__block img{
+    width:100px;
+    float: left;
+    margin-right: 10px;
+}
+
+ul.pagination {
+    display: block;
+}
+
+ul.pagination li {
+    float: left;
+    margin-right: 10px;
+}
+ul.pagination li a{
+    color: #ff6b00;
+}
+
+ul.pagination li.active a {
+    color: #ccc;
 }
