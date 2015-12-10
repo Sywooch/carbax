@@ -20,5 +20,8 @@ $this->registerCssFile('/css/bootstrap.min.css');
         <p>Сообщение
             <?= Html::textarea('content'); ?>
         </p>
+        <div class="addContent--save">
+            <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
+        </div>
     </form>
 </section>
