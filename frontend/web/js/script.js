@@ -87,6 +87,20 @@ jQuery(document).ready(function ($) {
 
     });
 
+
+    $(document).on('click','.fleamarket__user_tel',function(){
+        var user_id = $(this).attr('user-id');
+        $('.info').css('display','block');
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_tel_user",
+            data: 'id=' + user_id,
+            success: function (data) {
+                $('.fleamarket__user_tel').html(data);
+            }
+        });
+    });
+
     $(document).on('change', '#selectRegionWidgetEdit', function(){
         $(this).nextAll().remove();
         var id = $(this).val();

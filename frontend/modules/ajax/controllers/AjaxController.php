@@ -14,6 +14,7 @@ use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
 use common\models\db\TofModels;
 use common\models\db\TofTypes;
+use common\models\db\User;
 use frontend\modules\flea_market\widgets\CategoryProductTecDoc;
 use frontend\widgets\SelectAutoFromGarage;
 use yii\helpers\ArrayHelper;
@@ -59,6 +60,10 @@ class AjaxController extends Controller
 
     public function actionGet_garage(){
         echo SelectAutoFromGarage::widget();
+    }
+
+    public function actionGet_tel_user(){
+        echo User::findOne($_POST['id'])->telephon;
     }
 
 }

@@ -1,4 +1,5 @@
 <?php
+use common\models\db\GeobaseCity;
 use common\models\db\Services;
 use common\models\db\User;
 use frontend\modules\flea_market\widgets\SimilarAds;
@@ -6,7 +7,7 @@ use frontend\widgets\FleaMarketSearch;
 
 $this->registerJsFile('http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js');
 $this->registerCssFile('http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css');
-
+$this->title = $product->name;
 echo FleaMarketSearch::widget(['title'=>false]);?>
 <div class="fleamarket__headProductTop">
 
@@ -22,8 +23,11 @@ echo FleaMarketSearch::widget(['title'=>false]);?>
         <div class="fleamarket__head">
             <h1><?=$product->name;?></h1>
             <div class="fleamarket__created">Размещено <?=date('d.m.y в H:i:s',$product->dt_add);?></div>
-            <span>
-                <a href="#">Редактировать,</a> <a href="#">закрыть,</a> <a href="#">поднять</a> объявление</span>
+            <?php if($product->user_id == Yii::$app->user->id): ?>
+                <span>
+                    <a href="/flea_market/default/edit_product?id=<?=$product->id;?>">Редактировать,</a> <a href="#">закрыть,</a> <a href="#">поднять</a> объявление
+                </span>
+            <?php endif; ?>
         </div>
         <div class="fleamarket__slider">
             <div class="fotorama" data-nav="thumbs">
@@ -52,13 +56,13 @@ echo FleaMarketSearch::widget(['title'=>false]);?>
                 Контактное лицо
                 <span><?= User::find()->where(['id' => $product->user_id])->one()->username?></span>
                 <div class="fleamarket__user_contact">
-                    <span class="fleamarket__user_tel">Показать телефон</span>
-                    <span class="fleamarket__user_mes">Написать сообщение</span>
+                    <span class="fleamarket__user_tel" user-id="<?=$product->user_id;?>">Показать телефон</span>
+                    <a href="/message/default/send_message?from=<?=$product->user_id;?>"><span class="fleamarket__user_mes">Написать сообщение</span></a>
                     <span class="info">Пожалуйста, скажите продавцу, что вы нашли это объявление на Carbax </span>
                 </div>
             </div>
             <div class="fleamarket__city">
-                Город <span><?= \common\models\db\GeobaseCity::find()->where(['id'=>$product->city_id])->one()->name;?></span>
+                Город <span><?= GeobaseCity::find()->where(['id'=>$product->city_id])->one()->name;?></span>
             </div>
             <div class="fleamarket__type_product">
                 Вид товара: <?=$category;?>
@@ -74,7 +78,7 @@ echo FleaMarketSearch::widget(['title'=>false]);?>
 
     </div>
     <div class="fleamarket__footer">
-        <a href="#" class="write_seller">Написать продавцу</a>
+        <a href="/message/default/send_message?from=<?=$product->user_id;?>" class="write_seller">Написать продавцу</a>
         <a href="#" class="favorites_products">В избранное</a>
         <a href="#" class="complain_products">Пожаловаться</a>
         <a href="#" class="share_products">Поделиться</a>
