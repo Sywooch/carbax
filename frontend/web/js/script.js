@@ -87,6 +87,32 @@ jQuery(document).ready(function ($) {
 
     });
 
+    $(document).on('change', '#selectRegionWidgetEdit', function(){
+        $(this).nextAll().remove();
+        var id = $(this).val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_city_select",
+            data: 'id=' + id ,
+            success: function (data) {
+                $('.regionWidgetBox').append(data);
+            }
+        });
+    });
+
+    $(document).on('click', '#changeRegion', function(){
+        $('#hiddenRegionId').remove();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_region_select",
+            data: 'get=region',
+            success: function (data) {
+                $('.regionWidgetBox').html(data);
+            }
+        });
+        return false;
+    });
+
     $(document).on('change', '.catSel', function(){
         $(this).nextAll().remove();
         if($(this).hasClass('firstCatSel')){
@@ -260,8 +286,24 @@ jQuery(document).ready(function ($) {
         });
     });
 
+    $('#selectAutoFromGarage').on('click', function(){
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_garage",
+            data: 'user=user',
+            success: function(data){
+                $('#selectAuto').html(data);
+            }
+        });
+
+        return false;
+    });
+
     $(document).on('change','#selectCityWidget', function(){
-        $('#addressBoxWidget').html('<input id="inputAddressWidget" type="text" placeholder="Адрес">')
+        var printAddress = $('#addressBoxWidget').attr('print-address');
+        if(printAddress == '1'){
+            $('#addressBoxWidget').html('<input class="addContent__adress" id="inputAddressWidget" type="text" placeholder="Адрес">')
+        }
     });
 
     $(document).on('click', '.addressEvent', function(){

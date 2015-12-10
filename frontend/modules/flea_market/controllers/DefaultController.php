@@ -88,9 +88,11 @@ class DefaultController extends Controller
         $market->price = $_POST['price'];
         if($_POST['prod_type'] == 'zap'){
             $market->prod_type = 0;
+            $view = 'index';
         }
         else {
             $market->prod_type = 1;
+            $view = 'sale_auto';
         }
         $market->dt_add = time();
         if ($_POST['userOrService'] == 2) {
@@ -131,9 +133,14 @@ class DefaultController extends Controller
 
         Yii::$app->session->setFlash('success','Товар успешно добавлен');
 
-        $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])->all();
+        if($_POST['prod_type'] == 'zap'){
+            $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])->all();
+        }
+        else {
+            $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 1])->all();
+        }
 
-        return $this->render('index',
+        return $this->render($view,
             [
                 'market' => $marketAll,
             ]);

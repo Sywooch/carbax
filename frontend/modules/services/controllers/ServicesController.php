@@ -408,6 +408,6 @@ class ServicesController extends Controller
 
     public function actionGet_city_select(){
         $city = GeobaseCity::find()->where(['region_id' => $_POST['region']])->all();
-        echo Html::dropDownList('city_widget', 0, ArrayHelper::map($city, 'id', 'name'), ['id'=>'selectCityWidget', 'prompt'=>'Город']);
+        echo Html::dropDownList('city_widget', 0, ArrayHelper::map($city, 'id', 'name'), ['class' => 'addContent__adress', 'id'=>'selectCityWidget', 'prompt'=>'Город']);
     }
 }

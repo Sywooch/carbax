@@ -2,6 +2,7 @@
 
 use common\classes\Debug;
 use frontend\modules\flea_market\widgets\CategoryProductTecDoc;
+use frontend\widgets\RegionSelect;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -27,8 +28,9 @@ $this->title = "Добавить товар";
         <span id="modelBox"></span>
         <span id="typesBox"></span>
         <span id="categBox"></span>
-        <?= Html::dropDownList('region',0,ArrayHelper::map($region,'id','name'),['class'=>'addContent__adress','id'=>'regionSelect','prompt'=>'Выберите регион'])?>
-        <span id="addCity"></span>
+        <?= RegionSelect::widget()?>
+        <?/*= Html::dropDownList('region',0,ArrayHelper::map($region,'id','name'),['class'=>'addContent__adress','id'=>'regionSelect','prompt'=>'Выберите регион'])*/?><!--
+        <span id="addCity"></span>-->
         <?/*= CategoryProductTecDoc::widget()*/?>
         <span id="parent"></span>
         <div class="singleContent__desc">

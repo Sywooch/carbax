@@ -329,3 +329,10 @@ span.fleamarket__similar_ads_product_city{
     margin: 10px 0 0 0;
     font-weight: bold;
 }
+
+.regionWidgetBox {
+    width: 100%;
+    float: left;
+    display: block;
+    margin: 10px 0 10px 0;
+}
