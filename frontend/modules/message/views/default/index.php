@@ -12,6 +12,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
     <ul class="nav nav-tabs">
         <li class="active"><a href="#inbox" data-toggle="tab">Входящие</a></li>
         <li><a href="#outbox" data-toggle="tab">Исходящие</a></li>
+        <a href="/message/default/send_message" class="btn btn-info btn-xs send_message">Написать сообщение</a>
     </ul>
 
     <!-- Tab panes -->
@@ -42,7 +43,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                     <td ><?= User::find()->where(['id'=>$ms->from])->one()->username; ?></td>
                     <td >
                         <a href="/message/default/view?id=<?=$ms->id?>" class="btn btn-info btn-xs">Посмотреть</a>
-                        <a href="/message/default/del?id=<?=$ms->id?>" class="btn btn-danger btn-xs">Удалить</a>
+                        <a href="/message/default/del?id=<?=$ms->id?>" data-confirm="Вы действительно хотите удалить?" class="btn btn-danger btn-xs">Удалить</a>
                     </td>
                 </tr>
                 <?php

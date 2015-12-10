@@ -10,8 +10,9 @@ $this->registerCssFile('/css/bootstrap.min.css');
 
 <section class="main-container">
     <p>Тема: <?=$msg->subject;?></p>
-    <p><?=$msg->content;?></p>
+
     <p>От: <?= User::find()->where(['id'=>$msg->from])->one()->name; ?></p>
     <p>Дата отправки: <?= date('d.m.y',$msg->dt_send); ?></p>
+    <p><?=$msg->content;?></p>
     <a href="/message/default/send_message?from=<?=$msg->from?>" class="btn btn-warning" >Ответить</a>
 </section>

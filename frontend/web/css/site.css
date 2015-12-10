@@ -3038,6 +3038,6 @@ input[type="checkbox"] + label {
 }
 
 
-.unread{
-    background:#ccc;
+.send_message{
+    float: right;
 }
