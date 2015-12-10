@@ -13,5 +13,5 @@ $this->registerCssFile('/css/bootstrap.min.css');
     <p><?=$msg->content;?></p>
     <p>От: <?= User::find()->where(['id'=>$msg->from])->one()->name; ?></p>
     <p>Дата отправки: <?= date('d.m.y',$msg->dt_send); ?></p>
-    <button type="button" class="btn btn-warning">Ответить</button>
+    <a href="/message/default/send_message?from=<?=$msg->from?>" class="btn btn-warning" >Ответить</a>
 </section>
