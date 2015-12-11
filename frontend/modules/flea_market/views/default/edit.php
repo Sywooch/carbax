@@ -16,6 +16,7 @@ $this->title = "Редактировать товар";
    ?>
     <h1><?= Html::encode($this->title) ?></h1>
 <form id="addForm" action="<?= Url::to(['update_to_sql'])?>" method="post" enctype="multipart/form-data">
+    <input id="prodType" type="hidden" name="prod_type" value="<?=$_GET['type']?>">
     <?= Html::input('hidden','idproduct',$product->id)?>
     <input type="text" name="title" class="addContent__title" placeholder="Название товара" value="<?=$product->name?>">
     <?= Html::dropDownList('manufactures',$product->man_id, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])?>
