@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Ярлык',
                 'format' => 'html',
                 'value' => function($model){
-                    return Html::img(\yii\helpers\Url::base().$model->icon, ['width'=>'100px']);
+                    return Html::img($model->icon, ['width'=>'100px']);
                 }
             ],
 

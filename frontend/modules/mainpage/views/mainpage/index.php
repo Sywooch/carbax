@@ -5,7 +5,7 @@ use frontend\modules\news\widgets\NewsWidgetFront;
 use frontend\modules\offers\widgets\OffersWidgetFront;
 use frontend\widgets\FleaMarketSearch;
 use frontend\widgets\SelectRequestTypes;
-
+$this->title = "Автопортал";
 ?>
 
 <section class="first">

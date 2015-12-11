@@ -345,3 +345,11 @@ span.fleamarket__similar_ads_product_city{
     width: 100%;
     padding: 10px;
 }
+
+.addContent__adress {
+    width: 90%;
+}
+
+.addContent__description {
+    width: 95%;
+}

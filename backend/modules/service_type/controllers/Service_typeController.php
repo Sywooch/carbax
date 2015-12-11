@@ -4,6 +4,7 @@ namespace backend\modules\service_type\controllers;
 
 use common\classes\Debug;
 use common\models\db\AddFieldsGroup;
+use common\models\db\Services;
 use common\models\db\ServiceTypeGroup;
 use common\models\forms\IconsForm;
 use Yii;
@@ -161,6 +162,7 @@ class Service_typeController extends Controller
      */
     public function actionDelete($id)
     {
+        Services::deleteAll(['service_type_id'=>$id]);
         ServiceTypeGroup::deleteAll(['service_type_id'=>$id]);
         $this->findModel($id)->delete();
 
