@@ -46,8 +46,8 @@ class DefaultController extends Controller
 
     public function actionIndex()
     {
-        $inMsg = Msg::find()->where(['to'=>Yii::$app->user->id])->all();
-        $outMsg = Msg::find()->where(['from'=>Yii::$app->user->id])->all();
+        $inMsg = Msg::find()->where(['to'=>Yii::$app->user->id])->orderBy('dt_send DESC')->all();
+        $outMsg = Msg::find()->where(['from'=>Yii::$app->user->id])->orderBy('dt_send DESC')->all();
         return $this->render('index',
             [
                 'inmsg' => $inMsg,
@@ -80,8 +80,8 @@ class DefaultController extends Controller
         }
         else{
             Yii::$app->session->setFlash('error','Сообщение не отправлено');
-            $inMsg = Msg::find()->where(['to'=>Yii::$app->user->id])->all();
-            $outMsg = Msg::find()->where(['from'=>Yii::$app->user->id])->all();
+            $inMsg = Msg::find()->where(['to'=>Yii::$app->user->id])->orderBy('dt_send DESC')->all();
+            $outMsg = Msg::find()->where(['from'=>Yii::$app->user->id])->orderBy('dt_send DESC')->all();
             return $this->render('index',
                 [
                     'inmsg' => $inMsg,
@@ -94,8 +94,8 @@ class DefaultController extends Controller
     public function actionDel(){
         Msg::deleteAll(['id'=>$_GET['id']]);
         Yii::$app->session->setFlash('success','Сообщение удалено');
-        $inMsg = Msg::find()->where(['to'=>Yii::$app->user->id])->all();
-        $outMsg = Msg::find()->where(['from'=>Yii::$app->user->id])->all();
+        $inMsg = Msg::find()->where(['to'=>Yii::$app->user->id])->orderBy('dt_send DESC')->all();
+        $outMsg = Msg::find()->where(['from'=>Yii::$app->user->id])->orderBy('dt_send DESC')->all();
         return $this->render('index',
             [
                 'inmsg' => $inMsg,
