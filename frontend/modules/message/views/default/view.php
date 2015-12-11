@@ -9,10 +9,14 @@ $this->registerCssFile('/css/bootstrap.min.css');
 ?>
 
 <section class="main-container">
-    <p>Тема: <?=$msg->subject;?></p>
+    <div class="messsage_view_header">
+        <span class="userFrom"><b>От:</b> <a href="/profile/default/view?id=<?=$msg->from;?>"><?= User::find()->where(['id'=>$msg->from])->one()->username; ?></a></span>
+        <span class="dateSend"><b>Дата отправки:</b> <?= date('d.m.y',$msg->dt_send); ?></span>
+    </div>
 
-    <p>От: <?= User::find()->where(['id'=>$msg->from])->one()->name; ?></p>
-    <p>Дата отправки: <?= date('d.m.y',$msg->dt_send); ?></p>
+    <span class="masSabject"><b>Тема:</b> <?=$msg->subject;?></span>
+    <hr>
+    <span><b>Текст сообщения</b></span>
     <p><?=$msg->content;?></p>
     <a href="/message/default/send_message?from=<?=$msg->from?>" class="btn btn-warning" >Ответить</a>
 </section>

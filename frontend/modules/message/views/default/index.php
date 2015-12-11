@@ -76,7 +76,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                     <tr <?= ($ms->readed == 0 ? 'class="success"' : ''); ?>>
                         <td ><?= date('d.m.y',$ms->dt_send); ?></td>
                         <td ><?= $ms->subject ?></td>
-                        <td ><?= User::find()->where(['id'=>$ms->to])->one()->username; ?></td>
+                        <td ><a href="/profile/default/view?id=<?=$ms->to;?>"><?= User::find()->where(['id'=>$ms->to])->one()->username; ?></a></td>
                     </tr>
                     <?php
                 endforeach;

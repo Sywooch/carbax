@@ -2,6 +2,7 @@
 use yii\helpers\Url;
 
 $this->title = "Личный кабинет";
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <section class="main-container">
     <div class="serviceSelectWrap">

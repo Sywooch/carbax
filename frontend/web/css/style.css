@@ -373,3 +373,15 @@ span.fleamarket__similar_ads_product_city{
     vertical-align: bottom;
     overflow: hidden;
 }
+
+.messsage_view_header {
+    margin-bottom: 5px;
+}
+
+.dateSend{
+    float:right;
+}
+
+input.message_to,input.message_subject {
+    float: none;
+}

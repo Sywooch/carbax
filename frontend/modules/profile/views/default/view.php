@@ -55,5 +55,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
             </div>
         <?php endif; ?>
     </div>
-    <a href="/message/default/send_message?from=<?=$_GET['id'];?>" class="btn btn-info btn-xs">Написать сообщение</a>
+    <?php if($user['id'] != Yii::$app->user->id): ?>
+        <a href="/message/default/send_message?from=<?=$_GET['id'];?>" class="btn btn-info btn-xs">Написать сообщение</a>
+    <?php endif; ?>
 </section>

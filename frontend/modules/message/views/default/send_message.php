@@ -12,13 +12,13 @@ $this->registerCssFile('/css/bootstrap.min.css');
 <section class="main-container">
     <form id="addForm" action="send" method="post">
         <p>Кому:
-            <?= Html::textInput('message_to',(isset($_GET['from']) ? User::find()->where(['id'=>$_GET['from']])->one()->username : ''),['class'=>'message_to']); ?>
+            <?= Html::textInput('message_to',(isset($_GET['from']) ? User::find()->where(['id'=>$_GET['from']])->one()->username : ''),['class'=>'message_to addContent__title']); ?>
         </p>
         <p>Тема:
-            <?= Html::textInput('message_subject',null,['class'=>'message_subject']); ?>
+            <?= Html::textInput('message_subject',null,['class'=>'message_subject addContent__title']); ?>
         </p>
-        <p>Сообщение
-            <?= Html::textarea('content'); ?>
+        <p><h3>Сообщение</h3>
+            <?= Html::textarea('content','',['class'=>'addContent__description']); ?>
         </p>
         <div class="addContent--save">
             <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить</a>
