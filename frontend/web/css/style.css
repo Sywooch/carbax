@@ -353,3 +353,23 @@ span.fleamarket__similar_ads_product_city{
 .addContent__description {
     width: 95%;
 }
+
+.fleamarket__ads__item--desc {
+    display: block;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 40px;
+    position: relative;
+    width: 70%;
+}
+
+.fleamarket__ads__item--desc p.fleamarket__ads__item--desc--specification {
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    height: 35px;
+    vertical-align: bottom;
+    overflow: hidden;
+}
