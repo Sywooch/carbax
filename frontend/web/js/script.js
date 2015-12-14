@@ -127,6 +127,20 @@ jQuery(document).ready(function ($) {
         return false;
     });
 
+   $(document).on('click', '.link-request-type', function(){
+    var id = $(this).attr('data-id');
+       // alert(id);
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_request_type",
+            data: 'id=' + id,
+            success: function (data) {
+                $('.my-request').html(data);
+            }
+        });
+        return false;
+    });
+
     $(document).on('change', '.catSel', function(){
         $(this).nextAll().remove();
         if($(this).hasClass('firstCatSel')){

@@ -77,6 +77,7 @@ class Request_typeController extends Controller
             $fr[$f->id] = $f->name;
         }
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->icon = $_POST['mediaUploadInputFile'];
             $model->save();
             foreach($_POST[group] as $p){
                 $stg = new RequestTypeGroup();
@@ -131,6 +132,7 @@ class Request_typeController extends Controller
             $selF[$sf->add_form_id] = $sf->add_form_id;
         }
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->icon = $_POST['mediaUploadInputFile'];
             $model->save();
             RequestTypeGroup::deleteAll(['request_type_id'=>$model->id]);
             RequestTypeAddForm::deleteAll(['request_type_id'=>$model->id]);

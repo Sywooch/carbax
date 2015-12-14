@@ -11,8 +11,10 @@ use yii\widgets\ActiveForm;
 <div class="request-type-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <button class="btn btn-primary" data-toggle="modal" data-target=".media_upload">Выберите изображение</button>
+    <div class="media__upload_img"><img src="<?=$model->icon;?>" width="100px"/><input id="mediaUploadInputFile" name="mediaUploadInputFile" type="hidden" value="<?=$model->icon;?>"/></div>
+
    <?php
         if(isset($selected))
         {

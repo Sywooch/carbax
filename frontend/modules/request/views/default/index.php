@@ -9,6 +9,7 @@ use frontend\widgets\SelectAddress;
 use frontend\widgets\SelectAuto;
 use yii\helpers\Html;
 $this->title = "Добавить заявку";
+$this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
 $this->params['breadcrumbs'][] = ['label' => 'Мои заявки', 'url' => ['/my_requests']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
