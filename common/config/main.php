@@ -47,6 +47,7 @@ return [
             'enableUnconfirmedLogin' => true,
             'enableGeneratingPassword' => true,
             'enableConfirmation' => true,
+            'enableFlashMessages' => false,
             'confirmWithin' => 86400,
             'cost' => 12,
             'admins' => ['admin'],
