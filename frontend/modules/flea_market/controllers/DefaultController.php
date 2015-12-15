@@ -121,15 +121,24 @@ class DefaultController extends Controller
         }
         $dir = 'media/users/'.Yii::$app->user->id.'/'.date('Y-m-d').'/';
         $i = 0;
+        Debug::prn($_FILES);
         foreach($_FILES['file']['name'] as $file){
+            Debug::prn($file);
+
             move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir.$file);
             $img = new ProductImg();
             $img->product_id = $market->id;
             $img->img = $dir.$file;
+            if($file == $_POST['cover']){
+                Debug::prn($_POST['cover']);
+               $img->cover = 1;
+            }else{
+               $img->cover = 0;
+            }
             $img->save();
             $i++;
         }
-        //Debug::prn($_FILES);
+
 
         Yii::$app->session->setFlash('success','Товар успешно добавлен');
 
@@ -271,13 +280,30 @@ class DefaultController extends Controller
             }
             $dir = 'media/users/'.Yii::$app->user->id.'/'.date('Y-m-d').'/';
             $i = 0;
+
             foreach($_FILES['file']['name'] as $file){
                 move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir.$file);
                 $img = new ProductImg();
                 $img->product_id = $product->id;
                 $img->img = $dir.$file;
+                if($file == $_POST['cover']){
+                    $img->cover = 1;
+                }else{
+                    $img->cover = 0;
+                }
                 $img->save();
                 $i++;
+            }
+        }else{
+            $product_img = ProductImg::find()->where(['product_id' => $_POST['idproduct']])->all();
+            foreach($product_img as $img){
+                if($img->img == $_POST['cover']){
+                    $img->cover = 1;
+                    $img->save();
+                }else{
+                    $img->cover = 0;
+                    $img->save();
+                }
             }
         }
         Yii::$app->session->setFlash('success','Товар успешно обновлен');
