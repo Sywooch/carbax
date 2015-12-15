@@ -120,11 +120,8 @@ class DefaultController extends Controller
             mkdir('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'));
         }
         $dir = 'media/users/'.Yii::$app->user->id.'/'.date('Y-m-d').'/';
-        $i = 0;
-        Debug::prn($_FILES);
+        $i = 0;    
         foreach($_FILES['file']['name'] as $file){
-            Debug::prn($file);
-
             move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir.$file);
             $img = new ProductImg();
             $img->product_id = $market->id;
