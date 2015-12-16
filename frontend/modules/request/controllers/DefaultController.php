@@ -127,7 +127,7 @@ class DefaultController extends Controller
         //Debug::prn($_POST);
         foreach($services as $service){
             $msg = $this->generateRequestMsg($_POST);
-            SendingMessages::send_message($service->user_id, Yii::$app->user->id, 'Заявка на сервис ' . $service->name, $msg);
+            SendingMessages::send_message($service->user_id, Yii::$app->user->id, 'Заявка на сервис ' . $service->name, $msg,'request','0',$request->id);
             $ids[] = $service->id;
         }
 
@@ -157,5 +157,24 @@ class DefaultController extends Controller
     public function actionRequest_type(){
         $requestType = RequestType::find()->all();
         return $this->render('request_type', ['requestType' => $requestType]);
+    }
+
+    public function actionEdit(){
+        //Debug::prn($_GET['id']);
+
+        $requestTypeId = Request::find()->where(['id'=>$_GET['id']])->one()->request_type_id;
+
+        $requestType = RequestType::find()->where(['id'=>$requestTypeId])->one();
+        $addForm = RequestTypeAddForm::find()->where(['request_type_id'=>$requestTypeId])->all();
+        $region = RequestAddFieldValue::find()->where(['request_id'=>$_GET['id'],'key'=>'regions'])->one();
+        $city = RequestAddFieldValue::find()->where(['request_id'=>$_GET['id'],'key'=>'city_widget'])->one();
+        $manufactures = RequestAddFieldValue::find()->where(['request_id'=>$_GET['id'],'key'=>'manufactures'])->one();
+
+        return $this->render('edit',
+            [
+                'requestType'=>$requestType,
+                'addForm' => $addForm,
+                'requestTypeId'=>$requestTypeId,
+            ]);
     }
 }

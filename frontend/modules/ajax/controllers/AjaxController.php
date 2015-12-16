@@ -10,10 +10,15 @@ namespace frontend\modules\ajax\controllers;
 
 
 use common\classes\Debug;
+use common\classes\SendingMessages;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
+use common\models\db\Msg;
 use common\models\db\Request;
 use common\models\db\RequestAddFieldValue;
+use common\models\db\RequestAdditionalFields;
+use common\models\db\RequestType;
+use common\models\db\Services;
 use common\models\db\TofModels;
 use common\models\db\TofTypes;
 use common\models\db\User;
@@ -79,23 +84,60 @@ class AjaxController extends Controller
     {
         $requests = Request::find()->where(['user_id' => Yii::$app->user->id, 'request_type_id' => $_POST['id']])->all();
 
-        $html = '';
         if(!empty($requests)){
-            //Debug::prn($requests);
-            $html .= '<table class="table table-bordered">';
-            foreach ($requests as $request):
-                $html = ' <tr>';
-                $html .= '<td>';
-                $html .= RequestAddFieldValue::find()->where(['request_id' => $request->id, 'key' => 'title'])->one()->value;
-                $html .= '</td><td>';
-                $html .= Html::a('Удалить', Url::to(['/request/default/delete', 'id' => $request->id]), ['class' => 'btn btn-danger']);
-                $html .= '</td>';
-                $html .= '</tr>';
-            endforeach;
-            $html .= '</table>';
-
+            echo $html = $this->renderPartial('request',['requests'=>$requests]);
         }
-        echo $html;
+
+    }
+
+    public function actionGet_raply(){
+        $message = Msg::find()->where(['to'=>Yii::$app->user->id,'to_type'=>'request','type_id'=>$_POST['type']])->all();
+        if(!empty($message)){
+            echo $this->renderPartial('message',['message'=>$message]);
+        }
+        else{
+            echo "На вашу заявку ни кто не откликнулся";
+        }
+    }
+
+    public function actionReset_request(){
+        $region = RequestAddFieldValue::find()->where(['request_id'=>$_POST['id'],'key'=>'regions'])->one();
+        $city = RequestAddFieldValue::find()->where(['request_id'=>$_POST['id'],'key'=>'city_widget'])->one();
+        $manufactures = RequestAddFieldValue::find()->where(['request_id'=>$_POST['id'],'key'=>'manufactures'])->one();
+        $fields = [];
+        $fieldsAll = RequestAdditionalFields::find()->where(['request_id'=>$_POST['id']])->all();
+        foreach ($fieldsAll as $fl) {
+            $fields[] = $fl->add_field_id;
+        }
+        //Debug::prn($region->value);
+        $services = Services::find()
+            ->joinWith(['address', 'service_add_fields','service_brand_cars'])
+            ->where([
+                'address.region_id' => $region->value,
+                'address.city_id' => $city->value,
+                'service_brand_cars.brand_cars_id' => $manufactures->value,
+                'service_add_fields.add_fields_id' => $fields
+            ])
+            ->all();
+
+        $ids = [];
+
+        foreach($services as $service){
+            $msg = $this->generateRequestMsg($_POST['id']);
+            SendingMessages::send_message($service->user_id, Yii::$app->user->id, 'Заявка на сервис ' . $service->name, $msg,'request','0',$_POST['id']);
+            $ids[] = $service->id;
+        }
+        echo 'Заявка отправлена';
+    }
+
+    public function generateRequestMsg($info){
+        $title = RequestAddFieldValue::find()->where(['request_id'=>$info,'key'=>'title'])->one();
+        $descr = RequestAddFieldValue::find()->where(['request_id'=>$info,'key'=>'comm'])->one();
+        $manufactures = RequestAddFieldValue::find()->where(['request_id'=>$info,'key'=>'manufactures'])->one();
+        $data['title'] = $title->value;
+        $data['descr'] = $descr->value;
+        $data['brand_car'] = $manufactures->value;
+        return $this->renderPartial('request_msg_tpl', $data);
     }
 
 }

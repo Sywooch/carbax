@@ -129,13 +129,42 @@ jQuery(document).ready(function ($) {
 
    $(document).on('click', '.link-request-type', function(){
     var id = $(this).attr('data-id');
-       // alert(id);
+        //alert(id);
         $.ajax({
             type: 'POST',
             url: "/ajax/ajax/get_request_type",
             data: 'id=' + id,
             success: function (data) {
                 $('.my-request').html(data);
+            }
+        });
+        return false;
+    });
+
+    $(document).on('click','.raply',function(){
+        $('#raply').modal('show');
+        var type = $(this).attr('type-request');
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_raply",
+            data: 'type=' + type,
+            success: function (data) {
+                $('.my-raply').html(data);
+            }
+        });
+        return false;
+    });
+
+    $(document).on('click','.reset_request',function(){
+        var id = $(this).attr('id');
+        $(this).parent().html('Заявка отправленна');
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/reset_request",
+            data: 'id=' + id,
+            success: function (data) {
+                //$(this).html(data);
+               // console.log(data);
             }
         });
         return false;

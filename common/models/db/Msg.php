@@ -16,6 +16,7 @@ use Yii;
  * @property string $content
  * @property integer $dt_send
  * @property integer $readed
+ * @property integer $type_id
  */
 class Msg extends \yii\db\ActiveRecord
 {
@@ -34,7 +35,7 @@ class Msg extends \yii\db\ActiveRecord
     {
         return [
             [['subject', 'from_type', 'to_type', 'from', 'to', 'content', 'dt_send', 'readed'], 'required'],
-            [['from', 'to', 'dt_send', 'readed'], 'integer'],
+            [['from', 'to', 'dt_send', 'readed','type_id'], 'integer'],
             [['content'], 'string'],
             [['subject', 'from_type', 'to_type'], 'string', 'max' => 255]
         ];
