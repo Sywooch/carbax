@@ -81,16 +81,17 @@ jQuery(document).ready(function ($) {
         });
         coverBg();
     }
-
-    $("#input-4").fileinput({
-        language: "ru",
-        showCaption: true,
-        maxFileCount: 5,
-        showRemove: false,
-        showUpload: false,
-        multiple: true,
-        initialPreview: allImg
-    });
+    if($("#input-4").length){
+        $("#input-4").fileinput({
+            language: "ru",
+            showCaption: true,
+            maxFileCount: 5,
+            showRemove: false,
+            showUpload: false,
+            multiple: true,
+            initialPreview: allImg
+        });
+    }
 
     (function($) {
         $(function() {
