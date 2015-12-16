@@ -17,6 +17,15 @@ $this->title = "Редактировать товар";
     <h1><?= Html::encode($this->title) ?></h1>
 <form id="addForm" action="<?= Url::to(['update_to_sql'])?>" method="post" enctype="multipart/form-data">
     <input id="prodType" type="hidden" name="prod_type" value="<?=$_GET['type']?>">
+    <?php foreach($img as $im):
+        if($im['cover'] == 1){
+            ?>
+            <input type="hidden" name="cover" value="<?= $im['img']; ?>">
+            <?php
+        }
+    ?>
+
+    <?php endforeach; ?>
     <?= Html::input('hidden','idproduct',$product->id)?>
     <input type="text" name="title" class="addContent__title" placeholder="Название товара" value="<?=$product->name?>">
     <?= Html::dropDownList('manufactures',$product->man_id, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])?>
@@ -75,6 +84,6 @@ $this->title = "Редактировать товар";
     </div>
 </form>
 <?php foreach($img as $im): ?>
-    <span class="img_link" data-img="<?=$im['img']?>"></span>
+    <span class="img_link" data-img="<?=$im['img']?>" data-cover="<?= $im['cover'] ?>"></span>
 <?php endforeach; ?>
 </div>

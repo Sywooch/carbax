@@ -41,7 +41,12 @@ $this->title = "Добавить товар";
             'id' => 'input-4',
             'attribute' => 'attachment_1',
             'value' => '/media/img/1.png',
-            'options' => ['multiple' => true],
+            'options' => ['multiple' => true,
+             'language'=> "ru",
+            'showCaption'=> true,
+            'maxFileCount'=> 5,
+            'showRemove'=> false,
+            'showUpload'=> false],
         ]);
         ?>
 
