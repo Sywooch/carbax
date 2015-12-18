@@ -9,6 +9,7 @@
 namespace frontend\widgets;
 
 
+use common\models\db\BcbBrands;
 use common\models\db\TofManufacturers;
 use yii\base\Widget;
 
@@ -17,7 +18,8 @@ class SelectAuto extends Widget
     public $view = '1';
 
     public function run(){
-        $man = TofManufacturers::find()->orderBy('mfa_brand')->all();
+        //$man = TofManufacturers::find()->orderBy('mfa_brand')->all();
+        $man = BcbBrands::find()->orderBy('name')->all();
         return $this->render('select_auto', [
             'man' => $man,
             'view'=>$this->view,

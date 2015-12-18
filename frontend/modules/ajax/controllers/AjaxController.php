@@ -11,6 +11,9 @@ namespace frontend\modules\ajax\controllers;
 
 use common\classes\Debug;
 use common\classes\SendingMessages;
+use common\models\db\BcbModels;
+use common\models\db\BcbModify;
+use common\models\db\BrendYear;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
 use common\models\db\Msg;
@@ -36,25 +39,69 @@ class AjaxController extends Controller
     public function actionGet_auto()
     {
         if ($_POST['type'] == 'man') {
-            echo Html::dropDownList(
+            $year = BrendYear::find()->where(['id_brand'=>$_POST['id']])->one();
+            if($year->max_y == 9999){
+                $yearEnd = 2015;
+            }
+            else{
+                $yearEnd = $year->max_y;
+            }
+            $yearAll = [];
+            for($i=$year->min_y; $i <= $yearEnd; $i++){
+                $yearAll[$i] = $i;
+            }
+           echo Html::dropDownList('yar',0,$yearAll,['prompt' => 'Год выпуска', 'class' => 'addContent__adress year_select_car', 'id' => 'selectAutoWidget', 'type' => 'mod']);
+           /* echo Html::dropDownList(
                 'models',
                 0,
                 ArrayHelper::map(TofModels::find()->where(['mod_mfa_id' => $_POST['id']])->all(), 'mod_id', 'mod_name'),
                 ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'mod']
-            );
+            );*/
         }
         if ($_POST['type'] == 'mod') {
+            $model = BcbModels::find()
+                        ->select('`bcb_models`.`id`, `bcb_models`.`name`')
+                        ->leftJoin('`bcb_modify`','`bcb_modify`.`model_id` = `bcb_models`.`id`')
+                        ->where(['brand_id' => $_POST['brandId']])
+                        ->andWhere(['>=','`bcb_modify`.`y_from`',$_POST['id']])
+                        ->andWhere(['<=','`bcb_modify`.`y_from`',$_POST['id']])
+                        ->all();
+           // Debug::prn($model);
             echo Html::dropDownList(
+                'types',
+                0,
+                ArrayHelper::map($model,'id','name'),
+                ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typ']
+            );
+
+            /*echo Html::dropDownList(
                 'types',
                 0,
                 ArrayHelper::map(TofTypes::find()->where(['typ_mod_id' => $_POST['id']])->all(), 'typ_id', 'typ_mmt_cds'),
                 ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typ']
-            );
+            );*/
         }
         if ($_POST['type'] == 'typ') {
-            if ($_POST['view'] == 1) {
+           // Debug::prn($_POST);
+           /* $model = BcbModify::find()
+                ->select('`bcb_modify`.`id`, `bcb_modify`.`name`')
+                ->leftJoin('`bcb_modify`','`bcb_modify`.`model_id` = `bcb_models`.`id`')
+                ->where(['brand_id' => $_POST['id']])
+                ->andWhere(['>=','`bcb_modify`.`y_from`',$_POST['year']])
+                ->andWhere(['<=','`bcb_modify`.`y_from`',$_POST['year']])
+                ->all();*/
+            $model = BcbModify::find()->where(['model_id'=>$_POST['id']])
+                ->andWhere(['>=','y_from',$_POST['year']])
+                ->andWhere(['<=','y_from',$_POST['year']])->all();
+            echo Html::dropDownList(
+                'types',
+                0,
+                ArrayHelper::map($model,'id','name'),
+                ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typ7']
+            );
+            /*if ($_POST['view'] == 1) {
                 echo CategoryProductTecDoc::widget();
-            }
+            }*/
         }
     }
 

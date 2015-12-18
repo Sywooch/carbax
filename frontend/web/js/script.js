@@ -107,10 +107,12 @@ jQuery(document).ready(function ($) {
         var id = $(this).val();
         var type = $(this).attr('type');
         var view = $('.selectCar').attr('data-view');
+        var brand_id = $('.brand_select_car').find(':selected').val();
+        var year = $('.year_select_car').find(':selected').val();
         $.ajax({
             type: 'POST',
             url: "/ajax/ajax/get_auto",
-            data: 'id=' + id + '&type=' + type + '&view=' + view,
+            data: 'id=' + id + '&type=' + type + '&view=' + view + '&brandId=' + brand_id + '&year=' + year ,
             success: function (data) {
                 $('.selectCar').append(data);
             }
