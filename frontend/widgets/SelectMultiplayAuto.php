@@ -10,6 +10,7 @@ namespace frontend\widgets;
 
 
 use common\classes\Debug;
+use common\models\db\BcbBrands;
 use common\models\db\ServiceBrandCars;
 use common\models\db\TofManufacturers;
 use yii\base\Widget;
@@ -19,9 +20,10 @@ class SelectMultiplayAuto extends Widget
 {
     public $serviceId;
     public function run(){
-        $markAuto = TofManufacturers::find()->orderBy('mfa_brand')->all();
+        //$markAuto = TofManufacturers::find()->orderBy('mfa_brand')->all();
+        $markAuto = BcbBrands::find()->orderBy('name')->all();
         foreach ($markAuto as $ma) {
-            $markAutoArray[$ma->mfa_id] = $ma->mfa_brand;
+            $markAutoArray[$ma->id] = $ma->name;
         }
         $selMark = ServiceBrandCars::find()->where(['service_id'=>$this->serviceId])->all();
         foreach ($selMark as $sm) {
