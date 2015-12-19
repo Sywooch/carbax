@@ -3,6 +3,9 @@
 namespace frontend\modules\garage\controllers;
 
 use common\classes\Debug;
+use common\models\db\BcbBrands;
+use common\models\db\BcbModels;
+use common\models\db\BrendYear;
 use common\models\db\Garage;
 use common\models\db\TofManufacturers;
 use common\models\db\TofModels;
@@ -154,6 +157,32 @@ class GarageController extends Controller
     }
 
     public function actionAdd(){
+
+    }
+
+    public function actionInsert_table_brends_year(){
+        $brandsAll = BcbBrands::find()->all();
+
+        foreach ($brandsAll as $br) {
+            $by = new BrendYear();
+            $by->id_brand = $br->id;
+            $by->name = $br->name;
+            $by->min_y = BcbModels::find()
+                            ->select('`bcb_models`.`id`, MIN(y_from) AS min_y')
+                            ->leftJoin('bcb_modify', '`bcb_modify`.`model_id` = `bcb_models`.`id`')
+                            ->where(['brand_id' => $br->id])
+                            ->with('bcb_modify')
+                            ->min('y_from');
+            $by->max_y = BcbModels::find()
+                            ->select('`bcb_models`.`id`, MIN(y_from) AS min_y')
+                            ->leftJoin('bcb_modify', '`bcb_modify`.`model_id` = `bcb_models`.`id`')
+                            ->where(['brand_id' => $br->id])
+                            ->with('bcb_modify')
+                            ->max('y_to');
+            $by->save();
+        }
+
+        echo '123';
 
     }
 }

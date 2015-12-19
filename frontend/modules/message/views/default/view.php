@@ -18,5 +18,16 @@ $this->registerCssFile('/css/bootstrap.min.css');
     <hr>
     <span><b>Текст сообщения</b></span>
     <p><?=$msg->content;?></p>
-    <a href="/message/default/send_message?from=<?=$msg->from?>" class="btn btn-warning" >Ответить</a>
+    <?php
+        if($msg->from_type == 'request'){
+            ?>
+            <a href="/message/default/send_message?from=<?=$msg->from?>&request=request&type=<?=$msg->type_id?>" class="btn btn-warning" >Ответить</a>
+            <?php
+        }else{
+            ?>
+            <a href="/message/default/send_message?from=<?=$msg->from?>" class="btn btn-warning" >Ответить</a>
+            <?php
+        }
+    ?>
+
 </section>

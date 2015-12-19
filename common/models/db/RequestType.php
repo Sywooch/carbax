@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $name
+ * @property string $icon
  * @property integer $view_widget_auto
  * @property integer $view_category_auto
  *
@@ -32,7 +33,7 @@ class RequestType extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['name'], 'string', 'max' => 255],
+            [['name','icon'], 'string', 'max' => 255],
             [['view_widget_auto','view_category_auto'],'integer']
         ];
     }

@@ -1,17 +1,15 @@
 <?php
-$this->registerCssFile('/css/bootstrap.min.css');
-use backend\modules\request_add_form\models\RequestAddForm;
-use common\models\db\AddFieldsGroup;
-use common\models\db\RequestTypeGroup;
-use frontend\modules\services\widgets\GetAllGroupById;
+use common\models\db\RequestAddForm;
 use frontend\widgets\RequestAddFieldGroup;
 use frontend\widgets\SelectAddress;
 use frontend\widgets\SelectAuto;
 use yii\helpers\Html;
-$this->title = "Добавить заявку";
+
+$this->title = "Редактирование";
 $this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
 $this->params['breadcrumbs'][] = ['label' => 'Мои заявки', 'url' => ['/my_requests']];
 $this->params['breadcrumbs'][] = $this->title;
+$this->registerCssFile('/css/bootstrap.min.css');
 ?>
 <section class="main-container">
     <form id="addForm" action="send_request" method="post">
@@ -46,16 +44,16 @@ $this->params['breadcrumbs'][] = $this->title;
             }
             ?>
         </div>
-            <?php
-            echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]);
-            /*foreach ($groupService as $gr) {
-               // \common\classes\Debug::prn($gr->add_fields_group_id);
-               // echo GetAllGroupById::widget(['groupId' => $gr->add_fields_group_id]);
-                $groups = AddFieldsGroup::find()->where(['groupId'=>$this->groupId])->all();
-            }*/
+        <?php
+        echo RequestAddFieldGroup::widget(['groupId' => $requestTypeId,'requestId'=>$_GET['id']]);
+        /*foreach ($groupService as $gr) {
+           // \common\classes\Debug::prn($gr->add_fields_group_id);
+           // echo GetAllGroupById::widget(['groupId' => $gr->add_fields_group_id]);
+            $groups = AddFieldsGroup::find()->where(['groupId'=>$this->groupId])->all();
+        }*/
 
-            echo Html::hiddenInput('request_type_id', $_GET['id']);
-            ?>
+        echo Html::hiddenInput('request_type_id', $requestTypeId);
+        ?>
         <div class="addContent--save">
             <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить</a>
         </div>

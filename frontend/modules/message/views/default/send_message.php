@@ -20,6 +20,13 @@ $this->registerCssFile('/css/bootstrap.min.css');
         <p><h3>Сообщение</h3>
             <?= Html::textarea('content','',['class'=>'addContent__description']); ?>
         </p>
+        <?php
+            if(isset($_GET['request'])){
+                echo Html::hiddenInput('to_type','request');
+                echo Html::hiddenInput('type_id',$_GET['type']);
+            }
+            ?>
+
         <div class="addContent--save">
             <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить</a>
         </div>
