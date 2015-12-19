@@ -51,12 +51,6 @@ class AjaxController extends Controller
                 $yearAll[$i] = $i;
             }
            echo Html::dropDownList('yar',0,$yearAll,['prompt' => 'Год выпуска', 'class' => 'addContent__adress year_select_car', 'id' => 'selectAutoWidget', 'type' => 'mod']);
-           /* echo Html::dropDownList(
-                'models',
-                0,
-                ArrayHelper::map(TofModels::find()->where(['mod_mfa_id' => $_POST['id']])->all(), 'mod_id', 'mod_name'),
-                ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'mod']
-            );*/
         }
         if ($_POST['type'] == 'mod') {
             $model = BcbModels::find()
@@ -66,7 +60,6 @@ class AjaxController extends Controller
                         ->andWhere(['>=','`bcb_modify`.`y_from`',$_POST['id']])
                         ->andWhere(['<=','`bcb_modify`.`y_from`',$_POST['id']])
                         ->all();
-           // Debug::prn($model);
             echo Html::dropDownList(
                 'types',
                 0,
@@ -74,22 +67,8 @@ class AjaxController extends Controller
                 ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typ']
             );
 
-            /*echo Html::dropDownList(
-                'types',
-                0,
-                ArrayHelper::map(TofTypes::find()->where(['typ_mod_id' => $_POST['id']])->all(), 'typ_id', 'typ_mmt_cds'),
-                ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typ']
-            );*/
         }
         if ($_POST['type'] == 'typ') {
-           // Debug::prn($_POST);
-           /* $model = BcbModify::find()
-                ->select('`bcb_modify`.`id`, `bcb_modify`.`name`')
-                ->leftJoin('`bcb_modify`','`bcb_modify`.`model_id` = `bcb_models`.`id`')
-                ->where(['brand_id' => $_POST['id']])
-                ->andWhere(['>=','`bcb_modify`.`y_from`',$_POST['year']])
-                ->andWhere(['<=','`bcb_modify`.`y_from`',$_POST['year']])
-                ->all();*/
             $model = BcbModify::find()->where(['model_id'=>$_POST['id']])
                 ->andWhere(['>=','y_from',$_POST['year']])
                 ->andWhere(['<=','y_from',$_POST['year']])->all();
@@ -97,11 +76,13 @@ class AjaxController extends Controller
                 'types',
                 0,
                 ArrayHelper::map($model,'id','name'),
-                ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typ7']
+                ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'group']
             );
-            /*if ($_POST['view'] == 1) {
+        }
+        if($_POST['type'] == 'group'){
+            if ($_POST['view'] == 1) {
                 echo CategoryProductTecDoc::widget();
-            }*/
+            }
         }
     }
 

@@ -33,7 +33,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
         --><? /*= $form->field($model,'type_car')->radioList(['1'=>'Легковая','2'=>'Грузовая','3'=>'Мото']);*/ ?>
 
             <form action="/garage" method="post">
-                <?= SelectAuto::widget(['view' => 0]) ?>
+                <?= SelectAuto::widget(['view' => 1]) ?>
 
                 <?= Html::textarea('comments','',['class'=>'addContent__description', 'placeholder'=>'Комментарии']) ?>
 
