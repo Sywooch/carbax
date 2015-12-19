@@ -65,6 +65,7 @@ jQuery(document).ready(function ($) {
         });
     }, 3000);
 
+
     if($('span').hasClass('img_link')){
         var allImg = [];
         $('.img_link').each(function(){
@@ -101,6 +102,20 @@ jQuery(document).ready(function ($) {
             });
         })
     })(jQuery)
+
+    $(document).on('change', '.selectAutoNew', function(){
+        $(this).nextAll().remove();
+        var step = $(this).attr('step');
+        var val = $(this).val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_auto_new",
+            data: 'val=' + val + '&step=' + step,
+            success: function (data) {
+                $('#selectAutoNew').append(data);
+            }
+        });
+    });
 
     $(document).on('change', '#selectAutoWidget', function(){
         $(this).nextAll().remove();
