@@ -66,4 +66,22 @@ class AjaxController extends Controller
         echo User::findOne($_POST['id'])->telephon;
     }
 
+    public function actionGet_auto_new(){
+        if($_POST['step'] == 'man'){
+            $max = TofModels::find()->select('mod_pcon_start')->where(['mod_mfa_id' => 504])->max('mod_pcon_start');
+            $min = TofModels::find()->select('mod_pcon_start')->where(['mod_mfa_id' => 504])->min('mod_pcon_start');
+            $max = substr($max, 0, 4);
+            $min = substr($min, 0, 4);
+            Debug::prn($max);
+        }
+        if($_POST['type'] == 'mod'){
+            echo Html::dropDownList(
+                'types',
+                0,
+                ArrayHelper::map(TofTypes::find()->where(['typ_mod_id' => $_POST['id']])->all(), 'typ_id', 'typ_mmt_cds'),
+                ['prompt' => 'Модель','class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typ']
+            );
+        }
+    }
+
 }

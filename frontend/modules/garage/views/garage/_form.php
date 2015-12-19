@@ -1,6 +1,7 @@
 <?php
 
 use frontend\widgets\SelectAuto;
+use frontend\widgets\SelectAutoNew;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -12,7 +13,6 @@ $this->registerCssFile('/css/bootstrap.min.css');
 
 ?>
 <section class="main-container">
-    <div class="garage-create">
         <div class="garage-form">
 
             <?php /*$form = ActiveForm::begin(); */ ?><!--
@@ -33,7 +33,8 @@ $this->registerCssFile('/css/bootstrap.min.css');
         --><? /*= $form->field($model,'type_car')->radioList(['1'=>'Легковая','2'=>'Грузовая','3'=>'Мото']);*/ ?>
 
             <form action="/garage" method="post">
-                <?= SelectAuto::widget(['view' => 0]) ?>
+                <?/*= SelectAuto::widget(['view' => 0]) */?>
+                <?= SelectAutoNew::widget() ?>
 
                 <?= Html::textarea('comments','',['class'=>'addContent__description', 'placeholder'=>'Комментарии']) ?>
 
@@ -42,6 +43,5 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 </div>
             </form>
         </div>
-    </div>
 </section>
 
