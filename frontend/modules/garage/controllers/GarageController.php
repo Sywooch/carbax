@@ -211,6 +211,16 @@ class GarageController extends Controller
     }
 
     public function actionChange_brand_name(){
-        
+        $model = AutoComBrands::find()->where(['group' => 'artic'])->all();
+        foreach($model as $m){
+            $to = AutoComBrands::find()->where(['like', 'name', $m->name])->all();
+            //Debug::prn($to);
+            if(count($to) > 1){
+                $m->name .= ' (Тягачи)';
+                //Debug::prn($m);
+                $m->save();
+            }
+        }
+        echo "Готово";
     }
 }
