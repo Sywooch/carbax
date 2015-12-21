@@ -9,12 +9,11 @@ use Yii;
  *
  * @property integer $id
  * @property integer $user_id
- * @property integer $man_id
- * @property integer $model_id
- * @property integer $type_id
  * @property integer $dt_add
+ * @property integer $id_auto_widget
  * @property string $comments
  * @property string $title
+ * @property string $vin
  */
 class Garage extends \yii\db\ActiveRecord
 {
@@ -32,9 +31,9 @@ class Garage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'man_id', 'model_id', 'type_id'], 'required'],
-            [['user_id', 'man_id', 'model_id', 'type_id', 'dt_add'], 'integer'],
-            [['comments', 'title'], 'string', 'max' => 255]
+            [['user_id'], 'required'],
+            [['user_id', 'dt_add','id_auto_widget'], 'integer'],
+            [['comments', 'title','vin'], 'string', 'max' => 255]
         ];
     }
 

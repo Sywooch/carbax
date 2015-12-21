@@ -36,7 +36,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
 
                 <?= SelectAuto::widget(['view' => 0]) ?>
 
-
+                <?= Html::textInput('vin',null,['class'=>'addContent__title', 'placeholder'=>'введите VIN код','style'=>'float:none']);?>
                 <?= Html::textarea('comments','',['class'=>'addContent__description', 'placeholder'=>'Комментарии']) ?>
 
                 <div class="form-group">
