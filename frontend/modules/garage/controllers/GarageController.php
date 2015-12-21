@@ -3,9 +3,13 @@
 namespace frontend\modules\garage\controllers;
 
 use common\classes\Debug;
+use common\models\db\AutoComBrands;
+use common\models\db\AutoComModels;
+use common\models\db\AutoComModify;
 use common\models\db\BcbBrands;
 use common\models\db\BcbModels;
 use common\models\db\BrendYear;
+use common\models\db\CargoautoYear;
 use common\models\db\Garage;
 use common\models\db\TofManufacturers;
 use common\models\db\TofModels;
@@ -182,7 +186,27 @@ class GarageController extends Controller
             $by->save();
         }
 
-        echo '123';
+        echo 'Готово';
+    }
+
+    public function actionInsert_table_cargoauto_year(){
+        $brandsAll = AutoComBrands::find()->all();
+       // Debug::prn($brandsAll);
+
+        foreach ($brandsAll as $br) {
+           // Debug::prn(AutoComModify::find()->where(['brand_id'=>$br->id])->min('release_from'));
+            $cargoauto = new CargoautoYear();
+            $cargoauto->id_brand = $br->id;
+            $cargoauto->name = $br->name;
+            $min_y =  AutoComModify::find()->where(['brand_id'=>$br->id])->min('release_from');
+            $cargoauto->min_y = (empty($min_y)) ?  1970 : $min_y;
+
+            $max_y = AutoComModify::find()->where(['brand_id'=>$br->id])->max('release_to');
+            $cargoauto->max_y = (empty($max_y)) ?  2015 : $max_y;
+            $cargoauto->save();
+        }
+
+        echo 'Готово';
 
     }
 

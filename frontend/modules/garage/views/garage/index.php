@@ -8,7 +8,8 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Гараж';
-/*$this->params['breadcrumbs'][] = $this->title;*/
+$this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
+$this->params['breadcrumbs'][] = $this->title;
 
 $this->registerCssFile('/css/bootstrap.min.css');
 ?>

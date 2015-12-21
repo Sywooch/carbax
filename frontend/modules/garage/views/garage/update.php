@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $model frontend\modules\garage\models\Garage */
 
 $this->title = 'Редактировать авто: ' . ' ' . $model->id;
-/*$this->params['breadcrumbs'][] = ['label' => 'Garages', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Garages', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';*/
+$this->params['breadcrumbs'][] = 'Update';
 ?>
 <section class="main-container">
     <div class="garage-update">

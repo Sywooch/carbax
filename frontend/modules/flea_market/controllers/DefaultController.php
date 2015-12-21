@@ -64,15 +64,15 @@ class DefaultController extends Controller
     public function actionAdd()
     {
 
-        $tofMan = TofManufacturers::find()->orderBy('mfa_brand')->all();
+       /* $tofMan = TofManufacturers::find()->orderBy('mfa_brand')->all();
         $region = GeobaseRegion::find()->orderBy('name')->all();
-        $autoType = CategoriesAuto::find()->all();
-        return $this->render('add',
-            [
+        $autoType = CategoriesAuto::find()->all();*/
+        return $this->render('add'
+            /*[
                 'tofMan' => $tofMan,
                 'region' => $region,
                 'autotype' => $autoType,
-            ]);
+            ]*/);
     }
 
     public function actionAdd_to_sql()

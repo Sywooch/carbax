@@ -7,8 +7,8 @@ use yii\widgets\DetailView;
 /* @var $model frontend\modules\garage\models\Garage */
 
 $this->title = $model->id;
-/*$this->params['breadcrumbs'][] = ['label' => 'Garages', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;*/
+$this->params['breadcrumbs'][] = ['label' => 'Garages', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="garage-view">
 
