@@ -123,10 +123,11 @@ class AjaxController extends Controller
             $model = AutoComModels::find()
                     ->select('`auto_com_models`.`id`, `auto_com_models`.`name`')
                     ->leftJoin('`auto_com_modify`','`auto_com_modify`.`model_id` = `auto_com_models`.`id`')
-                    ->where(['`auto_com_modify`.`brand_id`' => $_POST['brandId']])
+                    ->where(['`auto_com_models`.`brand_id`' => $_POST['brandId']])
                     ->andWhere(['<=','`auto_com_modify`.`release_from`',$_POST['id']])
                     ->andWhere(['>=','`auto_com_modify`.`release_to`',$_POST['id']])
                     ->all();
+            //Debug::prn($model);
             echo Html::dropDownList(
                 'model',
                 0,
