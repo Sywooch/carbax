@@ -185,4 +185,8 @@ class GarageController extends Controller
         echo '123';
 
     }
+
+    public function actionChange_brand_name(){
+        
+    }
 }
