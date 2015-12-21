@@ -12,10 +12,14 @@ namespace frontend\modules\ajax\controllers;
 use common\classes\Debug;
 use common\classes\SendingMessages;
 use common\models\db\AutoComBrands;
+use common\models\db\AutoComModels;
+use common\models\db\AutoComModify;
+use common\models\db\AutoComSubmodels;
 use common\models\db\BcbBrands;
 use common\models\db\BcbModels;
 use common\models\db\BcbModify;
 use common\models\db\BrendYear;
+use common\models\db\CargoautoYear;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
 use common\models\db\Msg;
@@ -40,7 +44,7 @@ class AjaxController extends Controller
 
     public function actionGet_auto()
     {
-        Debug::prn($_POST);
+        //Debug::prn($_POST);
         if($_POST['type'] == 'typeAuto'){
             if($_POST['id'] == 1){
                 $man = BcbBrands::find()->orderBy('name')->all();
@@ -78,8 +82,8 @@ class AjaxController extends Controller
                         ->select('`bcb_models`.`id`, `bcb_models`.`name`')
                         ->leftJoin('`bcb_modify`','`bcb_modify`.`model_id` = `bcb_models`.`id`')
                         ->where(['brand_id' => $_POST['brandId']])
-                        ->andWhere(['>=','`bcb_modify`.`y_from`',$_POST['id']])
                         ->andWhere(['<=','`bcb_modify`.`y_from`',$_POST['id']])
+                        ->andWhere(['>=','`bcb_modify`.`y_to`',$_POST['id']])
                         ->all();
             echo Html::dropDownList(
                 'types',
@@ -91,8 +95,8 @@ class AjaxController extends Controller
         }
         if ($_POST['type'] == 'typ') {
             $model = BcbModify::find()->where(['model_id'=>$_POST['id']])
-                ->andWhere(['>=','y_from',$_POST['year']])
-                ->andWhere(['<=','y_from',$_POST['year']])->all();
+                ->andWhere(['<=','y_from',$_POST['year']])
+                ->andWhere(['>=','y_to',$_POST['year']])->all();
             echo Html::dropDownList(
                 'types',
                 0,
@@ -107,7 +111,60 @@ class AjaxController extends Controller
         }
 
         if($_POST['type'] == 'cargoman'){
-            $year =
+            $year = CargoautoYear::find()->where(['id_brand'=>$_POST['id']])->one();
+            $yearAll = [];
+            for($i=$year->min_y; $i<=$year->max_y; $i++){
+                $yearAll[$i] = $i;
+            }
+            echo Html::dropDownList('year',0,$yearAll,['prompt' => 'Год выпуска', 'class' => 'addContent__adress year_select_car', 'id' => 'selectAutoWidget', 'type' => 'cargomod']);
+        }
+
+        if($_POST['type'] == 'cargomod'){
+            $model = AutoComModels::find()
+                    ->select('`auto_com_models`.`id`, `auto_com_models`.`name`')
+                    ->leftJoin('`auto_com_modify`','`auto_com_modify`.`model_id` = `auto_com_models`.`id`')
+                    ->where(['`auto_com_modify`.`brand_id`' => $_POST['brandId']])
+                    ->andWhere(['<=','`auto_com_modify`.`release_from`',$_POST['id']])
+                    ->andWhere(['>=','`auto_com_modify`.`release_to`',$_POST['id']])
+                    ->all();
+            echo Html::dropDownList(
+                'model',
+                0,
+                ArrayHelper::map($model,'id','name'),
+                ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'cargosubmod']
+            );
+        }
+
+        if($_POST['type'] =='cargosubmod'){
+           // Debug::prn($_POST);
+            $model = AutoComSubmodels::find()
+                    ->select('`auto_com_submodels`.`id`,`auto_com_submodels`.`name`')
+                    ->leftJoin('`auto_com_modify`','`auto_com_modify`.`submodel_id` = `auto_com_submodels`.`id`')
+                    ->where(['`auto_com_modify`.`model_id`' => $_POST['id']])
+                    ->andWhere(['<=','`auto_com_modify`.`release_from`',$_POST['year']])
+                    ->andWhere(['>=','`auto_com_modify`.`release_to`',$_POST['year']])
+                    ->all();
+
+            echo Html::dropDownList(
+                'submodel',
+                0,
+                ArrayHelper::map($model,'id','name'),
+                ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'cargotyp']
+            );
+        }
+
+        if($_POST['type'] == 'cargotyp'){
+            $model = AutoComModify::find()
+                    ->where(['submodel_id'=>$_POST['id']])
+                    ->andWhere(['<=','`release_from`',$_POST['year']])
+                    ->andWhere(['>=','`release_to`',$_POST['year']])
+                    ->all();
+            echo Html::dropDownList(
+                'types',
+                0,
+                ArrayHelper::map($model,'id','name'),
+                ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'group']
+            );
         }
     }
 
