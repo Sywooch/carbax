@@ -66,7 +66,7 @@ class GarageController extends Controller
      */
     public function actionIndex()
     {
-        Debug::prn($_POST);
+        //Debug::prn($_POST);
        /* if(isset($_POST['manufactures'])){
             $garage = new Garage();
             $garage->comments = $_POST['comments'];
@@ -82,7 +82,7 @@ class GarageController extends Controller
             $garage->title = $manName . ' / ' . $modelName;
             $garage->save();
         }*/
-        if(isset($_POST)){
+        if(isset($_POST['manufactures'])){
             $garage = new Garage();
             $autoWidget = new AutoWidget();
 
