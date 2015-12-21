@@ -11,6 +11,8 @@ namespace frontend\modules\ajax\controllers;
 
 use common\classes\Debug;
 use common\classes\SendingMessages;
+use common\models\db\AutoComBrands;
+use common\models\db\BcbBrands;
 use common\models\db\BcbModels;
 use common\models\db\BcbModify;
 use common\models\db\BrendYear;
@@ -38,6 +40,25 @@ class AjaxController extends Controller
 
     public function actionGet_auto()
     {
+        Debug::prn($_POST);
+        if($_POST['type'] == 'typeAuto'){
+            if($_POST['id'] == 1){
+                $man = BcbBrands::find()->orderBy('name')->all();
+                echo Html::dropDownList(
+                    'manufactures',
+                    0,
+                    ArrayHelper::map($man, 'id', 'name'),
+                    ['prompt' => 'Выберите бренд', 'class' => 'addContent__adress brand_select_car', 'id' => 'selectAutoWidget', 'type' => 'man']);
+            }
+            if($_POST['id'] == 2){
+                $man = AutoComBrands::find()->orderBy('name')->all();
+                echo Html::dropDownList(
+                    'manufactures',
+                    0,
+                    ArrayHelper::map($man, 'id', 'name'),
+                    ['prompt' => 'Выберите бренд', 'class' => 'addContent__adress brand_select_car', 'id' => 'selectAutoWidget', 'type' => 'cargoman']);
+            }
+        }
         if ($_POST['type'] == 'man') {
             $year = BrendYear::find()->where(['id_brand'=>$_POST['id']])->one();
             if($year->max_y == 9999){
@@ -83,6 +104,10 @@ class AjaxController extends Controller
             if ($_POST['view'] == 1) {
                 echo CategoryProductTecDoc::widget();
             }
+        }
+
+        if($_POST['type'] == 'cargoman'){
+            $year =
         }
     }
 

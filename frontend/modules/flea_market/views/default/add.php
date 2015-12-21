@@ -3,6 +3,7 @@
 use common\classes\Debug;
 use frontend\modules\flea_market\widgets\CategoryProductTecDoc;
 use frontend\widgets\RegionSelect;
+use frontend\widgets\SelectAuto;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -11,23 +12,32 @@ use kartik\file\FileInput;
 /*$this->registerCssFile('/css/bootstrap.min.css');*/
 /*$this->registerJsFile('/js/fileinput.min.js');*/
 
-$this->title = "Добавить товар";
+
+$this->title = ($_GET['type'] == 'auto') ? 'Добавить автомобиль' : 'Добавить запчасть';
+$this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
+$this->params['breadcrumbs'][] = [
+    'label' => ($_GET['type'] == 'auto') ? 'Мои автомобили' : 'Мои запчасти',
+    'url' => ($_GET['type'] == 'auto') ? 'sale_auto' : 'index'
+];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <!--<section class="main-container">-->
 <div class="addContent">
     <?php
-    $this->params['breadcrumbs'][] = ['label' => 'Запчасти', 'url' => ['index']];
+/*    $this->params['breadcrumbs'][] = ['label' => 'Запчасти', 'url' => ['index']];
     $this->params['breadcrumbs'][] = $this->title;
 
-    ?>
+    */?>
     <h1><?= Html::encode($this->title) ?></h1>
     <form id="addForm" action="<?= Url::to(['add_to_sql'])?>" method="post" enctype="multipart/form-data">
         <input id="prodType" type="hidden" name="prod_type" value="<?=$_GET['type']?>">
         <input type="text" name="title" class="addContent__title" placeholder="Название товара">
-        <?= Html::dropDownList('manufactures',0, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])?>
+        <?/*= Html::dropDownList('manufactures',0, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])*/?><!--
         <span id="modelBox"></span>
         <span id="typesBox"></span>
-        <span id="categBox"></span>
+        <span id="categBox"></span>-->
+
+        <?= SelectAuto::widget(['view' => ($_GET['type'] == 'auto') ? '0' : '1']);?>
         <?= RegionSelect::widget()?>
         <?/*= Html::dropDownList('region',0,ArrayHelper::map($region,'id','name'),['class'=>'addContent__adress','id'=>'regionSelect','prompt'=>'Выберите регион'])*/?><!--
         <span id="addCity"></span>-->

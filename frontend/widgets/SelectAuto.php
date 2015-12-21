@@ -19,9 +19,9 @@ class SelectAuto extends Widget
 
     public function run(){
         //$man = TofManufacturers::find()->orderBy('mfa_brand')->all();
-        $man = BcbBrands::find()->orderBy('name')->all();
+       // $man = BcbBrands::find()->orderBy('name')->all();
         return $this->render('select_auto', [
-            'man' => $man,
+          //  'man' => $man,
             'view'=>$this->view,
         ]);
     }

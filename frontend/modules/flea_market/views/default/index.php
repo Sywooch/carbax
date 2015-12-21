@@ -2,6 +2,7 @@
 use yii\widgets\Breadcrumbs;
 $this->title = "Мои запчасти";
 $this->registerCssFile('/css/bootstrap_btn.min.css');
+$this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
