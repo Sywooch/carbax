@@ -3,6 +3,14 @@
 namespace frontend\modules\flea_market\controllers;
 
 use common\classes\Debug;
+use common\models\db\AutoComBrands;
+use common\models\db\AutoComModels;
+use common\models\db\AutoComModify;
+use common\models\db\AutoComSubmodels;
+use common\models\db\AutoWidget;
+use common\models\db\BcbBrands;
+use common\models\db\BcbModels;
+use common\models\db\BcbModify;
 use common\models\db\CategoriesAuto;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
@@ -79,9 +87,36 @@ class DefaultController extends Controller
     {
         $market = new Market();
         $market->name = $_POST['title'];
-        $market->man_id = $_POST['manufactures'];
+
+        $autoWidget = new AutoWidget();
+        $autoWidget->auto_type = $_POST['typeAuto'];
+        $autoWidget->year = $_POST['year'];
+        $autoWidget->brand_id = $_POST['manufactures'];
+        $autoWidget->model_id = $_POST['model'];
+        $autoWidget->type_id = $_POST['types'];
+        if($_POST['typeAuto'] == 1){
+            $manName = BcbBrands::find()->where(['id'=>$_POST['manufactures']])->one()->name;
+            $modelName = BcbModels::find()->where(['id'=>$_POST['model']])->one()->name;
+            $typeName = BcbModify::find()->where(['id'=>$_POST['types']])->one()->name;
+        }
+        else{
+            $manName = AutoComBrands::find()->where(['id'=>$_POST['manufactures']])->one()->name;
+            $modelName = AutoComModels::find()->where(['id'=>$_POST['model']])->one()->name;
+            $typeName = AutoComModify::find()->where(['id'=>$_POST['model']])->one()->name;
+
+            $autoWidget->submodel_id = $_POST['submodel'];
+            $autoWidget->submodel_name = AutoComSubmodels::find()->where(['id'=>$_POST['submodel']])->one()->name;
+        }
+
+        $autoWidget->brand_name = $manName;
+        $autoWidget->model_name = $modelName;
+        $autoWidget->type_name = $typeName;
+
+        $autoWidget->save();
+        /*$market->man_id = $_POST['manufactures'];
         $market->model_id = $_POST['model'];
-        $market->type_id = $_POST['types'];
+        $market->type_id = $_POST['types'];*/
+        $market->id_auto_widget = $autoWidget->id;
         $market->region_id = $_POST['region'];
         $market->city_id = $_POST['city'];
         $market->descr = $_POST['descr'];

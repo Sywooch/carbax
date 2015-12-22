@@ -6,8 +6,11 @@ use common\classes\Debug;
 use common\models\db\AutoComBrands;
 use common\models\db\AutoComModels;
 use common\models\db\AutoComModify;
+use common\models\db\AutoComSubmodels;
+use common\models\db\AutoWidget;
 use common\models\db\BcbBrands;
 use common\models\db\BcbModels;
+use common\models\db\BcbModify;
 use common\models\db\BrendYear;
 use common\models\db\CargoautoYear;
 use common\models\db\Garage;
@@ -63,7 +66,8 @@ class GarageController extends Controller
      */
     public function actionIndex()
     {
-        if(isset($_POST['manufactures'])){
+        //Debug::prn($_POST);
+       /* if(isset($_POST['manufactures'])){
             $garage = new Garage();
             $garage->comments = $_POST['comments'];
             $garage->man_id = $_POST['manufactures'];
@@ -77,7 +81,47 @@ class GarageController extends Controller
 
             $garage->title = $manName . ' / ' . $modelName;
             $garage->save();
+        }*/
+        if(isset($_POST['manufactures'])){
+            $garage = new Garage();
+            $autoWidget = new AutoWidget();
+
+            $autoWidget->auto_type = $_POST['typeAuto'];
+            $autoWidget->year = $_POST['year'];
+            $autoWidget->brand_id = $_POST['manufactures'];
+            $autoWidget->model_id = $_POST['model'];
+            $autoWidget->type_id = $_POST['types'];
+            if($_POST['typeAuto'] == 1){
+                $manName = BcbBrands::find()->where(['id'=>$_POST['manufactures']])->one()->name;
+                $modelName = BcbModels::find()->where(['id'=>$_POST['model']])->one()->name;
+                $typeName = BcbModify::find()->where(['id'=>$_POST['types']])->one()->name;
+            }
+            else{
+                $manName = AutoComBrands::find()->where(['id'=>$_POST['manufactures']])->one()->name;
+                $modelName = AutoComModels::find()->where(['id'=>$_POST['model']])->one()->name;
+                $typeName = AutoComModify::find()->where(['id'=>$_POST['model']])->one()->name;
+
+                $autoWidget->submodel_id = $_POST['submodel'];
+                $autoWidget->submodel_name = AutoComSubmodels::find()->where(['id'=>$_POST['submodel']])->one()->name;
+            }
+
+            $autoWidget->brand_name = $manName;
+            $autoWidget->model_name = $modelName;
+            $autoWidget->type_name = $typeName;
+
+            $garage->comments = $_POST['comments'];
+            $garage->dt_add = time();
+            $garage->user_id = Yii::$app->user->id;
+            $garage->vin = $_POST['vin'];
+
+            $garage->title = $manName . ' / ' . $modelName;
+
+
+            $autoWidget->save();
+            $garage->id_auto_widget = $autoWidget->id;
+            $garage->save();
         }
+
         $user = Yii::$app->user->id;
         $model = new Garage();
         $car = $model->find()->where(['user_id'=>$user])->all();

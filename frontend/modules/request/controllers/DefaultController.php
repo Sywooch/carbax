@@ -5,6 +5,14 @@ namespace frontend\modules\request\controllers;
 use common\classes\Debug;
 use common\classes\SendingMessages;
 use common\models\db\AddFieldsGroup;
+use common\models\db\AutoComBrands;
+use common\models\db\AutoComModels;
+use common\models\db\AutoComModify;
+use common\models\db\AutoComSubmodels;
+use common\models\db\AutoWidget;
+use common\models\db\BcbBrands;
+use common\models\db\BcbModels;
+use common\models\db\BcbModify;
 use common\models\db\Request;
 use common\models\db\RequestAddFieldValue;
 use common\models\db\RequestAdditionalFields;
@@ -69,12 +77,41 @@ class DefaultController extends Controller
     public function actionSend_request(){
         $groups = RequestTypeGroup::find()->where(['request_type_id'=>$_POST['request_type_id']])->all();
 
+        $autoWidget = new AutoWidget();
+        $autoWidget->auto_type = $_POST['typeAuto'];
+        $autoWidget->year = $_POST['year'];
+        $autoWidget->brand_id = $_POST['manufactures'];
+        $autoWidget->model_id = $_POST['model'];
+        $autoWidget->type_id = $_POST['types'];
+        if($_POST['typeAuto'] == 1){
+            $manName = BcbBrands::find()->where(['id'=>$_POST['manufactures']])->one()->name;
+            $modelName = BcbModels::find()->where(['id'=>$_POST['model']])->one()->name;
+            $typeName = BcbModify::find()->where(['id'=>$_POST['types']])->one()->name;
+        }
+        else{
+            $manName = AutoComBrands::find()->where(['id'=>$_POST['manufactures']])->one()->name;
+            $modelName = AutoComModels::find()->where(['id'=>$_POST['model']])->one()->name;
+            $typeName = AutoComModify::find()->where(['id'=>$_POST['model']])->one()->name;
+
+            $autoWidget->submodel_id = $_POST['submodel'];
+            $autoWidget->submodel_name = AutoComSubmodels::find()->where(['id'=>$_POST['submodel']])->one()->name;
+        }
+
+        $autoWidget->brand_name = $manName;
+        $autoWidget->model_name = $modelName;
+        $autoWidget->type_name = $typeName;
+
+        $autoWidget->save();
+
         $request = new Request();
         $request->request_type_id = $_POST['request_type_id'];
         $request->user_id = Yii::$app->user->id;
+        $request->id_auto_widget = $autoWidget->id;
         $request->save();
 
         unset($_POST['request_type_id']);
+
+
 
         foreach ($_POST as $key=>$value) {
             $addRequest = new RequestAddFieldValue();

@@ -75,7 +75,7 @@ class AjaxController extends Controller
             for($i=$year->min_y; $i <= $yearEnd; $i++){
                 $yearAll[$i] = $i;
             }
-           echo Html::dropDownList('yar',0,$yearAll,['prompt' => 'Год выпуска', 'class' => 'addContent__adress year_select_car', 'id' => 'selectAutoWidget', 'type' => 'mod']);
+           echo Html::dropDownList('year',0,$yearAll,['prompt' => 'Год выпуска', 'class' => 'addContent__adress year_select_car', 'id' => 'selectAutoWidget', 'type' => 'mod']);
         }
         if ($_POST['type'] == 'mod') {
             $model = BcbModels::find()
@@ -86,7 +86,7 @@ class AjaxController extends Controller
                         ->andWhere(['>=','`bcb_modify`.`y_to`',$_POST['id']])
                         ->all();
             echo Html::dropDownList(
-                'types',
+                'model',
                 0,
                 ArrayHelper::map($model,'id','name'),
                 ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typ']
