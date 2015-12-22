@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property integer $request_type_id
+ * @property integer $id_auto_widget
  *
  * @property RequestType $requestType
  * @property RequestAddFields[] $requestAddFields
@@ -30,7 +31,7 @@ class Request extends \yii\db\ActiveRecord
     {
         return [
             [['request_type_id'], 'required'],
-            [['request_type_id'], 'integer']
+            [['request_type_id','id_auto_widget'], 'integer']
         ];
     }
 

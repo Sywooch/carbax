@@ -10,9 +10,6 @@ use Yii;
  * @property integer $id
  * @property integer $user_id
  * @property integer $service_id
- * @property integer $man_id
- * @property integer $type_id
- * @property integer $model_id
  * @property integer $region_id
  * @property integer $city_id
  * @property string $name
@@ -20,6 +17,7 @@ use Yii;
  * @property string $price
  * @property integer $dt_add
  * @property integer $prod_type
+ * @property integer $id_auto_widget
  */
 class Market extends \yii\db\ActiveRecord
 {
@@ -37,8 +35,8 @@ class Market extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'service_id', 'man_id', 'type_id', 'model_id', 'region_id', 'city_id', 'name', 'descr', 'price', 'dt_add'], 'required'],
-            [['user_id', 'service_id', 'man_id', 'type_id', 'model_id', 'region_id', 'city_id', 'dt_add'], 'integer'],
+            [['user_id', 'service_id', 'region_id', 'city_id', 'name', 'descr', 'price', 'dt_add'], 'required'],
+            [['user_id', 'service_id', 'region_id', 'city_id', 'dt_add','id_auto_widget'], 'integer'],
             [['descr'], 'string'],
             [['name', 'price'], 'string', 'max' => 255]
         ];
