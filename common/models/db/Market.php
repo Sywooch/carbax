@@ -62,4 +62,9 @@ class Market extends \yii\db\ActiveRecord
             'dt_add' => 'Dt Add',
         ];
     }
+
+    public function getauto_widget()
+    {
+        return $this->hasOne(AutoWidget::className(), ['id' => 'id_auto_widget']);
+    }
 }

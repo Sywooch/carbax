@@ -422,10 +422,14 @@ class DefaultController extends Controller
         if(!empty($_GET['categ'])){
             $result->andWhere(['like', 'category_id_all', $_GET['categ']]);
         }
+        if(!empty($_GET['manufactures'])){
+            $result->andWhere(['`auto_widget`.`brand_id`' => $_GET['manufactures']]);
+        }
+        $result->with('auto_widget');
         $search = $result->all();
-        Debug::prn($search);
+        //Debug::prn($search);
 
-        //return $this->render('search', ['search'=>$search]);
+        return $this->render('search', ['search'=>$search]);
     }
 
     public function actionShow_cat()
