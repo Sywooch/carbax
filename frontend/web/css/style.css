@@ -468,3 +468,11 @@ input.message_to,input.message_subject {
     display: block;
     float: left;
 }
+
+.blockTitle-left {
+    text-align: center;
+    color: #000;
+    font-family: "Calibri";
+    font-size: 45px;
+    font-weight: bold;
+}
