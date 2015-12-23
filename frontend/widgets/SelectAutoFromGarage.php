@@ -20,7 +20,7 @@ class SelectAutoFromGarage extends Widget
 
     public function run(){
         $garage = Garage::find()->where(['user_id' => Yii::$app->user->id])->all();
-        return Html::dropDownList('manufactures', 0, ArrayHelper::map($garage, 'man_id', 'title'), ['class' => 'addContent__adress']);
+        return Html::dropDownList('manufactures_garage', 0, ArrayHelper::map($garage, 'id', 'title'), ['class' => 'addContent__adress', 'id' => 'selectGarage']);
     }
 
 }

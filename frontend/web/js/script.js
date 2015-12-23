@@ -261,6 +261,7 @@ jQuery(document).ready(function ($) {
                 $('.selectCar').html(data);
             }
         });
+        return false;
     });
 
     $('#manSelect').on('change', function(){
@@ -271,6 +272,18 @@ jQuery(document).ready(function ($) {
             data: 'mfa_id=' + $(this).val(),
             success: function (data) {
                 $('#modelBox').html(data);
+            }
+        });
+    });
+
+    $(document).on('change', '#selectGarage', function(){
+        var id = $(this).val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_hidden_auto",
+            data: 'id=' + id,
+            success: function (data) {
+                $('#hiddenInputs').html(data);
             }
         });
     });

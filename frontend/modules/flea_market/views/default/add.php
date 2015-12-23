@@ -79,6 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="addContent--save">
             <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
         </div>
+        <span id="hiddenInputs"></span>
     </form>
 </div>
 <!--</section>-->

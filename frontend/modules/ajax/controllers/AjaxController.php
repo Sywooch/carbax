@@ -15,11 +15,13 @@ use common\models\db\AutoComBrands;
 use common\models\db\AutoComModels;
 use common\models\db\AutoComModify;
 use common\models\db\AutoComSubmodels;
+use common\models\db\AutoWidget;
 use common\models\db\BcbBrands;
 use common\models\db\BcbModels;
 use common\models\db\BcbModify;
 use common\models\db\BrendYear;
 use common\models\db\CargoautoYear;
+use common\models\db\Garage;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
 use common\models\db\Msg;
@@ -268,6 +270,17 @@ class AjaxController extends Controller
         $data['descr'] = $descr->value;
         $data['brand_car'] = $manufactures->value;
         return $this->renderPartial('request_msg_tpl', $data);
+    }
+
+    public function actionGet_hidden_auto(){
+        $garage = Garage::find()->where(['id' => $_POST['id']])->one();
+        $auto = AutoWidget::find()->where(['id' => $garage->id_auto_widget])->one();
+        echo Html::input('hidden','typeAuto',$auto->auto_type);
+        echo Html::input('hidden','manufactures',$auto->brand_id);
+        echo Html::input('hidden','year',$auto->year);
+        echo Html::input('hidden','model',$auto->model_id);
+        echo Html::input('hidden','types',$auto->type_id);
+        echo Html::input('hidden','submodel',$auto->submodel_id);
     }
 
 }

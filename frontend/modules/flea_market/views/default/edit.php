@@ -7,11 +7,12 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->title = "Редактировать товар";
+$this->title = ($_GET['type'] == 'zap') ? "Редактировать товар" : "Редактировать авто";
 ?>
 <div class="addContent">
    <?php
-   $this->params['breadcrumbs'][] = ['label' => 'Запчасти', 'url' => ['index']];
+   $this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
+   $this->params['breadcrumbs'][] = ['label' => ($_GET['type'] == 'zap') ? "Мои запчасти" : "Мои авто", 'url' => ($_GET['type'] == 'zap') ? ['index'] : ['sale_auto']];
    $this->params['breadcrumbs'][] = $this->title;
 
    ?>
