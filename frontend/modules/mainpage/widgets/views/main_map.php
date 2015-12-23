@@ -17,7 +17,7 @@ Debug::prn($services);*/
             <aside class="filter__container--select">
                 <div class="filter__container-select--check">
                     <input type="checkbox" value="None" id="filter_category_select_2" name="category[]"/>
-                    <label for="filter_category_select_2" class="main_category_to_map" service-type="1">
+                    <label for="filter_category_select_2" class="main_category_to_map" service-type="10">
                          <span>
                             <img src="/media/img/2.png" alt="" />
                             <p>Мойка</p>

@@ -78,9 +78,9 @@ class ServicesController extends Controller
     }
 
     public function actionAdd(){
-        $brandCars = BrandCars::find()->all();
+        //$brandCars = BrandCars::find()->all();
         $this->view->params['bannersHide'] = false;
-        return $this->render('add', ['brands' => $brandCars]);
+        return $this->render('add', []);
     }
 
     public function actionAdd_to_sql(){

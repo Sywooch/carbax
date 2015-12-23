@@ -15,7 +15,7 @@ class CheckBoxAutoZap extends Widget
 {
 
     public function run(){
-        
+
     }
 
 }
