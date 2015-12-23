@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </td>
                 <td class="addAllServices__control">
                     <a href="/flea_market/default/edit_product?id=<?=$mark->id?>">редактировать </a>/
-                    <a href="/flea_market/default/product_delite?id=<?=$mark->id?>" data-confirm="Вы действительно хотите удалить?">удалить</a>
+                    <a href="/flea_market/default/product_delite?type=auto&id=<?=$mark->id?>" data-confirm="Вы действительно хотите удалить?">удалить</a>
                 </td>
             </tr>
         <?php    }

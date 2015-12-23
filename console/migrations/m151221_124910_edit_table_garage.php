@@ -7,7 +7,7 @@ class m151221_124910_edit_table_garage extends Migration
 {
     public function up()
     {
-       /* $this->dropColumn('garage', 'man_id');
+        /*$this->dropColumn('garage', 'man_id');
         $this->dropColumn('garage', 'model_id');
         $this->dropColumn('garage', 'type_id');*/
         $this->addColumn('garage', 'id_auto_widget', 'integer   AFTER title ');

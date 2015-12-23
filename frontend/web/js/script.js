@@ -252,6 +252,16 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    $('#selectAutoFromGarage').on('click', function(){
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_garage",
+            data: 'action=garage',
+            success: function (data) {
+                $('.selectCar').html(data);
+            }
+        });
+    });
 
     $('#manSelect').on('change', function(){
         $('#typesBox').html('');

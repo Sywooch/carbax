@@ -31,6 +31,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 <?=$c['title']?>
             </td>
             <td>
+                <?= Html::a('Редактировать', ['edit', 'id'=>$c['id']], ['class' => 'btn btn-info']) ?>
                 <?= Html::a('Удалить', ['delete', 'id'=>$c['id']], ['class' => 'btn btn-danger', 'data' => ['confirm' => 'Удалить авто?', 'method' => 'post',]]) ?>
             </td>
         </tr>

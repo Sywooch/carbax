@@ -85,10 +85,19 @@ class DefaultController extends Controller
 
     public function actionAdd_to_sql()
     {
-        $market = new Market();
+        if(isset($_POST['auto_widget'])){
+            $market = Market::find()->where(['id' => $_POST['idproduct']])->one();
+            $autoWidget = AutoWidget::find()->where(['id' => $_POST['auto_widget']])->one();
+            Yii::$app->session->setFlash('success','Товар успешно отредактирован');
+        }
+        else {
+            Yii::$app->session->setFlash('success','Товар успешно добавлен');
+            $market = new Market();
+            $autoWidget = new AutoWidget();
+        }
+
         $market->name = $_POST['title'];
 
-        $autoWidget = new AutoWidget();
         $autoWidget->auto_type = $_POST['typeAuto'];
         $autoWidget->year = $_POST['year'];
         $autoWidget->brand_id = $_POST['manufactures'];
@@ -136,9 +145,11 @@ class DefaultController extends Controller
             $market->service_id = 0;
         }
         if(isset($_POST['sub_cat'])){
+            $market->category_id_all = $_POST['main_cat'].',';
             foreach ($_POST['sub_cat'] as $sc) {
                 $market->category_id_all .= $sc . ',';
             }
+            $market->category_id_all = substr($market->category_id_all, 0, -1);
             $market->category_id = array_pop($_POST['sub_cat']);
         }
 
@@ -148,6 +159,7 @@ class DefaultController extends Controller
 
         $market->user_id = Yii::$app->user->id;
         $market->save();
+
         if(!file_exists('media/users/'.Yii::$app->user->id)){
             mkdir('media/users/'.Yii::$app->user->id.'/');
         }
@@ -155,24 +167,25 @@ class DefaultController extends Controller
             mkdir('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'));
         }
         $dir = 'media/users/'.Yii::$app->user->id.'/'.date('Y-m-d').'/';
-        $i = 0;    
-        foreach($_FILES['file']['name'] as $file){
-            move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir.$file);
-            $img = new ProductImg();
-            $img->product_id = $market->id;
-            $img->img = $dir.$file;
-            if($file == $_POST['cover']){
-                Debug::prn($_POST['cover']);
-               $img->cover = 1;
-            }else{
-               $img->cover = 0;
+        $i = 0;
+
+        if(!empty($_FILES['file']['name'][0])){
+            ProductImg::deleteAll(['product_id' => $market->id]);
+            foreach($_FILES['file']['name'] as $file){
+                move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir.$file);
+                $img = new ProductImg();
+                $img->product_id = $market->id;
+                $img->img = $dir.$file;
+                if($file == $_POST['cover']){
+                    Debug::prn($_POST['cover']);
+                    $img->cover = 1;
+                }else{
+                    $img->cover = 0;
+                }
+                $img->save();
+                $i++;
             }
-            $img->save();
-            $i++;
         }
-
-
-        Yii::$app->session->setFlash('success','Товар успешно добавлен');
 
         if($_POST['prod_type'] == 'zap'){
             $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])->all();
@@ -221,22 +234,27 @@ class DefaultController extends Controller
 
     public function actionProduct_delite(){
         Market::deleteAll(['id'=>$_GET['id']]);
-        $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id, 'prod_type' => 0])->all();
-        Yii::$app->session->setFlash('ssuccess','Товар успешно удален');
-        return $this->render('index',
-            [
-                'market' => $marketAll,
-            ]);
+        if($_GET['type'] == 'auto'){
+            $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id, 'prod_type' => 1])->all();
+            Yii::$app->session->setFlash('success','Авто успешно удалено');
+            return $this->render('sale_auto', ['market' => $marketAll,]);
+        }
+        else {
+            $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id, 'prod_type' => 0])->all();
+            Yii::$app->session->setFlash('success','Товар успешно удален');
+            return $this->render('index', ['market' => $marketAll,]);
+        }
     }
 
     public function actionEdit_product()
     {
         $product = Market::find()->where(['id' => $_GET['id']])->one();
-        $tofMan = TofManufacturers::find()->orderBy('mfa_brand')->all();
+        $auto = AutoWidget::find()->where(['id' => $product->id_auto_widget])->one();
+        /*$tofMan = TofManufacturers::find()->orderBy('mfa_brand')->all();*/
         $region = GeobaseRegion::find()->all();
-        $autoType = CategoriesAuto::find()->all();
-        $model = TofModels::find()->where(['mod_mfa_id' => $product->man_id])->all();
-        $type = TofTypes::find()->where(['typ_mod_id' => $product->model_id])->all();
+        /*$autoType = CategoriesAuto::find()->all();*/
+        /*$model = TofModels::find()->where(['mod_mfa_id' => $product->man_id])->all();
+        $type = TofTypes::find()->where(['typ_mod_id' => $product->model_id])->all();*/
         $city = GeobaseCity::find()->where(['region_id' => $product->region_id])->all();
         $category = explode(',', $product->category_id_all);
         array_pop($category);
@@ -250,13 +268,10 @@ class DefaultController extends Controller
         return $this->render('edit',
             [
                 'product' => $product,
-                'tofMan' => $tofMan,
                 'region' => $region,
-                'autotype' => $autoType,
-                'model' => $model,
-                'type' => $type,
                 'city' => $city,
                 'category' => $nameCat,
+                'auto' => $auto,
                 'img' => ProductImg::find()->where(['product_id'=>$_GET['id']])->all()
             ]);
     }

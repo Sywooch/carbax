@@ -83,8 +83,14 @@ class GarageController extends Controller
             $garage->save();
         }*/
         if(isset($_POST['manufactures'])){
-            $garage = new Garage();
-            $autoWidget = new AutoWidget();
+            if(isset($_POST['garageId'])){
+                $garage = Garage::find()->where(['id' => $_POST['garageId']])->one();
+                $autoWidget = AutoWidget::find()->where(['id' => $_POST['autoId']])->one();
+            }
+            else {
+                $garage = new Garage();
+                $autoWidget = new AutoWidget();
+            }
 
             $autoWidget->auto_type = $_POST['typeAuto'];
             $autoWidget->year = $_POST['year'];
@@ -173,6 +179,18 @@ class GarageController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    /**
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionEdit($id)
+    {
+        $model = $this->findModel($id);
+        $autoWidget = AutoWidget::find()->where(['id' => $model->id_auto_widget])->one();
+        //Debug::prn($autoWidget);
+        return $this->render('_form', ['model' => $model, 'auto' => $autoWidget]);
     }
 
     /**

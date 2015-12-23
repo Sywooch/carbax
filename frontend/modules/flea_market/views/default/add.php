@@ -37,13 +37,17 @@ $this->params['breadcrumbs'][] = $this->title;
         <span id="typesBox"></span>
         <span id="categBox"></span>-->
 
-        <?= SelectAuto::widget(['view' => ($_GET['type'] == 'auto') ? '0' : '1']);?>
+        <?= SelectAuto::widget(['view' => ($_GET['type'] == 'auto') ? '0' : '1', 'select_from_garage' => true]);?>
+        <div class="singleContent__desc">
+            <h2>Регион</h2>
+        </div>
         <?= RegionSelect::widget()?>
         <?/*= Html::dropDownList('region',0,ArrayHelper::map($region,'id','name'),['class'=>'addContent__adress','id'=>'regionSelect','prompt'=>'Выберите регион'])*/?><!--
         <span id="addCity"></span>-->
         <?/*= CategoryProductTecDoc::widget()*/?>
         <span id="parent"></span>
         <div class="singleContent__desc">
+            <h2>Добавить фото</h2>
         <?php
         echo '<label class="control-label">Добавить фото</label>';
         echo FileInput::widget([
