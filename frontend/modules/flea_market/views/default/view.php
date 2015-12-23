@@ -64,9 +64,13 @@ echo FleaMarketSearch::widget(['title'=>false]);?>
             <div class="fleamarket__city">
                 Город <span><?= GeobaseCity::find()->where(['id'=>$product->city_id])->one()->name;?></span>
             </div>
-            <div class="fleamarket__type_product">
-                Вид товара: <?=$category;?>
-            </div>
+            <?php
+            if($product->category_id != '0'):
+            ?>
+                <div class="fleamarket__type_product">
+                    Вид товара: <?=$category;?>
+                </div>
+            <?php endif; ?>
             <div class="fleamarket_product_description">
                 <?=$product->descr;?>
             </div>

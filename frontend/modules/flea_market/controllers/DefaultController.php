@@ -439,16 +439,18 @@ class DefaultController extends Controller
 
 
     public function actionView(){
-        //$this->update($runValidation, $attributeNames) !== false;
+
         $this->view->params['officeHide'] = true;
         $product = Market::find()->where(['id' => $_GET['id']])->one();
-        //Debug::prn($product->views);
+
         $product->updateCounters(['views'=>1]);
 
         $nameTypeAuto = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one();
-        $marka = TofManufacturers::find()->where(['mfa_id' => $product->man_id])->one();
+        $auto = AutoWidget::find()->where(['id'=>$product->id_auto_widget])->one();
+       // Debug::prn($product);
+       /* $marka = TofManufacturers::find()->where(['mfa_id' => $product->man_id])->one();
         $model = TofModels::find()->where(['mod_id' => $product->model_id])->one();
-        $type = TofTypes::find()->where(['typ_id' => $product->type_id])->one();
+        $type = TofTypes::find()->where(['typ_id' => $product->type_id])->one();*/
         $region = GeobaseRegion::find()->where(['id' => $product->region_id])->one();
         $city = GeobaseCity::find()->where(['id' => $product->city_id])->one();
         $category = explode(',', $product->category_id_all);
@@ -464,9 +466,7 @@ class DefaultController extends Controller
             [
                 'product' => $product,
                 'nametype' => $nameTypeAuto,
-                'marka' => $marka,
-                'model' => $model,
-                'type' => $type,
+                'auto' => $auto,
                 'region' => $region,
                 'city' => $city,
                 'category' => $nameCat,
