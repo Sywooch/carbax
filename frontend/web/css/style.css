@@ -450,3 +450,12 @@ input.message_to,input.message_subject {
 .news{
     padding:0;
 }
+
+.header{
+    position: fixed;
+    z-index: 9999;
+}
+
+.news__block img{
+    border-radius:0px;
+}
