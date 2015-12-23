@@ -172,6 +172,7 @@ class DefaultController extends Controller
     }
 
     public function actionAll_requests(){
+        $this->view->params['bannersHide'] = false;
         $requests = Request::find()->where(['user_id' => Yii::$app->user->id])->all();
         $requestType = RequestType::find()->all();
         return $this->render('my_requests', ['requests' => $requests,'requestType'=>$requestType]);

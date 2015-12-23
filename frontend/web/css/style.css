@@ -459,3 +459,12 @@ input.message_to,input.message_subject {
 .news__block img{
     border-radius:0px;
 }
+
+.filtr_request_type {
+    padding-bottom: 20px;
+}
+
+.myRequest {
+    display: block;
+    float: left;
+}

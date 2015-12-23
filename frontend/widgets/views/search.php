@@ -24,7 +24,7 @@ else {
             <form action="/flea_market/default/search">
                 <?= Html::dropDownList('region',$sel['region'], ArrayHelper::map($region, 'id', 'name'), ['prompt'=>'Регион'])?>
                 <input value="<?=$sel['search']?>" type="text" name="search" class="filter__searchline--search" placeholder="Поиск по объявлениям">
-                <?= Html::dropDownList('manufactures',$sel['manufactures'], ArrayHelper::map($manufactures, 'mfa_id', 'mfa_brand'), ['prompt'=>'Марка']) ?>
+                <?= Html::dropDownList('manufactures',$sel['manufactures'], ArrayHelper::map($manufactures, 'id', 'name'), ['prompt'=>'Марка']) ?>
                 <?=Html::dropDownList('categ',$sel['categ'], ArrayHelper::map($cat, 'str_id', 'str_des'), ['prompt'=>'Категория'])?>
                 <input type="submit" class="filter__searchline--but" value="Найти">
                 <input type="button" class="filter__searchline--but" value="На карте">

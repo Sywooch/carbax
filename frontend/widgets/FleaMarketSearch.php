@@ -9,6 +9,7 @@
 namespace frontend\widgets;
 
 
+use common\models\db\BcbBrands;
 use common\models\db\GeobaseRegion;
 use common\models\db\TofManufacturers;
 use common\models\db\TofSearchTree;
@@ -22,7 +23,7 @@ class FleaMarketSearch extends Widget
     public function run(){
         $cat = TofSearchTree::find()->where(['str_id_parent'=>'10001'])->all();
         $region = GeobaseRegion::find()->orderBy('name')->all();
-        $manufactures = TofManufacturers::find()->orderBy('mfa_brand')->all();
+        $manufactures = BcbBrands::find()->orderBy('name')->all();
 
         return $this->render('search', ['cat'=>$cat, 'region'=>$region, 'manufactures'=>$manufactures, 'title'=>$this->title]);
     }

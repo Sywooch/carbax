@@ -411,10 +411,11 @@ class DefaultController extends Controller
         $this->view->params['officeHide'] = true;
         $this->view->params['bannersHide'] = true;
 
-        $result = Market::find()->filterWhere([
-            'region_id' => $_GET['region'],
-            'man_id' => $_GET['manufactures']
-        ]);
+        $result = Market::find()
+            ->leftJoin('auto_widget', '`auto_widget`.`id` = `market`.`id_auto_widget`')
+            ->filterWhere([
+                'region_id' => $_GET['region']
+            ]);
         if(!empty($_GET['search'])){
             $result->andWhere(['like', 'name', $_GET['search']]);
         }
@@ -422,9 +423,9 @@ class DefaultController extends Controller
             $result->andWhere(['like', 'category_id_all', $_GET['categ']]);
         }
         $search = $result->all();
-        /*Debug::prn($search);*/
+        Debug::prn($search);
 
-        return $this->render('search', ['search'=>$search]);
+        //return $this->render('search', ['search'=>$search]);
     }
 
     public function actionShow_cat()
