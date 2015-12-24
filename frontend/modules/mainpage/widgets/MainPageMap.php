@@ -3,6 +3,7 @@ namespace frontend\modules\mainpage\widgets;
 
 
 
+use common\classes\Custom_function;
 use common\classes\Debug;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
@@ -13,7 +14,7 @@ use yii\base\Widget;
 class MainPageMap extends Widget
 {
     public function run(){
-        $ip = Yii::$app->ipgeobase->getLocation($_SERVER["REMOTE_ADDR"]);
+        $ip = Yii::$app->ipgeobase->getLocation(Custom_function::getRealIpAddr());
         $regionId = GeobaseRegion::find()->where(['name' => $ip['region']])->one()->id;
         $cityId = GeobaseCity::find()->where(['region_id' => $regionId, 'name' => $ip['city']])->one()->id;
         //Debug::prn($cityId);
