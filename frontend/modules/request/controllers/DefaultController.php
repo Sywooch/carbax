@@ -161,10 +161,11 @@ class DefaultController extends Controller
             ->all();
 
         $ids = [];
-        //Debug::prn($_POST);
+        //Debug::prn($services);
         foreach($services as $service){
             $msg = $this->generateRequestMsg($_POST);
-            SendingMessages::send_message($service->user_id, Yii::$app->user->id, 'Заявка на сервис ' . $service->name, $msg,'request','0',$request->id);
+            $m = SendingMessages::send_message($service->user_id, Yii::$app->user->id, 'Заявка на сервис ' . $service->name, $msg,'request','0',$request->id);
+            //Debug::prn($m);
             $ids[] = $service->id;
         }
 

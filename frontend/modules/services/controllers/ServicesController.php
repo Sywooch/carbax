@@ -236,7 +236,7 @@ class ServicesController extends Controller
         $workHours = WorkHours::find()->where(['service_id'=>$servicId])->all();
         $workHours = ArrayHelper::index($workHours, 'day');
         $telephone = Phone::find()->where(['service_id'=>$servicId])->all();
-        $brends = BrandCars::find()->all();
+        //$brends = BrandCars::find()->all();
         $brendsSelect = ServiceBrandCars::find()->where(['service_id'=>$servicId])->all();
         $brendsSelect = ArrayHelper::index($brendsSelect, 'brand_cars_id');
         return $this->render('edit',
@@ -249,7 +249,6 @@ class ServicesController extends Controller
                 'website' => $servicWS,
                 'workHours' => $workHours,
                 'telephone' => $telephone,
-                'brends' => $brends,
                 'brendSelect' => $brendsSelect,
             ]);
     }

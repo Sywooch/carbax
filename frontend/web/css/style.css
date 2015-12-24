@@ -476,3 +476,7 @@ input.message_to,input.message_subject {
     font-size: 45px;
     font-weight: bold;
 }
+
+.requestIcon{
+    margin-bottom: 10px;
+}

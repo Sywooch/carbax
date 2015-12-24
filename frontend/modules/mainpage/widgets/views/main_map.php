@@ -24,14 +24,14 @@ Debug::prn($services);*/
                          </span>
                     </label>
                     <input type="checkbox" value="None" id="filter_category_select_1" name="category[]"/>
-                    <label for="filter_category_select_1" class="main_category_to_map">
+                    <label for="filter_category_select_1" class="main_category_to_map" service-type="2">
                          <span>
                             <img src="/media/img/1.png" alt="" />
-                            <p>Техосмотр</p>
+                            <p>Шиномонтаж</p>
                          </span>
                     </label>
                     <input type="checkbox" value="None" id="filter_category_select_3" name="category[]"/>
-                    <label for="filter_category_select_3" class="main_category_to_map">
+                    <label for="filter_category_select_3" class="main_category_to_map" service-type="13">
                          <span>
                             <img src="/media/img/3.png" alt="" />
                             <p>Авторынок</p>
@@ -45,29 +45,29 @@ Debug::prn($services);*/
                          </span>
                     </label>
                     <input type="checkbox" value="None" id="filter_category_select_5" name="category[]"/>
-                    <label for="filter_category_select_5" class="main_category_to_map">
+                    <label for="filter_category_select_5" class="main_category_to_map" service-type="11">
                          <span>
                             <img src="/media/img/5.png" alt="" />
-                            <p>Заправки</p>
+                            <p>Автосервис</p>
                          </span>
                     </label>
                     <input type="checkbox" value="None" id="filter_category_select_6" name="category[]"/>
-                    <label for="filter_category_select_6" class="main_category_to_map">
+                    <label for="filter_category_select_6" class="main_category_to_map" service-type="12">
                          <span>
                             <img src="/media/img/6.png" alt="" />
-                            <p>Заправки</p>
+                            <p>Автомагазин</p>
                          </span>
                     </label>
 
                     <input type="checkbox" value="None" id="filter_category_select_7" name="category[]"/>
-                    <label for="filter_category_select_7" class="main_category_to_map">
+                    <label for="filter_category_select_7" class="main_category_to_map" service-type="7">
                          <span>
                             <img src="/media/img/7.png" alt="" />
-                            <p>Заправки</p>
+                            <p>Автошкола</p>
                          </span>
                     </label>
                     <input type="checkbox" value="None" id="filter_category_select_8" name="category[]"/>
-                    <label for="filter_category_select_8" class="main_category_to_map" service-type="2">
+                    <label for="filter_category_select_8" class="main_category_to_map" service-type="9">
                          <span>
                             <img src="/media/img/8.png" alt="" />
                             <p>Заправки</p>

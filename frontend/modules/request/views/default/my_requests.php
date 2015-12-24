@@ -18,7 +18,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
     <div class="filtr_request_type">
         <?php foreach ($requestType as $rt): ?>
             <a href="<?= Url::to(['#']) ?> " data-id="<?= $rt->id; ?>" class="link-request-type">
-				<span class="icon_b icon_b_autosalon" style="background-image: url('<?= $rt->icon ?>')">
+				<span class="requestIcon icon_b icon_b_autosalon" style="background-image: url('<?= $rt->icon ?>')">
 				</span>
             </a>
         <?php endforeach; ?>
