@@ -75,4 +75,24 @@ class OffersController extends Controller
         echo Html::label('Город');
         echo Html::dropDownList('city', 0, ArrayHelper::map($city, 'id', 'name'),['prompt'=>'Выберите город']);
     }
+
+    public function actionEdit($id){
+       // Debug::prn($_POST);
+        $model = Offers::findOne($id);
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if(!empty($_FILES['Offers']['tmp_name']['img_url'])){
+                move_uploaded_file($_FILES['Offers']['tmp_name']['img_url'], Yii::$app->basePath.'/web/media/img/offers/'.time().$_FILES['Offers']['name']['img_url']);
+                $model->img_url = '/frontend/web/media/img/offers/'.time().$_FILES['Offers']['name']['img_url'];
+            }
+            else{
+                $model->img_url = $_POST['img_url_h'];
+            }
+            $model->city_id = $_POST['city'];
+            $model->save();
+
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('edit',['model'=>$model]);
+        }
+    }
 }

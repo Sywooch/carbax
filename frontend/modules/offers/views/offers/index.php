@@ -4,7 +4,7 @@ use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
 $this->title = 'Спецпредложения';
-
+$this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -20,7 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="offers__block">
                     <img src="<?= $n->img_url ?>" alt="">
                     <a href="<?= Url::to(['offers/view', 'id' => $n->id]) ?>"
-                       class="offers__block-title"><?= $n->title ?></a>
+                       class="offers__block-title"><?= $n->title ?></a><br />
+                    <a href="<?= Url::to(['offers/edit', 'id' => $n->id]); ?>">Редактировать</a>
                 </div>
 
                 <?php
