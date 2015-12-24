@@ -95,4 +95,11 @@ class OffersController extends Controller
             return $this->render('edit',['model'=>$model]);
         }
     }
+
+    public function actionDelete($id){
+        $model = new Offers();
+        $model->deleteAll(['id'=>$id]);
+
+        return $this->redirect(['index']);
+    }
 }
