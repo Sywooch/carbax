@@ -45,4 +45,16 @@ class Custom_function {
         }
         return $ip;
     }
+
+    public static function getByType($type, $key){
+        switch ($type) {
+            case 1:
+                $result['marketTitleAdd'] = '';
+                return "ПН";
+            case 2:
+                return "ВТ";
+            case 3:
+                return "СР";
+        }
+    }
 } 
