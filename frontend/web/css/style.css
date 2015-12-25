@@ -480,3 +480,7 @@ input.message_to,input.message_subject {
 .requestIcon{
     margin-bottom: 10px;
 }
+
+.offers__image{
+    width:500px;
+}
