@@ -9,6 +9,7 @@
 namespace frontend\modules\ajax\controllers;
 
 
+use common\classes\Custom_function;
 use common\classes\Debug;
 use common\classes\SendingMessages;
 use common\models\db\AutoComBrands;
@@ -34,7 +35,9 @@ use common\models\db\TofModels;
 use common\models\db\TofTypes;
 use common\models\db\User;
 use frontend\modules\flea_market\widgets\CategoryProductTecDoc;
+use frontend\widgets\SelectAuto;
 use frontend\widgets\SelectAutoFromGarage;
+use frontend\widgets\SelectMultiplayAuto;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -281,6 +284,10 @@ class AjaxController extends Controller
         echo Html::input('hidden','model',$auto->model_id);
         echo Html::input('hidden','types',$auto->type_id);
         echo Html::input('hidden','submodel',$auto->submodel_id);
+    }
+
+    public function actionGet_select_auto(){
+        echo Custom_function::getByType($_POST['type'],'nameWidget');
     }
 
 }

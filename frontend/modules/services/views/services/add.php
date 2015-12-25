@@ -131,14 +131,9 @@ $this->registerCssFile('/css/bootstrap.min.css');
 
                 </div>
             </div>
-            <div class="singleContent__desc--carbrands">
-                <!--<h3>Марки автомобилей</h3>
-                <?php /*foreach($brands as $b): */?>
-                <input type="checkbox" id="<?/*=$b->id*/?>" name="brands[]" value="<?/*=$b->id*/?>"/>
-                <label for="<?/*=$b->id*/?>"><span></span><?/*=$b->name*/?></label>
-                --><?php /*endforeach */?>
-                <?= SelectMultiplayAuto::widget(); ?>
-            </div>
+           <!-- <div class="singleContent__desc--carbrands">
+                <?/*= SelectMultiplayAuto::widget(); */?>
+            </div>-->
             <?= GetAllGroupById::widget(['groupId' => $_GET['service_type']]) ?>
             <?= ComfortZone::widget()?>
             <?= AutoType::widget()?>

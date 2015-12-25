@@ -9,6 +9,9 @@
 namespace common\classes;
 
 
+use frontend\widgets\SelectMultiplayAuto;
+use frontend\widgets\SelectMultiplayCargoAuto;
+
 class Custom_function {
     function get_week_day($day){
         switch ($day) {
@@ -50,9 +53,11 @@ class Custom_function {
         switch ($type) {
             case 1:
                 $result['marketTitleAdd'] = '';
-                return "ПН";
+                $result['nameWidget'] = SelectMultiplayAuto::widget();
+                return $result[$key];
             case 2:
-                return "ВТ";
+                $result['nameWidget'] = SelectMultiplayCargoAuto::widget();
+                return $result[$key];
             case 3:
                 return "СР";
         }

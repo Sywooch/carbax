@@ -10,6 +10,7 @@ use Yii;
  * @property integer $id
  * @property integer $service_id
  * @property integer $brand_cars_id
+ * @property integer $type
  *
  * @property Services $service
  * @property BrandCars $brandCars
@@ -31,7 +32,7 @@ class ServiceBrandCars extends \yii\db\ActiveRecord
     {
         return [
             [['service_id', 'brand_cars_id'], 'required'],
-            [['service_id', 'brand_cars_id'], 'integer']
+            [['service_id', 'brand_cars_id','type'], 'integer']
         ];
     }
 

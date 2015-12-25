@@ -484,3 +484,16 @@ input.message_to,input.message_subject {
 .offers__image{
     width:500px;
 }
+
+.selectBrand{
+
+}
+
+.selectCar, .selectCargoCar, .selectMoto {
+    width: 165px;
+    display: inline-block;
+}
+
+.selectMoto {
+    margin: 0;
+}
