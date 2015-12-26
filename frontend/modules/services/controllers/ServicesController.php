@@ -13,6 +13,7 @@ use common\classes\Debug;
 use common\models\db\AddFieldsGroup;
 use common\models\db\AdditionalFields;
 use common\models\db\Address;
+use common\models\db\AutoComBrands;
 use common\models\db\AutoType;
 use common\models\db\BrandCars;
 use common\models\db\ComfortZone;
@@ -121,9 +122,21 @@ class ServicesController extends Controller
                 $brC = new ServiceBrandCars();
                 $brC->service_id = $service->id;
                 $brC->brand_cars_id = $br;
+                $brC->type = 1;
                 $brC->save();
             }
         }
+
+        if(isset($_POST['brandsCargo'])){
+            foreach ($_POST['brandsCargo'] as $brCargo) {
+                $brCar = new ServiceBrandCars();
+                $brCar->service_id = $service->id;
+                $brCar->brand_cars_id = $brCargo;
+                $brCar->type = 2;
+                $brCar->save();
+            }
+        }
+
 
         //Добавляем телефоны
         if(isset($_POST['phoneNumber'])) {
@@ -290,7 +303,18 @@ class ServicesController extends Controller
                 $brC = new ServiceBrandCars();
                 $brC->service_id = $serv->id;
                 $brC->brand_cars_id = $br;
+                $brC->type = 1;
                 $brC->save();
+            }
+        }
+
+        if(isset($_POST['brandsCargo'])){
+            foreach ($_POST['brandsCargo'] as $brCargo) {
+                $brCar = new ServiceBrandCars();
+                $brCar->service_id = $serv->id;
+                $brCar->brand_cars_id = $brCargo;
+                $brCar->type = 2;
+                $brCar->save();
             }
         }
 

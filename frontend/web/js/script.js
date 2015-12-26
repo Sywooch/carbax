@@ -524,6 +524,39 @@ jQuery(document).ready(function ($) {
             }, 1000);
         });
     });
+
+    $(document).on('change','.typeAuto',function(){
+        var type = $(this).val();
+        if($(this).prop('checked')) {
+            $.ajax({
+                type: 'POST',
+                url: "/ajax/ajax/get_select_auto",
+                data: 'type=' + type,
+                success: function (data) {
+                    if(type == 1){
+                        $('.selectCar').html(data);
+                    }
+                    if(type == 2){
+                        $('.selectCargoCar').html(data);
+                    }
+                    if(type == 3){
+                        $('.selectMoto').html(data);
+                    }
+                   // $('.selectBrand').html(data);
+                }
+            });
+        } else {
+            if(type == 1){
+                $('.selectCar').html('');
+            }
+            if(type == 2){
+                $('.selectCargoCar').html('');
+            }
+            if(type == 3){
+                $('.selectMoto').html('');
+            }
+        }
+    });
 });
 
 $(".first__but--but").click(function () {

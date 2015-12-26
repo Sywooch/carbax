@@ -141,18 +141,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
 
                 </div>
             </div>
-            <div class="singleContent__desc--carbrands">
-                <?= SelectMultiplayAuto::widget(['serviceId'=>$serviceID]);?>
-                <!--<h3>Марки автомобилей</h3>
-                <?php
-/*                foreach ($brends as $br ) { */?>
-                        <input type="checkbox" <?php /*if($br->id == $brendSelect[$br->id]->brand_cars_id){echo 'checked';}*/?> id="<?/*=$br->id*/?>" name="brands[]" value="<?/*=$br->id*/?>"/>
-                        <label for="<?/*=$br->id*/?>"><span></span><?/*=$br->name*/?></label>
-                --><?php
-/*
-                }
-                */?>
-            </div>
+
 
             <?= GetAllGroupById::widget(
                 [
