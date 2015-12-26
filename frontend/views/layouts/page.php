@@ -28,6 +28,34 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter34422170 = new Ya.Metrika({
+                        id:34422170,
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true
+                    });
+                } catch(e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/34422170" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 </head>
 <body>
 
@@ -53,7 +81,7 @@ AppAsset::register($this);
         <a href="#" class="header--autotext"><a href="<?=Url::to(['/profile/default/view'])?>" class="header--autotext"><?= User::getLogin(Yii::$app->user->id);?></a></a>
         <a href="<?=Url::to('/office')?>" class="header--perscab">Личный кабинет</a>
         <form action="#" class="header--region">
-            <input type="text" class="header--region--box" placeholder="Москва">
+            <input type="text" class="header--region--box" placeholder="Город">
         </form>
         <a href="<?=Url::to(['/message'])?>" class="header--messages">Мои сообщения <?= NumberUnreadMessages::widget(); ?></a>
         <a href="<?=Url::to(['/offers/offers/index']);?>" class="header--sales"><span>Спецпредложения</span></a>

@@ -47,7 +47,8 @@ jQuery(document).ready(function ($){
     });*/
 
     $('.main_category_to_map').on('click', function(){
-        var cityId = $('#coordinates').attr('cityId')
+        var cityId = $('#coordinates').attr('cityId');
+        var regionId = $('#coordinates').attr('regionId');
         $(this).toggleClass('mapFilterActivate');
         var serviceTypeIds = '';
         $('.mapFilterActivate').each(function(){
@@ -56,7 +57,7 @@ jQuery(document).ready(function ($){
         $.ajax({
             type: 'POST',
             url: "/mainpage/mainpage/get_address",
-            data: 'serviceTypeIds=' + serviceTypeIds.slice(0, -1) + '&cityId=' + cityId,
+            data: 'serviceTypeIds=' + serviceTypeIds.slice(0, -1) + '&cityId=' + cityId + '&regionId=' + regionId,
             success: function (data) {
                 /*console.log(data);*/
                 $('#setAddress').html(data);
