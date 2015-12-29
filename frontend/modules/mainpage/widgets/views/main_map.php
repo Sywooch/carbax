@@ -77,7 +77,7 @@ Debug::prn($services);*/
             </aside>
             <div class="filter__container--map">
                 <span id="setAddress"></span>
-                <span id="coordinates" lat="<?=$lat?>" lng="<?=$lng?>" cityId="<?=$city_id?>"></span>
+                <span id="coordinates" lat="<?=$lat?>" lng="<?=$lng?>" cityId="<?=$city_id?>" regionId="<?=$region_id?>"></span>
                 <!--<div class="filter__container--map--title">
                     <p>Результаты фильтра</p>
                 </div>-->
