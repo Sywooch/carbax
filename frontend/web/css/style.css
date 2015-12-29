@@ -494,6 +494,11 @@ input.message_to,input.message_subject {
     display: inline-block;
 }
 
+.selectCar.selectCarAutoWidget {
+    display: block;
+    width: 100%;
+}
+
 .selectMoto {
     margin: 0;
 }

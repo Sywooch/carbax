@@ -2,7 +2,7 @@
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 ?>
-<div data-view="<?= $view; ?>" class="selectCar">
+<div data-view="<?= $view; ?>" class="selectCar selectCarAutoWidget">
     <?= Html::dropDownList(
         'typeAuto',
         0,
