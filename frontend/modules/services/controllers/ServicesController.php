@@ -137,6 +137,16 @@ class ServicesController extends Controller
             }
         }
 
+        if(isset($_POST['brandsMoto'])){
+            foreach ($_POST['brandsMoto'] as $brCargo) {
+                $brCar = new ServiceBrandCars();
+                $brCar->service_id = $service->id;
+                $brCar->brand_cars_id = $brCargo;
+                $brCar->type = 3;
+                $brCar->save();
+            }
+        }
+
 
         //Добавляем телефоны
         if(isset($_POST['phoneNumber'])) {
@@ -314,6 +324,16 @@ class ServicesController extends Controller
                 $brCar->service_id = $serv->id;
                 $brCar->brand_cars_id = $brCargo;
                 $brCar->type = 2;
+                $brCar->save();
+            }
+        }
+
+        if(isset($_POST['brandsMoto'])){
+            foreach ($_POST['brandsMoto'] as $brCargo) {
+                $brCar = new ServiceBrandCars();
+                $brCar->service_id = $serv->id;
+                $brCar->brand_cars_id = $brCargo;
+                $brCar->type = 3;
                 $brCar->save();
             }
         }

@@ -11,6 +11,7 @@ namespace common\classes;
 
 use frontend\widgets\SelectMultiplayAuto;
 use frontend\widgets\SelectMultiplayCargoAuto;
+use frontend\widgets\SelectMultiplayMoto;
 
 class Custom_function {
     function get_week_day($day){
@@ -59,7 +60,8 @@ class Custom_function {
                 $result['nameWidget'] = SelectMultiplayCargoAuto::widget();
                 return $result[$key];
             case 3:
-                return "СР";
+                $result['nameWidget'] = SelectMultiplayMoto::widget();
+                return $result[$key];;
         }
     }
 } 

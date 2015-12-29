@@ -22,6 +22,10 @@ use common\models\db\BcbModels;
 use common\models\db\BcbModify;
 use common\models\db\BrendYear;
 use common\models\db\CargoautoYear;
+use common\models\db\CarMark;
+use common\models\db\CarModel;
+use common\models\db\CarModification;
+use common\models\db\CarType;
 use common\models\db\Garage;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
@@ -66,6 +70,22 @@ class AjaxController extends Controller
                     0,
                     ArrayHelper::map($man, 'id', 'name'),
                     ['prompt' => 'Выберите бренд', 'class' => 'addContent__adress brand_select_car', 'id' => 'selectAutoWidget', 'type' => 'cargoman']);
+            }
+            if($_POST['id'] == 3){
+                $type = CarType::find()->all();
+                echo Html::dropDownList(
+                    'mototype',
+                    0,
+                    ArrayHelper::map($type,'id_car_type','name'),
+                    ['prompt' => 'Выберите тип', 'class' => 'addContent__adress brand_select_car', 'id' => 'selectAutoWidget', 'type' => 'motocartype']
+                );
+                /*$man = CarMark::find()->orderBy('name')->all();
+                echo Html::dropDownList(
+                    'manufactures',
+                    0,
+                    ArrayHelper::map($man,'id_car_mark','name'),
+                    ['prompt' => 'Выберите бренд', 'class' => 'addContent__adress brand_select_car', 'id' => 'selectAutoWidget', 'type' => 'motooman']
+                );*/
             }
         }
         if ($_POST['type'] == 'man') {
@@ -169,6 +189,36 @@ class AjaxController extends Controller
                 'types',
                 0,
                 ArrayHelper::map($model,'id','name'),
+                ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'group']
+            );
+        }
+
+        if($_POST['type'] == 'motocartype'){
+            $man = CarMark::find()->where(['id_car_type'=>$_POST['id']])->orderBy('name')->all();
+            echo Html::dropDownList(
+                'manufactures',
+                0,
+                ArrayHelper::map($man,'id_car_mark','name'),
+                ['prompt' => 'Выберите бренд', 'class' => 'addContent__adress brand_select_car', 'id' => 'selectAutoWidget', 'type' => 'motooman']
+            );
+        }
+
+        if($_POST['type'] == 'motooman'){
+            $model = CarModel::find()->where(['id_car_mark'=>$_POST['id']])->orderBy('name')->all();
+            echo Html::dropDownList(
+                'model',
+                0,
+                ArrayHelper::map($model,'id_car_model','name'),
+                ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'mototype']
+            );
+        }
+
+        if($_POST['type'] == 'mototype'){
+            $model = CarModification::find()->where(['id_car_model'=>$_POST['id']])->orderBy('name')->all();
+            echo Html::dropDownList(
+                'types',
+                0,
+                ArrayHelper::map($model,'id_car_modification','name'),
                 ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'group']
             );
         }
