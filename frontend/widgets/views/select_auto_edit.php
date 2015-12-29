@@ -12,7 +12,12 @@ use yii\helpers\Html;
     ); ?>
    <?php
         if($auto->auto_type == 3){
-
+            echo Html::dropDownList(
+                'mototype',
+                $typeMoto,
+                ArrayHelper::map($typeMotoAll,'id_car_type','name'),
+                ['prompt' => 'Выберите тип', 'class' => 'addContent__adress brand_select_car', 'id' => 'selectAutoWidget', 'type' => 'motocartype']
+            );
           echo  Html::dropDownList(
                 'manufactures',
                 $auto->brand_id,

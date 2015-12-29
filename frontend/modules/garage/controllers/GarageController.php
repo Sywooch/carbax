@@ -14,6 +14,7 @@ use common\models\db\BcbModify;
 use common\models\db\BrendYear;
 use common\models\db\CargoautoYear;
 use common\models\db\CarMark;
+use common\models\db\CarMarkByType;
 use common\models\db\CarModel;
 use common\models\db\CarModification;
 use common\models\db\Garage;
@@ -276,5 +277,17 @@ class GarageController extends Controller
             }
         }
         echo "Готово";
+    }
+
+    public function actionCar_mark_by_type(){
+        $model = CarMarkByType::find()->where(['id_car_type'=>'26'])->all();
+        foreach ($model as $m) {
+            $to = CarMarkByType::find()->where(['like','id_car_type',$m->id_car_type])->all();
+            if(count($to) > 1){
+                $m->name .= ' (снегоходы)';
+                $m->save();
+            }
+        }
+        echo 'Готово';
     }
 }

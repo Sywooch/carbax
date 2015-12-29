@@ -10,6 +10,7 @@ namespace frontend\widgets;
 
 
 use common\models\db\CarMark;
+use common\models\db\CarMarkByType;
 use common\models\db\ServiceBrandCars;
 use yii\base\Widget;
 
@@ -17,7 +18,7 @@ class SelectMultiplayMoto extends Widget
 {
     public $serviceId;
     public function run(){
-        $markAuto = CarMark::find()->orderBy('name')->all();
+        $markAuto = CarMarkByType::find()->orderBy('name')->all();
         foreach ($markAuto as $ma) {
             $markAutoArray[$ma->id_car_mark] = $ma->name;
         }

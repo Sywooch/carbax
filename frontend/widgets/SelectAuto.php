@@ -22,6 +22,7 @@ use common\models\db\CargoautoYear;
 use common\models\db\CarMark;
 use common\models\db\CarModel;
 use common\models\db\CarModification;
+use common\models\db\CarType;
 use common\models\db\TofManufacturers;
 use common\models\db\TofSearchTree;
 use yii\base\Widget;
@@ -96,7 +97,9 @@ class SelectAuto extends Widget
             }
 
             if($this->auto->auto_type == '3'){
-                $brand = CarMark::find()->orderBy('name')->all();
+                $typeMotoAll = CarType::find()->all();
+                $typeMoto = CarMark::find()->where(['id_car_mark' => $this->auto->brand_id])->one()->id_car_type;
+                $brand = CarMark::find()->where(['id_car_type' => $typeMoto])->orderBy('name')->all();
                 $model = CarModel::find()->where(['id_car_mark'=>$this->auto->brand_id])->all();
                 $typ = CarModification::find()->where(['id_car_model'=>$this->auto->model_id])->all();
             }
@@ -118,7 +121,9 @@ class SelectAuto extends Widget
                 'sub_model' => $subModel,
                 'typ' => $typ,
                 'cat' => $cat,
-                'main_cat' => $mainCat
+                'main_cat' => $mainCat,
+                'typeMotoAll' => $typeMotoAll,
+                'typeMoto' => $typeMoto,
             ]);
         }
         else {
