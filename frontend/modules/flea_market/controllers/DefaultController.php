@@ -11,6 +11,10 @@ use common\models\db\AutoWidget;
 use common\models\db\BcbBrands;
 use common\models\db\BcbModels;
 use common\models\db\BcbModify;
+use common\models\db\CarMark;
+use common\models\db\CarModel;
+use common\models\db\CarModification;
+use common\models\db\CarType;
 use common\models\db\CategoriesAuto;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
@@ -97,7 +101,7 @@ class DefaultController extends Controller
         }
 
         $market->name = $_POST['title'];
-
+        $market->new = $_POST['new'];
         $autoWidget->auto_type = $_POST['typeAuto'];
         $autoWidget->year = $_POST['year'];
         $autoWidget->brand_id = $_POST['manufactures'];
@@ -108,13 +112,18 @@ class DefaultController extends Controller
             $modelName = BcbModels::find()->where(['id'=>$_POST['model']])->one()->name;
             $typeName = BcbModify::find()->where(['id'=>$_POST['types']])->one()->name;
         }
-        else{
+        if($_POST['typeAuto'] == 2){
             $manName = AutoComBrands::find()->where(['id'=>$_POST['manufactures']])->one()->name;
             $modelName = AutoComModels::find()->where(['id'=>$_POST['model']])->one()->name;
             $typeName = AutoComModify::find()->where(['id'=>$_POST['model']])->one()->name;
 
             $autoWidget->submodel_id = $_POST['submodel'];
             $autoWidget->submodel_name = AutoComSubmodels::find()->where(['id'=>$_POST['submodel']])->one()->name;
+        }
+        if($_POST['typeAuto'] == 3){
+            $manName = CarMark::find()->where(['id_car_mark'=>$_POST['manufactures']])->one()->name;
+            $modelName = CarModel::find()->where(['id_car_model'=>$_POST['model']])->one()->name;
+            $typeName = CarModification::find()->where(['id_car_modification'=>$_POST['types']])->one()->name;
         }
 
         $autoWidget->brand_name = $manName;
@@ -313,7 +322,7 @@ class DefaultController extends Controller
             $product->category_id = array_pop($_POST['sub_cat']);
             $product->id_auto_type = $_POST['autotype'];
         }
-
+        $product->new = $_POST['new'];
         $product->user_id = Yii::$app->user->id;
         $product->save();
 

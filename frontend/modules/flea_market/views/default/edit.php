@@ -63,6 +63,10 @@ $this->title = ($_GET['type'] == 'zap') ? "Редактировать товар
         ]);
         ?>
 
+        <h3>Товар</h3>
+        <?= Html::radio('new',($product->new == 1) ? true : false,['label'=>'Новый','value'=>1,'class'=>'userOrService']);?>
+        <?= Html::radio('new',($product->new == 0) ? true : false,['label'=>'Б/У','value'=>0,'class'=>'userOrService']);?>
+
         <h3>Описание</h3>
         <?= Html::textarea('descr',$product->descr,['class'=>'addContent__description'])?>
         <h3>Цена</h3>

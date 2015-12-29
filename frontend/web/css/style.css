@@ -497,3 +497,7 @@ input.message_to,input.message_subject {
 .selectMoto {
     margin: 0;
 }
+
+input[type="radio"].userOrService {
+    display: inline-block!important;
+}

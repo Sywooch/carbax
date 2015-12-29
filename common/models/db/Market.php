@@ -18,6 +18,7 @@ use Yii;
  * @property integer $dt_add
  * @property integer $prod_type
  * @property integer $id_auto_widget
+ * @property integer $new
  */
 class Market extends \yii\db\ActiveRecord
 {
@@ -36,7 +37,7 @@ class Market extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'service_id', 'region_id', 'city_id', 'name', 'descr', 'price', 'dt_add'], 'required'],
-            [['user_id', 'service_id', 'region_id', 'city_id', 'dt_add','id_auto_widget'], 'integer'],
+            [['user_id', 'service_id', 'region_id', 'city_id', 'dt_add','id_auto_widget','new'], 'integer'],
             [['descr'], 'string'],
             [['name', 'price'], 'string', 'max' => 255]
         ];

@@ -67,7 +67,9 @@ $this->params['breadcrumbs'][] = $this->title;
        <!-- <label class="control-label">Добавить фото</label>
         <input id="input-4" type="file" multiple=true class="file-loading">-->
 
-
+            <h3>Товар</h3>
+            <?= Html::radio('new',false,['label'=>'Новый','value'=>1,'class'=>'userOrService']);?>
+            <?= Html::radio('new',false,['label'=>'Б/У','value'=>0,'class'=>'userOrService']);?>
             <h3>Описание</h3>
             <?= Html::textarea('descr','',['class'=>'addContent__description'])?>
             <h3>Цена</h3>
