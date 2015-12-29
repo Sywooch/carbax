@@ -1,6 +1,7 @@
 <?php
 use frontend\widgets\SelectMultiplayAuto;
 use frontend\widgets\SelectMultiplayCargoAuto;
+use frontend\widgets\SelectMultiplayMoto;
 
 ?>
 <div class="singleContent__worksWith">
@@ -24,9 +25,9 @@ use frontend\widgets\SelectMultiplayCargoAuto;
 
     foreach ($autoSelect as $at) {
         switch($at->auto_type_id){
-            case 1: $brands = SelectMultiplayAuto::widget(['serviceId' =>$serviceId]);break;
-            case 2: $cargoBrands = SelectMultiplayCargoAuto::widget(['serviceId' =>$serviceId]);break;
-            case 3: break;
+            case 1: $brands = SelectMultiplayAuto::widget(['serviceId' =>$serviceId]); break;
+            case 2: $cargoBrands = SelectMultiplayCargoAuto::widget(['serviceId' =>$serviceId]); break;
+            case 3: $moto = SelectMultiplayMoto::widget(['serviceId' =>$serviceId]); break;
         }
     }
 
@@ -34,8 +35,8 @@ use frontend\widgets\SelectMultiplayCargoAuto;
 
     ?>
     <div class="selectBrand">
-        <div class="selectCar"><?=$brands; ?></div>
-        <div class="selectCargoCar"><?=$cargoBrands; ?></div>
-        <div class="selectMoto"></div>
+        <div class="selectCar"><?= $brands; ?></div>
+        <div class="selectCargoCar"><?= $cargoBrands; ?></div>
+        <div class="selectMoto"><?= $moto; ?></div>
     </div>
 </div>

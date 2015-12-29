@@ -13,6 +13,9 @@ use common\models\db\BcbModels;
 use common\models\db\BcbModify;
 use common\models\db\BrendYear;
 use common\models\db\CargoautoYear;
+use common\models\db\CarMark;
+use common\models\db\CarModel;
+use common\models\db\CarModification;
 use common\models\db\Garage;
 use common\models\db\TofManufacturers;
 use common\models\db\TofModels;
@@ -66,22 +69,6 @@ class GarageController extends Controller
      */
     public function actionIndex()
     {
-        //Debug::prn($_POST);
-       /* if(isset($_POST['manufactures'])){
-            $garage = new Garage();
-            $garage->comments = $_POST['comments'];
-            $garage->man_id = $_POST['manufactures'];
-            $garage->model_id = $_POST['models'];
-            $garage->type_id = $_POST['types'];
-            $garage->dt_add = time();
-            $garage->user_id = Yii::$app->user->id;
-
-            $manName = TofManufacturers::find()->where(['mfa_id'=>$_POST['manufactures']])->one()->mfa_brand;
-            $modelName = TofModels::find()->where(['mod_id' => $_POST['models']])->one()->mod_name;
-
-            $garage->title = $manName . ' / ' . $modelName;
-            $garage->save();
-        }*/
         if(isset($_POST['manufactures'])){
             if(isset($_POST['garageId'])){
                 $garage = Garage::find()->where(['id' => $_POST['garageId']])->one();
@@ -102,7 +89,7 @@ class GarageController extends Controller
                 $modelName = BcbModels::find()->where(['id'=>$_POST['model']])->one()->name;
                 $typeName = BcbModify::find()->where(['id'=>$_POST['types']])->one()->name;
             }
-            else{
+            if($_POST['typeAuto'] == 2){
                 $manName = AutoComBrands::find()->where(['id'=>$_POST['manufactures']])->one()->name;
                 $modelName = AutoComModels::find()->where(['id'=>$_POST['model']])->one()->name;
                 $typeName = AutoComModify::find()->where(['id'=>$_POST['model']])->one()->name;
@@ -110,7 +97,12 @@ class GarageController extends Controller
                 $autoWidget->submodel_id = $_POST['submodel'];
                 $autoWidget->submodel_name = AutoComSubmodels::find()->where(['id'=>$_POST['submodel']])->one()->name;
             }
-
+            if($_POST['typeAuto'] == 3){
+                $manName = CarMark::find()->where(['id_car_mark'=>$_POST['manufactures']])->one()->name;
+                $modelName = CarModel::find()->where(['id_car_model'=>$_POST['model']])->one()->name;
+                $typeName = CarModification::find()->where(['id_car_modification'=>$_POST['types']])->one()->name;
+                $autoWidget->year = 0;
+            }
             $autoWidget->brand_name = $manName;
             $autoWidget->model_name = $modelName;
             $autoWidget->type_name = $typeName;

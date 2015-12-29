@@ -19,6 +19,9 @@ use common\models\db\BcbModels;
 use common\models\db\BcbModify;
 use common\models\db\BrendYear;
 use common\models\db\CargoautoYear;
+use common\models\db\CarMark;
+use common\models\db\CarModel;
+use common\models\db\CarModification;
 use common\models\db\TofManufacturers;
 use common\models\db\TofSearchTree;
 use yii\base\Widget;
@@ -62,7 +65,7 @@ class SelectAuto extends Widget
                     ->andWhere(['<=','y_from',$this->auto->year])
                     ->andWhere(['>=','y_to',$this->auto->year])->all();
             }
-            else {
+            if($this->auto->auto_type == '2') {
                 $brand = AutoComBrands::find()->all();
                 $year = CargoautoYear::find()->where(['id_brand'=>$this->auto->brand_id])->one();
                 $yearAll = [];
@@ -91,6 +94,13 @@ class SelectAuto extends Widget
                     ->andWhere(['>=','`release_to`',$this->auto->year])
                     ->all();
             }
+
+            if($this->auto->auto_type == '3'){
+                $brand = CarMark::find()->orderBy('name')->all();
+                $model = CarModel::find()->where(['id_car_mark'=>$this->auto->brand_id])->all();
+                $typ = CarModification::find()->where(['id_car_model'=>$this->auto->model_id])->all();
+            }
+
             if($this->category && $this->view == '1'){
                 $cat = explode(',', $this->category);
                 $mainCat = TofSearchTree::find()->where(['str_id_parent' => 10001])->all();
