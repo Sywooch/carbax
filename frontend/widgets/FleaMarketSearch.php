@@ -25,7 +25,7 @@ class FleaMarketSearch extends Widget
         $region = GeobaseRegion::find()->orderBy('name')->all();
         $manufactures = BcbBrands::find()->orderBy('name')->all();
 
-        return $this->render('search', ['cat'=>$cat, 'region'=>$region, 'manufactures'=>$manufactures, 'title'=>$this->title]);
+        return $this->render('search', ['region'=>$region,  'title'=>$this->title]);
     }
 
 }

@@ -420,7 +420,7 @@ class DefaultController extends Controller
         $this->view->params['officeHide'] = true;
         $this->view->params['bannersHide'] = true;
 
-        $result = Market::find()
+        /*$result = Market::find()
             ->leftJoin('auto_widget', '`auto_widget`.`id` = `market`.`id_auto_widget`')
             ->filterWhere([
                 'region_id' => $_GET['region']
@@ -438,7 +438,8 @@ class DefaultController extends Controller
         $search = $result->all();
         //Debug::prn($search);
 
-        return $this->render('search', ['search'=>$search]);
+        return $this->render('search', ['search'=>$search]);*/
+        Debug::prn($_GET);
     }
 
     public function actionShow_cat()
