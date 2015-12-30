@@ -490,7 +490,7 @@ input.message_to,input.message_subject {
 }
 
 .selectCar, .selectCargoCar, .selectMoto {
-    
+
 }
 
 .selectCar.selectCarAutoWidget {
@@ -504,4 +504,8 @@ input.message_to,input.message_subject {
 
 input[type="radio"].userOrService {
     display: inline-block!important;
+}
+
+.form-control {
+    padding:6px 12px 2px 12px;
 }
