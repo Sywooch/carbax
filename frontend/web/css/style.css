@@ -490,8 +490,7 @@ input.message_to,input.message_subject {
 }
 
 .selectCar, .selectCargoCar, .selectMoto {
-    width: 165px;
-    display: inline-block;
+    
 }
 
 .selectCar.selectCarAutoWidget {
