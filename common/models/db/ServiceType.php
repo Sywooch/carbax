@@ -10,6 +10,7 @@ use Yii;
  * @property integer $id
  * @property string $name
  * @property string $icon
+ * @property string $view_widget_auto_type
  *
  * @property ServiceTypeGroup[] $serviceTypeGroups
  * @property Services[] $services
@@ -32,6 +33,7 @@ class ServiceType extends \yii\db\ActiveRecord
         return [
             [['name'], 'required'],
             [['name'], 'string', 'max' => 255],
+            [['view_widget_auto_type'], 'integer'],
             [['icon'], 'safe']
         ];
     }

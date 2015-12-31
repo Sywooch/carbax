@@ -81,7 +81,8 @@ class ServicesController extends Controller
     public function actionAdd(){
         //$brandCars = BrandCars::find()->all();
         $this->view->params['bannersHide'] = false;
-        return $this->render('add', []);
+        $service =ServiceType::find()->where(['id'=>$_GET['service_type']])->one();
+        return $this->render('add', ['service'=>$service]);
     }
 
     public function actionAdd_to_sql(){
