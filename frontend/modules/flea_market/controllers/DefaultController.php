@@ -162,9 +162,9 @@ class DefaultController extends Controller
             $market->category_id = array_pop($_POST['sub_cat']);
         }
 
-        if(isset($_POST['autotype'])){
-            $market->id_auto_type = $_POST['autotype'];
-        }
+
+        $market->id_auto_type = $_POST['typeAuto'];
+
 
         $market->user_id = Yii::$app->user->id;
         $market->save();
@@ -320,8 +320,9 @@ class DefaultController extends Controller
                 $product->category_id_all .= $sc . ',';
             }
             $product->category_id = array_pop($_POST['sub_cat']);
-            $product->id_auto_type = $_POST['autotype'];
+
         }
+        $product->id_auto_type = $_POST['typeAuto'];
         $product->new = $_POST['new'];
         $product->user_id = Yii::$app->user->id;
         $product->save();

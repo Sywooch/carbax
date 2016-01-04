@@ -46,7 +46,12 @@ class DefaultController extends Controller
 
     public function actionIndex()
     {
-        $inMsg = Msg::find()->where(['to'=>Yii::$app->user->id])->orderBy('dt_send DESC')->all();
+        $inMsg = Msg::find()
+            ->leftJoin('user','`user`.`id`=`msg`.`from`')
+            ->where(['to'=>Yii::$app->user->id])
+            ->with('user')
+            ->orderBy('dt_send DESC')
+            ->all();
         $outMsg = Msg::find()->where(['from'=>Yii::$app->user->id])->orderBy('dt_send DESC')->all();
         return $this->render('index',
             [

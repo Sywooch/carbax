@@ -33,6 +33,7 @@ use yii\widgets\ActiveForm;
     <div class="media__upload_img"><img src="<?=$model->icon;?>" width="100px"/><input id="mediaUploadInputFile" name="mediaUploadInputFile" type="hidden" value="<?=$model->icon;?>"/></div>
    <!-- --><?/*= $form->field($icon, 'icon_s')->fileInput()->label('Ярлык') */?>
     <br>
+    <?= $form->field($model,'view_widget_auto_type')->checkbox(['label'=>'Отображать выбор типа авто']);?>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Редактировать', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

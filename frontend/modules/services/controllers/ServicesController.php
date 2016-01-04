@@ -81,7 +81,8 @@ class ServicesController extends Controller
     public function actionAdd(){
         //$brandCars = BrandCars::find()->all();
         $this->view->params['bannersHide'] = false;
-        return $this->render('add', []);
+        $service =ServiceType::find()->where(['id'=>$_GET['service_type']])->one();
+        return $this->render('add', ['service'=>$service]);
     }
 
     public function actionAdd_to_sql(){
@@ -250,11 +251,11 @@ class ServicesController extends Controller
 
     public function actionEdit_service(){
         $servicId = $_GET['service_id'];
-        $servic = Services::find()->where(['id'=>$servicId])->one();
-        $servicName = $servic->name;
-        $serviceDescription = $servic->description;
-        $email = $servic->email;
-        $servicWS = $servic->website;
+        $service = Services::find()->where(['id'=>$servicId])->one();
+        $servicName = $service->name;
+        $serviceDescription = $service->description;
+        $email = $service->email;
+        $servicWS = $service->website;
         $address = Address::find()->where(['service_id'=>$servicId])->all();
         $workHours = WorkHours::find()->where(['service_id'=>$servicId])->all();
         $workHours = ArrayHelper::index($workHours, 'day');
@@ -262,6 +263,8 @@ class ServicesController extends Controller
         //$brends = BrandCars::find()->all();
         $brendsSelect = ServiceBrandCars::find()->where(['service_id'=>$servicId])->all();
         $brendsSelect = ArrayHelper::index($brendsSelect, 'brand_cars_id');
+
+        $serviceType =ServiceType::find()->where(['id'=>$_GET['service_type']])->one();
         return $this->render('edit',
             [
                 'serviceID' => $servicId,
@@ -273,6 +276,8 @@ class ServicesController extends Controller
                 'workHours' => $workHours,
                 'telephone' => $telephone,
                 'brendSelect' => $brendsSelect,
+                'service' => $service,
+                'serviceType' => $serviceType,
             ]);
     }
 

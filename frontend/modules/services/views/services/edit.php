@@ -149,7 +149,14 @@ $this->registerCssFile('/css/bootstrap.min.css');
                     'serviceId' => $serviceID,
                 ]) ?>
             <?= ComfortZone::widget(['serviceId' => $serviceID])?>
-            <?= AutoType::widget(['serviceId' => $serviceID])?>
+            <?php
+           // \common\classes\Debug::prn($service);
+
+            if($serviceType->view_widget_auto_type == 1){
+                echo AutoType::widget(['serviceId' => $serviceID]);
+            }
+            ?>
+
             <div class="addContent--save">
                 <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
             </div>
