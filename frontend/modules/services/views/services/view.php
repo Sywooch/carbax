@@ -83,12 +83,12 @@ $this->registerCssFile('/css/bootstrap_btn.min.css');
                  <?php
                    echo PrintAdditionalFieldsByServisId::widget(['servicId'=>$serviceID])
                  ?>
-                <div class="singleContent__desc--carbrands">
+               <!-- <div class="singleContent__desc--carbrands">
                     <h3>Марки автомобилей</h3>
-                    <?php foreach($carBrands as $cb):?>
-                        <div class="carBrands"><?= BcbBrands::find()->where(['id'=>$cb->brand_cars_id])->one()->name; ?></div>
-                    <?php endforeach;?>
-                </div>
+                    <?php /*foreach($carBrands as $cb):*/?>
+                        <div class="carBrands"><?/*= BcbBrands::find()->where(['id'=>$cb->brand_cars_id])->one()->name; */?></div>
+                    <?php /*endforeach;*/?>
+                </div>-->
 
                 <div class="singleContent__services">
                     <div class="singleContent__services-comfort">
@@ -103,13 +103,14 @@ $this->registerCssFile('/css/bootstrap_btn.min.css');
                 </div>
                 <div class="singleContent__worksWith">
                     <h3>Работаем</h3>
-                    <?php foreach($autoType as $at):?>
+                   <!-- <?php /*foreach($autoType as $at):*/?>
                         <div class="singleContent__worksWith-block">
 
-                            <h4><?=$at->name?></h4>
-                            <img src="<?=$at->img_url;?>" alt="">
+                            <h4><?/*=$at->name*/?></h4>
+                            <img src="<?/*=$at->img_url;*/?>" alt="">
                         </div>
-                    <?php endforeach;?>
+                    --><?php /*endforeach;*/?>
+                    <?= \frontend\widgets\AutoType::widget(['view'=>1,'serviceId'=>$serviceID])?>
                     </div>
             </div>
 

@@ -150,7 +150,9 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 ]) ?>
             <?= ComfortZone::widget(['serviceId' => $serviceID])?>
             <?php
-            if($servic->view_widget_auto_type == 1){
+           // \common\classes\Debug::prn($service);
+
+            if($serviceType->view_widget_auto_type == 1){
                 echo AutoType::widget(['serviceId' => $serviceID]);
             }
             ?>
