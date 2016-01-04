@@ -50,4 +50,12 @@ class GeobaseCity extends \yii\db\ActiveRecord
             'longitude' => 'Longitude',
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getgeobase_region()
+    {
+        return $this->hasMany(GeobaseRegion::className(), ['id' => 'region_id']);
+    }
 }

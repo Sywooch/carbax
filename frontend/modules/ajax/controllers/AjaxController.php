@@ -46,6 +46,7 @@ use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\jui\AutoComplete;
 use yii\web\Controller;
 
 class AjaxController extends Controller
@@ -338,6 +339,21 @@ class AjaxController extends Controller
 
     public function actionGet_select_auto(){
         echo Custom_function::getByType($_POST['type'],'nameWidget');
+    }
+
+    public function actionAuto_complete(){
+        //$regions = GeobaseRegion::find()->all();
+
+        $city = GeobaseCity::find()
+            ->leftJoin('`geobase_region`', '`geobase_region`.`id` = `geobase_city`.`region_id`')
+            ->with('geobase_region')
+            ->all();
+
+        foreach($city as $c){
+            //Debug::prn($c['geobase_region'][0]->name);
+            $r[] = $c->name . " (" . $c['geobase_region'][0]->name . ")";
+        }
+        return $this->render('auto_complete', ['regions'=>$r]);
     }
 
 }
