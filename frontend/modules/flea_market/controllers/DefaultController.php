@@ -212,12 +212,13 @@ class DefaultController extends Controller
     public function actionView_product()
     {
         $product = Market::find()->where(['id' => $_GET['id']])->one();
-        $nameTypeAuto = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one();
+        $info = AutoWidget::find()->where(['id' => $product->id_auto_widget])->one();
+       /* $nameTypeAuto = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one();
         $marka = TofManufacturers::find()->where(['mfa_id' => $product->man_id])->one();
         $model = TofModels::find()->where(['mod_id' => $product->model_id])->one();
         $type = TofTypes::find()->where(['typ_id' => $product->type_id])->one();
         $region = GeobaseRegion::find()->where(['id' => $product->region_id])->one();
-        $city = GeobaseCity::find()->where(['id' => $product->city_id])->one();
+        $city = GeobaseCity::find()->where(['id' => $product->city_id])->one();*/
         $category = explode(',', $product->category_id_all);
         array_pop($category);
         $nameCat = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one()->name;
@@ -226,17 +227,22 @@ class DefaultController extends Controller
             //Debug::prn($cat);
             $nameCat .= ' / ' . TofSearchTree::find()->where(['str_id' => $cat])->one()->str_des;
         }
-
+        $region = GeobaseRegion::find()->where(['id' => $product->region_id])->one();
+        $city = GeobaseCity::find()->where(['id' => $product->city_id])->one();
         return $this->render('view_product',
             [
                 'product' => $product,
-                'nametype' => $nameTypeAuto,
+                'info' => $info,
+                'region' => $region,
+                'city' => $city,
+                'category' => $nameCat,
+                /*'nametype' => $nameTypeAuto,
                 'marka' => $marka,
                 'model' => $model,
                 'type' => $type,
                 'region' => $region,
                 'city' => $city,
-                'category' => $nameCat,
+                'category' => $nameCat,*/
             ]);
     }
 
