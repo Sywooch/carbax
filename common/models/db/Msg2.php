@@ -18,7 +18,7 @@ use Yii;
  * @property integer $readed
  * @property integer $type_id
  */
-class Msg extends \yii\db\ActiveRecord
+class Msg2 extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -61,6 +61,6 @@ class Msg extends \yii\db\ActiveRecord
 
     public function getuser()
     {
-        return $this->hasOne(User::className(), ['id' => 'from']);
+        return $this->hasOne(User::className(), ['id' => 'to']);
     }
 }

@@ -5,6 +5,7 @@ namespace frontend\modules\message\controllers;
 use common\classes\Debug;
 use common\classes\SendingMessages;
 use common\models\db\Msg;
+use common\models\db\Msg2;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -52,7 +53,18 @@ class DefaultController extends Controller
             ->with('user')
             ->orderBy('dt_send DESC')
             ->all();
-        $outMsg = Msg::find()->where(['from'=>Yii::$app->user->id])->orderBy('dt_send DESC')->all();
+
+        //Debug::prn($inMsg);
+        $outMsg = Msg2::find()
+            ->leftJoin('user','`user`.`id`=`msg`.`to`')
+            ->where(['from'=>Yii::$app->user->id])
+            ->with('user')
+            ->orderBy('dt_send DESC')
+            ->all();
+
+
+
+       // Debug::prn($outMsg);
         return $this->render('index',
             [
                 'inmsg' => $inMsg,

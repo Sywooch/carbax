@@ -5,6 +5,7 @@ use frontend\widgets\AutoType;
 use frontend\widgets\ComfortZone;
 use frontend\widgets\SelectAddress;
 use frontend\widgets\SelectMultiplayAuto;
+use kartik\file\FileInput;
 
 $this->title = "Редактирование";
 $this->params['breadcrumbs'][] = ['label' => 'Мои сервисы', 'url' => ['select_service']];
@@ -15,7 +16,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
 
 <div class="addContent">
 
-    <form id="addForm" action="update_to_sql" method="post">
+    <form id="addForm" action="update_to_sql" method="post" enctype="multipart/form-data">
         <input type="hidden" name="service_type" value="<?= $_GET['service_type'] ?>">
         <input type="hidden" name="service_id" value="<?= $_GET['service_id'] ?>">
 
@@ -46,6 +47,22 @@ $this->registerCssFile('/css/bootstrap.min.css');
             <div id="map" style="width: 100%; height: 100%"></div>
         </div>
         <div class="singleContent__desc">
+            <h2>Добавить логотип компании</h2>
+            <?php
+            echo '<label class="control-label">Добавить фото</label>';
+            echo FileInput::widget([
+                'name' => 'file',
+                'id' => 'input-4',
+                'attribute' => 'attachment_1',
+                'value' => '/media/img/1.png',
+                'options' => ['multiple' => false,
+                    'language'=> "ru",
+                    'showCaption'=> true,
+                    'maxFileCount'=> 1,
+                    'showRemove'=> false,
+                    'showUpload'=> false],
+            ]);
+            ?>
             <h3>Описание</h3>
             <textarea name="text" id="addContent__description"  class="addContent__description"><?=$description;?></textarea>
 
@@ -171,6 +188,9 @@ $this->registerCssFile('/css/bootstrap.min.css');
         </span>
     </form>
 </div>
+
+<span class="img_link" data-img="<?= $service->photo;?>" data-cover="<?= $service->photo; ?>"></span>
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">

@@ -4,8 +4,8 @@ use yii\helpers\Html;
 
 if(isset($_GET['search'])){
     $sel['region'] = $_GET['region'];
-    $sel['categ'] = $_GET['categ'];
-    $sel['manufactures'] = $_GET['manufactures'];
+    $sel['prod_type'] = $_GET['prod_type'];
+    $sel['typeAuto'] = $_GET['typeAuto'];
     $sel['search'] = $_GET['search'];
 }
 else {
@@ -24,8 +24,8 @@ else {
             <form action="/flea_market/default/search">
                 <?= Html::dropDownList('region',$sel['region'], ArrayHelper::map($region, 'id', 'name'), ['prompt'=>'Регион'])?>
                 <input value="<?=$sel['search']?>" type="text" name="search" class="filter__searchline--search" placeholder="Поиск по объявлениям">
-                <?= Html::dropDownList('prod_type',0, ['2'=>'Транспорт','1'=>'Запчасти'], ['prompt'=>'Что ищите?']) ?>
-                <?=Html::dropDownList('typeAuto',0, ['1'=>'Легковой автомобиль','2'=>'Грузовой автомобиль','3'=> 'Мото техника'], ['prompt'=>'Выберите тип автомобиля'])?>
+                <?= Html::dropDownList('prod_type',$sel['prod_type'], ['2'=>'Транспорт','1'=>'Запчасти'], ['prompt'=>'Что ищите?']) ?>
+                <?=Html::dropDownList('typeAuto',$sel['typeAuto'], ['1'=>'Легковой автомобиль','2'=>'Грузовой автомобиль','3'=> 'Мото техника'], ['prompt'=>'Выберите тип автомобиля'])?>
                 <input type="submit" class="filter__searchline--but" value="Найти">
                 <input type="button" class="filter__searchline--but" value="На карте">
             </form>

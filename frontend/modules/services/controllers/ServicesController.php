@@ -94,6 +94,17 @@ class ServicesController extends Controller
         $service->website = $_POST['website'];
         $service->email = $_POST['mailadress'];
         $service->user_id = Yii::$app->user->id;
+
+        if(!file_exists('media/users/'.Yii::$app->user->id)){
+            mkdir('media/users/'.Yii::$app->user->id.'/');
+        }
+        if(!file_exists('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'))){
+            mkdir('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'));
+        }
+        $dir = 'media/users/'.Yii::$app->user->id.'/'.date('Y-m-d').'/';
+        move_uploaded_file($_FILES['file']['tmp_name'], $dir.$_FILES['file']['name']);
+        $service->photo = $dir.$_FILES['file']['name'];
+        //Debug::prn($_FILES);
         $service->save();
 
         //Debug::prn($_POST);
@@ -217,6 +228,7 @@ class ServicesController extends Controller
         $servicId = $_GET['service_id'];
         $servic = Services::find()->where(['id'=>$servicId])->one();
         $servicName = $servic->name;
+        $serviceLogo = $servic->photo;
         $address = Address::find()->where(['service_id'=>$servicId])->all();
         $serviceDescription = $servic->description;
         $workHours = WorkHours::find()->where(['service_id'=>$servicId])->all();
@@ -246,6 +258,7 @@ class ServicesController extends Controller
                 'carBrands' => $carBrands,
                 'comfortZone' => $comfortZone,
                 'autoType' => $autoType,
+                'serviceLogo' => $serviceLogo,
             ]);
     }
 
@@ -261,8 +274,8 @@ class ServicesController extends Controller
         $workHours = ArrayHelper::index($workHours, 'day');
         $telephone = Phone::find()->where(['service_id'=>$servicId])->all();
         //$brends = BrandCars::find()->all();
-        $brendsSelect = ServiceBrandCars::find()->where(['service_id'=>$servicId])->all();
-        $brendsSelect = ArrayHelper::index($brendsSelect, 'brand_cars_id');
+       /* $brendsSelect = ServiceBrandCars::find()->where(['service_id'=>$servicId])->all();*/
+        /*$brendsSelect = ArrayHelper::index($brendsSelect, 'brand_cars_id');*/
 
         $serviceType =ServiceType::find()->where(['id'=>$_GET['service_type']])->one();
         return $this->render('edit',
@@ -275,7 +288,7 @@ class ServicesController extends Controller
                 'website' => $servicWS,
                 'workHours' => $workHours,
                 'telephone' => $telephone,
-                'brendSelect' => $brendsSelect,
+                /*'brendSelect' => $brendsSelect,*/
                 'service' => $service,
                 'serviceType' => $serviceType,
             ]);
@@ -292,6 +305,20 @@ class ServicesController extends Controller
         $serv->website = $_POST['website'];
         $serv->email = $_POST['mailadress'];
         $serv->user_id = Yii::$app->user->id;
+
+        //Debug::prn($_FILES);
+
+        if(!empty($_FILES['file']['name'])){
+            if(!file_exists('media/users/'.Yii::$app->user->id)){
+                mkdir('media/users/'.Yii::$app->user->id.'/');
+            }
+            if(!file_exists('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'))){
+                mkdir('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'));
+            }
+            $dir = 'media/users/'.Yii::$app->user->id.'/'.date('Y-m-d').'/';
+            move_uploaded_file($_FILES['file']['tmp_name'], $dir.$_FILES['file']['name']);
+            $serv->photo = $dir.$_FILES['file']['name'];
+        }
         $serv->save();
         //Добавляем зоны комфорта
         if(isset($_POST['comfort'])) {

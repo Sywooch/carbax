@@ -212,12 +212,13 @@ class DefaultController extends Controller
     public function actionView_product()
     {
         $product = Market::find()->where(['id' => $_GET['id']])->one();
-        $nameTypeAuto = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one();
+        $info = AutoWidget::find()->where(['id' => $product->id_auto_widget])->one();
+       /* $nameTypeAuto = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one();
         $marka = TofManufacturers::find()->where(['mfa_id' => $product->man_id])->one();
         $model = TofModels::find()->where(['mod_id' => $product->model_id])->one();
         $type = TofTypes::find()->where(['typ_id' => $product->type_id])->one();
         $region = GeobaseRegion::find()->where(['id' => $product->region_id])->one();
-        $city = GeobaseCity::find()->where(['id' => $product->city_id])->one();
+        $city = GeobaseCity::find()->where(['id' => $product->city_id])->one();*/
         $category = explode(',', $product->category_id_all);
         array_pop($category);
         $nameCat = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one()->name;
@@ -226,17 +227,22 @@ class DefaultController extends Controller
             //Debug::prn($cat);
             $nameCat .= ' / ' . TofSearchTree::find()->where(['str_id' => $cat])->one()->str_des;
         }
-
+        $region = GeobaseRegion::find()->where(['id' => $product->region_id])->one();
+        $city = GeobaseCity::find()->where(['id' => $product->city_id])->one();
         return $this->render('view_product',
             [
                 'product' => $product,
-                'nametype' => $nameTypeAuto,
+                'info' => $info,
+                'region' => $region,
+                'city' => $city,
+                'category' => $nameCat,
+                /*'nametype' => $nameTypeAuto,
                 'marka' => $marka,
                 'model' => $model,
                 'type' => $type,
                 'region' => $region,
                 'city' => $city,
-                'category' => $nameCat,
+                'category' => $nameCat,*/
             ]);
     }
 
@@ -421,26 +427,28 @@ class DefaultController extends Controller
         $this->view->params['officeHide'] = true;
         $this->view->params['bannersHide'] = true;
 
-        /*$result = Market::find()
+        $result = Market::find()
             ->leftJoin('auto_widget', '`auto_widget`.`id` = `market`.`id_auto_widget`')
             ->filterWhere([
                 'region_id' => $_GET['region']
             ]);
-        if(!empty($_GET['search'])){
-            $result->andWhere(['like', 'name', $_GET['search']]);
-        }
-        if(!empty($_GET['categ'])){
-            $result->andWhere(['like', 'category_id_all', $_GET['categ']]);
-        }
-        if(!empty($_GET['manufactures'])){
-            $result->andWhere(['`auto_widget`.`brand_id`' => $_GET['manufactures']]);
-        }
+         if(!empty($_GET['search'])){
+             $result->andWhere(['like', 'name', $_GET['search']]);
+             $result->orWhere(['like', 'brand_name', $_GET['search']]);
+             $result->orWhere(['like', 'model_name', $_GET['search']]);
+         }
+         if(!empty($_GET['prod_type'])){
+             $result->andWhere(['prod_type' => $_GET['prod_type']-1]);
+         }
+         if(!empty($_GET['typeAuto'])){
+             $result->andWhere(['`auto_widget`.`auto_type`' => $_GET['typeAuto']]);
+         }
         $result->with('auto_widget');
         $search = $result->all();
         //Debug::prn($search);
+       // Debug::prn($_GET);
+        return $this->render('search', ['search'=>$search]);
 
-        return $this->render('search', ['search'=>$search]);*/
-        Debug::prn($_GET);
     }
 
     public function actionShow_cat()
