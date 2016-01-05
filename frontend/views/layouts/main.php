@@ -5,6 +5,7 @@
 
 use common\classes\Custom_function;
 use common\models\db\User;
+use frontend\widgets\CityAutoComplete;
 use frontend\widgets\NumberUnreadMessages;
 use frontend\widgets\SelectRequestTypes;
 use yii\helpers\Html;
@@ -90,8 +91,9 @@ AppAsset::register($this);
         </a>
         <a href="<?=Url::to(['/profile/default/view'])?>" class="header--autotext"><?= User::getLogin(Yii::$app->user->id);?></a>
         <a href="<?=Url::to('/office')?>" class="header--perscab">Личный кабинет</a>
-        <form action="#" class="header--region">
-            <input type="text" class="header--region--box" placeholder="Город">
+        <form action="#" class="header--region" id="auto_complete_form" method="post">
+            <?= CityAutoComplete::widget(); ?>
+            <!--<input type="text" class="header--region--box" placeholder="Город">-->
         </form>
         <a href="<?=Url::to(['/message'])?>" class="header--messages">Мои сообщения <?= NumberUnreadMessages::widget(); ?></a>
         <a href="#" class="header--sales"><span>Спецпредложения</span></a>

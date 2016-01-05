@@ -9,6 +9,14 @@ use yii\helpers\Url;
 
 class MainpageController extends \yii\web\Controller
 {
+
+    public function beforeAction($action)
+    {
+        if ($action->id == 'index') {
+            Yii::$app->controller->enableCsrfValidation = false;
+        }
+        return parent::beforeAction($action);
+    }
     /**
      * @return string
      */
