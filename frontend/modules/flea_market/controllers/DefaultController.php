@@ -427,26 +427,28 @@ class DefaultController extends Controller
         $this->view->params['officeHide'] = true;
         $this->view->params['bannersHide'] = true;
 
-        /*$result = Market::find()
+        $result = Market::find()
             ->leftJoin('auto_widget', '`auto_widget`.`id` = `market`.`id_auto_widget`')
             ->filterWhere([
                 'region_id' => $_GET['region']
             ]);
-        if(!empty($_GET['search'])){
-            $result->andWhere(['like', 'name', $_GET['search']]);
-        }
-        if(!empty($_GET['categ'])){
-            $result->andWhere(['like', 'category_id_all', $_GET['categ']]);
-        }
-        if(!empty($_GET['manufactures'])){
-            $result->andWhere(['`auto_widget`.`brand_id`' => $_GET['manufactures']]);
-        }
+         if(!empty($_GET['search'])){
+             $result->andWhere(['like', 'name', $_GET['search']]);
+             $result->orWhere(['like', 'brand_name', $_GET['search']]);
+             $result->orWhere(['like', 'model_name', $_GET['search']]);
+         }
+         if(!empty($_GET['prod_type'])){
+             $result->andWhere(['prod_type' => $_GET['prod_type']-1]);
+         }
+         if(!empty($_GET['typeAuto'])){
+             $result->andWhere(['`auto_widget`.`auto_type`' => $_GET['typeAuto']]);
+         }
         $result->with('auto_widget');
         $search = $result->all();
         //Debug::prn($search);
+       // Debug::prn($_GET);
+        return $this->render('search', ['search'=>$search]);
 
-        return $this->render('search', ['search'=>$search]);*/
-        Debug::prn($_GET);
     }
 
     public function actionShow_cat()

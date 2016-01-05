@@ -13,6 +13,7 @@ use frontend\widgets\GetSubCategory;
         <div class="fleamarket__ads--list">
             <?php foreach($search as $s): ?>
                 <?php
+                echo $s;
                 $img = \common\models\db\ProductImg::find()->where(['product_id'=>$s['id']])->one()->img;
                 $count = \common\models\db\ProductImg::find()->where(['product_id'=>$s['id']])->count();
                 ?>
