@@ -5,6 +5,7 @@ use common\models\db\AddFieldsGroup;
 use common\models\db\BcbBrands;
 use common\models\db\TofManufacturers;
 use frontend\modules\services\widgets\PrintAdditionalFieldsByServisId;
+use yii\helpers\Html;
 
 $this->title = $serviceName;
 $this->registerCssFile('/css/bootstrap_btn.min.css');
@@ -16,7 +17,13 @@ $this->registerCssFile('/css/bootstrap_btn.min.css');
 
 <section class="main-container">
             <h3>Название автосервиса:</h3><?=$serviceName;?>
-
+            <div class="logoService">
+            <?php
+                if(!empty($serviceLogo)){
+                    echo Html::img('/'.$serviceLogo,['width'=>'100px','alt'=>$serviceName]);
+                }
+            ?>
+            </div>
             <div class="singleContent__desc">
                 <h3>Описание</h3>
                     <div>
