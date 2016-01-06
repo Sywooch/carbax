@@ -244,6 +244,7 @@ class ServicesController extends Controller
         foreach($serviceAutoType as $st){
             $autoType[] = AutoType::find()->where(['id'=>$st->auto_type_id])->one();
         }
+        $serviceType = ServiceType::find()->where(['id'=>$servic->service_type_id])->one();
 
         return $this->render('view',
             [
@@ -259,6 +260,7 @@ class ServicesController extends Controller
                 'comfortZone' => $comfortZone,
                 'autoType' => $autoType,
                 'serviceLogo' => $serviceLogo,
+                'serviceType' => $serviceType,
             ]);
     }
 

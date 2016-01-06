@@ -5,6 +5,7 @@ use common\models\db\AddFieldsGroup;
 use common\models\db\BcbBrands;
 use common\models\db\TofManufacturers;
 use frontend\modules\services\widgets\PrintAdditionalFieldsByServisId;
+use frontend\widgets\AutoType;
 use yii\helpers\Html;
 
 $this->title = $serviceName;
@@ -108,18 +109,19 @@ $this->registerCssFile('/css/bootstrap_btn.min.css');
 
                     </div>
                 </div>
-                <div class="singleContent__worksWith">
-                    <h3>Работаем</h3>
-                   <!-- <?php /*foreach($autoType as $at):*/?>
-                        <div class="singleContent__worksWith-block">
+                <?php if($serviceType->view_widget_auto_type == 1 ): ?>
+                    <div class="singleContent__worksWith">
+                        <h3>Работаем</h3>
+                       <!-- <?php /*foreach($autoType as $at):*/?>
+                            <div class="singleContent__worksWith-block">
 
-                            <h4><?/*=$at->name*/?></h4>
-                            <img src="<?/*=$at->img_url;*/?>" alt="">
-                        </div>
-                    --><?php /*endforeach;*/?>
-                    <?= \frontend\widgets\AutoType::widget(['view'=>1,'serviceId'=>$serviceID])?>
+                                <h4><?/*=$at->name*/?></h4>
+                                <img src="<?/*=$at->img_url;*/?>" alt="">
+                            </div>
+                        --><?php /*endforeach;*/?>
+
+                        <?= AutoType::widget(['view'=>1,'serviceId'=>$serviceID])?>
                     </div>
+                <?php endif; ?>
             </div>
-
-
 </section>
