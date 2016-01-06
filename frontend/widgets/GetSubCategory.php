@@ -27,8 +27,12 @@ class GetSubCategory extends Widget
 
     public function getAllParents($id, $arr){
         $cat = TofSearchTree::find()->where(['str_id' => $id])->one();
-        $arr[$cat['str_id']] = $cat['str_des'];
-        if($cat['str_id_parent'] != '10001'){
+        if($cat['str_id'] == 10001){
+            $arr[$cat['str_id']] = 'Запчасти';
+        }else{
+            $arr[$cat['str_id']] = $cat['str_des'];
+        }
+        if($cat['str_id_parent'] != '0'){
             $arr = $this->getAllParents($cat['str_id_parent'], $arr);
         }
         return $arr;

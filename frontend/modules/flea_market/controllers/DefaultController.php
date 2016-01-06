@@ -428,24 +428,64 @@ class DefaultController extends Controller
         $this->view->params['bannersHide'] = true;
 
         $result = Market::find()
+            /*->select([ '`geobase_city`.`name` as `city_name_ttt`', '`market`.*'])*/
             ->leftJoin('auto_widget', '`auto_widget`.`id` = `market`.`id_auto_widget`')
+            ->leftJoin('`geobase_city`', '`geobase_city`.`id` = `market`.`city_id`')
             ->filterWhere([
-                'region_id' => $_GET['region']
-            ]);
+                '`market`.`region_id`' => $_GET['region']
+
+            ])
+            ->andFilterWhere(['`market`.`city_id`' => $_GET['citySearch']]);
          if(!empty($_GET['search'])){
-             $result->andWhere(['like', 'name', $_GET['search']]);
-             $result->orWhere(['like', 'brand_name', $_GET['search']]);
-             $result->orWhere(['like', 'model_name', $_GET['search']]);
+             if($_GET['searchName'] == 1){
+                 $result->andWhere(['like', '`market`.`name`', $_GET['search']]);
+             }
+             else{
+                 $result->andWhere(['like', '`market`.`name`', $_GET['search']]);
+                 $result->orWhere(['like', '`brand_name`', $_GET['search']]);
+                 $result->orWhere(['like', '`model_name`', $_GET['search']]);
+             }
          }
+
+
+         if(isset($_GET['newProduct']) && !isset($_GET['by'])){
+             $result->andWhere(['new'=>1]);
+         }
+         if(isset($_GET['by']) && !isset($_GET['newProduct'])){
+             $result->andWhere(['new'=>0]);
+         }
+
          if(!empty($_GET['prod_type'])){
              $result->andWhere(['prod_type' => $_GET['prod_type']-1]);
          }
          if(!empty($_GET['typeAuto'])){
              $result->andWhere(['`auto_widget`.`auto_type`' => $_GET['typeAuto']]);
          }
-        $result->with('auto_widget');
+         if($_GET['typeAuto'] == 1 || $_GET['typeAuto'] == 2) {
+            if (!empty($_GET['brandSearch'])) {
+                $result->andWhere(['`auto_widget`.`brand_id`' => $_GET['brandSearch']]);
+            }
+
+            if (!empty($_GET['yearSearch'])) {
+                $result->andWhere(['`auto_widget`.`year`' => $_GET['yearSearch']]);
+            }
+         }
+
+        /*if($_GET['typeAuto'] == 3) {
+            if(!empty($_GET['']))
+            $result->andWhere()
+        }*/
+
+
+         if(isset($_GET['categ'])){
+             $result->andWhere(['like', '`market`.`category_id_all`', $_GET['categ']]);
+         }
+        $result->with('auto_widget','geobase_city');
+        $result->orderBy('dt_add DESC');
         $search = $result->all();
-        //Debug::prn($search);
+
+
+       // Debug::prn($search);
        // Debug::prn($_GET);
         return $this->render('search', ['search'=>$search]);
 

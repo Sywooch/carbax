@@ -68,4 +68,9 @@ class Market extends \yii\db\ActiveRecord
     {
         return $this->hasOne(AutoWidget::className(), ['id' => 'id_auto_widget']);
     }
+
+    public function getgeobase_city()
+    {
+        return $this->hasOne(GeobaseCity::className(), ['id' => 'city_id']);
+    }
 }

@@ -356,4 +356,82 @@ class AjaxController extends Controller
         return $this->render('auto_complete', ['regions'=>$r]);
     }
 
+    public function actionGet_select_city(){
+        if($_POST['reg'] != 0) {
+            $city = GeobaseCity::find()->where(['region_id' => $_POST['reg']])->all();
+            echo Html::dropDownList(
+                'citySearch',
+                0,
+                ArrayHelper::map($city, 'id', 'name'),
+                ['prompt' => 'Город', 'class' => 'citySearch',]
+            );
+        }
+    }
+
+    public function actionGet_select_brand_auto(){
+        if($_POST['type'] == 1){
+            $brand = BcbBrands::find()->orderBy('name')->all();
+            echo Html::dropDownList(
+                'brandSearch',
+                0,
+                ArrayHelper::map($brand,'id','name'),
+                ['prompt' => 'Марка', 'class' => 'brandAutoSearch']
+            );
+        }
+        if($_POST['type'] == 2){
+            $brand = AutoComBrands::find()->orderBy('name')->all();
+            echo Html::dropDownList(
+                'brandSearch',
+                0,
+                ArrayHelper::map($brand,'id','name'),
+                ['prompt' => 'Марка', 'class' => 'brandAutoSearch']
+            );
+        }
+        if($_POST['type'] == 3){
+            $brand = CarType::find()->orderBy('name')->all();
+            echo Html::dropDownList(
+                'motoType',
+                0,
+                ArrayHelper::map($brand,'id_car_type','name'),
+                ['prompt' => 'Тип', 'class' => 'motoTypeSearch']
+            );
+        }
+    }
+
+    public function actionGet_select_yar(){
+        if($_POST['idBrand'] != 0) {
+            if ($_POST['type'] == 1) {
+                $year = BrendYear::find()->where(['id_brand' => $_POST['idBrand']])->one();
+                if ($year->max_y == 9999) {
+                    $yearEnd = 2015;
+                } else {
+                    $yearEnd = $year->max_y;
+                }
+                $yearAll = [];
+                for ($i = $year->min_y; $i <= $yearEnd; $i++) {
+                    $yearAll[$i] = $i;
+                }
+            } else {
+                $year = CargoautoYear::find()->where(['id_brand' => $_POST['idBrand']])->one();
+                $yearAll = [];
+                for ($i = $year->min_y; $i <= $year->max_y; $i++) {
+                    $yearAll[$i] = $i;
+                }
+            }
+            echo Html::dropDownList('yearSearch', 0, $yearAll, ['prompt' => 'Год выпуска', 'class' => 'yearSearch',]);
+        }
+    }
+
+    public function actionGet_select_brand_moto(){
+        if($_POST['cat'] != 0){
+            $brandMoto = CarMark::find()->where(['id_car_type' => $_POST['cat']])->orderBy('name')->all();
+            echo Html::dropDownList(
+                'brandMoto',
+                0,
+                ArrayHelper::map($brandMoto, 'id_car_mark', name),
+                ['prompt' => 'Выберите марку', 'class' => 'yearSearch']
+            );
+        }
+    }
+
 }
