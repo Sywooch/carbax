@@ -5,15 +5,19 @@ use frontend\widgets\GetSubCategory;
 ?>
 
 <?= FleaMarketSearch::widget(['title'=>false]);?>
-<?php if(!empty($_GET['categ'])): ?>
-    <?= GetSubCategory::widget(['parentId'=>$_GET['categ']])?>
+<?php if($_GET['prod_type']-1 == 0): ?>
+    <?php if(!empty($_GET['categ'])):?>
+        <?= GetSubCategory::widget(['parentId'=>$_GET['categ']])?>
+    <?php else: ?>
+        <?= GetSubCategory::widget(['parentId'=>10001])?>
+    <?php endif; ?>
 <?php endif; ?>
 <section class="fleamarket__wrap">
     <div class="contain">
         <div class="fleamarket__ads--list">
             <?php foreach($search as $s): ?>
                 <?php
-                echo $s;
+               // \common\classes\Debug::prn($s);
                 $img = \common\models\db\ProductImg::find()->where(['product_id'=>$s['id']])->one()->img;
                 $count = \common\models\db\ProductImg::find()->where(['product_id'=>$s['id']])->count();
                 ?>
@@ -27,8 +31,8 @@ use frontend\widgets\GetSubCategory;
                         <a href="/flea_market/default/view?id=<?=$s->id;?>" class="fleamarket__ads__item--desc--title"><?=$s['name']?></a>
                         <p class="fleamarket__ads__item--desc--price"><?=$s['price']?></p>
                         <p class="fleamarket__ads__item--desc--specification"><?=$s['descr']?></p>
-                        <small class="fleamarket__ads__item--desc--contact">Автодилер</small>
-                        <small class="fleamarket__ads__item--desc--adress">м. Белорусская</small>
+                        <!--<small class="fleamarket__ads__item--desc--contact">Автодилер</small>-->
+                        <small class="fleamarket__ads__item--desc--adress"><?= $s['geobase_city']->name; ?></small>
                         <small class="fleamarket__ads__item--desc--time"><?= date('Y-m-d H:i',$s['dt_add']) ?></small>
                     </div>
                 </div>

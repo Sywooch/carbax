@@ -557,6 +557,62 @@ jQuery(document).ready(function ($) {
             }
         }
     });
+
+    $(document).on('change','.regionSearch',function(){
+        var regionId = $('.regionSearch').val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_select_city",
+            data: 'reg=' + regionId,
+            success: function (data) {
+
+                 $('.citySearch').html(data);
+            }
+        });
+    });
+
+    $(document).on('change','.typeAutoSearch',function(){
+        $('.SearchSelectYear').html('');
+        var typeAuto = $('.typeAutoSearch').val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_select_brand_auto",
+            data: 'type=' + typeAuto,
+            success: function (data) {
+
+                $('.SearchSelectBrand').html(data);
+            }
+        });
+    });
+
+    $(document).on('change','.brandAutoSearch',function(){
+        $('.SearchSelectYear').html('');
+        var idBrand = $('.brandAutoSearch').val();
+        var typeAuto = $('.typeAutoSearch').find(':selected').val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_select_yar",
+            data: 'type=' + typeAuto + '&idBrand=' + idBrand,
+            success: function (data) {
+
+                $('.SearchSelectYear').html(data);
+            }
+        });
+    });
+
+    $(document).on('change','.motoTypeSearch',function(){
+        $('.SearchSelectYear').html('');
+        var cat = $('.motoTypeSearch').val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_select_brand_moto",
+            data: 'cat=' + cat,
+            success: function (data) {
+
+                $('.SearchSelectYear').html(data);
+            }
+        });
+    });
 });
 
 $(".first__but--but").click(function () {

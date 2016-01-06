@@ -8,7 +8,7 @@ use frontend\widgets\FleaMarketSearch;
 $this->registerJsFile('http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js');
 $this->registerCssFile('http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css');
 $this->title = $product->name;
-echo FleaMarketSearch::widget(['title'=>false]);?>
+//echo FleaMarketSearch::widget(['title'=>false]);?>
 <div class="fleamarket__headProductTop">
 
     <div class="fleamarket__cat_city">

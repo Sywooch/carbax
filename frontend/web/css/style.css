@@ -513,3 +513,37 @@ input[type="radio"].userOrService {
 .modal-backdrop{
     z-index:0;
 }
+
+.filter{
+    position:static!important;
+}
+
+select.citySearch{
+    width: 198px;
+    height: 30px;
+    padding: 0;
+    display: block;
+    float: left;
+    border: 3px solid #ff6b00;
+    margin-top: -6px;
+}
+
+select.brandAutoSearch, select.motoTypeSearch, select.yearSearch{
+    width: 198px;
+    height: 30px;
+    padding: 0;
+    display: block;
+    float: left;
+    border: 3px solid #ff6b00;
+    margin-top: -6px;
+}
+
+select.yearSearch{
+    float: right;
+    margin-right: -395px;
+}
+
+.SearchSelectBrand {
+    float: right;
+    margin-right: 198px;
+}
