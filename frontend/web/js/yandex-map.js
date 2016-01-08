@@ -20,19 +20,21 @@ function Map( options ) {
         function init(){
             myMap = new ymaps.Map(element, {
                 center: center,
-                zoom: zoom
+                zoom: zoom,
+                controls: ['zoomControl', 'searchControl', 'typeSelector',  'fullscreenControl']
             });
         }
     }
 
-    this.addToMap = function(address, center){
+    this.addToMap = function(address, center, balloon){
+        balloon = balloon || false;
         ymaps.ready(init);
         var centerInit = this.center;
         var element = this.element;
         var zoom = this.zoom;
         function init(){
             if(center === false){
-                var centerAddress = address[0];
+                var centerAddress = address[0].address;
             }
             else {
                 var centerAddress = centerInit;
@@ -42,17 +44,56 @@ function Map( options ) {
                 function (res) {
                     var myMap = new ymaps.Map(element, {
                         center: [res.geoObjects.get(0).geometry.getCoordinates()[0], res.geoObjects.get(0).geometry.getCoordinates()[1]],
-                        zoom: zoom
+                        zoom: zoom,
+                        controls: ['zoomControl', 'searchControl', 'typeSelector',  'fullscreenControl']
                     });
+                    var i = 0;
                     address.forEach(function(a){
-                        var objects = ymaps.geoQuery(ymaps.geocode(a));
-                        objects.addToMap(myMap);
+                        var geoItem = ymaps.geocode(a.address);
+                        geoItem.done(
+                            function(res) {
+                                if(a.balloon){
+                                    var prop = {
+                                        hintContent: '<b>' + a.balloon.title + '</b><br> ' + a.address,
+                                        balloonContentHeader: '<b>' + a.balloon.title + '</b>',
+                                        balloonContentBody: "<img src='" + a.balloon.photo + "' width='75px'><br>" + "Адврес: " + a.address + "<br>Телефоны: " + a.balloon.phone +"<br>Email: " + a.balloon.email,
+                                        balloonContentFooter: "<a href='/services/services/view_service?service_id=" + a.balloon.serviceId + "'>Подробнее" + "</a>"
+                                    }
+                                }
+                                else {
+                                    var prop = {}
+                                }
+                                var objects = new ymaps.GeoObject({
+                                    geometry: {
+                                        type: "Point",
+                                        coordinates: [res.geoObjects.get(0).geometry.getCoordinates()[0], res.geoObjects.get(0).geometry.getCoordinates()[1]]
+                                    },
+                                    properties: prop
+                                });
+                                myMap.geoObjects.add(objects);
+                                i++;
+                                //objects.addToMap(myMap);
+                            }
+                        );
+                        /*var objects = ymaps.geoQuery(ymaps.geocode(a));
+                        objects.addToMap(myMap);*/
                     });
                 }
             );
         }
     }
 
-
+    this.getAddressBalloon = function(balloon, address){
+        var i = 0;
+        var prop = [];
+        address.forEach(function(a){
+            prop.push({
+                hintContent: '<b>' + balloon[i].title + '</b><br> ' + a
+            });
+            console.log(a);
+            i++;
+        });
+        return prop;
+    }
     //console.log(this.option);
 };

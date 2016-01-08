@@ -143,6 +143,14 @@ class Services extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getphone()
+    {
+        return $this->hasMany(Phone::className(), ['service_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getServiceClientTypes()
     {
         return $this->hasMany(ServiceClientType::className(), ['service_id' => 'id']);

@@ -477,7 +477,7 @@ class DefaultController extends Controller
         }*/
 
 
-         if(isset($_GET['categ'])){
+         if(isset($_GET['categ']) && $_GET['categ'] != 10001){
              $result->andWhere(['like', '`market`.`category_id_all`', $_GET['categ']]);
          }
         $result->with('auto_widget','geobase_city');

@@ -1,23 +1,29 @@
 jQuery(document).ready(function ($){
 
-    if(document.getElementsByClassName('addContent__adress')!==null){//те такие блоки есть
+
+    if(document.getElementsByClassName('addContent__adress').length > 0){//те такие блоки есть
         var address = $('.addContent__adress').val();
         var map = new Map();
         if(address == ''){
             map.mapInit();
         }
         else{
+            console.log('123');
             var address = [];
             var i = 0;
             $('.addContent__adress').each(function () {
-                address.push($(this).val());
+                address.push({
+                    address:$(this).val()
+                });
+                //address.push($(this).val());
                 i = i + 1;
             });
             map.addToMap(address, false);
         }
     }
 
-    if(document.getElementById('main_map') !== null){
+    if(document.getElementById('main_map')){
+        console.log('321');
         var center = [];
         center.push($('#coordinates').attr('lat'));
         center.push($('#coordinates').attr('lng'));
@@ -63,10 +69,20 @@ jQuery(document).ready(function ($){
                 $('#setAddress').html(data);
 
                 var addresses = [];
+                var balloon = [];
                 $('.main_map_address').each(function(){
-                    addresses.push($(this).attr('address'));
+                    addresses.push({
+                        address:$(this).attr('address'),
+                        balloon: {
+                            title:$(this).attr('title'),
+                            email:$(this).attr('email'),
+                            serviceId: $(this).attr('service_id'),
+                            photo:$(this).attr('photo'),
+                            phone:$(this).attr('phone')
+                        }
+                    });
                 });
-                console.log(addresses);
+                //console.log(addresses);
 
                 var center = [];
                 center.push($('#coordinates').attr('lat'));

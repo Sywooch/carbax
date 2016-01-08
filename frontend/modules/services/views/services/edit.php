@@ -22,7 +22,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
 
         <input type="text" name="title" class="addContent__title" value="<?=$name?>">
         <?php
-        $count = count($address);
+        $countAddress = count($address);
         $i = 1;
             foreach($address as $ad){
                 if($i == $count){ ?>
@@ -178,7 +178,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
             </div>
         </div>
-        <span id="addressCount" count="<?=$count?>" active-id="">
+        <span id="addressCount" count="<?=$countAddress?>" active-id="">
             <?php $i = 1; ?>
             <?php foreach($address as $ad): ?>
                 <input type="hidden" id="address_<?=$i?>_region" name="address[<?=$i?>][regionId]" value="<?=$ad['region_id']?>">
