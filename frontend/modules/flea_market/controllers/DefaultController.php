@@ -124,6 +124,7 @@ class DefaultController extends Controller
             $manName = CarMark::find()->where(['id_car_mark'=>$_POST['manufactures']])->one()->name;
             $modelName = CarModel::find()->where(['id_car_model'=>$_POST['model']])->one()->name;
             $typeName = CarModification::find()->where(['id_car_modification'=>$_POST['types']])->one()->name;
+            $autoWidget->moto_type = $_POST['mototype'];
         }
 
         $autoWidget->brand_name = $manName;
@@ -471,10 +472,14 @@ class DefaultController extends Controller
             }
          }
 
-        /*if($_GET['typeAuto'] == 3) {
-            if(!empty($_GET['']))
-            $result->andWhere()
-        }*/
+        if($_GET['typeAuto'] == 3) {
+            if(!empty($_GET['motoType'])){
+                $result->andWhere(['`auto_widget`.`moto_type`' => $_GET['motoType']]);
+            }
+            if(!empty($_GET['brandMoto'])){
+                $result->andWhere(['`auto_widget`.`brand_id`' => $_GET['brandMoto']]);
+            }
+        }
 
 
          if(isset($_GET['categ'])){

@@ -146,7 +146,7 @@ section.fleamarket__wrap_view {
     margin-right: 20px;
 }
 
-.fleamarket__head span{
+.fleamarket__head span.operationsAd{
     background: url(../media/img/edit_close_product.png) no-repeat 0% 50%;
     padding-left: 35px;
 }
@@ -546,4 +546,8 @@ select.yearSearch{
 .SearchSelectBrand {
     float: right;
     margin-right: 198px;
+}
+
+.fleamarket__head h1 span{
+    font-size: 15px;
 }

@@ -98,8 +98,8 @@ class SelectAuto extends Widget
 
             if($this->auto->auto_type == '3'){
                 $typeMotoAll = CarType::find()->all();
-                $typeMoto = CarMark::find()->where(['id_car_mark' => $this->auto->brand_id])->one()->id_car_type;
-                $brand = CarMark::find()->where(['id_car_type' => $typeMoto])->orderBy('name')->all();
+                //$typeMoto = CarMark::find()->where(['id_car_mark' => $this->auto->brand_id])->one()->id_car_type;
+                $brand = CarMark::find()->where(['id_car_type' => $this->auto->moto_type])->orderBy('name')->all();
                 $model = CarModel::find()->where(['id_car_mark'=>$this->auto->brand_id])->all();
                 $typ = CarModification::find()->where(['id_car_model'=>$this->auto->model_id])->all();
             }
@@ -123,7 +123,7 @@ class SelectAuto extends Widget
                 'cat' => $cat,
                 'main_cat' => $mainCat,
                 'typeMotoAll' => $typeMotoAll,
-                'typeMoto' => $typeMoto,
+                //'typeMoto' => $typeMoto,
             ]);
         }
         else {

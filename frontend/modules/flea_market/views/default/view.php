@@ -4,6 +4,7 @@ use common\models\db\Services;
 use common\models\db\User;
 use frontend\modules\flea_market\widgets\SimilarAds;
 use frontend\widgets\FleaMarketSearch;
+use yii\helpers\Html;
 
 $this->registerJsFile('http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js');
 $this->registerCssFile('http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css');
@@ -12,7 +13,8 @@ $this->title = $product->name;
 <div class="fleamarket__headProductTop">
 
     <div class="fleamarket__cat_city">
-        Все объявления в Санкт-Петербурге  /  Транспорт  /  Запчасти и аксессуары  /  Запчасти  /  Для автомобилей  /  Стекла
+        Все объявления в <?= Html::a($city->name,['search','region'=>$product->region_id,'citySearch'=>$product->city_id])?> /
+        Транспорт  /  Запчасти и аксессуары  /  Запчасти  /  Для автомобилей  /  Стекла
     </div>
     <div class="fleamarket__views_product">
         Просмотров: <span><?=$product->views;?></span>
@@ -21,10 +23,10 @@ $this->title = $product->name;
 <section class="fleamarket__wrap_view">
     <div class="contain_wr">
         <div class="fleamarket__head">
-            <h1><?=$product->name;?></h1>
+            <h1><?=$product->name;?><span> (<?= $auto->brand_name; ?>, <?=$auto->model_name; ?>)</span></h1>
             <div class="fleamarket__created">Размещено <?=date('d.m.y в H:i:s',$product->dt_add);?></div>
             <?php if($product->user_id == Yii::$app->user->id): ?>
-                <span>
+                <span class="operationsAd">
                     <a href="/flea_market/default/edit_product?id=<?=$product->id;?>">Редактировать,</a> <a href="#">закрыть,</a> <a href="#">поднять</a> объявление
                 </span>
             <?php endif; ?>
@@ -62,7 +64,7 @@ $this->title = $product->name;
                 </div>
             </div>
             <div class="fleamarket__city">
-                Город <span><?= GeobaseCity::find()->where(['id'=>$product->city_id])->one()->name;?></span>
+                Город <span><?= $city->name?></span>
             </div>
             <?php
             if($product->category_id != '0'):
@@ -74,6 +76,16 @@ $this->title = $product->name;
             <div class="fleamarket_product_description">
                 <?=$product->descr;?>
             </div>
+            <div class="fleaMarketInfoProductAuto">
+                <span>Марка: <?= $auto->brand_name; ?></span><br />
+                <span>Модель: <?=$auto->model_name; ?></span><br />
+                <span>Модификация:  <?=$auto->type_name; ?></span><br />
+                <?php if(!empty($auto->year)):?>
+                    <span>Год выпуска: <?=$auto->year;?></span>
+                <?php endif; ?>
+
+            </div>
+
             <div class="fleamarket__number_ads">
                 Номер объявления:<?=$product->id;?>
             </div>
