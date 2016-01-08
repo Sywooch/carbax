@@ -13,8 +13,13 @@ $this->title = $product->name;
 <div class="fleamarket__headProductTop">
 
     <div class="fleamarket__cat_city">
-        Все объявления в <?= Html::a($city->name,['search','region'=>$product->region_id,'citySearch'=>$product->city_id])?> /
-        Транспорт  /  Запчасти и аксессуары  /  Запчасти  /  Для автомобилей  /  Стекла
+        Все объявления в <?= Html::a($city->name,['search','region'=>$product->region_id,'citySearch'=>$product->city_id,'search'=>''])?> /
+        <?php if($product->prod_type == 1):?>
+            <?= Html::a('Транспорт',['search','region'=>$product->region_id,'citySearch'=>$product->city_id,'search'=>'','prod_type'=>2]) ?>
+        <?php else: ?>
+            <?= Html::a('Запчасти',['search','region'=>$product->region_id,'citySearch'=>$product->city_id,'search'=>'','prod_type'=>1]); ?>
+        <?php endif;?>
+
     </div>
     <div class="fleamarket__views_product">
         Просмотров: <span><?=$product->views;?></span>
