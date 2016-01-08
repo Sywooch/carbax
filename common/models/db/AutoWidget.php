@@ -17,6 +17,7 @@ use Yii;
  * @property integer $type_id
  * @property string $type_name
  * @property integer $submodel_id
+ * @property integer $moto_type
  * @property string $submodel_name
  */
 class AutoWidget extends \yii\db\ActiveRecord

@@ -1,5 +1,6 @@
 <?php
 use frontend\widgets\FleaMarketSearch;
+use frontend\widgets\GetModelTypeAuto;
 use frontend\widgets\GetSubCategory;
 
 ?>
@@ -12,6 +13,17 @@ use frontend\widgets\GetSubCategory;
         <?= GetSubCategory::widget(['parentId'=>10001])?>
     <?php endif; ?>
 <?php endif; ?>
+
+<?php
+/*    if (!empty($_GET['brandSearch'])){
+        echo GetModelTypeAuto::widget(['brand' => $_GET['brandSearch'],'typeAuto' => $_GET['typeAuto'],'year' => $_GET['yearSearch'],'model'=>$_GET['modelSearch']]);
+    }
+
+    if(!empty($_GET['motoType'])){
+        echo GetModelTypeAuto::widget(['typeAuto' => $_GET['typeAuto']]);
+    }
+
+*/?>
 <section class="fleamarket__wrap">
     <div class="contain">
         <div class="fleamarket__ads--list">
