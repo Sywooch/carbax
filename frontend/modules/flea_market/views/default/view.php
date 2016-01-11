@@ -100,9 +100,8 @@ $this->title = $product->name;
     </div>
     <div class="fleamarket__footer">
         <a href="/message/default/send_message?from=<?=$product->user_id;?>" class="write_seller">Написать продавцу</a>
-        <a href="#" class="favorites_products">В избранное</a>
         <?=Html::a('Пожаловаться', ['/complaint/default/add', 'id' => $product->id, 'type' => 'market'], ['class' => 'complain_products'])?>
-        <!--<a href="#" class="complain_products">Пожаловаться</a>-->
+        <a href="#" class="favorites_products <?= (!empty($favorites)) ? 'del_favorites' : '';?>" product_id="<?= $_GET['id']; ?>"> <?= (!empty($favorites)) ? 'Из избранного' : 'В избранное';?></a>
         <a href="#" class="share_products">Поделиться</a>
         <div class="fleamarket__socseti">
             <a href="#"><img src="/media/img/vk.png" alt=""></a>

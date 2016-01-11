@@ -16,6 +16,7 @@ use common\models\db\CarModel;
 use common\models\db\CarModification;
 use common\models\db\CarType;
 use common\models\db\CategoriesAuto;
+use common\models\db\Favorites;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
 use common\models\db\Market;
@@ -536,6 +537,7 @@ class DefaultController extends Controller
             $nameCat .= ' - ' . TofSearchTree::find()->where(['str_id' => $cat])->one()->str_des;
         }
         $images = ProductImg::find()->where(['product_id'=>$_GET['id']])->all();
+        $favorites = Favorites::find()->where(['market_id'=>$_GET['id'],'user_id'=>Yii::$app->user->id])->one()->id;
         return $this->render('view',
             [
                 'product' => $product,
@@ -545,6 +547,7 @@ class DefaultController extends Controller
                 'city' => $city,
                 'category' => $nameCat,
                 'images' => $images,
+                'favorites' => $favorites
             ]);
     }
 }
