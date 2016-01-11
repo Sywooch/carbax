@@ -8,11 +8,11 @@ use Yii;
  * This is the model class for table "complaint".
  *
  * @property integer $id
- * @property integer $from
- * @property string $to
+ * @property integer $from_user
+ * @property string $to_object
  * @property string $subject
  * @property integer $dt_add
- * @property integer $read
+ * @property integer $read_complaint
  * @property string $text
  */
 class Complaint extends \yii\db\ActiveRecord
@@ -31,10 +31,10 @@ class Complaint extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['from', 'to', 'subject', 'dt_add', 'read', 'text'], 'required'],
-            [['from', 'dt_add', 'read'], 'integer'],
+            [['from_user', 'to_object', 'subject', 'dt_add', 'read_complaint', 'text'], 'required'],
+            [['from_user', 'dt_add', 'read_complaint'], 'integer'],
             [['text'], 'string'],
-            [['to', 'subject'], 'string', 'max' => 255]
+            [['to_object', 'subject'], 'string', 'max' => 255]
         ];
     }
 
@@ -45,12 +45,12 @@ class Complaint extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'from' => 'From',
-            'to' => 'To',
-            'subject' => 'Subject',
-            'dt_add' => 'Dt Add',
+            'from_user' => 'От кого',
+            'to_object' => 'Ссылка на материал',
+            'subject' => 'Тема',
+            'dt_add' => 'Дата',
             'read' => 'Read',
-            'text' => 'Text',
+            'text' => 'Текст',
         ];
     }
 }

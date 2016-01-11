@@ -36,10 +36,33 @@ class DefaultController extends Controller
     public function actionAdd(){
         $model = new Complaint();
         if ($model->load(Yii::$app->request->post())) {
-            Debug::prn($model);
+            $model->dt_add = time();
+            $model->read_complaint = 0;
+            $model->from_user = Yii::$app->user->id;
+            $model->save();
+            Yii::$app->session->setFlash('success','Жалоба отправленна');
+            $complaint = Complaint::find()->all();
+            return $this->render('complaint', ['complaint' => $complaint]);
         }
         else {
             return $this->render('add', ['model' => $model]);
         }
+    }
+
+    public function actionDel(){
+        $model = Complaint::deleteAll(['id' => $_GET['id']]);
+        Yii::$app->session->setFlash('success','Жалоба удалена');
+        $complaint = Complaint::find()->all();
+        return $this->render('complaint', ['complaint' => $complaint]);
+    }
+
+    public function actionView(){
+        $complaint = Complaint::find()->where(['id' => $_GET['id']])->one();
+        return $this->render('view', ['complaint' => $complaint]);
+    }
+
+    public function actionComplaint(){
+        $complaint = Complaint::find()->all();
+        return $this->render('complaint', ['complaint' => $complaint]);
     }
 }
