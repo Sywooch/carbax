@@ -634,6 +634,29 @@ jQuery(document).ready(function ($) {
             }
         });
     });
+
+    $(document).on('click','a.favorites_products',function(){
+        var productId = $(this).attr('product_id');
+        if($(this).hasClass('del_favorites')){
+            $(this).removeClass('del_favorites');
+            $(this).text('В избранное');
+        }else{
+            $(this).addClass('del_favorites');
+            $(this).text('Из избранного');
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/add_favorites",
+            data: 'productid=' + productId,
+            success: function (data) {
+
+
+            }
+        });
+        return false;
+        //alert(productId);
+    });
 });
 
 $(".first__but--but").click(function () {
