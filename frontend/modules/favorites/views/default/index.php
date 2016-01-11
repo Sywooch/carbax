@@ -4,7 +4,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<section class="main-container"><div class="contain">
+<section class="main-container">
+    <div class="contain_favorites">
     <div class="fleamarket__ads--list">
     <?php foreach($product as $p):?>
         <div class="fleamarket__ads__item">

@@ -14,6 +14,8 @@ class DefaultController extends Controller
 
     public function actionIndex()
     {
+       /* $this->view->params['officeHide'] = true;*/
+        $this->view->params['bannersHide'] = true;
        $product = Market::find()
            ->leftJoin('`favorites`', '`favorites`.`market_id` = `market`.`id`')
            ->leftJoin('`product_img`', '`product_img`.`product_id` = `market`.`id`')
