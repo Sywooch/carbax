@@ -41,6 +41,7 @@ return [
                 'my_requests' => 'request/default/all_requests',
                 'request_type' => 'request/default/request_type',
                 'favorites' => 'favorites/favorites/default',
+                'complaint' => 'complaint/default/complaint',
             ],
         ],
         'log' => [
@@ -90,6 +91,9 @@ return [
         ],
         'message' => [
             'class' => 'frontend\modules\message\Message',
+        ],
+        'complaint' => [
+            'class' => 'frontend\modules\complaint\Complaint',
         ],
         'favorites' => [
             'class' => 'frontend\modules\favorites\Favorites',

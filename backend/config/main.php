@@ -46,6 +46,9 @@ return [
         'request_add_form' => [
             'class' => 'backend\modules\request_add_form\Request_add_form',
         ],
+        'complaint' => [
+            'class' => 'backend\modules\complaint\Complaint',
+        ],
     ],
     'components' => [
         'request' => [
@@ -62,7 +65,8 @@ return [
                 'comfort_zone' => '/comfort_zone/comfort_zone/',
                 'news' => '/news/news',
                 'request_type' => '/request_type/request_type',
-                'request_add_form' => '/request_add_form/request_add_form'
+                'request_add_form' => '/request_add_form/request_add_form',
+                'complaint' => 'complaint/complaint/index'
             ],
         ],
         'log' => [

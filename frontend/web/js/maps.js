@@ -8,7 +8,6 @@ jQuery(document).ready(function ($){
             map.mapInit();
         }
         else{
-            console.log('123');
             var address = [];
             var i = 0;
             $('.addContent__adress').each(function () {
@@ -23,7 +22,6 @@ jQuery(document).ready(function ($){
     }
 
     if(document.getElementById('main_map')){
-        console.log('321');
         var center = [];
         center.push($('#coordinates').attr('lat'));
         center.push($('#coordinates').attr('lng'));

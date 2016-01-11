@@ -12,10 +12,10 @@ use yii\helpers\Html;
         </li>
         <li><a href="#">Модули</a>
             <ul>
-                <li><?= Html::a('Марки авто', ['/brand_cars']) ?></li>
                 <li><?= Html::a('Комфорт зоны', ['/comfort_zone']) ?></li>
                 <li><?= Html::a('Типы авто', ['/auto_type']) ?></li>
                 <li><?= Html::a('Новости', ['/news']) ?></li>
+                <li><?= Html::a('Жалобы', ['/complaint']) ?></li>
             </ul>
         </li>
 

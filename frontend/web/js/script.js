@@ -462,7 +462,10 @@ jQuery(document).ready(function ($) {
         var address = [];
         var i = 0;
         $('.addContent__adress').each(function () {
-            address.push($(this).val());
+            address.push({
+                address:$(this).val()
+            });
+            //address.push($(this).val());
             i = i + 1;
         });
         map.addToMap(address, false);

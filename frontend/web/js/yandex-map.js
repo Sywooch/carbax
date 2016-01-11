@@ -54,6 +54,7 @@ function Map( options ) {
                             function(res) {
                                 if(a.balloon){
                                     var prop = {
+                                        /*iconContent: 'Я тащусь',*/
                                         hintContent: '<b>' + a.balloon.title + '</b><br> ' + a.address,
                                         balloonContentHeader: '<b>' + a.balloon.title + '</b>',
                                         balloonContentBody: "<img src='" + a.balloon.photo + "' width='75px'><br>" + "Адврес: " + a.address + "<br>Телефоны: " + a.balloon.phone +"<br>Email: " + a.balloon.email,
@@ -63,13 +64,20 @@ function Map( options ) {
                                 else {
                                     var prop = {}
                                 }
-                                var objects = new ymaps.GeoObject({
-                                    geometry: {
-                                        type: "Point",
-                                        coordinates: [res.geoObjects.get(0).geometry.getCoordinates()[0], res.geoObjects.get(0).geometry.getCoordinates()[1]]
+                                var objects = new ymaps.GeoObject(
+                                    {
+                                        geometry: {
+                                            type: "Point",
+                                            coordinates: [res.geoObjects.get(0).geometry.getCoordinates()[0], res.geoObjects.get(0).geometry.getCoordinates()[1]]
+                                        },
+                                        properties: prop
                                     },
-                                    properties: prop
-                                });
+                                    {
+                                        /*iconLayout: 'default#image',
+                                        iconImageHref: a.balloon.photo,
+                                        iconImageSize: [40, 40]*/
+                                    });
+
                                 myMap.geoObjects.add(objects);
                                 i++;
                                 //objects.addToMap(myMap);
