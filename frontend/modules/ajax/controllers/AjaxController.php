@@ -26,6 +26,7 @@ use common\models\db\CarMark;
 use common\models\db\CarModel;
 use common\models\db\CarModification;
 use common\models\db\CarType;
+use common\models\db\Favorites;
 use common\models\db\Garage;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
@@ -431,6 +432,21 @@ class AjaxController extends Controller
                 ArrayHelper::map($brandMoto, 'id_car_mark', name),
                 ['prompt' => 'Выберите марку', 'class' => 'yearSearch']
             );
+        }
+    }
+
+    public function actionAdd_favorites(){
+        $favorites = new Favorites();
+        if(isset($_POST['productid'])){
+            $fav = Favorites::find()->where(['market_id' => $_POST['productid'],'user_id' => Yii::$app->user->id])->one();
+            if(empty($fav)){
+                $favorites->market_id = $_POST['productid'];
+                $favorites->user_id = Yii::$app->user->id;
+                $favorites->save();
+            }
+            else{
+                $fav->delete();
+            }
         }
     }
 

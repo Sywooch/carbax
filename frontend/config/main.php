@@ -40,6 +40,7 @@ return [
                 'message' => 'message/default',
                 'my_requests' => 'request/default/all_requests',
                 'request_type' => 'request/default/request_type',
+                'favorites' => 'favorites/favorites/default',
             ],
         ],
         'log' => [
@@ -89,6 +90,9 @@ return [
         ],
         'message' => [
             'class' => 'frontend\modules\message\Message',
+        ],
+        'favorites' => [
+            'class' => 'frontend\modules\favorites\Favorites',
         ],
     ],
     'params' => $params,

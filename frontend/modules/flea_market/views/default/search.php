@@ -2,6 +2,7 @@
 use frontend\widgets\FleaMarketSearch;
 use frontend\widgets\GetModelTypeAuto;
 use frontend\widgets\GetSubCategory;
+use yii\widgets\LinkPager;
 
 ?>
 
@@ -29,7 +30,7 @@ use frontend\widgets\GetSubCategory;
         <div class="fleamarket__ads--list">
             <?php foreach($search as $s): ?>
                 <?php
-               // \common\classes\Debug::prn($s);
+               // \common\classes\Debug::prn($s->favorites[0]);
                 $img = \common\models\db\ProductImg::find()->where(['product_id'=>$s['id']])->one()->img;
                 $count = \common\models\db\ProductImg::find()->where(['product_id'=>$s['id']])->count();
                 ?>
@@ -39,7 +40,7 @@ use frontend\widgets\GetSubCategory;
                         <span class="fleamarket__ads__item--img--marker"><?=$count?></span>
                     </a>
                     <div class="fleamarket__ads__item--desc">
-                        <a class="fleamarket__ads__item--desc--star"></a>
+                        <a class="fleamarket__ads__item--desc--star <?= (!empty($s->favorites[0])) ? 'delFavorites' : '';?>" product_id="<?= $s['id']?>" title="<?= (!empty($s->favorites[0])) ? 'Убрать из избранного' : 'Добавить в избранное';?>"></a>
                         <a href="/flea_market/default/view?id=<?=$s->id;?>" class="fleamarket__ads__item--desc--title"><?=$s['name']?></a>
                         <p class="fleamarket__ads__item--desc--price"><?=$s['price']?></p>
                         <p class="fleamarket__ads__item--desc--specification"><?=$s['descr']?></p>
@@ -49,6 +50,8 @@ use frontend\widgets\GetSubCategory;
                     </div>
                 </div>
             <?php endforeach; ?>
+            <?= LinkPager::widget(['pagination' => $pagination]) ?>
         </div>
+
     </div>
 </section>

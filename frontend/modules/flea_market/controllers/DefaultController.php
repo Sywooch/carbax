@@ -27,6 +27,7 @@ use common\models\db\TofSearchTree;
 use common\models\db\TofTypes;
 use frontend\modules\flea_market\widgets\CategoryProductTecDoc;
 use Yii;
+use yii\data\Pagination;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -428,10 +429,13 @@ class DefaultController extends Controller
         $this->view->params['officeHide'] = true;
         $this->view->params['bannersHide'] = true;
 
+
+
         $result = Market::find()
             /*->select([ '`geobase_city`.`name` as `city_name_ttt`', '`market`.*'])*/
             ->leftJoin('auto_widget', '`auto_widget`.`id` = `market`.`id_auto_widget`')
             ->leftJoin('`geobase_city`', '`geobase_city`.`id` = `market`.`city_id`')
+            ->leftJoin('`favorites`', '`favorites`.`market_id` = `market`.`id` AND `favorites`.`user_id` = '.Yii::$app->user->id )
             ->filterWhere([
                 '`market`.`region_id`' => $_GET['region']
 
@@ -485,14 +489,20 @@ class DefaultController extends Controller
          if(isset($_GET['categ']) && $_GET['categ'] != 10001){
              $result->andWhere(['like', '`market`.`category_id_all`', $_GET['categ']]);
          }
-        $result->with('auto_widget','geobase_city');
+        $result->with('auto_widget','geobase_city','favorites');
         $result->orderBy('dt_add DESC');
+
+        
+        $pagination = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $result->count(),
+        ]);
+        $result->offset($pagination->offset);
+        $result->limit($pagination->limit);
         $search = $result->all();
-
-
        // Debug::prn($search);
        // Debug::prn($_GET);
-        return $this->render('search', ['search'=>$search]);
+        return $this->render('search', ['search'=>$search,'pagination' => $pagination,]);
 
     }
 
