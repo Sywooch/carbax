@@ -616,6 +616,27 @@ jQuery(document).ready(function ($) {
             }
         });
     });
+
+    $(document).on('click','a.fleamarket__ads__item--desc--star',function(){
+        var productId = $(this).attr('product_id');
+        if($(this).hasClass('delFavorites')){
+            $(this).removeClass('delFavorites');
+            $(this).attr('title','Добавить в избранное');
+        }else{
+            $(this).addClass('delFavorites');
+            $(this).attr('title','Убрать из избранного');
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/add_favorites",
+            data: 'productid=' + productId,
+            success: function (data) {
+
+
+            }
+        });
+    });
 });
 
 $(".first__but--but").click(function () {

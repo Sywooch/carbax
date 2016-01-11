@@ -73,4 +73,20 @@ class Market extends \yii\db\ActiveRecord
     {
         return $this->hasOne(GeobaseCity::className(), ['id' => 'city_id']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getfavorites()
+    {
+        return $this->hasMany(Favorites::className(), ['market_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getproduct_img()
+    {
+        return $this->hasMany(ProductImg::className(), ['product_id' => 'id']);
+    }
 }

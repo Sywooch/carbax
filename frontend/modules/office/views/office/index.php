@@ -32,8 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="serviceLink">Спецпредлжения</div>
         </div>
         <div class="serviceItem">
-            <div class="serviceIcon"><img src="<?= Url::base(true) ?>/media/img/note_o.png" alt=""></div>
-            <div class="serviceLink">Блокнот</div>
+            <div class="serviceIcon"><a href="<?= Url::to(['/favorites/default']) ?>"><img src="<?= Url::base(true) ?>/media/img/note_o.png" alt=""></a></div>
+            <div class="serviceLink">Избранное</div>
         </div>
 
         <h2 class="h2-left">Управление бизнесом</h2>

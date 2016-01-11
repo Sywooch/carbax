@@ -551,3 +551,7 @@ select.yearSearch{
 .fleamarket__head h1 span{
     font-size: 15px;
 }
+
+.delFavorites{
+    background-position: 0px -22px!important;;
+}
