@@ -90,6 +90,9 @@ return [
         'message' => [
             'class' => 'frontend\modules\message\Message',
         ],
+        'complaint' => [
+            'class' => 'frontend\modules\complaint\Complaint',
+        ],
     ],
     'params' => $params,
 ];
