@@ -19,6 +19,8 @@ use Yii;
  * @property integer $created_at
  * @property integer $updated_at
  * @property integer $flags
+ * @property integer $region_id
+ * @property integer $city_id
  *
  * @property Profile $profile
  * @property Services[] $services
@@ -42,7 +44,7 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             [['username', 'email', 'password_hash', 'auth_key', 'created_at', 'updated_at'], 'required'],
-            [['confirmed_at', 'blocked_at', 'created_at', 'updated_at', 'flags'], 'integer'],
+            [['confirmed_at', 'blocked_at', 'created_at', 'updated_at', 'flags', 'region_id', 'city_id'], 'integer'],
             [['username', 'email', 'unconfirmed_email'], 'string', 'max' => 255],
             [['password_hash'], 'string', 'max' => 60],
             [['auth_key'], 'string', 'max' => 32],

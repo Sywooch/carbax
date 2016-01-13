@@ -64,4 +64,8 @@ class Custom_function {
                 return $result[$key];;
         }
     }
+
+    public static function getCookieByKey($key){
+        
+    }
 } 

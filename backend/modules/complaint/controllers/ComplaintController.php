@@ -2,6 +2,9 @@
 
 namespace backend\modules\complaint\controllers;
 
+use common\classes\Debug;
+use common\classes\SendingMessages;
+use common\models\db\Msg;
 use Yii;
 use backend\modules\complaint\models\Complaint;
 use backend\modules\complaint\models\ComplaintSearch;
@@ -117,6 +120,24 @@ class ComplaintController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    public function actionAnswer(){
+        $msg = new Msg();
+        $complaint = \common\models\db\Complaint::findOne($_GET['id']);
+        if ($msg->load(Yii::$app->request->post())) {
+            SendingMessages::send_message($msg->to, Yii::$app->user->id, $msg->subject, $msg->content);
+            $searchModel = new ComplaintSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+            Yii::$app->session->setFlash('success','Ответ отправлен');
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+        else {
+            return $this->render('answer_form', ['to' => $_GET['id'], 'msg' => $msg, 'complaint' => $complaint]);
         }
     }
 }

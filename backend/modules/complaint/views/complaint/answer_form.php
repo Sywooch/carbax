@@ -1,9 +1,10 @@
 <?php
+use common\models\db\User;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
-$this->title = "Написать жалобу";
+$this->title = "Ответ на жалобу";
 //$this->params['breadcrumbs'][] = ['label' => 'Входящие', 'url' => ['/message']];
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -20,9 +21,9 @@ else {
 
 <section class="main-container">
     <?php $form = ActiveForm::begin(); ?>
-    <?= $form->field($model, 'subject')->textInput()->label('Тема:') ?>
-    <?= $form->field($model, 'to_object')->textInput(['value'=>$link])->label('Ссылка на материал:') ?>
-    <?= $form->field($model, 'text')->textarea(['rows' => 10])->label('Жалоба:') ?>
+    <?= $form->field($msg, 'subject')->textInput(['value'=>'Ответ на жалобу: ' . $complaint->subject])->label('Тема:') ?>
+    <?= $form->field($msg, 'to')->textInput(['value'=> User::getLogin($complaint->from_user)])->label('Получатель:') ?>
+    <?= $form->field($msg, 'content')->textarea(['rows' => 10])->label('Ответ:') ?>
     <div class="form-group">
         <?= Html::submitButton('Отправить', ['class' => 'btn btn-success']) ?>
     </div>

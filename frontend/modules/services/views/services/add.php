@@ -18,9 +18,9 @@ $this->registerCssFile('/css/bootstrap.min.css');
 
     <form id="addForm" action="add_to_sql" method="post" enctype="multipart/form-data">
         <input type="hidden" name="service_type" value="<?= $_GET['service_type'] ?>">
-        <input type="text" name="title" class="addContent__title" placeholder="Название автосервиса">
+        <input type="text" name="title" class="addContent__title" placeholder="Название автосервиса" required>
 
-        <input type="text" id="address_0" name="address[0][title]" class="addContent__adress addressEvent" placeholder="Адрес автосервиса">
+        <input type="text" id="address_0" name="address[0][title]" class="addContent__adress addressEvent" placeholder="Адрес автосервиса" required>
 
         <span id="firstAddress"></span>
         <a href="#nowhere" id="addAddress" class="addContent__adress-add">+</a>
@@ -47,7 +47,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
             ?>
 
             <h3>Описание</h3>
-            <textarea name="text" id="addContent__description"  class="addContent__description"></textarea>
+            <textarea name="text" id="addContent__description"  class="addContent__description" required="required"></textarea>
 
             <h3>Время работы</h3>
             <div class="singleContent__desc--line">
@@ -137,7 +137,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 </div>
                 <div class="singleContent__desc--line">
                     <label for="phonenumber">Телефон</label>
-                    <input type="text" class="addContent__cont" name="phoneNumber[]">
+                    <input type="text" class="addContent__cont" name="phoneNumber[]" required>
                 </div>
                 <div class="singleContent__desc--line">
                     <label for="phonenumber_last"></label>
@@ -146,7 +146,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 </div>
                 <div class="singleContent__desc--line">
                     <label for="mailadress">Почта</label>
-                    <input type="text" class="addContent__cont" name="mailadress">
+                    <input type="text" class="addContent__cont" name="mailadress" required>
 
                 </div>
             </div>
@@ -162,9 +162,12 @@ $this->registerCssFile('/css/bootstrap.min.css');
             ?>
 
 
-            <div class="addContent--save">
+            <!--<div class="addContent--save">
                 <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
-            </div>
+            </div>-->
+            <div class="addContent--save">
+                <input type="submit" value="Сохранить" class="btn btn-save">
+        </div>
         </div>
         <span id="addressCount" count="0" active-id=""></span>
     </form>

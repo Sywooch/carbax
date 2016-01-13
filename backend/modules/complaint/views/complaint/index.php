@@ -60,7 +60,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 
             // 'text:ntext',
-
+            [
+                'attribute' => 'Ответить',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    return Html::a('Ответить', ['answer', 'id' => $model->id], ['class' => 'btn btn-success']);
+                },
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

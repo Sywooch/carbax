@@ -5,7 +5,14 @@ use yii\web\JsExpression;
 
 //Debug::prn($_POST);
 
-$cityName = (isset($_POST['city_name'])) ?  $_POST['city_name'] : 'Город';
+//$cityName = (isset($_POST['city_name'])) ?  $_POST['city_name'] : 'Город';
+if(isset($_POST['city_name'])){
+    $cityName = $_POST['city_name'];
+}
+else {
+    $cookies = Yii::$app->request->cookies;
+    $cityName = $cookies->getValue('city', 'Город');
+}
 $cityId = (isset($_POST['city_id'])) ? $_POST['city_id'] : '';
 
 echo AutoComplete::widget([

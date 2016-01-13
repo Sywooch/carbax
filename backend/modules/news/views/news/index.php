@@ -41,7 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'description:ntext',
             // 'short_description:ntext',
             // 'dt_add',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

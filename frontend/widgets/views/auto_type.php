@@ -22,7 +22,6 @@ use frontend\widgets\SelectMultiplayMoto;
 
     <?php
 
-
     foreach ($autoSelect as $at) {
         switch($at->auto_type_id){
             case 1: $brands = SelectMultiplayAuto::widget(['serviceId' =>$serviceId]); break;

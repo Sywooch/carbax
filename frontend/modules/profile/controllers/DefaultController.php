@@ -3,6 +3,8 @@
 namespace frontend\modules\profile\controllers;
 
 use common\classes\Debug;
+use common\models\db\GeobaseCity;
+use common\models\db\GeobaseRegion;
 use Yii;
 use common\models\db\User;
 use yii\filters\AccessControl;
@@ -52,6 +54,8 @@ class DefaultController extends Controller
         return $this->render('edit_contacts',
             [
                 'user' => User::find()->where(['id'=>Yii::$app->user->id])->one(),
+                'regions' => GeobaseRegion::find()->orderBy('name')->all(),
+                'cities' => GeobaseCity::find()->all(),
             ]);
     }
 

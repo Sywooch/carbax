@@ -1,5 +1,7 @@
 <?php
+use frontend\widgets\SelectAddress;
 use kartik\file\FileInput;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -28,6 +30,15 @@ $this->params['breadcrumbs'][] = $this->title;
         <p>Ваш skype <?= Html::textInput('skype',$user->skype,['id'=>'user_skype']);?></p>
         <p>Ваш icq <?= Html::textInput('icq',$user->icq,['id'=>'user_isq']);?></p>
         <p>Ваша ссылка на профиль ВК <?= Html::textInput('link_vk',$user->link_vk,['id'=>'user_link_vk']);?></p>
+        <!--<p>Регион по умолчанию
+            <?/*=Html::dropDownList('region',$user->region_id, ArrayHelper::map($regions, 'id', 'name'), ['prompt'=>'Регион', 'id'=>'profileRegion'])*/?>
+        </p>-->
+        <p style="display: block; width: 100%; height: 40px">
+            <?= SelectAddress::widget([
+                'address'=>false,
+                'defaultHeightSecondBlock' => '40px'
+            ])?>
+        </p>
         <hr>
         <p>Ваш новый пароль <?= Html::passwordInput('passwordUserEdit',null,['id'=>'user_password']);?></p>
         <span>Если не хотите менять пароль оставте поле без изменений</span>

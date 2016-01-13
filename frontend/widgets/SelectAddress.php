@@ -16,10 +16,15 @@ class SelectAddress extends Widget
 {
 
     public $address = true;
+    public $defaultHeightSecondBlock = false;
 
     public function run(){
         $regions = GeobaseRegion::find()->orderBy('name')->all();
-        return $this->render('select_address', ['regions' => $regions, 'address' => $this->address]);
+        return $this->render('select_address', [
+            'regions' => $regions,
+            'address' => $this->address,
+            'defaultHeightSecondBlock' => $this->defaultHeightSecondBlock
+        ]);
     }
 
 }
