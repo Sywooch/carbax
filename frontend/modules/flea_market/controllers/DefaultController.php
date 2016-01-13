@@ -210,6 +210,7 @@ class DefaultController extends Controller
         $market->descr = $_POST['descr'];
         $market->price = $_POST['price'];
         if($_POST['prod_type'] == 'zap'){
+            $market->prod_type = 0;
             switch($_POST['radio_type_product']){
                 case 1:
                     $market->prod_type = 0;//запчасть

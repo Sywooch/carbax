@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <form id="addForm" action="<?= Url::to(['add_to_sql'])?>" method="post" enctype="multipart/form-data">
         <input id="prodType" type="hidden" name="prod_type" value="<?=$_GET['type']?>">
-        <input type="text" name="title" class="addContent__title" placeholder="Название товара">
+        <input type="text" name="title" class="addContent__title" placeholder="Название товара" required>
         <?/*= Html::dropDownList('manufactures',0, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])*/?><!--
         <span id="modelBox"></span>
         <span id="typesBox"></span>
@@ -77,18 +77,22 @@ $this->params['breadcrumbs'][] = $this->title;
         <input id="input-4" type="file" multiple=true class="file-loading">-->
 
             <h3>Товар</h3>
-            <?= Html::radio('new',false,['label'=>'Новый','value'=>1,'class'=>'userOrService']);?>
+            <?= Html::radio('new',true,['label'=>'Новый','value'=>1,'class'=>'userOrService']);?>
             <?= Html::radio('new',false,['label'=>'Б/У','value'=>0,'class'=>'userOrService']);?>
             <h3>Описание</h3>
-            <?= Html::textarea('descr','',['class'=>'addContent__description'])?>
+            <?= Html::textarea('descr','',['class'=>'addContent__description','required'=>'required'])?>
             <h3>Цена</h3>
-            <?= Html::input('text','price',null,['class'=>'addPrice'])?>
+            <?= Html::input('text','price',null,['class'=>'addPrice','required'=>'required'])?>
             <h3>Разместить от</h3>
             <?= Html::radioList('userOrService','1',['1'=>'Пользователь','2'=>'Сервис'],['class'=>'userOrService','id'=>'addUserOrService'])?>
             <div id="selectServiseWr"></div>
         </div>
-        <div class="addContent--save">
+        <!--<div class="addContent--save">
             <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
+        </div>-->
+        <div class="addContent--save">
+            <input type="submit" value="Сохранить" class="btn btn-save">
+
         </div>
         <span id="hiddenInputs"></span>
     </form>
