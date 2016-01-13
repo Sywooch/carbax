@@ -660,6 +660,30 @@ jQuery(document).ready(function ($) {
         return false;
         //alert(productId);
     });
+
+    $(document).on('click','.radioTypeSelect',function(){
+        var radio = $('input[name=radio_type_product]:checked').val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/view_widget",
+            data: 'type=' + radio,
+            success: function (data) {
+                $('.view_widget').html(data);
+            }
+        })
+    });
+
+    $(document).on('change','.prodTypeSearch',function(){
+        var prodType = $('.prodTypeSearch').val();
+
+        if(prodType == 3 || prodType == 4){
+            $('.typeAutoSearch').prop("disabled",'false');
+        }else{
+
+            $('.typeAutoSearch').attr("disabled", false);
+        }
+        //alert(prodType);
+    });
 });
 
 $(".first__but--but").click(function () {

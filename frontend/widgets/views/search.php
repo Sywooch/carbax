@@ -53,7 +53,7 @@ else{
                 <?= Html::dropDownList('region',$sel['region'], ArrayHelper::map($region, 'id', 'name'), ['prompt'=>'Регион','class'=>'regionSearch'])?>
                 <?= Html::hiddenInput('categ',$_GET['categ']); ?>
                 <input value="<?=$sel['search']?>" type="text" name="search" class="filter__searchline--search" placeholder="Поиск по объявлениям">
-                <?= Html::dropDownList('prod_type',$sel['prod_type'], ['2'=>'Транспорт','1'=>'Запчасти'], ['prompt'=>'Что ищите?']) ?>
+                <?= Html::dropDownList('prod_type',$sel['prod_type'], ['2'=>'Транспорт','1'=>'Запчасти','3'=>'Шины','4'=>'Диски'], ['prompt'=>'Что ищите?','class'=>'prodTypeSearch']) ?>
                 <?=Html::dropDownList('typeAuto',$sel['typeAuto'], ['1'=>'Легковой автомобиль','2'=>'Грузовой автомобиль','3'=> 'Мото техника'], ['prompt'=>'Выберите тип автомобиля','class'=>'typeAutoSearch'])?>
 
                 <input type="submit" class="filter__searchline--but" value="Найти">

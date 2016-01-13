@@ -347,7 +347,7 @@ span.fleamarket__similar_ads_product_city{
 }
 
 .addContent__adress {
-    width: 90%;
+    width: 93%;
 }
 
 .addContent__description {
@@ -576,5 +576,14 @@ select.yearSearch{
 }
 
 .btn-save {
-    background-color: #ff6b00; color: whitesmoke; margin: 0 auto; width: 100px;display: block
+    background-color: #ff6b00;
+    color: whitesmoke;
+    margin: 0 auto;
+    width: 100px;
+    display: block;
+}
+
+.radio_select {
+    display: inline-block;
+    width: 100%;
 }

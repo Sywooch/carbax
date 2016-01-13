@@ -40,6 +40,8 @@ use common\models\db\TofModels;
 use common\models\db\TofTypes;
 use common\models\db\User;
 use frontend\modules\flea_market\widgets\CategoryProductTecDoc;
+use frontend\widgets\InfoDisk;
+use frontend\widgets\InfoSplint;
 use frontend\widgets\SelectAuto;
 use frontend\widgets\SelectAutoFromGarage;
 use frontend\widgets\SelectMultiplayAuto;
@@ -447,6 +449,18 @@ class AjaxController extends Controller
             else{
                 $fav->delete();
             }
+        }
+    }
+
+    public function actionView_widget(){
+        if($_POST['type'] == 1){
+            echo SelectAuto::widget(['view' => ($_GET['type'] == 'auto') ? '0' : '1', 'select_from_garage' => true]);
+        }
+        if($_POST['type'] == 2){
+            echo InfoSplint::widget();
+        }
+        if($_POST['type'] == 3){
+            echo InfoDisk::widget();
         }
     }
 

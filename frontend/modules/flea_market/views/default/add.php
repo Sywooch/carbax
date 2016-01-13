@@ -2,6 +2,7 @@
 
 use common\classes\Debug;
 use frontend\modules\flea_market\widgets\CategoryProductTecDoc;
+use frontend\widgets\RadioSelectTypeProduct;
 use frontend\widgets\RegionSelect;
 use frontend\widgets\SelectAuto;
 use yii\helpers\ArrayHelper;
@@ -9,7 +10,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use kartik\file\FileInput;
 
-/*$this->registerCssFile('/css/bootstrap.min.css');*/
+$this->registerCssFile('/css/bootstrap.min.css');
 /*$this->registerJsFile('/js/fileinput.min.js');*/
 
 
@@ -37,7 +38,15 @@ $this->params['breadcrumbs'][] = $this->title;
         <span id="typesBox"></span>
         <span id="categBox"></span>-->
 
-        <?= SelectAuto::widget(['view' => ($_GET['type'] == 'auto') ? '0' : '1', 'select_from_garage' => true]);?>
+            <?php if($_GET['type'] == 'zap'){
+                echo RadioSelectTypeProduct::widget();
+            }
+            else{
+                echo SelectAuto::widget(['view' => ($_GET['type'] == 'auto') ? '0' : '1', 'select_from_garage' => true]);
+            }
+            ?>
+
+
         <div class="singleContent__desc">
             <h2>Регион</h2>
         </div>

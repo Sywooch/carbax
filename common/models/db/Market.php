@@ -18,6 +18,8 @@ use Yii;
  * @property integer $dt_add
  * @property integer $prod_type
  * @property integer $id_auto_widget
+ * @property integer $id_info_disk
+ * @property integer $id_info_splint
  * @property integer $new
  */
 class Market extends \yii\db\ActiveRecord
