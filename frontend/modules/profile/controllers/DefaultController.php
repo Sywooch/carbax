@@ -80,6 +80,8 @@ class DefaultController extends Controller
         $user->skype = $_POST['skype'];
         $user->icq = $_POST['icq'];
         $user->link_vk = $_POST['link_vk'];
+        $user->region_id = $_POST['regions'];
+        $user->city_id = $_POST['city_widget'];
         if(!empty($_POST['passwordUserEdit'])){
             $user->setPassword($_POST['passwordUserEdit']);
         }

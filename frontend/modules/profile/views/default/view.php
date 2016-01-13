@@ -1,4 +1,6 @@
 <?php
+use common\models\db\GeobaseCity;
+use common\models\db\GeobaseRegion;
 use yii\helpers\Html;
 
 
@@ -44,6 +46,18 @@ $this->registerCssFile('/css/bootstrap.min.css');
         <?php if(!empty($user['link_vk'])): ?>
             <div class="profileName profileElement">
                 ВК: <?=$user['link_vk']?>
+            </div>
+        <?php endif; ?>
+
+        <?php if($user['region_id'] != 0): ?>
+            <div class="profileName profileElement">
+                Регион: <?= GeobaseRegion::find()->where(['id'=>$user['region_id']])->one()->name?>
+            </div>
+        <?php endif; ?>
+
+        <?php if($user['city_id'] != 0): ?>
+            <div class="profileName profileElement">
+                Город: <?= GeobaseCity::find()->where(['id'=>$user['city_id']])->one()->name?>
             </div>
         <?php endif; ?>
 

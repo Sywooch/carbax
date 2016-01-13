@@ -36,7 +36,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <p style="display: block; width: 100%; height: 40px">
             <?= SelectAddress::widget([
                 'address'=>false,
-                'defaultHeightSecondBlock' => '40px'
+                'defaultHeightSecondBlock' => '40px',
+                'defaultRegion' => $user->region_id,
+                'defaultCity' => $user->city_id
             ])?>
         </p>
         <hr>
