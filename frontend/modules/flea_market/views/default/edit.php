@@ -1,6 +1,7 @@
 <?php
 use common\models\db\Services;
 use frontend\modules\flea_market\widgets\CategoryProductTecDoc;
+use frontend\widgets\RadioSelectTypeProduct;
 use frontend\widgets\SelectAuto;
 use kartik\file\FileInput;
 use yii\helpers\ArrayHelper;
@@ -29,13 +30,37 @@ $this->title = ($_GET['type'] == 'zap') ? "Редактировать товар
 
     <?php endforeach; ?>
     <?= Html::input('hidden','idproduct',$product->id)?>
-    <?= Html::input('hidden','auto_widget',$auto->id)?>
+
+    <?php
+        if($product->prod_type == 0){
+            echo Html::input('hidden','auto_widget',$auto->id);
+            $selected = 1;
+        }
+        if($product->prod_type == 2){
+            echo Html::input('hidden','id_info_splint',$auto->id);
+            $selected = 2;
+        }
+        if($product->prod_type == 3){
+            echo Html::input('hidden','id_info_disk',$auto->id);
+            $selected = 3;
+        }
+    ?>
+
+
     <input type="text" name="title" class="addContent__title" placeholder="Название товара" value="<?=$product->name?>">
     <?/*= Html::dropDownList('manufactures',$product->man_id, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])*/?><!--
     <span id="modelBox"><?/*= Html::dropDownList('model',$product->model_id,ArrayHelper::map($model, 'mod_id', 'mod_name'), ['class'=>'addContent__adress', 'id'=>'modSelect','prompt'=>'Выберите модель']);*/?></span>
     <span id="typesBox"><?/*= Html::dropDownList('types',$product->type_id,ArrayHelper::map($type, 'typ_id', 'typ_mmt_cds'), ['class'=>'addContent__adress','prompt'=>'Выберите тип']);*/?></span>-->
 
-    <?= SelectAuto::widget(['view' => ($_GET['type'] == 'zap') ? '1' : '0', 'auto' => $auto, 'category' => $product->category_id_all]) ?>
+    <?php if($_GET['type'] == 'zap'){
+        echo RadioSelectTypeProduct::widget(['select'=>$selected,'model'=>$auto]);
+    }
+    else{
+        echo SelectAuto::widget(['view' => ($_GET['type'] == 'auto') ? '0' : '1', 'select_from_garage' => true]);
+    }
+    ?>
+
+    <?/*= SelectAuto::widget(['view' => ($_GET['type'] == 'zap') ? '1' : '0', 'auto' => $auto, 'category' => $product->category_id_all]) */?>
 
     <?= Html::dropDownList('region',$product->region_id,ArrayHelper::map($region,'id','name'),['class'=>'addContent__adress','id'=>'regionSelect','prompt'=>'Выберите регион'])?>
     <span id="addCity"><?= Html::dropDownList('city',$product->city_id,ArrayHelper::map($city,'id','name'),['class'=>'addContent__adress','prompt'=>'Выберите город']);?></span>

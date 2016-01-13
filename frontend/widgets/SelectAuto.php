@@ -35,8 +35,7 @@ class SelectAuto extends Widget
     public $select_from_garage = false;
 
     public function run(){
-        //$man = TofManufacturers::find()->orderBy('mfa_brand')->all();
-       // $man = BcbBrands::find()->orderBy('name')->all();
+
         if($this->auto){
             if($this->auto->auto_type == '1'){
                 $brand = BcbBrands::find()->all();

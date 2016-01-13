@@ -19,6 +19,8 @@ use common\models\db\CategoriesAuto;
 use common\models\db\Favorites;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
+use common\models\db\InfoDisk;
+use common\models\db\InfoSplint;
 use common\models\db\Market;
 use common\models\db\ProductImg;
 use common\models\db\Services;
@@ -66,7 +68,10 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         //Yii::$app->session->setFlash('success','Товар успешно обновлен');
-        $market = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])->all();
+        $market = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])
+            ->orWhere(['prod_type' => 2])
+            ->orWhere(['prod_type' => 3])
+            ->all();
         return $this->render('index', ['market' => $market]);
     }
 
@@ -91,63 +96,136 @@ class DefaultController extends Controller
 
     public function actionAdd_to_sql()
     {
-        if(isset($_POST['auto_widget'])){
+        if(isset($_POST['auto_widget']) || isset($_POST['id_info_splint']) || isset($_POST['id_info_disk'])){
             $market = Market::find()->where(['id' => $_POST['idproduct']])->one();
-            $autoWidget = AutoWidget::find()->where(['id' => $_POST['auto_widget']])->one();
+            if($_POST['radio_type_product'] == 1) {
+                $autoWidget = AutoWidget::find()->where(['id' => $_POST['auto_widget']])->one();
+            }
+            if($_POST['radio_type_product'] == 2) {
+                $infoSplint = InfoSplint::find()->where(['id' => $_POST['id_info_splint']])->one();
+            }
+            if($_POST['radio_type_product'] == 3) {
+                $infoDisk = InfoDisk::find()->where(['id' => $_POST['id_info_disk']])->one();
+            }
             Yii::$app->session->setFlash('success','Товар успешно отредактирован');
         }
         else {
             Yii::$app->session->setFlash('success','Товар успешно добавлен');
             $market = new Market();
-            $autoWidget = new AutoWidget();
+            //$autoWidget = new AutoWidget();
         }
 
         $market->name = $_POST['title'];
         $market->new = $_POST['new'];
-        $autoWidget->auto_type = $_POST['typeAuto'];
-        $autoWidget->year = $_POST['year'];
-        $autoWidget->brand_id = $_POST['manufactures'];
-        $autoWidget->model_id = $_POST['model'];
-        $autoWidget->type_id = $_POST['types'];
-        if($_POST['typeAuto'] == 1){
-            $manName = BcbBrands::find()->where(['id'=>$_POST['manufactures']])->one()->name;
-            $modelName = BcbModels::find()->where(['id'=>$_POST['model']])->one()->name;
-            $typeName = BcbModify::find()->where(['id'=>$_POST['types']])->one()->name;
-        }
-        if($_POST['typeAuto'] == 2){
-            $manName = AutoComBrands::find()->where(['id'=>$_POST['manufactures']])->one()->name;
-            $modelName = AutoComModels::find()->where(['id'=>$_POST['model']])->one()->name;
-            $typeName = AutoComModify::find()->where(['id'=>$_POST['model']])->one()->name;
+        if($_POST['radio_type_product'] == 1) {
+            $autoWidget = new AutoWidget();
+            $autoWidget->auto_type = $_POST['typeAuto'];
+            $autoWidget->year = $_POST['year'];
+            $autoWidget->brand_id = $_POST['manufactures'];
+            $autoWidget->model_id = $_POST['model'];
+            $autoWidget->type_id = $_POST['types'];
+            if ($_POST['typeAuto'] == 1) {
+                $manName = BcbBrands::find()->where(['id' => $_POST['manufactures']])->one()->name;
+                $modelName = BcbModels::find()->where(['id' => $_POST['model']])->one()->name;
+                $typeName = BcbModify::find()->where(['id' => $_POST['types']])->one()->name;
+            }
+            if ($_POST['typeAuto'] == 2) {
+                $manName = AutoComBrands::find()->where(['id' => $_POST['manufactures']])->one()->name;
+                $modelName = AutoComModels::find()->where(['id' => $_POST['model']])->one()->name;
+                $typeName = AutoComModify::find()->where(['id' => $_POST['model']])->one()->name;
 
-            $autoWidget->submodel_id = $_POST['submodel'];
-            $autoWidget->submodel_name = AutoComSubmodels::find()->where(['id'=>$_POST['submodel']])->one()->name;
+                $autoWidget->submodel_id = $_POST['submodel'];
+                $autoWidget->submodel_name = AutoComSubmodels::find()->where(['id' => $_POST['submodel']])->one()->name;
+            }
+            if ($_POST['typeAuto'] == 3) {
+                $manName = CarMark::find()->where(['id_car_mark' => $_POST['manufactures']])->one()->name;
+                $modelName = CarModel::find()->where(['id_car_model' => $_POST['model']])->one()->name;
+                $typeName = CarModification::find()->where(['id_car_modification' => $_POST['types']])->one()->name;
+                $autoWidget->moto_type = $_POST['mototype'];
+            }
+
+            $autoWidget->brand_name = $manName;
+            $autoWidget->model_name = $modelName;
+            $autoWidget->type_name = $typeName;
+
+            $autoWidget->save();
+            $market->id_auto_widget = $autoWidget->id;
         }
-        if($_POST['typeAuto'] == 3){
-            $manName = CarMark::find()->where(['id_car_mark'=>$_POST['manufactures']])->one()->name;
-            $modelName = CarModel::find()->where(['id_car_model'=>$_POST['model']])->one()->name;
-            $typeName = CarModification::find()->where(['id_car_modification'=>$_POST['types']])->one()->name;
-            $autoWidget->moto_type = $_POST['mototype'];
+        if($_POST['radio_type_product'] == 2) {
+            $infoSplint = new InfoSplint();
+            $infoSplint->diameter = $_POST['diameter'];
+            $infoSplint->seasonality = $_POST['seasonality'];
+            switch ($_POST['seasonality']) {
+                case 1:
+                    $infoSplint->seasonality_name = 'Летние';
+                    break;
+                case 2:
+                    $infoSplint->seasonality_name = 'Зимние нешипованные';
+                    break;
+                case 3:
+                    $infoSplint->seasonality_name = 'Зимние шипованные';
+                    break;
+                case 4:
+                    $infoSplint->seasonality_name = 'Всесезонные';
+                    break;
+            }
+            $infoSplint->section_width = $_POST['section_width'];
+            $infoSplint->section_height = $_POST['section_height'];
+            $infoSplint->save();
+            $market->id_info_splint = $infoSplint->id;
         }
 
-        $autoWidget->brand_name = $manName;
-        $autoWidget->model_name = $modelName;
-        $autoWidget->type_name = $typeName;
+        if($_POST['radio_type_product'] == 3) {
+            $infoDisk = new InfoDisk();
+            $infoDisk->type_disk = $_POST['type_disk'];
+            switch ($_POST['type_disk']) {
+                case 1:
+                    $infoDisk->type_disk_name = 'Кованые';
+                    break;
+                case 2:
+                    $infoDisk->type_disk_name = 'Литые';
+                    break;
+                case 3:
+                    $infoDisk->type_disk_name = 'Штампованные';
+                    break;
+                case 4:
+                    $infoDisk->type_disk_name = 'Спицованные';
+                    break;
+                case 5:
+                    $infoDisk->type_disk_name = 'Сборные';
+                    break;
+            }
+            $infoDisk->diameter = $_POST['diameter'];
+            $infoDisk->rim_width = $_POST['rim_width'];
+            $infoDisk->number_holes = $_POST['number_holes'];
+            $infoDisk->diameter_holest = $_POST['diameter_holest'];
+            $infoDisk->sortie = $_POST['sortie'];
 
-        $autoWidget->save();
-        /*$market->man_id = $_POST['manufactures'];
-        $market->model_id = $_POST['model'];
-        $market->type_id = $_POST['types'];*/
-        $market->id_auto_widget = $autoWidget->id;
+            $infoDisk->save();
+            $market->id_info_disk = $infoDisk->id;
+        }
+
         $market->region_id = $_POST['region'];
         $market->city_id = $_POST['city'];
         $market->descr = $_POST['descr'];
         $market->price = $_POST['price'];
         if($_POST['prod_type'] == 'zap'){
-            $market->prod_type = 0;
+            switch($_POST['radio_type_product']){
+                case 1:
+                    $market->prod_type = 0;//запчасть
+                    break;
+                case 2:
+                    $market->prod_type = 2;//Шины
+                    break;
+                case 3:
+                    $market->prod_type = 3;//Диски
+                    break;
+            }
+
             $view = 'index';
         }
         else {
-            $market->prod_type = 1;
+            $market->prod_type = 1;//Автомобиль
             $view = 'sale_auto';
         }
         $market->dt_add = time();
@@ -166,7 +244,12 @@ class DefaultController extends Controller
         }
 
 
-        $market->id_auto_type = $_POST['typeAuto'];
+        if(isset($_POST['typeAuto'])){
+            $market->id_auto_type = $_POST['typeAuto'];
+        }else{
+            $market->id_auto_type = 99;
+        }
+
 
 
         $market->user_id = Yii::$app->user->id;
@@ -200,7 +283,10 @@ class DefaultController extends Controller
         }
 
         if($_POST['prod_type'] == 'zap'){
-            $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])->all();
+            $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])
+                ->orWhere(['prod_type' => 2])
+                ->orWhere(['prod_type' => 3])
+                ->all();
         }
         else {
             $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 1])->all();
@@ -258,28 +344,38 @@ class DefaultController extends Controller
             return $this->render('sale_auto', ['market' => $marketAll,]);
         }
         else {
-            $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id, 'prod_type' => 0])->all();
+            /*$marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id, 'prod_type' => 0])
+                ->orWhere(['prod_type' => 2])
+                ->orWhere(['prod_type' => 3])
+                ->all();*/
             Yii::$app->session->setFlash('success','Товар успешно удален');
-            return $this->render('index', ['market' => $marketAll,]);
+            return $this->redirect('index');
+           // return $this->render('index', ['market' => $marketAll,]);
         }
     }
 
     public function actionEdit_product()
     {
         $product = Market::find()->where(['id' => $_GET['id']])->one();
-        $auto = AutoWidget::find()->where(['id' => $product->id_auto_widget])->one();
-        /*$tofMan = TofManufacturers::find()->orderBy('mfa_brand')->all();*/
+        if($product->prod_type == 0){
+            $auto = AutoWidget::find()->where(['id' => $product->id_auto_widget])->one();
+        }
+        if($product->prod_type == 2){
+            $auto = InfoSplint::find()->where(['id' => $product->id_info_splint])->one();
+        }
+        if($product->prod_type == 3){
+            $auto = InfoDisk::find()->where(['id' => $product->id_info_disk])->one();
+        }
+
         $region = GeobaseRegion::find()->all();
-        /*$autoType = CategoriesAuto::find()->all();*/
-        /*$model = TofModels::find()->where(['mod_mfa_id' => $product->man_id])->all();
-        $type = TofTypes::find()->where(['typ_mod_id' => $product->model_id])->all();*/
+
         $city = GeobaseCity::find()->where(['region_id' => $product->region_id])->all();
         $category = explode(',', $product->category_id_all);
         array_pop($category);
         $nameCat = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one()->name;
-        //Debug::prn($product->category_id_all);
+
         foreach ($category as $cat) {
-            //Debug::prn($cat);
+
             $nameCat .= ' - ' . TofSearchTree::find()->where(['str_id' => $cat])->one()->str_des;
         }
 
@@ -461,9 +557,12 @@ class DefaultController extends Controller
              $result->andWhere(['new'=>0]);
          }
 
-         if(!empty($_GET['prod_type'])){
+         if(!empty($_GET['prod_type']) && empty($_GET['typeAuto'])){
              $result->andWhere(['prod_type' => $_GET['prod_type']-1]);
          }
+
+
+
          if(!empty($_GET['typeAuto'])){
              $result->andWhere(['`auto_widget`.`auto_type`' => $_GET['typeAuto']]);
          }
@@ -520,8 +619,16 @@ class DefaultController extends Controller
 
         $product->updateCounters(['views'=>1]);
 
-        $nameTypeAuto = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one();
-        $auto = AutoWidget::find()->where(['id'=>$product->id_auto_widget])->one();
+        /*$nameTypeAuto = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one();*/
+        if($product->prod_type == 0 || $product->prod_type == 1){
+            $auto = AutoWidget::find()->where(['id'=>$product->id_auto_widget])->one();
+        }
+        if($product->prod_type == 2){
+            $auto = InfoSplint::find()->where(['id'=>$product->id_info_splint])->one();
+        }
+        if($product->prod_type == 3){
+            $auto = InfoDisk::find()->where(['id'=>$product->id_info_disk])->one();
+        }
        // Debug::prn($product);
        /* $marka = TofManufacturers::find()->where(['mfa_id' => $product->man_id])->one();
         $model = TofModels::find()->where(['mod_id' => $product->model_id])->one();
@@ -541,7 +648,7 @@ class DefaultController extends Controller
         return $this->render('view',
             [
                 'product' => $product,
-                'nametype' => $nameTypeAuto,
+                /*'nametype' => $nameTypeAuto,*/
                 'auto' => $auto,
                 'region' => $region,
                 'city' => $city,

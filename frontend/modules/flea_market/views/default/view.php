@@ -16,8 +16,15 @@ $this->title = $product->name;
         Все объявления в <?= Html::a($city->name,['search','region'=>$product->region_id,'citySearch'=>$product->city_id,'search'=>''])?> /
         <?php if($product->prod_type == 1):?>
             <?= Html::a('Транспорт',['search','region'=>$product->region_id,'citySearch'=>$product->city_id,'search'=>'','prod_type'=>2]) ?>
-        <?php else: ?>
+        <?php endif; ?>
+        <?php if($product->prod_type == 0):?>
             <?= Html::a('Запчасти',['search','region'=>$product->region_id,'citySearch'=>$product->city_id,'search'=>'','prod_type'=>1]); ?>
+        <?php endif;?>
+        <?php if($product->prod_type == 2):?>
+            <?= Html::a('Шины',['search','region'=>$product->region_id,'citySearch'=>$product->city_id,'search'=>'','prod_type'=>3]); ?>
+        <?php endif;?>
+        <?php if($product->prod_type == 3):?>
+            <?= Html::a('Диски',['search','region'=>$product->region_id,'citySearch'=>$product->city_id,'search'=>'','prod_type'=>4]); ?>
         <?php endif;?>
 
     </div>
@@ -28,7 +35,11 @@ $this->title = $product->name;
 <section class="fleamarket__wrap_view">
     <div class="contain_wr">
         <div class="fleamarket__head">
-            <h1><?=$product->name;?><span> (<?= $auto->brand_name; ?>, <?=$auto->model_name; ?>)</span></h1>
+            <h1><?=$product->name;?>
+                <?php if($product->prod_type == 0 || $product->prod_type == 1):?>
+                <span> (<?= $auto->brand_name; ?>, <?=$auto->model_name; ?>)</span>
+                <?php endif; ?>
+            </h1>
             <div class="fleamarket__created">Размещено <?=date('d.m.y в H:i:s',$product->dt_add);?></div>
             <?php if($product->user_id == Yii::$app->user->id): ?>
                 <span class="operationsAd">
@@ -82,12 +93,35 @@ $this->title = $product->name;
                 <?=$product->descr;?>
             </div>
             <div class="fleaMarketInfoProductAuto">
-                <span>Марка: <?= $auto->brand_name; ?></span><br />
-                <span>Модель: <?=$auto->model_name; ?></span><br />
-                <span>Модификация:  <?=$auto->type_name; ?></span><br />
-                <?php if(!empty($auto->year)):?>
-                    <span>Год выпуска: <?=$auto->year;?></span>
-                <?php endif; ?>
+               <?php if($product->prod_type == 0 || $product->prod_type == 1){
+                ?>
+                   <span>Марка: <?= $auto->brand_name; ?></span><br />
+                   <span>Модель: <?=$auto->model_name; ?></span><br />
+                   <span>Модификация:  <?=$auto->type_name; ?></span><br />
+                   <?php if(!empty($auto->year)):?>
+                       <span>Год выпуска: <?=$auto->year;?></span>
+                   <?php endif; ?>
+                <?php
+                }
+                if($product->prod_type == 2){?>
+                    <span>Диаметр: <?= $auto->diameter; ?></span><br />
+                    <span>Сезонность: <?=$auto->seasonality_name; ?></span><br />
+                    <span>Ширина профиля:  <?=$auto->section_width; ?></span><br />
+                    <span>Высота профиля: <?=$auto->section_height;?></span>
+                <?php
+                }
+                if($product->prod_type == 3){
+                ?>
+                    <span>Тип диска: <?= $auto->type_disk_name; ?></span><br />
+                    <span>Диаметр: <?= $auto->diameter; ?></span><br />
+                    <span>Ширина обода: <?=$auto->rim_width; ?></span><br />
+                    <span>Количество отверстий:  <?=$auto->number_holes; ?></span><br />
+                    <span>Диаметр расположения отверстий: <?=$auto->diameter_holest;?></span><br />
+                    <span>Вылет (ET): <?=$auto->sortie;?></span>
+                <?php
+                }
+               ?>
+
 
             </div>
 
