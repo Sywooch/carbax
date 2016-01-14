@@ -1,4 +1,5 @@
 <?php
+use common\classes\Debug;
 use yii\helpers\Url;
 
 $this->title = "Личный кабинет";
@@ -36,23 +37,28 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="serviceLink">Избранное</div>
         </div>
 
-        <h2 class="h2-left">Управление бизнесом</h2>
+        <?php  $role = Yii::$app->authManager->getRolesByUser(Yii::$app->user->id)['business'];
+        if(!empty($role)):
+        ?>
 
-        <div class="serviceItem">
-            <div class="serviceIcon"><a href="<?=Url::to('select_service')?>"><img src="<?= Url::base(true) ?>/media/img/my_business.png" alt=""></a></div>
-            <div class="serviceLink">Мой бизнес</div>
-        </div>
-        <!--<div class="serviceItem">
-            <div class="serviceIcon"><img src="<?/*= Url::base(true) */?>/media/img/my_zav.png" alt=""></div>
-            <div class="serviceLink">Мой заявки</div>
-        </div>-->
-        <div class="serviceItem">
-            <div class="serviceIcon"><img src="<?= Url::base(true) ?>/media/img/sale_history.png" alt=""></div>
-            <div class="serviceLink">История покупок</div>
-        </div>
-        <div class="serviceItem">
-            <div class="serviceIcon"><a href="<?= Url::to(['/offers/offers/create']) ?>"><img src="<?= Url::base(true) ?>/media/img/procent.png" alt=""></a></div>
-            <div class="serviceLink">Создать акцию</div>
-        </div>
+            <h2 class="h2-left">Управление бизнесом</h2>
+
+            <div class="serviceItem">
+                <div class="serviceIcon"><a href="<?=Url::to('select_service')?>"><img src="<?= Url::base(true) ?>/media/img/my_business.png" alt=""></a></div>
+                <div class="serviceLink">Мой бизнес</div>
+            </div>
+            <!--<div class="serviceItem">
+                <div class="serviceIcon"><img src="<?/*= Url::base(true) */?>/media/img/my_zav.png" alt=""></div>
+                <div class="serviceLink">Мой заявки</div>
+            </div>-->
+            <div class="serviceItem">
+                <div class="serviceIcon"><img src="<?= Url::base(true) ?>/media/img/sale_history.png" alt=""></div>
+                <div class="serviceLink">История покупок</div>
+            </div>
+            <div class="serviceItem">
+                <div class="serviceIcon"><a href="<?= Url::to(['/offers/offers/create']) ?>"><img src="<?= Url::base(true) ?>/media/img/procent.png" alt=""></a></div>
+                <div class="serviceLink">Создать акцию</div>
+            </div>
+        <?php endif; ?>
     </div>
 </section>

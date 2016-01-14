@@ -5,6 +5,7 @@ namespace backend\modules\comfort_zone\controllers;
 use Yii;
 use backend\modules\comfort_zone\models\ComfortZone;
 use backend\modules\comfort_zone\models\ComfortZoneSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -21,6 +22,15 @@ class Comfort_zoneController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ],
                 ],
             ],
         ];

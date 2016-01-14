@@ -5,6 +5,7 @@ namespace backend\modules\media\controllers;
 use common\classes\Debug;
 use common\classes\Media;
 use Yii;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\BaseUrl;
 use yii\helpers\Url;
@@ -19,6 +20,15 @@ class DefaultController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'upload_files' => ['post'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ],
                 ],
             ],
         ];
