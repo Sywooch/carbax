@@ -252,6 +252,18 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    $(document).on('click', '#selectAutoFromGarage', function(){
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_garage",
+            data: 'action=garage',
+            success: function (data) {
+                $('.selectCar').html(data);
+            }
+        });
+        return false;
+    });
+
     $('#selectAutoFromGarage').on('click', function(){
         $.ajax({
             type: 'POST',
@@ -284,6 +296,15 @@ jQuery(document).ready(function ($) {
             data: 'id=' + id,
             success: function (data) {
                 $('#hiddenInputs').html(data);
+            }
+        });
+        var prodType = $('#prodType').val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_category_select",
+            data: 'type=' + prodType,
+            success: function (data) {
+                $('.selectCarAutoWidget').append(data);
             }
         });
     });

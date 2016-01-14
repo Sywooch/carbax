@@ -245,6 +245,12 @@ class AjaxController extends Controller
         echo SelectAutoFromGarage::widget();
     }
 
+    public function actionGet_category_select(){
+        if($_POST['type'] == 'zap'){
+            echo CategoryProductTecDoc::widget();
+        }
+    }
+
     public function actionGet_tel_user()
     {
         echo User::findOne($_POST['id'])->telephon;
@@ -333,11 +339,11 @@ class AjaxController extends Controller
         $garage = Garage::find()->where(['id' => $_POST['id']])->one();
         $auto = AutoWidget::find()->where(['id' => $garage->id_auto_widget])->one();
         echo Html::input('hidden','typeAuto',$auto->auto_type);
-        echo Html::input('hidden','manufactures',$auto->brand_id);
-        echo Html::input('hidden','year',$auto->year);
+        echo Html::input('hidden','id_widget_auto',$auto->id);
+        /*echo Html::input('hidden','year',$auto->year);
         echo Html::input('hidden','model',$auto->model_id);
         echo Html::input('hidden','types',$auto->type_id);
-        echo Html::input('hidden','submodel',$auto->submodel_id);
+        echo Html::input('hidden','submodel',$auto->submodel_id);*/
     }
 
     public function actionGet_select_auto(){

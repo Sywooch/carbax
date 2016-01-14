@@ -7,7 +7,7 @@ use yii\helpers\Html;
         'typeAuto',
         0,
         ['1'=>'Легковой автомобиль','2'=>'Грузовой автомобиль','3'=>'Мото транспорт'],
-        ['prompt' => 'Выберите тип авто', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typeAuto']
+        ['prompt' => 'Выберите тип авто', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typeAuto', 'required' => 'required']
     ); ?>
     <?/*= Html::dropDownList(
         'manufactures',

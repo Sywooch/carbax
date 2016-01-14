@@ -118,38 +118,44 @@ class DefaultController extends Controller
         $market->name = $_POST['title'];
         $market->new = $_POST['new'];
         if($_POST['radio_type_product'] == 1) {
-            $autoWidget = new AutoWidget();
-            $autoWidget->auto_type = $_POST['typeAuto'];
-            $autoWidget->year = $_POST['year'];
-            $autoWidget->brand_id = $_POST['manufactures'];
-            $autoWidget->model_id = $_POST['model'];
-            $autoWidget->type_id = $_POST['types'];
-            if ($_POST['typeAuto'] == 1) {
-                $manName = BcbBrands::find()->where(['id' => $_POST['manufactures']])->one()->name;
-                $modelName = BcbModels::find()->where(['id' => $_POST['model']])->one()->name;
-                $typeName = BcbModify::find()->where(['id' => $_POST['types']])->one()->name;
+            if(isset($_POST['id_widget_auto'])){
+                $market->id_auto_widget = $_POST['id_widget_auto'];
             }
-            if ($_POST['typeAuto'] == 2) {
-                $manName = AutoComBrands::find()->where(['id' => $_POST['manufactures']])->one()->name;
-                $modelName = AutoComModels::find()->where(['id' => $_POST['model']])->one()->name;
-                $typeName = AutoComModify::find()->where(['id' => $_POST['model']])->one()->name;
+            else{
+                $autoWidget = new AutoWidget();
+                $autoWidget->auto_type = $_POST['typeAuto'];
+                $autoWidget->year = $_POST['year'];
+                $autoWidget->brand_id = $_POST['manufactures'];
+                $autoWidget->model_id = $_POST['model'];
+                $autoWidget->type_id = $_POST['types'];
+                if ($_POST['typeAuto'] == 1) {
+                    $manName = BcbBrands::find()->where(['id' => $_POST['manufactures']])->one()->name;
+                    $modelName = BcbModels::find()->where(['id' => $_POST['model']])->one()->name;
+                    $typeName = BcbModify::find()->where(['id' => $_POST['types']])->one()->name;
+                }
+                if ($_POST['typeAuto'] == 2) {
+                    $manName = AutoComBrands::find()->where(['id' => $_POST['manufactures']])->one()->name;
+                    $modelName = AutoComModels::find()->where(['id' => $_POST['model']])->one()->name;
+                    $typeName = AutoComModify::find()->where(['id' => $_POST['model']])->one()->name;
 
-                $autoWidget->submodel_id = $_POST['submodel'];
-                $autoWidget->submodel_name = AutoComSubmodels::find()->where(['id' => $_POST['submodel']])->one()->name;
+                    $autoWidget->submodel_id = $_POST['submodel'];
+                    $autoWidget->submodel_name = AutoComSubmodels::find()->where(['id' => $_POST['submodel']])->one()->name;
+                }
+                if ($_POST['typeAuto'] == 3) {
+                    $manName = CarMark::find()->where(['id_car_mark' => $_POST['manufactures']])->one()->name;
+                    $modelName = CarModel::find()->where(['id_car_model' => $_POST['model']])->one()->name;
+                    $typeName = CarModification::find()->where(['id_car_modification' => $_POST['types']])->one()->name;
+                    $autoWidget->moto_type = $_POST['mototype'];
+                }
+
+                $autoWidget->brand_name = $manName;
+                $autoWidget->model_name = $modelName;
+                $autoWidget->type_name = $typeName;
+
+                $autoWidget->save();
+                $market->id_auto_widget = $autoWidget->id;
             }
-            if ($_POST['typeAuto'] == 3) {
-                $manName = CarMark::find()->where(['id_car_mark' => $_POST['manufactures']])->one()->name;
-                $modelName = CarModel::find()->where(['id_car_model' => $_POST['model']])->one()->name;
-                $typeName = CarModification::find()->where(['id_car_modification' => $_POST['types']])->one()->name;
-                $autoWidget->moto_type = $_POST['mototype'];
-            }
 
-            $autoWidget->brand_name = $manName;
-            $autoWidget->model_name = $modelName;
-            $autoWidget->type_name = $typeName;
-
-            $autoWidget->save();
-            $market->id_auto_widget = $autoWidget->id;
         }
         if($_POST['radio_type_product'] == 2) {
             $infoSplint = new InfoSplint();
@@ -226,6 +232,43 @@ class DefaultController extends Controller
             $view = 'index';
         }
         else {
+            if(isset($_POST['id_widget_auto'])){
+                $market->id_auto_widget = $_POST['id_widget_auto'];
+            }
+            else{
+                $autoWidget = new AutoWidget();
+                $autoWidget->auto_type = $_POST['typeAuto'];
+                $autoWidget->year = $_POST['year'];
+                $autoWidget->brand_id = $_POST['manufactures'];
+                $autoWidget->model_id = $_POST['model'];
+                $autoWidget->type_id = $_POST['types'];
+                if ($_POST['typeAuto'] == 1) {
+                    $manName = BcbBrands::find()->where(['id' => $_POST['manufactures']])->one()->name;
+                    $modelName = BcbModels::find()->where(['id' => $_POST['model']])->one()->name;
+                    $typeName = BcbModify::find()->where(['id' => $_POST['types']])->one()->name;
+                }
+                if ($_POST['typeAuto'] == 2) {
+                    $manName = AutoComBrands::find()->where(['id' => $_POST['manufactures']])->one()->name;
+                    $modelName = AutoComModels::find()->where(['id' => $_POST['model']])->one()->name;
+                    $typeName = AutoComModify::find()->where(['id' => $_POST['model']])->one()->name;
+
+                    $autoWidget->submodel_id = $_POST['submodel'];
+                    $autoWidget->submodel_name = AutoComSubmodels::find()->where(['id' => $_POST['submodel']])->one()->name;
+                }
+                if ($_POST['typeAuto'] == 3) {
+                    $manName = CarMark::find()->where(['id_car_mark' => $_POST['manufactures']])->one()->name;
+                    $modelName = CarModel::find()->where(['id_car_model' => $_POST['model']])->one()->name;
+                    $typeName = CarModification::find()->where(['id_car_modification' => $_POST['types']])->one()->name;
+                    $autoWidget->moto_type = $_POST['mototype'];
+                }
+
+                $autoWidget->brand_name = $manName;
+                $autoWidget->model_name = $modelName;
+                $autoWidget->type_name = $typeName;
+
+                $autoWidget->save();
+                $market->id_auto_widget = $autoWidget->id;
+            }
             $market->prod_type = 1;//Автомобиль
             $view = 'sale_auto';
         }

@@ -6,6 +6,7 @@ use common\classes\Debug;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
 use common\models\db\ServiceType;
+use common\models\db\User;
 use Yii;
 use yii\base\Widget;
 
@@ -42,8 +43,8 @@ class MainPageMap extends Widget
             ]));
         }
         else{
-            $cookies = Yii::$app->request->cookies;
             //Debug::prn($cookies->get('city'));
+            $cookies = Yii::$app->request->cookies;
             if ($cookies->get('city') !== null) {
                 $ip['lat'] = $cookies->get('lat');
                 $ip['lng'] = $cookies->get('lng');
@@ -51,9 +52,36 @@ class MainPageMap extends Widget
                 $cityId = $cookies->get('city_id');
             }
             else {
-                $ip = Yii::$app->ipgeobase->getLocation(Custom_function::getRealIpAddr());
-                $regionId = GeobaseRegion::find()->where(['name' => $ip['region']])->one()->id;
-                $cityId = GeobaseCity::find()->where(['region_id' => $regionId, 'name' => $ip['city']])->one()->id;
+                $user = User::findOne(Yii::$app->user->id);
+                if($user->region_id != 0){
+                    $cookies = Yii::$app->response->cookies;
+                    $region = GeobaseCity::find()->where(['id'=>$user->city_id, 'region_id'=>$user->region_id])->one();
+                    $cookies->add(new \yii\web\Cookie([
+                        'name' => 'city',
+                        'value' => $region->name,
+                    ]));
+                    $cookies->add(new \yii\web\Cookie([
+                        'name' => 'city_id',
+                        'value' => $region->id,
+                    ]));
+                    $cookies->add(new \yii\web\Cookie([
+                        'name' => 'region_id',
+                        'value' => $region->region_id,
+                    ]));
+                    $cookies->add(new \yii\web\Cookie([
+                        'name' => 'lat',
+                        'value' => $region->latitude,
+                    ]));
+                    $cookies->add(new \yii\web\Cookie([
+                        'name' => 'lng',
+                        'value' => $region->longitude,
+                    ]));
+                }
+                else {
+                    $ip = Yii::$app->ipgeobase->getLocation(Custom_function::getRealIpAddr());
+                    $regionId = GeobaseRegion::find()->where(['name' => $ip['region']])->one()->id;
+                    $cityId = GeobaseCity::find()->where(['region_id' => $regionId, 'name' => $ip['city']])->one()->id;
+                }
             }
 
         }
