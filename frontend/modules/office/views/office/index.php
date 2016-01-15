@@ -37,8 +37,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="serviceLink">Избранное</div>
         </div>
 
-        <?php  $role = Yii::$app->authManager->getRolesByUser(Yii::$app->user->id)['business'];
-        if(!empty($role)):
+        <?php
+            $role = Yii::$app->authManager->getRolesByUser(Yii::$app->user->id);
+            if(!empty($role['business']) || !empty($role['admin']) || !empty($role['root'])):
         ?>
 
             <h2 class="h2-left">Управление бизнесом</h2>
