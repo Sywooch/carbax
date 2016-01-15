@@ -272,6 +272,8 @@ class DefaultController extends Controller
             $market->prod_type = 1;//Автомобиль
             $view = 'sale_auto';
         }
+        $market->run = $_POST['run'];
+
         $market->dt_add = time();
         if ($_POST['userOrService'] == 2) {
             $market->service_id = $_POST['selectService'];
@@ -401,7 +403,7 @@ class DefaultController extends Controller
     public function actionEdit_product()
     {
         $product = Market::find()->where(['id' => $_GET['id']])->one();
-        if($product->prod_type == 0){
+        if($product->prod_type == 1 || $product->prod_type == 0){
             $auto = AutoWidget::find()->where(['id' => $product->id_auto_widget])->one();
         }
         if($product->prod_type == 2){

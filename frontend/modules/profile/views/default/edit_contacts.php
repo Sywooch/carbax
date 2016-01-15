@@ -8,6 +8,7 @@ use yii\helpers\Url;
 
 $this->title = "Редактировать личные данные";
 $this->registerCssFile('/css/bootstrap_btn.min.css');
+//$this->registerJsFile('/js/jquery.maskedinput.js');
 $this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -26,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]);
         ?>
         <p>Ваш Email <?= Html::textInput('email',$user->email,['id'=>'user_email']);?></p>
-        <p>Ваш телефон <?= Html::textInput('telephon',$user->telephon,['id'=>'user_telephon']);?></p>
+        <p>Ваш телефон <?= Html::textInput('telephon',$user->telephon,['id'=>'user_telephon','pattern'=>'[0-9_-]{10}', 'title'=>'Формат: +7 (999) 999-9999']);?></p>
         <p>Ваш skype <?= Html::textInput('skype',$user->skype,['id'=>'user_skype']);?></p>
         <p>Ваш icq <?= Html::textInput('icq',$user->icq,['id'=>'user_isq']);?></p>
         <p>Ваша ссылка на профиль ВК <?= Html::textInput('link_vk',$user->link_vk,['id'=>'user_link_vk']);?></p>
@@ -45,8 +46,12 @@ $this->params['breadcrumbs'][] = $this->title;
         <p>Ваш новый пароль <?= Html::passwordInput('passwordUserEdit',null,['id'=>'user_password']);?></p>
         <span>Если не хотите менять пароль оставте поле без изменений</span>
         <hr>
-        <div class="addContent--save">
+        <!--<div class="addContent--save">
             <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
+        </div>-->
+        <div class="addContent--save">
+            <input type="submit" value="Сохранить" class="btn btn-save">
+
         </div>
     </form>
     <span class="img_link" data-img="<?=$user->avatar?>"></span>

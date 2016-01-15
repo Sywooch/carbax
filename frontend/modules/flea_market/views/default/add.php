@@ -79,10 +79,15 @@ $this->params['breadcrumbs'][] = $this->title;
             <h3>Товар</h3>
             <?= Html::radio('new',true,['label'=>'Новый','value'=>1,'class'=>'userOrService']);?>
             <?= Html::radio('new',false,['label'=>'Б/У','value'=>0,'class'=>'userOrService']);?>
+
             <h3>Описание</h3>
             <?= Html::textarea('descr','',['class'=>'addContent__description','required'=>'required'])?>
+            <?php if($_GET['type'] == 'auto'):?>
+                <h3>Пробег</h3>
+                <?= Html::input('text','run',null,['class'=>'addRun','id'=>'run','required'=>'required']); ?><span> тыс.км</span><br />
+            <?php endif; ?>
             <h3>Цена</h3>
-            <?= Html::input('text','price',null,['class'=>'addPrice','required'=>'required'])?>
+            <?= Html::input('text','price',null,['class'=>'addPrice','id'=>'addPrice','required'=>'required'])?><span> руб.</span>
             <h3>Разместить от</h3>
             <?= Html::radioList('userOrService','1',['1'=>'Пользователь','2'=>'Сервис'],['class'=>'userOrService','id'=>'addUserOrService'])?>
             <div id="selectServiseWr"></div>
