@@ -705,6 +705,27 @@ jQuery(document).ready(function ($) {
         }
         //alert(prodType);
     });
+
+    //Шаблон телефона
+    $("#user_telephon").mask("+7 (999) 999-9999");
+
+    //Запрет ввода букв в поле "Цена"
+    if(document.getElementById('addPrice')) {
+        document.getElementById("addPrice").onkeypress = function (event) {
+            event = event || window.event;
+            if (event.charCode && (event.charCode < 48 || event.charCode > 57))// проверка на event.charCode - чтобы пользователь мог нажать backspace, enter, стрелочку назад...
+                return false;
+        };
+    }
+    if(document.getElementById('run')) {
+        document.getElementById("run").onkeypress = function (event) {
+            event = event || window.event;
+            if (event.charCode && (event.charCode < 48 || event.charCode > 57))// проверка на event.charCode - чтобы пользователь мог нажать backspace, enter, стрелочку назад...
+                return false;
+        };
+    }
+
+
 });
 
 $(".first__but--but").click(function () {
@@ -718,4 +739,5 @@ $(".header--request--open").click(function () {
 $(".menu-open-flag").click(function () {
     $(".side-nav").slideToggle('slow');
 });
+
 

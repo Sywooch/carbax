@@ -15,6 +15,7 @@ use Yii;
  * @property string $name
  * @property string $descr
  * @property string $price
+ * @property string $run
  * @property integer $dt_add
  * @property integer $prod_type
  * @property integer $id_auto_widget

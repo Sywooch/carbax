@@ -24,6 +24,7 @@ class AppAsset extends AssetBundle
         'css/jquery.datetimepicker.css',
         'css/style.css',
         'css/evgeniy-styles.css',
+        /*'/css/bootstrap_btn.min.css'*/
     ];
     public $js = [
         'js/bootstrap.js',
@@ -37,10 +38,11 @@ class AppAsset extends AssetBundle
         'js/yandex-map.js',
         'js/maps.js',
         'js/jquery.columnizer.js',
+        '/js/jquery.maskedinput.js',
         'js/script.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        /*'yii\bootstrap\BootstrapAsset',*/
+       /* 'yii\bootstrap\BootstrapAsset',*/
     ];
 }
