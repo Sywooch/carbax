@@ -1,4 +1,5 @@
 <?php
+use common\classes\Debug;
 use frontend\widgets\InfoDisk;
 use frontend\widgets\InfoSplint;
 use frontend\widgets\SelectAuto;
@@ -14,7 +15,7 @@ use yii\helpers\Html;
     <?php
         switch ($select){
             case 1:
-                echo SelectAuto::widget(['view' => ($_GET['type'] == 'zap') ? '1' : '0', 'auto' => $model, 'category' => $product->category_id_all]);
+                echo SelectAuto::widget(['view' => ($_GET['type'] == 'zap') ? '1' : '0', 'auto' => $model, 'category' => $cat]);
                 break;
             case 2:
                 echo InfoSplint::widget(['model'=>$model]);

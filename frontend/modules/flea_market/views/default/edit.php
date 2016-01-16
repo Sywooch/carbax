@@ -47,8 +47,11 @@ $this->title = ($_GET['type'] == 'zap') ? "Редактировать товар
         }
     ?>
 
+    <?php if($_GET['type'] == 'zap'){ ?>
+        <input type="text" name="title" class="addContent__title" placeholder="Название товара" value="<?=$product->name?>">
+    <?php } ?>
 
-    <input type="text" name="title" class="addContent__title" placeholder="Название товара" value="<?=$product->name?>">
+    <!--<input type="text" name="title" class="addContent__title" placeholder="Название товара" value="<?/*=$product->name*/?>">-->
     <?/*= Html::dropDownList('manufactures',$product->man_id, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])*/?><!--
     <span id="modelBox"><?/*= Html::dropDownList('model',$product->model_id,ArrayHelper::map($model, 'mod_id', 'mod_name'), ['class'=>'addContent__adress', 'id'=>'modSelect','prompt'=>'Выберите модель']);*/?></span>
     <span id="typesBox"><?/*= Html::dropDownList('types',$product->type_id,ArrayHelper::map($type, 'typ_id', 'typ_mmt_cds'), ['class'=>'addContent__adress','prompt'=>'Выберите тип']);*/?></span>-->
@@ -56,7 +59,7 @@ $this->title = ($_GET['type'] == 'zap') ? "Редактировать товар
     <?php
 
     if($_GET['type'] == 'zap'){
-        echo RadioSelectTypeProduct::widget(['select'=>$selected,'model'=>$auto]);
+        echo RadioSelectTypeProduct::widget(['select'=>$selected,'model'=>$auto,'cat'=>$product->category_id_all]);
     }
     else{
         echo SelectAuto::widget(['view' => ($_GET['type'] == 'auto') ? '0' : '1', 'select_from_garage' => true,'auto'=>$auto]);

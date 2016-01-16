@@ -115,7 +115,7 @@ class DefaultController extends Controller
             //$autoWidget = new AutoWidget();
         }
 
-        $market->name = $_POST['title'];
+
         $market->new = $_POST['new'];
         if($_POST['radio_type_product'] == 1) {
             if(isset($_POST['id_widget_auto'])){
@@ -230,10 +230,14 @@ class DefaultController extends Controller
             }
 
             $view = 'index';
+            $market->name = $_POST['title'];
         }
         else {
+
+
             if(isset($_POST['id_widget_auto'])){
                 $market->id_auto_widget = $_POST['id_widget_auto'];
+                $autoWidget = AutoWidget::findOne($_POST['id_widget_auto']);
             }
             else{
                 $autoWidget = new AutoWidget();
@@ -271,6 +275,7 @@ class DefaultController extends Controller
             }
             $market->prod_type = 1;//Автомобиль
             $view = 'sale_auto';
+            $market->name = 'Продам '.$autoWidget->brand_name.', '.$autoWidget->model_name.', '.$autoWidget->year;
         }
         $market->run = $_POST['run'];
 

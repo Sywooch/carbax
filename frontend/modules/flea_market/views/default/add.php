@@ -32,7 +32,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <form id="addForm" action="<?= Url::to(['add_to_sql'])?>" method="post" enctype="multipart/form-data">
         <input id="prodType" type="hidden" name="prod_type" value="<?=$_GET['type']?>">
-        <input type="text" name="title" class="addContent__title" placeholder="Название товара" required>
+        <?php if($_GET['type'] == 'zap'){ ?>
+            <input type="text" name="title" class="addContent__title" placeholder="Название товара" required>
+        <?php } ?>
+
+
         <?/*= Html::dropDownList('manufactures',0, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])*/?><!--
         <span id="modelBox"></span>
         <span id="typesBox"></span>
