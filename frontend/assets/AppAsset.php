@@ -24,6 +24,7 @@ class AppAsset extends AssetBundle
         'css/jquery.datetimepicker.css',
         'css/style.css',
         'css/evgeniy-styles.css',
+        'sass/new/new.css',
         /*'/css/bootstrap_btn.min.css'*/
     ];
     public $js = [
@@ -43,6 +44,6 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
-       /* 'yii\bootstrap\BootstrapAsset',*/
+        'yii\bootstrap\BootstrapAsset',
     ];
 }

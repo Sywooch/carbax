@@ -25,71 +25,77 @@ $this->params['breadcrumbs'][] = $this->title;
 <!--<section class="main-container">-->
 <div class="addContent">
     <?php
-/*    $this->params['breadcrumbs'][] = ['label' => 'Запчасти', 'url' => ['index']];
-    $this->params['breadcrumbs'][] = $this->title;
+    /*    $this->params['breadcrumbs'][] = ['label' => 'Запчасти', 'url' => ['index']];
+        $this->params['breadcrumbs'][] = $this->title;
 
-    */?>
+        */ ?>
     <h1><?= Html::encode($this->title) ?></h1>
-    <form id="addForm" action="<?= Url::to(['add_to_sql'])?>" method="post" enctype="multipart/form-data">
-        <input id="prodType" type="hidden" name="prod_type" value="<?=$_GET['type']?>">
+
+    <form id="addForm" action="<?= Url::to(['add_to_sql']) ?>" method="post" enctype="multipart/form-data">
+        <input id="prodType" type="hidden" name="prod_type" value="<?= $_GET['type'] ?>">
         <input type="text" name="title" class="addContent__title" placeholder="Название товара" required>
-        <?/*= Html::dropDownList('manufactures',0, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])*/?><!--
+        <? /*= Html::dropDownList('manufactures',0, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])*/ ?><!--
         <span id="modelBox"></span>
         <span id="typesBox"></span>
         <span id="categBox"></span>-->
 
-            <?php if($_GET['type'] == 'zap'){
-                echo RadioSelectTypeProduct::widget();
-            }
-            else{
-                echo SelectAuto::widget(['view' => ($_GET['type'] == 'auto') ? '0' : '1', 'select_from_garage' => true]);
-            }
-            ?>
+        <?php if ($_GET['type'] == 'zap') {
+            echo RadioSelectTypeProduct::widget();
+        } else {
+            echo SelectAuto::widget(['view' => ($_GET['type'] == 'auto') ? '0' : '1', 'select_from_garage' => true]);
+        }
+        ?>
 
 
         <div class="singleContent__desc">
             <h2>Регион</h2>
         </div>
-        <?= RegionSelect::widget()?>
-        <?/*= Html::dropDownList('region',0,ArrayHelper::map($region,'id','name'),['class'=>'addContent__adress','id'=>'regionSelect','prompt'=>'Выберите регион'])*/?><!--
+        <?= RegionSelect::widget() ?>
+        <? /*= Html::dropDownList('region',0,ArrayHelper::map($region,'id','name'),['class'=>'addContent__adress','id'=>'regionSelect','prompt'=>'Выберите регион'])*/ ?><!--
         <span id="addCity"></span>-->
-        <?/*= CategoryProductTecDoc::widget()*/?>
+        <? /*= CategoryProductTecDoc::widget()*/ ?>
         <span id="parent"></span>
+
         <div class="singleContent__desc">
             <h2>Добавить фото</h2>
-        <?php
-        echo '<label class="control-label">Добавить фото</label>';
-        echo FileInput::widget([
-            'name' => 'file[]',
-            'id' => 'input-4',
-            'attribute' => 'attachment_1',
-            'value' => '/media/img/1.png',
-            'options' => ['multiple' => true,
-             'language'=> "ru",
-            'showCaption'=> true,
-            'maxFileCount'=> 5,
-            'showRemove'=> false,
-            'showUpload'=> false],
-        ]);
-        ?>
+            <?php
+            echo '<label class="control-label">Добавить фото</label>';
+            echo FileInput::widget([
+                'name' => 'file[]',
+                'id' => 'input-4',
+                'attribute' => 'attachment_1',
+                'value' => '/media/img/1.png',
+                'options' => [
+                    'multiple' => true,
+                    'language' => "ru",
+                    'showCaption' => true,
+                    'maxFileCount' => 5,
+                    'showRemove' => false,
+                    'showUpload' => false
+                ],
+            ]);
+            ?>
 
-       <!-- <label class="control-label">Добавить фото</label>
-        <input id="input-4" type="file" multiple=true class="file-loading">-->
+            <!-- <label class="control-label">Добавить фото</label>
+             <input id="input-4" type="file" multiple=true class="file-loading">-->
 
             <h3>Товар</h3>
-            <?= Html::radio('new',true,['label'=>'Новый','value'=>1,'class'=>'userOrService']);?>
-            <?= Html::radio('new',false,['label'=>'Б/У','value'=>0,'class'=>'userOrService']);?>
+            <?= Html::radio('new', true, ['label' => 'Новый', 'value' => 1, 'class' => 'userOrService']); ?>
+            <?= Html::radio('new', false, ['label' => 'Б/У', 'value' => 0, 'class' => 'userOrService']); ?>
 
             <h3>Описание</h3>
-            <?= Html::textarea('descr','',['class'=>'addContent__description','required'=>'required'])?>
-            <?php if($_GET['type'] == 'auto'):?>
+            <?= Html::textarea('descr', '', ['class' => 'addContent__description', 'required' => 'required']) ?>
+            <?php if ($_GET['type'] == 'auto'): ?>
                 <h3>Пробег</h3>
-                <?= Html::input('text','run',null,['class'=>'addRun','id'=>'run','required'=>'required']); ?><span> тыс.км</span><br />
+                <?= Html::input('text', 'run', null, ['class' => 'addRun', 'id' => 'run', 'required' => 'required']); ?>
+                <span> тыс.км</span><br/>
             <?php endif; ?>
             <h3>Цена</h3>
-            <?= Html::input('text','price',null,['class'=>'addPrice','id'=>'addPrice','required'=>'required'])?><span> руб.</span>
+            <?= Html::input('text', 'price', null, ['class' => 'addPrice', 'id' => 'addPrice', 'required' => 'required']) ?>
+            <span> руб.</span>
+
             <h3>Разместить от</h3>
-            <?= Html::radioList('userOrService','1',['1'=>'Пользователь','2'=>'Сервис'],['class'=>'userOrService','id'=>'addUserOrService'])?>
+            <?= Html::radioList('userOrService', '1', ['1' => 'Пользователь', '2' => 'Сервис'], ['class' => 'userOrService', 'id' => 'addUserOrService']) ?>
             <div id="selectServiseWr"></div>
         </div>
         <!--<div class="addContent--save">

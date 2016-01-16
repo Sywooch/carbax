@@ -9,7 +9,6 @@ $this->title = "Автопортал";
 ?>
 
 <section class="first">
-
     <div class="first__title__desc">
         <h1><span>CARBAX<span class="orange">.RU</span></span></h1>
         <p>ремонт и обслуживание авто</p>

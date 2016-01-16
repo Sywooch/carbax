@@ -124,7 +124,7 @@ AppAsset::register($this);
 </header>
 <section class="filter">
     <div class="wrap">
-        <div class="container">
+        <div class="container_fluid">
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
