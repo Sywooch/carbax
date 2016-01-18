@@ -587,3 +587,49 @@ select.yearSearch{
     display: inline-block;
     width: 100%;
 }
+
+.profileAvatar {
+    float: left;
+    margin-right: 15px;
+}
+
+.profileName {
+    color: #ff6b00;
+    font-size: 17px;
+}
+
+.cleared {
+    display: block;
+    clear: both;
+    float: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.profileEmail{
+    background: url(../media/img/profile/iconEmail.png) no-repeat;
+    padding-left: 35px;
+}
+
+.profileSkype{
+    background: url(../media/img/profile/iconSkypel.png) no-repeat;
+    padding-left: 35px;
+}
+
+.profileIcq{
+    background: url(../media/img/profile/iconIsq.png) no-repeat;
+    padding-left: 35px;
+}
+
+.profileLink_vk{
+    background: url(../media/img/profile/iconVk.png) no-repeat;
+    padding-left: 35px;
+}
+
+.busiines_user_profile a{
+    color:black;
+}
