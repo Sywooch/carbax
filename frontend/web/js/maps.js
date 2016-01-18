@@ -76,7 +76,8 @@ jQuery(document).ready(function ($){
                             email:$(this).attr('email'),
                             serviceId: $(this).attr('service_id'),
                             photo:$(this).attr('photo'),
-                            phone:$(this).attr('phone')
+                            phone:$(this).attr('phone'),
+                            serviceTypeId:$(this).attr('service_type_id')
                         }
                     });
                 });

@@ -45,7 +45,7 @@ class MainpageController extends \yii\web\Controller
                 foreach($s->address as $a){
                     //Debug::prn($s);
                     $ad = $a['address'];
-                    echo "<span class='main_map_address' phone='$phone' photo='$s->photo' service_id='$s->id' address='$ad' title='$s->name' email='$s->email'></span>";
+                    echo "<span class='main_map_address' service_type_id='$s->service_type_id' phone='$phone' photo='$s->photo' service_id='$s->id' address='$ad' title='$s->name' email='$s->email'></span>";
                 }
             }
         }
