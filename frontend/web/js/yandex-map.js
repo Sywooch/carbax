@@ -73,9 +73,9 @@ function Map( options ) {
                                         properties: prop
                                     },
                                     {
-                                        /*iconLayout: 'default#image',
-                                        iconImageHref: a.balloon.photo,
-                                        iconImageSize: [40, 40]*/
+                                        iconLayout: 'default#image',
+                                        iconImageHref: '/media/img/iconMaps/' + a.balloon.serviceTypeId + '.png',
+                                        iconImageSize: [40, 70]
                                     });
 
                                 myMap.geoObjects.add(objects);
