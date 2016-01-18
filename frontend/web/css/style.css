@@ -423,7 +423,7 @@ input.message_to,input.message_subject {
 
 
 .filter__container-select--check input[type="checkbox"] + label span, .filter__container-select--check input[type="checkbox"]:checked + label span
-{margin: 0px 65px;}
+{/*margin: 0px 65px;*/}
 .filter__container-select--check input[type="checkbox"] + label span{
     display: block;
 }
