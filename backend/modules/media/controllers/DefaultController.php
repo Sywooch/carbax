@@ -22,7 +22,7 @@ class DefaultController extends Controller
                     'upload_files' => ['post'],
                 ],
             ],
-            'access' => [
+            /*'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
@@ -30,7 +30,7 @@ class DefaultController extends Controller
                         'roles' => ['admin'],
                     ],
                 ],
-            ],
+            ],*/
         ];
     }
 
