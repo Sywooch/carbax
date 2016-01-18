@@ -332,6 +332,7 @@ span.fleamarket__similar_ads_product_city{
 .profileElement {
     margin: 10px 0 0 0;
     font-weight: bold;
+    padding: 3px;
 }
 
 .regionWidgetBox {
@@ -611,22 +612,26 @@ select.yearSearch{
 }
 
 .profileEmail{
-    background: url(../media/img/profile/iconEmail.png) no-repeat;
+    background: url(../media/img/profile/iconEmail.png) no-repeat 0% 50%;;
     padding-left: 35px;
 }
 
 .profileSkype{
-    background: url(../media/img/profile/iconSkypel.png) no-repeat;
+    background: url(../media/img/profile/iconSkypel.png) no-repeat 0% 50%;;
     padding-left: 35px;
 }
 
 .profileIcq{
-    background: url(../media/img/profile/iconIsq.png) no-repeat;
+    background: url(../media/img/profile/iconIsq.png) no-repeat 0% 50%;;
     padding-left: 35px;
 }
 
 .profileLink_vk{
-    background: url(../media/img/profile/iconVk.png) no-repeat;
+    background: url(../media/img/profile/iconVk.png) no-repeat 0% 50%;;
+    padding-left: 35px;
+}
+.profileTelephon{
+    background: url(../media/img/profile/iconTel.png) no-repeat 0% 50%;;
     padding-left: 35px;
 }
 
