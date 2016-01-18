@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]);
         ?>
         <p>Ваш Email <?= Html::textInput('email',$user->email,['id'=>'user_email']);?></p>
-        <p>Ваш телефон <?= Html::textInput('telephon',$user->telephon,['id'=>'user_telephon','pattern'=>'[0-9_-]{10}', 'title'=>'Формат: +7 (999) 999-9999']);?></p>
+        <p>Ваш телефон <?= Html::textInput('telephon',$user->telephon,['id'=>'user_telephon','title'=>'Формат: +7 (999) 999-9999']);?></p>
         <p>Ваш skype <?= Html::textInput('skype',$user->skype,['id'=>'user_skype']);?></p>
         <p>Ваш icq <?= Html::textInput('icq',$user->icq,['id'=>'user_isq']);?></p>
         <p>Ваша ссылка на профиль ВК <?= Html::textInput('link_vk',$user->link_vk,['id'=>'user_link_vk']);?></p>
