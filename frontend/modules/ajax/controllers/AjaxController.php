@@ -483,7 +483,7 @@ class AjaxController extends Controller
         $i = 0;
 
         if(!empty($_FILES['file']['name'][0])){
-            ProductImg::deleteAll(['product_id' => 999]);
+            ProductImg::deleteAll(['product_id' => 99999]);
             foreach($_FILES['file']['name'] as $file){
                 move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir.$file);
                 $img = new ProductImg();

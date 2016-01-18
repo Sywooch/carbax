@@ -16,7 +16,7 @@ Debug::prn($services);*/
             <h1 class="blockTitle">Фильтруйте поиск</h1>
             <aside class="filter__container--select">
                 <div class="filter__container-select--check">
-                    <input type="checkbox" value="None" id="filter_category_select_2" name="category[]"/>
+                    <!--<input type="checkbox" value="None" id="filter_category_select_2" name="category[]"/>
                     <label for="filter_category_select_2" class="main_category_to_map" service-type="10">
                          <span>
                             <img src="/media/img/2.png" alt="" />
@@ -72,8 +72,22 @@ Debug::prn($services);*/
                             <img src="/media/img/8.png" alt="" />
                             <p>Заправки</p>
                          </span>
-                    </label>
-                </div>
+                    </label>-->
+
+                    <?php use common\classes\Debug;
+                    //Debug::prn($serviceType);
+                    foreach ($serviceType as $st): ?>
+                        <input type="checkbox" value="None" id="filter_category_select_<?= $st->id; ?>" name="category[]"/>
+                        <label for="filter_category_select_<?= $st->id; ?>" class="main_category_to_map" service-type="<?= $st->id; ?>">
+                         <span>
+                            <img src="<?= $st->icon; ?>" alt="" />
+                            <p><?= $st->name; ?></p>
+                         </span>
+                        </label>
+                    <?php endforeach; ?>
+
+
+</div>
             </aside>
             <div class="filter__container--map">
                 <span id="setAddress"></span>

@@ -47,9 +47,9 @@ return [
             'class' => 'yii\debug\Module',
             'allowedIPs' => ['127.0.0.1']
         ],
-        'rbac' => [
+        /*'rbac' => [
             'class' => 'dektrium\rbac\Module',
-        ],
+        ],*/
         'user' => [
             'class' => 'dektrium\user\Module',
             'enableUnconfirmedLogin' => true,
