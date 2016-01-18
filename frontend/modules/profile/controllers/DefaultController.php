@@ -5,6 +5,7 @@ namespace frontend\modules\profile\controllers;
 use common\classes\Debug;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
+use common\models\db\Services;
 use Yii;
 use common\models\db\User;
 use yii\filters\AccessControl;
@@ -97,7 +98,8 @@ class DefaultController extends Controller
         $userId = ($id == null) ? Yii::$app->user->id : $id;
 
         $user = User::find()->where(['id' => $userId])->one();
+        $userBusiness = Services::find()->where(['user_id'=>$user->id])->all();
 
-        return $this->render('view', ['user' => $user]);
+        return $this->render('view', ['user' => $user,'business' => $userBusiness]);
     }
 }
