@@ -1,7 +1,37 @@
+@import "mixins";
 .contain {
   width: 1050px;
 }
 
 .header--logo h5 {
   margin-top: 10px;
+}
+
+.file-preview-frame {
+  height: 100px;
+  width: 100px;
+  position: relative;
+  overflow: hidden;
+  img {
+    position: relative;
+    width: auto !important;
+    height: 50px !important;
+    margin-top: 20px;
+    max-width: 100px;
+    max-height: 50px;
+  }
+}
+.file-actions {
+  margin-top: 15px;
+  display: block;
+  float: left;
+  width: 100%;
+}
+
+.kv-file-upload {
+  display: none;
+}
+
+.errorInput {
+  border-color: RED;
 }

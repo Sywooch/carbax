@@ -10,6 +10,14 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 $this->title = ($_GET['type'] == 'zap') ? "Редактировать товар" : "Редактировать авто";
+
+foreach($img as $i){
+    $preview[] = "<img src='/$i->img' class='file-preview-image'>";
+    $previewConfig[] = [
+        'caption' => '',
+        'url' => '/ajax/ajax/pseudo_delete_file'
+    ];
+}
 ?>
 <div class="addContent">
    <?php
@@ -47,8 +55,11 @@ $this->title = ($_GET['type'] == 'zap') ? "Редактировать товар
         }
     ?>
 
+    <?php if($_GET['type'] == 'zap'){ ?>
+        <input type="text" name="title" class="addContent__title" placeholder="Название товара" value="<?=$product->name?>">
+    <?php } ?>
 
-    <input type="text" name="title" class="addContent__title" placeholder="Название товара" value="<?=$product->name?>">
+    <!--<input type="text" name="title" class="addContent__title" placeholder="Название товара" value="<?/*=$product->name*/?>">-->
     <?/*= Html::dropDownList('manufactures',$product->man_id, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])*/?><!--
     <span id="modelBox"><?/*= Html::dropDownList('model',$product->model_id,ArrayHelper::map($model, 'mod_id', 'mod_name'), ['class'=>'addContent__adress', 'id'=>'modSelect','prompt'=>'Выберите модель']);*/?></span>
     <span id="typesBox"><?/*= Html::dropDownList('types',$product->type_id,ArrayHelper::map($type, 'typ_id', 'typ_mmt_cds'), ['class'=>'addContent__adress','prompt'=>'Выберите тип']);*/?></span>-->
@@ -56,7 +67,7 @@ $this->title = ($_GET['type'] == 'zap') ? "Редактировать товар
     <?php
 
     if($_GET['type'] == 'zap'){
-        echo RadioSelectTypeProduct::widget(['select'=>$selected,'model'=>$auto]);
+        echo RadioSelectTypeProduct::widget(['select'=>$selected,'model'=>$auto,'cat'=>$product->category_id_all]);
     }
     else{
         echo SelectAuto::widget(['view' => ($_GET['type'] == 'auto') ? '0' : '1', 'select_from_garage' => true,'auto'=>$auto]);
@@ -82,12 +93,36 @@ $this->title = ($_GET['type'] == 'zap') ? "Редактировать товар
 
         <?php
         echo '<label class="control-label">Добавить фото</label>';
-        echo FileInput::widget([
+        /*echo FileInput::widget([
             'name' => 'file[]',
             'id' => 'input-4',
             'attribute' => 'attachment_1',
             'value' => '/media/img/1.png',
             'options' => ['multiple' => true],
+        ]);*/
+        echo FileInput::widget([
+            'name' => 'file[]',
+            'id' => 'input-5',
+            'attribute' => 'attachment_1',
+            'value' => '/media/img/1.png',
+            'options' => [
+                'multiple' => true,
+                'showCaption' => false,
+                'showUpload' => false,
+                'uploadAsync'=> false,
+            ],
+            'pluginOptions' => [
+                'uploadUrl' => Url::to(['/ajax/ajax/upload_file']),
+                'maxFileCount' => 6,
+                'language' => "ru",
+                'uploadAsync'=> false,
+                'showUpload' => false,
+                'dropZoneEnabled' => false,
+                /*'initialPreviewShowDelete' => true,*/
+                'overwriteInitial' => false,
+                'initialPreview' => $preview,
+                'initialPreviewConfig' => $previewConfig
+            ],
         ]);
         ?>
 
@@ -123,7 +158,7 @@ $this->title = ($_GET['type'] == 'zap') ? "Редактировать товар
 
     </div>
     <div class="addContent--save">
-        <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
+        <input type="submit" value="Сохранить" class="btn btn-save" id="saveInfo">
     </div>
 </form>
 <?php foreach($img as $im): ?>

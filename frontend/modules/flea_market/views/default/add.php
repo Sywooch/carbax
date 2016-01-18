@@ -31,13 +31,12 @@ $this->params['breadcrumbs'][] = $this->title;
         */ ?>
     <h1><?= Html::encode($this->title) ?></h1>
 
+
     <form id="addForm" action="<?= Url::to(['add_to_sql']) ?>" method="post" enctype="multipart/form-data">
         <input id="prodType" type="hidden" name="prod_type" value="<?= $_GET['type'] ?>">
-        <input type="text" name="title" class="addContent__title" placeholder="Название товара" required>
-        <? /*= Html::dropDownList('manufactures',0, ArrayHelper::map($tofMan, 'mfa_id', 'mfa_brand'), ['class'=>'addContent__adress', 'id'=>'manSelect','prompt'=>'Выберите марку'])*/ ?><!--
-        <span id="modelBox"></span>
-        <span id="typesBox"></span>
-        <span id="categBox"></span>-->
+        <?php if($_GET['type'] == 'zap'){ ?>
+            <input type="text" name="title" class="addContent__title" placeholder="Название товара" required>
+        <?php } ?>
 
         <?php if ($_GET['type'] == 'zap') {
             echo RadioSelectTypeProduct::widget();
@@ -60,18 +59,35 @@ $this->params['breadcrumbs'][] = $this->title;
             <h2>Добавить фото</h2>
             <?php
             echo '<label class="control-label">Добавить фото</label>';
+            /*echo FileInput::widget([
+                'name' => 'file[]',
+                'language' => 'ru',
+                'id' => 'input-4',
+                'options' => [
+                    'multiple' => true,
+                ],
+                'pluginOptions' => ['previewFileType' => 'any', 'uploadUrl' => Url::to(['/site/file-upload']),]
+            ]);*/
             echo FileInput::widget([
                 'name' => 'file[]',
-                'id' => 'input-4',
+                'id' => 'input-5',
                 'attribute' => 'attachment_1',
                 'value' => '/media/img/1.png',
                 'options' => [
                     'multiple' => true,
+                    'showCaption' => false,
+                    /*'showRemove' => true,*/
+                    'showUpload' => false,
+                    'uploadAsync'=> false,
+                ],
+                'pluginOptions' => [
+                    'uploadUrl' => Url::to(['/ajax/ajax/upload_file']),
+                    'maxFileCount' => 6,
                     'language' => "ru",
-                    'showCaption' => true,
-                    'maxFileCount' => 5,
-                    'showRemove' => false,
-                    'showUpload' => false
+                    'uploadAsync'=> false,
+                    'previewClass' => 'captionClass',
+                    'showUpload' => false,
+                    'dropZoneEnabled' => false
                 ],
             ]);
             ?>
@@ -102,8 +118,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
         </div>-->
         <div class="addContent--save">
-            <input type="submit" value="Сохранить" class="btn btn-save">
-
+            <input type="submit" value="Сохранить" class="btn btn-save" id="saveInfo">
         </div>
         <span id="hiddenInputs"></span>
     </form>

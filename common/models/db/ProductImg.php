@@ -11,6 +11,7 @@ use Yii;
  * @property integer $product_id
  * @property string $img
  * @property integer $cover
+ * @property integer $user_id
  */
 class ProductImg extends \yii\db\ActiveRecord
 {
@@ -31,7 +32,7 @@ class ProductImg extends \yii\db\ActiveRecord
             [['product_id', 'img', 'cover'], 'required'],
             [['product_id'], 'integer'],
             [['img'], 'string', 'max' => 255],
-            [['cover'], 'integer']
+            [['cover', 'user_id'], 'integer']
         ];
     }
 

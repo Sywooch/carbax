@@ -13,7 +13,9 @@ class RadioSelectTypeProduct extends Widget
 {
     public $select = null;
     public $model = false;
+    public $cat = false;
+
     public function run(){
-        return $this->render('radio_select',['select' => $this->select,'model' => $this->model]);
+        return $this->render('radio_select',['select' => $this->select,'model' => $this->model,'cat'=>$this->cat]);
     }
 }

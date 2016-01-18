@@ -96,6 +96,7 @@ class DefaultController extends Controller
 
     public function actionAdd_to_sql()
     {
+        //Debug::prn($_FILES);
         if(isset($_POST['auto_widget']) || isset($_POST['id_info_splint']) || isset($_POST['id_info_disk'])){
             $market = Market::find()->where(['id' => $_POST['idproduct']])->one();
             if($_POST['radio_type_product'] == 1) {
@@ -115,7 +116,7 @@ class DefaultController extends Controller
             //$autoWidget = new AutoWidget();
         }
 
-        $market->name = $_POST['title'];
+
         $market->new = $_POST['new'];
         if($_POST['radio_type_product'] == 1) {
             if(isset($_POST['id_widget_auto'])){
@@ -230,10 +231,14 @@ class DefaultController extends Controller
             }
 
             $view = 'index';
+            $market->name = $_POST['title'];
         }
         else {
+
+
             if(isset($_POST['id_widget_auto'])){
                 $market->id_auto_widget = $_POST['id_widget_auto'];
+                $autoWidget = AutoWidget::findOne($_POST['id_widget_auto']);
             }
             else{
                 $autoWidget = new AutoWidget();
@@ -271,6 +276,7 @@ class DefaultController extends Controller
             }
             $market->prod_type = 1;//Автомобиль
             $view = 'sale_auto';
+            $market->name = 'Продам '.$autoWidget->brand_name.', '.$autoWidget->model_name.', '.$autoWidget->year;
         }
         $market->run = $_POST['run'];
 
@@ -301,32 +307,11 @@ class DefaultController extends Controller
         $market->user_id = Yii::$app->user->id;
         $market->save();
 
-        if(!file_exists('media/users/'.Yii::$app->user->id)){
-            mkdir('media/users/'.Yii::$app->user->id.'/');
-        }
-        if(!file_exists('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'))){
-            mkdir('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'));
-        }
-        $dir = 'media/users/'.Yii::$app->user->id.'/'.date('Y-m-d').'/';
-        $i = 0;
+        /*Добавление изображений*/
 
-        if(!empty($_FILES['file']['name'][0])){
-            ProductImg::deleteAll(['product_id' => $market->id]);
-            foreach($_FILES['file']['name'] as $file){
-                move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir.$file);
-                $img = new ProductImg();
-                $img->product_id = $market->id;
-                $img->img = $dir.$file;
-                if($file == $_POST['cover']){
-                    Debug::prn($_POST['cover']);
-                    $img->cover = 1;
-                }else{
-                    $img->cover = 0;
-                }
-                $img->save();
-                $i++;
-            }
-        }
+        ProductImg::updateAll(['product_id' => $market->id], ['product_id' => 99999, 'user_id' => Yii::$app->user->id]);
+
+        /*Конец добавление изображений*/
 
         if($_POST['prod_type'] == 'zap'){
             $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])

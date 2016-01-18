@@ -137,11 +137,11 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 </div>
                 <div class="singleContent__desc--line">
                     <label for="phonenumber">Телефон</label>
-                    <input type="text" class="addContent__cont" name="phoneNumber[]" required>
+                    <input type="text" class="addContent__cont service_phone" name="phoneNumber[]" required>
                 </div>
                 <div class="singleContent__desc--line">
                     <label for="phonenumber_last"></label>
-                    <input type="text" class="addContent__cont" name="phoneNumber[]"> <span id="firstPhone"></span>
+                    <input type="text" class="addContent__cont service_phone" name="phoneNumber[]"> <span id="firstPhone"></span>
                     <a href="#nowhere" id="addContentPhone" class="addContent__cont-add">+</a>
                 </div>
                 <div class="singleContent__desc--line">

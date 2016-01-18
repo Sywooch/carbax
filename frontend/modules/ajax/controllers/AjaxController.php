@@ -31,6 +31,7 @@ use common\models\db\Garage;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
 use common\models\db\Msg;
+use common\models\db\ProductImg;
 use common\models\db\Request;
 use common\models\db\RequestAddFieldValue;
 use common\models\db\RequestAdditionalFields;
@@ -468,6 +469,37 @@ class AjaxController extends Controller
         if($_POST['type'] == 3){
             echo InfoDisk::widget();
         }
+    }
+
+    public function actionUpload_file(){
+        //Debug::prn($_FILES);
+        if(!file_exists('media/users/'.Yii::$app->user->id)){
+            mkdir('media/users/'.Yii::$app->user->id.'/');
+        }
+        if(!file_exists('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'))){
+            mkdir('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'));
+        }
+        $dir = 'media/users/'.Yii::$app->user->id.'/'.date('Y-m-d').'/';
+        $i = 0;
+
+        if(!empty($_FILES['file']['name'][0])){
+            ProductImg::deleteAll(['product_id' => 999]);
+            foreach($_FILES['file']['name'] as $file){
+                move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir.$file);
+                $img = new ProductImg();
+                $img->product_id = 99999;
+                $img->img = $dir.$file;
+                $img->cover = 0;
+                $img->user_id = Yii::$app->user->id;
+                $img->save();
+                $i++;
+            }
+        }
+        echo 1;
+    }
+
+    public function actionPseudo_delete_file(){
+        echo 1;
     }
 
 }

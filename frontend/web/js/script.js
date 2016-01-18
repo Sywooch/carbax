@@ -33,6 +33,37 @@ function coverBg(){
 }
 
 jQuery(document).ready(function ($) {
+
+    //Загрузка изображений
+    $('#saveInfo').on('click', function(e){
+        e.preventDefault();
+        if($('#addForm')[0].checkValidity()){
+            $('#input-5').fileinput('upload');
+        }
+        else {
+            $('#addForm :input:visible[required="required"]').each(function()
+            {
+                if(!this.validity.valid)
+                {
+                    $(this).focus();
+                    $(this).addClass('errorInput');
+                    // break
+                    return false;
+                }
+            });
+        }
+    });
+
+    $('#input-5').on('filebatchuploadsuccess', function(event, data, previewId, index) {
+        $('#addForm').submit();
+    });
+
+    $(document).on('focusout', '.errorInput', function(){
+        $(this).removeClass('errorInput');
+    });
+    //Загрузили
+
+
     /*выбор главного изображения*/
     $(document).on('click', '.file-preview-frame', function(){
         var img = $(this).children('.file-preview-image');
@@ -502,7 +533,8 @@ jQuery(document).ready(function ($) {
         $('<a href="#nowhere" id="delAddress" class="addContent__adress-add">-</a><input type="text" name="address[' + count + '][title]" class="addContent__adress addressEvent" id="address_' + count + '" placeholder="Адрес автосервиса">').insertBefore('#firstAddress');
     });
     $('#addContentPhone').on('click', function () {
-        $('<a href="#nowhere" id="delPhone" class="addContent__cont-add">-</a><div class="cleared"></div><label for="phonenumber_last"></label><input type="text" class="addContent__cont" name="phoneNumber[]">').insertBefore('#firstPhone');
+        $('<a href="#nowhere" id="delPhone" class="addContent__cont-add">-</a><div class="cleared"></div><label for="phonenumber_last"></label><input type="text" class="addContent__cont service_phone" name="phoneNumber[]">').insertBefore('#firstPhone');
+        $(".service_phone").mask("+7 (999) 999-9999");
     });
 
     $(document).on('click', '#delPhone', function() {
@@ -708,6 +740,7 @@ jQuery(document).ready(function ($) {
 
     //Шаблон телефона
     $("#user_telephon").mask("+7 (999) 999-9999");
+    $(".service_phone").mask("+7 (999) 999-9999");
 
     //Запрет ввода букв в поле "Цена"
     if(document.getElementById('addPrice')) {
