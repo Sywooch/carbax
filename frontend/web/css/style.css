@@ -667,3 +667,7 @@ select.yearSearch{
 .main_category_to_map img{
     margin-bottom: 10px;
 }
+
+.whatIs {
+    background-size: cover;
+}
