@@ -30,7 +30,7 @@ class Service_typeController extends Controller
                     'delete' => ['post'],
                 ],
             ],
-            /*'access' => [
+            'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
@@ -38,7 +38,7 @@ class Service_typeController extends Controller
                         'roles' => ['admin'],
                     ],
                 ],
-            ],*/
+            ],
         ];
     }
 
