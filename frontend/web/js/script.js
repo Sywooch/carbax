@@ -38,7 +38,13 @@ jQuery(document).ready(function ($) {
     $('#saveInfo').on('click', function(e){
         e.preventDefault();
         if($('#addForm')[0].checkValidity()){
-            $('#input-5').fileinput('upload');
+            if(document.getElementsByClassName('hasEdit').length > 0){
+                $('#addForm').submit();
+            }
+            else {
+                $('#input-5').fileinput('upload');
+            }
+
         }
         else {
             $('#addForm :input:visible[required="required"]').each(function()
@@ -52,6 +58,14 @@ jQuery(document).ready(function ($) {
                 }
             });
         }
+    });
+
+    $('#input-5').on('filedeleted', function(event, key) {
+        //alert(123);
+    });
+
+    $('#input-5').on('filebatchselected', function(event, files) {
+        $('.hasEdit').removeClass('hasEdit');
     });
 
     $('#input-5').on('filebatchuploadsuccess', function(event, data, previewId, index) {

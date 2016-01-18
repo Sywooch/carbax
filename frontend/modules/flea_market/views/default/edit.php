@@ -15,7 +15,7 @@ foreach($img as $i){
     $preview[] = "<img src='/$i->img' class='file-preview-image'>";
     $previewConfig[] = [
         'caption' => '',
-        'url' => '/ajax/ajax/pseudo_delete_file'
+        'url' => '/ajax/ajax/pseudo_delete_file?id=' . $i->id
     ];
 }
 ?>
@@ -41,7 +41,7 @@ foreach($img as $i){
     <?= Html::input('hidden','idproduct',$product->id)?>
 
     <?php
-        if($product->prod_type == 0){
+        if($product->prod_type == 0 or $product->prod_type == 1){
             echo Html::input('hidden','auto_widget',$auto->id);
             $selected = 1;
         }
@@ -115,6 +115,7 @@ foreach($img as $i){
                 'uploadUrl' => Url::to(['/ajax/ajax/upload_file']),
                 'maxFileCount' => 6,
                 'language' => "ru",
+                'previewClass' => 'hasEdit',
                 'uploadAsync'=> false,
                 'showUpload' => false,
                 'dropZoneEnabled' => false,

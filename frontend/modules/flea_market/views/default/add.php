@@ -85,7 +85,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     'maxFileCount' => 6,
                     'language' => "ru",
                     'uploadAsync'=> false,
-                    'previewClass' => 'captionClass',
                     'showUpload' => false,
                     'dropZoneEnabled' => false
                 ],

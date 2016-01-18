@@ -499,6 +499,7 @@ class AjaxController extends Controller
     }
 
     public function actionPseudo_delete_file(){
+        ProductImg::deleteAll(['id' => $_GET['id']]);
         echo 1;
     }
 
