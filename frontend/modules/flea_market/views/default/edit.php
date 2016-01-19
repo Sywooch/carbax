@@ -79,6 +79,14 @@ foreach($img as $i){
     <?= Html::dropDownList('region',$product->region_id,ArrayHelper::map($region,'id','name'),['class'=>'addContent__adress','id'=>'regionSelect','prompt'=>'Выберите регион'])?>
     <span id="addCity"><?= Html::dropDownList('city',$product->city_id,ArrayHelper::map($city,'id','name'),['class'=>'addContent__adress','prompt'=>'Выберите город']);?></span>
 
+    <div id="addAddressMarket">
+        <?= Html::checkbox('addAddressMarket',(empty($product->address) ? false : true),['class'=>'addAddressMarket']);?>
+
+        <?= Html::label('Уточниить адрес'); ?>
+
+        <span class="addAddressMarketInp"><?= empty($product->address) ? false : "<input type='text' name='address' class='addContent__title' value='$product->address'>"; ?></span>
+    </div>
+
     <?/*= CategoryProductTecDoc::widget()*/?>
 
     <div class="singleContent__desc">

@@ -279,7 +279,7 @@ class DefaultController extends Controller
             $market->name = 'Продам '.$autoWidget->brand_name.', '.$autoWidget->model_name.', '.$autoWidget->year;
         }
         $market->run = $_POST['run'];
-
+        $market->address = $_POST['address'];
         $market->dt_add = time();
         if ($_POST['userOrService'] == 2) {
             $market->service_id = $_POST['selectService'];

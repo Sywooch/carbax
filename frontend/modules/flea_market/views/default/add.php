@@ -51,6 +51,13 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <?= RegionSelect::widget() ?>
 
+        <div id="addAddressMarket">
+            <?= Html::checkbox('addAddressMarket',false,['class'=>'addAddressMarket']);?>
+
+            <?= Html::label('Уточниить адрес'); ?>
+
+            <span class="addAddressMarketInp"></span>
+        </div>
         <? /*= Html::dropDownList('region',0,ArrayHelper::map($region,'id','name'),['class'=>'addContent__adress','id'=>'regionSelect','prompt'=>'Выберите регион'])*/ ?><!--
         <span id="addCity"></span>-->
         <? /*= CategoryProductTecDoc::widget()*/ ?>

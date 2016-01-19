@@ -772,6 +772,14 @@ jQuery(document).ready(function ($) {
         };
     }
 
+    $(document).on('click','.addAddressMarket',function(){
+        if($(".addAddressMarket").prop("checked")){
+            $('.addAddressMarketInp').html('<input type="text" name="address" class="addContent__title">');
+        }else{
+            $('.addAddressMarketInp').html('');
+        }
+    });
+
 
 });
 
