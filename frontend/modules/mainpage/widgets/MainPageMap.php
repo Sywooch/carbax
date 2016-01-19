@@ -1,6 +1,7 @@
 <?php
 namespace frontend\modules\mainpage\widgets;
 
+use common\classes\Address;
 use common\classes\Custom_function;
 use common\classes\Debug;
 use common\models\db\GeobaseCity;
