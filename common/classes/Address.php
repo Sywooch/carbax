@@ -13,8 +13,20 @@ use common\models\db\GeobaseRegion;
 use common\models\db\User;
 use Yii;
 
+/**
+ * Класс для работы с гео данными пользователя
+ *
+ * @author Kirill
+ * @version 1.0
+ */
 class Address
 {
+
+    /**
+     * Возвращает полную информацию о регионе и городе текущего пользователя
+     * @static
+     * @return array
+     */
     public static function get_geo_info(){
         return [
             'region_id' => self::get_region(),
@@ -24,6 +36,11 @@ class Address
         ];
     }
 
+    /**
+     * Возвращает id города текущего пользователя
+     * @static
+     * @return integer
+     */
     public static function get_city(){
         $cookies = Yii::$app->request->cookies;
         if ($cookies->get('city_id') !== null) {
@@ -34,6 +51,11 @@ class Address
         }
     }
 
+    /**
+     * Возвращает id региона текущего пользователя
+     * @static
+     * @return integer
+     */
     public static function get_region(){
         $cookies = Yii::$app->request->cookies;
         if ($cookies->get('region_id') !== null) {
@@ -44,6 +66,12 @@ class Address
         }
     }
 
+    /**
+     * Возвращает имя региона текущего пользователя
+     * @static
+     * @param boolean|integer $id
+     * @return string
+     */
     public static function get_region_name($id = false){
         if($id){
             return GeobaseRegion::findOne($id)->name;
@@ -53,6 +81,12 @@ class Address
         }
     }
 
+    /**
+     * Возвращает имя города текущего пользователя
+     * @static
+     * @param boolean|integer $id
+     * @return string
+     */
     public static function get_city_name($id = false){
         if($id){
             return GeobaseCity::findOne($id)->name;
