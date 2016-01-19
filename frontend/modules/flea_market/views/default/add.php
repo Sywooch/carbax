@@ -50,6 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <h2>Регион</h2>
         </div>
         <?= RegionSelect::widget() ?>
+
         <? /*= Html::dropDownList('region',0,ArrayHelper::map($region,'id','name'),['class'=>'addContent__adress','id'=>'regionSelect','prompt'=>'Выберите регион'])*/ ?><!--
         <span id="addCity"></span>-->
         <? /*= CategoryProductTecDoc::widget()*/ ?>
