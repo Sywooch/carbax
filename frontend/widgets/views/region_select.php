@@ -2,9 +2,9 @@
 use yii\helpers\Html;
 ?>
 <div class="regionWidgetBox">
-    <?= $ip['region'] ?> / <?= $ip['city'] ?> <?= Html::a('Изменить', [], ['id' => 'changeRegion']) ?>
+    <?= $ip['region_name'] ?> / <?= $ip['city_name'] ?> <?= Html::a('Изменить', [], ['id' => 'changeRegion']) ?>
     <span id="hiddenRegionId">
-        <input type="hidden" name="region" value="<?=$regionId?>">
-        <input type="hidden" name="city" value="<?=$cityId?>">
+        <input type="hidden" name="region" value="<?=$ip['region_id']?>">
+        <input type="hidden" name="city" value="<?=$ip['city_id']?>">
     </span>
 </div>

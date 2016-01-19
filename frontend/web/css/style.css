@@ -671,3 +671,13 @@ select.yearSearch{
 .whatIs {
     background-size: cover;
 }
+
+div#addAddressMarket {
+    display: inline-block;
+    width: 100%;
+}
+
+input.addAddressMarket {
+    float: left;
+    margin-right: 10px;
+}
