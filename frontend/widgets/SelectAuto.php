@@ -15,6 +15,10 @@ use common\models\db\AutoComModels;
 use common\models\db\AutoComModify;
 use common\models\db\AutoComSubmodels;
 use common\models\db\AutoWidgetParams;
+use common\models\db\AwpBodyType;
+use common\models\db\AwpDrive;
+use common\models\db\AwpTransmission;
+use common\models\db\AwpTypeMotor;
 use common\models\db\BcbBrands;
 use common\models\db\BcbModels;
 use common\models\db\BcbModify;
@@ -39,7 +43,28 @@ class SelectAuto extends Widget
     public function run(){
 
         if($this->auto){
-            $autoWidgetParams = AutoWidgetParams::findAll(['id_auto_widget' => $this->auto->id]);
+            $autoWidgetParams = AutoWidgetParams::findOne(['id_auto_widget' => $this->auto->id]);
+
+            $drive = AwpDrive::find()->all();
+            $body = AwpBodyType::find()->all();
+            $typeMotor = AwpTypeMotor::find()->all();
+            $trans = AwpTransmission::find()->all();
+            if($this->auto->auto_type == 1){
+                $htmlParams = $this->render('auto_params', [
+                    'drive' => $drive,
+                    'body' => $body,
+                    'typeMotor' => $typeMotor,
+                    'trans' => $trans,
+                    'autoWidgetParams' => $autoWidgetParams,
+                ]);
+            }
+            if($this->auto->auto_type == 2){
+                 $this->render('auto_params',['autoWidgetParams' => $autoWidgetParams]);
+            }
+            if($this->auto->auto_type == 3){
+                $htmlParams = $this->render('auto_params',['autoWidgetParams' => $autoWidgetParams]);
+            }
+
             if($this->auto->auto_type == '1'){
                 $brand = BcbBrands::find()->all();
                 $year = BrendYear::find()->where(['id_brand'=>$this->auto->brand_id])->one();
@@ -115,6 +140,7 @@ class SelectAuto extends Widget
                 $cat = false;
                 $mainCat = false;
             }
+
             return $this->render('select_auto_edit', [
                 'view'=>$this->view,
                 'auto' => $this->auto,
@@ -126,6 +152,7 @@ class SelectAuto extends Widget
                 'cat' => $cat,
                 'main_cat' => $mainCat,
                 'typeMotoAll' => $typeMotoAll,
+                'htmlParams' => $htmlParams,
                 //'typeMoto' => $typeMoto,
             ]);
         }

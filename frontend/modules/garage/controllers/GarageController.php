@@ -75,11 +75,14 @@ class GarageController extends Controller
             if(isset($_POST['garageId'])){
                 $garage = Garage::find()->where(['id' => $_POST['garageId']])->one();
                 $autoWidget = AutoWidget::find()->where(['id' => $_POST['autoId']])->one();
+                $autoWidgetParams = AutoWidgetParams::findOne(['id_auto_widget' => $autoWidget->id]);
+                Yii::$app->session->setFlash('success','Транспорт успешно обновлен');
             }
             else {
                 $garage = new Garage();
                 $autoWidget = new AutoWidget();
                 $autoWidgetParams = new AutoWidgetParams();
+                Yii::$app->session->setFlash('success','Транспорт успешно добавлен');
             }
 
             $autoWidget->auto_type = $_POST['typeAuto'];

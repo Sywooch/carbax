@@ -97,7 +97,7 @@ class DefaultController extends Controller
 
     public function actionAdd_to_sql()
     {
-        Debug::prn($_POST);
+        //Debug::prn($_POST);
         if(isset($_POST['auto_widget']) || isset($_POST['id_info_splint']) || isset($_POST['id_info_disk'])){
             $market = Market::find()->where(['id' => $_POST['idproduct']])->one();
             if($_POST['radio_type_product'] == 1) {
@@ -241,6 +241,7 @@ class DefaultController extends Controller
             if(isset($_POST['id_widget_auto'])){
                 $market->id_auto_widget = $_POST['id_widget_auto'];
                 $autoWidget = AutoWidget::findOne($_POST['id_widget_auto']);
+                $autoWidgetParams = AutoWidgetParams::findOne(['id_auto_widget' => $autoWidget->id]);
             }
             else{
                 $autoWidget = new AutoWidget();
