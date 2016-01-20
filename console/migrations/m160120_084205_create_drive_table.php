@@ -18,15 +18,15 @@ class m160120_084205_create_drive_table extends Migration
 
         ], $tableOptions);
 
-        $this->insert('transmission', [
+        $this->insert('drive', [
             'name' => 'Передний'
         ]);
 
-        $this->insert('transmission', [
+        $this->insert('drive', [
             'name' => 'Задний'
         ]);
 
-        $this->insert('transmission', [
+        $this->insert('drive', [
             'name' => 'Полный'
         ]);
     }

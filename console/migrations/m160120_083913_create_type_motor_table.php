@@ -18,23 +18,23 @@ class m160120_083913_create_type_motor_table extends Migration
 
         ], $tableOptions);
 
-        $this->insert('transmission', [
+        $this->insert('type_motor', [
             'name' => 'Бензин'
         ]);
 
-        $this->insert('transmission', [
+        $this->insert('type_motor', [
             'name' => 'Дизель'
         ]);
 
-        $this->insert('transmission', [
+        $this->insert('type_motor', [
             'name' => 'Гибрид'
         ]);
 
-        $this->insert('transmission', [
+        $this->insert('type_motor', [
             'name' => 'Электро'
         ]);
 
-        $this->insert('transmission', [
+        $this->insert('type_motor', [
             'name' => 'Газ'
         ]);
     }
