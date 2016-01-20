@@ -177,6 +177,16 @@ jQuery(document).ready(function ($) {
                 $('.selectCar').append(data);
             }
         });
+        if(type == 'typeAuto'){
+            $.ajax({
+                type: 'POST',
+                url: "/ajax/ajax/get_auto_params",
+                data: 'id=' + id ,
+                success: function (data) {
+                    $('.auto-params').html(data);
+                }
+            });
+        }
 
     });
 

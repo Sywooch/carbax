@@ -33,6 +33,7 @@ class SelectAuto extends Widget
     public $auto = false;
     public $category = false;
     public $select_from_garage = false;
+    public $paramsDrive = false;
 
     public function run(){
 
@@ -64,6 +65,7 @@ class SelectAuto extends Widget
                 $typ = BcbModify::find()->where(['model_id'=>$this->auto->model_id])
                     ->andWhere(['<=','y_from',$this->auto->year])
                     ->andWhere(['>=','y_to',$this->auto->year])->all();
+
             }
             if($this->auto->auto_type == '2') {
                 $brand = AutoComBrands::find()->all();
@@ -126,6 +128,7 @@ class SelectAuto extends Widget
             ]);
         }
         else {
+
             return $this->render('select_auto', [
                 'select_from_garage' => $this->select_from_garage,
                 'view'=>$this->view,

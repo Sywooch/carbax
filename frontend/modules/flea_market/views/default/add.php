@@ -45,6 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
         }
         ?>
 
+        <div class="auto-params"></div>
 
         <div class="singleContent__desc">
             <h2>Регион</h2>

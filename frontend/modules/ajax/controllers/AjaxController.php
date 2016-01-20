@@ -17,6 +17,10 @@ use common\models\db\AutoComModels;
 use common\models\db\AutoComModify;
 use common\models\db\AutoComSubmodels;
 use common\models\db\AutoWidget;
+use common\models\db\AwpBodyType;
+use common\models\db\AwpDrive;
+use common\models\db\AwpTransmission;
+use common\models\db\AwpTypeMotor;
 use common\models\db\BcbBrands;
 use common\models\db\BcbModels;
 use common\models\db\BcbModify;
@@ -35,7 +39,6 @@ use common\models\db\ProductImg;
 use common\models\db\Request;
 use common\models\db\RequestAddFieldValue;
 use common\models\db\RequestAdditionalFields;
-use common\models\db\RequestType;
 use common\models\db\Services;
 use common\models\db\TofModels;
 use common\models\db\TofTypes;
@@ -45,12 +48,10 @@ use frontend\widgets\InfoDisk;
 use frontend\widgets\InfoSplint;
 use frontend\widgets\SelectAuto;
 use frontend\widgets\SelectAutoFromGarage;
-use frontend\widgets\SelectMultiplayAuto;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\jui\AutoComplete;
 use yii\web\Controller;
 
 class AjaxController extends Controller
@@ -501,6 +502,27 @@ class AjaxController extends Controller
     public function actionPseudo_delete_file(){
         ProductImg::deleteAll(['id' => $_GET['id']]);
         echo 1;
+    }
+
+    public function actionGet_auto_params(){
+        $drive = AwpDrive::find()->all();
+        $body = AwpBodyType::find()->all();
+        $typeMotor = AwpTypeMotor::find()->all();
+        $trans = AwpTransmission::find()->all();
+        if($_POST['id'] == 1){
+            return $this->renderPartial('auto_params', [
+                'drive' => $drive,
+                'body' => $body,
+                'typeMotor' => $typeMotor,
+                'trans' => $trans,
+            ]);
+        }
+        if($_POST['id'] == 2){
+            return $this->renderPartial('auto_params');
+        }
+        if($_POST['id'] == 3){
+            return $this->renderPartial('auto_params');
+        }
     }
 
 }
