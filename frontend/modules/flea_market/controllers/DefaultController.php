@@ -8,6 +8,7 @@ use common\models\db\AutoComModels;
 use common\models\db\AutoComModify;
 use common\models\db\AutoComSubmodels;
 use common\models\db\AutoWidget;
+use common\models\db\AutoWidgetParams;
 use common\models\db\BcbBrands;
 use common\models\db\BcbModels;
 use common\models\db\BcbModify;
@@ -96,7 +97,7 @@ class DefaultController extends Controller
 
     public function actionAdd_to_sql()
     {
-        //Debug::prn($_FILES);
+        Debug::prn($_POST);
         if(isset($_POST['auto_widget']) || isset($_POST['id_info_splint']) || isset($_POST['id_info_disk'])){
             $market = Market::find()->where(['id' => $_POST['idproduct']])->one();
             if($_POST['radio_type_product'] == 1) {
@@ -155,6 +156,7 @@ class DefaultController extends Controller
 
                 $autoWidget->save();
                 $market->id_auto_widget = $autoWidget->id;
+
             }
 
         }
@@ -242,6 +244,7 @@ class DefaultController extends Controller
             }
             else{
                 $autoWidget = new AutoWidget();
+                $autoWidgetParams = new AutoWidgetParams();
                 $autoWidget->auto_type = $_POST['typeAuto'];
                 $autoWidget->year = $_POST['year'];
                 $autoWidget->brand_id = $_POST['manufactures'];
@@ -273,6 +276,16 @@ class DefaultController extends Controller
 
                 $autoWidget->save();
                 $market->id_auto_widget = $autoWidget->id;
+
+                $autoWidgetParams->id_auto_widget = $autoWidget->id;
+                $autoWidgetParams->body_type = $_POST['body'];
+                $autoWidgetParams->run = $_POST['run'];
+                $autoWidgetParams->transmission = $_POST['trans'];
+                $autoWidgetParams->type_motor = $_POST['typeMotor'];
+                $autoWidgetParams->size_motor = $_POST['size_motor'];
+                $autoWidgetParams->drive = $_POST['drive'];
+                $autoWidgetParams->vin = $_POST['vin-code'];
+                $autoWidgetParams->save();
             }
             $market->prod_type = 1;//Автомобиль
             $view = 'sale_auto';
