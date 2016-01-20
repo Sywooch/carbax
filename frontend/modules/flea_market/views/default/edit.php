@@ -141,10 +141,10 @@ foreach($img as $i){
 
         <h3>Описание</h3>
         <?= Html::textarea('descr',$product->descr,['class'=>'addContent__description'])?>
-        <?php if(!isset($_GET['type'])):?>
+        <?php /*if(!isset($_GET['type'])):*/?><!--
             <h3>Пробег</h3>
-            <?= Html::input('text','run',$product->run,['class'=>'addRun','id'=>'run','required'=>'required']); ?><span> тыс.км</span><br />
-        <?php endif; ?>
+            <?/*= Html::input('text','run',$product->run,['class'=>'addRun','id'=>'run','required'=>'required']); */?><span> тыс.км</span><br />
+        --><?php /*endif; */?>
         <h3>Цена</h3>
         <?= Html::input('text','price',$product->price,['class'=>'addPrice','id'=>'addPrice','required'=>'required'])?><span> руб.</span>
 

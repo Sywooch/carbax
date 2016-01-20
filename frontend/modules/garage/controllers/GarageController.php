@@ -8,6 +8,7 @@ use common\models\db\AutoComModels;
 use common\models\db\AutoComModify;
 use common\models\db\AutoComSubmodels;
 use common\models\db\AutoWidget;
+use common\models\db\AutoWidgetParams;
 use common\models\db\BcbBrands;
 use common\models\db\BcbModels;
 use common\models\db\BcbModify;
@@ -78,6 +79,7 @@ class GarageController extends Controller
             else {
                 $garage = new Garage();
                 $autoWidget = new AutoWidget();
+                $autoWidgetParams = new AutoWidgetParams();
             }
 
             $autoWidget->auto_type = $_POST['typeAuto'];
@@ -111,13 +113,24 @@ class GarageController extends Controller
             $garage->comments = $_POST['comments'];
             $garage->dt_add = time();
             $garage->user_id = Yii::$app->user->id;
-            $garage->vin = $_POST['vin'];
+            $garage->vin = $_POST['vin-code'];
 
             $garage->title = $manName . ' / ' . $modelName;
 
 
             $autoWidget->save();
             $garage->id_auto_widget = $autoWidget->id;
+
+            $autoWidgetParams->id_auto_widget = $autoWidget->id;
+            $autoWidgetParams->body_type = $_POST['body'];
+            $autoWidgetParams->run = $_POST['run'];
+            $autoWidgetParams->transmission = $_POST['trans'];
+            $autoWidgetParams->type_motor = $_POST['typeMotor'];
+            $autoWidgetParams->size_motor = $_POST['size_motor'];
+            $autoWidgetParams->drive = $_POST['drive'];
+            $autoWidgetParams->vin = $_POST['vin-code'];
+            $autoWidgetParams->save();
+
             $garage->save();
         }
 

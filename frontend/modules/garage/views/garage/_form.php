@@ -43,8 +43,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php else: ?>
                     <?= SelectAuto::widget(['view' => 0]) ?>
                 <?php endif; ?>
-
-                <?= Html::textInput('vin',$model->vin,['class'=>'addContent__title', 'placeholder'=>'введите VIN код','style'=>'float:none']);?>
+                <div class="auto-params"></div>
+                <?/*= Html::textInput('vin',$model->vin,['class'=>'addContent__title', 'placeholder'=>'введите VIN код','style'=>'float:none']);*/?>
                 <?= Html::textarea('comments',$model->comments,['class'=>'addContent__description', 'placeholder'=>'Комментарии']) ?>
 
                 <div class="form-group">
