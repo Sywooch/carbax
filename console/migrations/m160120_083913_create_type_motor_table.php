@@ -12,36 +12,36 @@ class m160120_083913_create_type_motor_table extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('type_motor', [
+        $this->createTable('awp_type_motor', [
             'id'                    => Schema::TYPE_PK,
-            'name'                  => Schema::TYPE_INTEGER. '(11) NOT NULL',
+            'name'                  => Schema::TYPE_STRING. '(255) NOT NULL',
 
         ], $tableOptions);
 
-        $this->insert('type_motor', [
+        $this->insert('awp_type_motor', [
             'name' => 'Бензин'
         ]);
 
-        $this->insert('type_motor', [
+        $this->insert('awp_type_motor', [
             'name' => 'Дизель'
         ]);
 
-        $this->insert('type_motor', [
+        $this->insert('awp_type_motor', [
             'name' => 'Гибрид'
         ]);
 
-        $this->insert('type_motor', [
+        $this->insert('awp_type_motor', [
             'name' => 'Электро'
         ]);
 
-        $this->insert('type_motor', [
+        $this->insert('awp_type_motor', [
             'name' => 'Газ'
         ]);
     }
 
     public function down()
     {
-        $this->dropTable('type_motor');
+        $this->dropTable('awp_type_motor');
     }
 
     /*

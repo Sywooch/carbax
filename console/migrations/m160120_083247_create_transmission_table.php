@@ -12,32 +12,32 @@ class m160120_083247_create_transmission_table extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('transmission', [
+        $this->createTable('awp_transmission', [
             'id'                    => Schema::TYPE_PK,
-            'name'                  => Schema::TYPE_INTEGER. '(11) NOT NULL',
+            'name'                  => Schema::TYPE_STRING. '(255) NOT NULL',
 
         ], $tableOptions);
 
-        $this->insert('transmission', [
+        $this->insert('awp_transmission', [
             'name' => 'Механика'
         ]);
 
-        $this->insert('transmission', [
+        $this->insert('awp_transmission', [
             'name' => 'Автомат'
         ]);
 
-        $this->insert('transmission', [
+        $this->insert('awp_transmission', [
             'name' => 'Робот'
         ]);
 
-        $this->insert('transmission', [
+        $this->insert('awp_transmission', [
             'name' => 'Вариатор'
         ]);
     }
 
     public function down()
     {
-        $this->dropTable('transmission');
+        $this->dropTable('awp_transmission');
     }
 
     /*

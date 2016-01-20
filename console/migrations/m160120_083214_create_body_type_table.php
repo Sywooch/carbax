@@ -12,64 +12,64 @@ class m160120_083214_create_body_type_table extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('body_type', [
+        $this->createTable('awp_body_type', [
             'id'                    => Schema::TYPE_PK,
-            'name'                  => Schema::TYPE_INTEGER. '(11) NOT NULL',
+            'name'                  => Schema::TYPE_STRING. '(255) NOT NULL',
 
         ], $tableOptions);
 
-        $this->insert('body_type', [
+        $this->insert('awp_body_type', [
             'name' => 'Седан'
         ]);
 
-        $this->insert('body_type', [
+        $this->insert('awp_body_type', [
             'name' => 'Хетчбэк'
         ]);
 
-        $this->insert('body_type', [
+        $this->insert('awp_body_type', [
             'name' => 'Универсал'
         ]);
 
-        $this->insert('body_type', [
+        $this->insert('awp_body_type', [
             'name' => 'Внедорожник'
         ]);
 
-        $this->insert('body_type', [
+        $this->insert('awp_body_type', [
             'name' => 'Кабриолет'
         ]);
 
-        $this->insert('body_type', [
+        $this->insert('awp_body_type', [
             'name' => 'Кроссовер'
         ]);
 
-        $this->insert('body_type', [
+        $this->insert('awp_body_type', [
             'name' => 'Купе'
         ]);
 
-        $this->insert('body_type', [
+        $this->insert('awp_body_type', [
             'name' => 'Лимузин'
         ]);
 
-        $this->insert('body_type', [
+        $this->insert('awp_body_type', [
             'name' => 'Минивэн'
         ]);
 
-        $this->insert('body_type', [
+        $this->insert('awp_body_type', [
             'name' => 'Пикап'
         ]);
 
-        $this->insert('body_type', [
+        $this->insert('awp_body_type', [
             'name' => 'Фургон'
         ]);
 
-        $this->insert('body_type', [
+        $this->insert('awp_body_type', [
             'name' => 'Микроавтобус'
         ]);
     }
 
     public function down()
     {
-        $this->dropTable('body_type');
+        $this->dropTable('awp_body_type');
     }
 
     /*

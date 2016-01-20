@@ -12,28 +12,28 @@ class m160120_084205_create_drive_table extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('drive', [
+        $this->createTable('awp_drive', [
             'id'                    => Schema::TYPE_PK,
-            'name'                  => Schema::TYPE_INTEGER. '(11) NOT NULL',
+            'name'                  => Schema::TYPE_STRING. '(255) NOT NULL',
 
         ], $tableOptions);
 
-        $this->insert('drive', [
+        $this->insert('awp_drive', [
             'name' => 'Передний'
         ]);
 
-        $this->insert('drive', [
+        $this->insert('awp_drive', [
             'name' => 'Задний'
         ]);
 
-        $this->insert('drive', [
+        $this->insert('awp_drive', [
             'name' => 'Полный'
         ]);
     }
 
     public function down()
     {
-        $this->dropTable('drive');
+        $this->dropTable('awp_drive');
     }
 
     /*
