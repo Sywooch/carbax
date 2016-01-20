@@ -18,15 +18,15 @@ class m160120_084205_create_drive_table extends Migration
 
         ], $tableOptions);
 
-        $this->insert('comfort_zone', [
+        $this->insert('transmission', [
             'name' => 'Передний'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('transmission', [
             'name' => 'Задний'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('transmission', [
             'name' => 'Полный'
         ]);
     }

@@ -18,51 +18,51 @@ class m160120_083214_create_body_type_table extends Migration
 
         ], $tableOptions);
 
-        $this->insert('comfort_zone', [
+        $this->insert('body_type', [
             'name' => 'Седан'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('body_type', [
             'name' => 'Хетчбэк'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('body_type', [
             'name' => 'Универсал'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('body_type', [
             'name' => 'Внедорожник'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('body_type', [
             'name' => 'Кабриолет'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('body_type', [
             'name' => 'Кроссовер'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('body_type', [
             'name' => 'Купе'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('body_type', [
             'name' => 'Лимузин'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('body_type', [
             'name' => 'Минивэн'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('body_type', [
             'name' => 'Пикап'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('body_type', [
             'name' => 'Фургон'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('body_type', [
             'name' => 'Микроавтобус'
         ]);
     }

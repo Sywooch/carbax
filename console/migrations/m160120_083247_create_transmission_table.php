@@ -18,19 +18,19 @@ class m160120_083247_create_transmission_table extends Migration
 
         ], $tableOptions);
 
-        $this->insert('comfort_zone', [
+        $this->insert('transmission', [
             'name' => 'Механика'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('transmission', [
             'name' => 'Автомат'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('transmission', [
             'name' => 'Робот'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('transmission', [
             'name' => 'Вариатор'
         ]);
     }

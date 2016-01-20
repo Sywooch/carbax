@@ -18,23 +18,23 @@ class m160120_083913_create_type_motor_table extends Migration
 
         ], $tableOptions);
 
-        $this->insert('comfort_zone', [
+        $this->insert('transmission', [
             'name' => 'Бензин'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('transmission', [
             'name' => 'Дизель'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('transmission', [
             'name' => 'Гибрид'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('transmission', [
             'name' => 'Электро'
         ]);
 
-        $this->insert('comfort_zone', [
+        $this->insert('transmission', [
             'name' => 'Газ'
         ]);
     }
