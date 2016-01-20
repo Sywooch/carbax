@@ -177,7 +177,7 @@ jQuery(document).ready(function ($) {
                 $('.selectCar').append(data);
             }
         });
-        if(type == 'typeAuto'){
+        if(type == 'typeAuto' && view == 0){
             $.ajax({
                 type: 'POST',
                 url: "/ajax/ajax/get_auto_params",

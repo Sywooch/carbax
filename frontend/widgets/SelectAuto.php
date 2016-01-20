@@ -14,6 +14,7 @@ use common\models\db\AutoComBrands;
 use common\models\db\AutoComModels;
 use common\models\db\AutoComModify;
 use common\models\db\AutoComSubmodels;
+use common\models\db\AutoWidgetParams;
 use common\models\db\BcbBrands;
 use common\models\db\BcbModels;
 use common\models\db\BcbModify;
@@ -33,11 +34,12 @@ class SelectAuto extends Widget
     public $auto = false;
     public $category = false;
     public $select_from_garage = false;
-    public $paramsDrive = false;
+    public $paramsView = false;
 
     public function run(){
 
         if($this->auto){
+            $autoWidgetParams = AutoWidgetParams::findAll(['id_auto_widget' => $this->auto->id]);
             if($this->auto->auto_type == '1'){
                 $brand = BcbBrands::find()->all();
                 $year = BrendYear::find()->where(['id_brand'=>$this->auto->brand_id])->one();
@@ -128,7 +130,6 @@ class SelectAuto extends Widget
             ]);
         }
         else {
-
             return $this->render('select_auto', [
                 'select_from_garage' => $this->select_from_garage,
                 'view'=>$this->view,
