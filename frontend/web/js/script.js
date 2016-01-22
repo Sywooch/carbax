@@ -169,6 +169,7 @@ jQuery(document).ready(function ($) {
         var view = $('.selectCar').attr('data-view');
         var brand_id = $('.brand_select_car').find(':selected').val();
         var year = $('.year_select_car').find(':selected').val();
+        //regionSearchalert(view);
         $.ajax({
             type: 'POST',
             url: "/ajax/ajax/get_auto",
@@ -640,6 +641,7 @@ jQuery(document).ready(function ($) {
 
     $(document).on('change','.regionSearch',function(){
         var regionId = $('.regionSearch').val();
+        $('.filter__searchline--search').css({width:'195px'});
         $.ajax({
             type: 'POST',
             url: "/ajax/ajax/get_select_city",
@@ -653,29 +655,44 @@ jQuery(document).ready(function ($) {
 
     $(document).on('change','.typeAutoSearch',function(){
         $('.SearchSelectYear').html('');
+        $('.TofCateg').html('');
+        var typeProduct = $('.prodTypeSearch').find(':selected').val();
         var typeAuto = $('.typeAutoSearch').val();
-        $.ajax({
-            type: 'POST',
-            url: "/ajax/ajax/get_select_brand_auto",
-            data: 'type=' + typeAuto,
-            success: function (data) {
-
-                $('.SearchSelectBrand').html(data);
-            }
-        });
+        $(this).nextAll().remove();
+        //alert(typeProduct);
+        if(typeProduct == 1){
+            $.ajax({
+                type: 'POST',
+                url: "/ajax/ajax/show_widget_categ",
+                data: 'type=' + typeAuto,
+                success: function (data) {
+                    $('.paramsSearch').append(data);
+                }
+            });
+        }else {
+            $.ajax({
+                type: 'POST',
+                url: "/ajax/ajax/get_select_brand_auto",
+                data: 'type=' + typeAuto,
+                success: function (data) {
+                    $('.paramsSearch').append(data);
+                }
+            });
+        }
     });
 
     $(document).on('change','.brandAutoSearch',function(){
-        $('.SearchSelectYear').html('');
+        /*$('.SearchSelectYear').html('');*/
         var idBrand = $('.brandAutoSearch').val();
         var typeAuto = $('.typeAutoSearch').find(':selected').val();
+        //$(this).next().remove();
         $.ajax({
             type: 'POST',
-            url: "/ajax/ajax/get_select_yar",
+            url: "/ajax/ajax/get_select_model",
             data: 'type=' + typeAuto + '&idBrand=' + idBrand,
             success: function (data) {
-
-                $('.SearchSelectYear').html(data);
+                //$(' + data + ').insertAfter($('.brandAutoSearch'));
+                $('.modelSearch').html(data);
             }
         });
     });
@@ -689,7 +706,7 @@ jQuery(document).ready(function ($) {
             data: 'cat=' + cat,
             success: function (data) {
 
-                $('.SearchSelectYear').html(data);
+                $('.motomodelSearch').html(data);
             }
         });
     });
@@ -752,14 +769,16 @@ jQuery(document).ready(function ($) {
 
     $(document).on('change','.prodTypeSearch',function(){
         var prodType = $('.prodTypeSearch').val();
+        $('.TofCateg').html('');
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/show_params",
+            data: 'type=' + prodType,
+            success: function (data) {
+                $('.paramsSearch').html(data);
+            }
+        })
 
-        if(prodType == 3 || prodType == 4){
-            $('.typeAutoSearch').prop("disabled",'false');
-        }else{
-
-            $('.typeAutoSearch').attr("disabled", false);
-        }
-        //alert(prodType);
     });
 
     //Шаблон телефона

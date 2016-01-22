@@ -117,6 +117,8 @@ use yii\helpers\Html;
      </span>
     <?php endif;   ?>
 </div>
+    <div class="auto-params">
     <?php if($htmlParams): ?>
-    <div class="auto-params"><?= $htmlParams; ?></div>
+    <?= $htmlParams; ?>
 <?php endif; ?>
+    </div>

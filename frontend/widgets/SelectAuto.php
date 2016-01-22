@@ -43,28 +43,29 @@ class SelectAuto extends Widget
     public function run(){
 
         if($this->auto){
-            $autoWidgetParams = AutoWidgetParams::findOne(['id_auto_widget' => $this->auto->id]);
+            if(!isset($_GET['type'])) {
+                $autoWidgetParams = AutoWidgetParams::findOne(['id_auto_widget' => $this->auto->id]);
 
-            $drive = AwpDrive::find()->all();
-            $body = AwpBodyType::find()->all();
-            $typeMotor = AwpTypeMotor::find()->all();
-            $trans = AwpTransmission::find()->all();
-            if($this->auto->auto_type == 1){
-                $htmlParams = $this->render('auto_params', [
-                    'drive' => $drive,
-                    'body' => $body,
-                    'typeMotor' => $typeMotor,
-                    'trans' => $trans,
-                    'autoWidgetParams' => $autoWidgetParams,
-                ]);
+                $drive = AwpDrive::find()->all();
+                $body = AwpBodyType::find()->all();
+                $typeMotor = AwpTypeMotor::find()->all();
+                $trans = AwpTransmission::find()->all();
+                if ($this->auto->auto_type == 1) {
+                    $htmlParams = $this->render('auto_params', [
+                        'drive' => $drive,
+                        'body' => $body,
+                        'typeMotor' => $typeMotor,
+                        'trans' => $trans,
+                        'autoWidgetParams' => $autoWidgetParams,
+                    ]);
+                }
+                if ($this->auto->auto_type == 2) {
+                    $this->render('auto_params', ['autoWidgetParams' => $autoWidgetParams]);
+                }
+                if ($this->auto->auto_type == 3) {
+                    $htmlParams = $this->render('auto_params', ['autoWidgetParams' => $autoWidgetParams]);
+                }
             }
-            if($this->auto->auto_type == 2){
-                 $this->render('auto_params',['autoWidgetParams' => $autoWidgetParams]);
-            }
-            if($this->auto->auto_type == 3){
-                $htmlParams = $this->render('auto_params',['autoWidgetParams' => $autoWidgetParams]);
-            }
-
             if($this->auto->auto_type == '1'){
                 $brand = BcbBrands::find()->all();
                 $year = BrendYear::find()->where(['id_brand'=>$this->auto->brand_id])->one();

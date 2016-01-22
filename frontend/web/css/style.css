@@ -525,23 +525,27 @@ select.citySearch{
     padding: 0;
     display: block;
     float: left;
-    border: 3px solid #ff6b00;
-    margin-top: -6px;
+    /*border: 3px solid #ff6b00;
+    margin-top: -6px;*/
+}
+
+input.filter__searchline--search {
+    width:393px
 }
 
 select.brandAutoSearch, select.motoTypeSearch, select.yearSearch{
-    width: 198px;
+    /*width: 198px;
     height: 30px;
     padding: 0;
     display: block;
     float: left;
     border: 3px solid #ff6b00;
-    margin-top: -6px;
+    margin-top: -6px;*/
 }
 
 select.yearSearch{
-    float: right;
-    margin-right: -395px;
+    /*float: right;
+    margin-right: -395px;*/
 }
 
 .SearchSelectBrand {
@@ -680,4 +684,67 @@ div#addAddressMarket {
 input.addAddressMarket {
     float: left;
     margin-right: 10px;
+}
+
+select.brandAutoSearch {
+    width: 134px;
+}
+
+select.modelAutoSearch {
+    width: 134px;
+}
+
+select.driveSearch {
+    width: 105px;
+}
+
+select.typeMotorSearch {
+    width: 134px;
+}
+
+select.transSearch {
+    width: 146px;
+}
+
+select.bodySearch {
+    width: 134px;
+}
+
+.DopparamsSearch {
+    margin: 10px 0;
+}
+
+.infoDopSearch {
+    display: inline-block;
+    padding: 4px;
+    margin: 0 21px;
+}
+
+.paramsSearch {
+    background: rgba(255,107,0,0.4);
+    margin-right: 30px;
+}
+
+.infoDopSearch span {
+    display: block;
+    text-align: center;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+input.searchSizeMotor_from,input.searchSizeMotor_to {
+    width: 50px;
+    height: 20px;
+}
+
+input.searchRunFrom,input.searchRunTo {
+    width: 80px;
+    height: 20px;
+}
+
+input.searchPriceFrom,input.searchPriceTo {
+    width: 80px;
+    height: 20px;
 }

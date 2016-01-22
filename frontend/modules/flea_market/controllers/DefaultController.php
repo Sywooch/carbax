@@ -571,43 +571,257 @@ class DefaultController extends Controller
         $this->view->params['officeHide'] = true;
         $this->view->params['bannersHide'] = true;
 
-
+        /**
+         * Параметры поиска существующие для всех объявлений
+         */
 
         $result = Market::find()
-            /*->select([ '`geobase_city`.`name` as `city_name_ttt`', '`market`.*'])*/
-            ->leftJoin('auto_widget', '`auto_widget`.`id` = `market`.`id_auto_widget`')
             ->leftJoin('`geobase_city`', '`geobase_city`.`id` = `market`.`city_id`')
+            ->leftJoin('auto_widget', '`auto_widget`.`id` = `market`.`id_auto_widget`')
             ->leftJoin('`favorites`', '`favorites`.`market_id` = `market`.`id` AND `favorites`.`user_id` = '.Yii::$app->user->id )
-            ->filterWhere([
-                '`market`.`region_id`' => $_GET['region']
+            ->leftJoin('`auto_widget_params`','`auto_widget_params`.`id_auto_widget` = `auto_widget`.`id`')
+            ->leftJoin('`info_splint`','`info_splint`.`id` = `market`.`id_info_splint`')
+            ->leftJoin('`info_disk`','`info_disk`.`id` = `market`.`id_info_disk`')
+            ->filterWhere(
+                [
+                    '`market`.`region_id`' => $_GET['region']
+                ]
+            )
+            ->andFilterWhere(
+                [
+                    '`market`.`city_id`' => $_GET['citySearch']
+                ]
+            );
 
-            ])
-            ->andFilterWhere(['`market`.`city_id`' => $_GET['citySearch']]);
-         if(!empty($_GET['search'])){
-             if($_GET['searchName'] == 1){
-                 $result->andWhere(['like', '`market`.`name`', $_GET['search']]);
-             }
-             else{
-                 $result->andWhere(['like', '`market`.`name`', $_GET['search']]);
-                 $result->orWhere(['like', '`brand_name`', $_GET['search']]);
-                 $result->orWhere(['like', '`model_name`', $_GET['search']]);
-             }
-         }
+        /**
+         * Если введено текстовое поле для поиска
+        */
+
+        if(!empty($_GET['search'])){
+            /**
+             * Если поиск будет только в заголовках
+            */
+            if($_GET['searchName'] == 1){
+                $result->andWhere(['like', '`market`.`name`', $_GET['search']]);
+            }
+            /**
+             * Искать в заголовках в самом объявлении
+             */
+            else{
+                $result->andWhere(['like', '`market`.`name`', $_GET['search']]);
+                $result->orWhere(['like', '`brand_name`', $_GET['search']]);
+                $result->orWhere(['like', '`model_name`', $_GET['search']]);
+            }
+        }
+
+        /**
+         * Если искать только новые товары
+         */
+        if(isset($_GET['newProduct']) && !isset($_GET['by'])){
+            $result->andWhere(['new'=>1]);
+        }
+        /**
+         * Если искать только Б/У товары
+         */
+
+        if(isset($_GET['by']) && !isset($_GET['newProduct'])){
+            $result->andWhere(['new'=>0]);
+        }
+
+        /**
+         * Если выбран тип продукта и не выбран тип авто
+         */
+        if(!empty($_GET['prod_type']) && empty($_GET['typeAuto'])){
+            $result->andWhere(['prod_type' => $_GET['prod_type']-1]);
+        }
+
+        /**
+         * Если выбрано ТРАНСПОРТ и тип автомобиля
+         */
+
+        if(($_GET['prod_type'] == 2) && !empty($_GET['typeAuto'])){
+            $result->andWhere(['prod_type' => $_GET['prod_type']-1]);
+            $result->andWhere(['`auto_widget`.`auto_type`' => $_GET['typeAuto']]);
+            /**
+             * Если легковой автомобиль или грузовой
+             */
+            if($_GET['typeAuto'] == 1 || $_GET['typeAuto'] == 2){
+                if(!empty($_GET['brandSearch'])){
+                    $result->andWhere(['`auto_widget`.`brand_id`' => $_GET['brandSearch']]);
+                }
+
+                if(!empty($_GET['modelAutoSearch'])){
+                    $result->andWhere(['`auto_widget`.`model_id`' => $_GET['modelAutoSearch']]);
+                }
+
+                if(!empty($_GET['bodySearch'])) {
+                    $result->andWhere(['body_type' => $_GET['bodySearch']]);
+                }
+
+                if(!empty($_GET['transSearch'])){
+                    $result->andWhere(['transmission' => $_GET['transSearch']]);
+                }
+
+                if(!empty($_GET['typeMotorSearch'])){
+                    $result->andWhere(['type_motor' => $_GET['typeMotorSearch']]);
+                }
+
+                if(!empty($_GET['driveSearch'])){
+                    $result->andWhere(['drive' => $_GET['driveSearch']]);
+                }
+            }
+
+            /**
+             *Если мото техника
+             */
+            if($_GET['typeAuto'] == 3){
+                if(!empty($_GET['motoType'])){
+                    $result->andWhere(['`auto_widget`.`moto_type`' => $_GET['motoType']]);
+                }
+
+                if(!empty($_GET['brandSearch'])){
+                    $result->andWhere(['`auto_widget`.`brand_id`' => $_GET['brandSearch']]);
+                }
+
+                if(!empty($_GET['modelAutoSearch'])){
+                    $result->andWhere(['`auto_widget`.`model_id`' => $_GET['modelAutoSearch']]);
+                }
+            }
 
 
-         if(isset($_GET['newProduct']) && !isset($_GET['by'])){
-             $result->andWhere(['new'=>1]);
-         }
-         if(isset($_GET['by']) && !isset($_GET['newProduct'])){
-             $result->andWhere(['new'=>0]);
-         }
+            /**
+             * Усли выбран год выпуска
+             */
+            if(!empty($_GET['search_year_from']) || !empty($_GET['search_year_to'])){
+                if(empty($_GET['search_year_from'])){
+                    $search_year_from = 0;
+                }
+                else{
+                    $search_year_from = $_GET['search_year_from'];
+                }
 
-         if(!empty($_GET['prod_type']) && empty($_GET['typeAuto'])){
-             $result->andWhere(['prod_type' => $_GET['prod_type']-1]);
-         }
+                if(empty($_GET['search_year_to'])){
+                    $search_year_to = 99999999;
+                }
+                else{
+                    $search_year_to = $_GET['search_year_to'];
+                }
+                $result->andWhere('`auto_widget`.`year` BETWEEN ' . $search_year_from . ' and ' . $search_year_to);
+            }
 
+            /**
+             * Если введен объем двигателя
+             */
 
+            if(!empty($_GET['searchSizeMotor_from']) || !empty($_GET['searchSizeMotor_to'])){
+                if(empty($_GET['searchSizeMotor_from'])){
+                    $searchSizeMotor_from = 0;
+                }else{
+                    $searchSizeMotor_from = $_GET['searchSizeMotor_from'];
+                }
 
+                if(empty($_GET['searchSizeMotor_to'])){
+                    $searchSizeMotor_to = 999;
+                }
+                else {
+                    $searchSizeMotor_to = $_GET['searchSizeMotor_to'];
+                }
+
+                //Debug::prn($searchSizeMotor_from);
+                $result->andWhere('`auto_widget_params`.`size_motor` BETWEEN ' . $searchSizeMotor_from . ' and ' . $searchSizeMotor_to);
+            }
+
+            /**
+             *Если выбран пробег
+             */
+            if(!empty($_GET['searchRunFrom']) || !empty($_GET['searchRunTo'])){
+                if(empty($_GET['searchRunFrom'])){
+                    $searchRunFrom = 0;
+                }
+                else{
+                    $searchRunFrom = $_GET['searchRunFrom'];
+                }
+
+                if(empty($_GET['searchRunTo'])){
+                    $searchRunTo = 99999999999999999;
+                }
+                else{
+                    $searchRunTo = $_GET['searchRunTo'];
+                }
+                $result->andWhere('`market`.`run` BETWEEN ' . $searchRunFrom . ' and ' . $searchRunTo);
+            }
+
+            /**
+             * Если введена цена
+             */
+            if(!empty($_GET['searchPriceFrom']) || !empty($_GET['searchPriceTo'])){
+                if(empty($_GET['searchPriceFrom'])){
+                    $searchPriceFrom = 0;
+                }
+                else{
+                    $searchPriceFrom = $_GET['searchPriceFrom'];
+                }
+
+                if(empty($_GET['searchPriceTo'])){
+                    $searchPriceTo = 99999999999999999999999999999;
+                }
+                else{
+                    $searchPriceTo = $_GET['searchPriceTo'];
+                }
+                $result->andWhere('`market`.`price` BETWEEN ' . $searchPriceFrom . ' and ' . $searchPriceTo);
+            }
+        }
+
+        /**
+         * Если выбрано ЗАПЧАСТЬ и тип автомобиля
+         */
+        if(($_GET['prod_type'] == 1) && !empty($_GET['typeAuto'])){
+            $result->andWhere(['prod_type' => $_GET['prod_type']-1]);
+            $result->andWhere(['`auto_widget`.`auto_type`' => $_GET['typeAuto']]);
+        }
+
+        /**
+         * Если выбраны Шины
+         */
+        if(($_GET['prod_type'] == 3)){
+            if(!empty($_GET['diameterSplintSearch'])){
+                $result->andWhere(['`info_splint`.`diameter`' => $_GET['diameterSplintSearch']]);
+            }
+            if(!empty($_GET['seasonalitySearch'])){
+                $result->andWhere(['`info_splint`.`seasonality`' => $_GET['seasonalitySearch']]);
+            }
+            if(!empty($_GET['section_widthSearch'])){
+                $result->andWhere(['`info_splint`.`section_width`' => $_GET['section_widthSearch']]);
+            }
+            if(!empty($_GET['section_heightSearch'])){
+                $result->andWhere(['`info_splint`.`section_height`' => $_GET['section_heightSearch']]);
+            }
+        }
+
+        /**
+         * Если выбраны Диски
+         */
+        if(($_GET['prod_type'] == 4)){
+            if(!empty($_GET['typeDiskSearch'])){
+                $result->andWhere(['`info_disk`.`type_disk`' => $_GET['typeDiskSearch']]);
+            }
+            if(!empty($_GET['typeDiameterDiskSearch'])){
+                $result->andWhere(['`info_disk`.`diameter`' => $_GET['typeDiameterDiskSearch']]);
+            }
+            if(!empty($_GET['rim_widthSearch'])){
+                $result->andWhere(['`info_disk`.`rim_width`' => $_GET['rim_widthSearch']]);
+            }
+            if(!empty($_GET['number_holesSearch'])){
+                $result->andWhere(['`info_disk`.`number_holes`' => $_GET['number_holesSearch']]);
+            }
+            if(!empty($_GET['diameter_holestSearch'])){
+                $result->andWhere(['`info_disk`.`diameter_holest`' => $_GET['diameter_holestSearch']]);
+            }
+            if(!empty($_GET['sortieSearch'])){
+                $result->andWhere(['`info_disk`.`sortie`' => $_GET['sortieSearch']]);
+            }
+        }
+        /*
          if(!empty($_GET['typeAuto'])){
              $result->andWhere(['`auto_widget`.`auto_type`' => $_GET['typeAuto']]);
          }
@@ -628,13 +842,15 @@ class DefaultController extends Controller
             if(!empty($_GET['brandMoto'])){
                 $result->andWhere(['`auto_widget`.`brand_id`' => $_GET['brandMoto']]);
             }
-        }
+        }*/
 
-
+        /**
+         * Если выбрана категория
+         */
          if(isset($_GET['categ']) && $_GET['categ'] != 10001){
              $result->andWhere(['like', '`market`.`category_id_all`', $_GET['categ']]);
          }
-        $result->with('auto_widget','geobase_city','favorites');
+        $result->with('auto_widget','geobase_city','favorites','auto_widget_params');
         $result->orderBy('dt_add DESC');
 
         
@@ -645,8 +861,8 @@ class DefaultController extends Controller
         $result->offset($pagination->offset);
         $result->limit($pagination->limit);
         $search = $result->all();
-       // Debug::prn($search);
-       // Debug::prn($_GET);
+        //Debug::prn($search);
+
         return $this->render('search', ['search'=>$search,'pagination' => $pagination,]);
 
     }
