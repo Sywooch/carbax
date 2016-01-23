@@ -57,7 +57,7 @@ jQuery(document).ready(function ($) {
                     return false;
                 }
             });
-            $('#addForm :input:visible[pattern="[0-9]"]').each(function()
+            /*$('#addForm :input:visible[pattern="[0-9]"]').each(function()
             {
                 if(!this.validity.valid)
                 {
@@ -66,7 +66,7 @@ jQuery(document).ready(function ($) {
                     // break
                     return false;
                 }
-            });
+            });*/
         }
     });
 
