@@ -580,5 +580,5 @@ class AjaxController extends Controller
         $cat = TofSearchTree::find()->where(['str_id_parent' => '10001'])->all();
         echo Html::dropDownList('categ',0,ArrayHelper::map($cat,'str_id','str_des'),['prompt'=>'Тип запчасти','class'=>'categ']);
     }
-    
+
 }

@@ -819,9 +819,9 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    $(document).bind('input', '#itemImg',function(){
+    /*$(document).bind('input', '#itemImg',function(){
         alert("Hello");
-    });
+    });*/
 
 
 });
