@@ -93,4 +93,11 @@ class Market extends \yii\db\ActiveRecord
     {
         return $this->hasMany(ProductImg::className(), ['product_id' => 'id']);
     }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getauto_widget_params()
+    {
+        return $this->hasMany(AutoWidgetParams::className(), ['id_auto_widget' => 'id']);
+    }
 }

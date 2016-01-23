@@ -41,9 +41,11 @@ use common\models\db\RequestAddFieldValue;
 use common\models\db\RequestAdditionalFields;
 use common\models\db\Services;
 use common\models\db\TofModels;
+use common\models\db\TofSearchTree;
 use common\models\db\TofTypes;
 use common\models\db\User;
 use frontend\modules\flea_market\widgets\CategoryProductTecDoc;
+use frontend\widgets\GetSubCategory;
 use frontend\widgets\InfoDisk;
 use frontend\widgets\InfoSplint;
 use frontend\widgets\SelectAuto;
@@ -382,30 +384,60 @@ class AjaxController extends Controller
     public function actionGet_select_brand_auto(){
         if($_POST['type'] == 1){
             $brand = BcbBrands::find()->orderBy('name')->all();
-            echo Html::dropDownList(
+            $drive = AwpDrive::find()->all();
+            $body = AwpBodyType::find()->all();
+            $typeMotor = AwpTypeMotor::find()->all();
+            $trans = AwpTransmission::find()->all();
+            /*echo Html::dropDownList(
                 'brandSearch',
                 0,
                 ArrayHelper::map($brand,'id','name'),
                 ['prompt' => 'Марка', 'class' => 'brandAutoSearch']
-            );
+            );*/
+            echo $this->renderPartial('autoSearch',
+                [
+                    'brand' => $brand,
+                    'drive' => $drive,
+                    'body' => $body,
+                    'typeMotor' => $typeMotor,
+                    'trans' => $trans,
+                ]);
         }
         if($_POST['type'] == 2){
             $brand = AutoComBrands::find()->orderBy('name')->all();
-            echo Html::dropDownList(
+            /*echo Html::dropDownList(
                 'brandSearch',
                 0,
                 ArrayHelper::map($brand,'id','name'),
                 ['prompt' => 'Марка', 'class' => 'brandAutoSearch']
-            );
+            );*/
+            echo  $this->renderPartial('cargoAutoSearch',['brand'=>$brand]);
         }
         if($_POST['type'] == 3){
-            $brand = CarType::find()->orderBy('name')->all();
-            echo Html::dropDownList(
+            $carType = CarType::find()->orderBy('name')->all();
+            /*echo Html::dropDownList(
                 'motoType',
                 0,
                 ArrayHelper::map($brand,'id_car_type','name'),
                 ['prompt' => 'Тип', 'class' => 'motoTypeSearch']
-            );
+            );*/
+            echo $this->renderPartial('motoSearch',['carType'=>$carType]);
+        }
+    }
+
+    public function actionGet_select_model(){
+        //Легковой автомобиль
+        if($_POST['type'] == 1){
+            $model = BcbModels::find()->where(['brand_id'=>$_POST['idBrand']])->orderBy('name')->all();
+            echo Html::dropDownList('modelAutoSearch',0,ArrayHelper::map($model,'id','name'),['prompt'=>'Модель','class'=>'modelAutoSearch']);
+        }
+        if($_POST['type'] == 2){
+            $model = AutoComModels::find()->where(['brand_id'=>$_POST['idBrand']])->orderBy('name')->all();
+            echo Html::dropDownList('modelAutoSearch',0,ArrayHelper::map($model,'id','name'),['prompt'=>'Модель','class'=>'modelAutoSearch']);
+        }
+        if($_POST['type'] == 3){
+            $model = CarModel::find()->where(['id_car_mark'=>$_POST['idBrand']])->orderBy('name')->all();
+            echo Html::dropDownList('modelAutoSearch',0,ArrayHelper::map($model,'id_car_model','name'),['prompt'=>'Модель','class'=>'modelAutoSearch']);
         }
     }
 
@@ -440,7 +472,7 @@ class AjaxController extends Controller
                 'brandMoto',
                 0,
                 ArrayHelper::map($brandMoto, 'id_car_mark', name),
-                ['prompt' => 'Выберите марку', 'class' => 'yearSearch']
+                ['prompt' => 'Выберите марку', 'class' => 'brandAutoSearch']
             );
         }
     }
@@ -524,4 +556,29 @@ class AjaxController extends Controller
             return $this->renderPartial('auto_params');
         }
     }
+
+    public function actionShow_params(){
+        //запчасти
+        if($_POST['type'] == 1){
+            echo Html::dropDownList('typeAuto', '' ,['1'=>'Легковой автомобиль', '2'=>'Грузовой автомобиль','3'=> 'Мото техника'], ['prompt'=>'Выберите тип автомобиля','class'=>'typeAutoSearch']);
+        }
+        //транспорт
+        if($_POST['type'] == 2){
+            echo Html::dropDownList('typeAuto', '' ,['1'=>'Легковой автомобиль', '2'=>'Грузовой автомобиль','3'=> 'Мото техника'], ['prompt'=>'Выберите тип автомобиля','class'=>'typeAutoSearch']);
+        }
+        //шины
+        if($_POST['type'] == 3){
+            echo $this->renderPartial('splintSearch');
+        }
+        //диски
+        if($_POST['type'] == 4){
+            echo $this->renderPartial('diskSearch');
+        }
+    }
+
+    public  function actionShow_widget_categ(){
+        $cat = TofSearchTree::find()->where(['str_id_parent' => '10001'])->all();
+        echo Html::dropDownList('categ',0,ArrayHelper::map($cat,'str_id','str_des'),['prompt'=>'Тип запчасти','class'=>'categ']);
+    }
+    
 }
