@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'js/assets/css/styles.css',
         'js/assets/css/style.css',
+        '/frontend/web/sass/new/new.css',
     ];
     public $js = [
         /*'js/media.js',

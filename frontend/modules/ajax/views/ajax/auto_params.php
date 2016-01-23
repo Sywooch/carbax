@@ -25,6 +25,9 @@ use yii\helpers\Html;
 <?php if($trans): ?>
     <?= Html::dropDownList('trans', 0, ArrayHelper::map($trans, 'id', 'name'), ['prompt'=>'Коробка передач', 'class'=>'addContent__adress']) ?>
 <?php endif; ?>
+<?= Html::label('Пробег, тыс.км', '',['class'=>'addContentLabel']) ?>
 <?= Html::textInput('run', '', ['class' => 'addContent__adress', 'placeholder' => 'Пробег, тыс.км']) ?>
+<?= Html::label('Объем двигателя, куб.м', '',['class'=>'addContentLabel']) ?>
 <?= Html::textInput('size_motor', '', ['class' => 'addContent__adress', 'placeholder' => 'Объем двигателя, куб.м']) ?>
-<?= Html::textInput('vin-code', '', ['class' => 'addContent__adress', 'placeholder' => 'VIN код']) ?>
+<?= Html::label('VIN код', 'vin',['class'=>'addContentLabel']) ?>
+<?= Html::textInput('vin-code', '', ['class' => 'addContent__adress', 'placeholder' => 'VIN код', 'id'=>'vin']) ?>

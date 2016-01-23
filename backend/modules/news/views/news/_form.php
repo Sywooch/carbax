@@ -1,6 +1,7 @@
 <?php
 
 use backend\modules\category_news\widgets\CategoryTreeSelect;
+use mihaildev\elfinder\InputFile;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use mihaildev\ckeditor\CKEditor;
@@ -24,23 +25,40 @@ use mihaildev\ckeditor\CKEditor;
     <?= CategoryTreeSelect::widget(['selectId' => $model->cat_id,'selectName'=>'News[cat_id]'])?>
     <?/*= $form->field($model, 'description')->textarea(['rows' => 6]) */?>
     <?php echo $form->field($model, 'description')->widget(CKEditor::className(),[
-        'editorOptions' => [
-            'preset' => 'full', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
-            'inline' => false, //по умолчанию false
-        ],
+        'editorOptions' => \mihaildev\elfinder\ElFinder::ckeditorOptions('elfinder', [
+            'preset' => 'full',
+            'inline' => false,
+            'path' => 'frontend/web/media/upload',
+        ]),
     ]);?>
 
     <?/*= $form->field($model, 'short_description')->textarea(['rows' => 6]) */?>
     <?php echo $form->field($model, 'short_description')->widget(CKEditor::className(),[
-        'editorOptions' => [
-            'preset' => 'full', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
-            'inline' => false, //по умолчанию false
-        ],
+        'editorOptions' => \mihaildev\elfinder\ElFinder::ckeditorOptions('elfinder', [
+            'preset' => 'full',
+            'inline' => false,
+            'path' => 'frontend/web/media/upload',
+        ]),
     ]);?>
     <!-- <?= $form->field($model, 'dt_add')->textInput() ?> -->
 
+    <?php
+    echo InputFile::widget([
+        'language'   => 'ru',
+        'controller' => 'elfinder', // вставляем название контроллера, по умолчанию равен elfinder
+        'filter'     => 'image',    // фильтр файлов, можно задать массив фильтров https://github.com/Studio-42/elFinder/wiki/Client-configuration-options#wiki-onlyMimes
+        'name'       => 'myinput',
+        'id' => 'itemImg',
+        'template'      => '<div class="input-group">{input}<span class="span-btn">{button}</span></div>',
+        'options'       => ['class' => 'form-control'],
+        'buttonOptions' => ['class' => 'btn btn-primary'],
+        'value'      => '',
+        'buttonName' => 'Выбрать изображение'
+    ]);
+    ?>
+
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Редактировать', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
