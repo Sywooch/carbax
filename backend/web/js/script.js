@@ -1,3 +1,6 @@
-/**
- * Created by 7 on 31.10.2015.
- */
+$(document).ready(function ($) {
+    $(document).on('change','#itemImg',function(){
+        var path = $('#itemImg').val();
+        $('.media__upload_img').html('<img src="' +path + '"/>');
+    });
+});

@@ -60,12 +60,15 @@ class SelectAuto extends Widget
                     ]);
                 }
                 if ($this->auto->auto_type == 2) {
-                    $this->render('auto_params', ['autoWidgetParams' => $autoWidgetParams]);
+                    $htmlParams = $this->render('auto_params', ['autoWidgetParams' => $autoWidgetParams]);
                 }
                 if ($this->auto->auto_type == 3) {
                     $htmlParams = $this->render('auto_params', ['autoWidgetParams' => $autoWidgetParams]);
                 }
             }
+
+           // Debug::prn($autoWidgetParams);
+
             if($this->auto->auto_type == '1'){
                 $brand = BcbBrands::find()->all();
                 $year = BrendYear::find()->where(['id_brand'=>$this->auto->brand_id])->one();

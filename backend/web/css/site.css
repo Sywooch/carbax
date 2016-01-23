@@ -257,3 +257,7 @@ nav ul ul ul {
 .media__upload_img{
     padding: 10px;
 }
+
+.imgUpload {
+    margin-bottom: 30px;
+}

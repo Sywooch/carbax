@@ -19,9 +19,25 @@ use mihaildev\ckeditor\CKEditor;
 
     <?/*= $form->field($model, 'img_url')->textInput(['maxlength' => true]) */?>
 
-    <button class="btn btn-primary" data-toggle="modal" data-target=".media_upload">Выберите изображение</button>
-    <div class="media__upload_img"><img src="<?=$model->img_url;?>" width="100px"/><input id="mediaUploadInputFile" name="mediaUploadInputFile" type="hidden" value="<?=$model->img_url;?>"/></div>
+<div class="imgUpload">
+    <div class="media__upload_img"><img src="<?=$model->img_url;?>" width="100px"/></div>
 
+    <?php
+    echo InputFile::widget([
+        'language'   => 'ru',
+        'controller' => 'elfinder', // вставляем название контроллера, по умолчанию равен elfinder
+        'filter'     => 'image',    // фильтр файлов, можно задать массив фильтров https://github.com/Studio-42/elFinder/wiki/Client-configuration-options#wiki-onlyMimes
+        'name'       => 'mediaUploadInputFile',
+        'id' => 'itemImg',
+
+        'template'      => '<div class="input-group">{input}<span class="span-btn">{button}</span></div>',
+        'options'       => ['class' => 'form-control'],
+        'buttonOptions' => ['class' => 'btn btn-primary'],
+        'value' => $model->img_url,
+        'buttonName' => 'Выбрать изображение'
+    ]);
+    ?>
+</div>
     <?= CategoryTreeSelect::widget(['selectId' => $model->cat_id,'selectName'=>'News[cat_id]'])?>
     <?/*= $form->field($model, 'description')->textarea(['rows' => 6]) */?>
     <?php echo $form->field($model, 'description')->widget(CKEditor::className(),[
@@ -42,20 +58,7 @@ use mihaildev\ckeditor\CKEditor;
     ]);?>
     <!-- <?= $form->field($model, 'dt_add')->textInput() ?> -->
 
-    <?php
-    echo InputFile::widget([
-        'language'   => 'ru',
-        'controller' => 'elfinder', // вставляем название контроллера, по умолчанию равен elfinder
-        'filter'     => 'image',    // фильтр файлов, можно задать массив фильтров https://github.com/Studio-42/elFinder/wiki/Client-configuration-options#wiki-onlyMimes
-        'name'       => 'myinput',
-        'id' => 'itemImg',
-        'template'      => '<div class="input-group">{input}<span class="span-btn">{button}</span></div>',
-        'options'       => ['class' => 'form-control'],
-        'buttonOptions' => ['class' => 'btn btn-primary'],
-        'value'      => '',
-        'buttonName' => 'Выбрать изображение'
-    ]);
-    ?>
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Редактировать', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -1,5 +1,6 @@
 <?php
 
+use mihaildev\elfinder\InputFile;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -29,8 +30,30 @@ use yii\widgets\ActiveForm;
     <br>
    <!-- <?/*= Html::label('Ярлык', 'icon'); */?>
     --><?/*= Html::fileInput('icon',null,['id'=>'icon','class'=>'form-control']) */?>
-    <button class="btn btn-primary" data-toggle="modal" data-target=".media_upload">Выберите изображение</button>
-    <div class="media__upload_img"><img src="<?=$model->icon;?>" width="100px"/><input id="mediaUploadInputFile" name="mediaUploadInputFile" type="hidden" value="<?=$model->icon;?>"/></div>
+    <!--<button class="btn btn-primary" data-toggle="modal" data-target=".media_upload">Выберите изображение</button>
+    <div class="media__upload_img"><img src="<?/*=$model->icon;*/?>" width="100px"/><input id="mediaUploadInputFile" name="mediaUploadInputFile" type="hidden" value="<?/*=$model->icon;*/?>"/></div>-->
+
+    <div class="imgUpload">
+        <div class="media__upload_img"><img src="<?=$model->icon;?>" width="100px"/></div>
+
+        <?php
+        echo InputFile::widget([
+            'language'   => 'ru',
+            'controller' => 'elfinder', // вставляем название контроллера, по умолчанию равен elfinder
+            'filter'     => 'image',    // фильтр файлов, можно задать массив фильтров https://github.com/Studio-42/elFinder/wiki/Client-configuration-options#wiki-onlyMimes
+            'name'       => 'mediaUploadInputFile',
+            'id' => 'itemImg',
+
+            'template'      => '<div class="input-group">{input}<span class="span-btn">{button}</span></div>',
+            'options'       => ['class' => 'form-control'],
+            'buttonOptions' => ['class' => 'btn btn-primary'],
+            'value' => $model->icon,
+            'buttonName' => 'Выбрать изображение'
+        ]);
+        ?>
+    </div>
+
+
    <!-- --><?/*= $form->field($icon, 'icon_s')->fileInput()->label('Ярлык') */?>
     <br>
     <?= $form->field($model,'view_widget_auto_type')->checkbox(['label'=>'Отображать выбор типа авто']);?>

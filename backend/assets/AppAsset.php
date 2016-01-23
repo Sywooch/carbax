@@ -30,8 +30,8 @@ class AppAsset extends AssetBundle
         'js/assets/js/jquery.knob.js',
         'js/assets/js/jquery.ui.widget.js',
         'js/assets/js/jquery.iframe-transport.js',
-        'js/assets/js/jquery.fileupload.js',
-        'js/assets/js/script.js',*/
+        'js/assets/js/jquery.fileupload.js',*/
+        'js/script.js',
 
     ];
     public $depends = [

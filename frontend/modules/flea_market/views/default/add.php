@@ -113,10 +113,12 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::input('text', 'price', null, ['class' => 'addPrice', 'id' => 'addPrice', 'required' => 'required']) ?>
             <span> руб.</span>
 
-            
-            <h3>Разместить от</h3>
-            <?= Html::radioList('userOrService', '1', ['1' => 'Пользователь', '2' => 'Сервис'], ['class' => 'userOrService', 'id' => 'addUserOrService']) ?>
-            <div id="selectServiseWr"></div>
+            <?php $role = Yii::$app->authManager->getRolesByUser(Yii::$app->user->id);
+            if(!empty($role['business']) || !empty($role['admin']) || !empty($role['root'])):?>
+                <h3>Разместить от</h3>
+                <?= Html::radioList('userOrService', '1', ['1' => 'Пользователь', '2' => 'Сервис'], ['class' => 'userOrService', 'id' => 'addUserOrService']) ?>
+                <div id="selectServiseWr"></div>
+            <?php endif;?>
         </div>
         <!--<div class="addContent--save">
             <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>

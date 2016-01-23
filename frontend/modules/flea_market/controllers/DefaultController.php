@@ -72,12 +72,13 @@ class DefaultController extends Controller
         $market = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])
             ->orWhere(['prod_type' => 2])
             ->orWhere(['prod_type' => 3])
+            ->orderBy('dt_add DESC')
             ->all();
         return $this->render('index', ['market' => $market]);
     }
 
     public function actionSale_auto(){
-        $market = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 1])->all();
+        $market = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 1])->orderBy('dt_add DESC')->all();
         return $this->render('sale_auto', ['market' => $market]);
     }
 
@@ -331,10 +332,11 @@ class DefaultController extends Controller
             $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])
                 ->orWhere(['prod_type' => 2])
                 ->orWhere(['prod_type' => 3])
+                ->orderBy('dt_add DESC')
                 ->all();
         }
         else {
-            $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 1])->all();
+            $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 1])->orderBy('dt_add DESC')->all();
         }
 
         return $this->render($view,
@@ -384,7 +386,7 @@ class DefaultController extends Controller
     public function actionProduct_delite(){
         Market::deleteAll(['id'=>$_GET['id']]);
         if($_GET['type'] == 'auto'){
-            $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id, 'prod_type' => 1])->all();
+            $marketAll = Market::find()->where(['user_id'=>Yii::$app->user->id, 'prod_type' => 1])->orderBy('dt_add DESC')->all();
             Yii::$app->session->setFlash('success','Авто успешно удалено');
             return $this->render('sale_auto', ['market' => $marketAll,]);
         }
