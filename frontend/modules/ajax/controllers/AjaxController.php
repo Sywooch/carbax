@@ -524,5 +524,4 @@ class AjaxController extends Controller
             return $this->renderPartial('auto_params');
         }
     }
-
 }

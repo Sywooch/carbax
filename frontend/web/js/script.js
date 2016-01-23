@@ -57,6 +57,16 @@ jQuery(document).ready(function ($) {
                     return false;
                 }
             });
+            $('#addForm :input:visible[pattern="[0-9]"]').each(function()
+            {
+                if(!this.validity.valid)
+                {
+                    $(this).focus();
+                    $(this).addClass('errorInput');
+                    // break
+                    return false;
+                }
+            });
         }
     });
 
@@ -788,6 +798,10 @@ jQuery(document).ready(function ($) {
         }else{
             $('.addAddressMarketInp').html('');
         }
+    });
+
+    $(document).bind('input', '#itemImg',function(){
+        alert("Hello");
     });
 
 
