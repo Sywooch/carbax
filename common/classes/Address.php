@@ -42,12 +42,22 @@ class Address
      * @return integer
      */
     public static function get_city(){
-        $cookies = Yii::$app->request->cookies;
-        if ($cookies->get('city_id') !== null) {
-            return $cookies->get('city_id')->value;
+        if(Yii::$app->user->isGuest){
+            $ip = Yii::$app->ipgeobase->getLocation(Custom_function::getRealIpAddr());
+            $regionId = GeobaseRegion::find()->where(['name' => $ip['region']])->one()->id;
+            return $cityId = GeobaseCity::find()->where(['region_id' => $regionId, 'name' => $ip['city']])->one()->id;
         }
-        else {
-            return User::findOne(Yii::$app->user->id)->city_id;
+        else{
+            $cookies = Yii::$app->request->cookies;
+            if(isset($_POST['city_id'])){
+                return $_POST['city_id'];
+            }
+            elseif ($cookies->get('city_id') !== null) {
+                return $cookies->get('city_id')->value;
+            }
+            else {
+                return User::findOne(Yii::$app->user->id)->city_id;
+            }
         }
     }
 
@@ -58,7 +68,10 @@ class Address
      */
     public static function get_region(){
         $cookies = Yii::$app->request->cookies;
-        if ($cookies->get('region_id') !== null) {
+        if(isset($_POST['city_id'])){
+            return GeobaseCity::findOne([$_POST['city_id']])->region_id;
+        }
+        elseif ($cookies->get('region_id') !== null) {
             return $cookies->get('region_id')->value;
         }
         else {
@@ -88,11 +101,20 @@ class Address
      * @return string
      */
     public static function get_city_name($id = false){
-        if($id){
-            return GeobaseCity::findOne($id)->name;
+        if(Yii::$app->user->isGuest){
+            $ip = Yii::$app->ipgeobase->getLocation(Custom_function::getRealIpAddr());
+            return $ip['city'];
         }
         else {
-            return GeobaseCity::findOne(self::get_city())->name;
+            if(isset($_POST['city_name'])){
+                return $_POST['city_name'];
+            }
+            elseif($id){
+                return GeobaseCity::findOne($id)->name;
+            }
+            else {
+                return GeobaseCity::findOne(self::get_city())->name;
+            }
         }
     }
 }

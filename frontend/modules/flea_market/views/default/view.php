@@ -1,4 +1,9 @@
 <?php
+use common\classes\Debug;
+use common\models\db\AwpBodyType;
+use common\models\db\AwpDrive;
+use common\models\db\AwpTransmission;
+use common\models\db\AwpTypeMotor;
 use common\models\db\GeobaseCity;
 use common\models\db\Services;
 use common\models\db\User;
@@ -99,7 +104,30 @@ $this->title = $product->name;
                    <span>Модель: <?=$auto->model_name; ?></span><br />
                    <span>Модификация:  <?=$auto->type_name; ?></span><br />
                    <?php if(!empty($auto->year)):?>
-                       <span>Год выпуска: <?=$auto->year;?></span>
+                       <span>Год выпуска: <?=$auto->year;?></span><br />
+                   <?php endif; ?>
+                   <?php if(!empty($autoParams->body_type)):?>
+                       <span>Типе кузова: <?= AwpBodyType::findOne($autoParams->body_type)->name;?></span><br />
+                   <?php endif; ?>
+
+                   <?php if(!empty($autoParams->run)):?>
+                       <span>Пробег тыс.км.: <?=$autoParams->run;?></span><br />
+                   <?php endif; ?>
+
+                   <?php if(!empty($autoParams->transmission)):?>
+                       <span>Коробка передач: <?= AwpTransmission::findOne($autoParams->transmission)->name;?></span><br />
+                   <?php endif; ?>
+
+                   <?php if(!empty($autoParams->type_motor)):?>
+                       <span>Двигатель: <?= AwpTypeMotor::findOne($autoParams->type_motor)->name;?></span><br />
+                   <?php endif; ?>
+
+                   <?php if(!empty($autoParams->size_motor)):?>
+                       <span>Объем двигателя: <?=$autoParams->size_motor;?></span><br />
+                   <?php endif; ?>
+
+                   <?php if(!empty($autoParams->drive)):?>
+                       <span>Привод: <?= AwpDrive::findOne($autoParams->drive)->name;?></span><br />
                    <?php endif; ?>
                 <?php
                 }

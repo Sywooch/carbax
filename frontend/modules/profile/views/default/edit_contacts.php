@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <p>Ваш Email <?= Html::textInput('email',$user->email,['id'=>'user_email']);?></p>
         <p>Ваш телефон <?= Html::textInput('telephon',$user->telephon,['id'=>'user_telephon','title'=>'Формат: +7 (999) 999-9999']);?></p>
         <p>Ваш skype <?= Html::textInput('skype',$user->skype,['id'=>'user_skype']);?></p>
-        <p>Ваш icq <?= Html::textInput('icq',$user->icq,['id'=>'user_isq']);?></p>
+        <p>Ваш icq <?= Html::textInput('icq',$user->icq,['id'=>'user_isq','class'=>'numberInput']);?></p>
         <p>Ваша ссылка на профиль ВК <?= Html::textInput('link_vk',$user->link_vk,['id'=>'user_link_vk']);?></p>
         <!--<p>Регион по умолчанию
             <?/*=Html::dropDownList('region',$user->region_id, ArrayHelper::map($regions, 'id', 'name'), ['prompt'=>'Регион', 'id'=>'profileRegion'])*/?>

@@ -810,7 +810,13 @@ jQuery(document).ready(function ($) {
                 return false;
         };
     }
-
+    if(document.getElementById('run')) {
+        document.getElementById("user_isq").onkeypress = function (event) {
+            event = event || window.event;
+            if (event.charCode && (event.charCode < 48 || event.charCode > 57))// проверка на event.charCode - чтобы пользователь мог нажать backspace, enter, стрелочку назад...
+                return false;
+        };
+    }
     $(document).on('click','.addAddressMarket',function(){
         if($(".addAddressMarket").prop("checked")){
             $('.addAddressMarketInp').html('<input type="text" name="address" class="addContent__title">');
