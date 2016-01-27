@@ -23,6 +23,7 @@ use Yii;
  * @property integer $id_info_disk
  * @property integer $id_info_splint
  * @property integer $new
+ * @property integer $published
  */
 class Market extends \yii\db\ActiveRecord
 {

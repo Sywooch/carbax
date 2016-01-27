@@ -748,3 +748,18 @@ input.searchPriceFrom,input.searchPriceTo {
     width: 80px;
     height: 20px;
 }
+
+.FleaMarketProductNewProduct__wr {
+    display: inline-block;
+    width: 24%;
+}
+
+.FleaMarketProductNewProduct__wr img{
+    display:block;
+    height: 130px;
+    margin: 0 auto;
+}
+
+.nameProduct{
+    text-align:center;
+}

@@ -3,6 +3,8 @@
 use frontend\modules\mainpage\widgets\MainPageMap;
 use frontend\modules\news\widgets\NewsWidgetFront;
 use frontend\modules\offers\widgets\OffersWidgetFront;
+use frontend\widgets\FleaMarketMostViewed;
+use frontend\widgets\FleaMarketNewProduct;
 use frontend\widgets\FleaMarketSearch;
 use frontend\widgets\SelectRequestTypes;
 $this->title = "Автопортал";
@@ -115,6 +117,8 @@ $this->title = "Автопортал";
 </section>-->
 <?= MainPageMap::widget() ?>
 <?= FleaMarketSearch::widget() ?>
+<?= FleaMarketNewProduct::widget(); ?>
+<?= FleaMarketMostViewed::widget(); ?>
 <!--<section class="filter">
 <div class="contain">
 <h2 class="blockTitle-left">Поиск - барахолка</h2>

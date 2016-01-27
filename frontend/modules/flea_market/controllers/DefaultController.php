@@ -110,10 +110,10 @@ class DefaultController extends Controller
             if($_POST['radio_type_product'] == 3) {
                 $infoDisk = InfoDisk::find()->where(['id' => $_POST['id_info_disk']])->one();
             }
-            Yii::$app->session->setFlash('success','Товар успешно отредактирован');
+            Yii::$app->session->setFlash('success','Товар успешно отредактирован и отправлен на модерацию.');
         }
         else {
-            Yii::$app->session->setFlash('success','Товар успешно добавлен');
+            Yii::$app->session->setFlash('success','Товар успешно добавлен и отправлен на модерацию.');
             $market = new Market();
             //$autoWidget = new AutoWidget();
         }
@@ -579,9 +579,12 @@ class DefaultController extends Controller
 
         $result = Market::find()
             ->leftJoin('`geobase_city`', '`geobase_city`.`id` = `market`.`city_id`')
-            ->leftJoin('auto_widget', '`auto_widget`.`id` = `market`.`id_auto_widget`')
-            ->leftJoin('`favorites`', '`favorites`.`market_id` = `market`.`id` AND `favorites`.`user_id` = '.Yii::$app->user->id )
-            ->leftJoin('`auto_widget_params`','`auto_widget_params`.`id_auto_widget` = `auto_widget`.`id`')
+            ->leftJoin('auto_widget', '`auto_widget`.`id` = `market`.`id_auto_widget`');
+            if(isset(Yii::$app->user->id)){
+                $result->leftJoin('`favorites`', '`favorites`.`market_id` = `market`.`id` AND `favorites`.`user_id` = '.Yii::$app->user->id );
+            }
+
+            $result->leftJoin('`auto_widget_params`','`auto_widget_params`.`id_auto_widget` = `auto_widget`.`id`')
             ->leftJoin('`info_splint`','`info_splint`.`id` = `market`.`id_info_splint`')
             ->leftJoin('`info_disk`','`info_disk`.`id` = `market`.`id_info_disk`')
             ->filterWhere(
@@ -593,7 +596,8 @@ class DefaultController extends Controller
                 [
                     '`market`.`city_id`' => $_GET['citySearch']
                 ]
-            );
+            )
+            ->andWhere(['published'=>1]);
 
         /**
          * Если введено текстовое поле для поиска

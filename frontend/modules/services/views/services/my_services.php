@@ -1,7 +1,8 @@
 <?php
 use common\models\db\Address;
+use common\models\db\Services;
 
-$this->title = "Мои сервисы";
+$this->title = Services::getNameTypeServicec($_GET['service_id']);
 $this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
 $this->params['breadcrumbs'][] = ['label' => 'Выбор сервиса', 'url' => ['/select_service']];
 $this->params['breadcrumbs'][] = $this->title;
