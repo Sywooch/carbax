@@ -203,7 +203,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
            // \common\classes\Debug::prn($service);
 
             if($serviceType->view_widget_auto_type == 1){
-                echo AutoType::widget(['serviceId' => $serviceID]);
+                echo AutoType::widget(['serviceId' => $serviceID,'viewBrandAuto' => ($serviceType->view_mark_auto == 1) ? '1' : '0']);
             }
             ?>
 

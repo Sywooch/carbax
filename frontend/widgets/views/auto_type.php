@@ -21,7 +21,7 @@ use frontend\widgets\SelectMultiplayMoto;
         <?php endforeach; ?>
 
     <?php
-
+if($viewBrandAuto == 1){
     foreach ($autoSelect as $at) {
         switch($at->auto_type_id){
             case 1: $brands = SelectMultiplayAuto::widget(['serviceId' =>$serviceId]); break;
@@ -38,4 +38,5 @@ use frontend\widgets\SelectMultiplayMoto;
         <div class="selectCargoCar"><?= $cargoBrands; ?></div>
         <div class="selectMoto"><?= $moto; ?></div>
     </div>
+<?php } ?>
 </div>

@@ -1,4 +1,5 @@
 <?php
+use common\classes\Debug;
 use frontend\modules\services\widgets\GetAllGroupById;
 use frontend\widgets\AutoType;
 use frontend\widgets\ComfortZone;
@@ -155,9 +156,11 @@ $this->registerCssFile('/css/bootstrap.min.css');
             </div>-->
             <?= GetAllGroupById::widget(['groupId' => $_GET['service_type']]) ?>
             <?= ComfortZone::widget()?>
+
             <?php
+            //Debug::prn($service);
                 if($service->view_widget_auto_type == 1){
-                    echo AutoType::widget();
+                    echo AutoType::widget(['viewBrandAuto' => ($service->view_mark_auto == 1) ? '1' : '0']);
                 }
             ?>
 

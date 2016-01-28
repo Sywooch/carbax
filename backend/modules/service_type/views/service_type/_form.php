@@ -57,6 +57,7 @@ use yii\widgets\ActiveForm;
    <!-- --><?/*= $form->field($icon, 'icon_s')->fileInput()->label('Ярлык') */?>
     <br>
     <?= $form->field($model,'view_widget_auto_type')->checkbox(['label'=>'Отображать выбор типа авто']);?>
+    <?= $form->field($model,'view_mark_auto')->checkbox(['label'=>'Отображать выбор марок авто']);?>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Редактировать', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

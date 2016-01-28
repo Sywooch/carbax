@@ -310,7 +310,7 @@ class ServicesController extends Controller
 
         //Debug::prn($_FILES);
 
-        if(!empty($_FILES['file']['name'])){
+        /*if(!empty($_FILES['file']['name'])){
             if(!file_exists('media/users/'.Yii::$app->user->id)){
                 mkdir('media/users/'.Yii::$app->user->id.'/');
             }
@@ -320,7 +320,7 @@ class ServicesController extends Controller
             $dir = 'media/users/'.Yii::$app->user->id.'/'.date('Y-m-d').'/';
             move_uploaded_file($_FILES['file']['tmp_name'], $dir.$_FILES['file']['name']);
             $serv->photo = $dir.$_FILES['file']['name'];
-        }
+        }*/
         $serv->save();
         //Добавляем зоны комфорта
         if(isset($_POST['comfort'])) {

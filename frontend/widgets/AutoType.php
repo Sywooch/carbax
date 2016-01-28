@@ -14,13 +14,13 @@ use yii\helpers\ArrayHelper;
 class AutoType extends Widget {
     public $serviceId;
     public $view;
+    public $viewBrandAuto;
     public function run(){
+
+        //Debug::prn($this->view);
+
         if($this->view == 1){
-           /* $carBrands = ServiceBrandCars::find()->where(['service_id'=>$this->serviceId])->all();
-            $serviceAutoType = ServiceAutoType::find()->where(['service_id'=>$this->serviceId])->all();
-            foreach($serviceAutoType as $st){
-                $autoType[] = AutoType::find()->where(['id'=>$st->auto_type_id])->one();
-            }*/
+
             $serviceAutoType = ServiceAutoType::find()->where(['service_id'=>$this->serviceId])->all();
             foreach($serviceAutoType as $st){
                 $autoType[] = \common\models\db\AutoType::find()->where(['id'=>$st->auto_type_id])->one();
@@ -33,13 +33,13 @@ class AutoType extends Widget {
         $autoTypeSelect = ServiceAutoType::find()->where(['service_id'=>$this->serviceId])->all();
         $autoTypeSelect = ArrayHelper::index($autoTypeSelect, 'auto_type_id');
 
-       /* /*---Редактирование брендов--
-        $selectBrand = ServiceBrandCars::find()->where(['service_id'=>$this->serviceId,'type'=>1])->all();*/
+
         return $this->render('auto_type',
             [
                 'auto' => $autoType,
                 'autoSelect' => $autoTypeSelect,
                 'serviceId' => $this->serviceId,
+                'viewBrandAuto' => $this->viewBrandAuto,
             ]);
         }
     }
