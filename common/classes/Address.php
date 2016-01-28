@@ -68,15 +68,22 @@ class Address
      * @return integer
      */
     public static function get_region(){
-        $cookies = Yii::$app->request->cookies;
-        if(isset($_POST['city_id'])){
-            return GeobaseCity::findOne([$_POST['city_id']])->region_id;
+        if(Yii::$app->user->isGuest){
+            $ip = Yii::$app->ipgeobase->getLocation(Custom_function::getRealIpAddr());
+            $regionId = GeobaseRegion::find()->where(['name' => $ip['region']])->one()->id;
+            return $regionId;
         }
-        elseif ($cookies->get('region_id') !== null) {
-            return $cookies->get('region_id')->value;
-        }
-        else {
-            return User::findOne(Yii::$app->user->id)->region_id;
+        else{
+            $cookies = Yii::$app->request->cookies;
+            if(isset($_POST['city_id'])){
+                return GeobaseCity::findOne([$_POST['city_id']])->region_id;
+            }
+            elseif ($cookies->get('region_id') !== null) {
+                return $cookies->get('region_id')->value;
+            }
+            else {
+                return User::findOne(Yii::$app->user->id)->region_id;
+            }
         }
     }
 
@@ -87,11 +94,16 @@ class Address
      * @return string
      */
     public static function get_region_name($id = false){
-        if($id){
-            return GeobaseRegion::findOne($id)->name;
+        if(Yii::$app->user->isGuest){
+            $ip = Yii::$app->ipgeobase->getLocation(Custom_function::getRealIpAddr());
+            return $ip['region'];
         }
         else {
-            return GeobaseRegion::findOne(self::get_region())->name;
+            if ($id) {
+                return GeobaseRegion::findOne($id)->name;
+            } else {
+                return GeobaseRegion::findOne(self::get_region())->name;
+            }
         }
     }
 

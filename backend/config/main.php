@@ -49,6 +49,9 @@ return [
         'complaint' => [
             'class' => 'backend\modules\complaint\Complaint',
         ],
+        'adsmanager' => [
+            'class' => 'backend\modules\adsmanager\Adsmanager',
+        ],
     ],
     'components' => [
         'request' => [
@@ -66,8 +69,16 @@ return [
                 'news' => '/news/news',
                 'request_type' => '/request_type/request_type',
                 'request_add_form' => '/request_add_form/request_add_form',
-                'complaint' => 'complaint/complaint/index'
+                'complaint' => 'complaint/complaint/index',
+                'adsmanager' => 'adsmanager/adsmanager/index',
             ],
+        ],
+        'urlManagerFrontend'=>[
+            'enablePrettyUrl' => true,
+            'class' => 'yii\web\UrlManager',
+            'showScriptName'=>false,
+            'hostInfo' => 'http://carbax/frontend',
+            'baseUrl' => '/',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -80,6 +91,10 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'useFileTransport' => false,
         ],
     ],
     'params' => $params,

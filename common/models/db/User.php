@@ -116,4 +116,15 @@ class User extends \yii\db\ActiveRecord
     {
         $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
+
+    public static function getRoleName($userId = false){
+        $id = ($userId) ? $userId : Yii::$app->user->id;
+        $role = Yii::$app->authManager->getRolesByUser($id);
+        $role = array_keys($role);
+        return $role[0];
+    }
+
+    public static function getEmail($id){
+        return User::findOne($id)->email;
+    }
 }
