@@ -22,10 +22,20 @@ $this->params['breadcrumbs'][] = $this->title;
         <span id="selectAuto">
             <?php
             if ($requestType->view_widget_auto == 1) {
-                echo SelectAuto::widget(['view' => $requestType->view_category_auto]);
-                echo "<div style='width: 100%; float: left; margin-bottom: 20px'><a href='#' id='selectAutoFromGarage'>Выбрать авто из гаража</a></div>";
+                echo SelectAuto::widget(['view' => $requestType->view_category_auto,'select_from_garage'=>true]);
+               // echo "<div style='width: 100%; float: left; margin-bottom: 20px'><a href='#' id='selectAutoFromGarage'>Выбрать авто из гаража</a></div>";
+            }
+
+            if($requestType->view_mark_auto == 1){
+            echo Html::dropDownList(
+                'typeAuto',
+                0,
+                ['1'=>'Легковой автомобиль','2'=>'Грузовой автомобиль','3'=>'Мото транспорт'],
+                ['prompt' => 'Выберите тип авто', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typeAuto', 'required' => 'required']
+            ); 
             }
             ?>
+
         </span>
         <div class="singleContent__desc">
             <?php

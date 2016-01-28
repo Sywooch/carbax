@@ -66,9 +66,10 @@ use yii\widgets\ActiveForm;
     <?= Html::label('Выберите формы','formType');?>
     <?= Html::dropDownList('formType',$selForm,$formType,['id'=>'formType','class'=>'form-control','multiple'=>'multiple']); ?>
 
+    <?= $form->field($model,'view_mark_auto')->checkbox(['label'=>'Отображать только тип авто','class'=>'view_mark_auto']);?>
+    <?= $form->field($model,'view_widget_auto')->checkbox(['label'=>'Отображать выбор марки авто','class'=>'view_widget_auto']);?>
+    <?= $form->field($model,'view_category_auto')->checkbox(['label'=>'Отображать выбор категорий авто','class'=>'view_category_auto']);?>
 
-    <?= $form->field($model,'view_widget_auto')->checkbox(['label'=>'Отображать выбор марки авто']);?>
-    <?= $form->field($model,'view_category_auto')->checkbox(['label'=>'Отображать выбор категорий авто']);?>
 
 
    <!-- --><?/*= Html::checkbox('view_vidjet_auto',$ch,['label'=>'Отображать выбор марки авто']); */?>
