@@ -534,6 +534,8 @@ jQuery(document).ready(function ($) {
         var address = $('#inputAddressWidget').val();
         var active = $('#addressCount').attr('active-id');
         var count = parseInt($('#addressCount').attr('count'), 10);
+        var serviceTypeid = $('#service_type_id').val();
+        //console.log(serviceTypeid);
 
         $('#' + active).val(region + ', г. ' + city + ', ' + address);
         if(document.getElementById(active + '_region')!==null) {
@@ -550,7 +552,12 @@ jQuery(document).ready(function ($) {
         var i = 0;
         $('.addContent__adress').each(function () {
             address.push({
-                address:$(this).val()
+                address:$(this).val(),
+                balloon: {
+                    title: region + ' ' + city,
+                    address: address,
+                    serviceTypeId:serviceTypeid
+                }
             });
             //address.push($(this).val());
             i = i + 1;

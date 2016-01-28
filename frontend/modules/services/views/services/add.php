@@ -17,7 +17,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
 <div class="addContent">
 
     <form id="addForm" action="add_to_sql" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="service_type" value="<?= $_GET['service_type'] ?>">
+        <input type="hidden" id="service_type_id" name="service_type" value="<?= $_GET['service_type'] ?>">
         <input type="text" name="title" class="addContent__title" placeholder="Название автосервиса" required>
 
         <input type="text" id="address_0" name="address[0][title]" class="addContent__adress addressEvent" placeholder="Адрес автосервиса" required>
