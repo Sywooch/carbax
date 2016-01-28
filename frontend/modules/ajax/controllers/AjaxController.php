@@ -531,8 +531,34 @@ class AjaxController extends Controller
         echo 1;
     }
 
+    public function actionUpload_file_service(){
+        //Debug::prn($_FILES);
+        if(!file_exists('media/users/'.Yii::$app->user->id)){
+            mkdir('media/users/'.Yii::$app->user->id.'/');
+        }
+        if(!file_exists('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'))){
+            mkdir('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'));
+        }
+        $dir = 'media/users/'.Yii::$app->user->id.'/'.date('Y-m-d').'/';
+        $i = 0;
+
+        if(!empty($_FILES['file']['name'][0])){
+            move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir.$_FILES['file']['name'][0]);
+            $service = Services::findOne($_GET['id']);
+            $service->photo = $dir.$_FILES['file']['name'][0];
+            $service->save();
+        }
+        echo 1;
+    }
+
     public function actionPseudo_delete_file(){
         ProductImg::deleteAll(['id' => $_GET['id']]);
+        echo 1;
+    }
+    public function actionPseudo_delete_file_service(){
+        $service = Services::findOne($_GET['id']);
+        $service->photo = '';
+        $service->save();
         echo 1;
     }
 
