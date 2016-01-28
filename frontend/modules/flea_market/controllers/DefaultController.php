@@ -72,6 +72,7 @@ class DefaultController extends Controller
         $market = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])
             ->orWhere(['prod_type' => 2])
             ->orWhere(['prod_type' => 3])
+            ->orWhere(['prod_type' => 4])
             ->orderBy('dt_add DESC')
             ->all();
         return $this->render('index', ['market' => $market]);
@@ -214,7 +215,6 @@ class DefaultController extends Controller
             $infoDisk->save();
             $market->id_info_disk = $infoDisk->id;
         }
-
         $market->region_id = $_POST['region'];
         $market->city_id = $_POST['city'];
         $market->descr = $_POST['descr'];

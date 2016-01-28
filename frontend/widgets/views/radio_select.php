@@ -8,7 +8,7 @@ use yii\helpers\Html;
 ?>
 <div class="radio_select">
 <?php
-    echo Html::radioList('radio_type_product',$select,['1'=>'Запчасти','2'=>'Шины','3'=>'Диски'],['class'=>'radioTypeSelect','required'=>'required']);
+    echo Html::radioList('radio_type_product',$select,['1'=>'Запчасти','2'=>'Шины','3'=>'Диски','4'=>'Прочее'],['class'=>'radioTypeSelect','required'=>'required']);
 ?>
 </div>
 <div class="view_widget">

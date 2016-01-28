@@ -53,6 +53,10 @@ foreach($img as $i){
             echo Html::input('hidden','id_info_disk',$auto->id);
             $selected = 3;
         }
+        if($product->prod_type == 4){
+
+            $selected = 4;
+        }
     ?>
 
     <?php if($_GET['type'] == 'zap'){ ?>
@@ -65,7 +69,7 @@ foreach($img as $i){
     <span id="typesBox"><?/*= Html::dropDownList('types',$product->type_id,ArrayHelper::map($type, 'typ_id', 'typ_mmt_cds'), ['class'=>'addContent__adress','prompt'=>'Выберите тип']);*/?></span>-->
 
     <?php
-
+    //Debug::prn($selected);
     if($_GET['type'] == 'zap'){
         echo RadioSelectTypeProduct::widget(['select'=>$selected,'model'=>$auto,'cat'=>$product->category_id_all]);
     }

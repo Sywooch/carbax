@@ -4,6 +4,7 @@ use backend\modules\request_add_form\models\RequestAddForm;
 use common\models\db\AddFieldsGroup;
 use common\models\db\RequestTypeGroup;
 use frontend\modules\services\widgets\GetAllGroupById;
+use frontend\widgets\RegionSelect;
 use frontend\widgets\RequestAddFieldGroup;
 use frontend\widgets\SelectAddress;
 use frontend\widgets\SelectAuto;
@@ -16,8 +17,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <section class="main-container">
     <form id="addForm" action="send_request" method="post">
         <?php
-        echo SelectAddress::widget(['address' => false]);
-        ?>
+/*        echo SelectAddress::widget(['address' => false]);
+
+        */?>
+        <?= RegionSelect::widget() ?>
 
         <span id="selectAuto">
             <?php
@@ -32,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 0,
                 ['1'=>'Легковой автомобиль','2'=>'Грузовой автомобиль','3'=>'Мото транспорт'],
                 ['prompt' => 'Выберите тип авто', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typeAuto', 'required' => 'required']
-            ); 
+            );
             }
             ?>
 
