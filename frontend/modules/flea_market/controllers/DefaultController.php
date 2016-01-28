@@ -889,7 +889,6 @@ class DefaultController extends Controller
         /*$nameTypeAuto = CategoriesAuto::find()->where(['id' => $product->id_auto_type])->one();*/
         if($product->prod_type == 0 || $product->prod_type == 1){
             $auto = AutoWidget::find()->where(['id'=>$product->id_auto_widget])->one();
-            $autoParams = AutoWidgetParams::findOne(['id_auto_widget' => $auto->id]);
         }
         if($product->prod_type == 2){
             $auto = InfoSplint::find()->where(['id'=>$product->id_info_splint])->one();
@@ -922,8 +921,7 @@ class DefaultController extends Controller
                 'city' => $city,
                 'category' => $nameCat,
                 'images' => $images,
-                'favorites' => $favorites,
-                'autoParams' => $autoParams,
+                'favorites' => $favorites
             ]);
     }
 }

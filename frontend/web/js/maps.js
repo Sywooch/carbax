@@ -3,6 +3,7 @@ jQuery(document).ready(function ($){
 
     if(document.getElementsByClassName('addContent__adress').length > 0){//те такие блоки есть
         var address = $('.addContent__adress').val();
+        var addressText = $('.addContent__adress').val();
         var map = new Map();
         if(address == ''){
             map.mapInit();
@@ -12,7 +13,11 @@ jQuery(document).ready(function ($){
             var i = 0;
             $('.addContent__adress').each(function () {
                 address.push({
-                    address:$(this).val()
+                    address:$(this).val(),
+                    balloon: {
+                        serviceTypeId:$('#service_type_id').val(),
+                        title:addressText
+                    }
                 });
                 //address.push($(this).val());
                 i = i + 1;

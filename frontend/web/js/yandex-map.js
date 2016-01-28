@@ -53,12 +53,17 @@ function Map( options ) {
                         geoItem.done(
                             function(res) {
                                 if(a.balloon){
-                                    var prop = {
-                                        /*iconContent: 'Я тащусь',*/
-                                        hintContent: '<b>' + a.balloon.title + '</b><br> ' + a.address,
-                                        balloonContentHeader: '<b>' + a.balloon.title + '</b>',
-                                        balloonContentBody: "<img src='" + a.balloon.photo + "' width='75px'><br>" + "Адврес: " + a.address + "<br>Телефоны: " + a.balloon.phone +"<br>Email: " + a.balloon.email,
-                                        balloonContentFooter: "<a href='/services/services/view_service?service_id=" + a.balloon.serviceId + "'>Подробнее" + "</a>"
+                                    if(a.balloon.photo){
+                                        var prop = {
+                                            /*iconContent: 'Я тащусь',*/
+                                            hintContent: '<b>' + a.balloon.title + '</b><br> ' + a.address,
+                                            balloonContentHeader: '<b>' + a.balloon.title + '</b>',
+                                            balloonContentBody: "<img src='" + a.balloon.photo + "' width='75px'><br>" + "Адврес: " + a.address + "<br>Телефоны: " + a.balloon.phone +"<br>Email: " + a.balloon.email,
+                                            balloonContentFooter: "<a href='/services/services/view_service?service_id=" + a.balloon.serviceId + "'>Подробнее" + "</a>"
+                                        }
+                                    }
+                                    else {
+                                        var prop = {}
                                     }
                                 }
                                 else {

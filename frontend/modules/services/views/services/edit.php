@@ -6,6 +6,7 @@ use frontend\widgets\ComfortZone;
 use frontend\widgets\SelectAddress;
 use frontend\widgets\SelectMultiplayAuto;
 use kartik\file\FileInput;
+use yii\helpers\Url;
 
 $this->title = "Редактирование";
 $this->params['breadcrumbs'][] = ['label' => 'Мои сервисы', 'url' => ['select_service']];
@@ -17,7 +18,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
 <div class="addContent">
 
     <form id="addForm" action="update_to_sql" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="service_type" value="<?= $_GET['service_type'] ?>">
+        <input type="hidden" id="service_type_id" name="service_type" value="<?= $_GET['service_type'] ?>">
         <input type="hidden" name="service_id" value="<?= $_GET['service_id'] ?>">
 
         <input type="text" name="title" class="addContent__title" value="<?=$name?>">
@@ -50,7 +51,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
             <h2>Добавить логотип компании</h2>
             <?php
             echo '<label class="control-label">Добавить фото</label>';
-            echo FileInput::widget([
+            /*echo FileInput::widget([
                 'name' => 'file',
                 'id' => 'input-4',
                 'attribute' => 'attachment_1',
@@ -61,6 +62,38 @@ $this->registerCssFile('/css/bootstrap.min.css');
                     'maxFileCount'=> 1,
                     'showRemove'=> false,
                     'showUpload'=> false],
+            ]);*/
+            echo FileInput::widget([
+                'name' => 'file[]',
+                'id' => 'input-5',
+                'attribute' => 'attachment_1',
+                'value' => '/media/img/1.png',
+                'options' => [
+                    'multiple' => true,
+                    'showCaption' => false,
+                    'showUpload' => false,
+                    'uploadAsync'=> false,
+                ],
+                'pluginOptions' => [
+                    'uploadUrl' => Url::to(['/ajax/ajax/upload_file_service?id='.$service->id]),
+                    'maxFileCount' => 1,
+                    'language' => "ru",
+                    'previewClass' => 'hasEdit',
+                    'uploadAsync'=> false,
+                    'showUpload' => false,
+                    'dropZoneEnabled' => false,
+                    /*'initialPreviewShowDelete' => true,*/
+                    'overwriteInitial' => false,
+                    'initialPreview' => [
+                        "<img src='/$service->photo' class='file-preview-image'>"
+                    ],
+                    'initialPreviewConfig' => [
+                        [
+                            'caption' => '',
+                            'url' => '/ajax/ajax/pseudo_delete_file_service?id=' . $service->id
+                        ]
+                    ]
+                ],
             ]);
             ?>
             <h3>Описание</h3>
@@ -175,7 +208,8 @@ $this->registerCssFile('/css/bootstrap.min.css');
             ?>
 
             <div class="addContent--save">
-                <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
+                <input type="submit" value="Сохранить" class="btn btn-save" id="saveInfo">
+                <!--<a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>-->
             </div>
         </div>
         <span id="addressCount" count="<?=$countAddress?>" active-id="">

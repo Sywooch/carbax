@@ -8,6 +8,7 @@
 
 namespace common\classes;
 
+use common\classes\Custom_function;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
 use common\models\db\User;
