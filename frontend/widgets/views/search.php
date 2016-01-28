@@ -55,7 +55,7 @@ if (isset($_GET['by'])) {
         <form action="/flea_market/default/search">
             <? /*= Html::hiddenInput('categ', $_GET['categ']); */ ?>
             <div class="filter__searchline">
-                <?= Html::dropDownList('prod_type', $sel['prod_type'], ['2' => 'Транспорт', '1' => 'Запчасти', '3' => 'Шины', '4' => 'Диски'], ['prompt' => 'Что ищите?', 'class' => 'prodTypeSearch']) ?>
+                <?= Html::dropDownList('prod_type', $sel['prod_type'], ['2' => 'Транспорт', '1' => 'Запчасти', '3' => 'Шины', '4' => 'Диски', '5' => 'Прочее'], ['prompt' => 'Что ищите?', 'class' => 'prodTypeSearch']) ?>
                 <?php if(empty($_GET['region'])): ?>
                     <input value="<?= $sel['search'] ?>" type="text" name="search" class="filter__searchline--search" placeholder="Поиск по объявлениям">
                 <?php else: ?>
