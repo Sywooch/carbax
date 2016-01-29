@@ -11,6 +11,10 @@ use Yii;
  * @property integer $request_type_id
  * @property integer $form_type
  * @property string $key
+ * @property string $class
+ * @property string $input_id
+ * @property string $placeholder
+ * @property string $template
  */
 class RequestAddForm extends \yii\db\ActiveRecord
 {
@@ -30,7 +34,8 @@ class RequestAddForm extends \yii\db\ActiveRecord
         return [
             [['name','form_type', 'key'], 'required'],
             [['form_type'], 'integer'],
-            [['name','key'], 'string', 'max' => 255]
+            [['name','key','class', 'input_id', 'placeholder'], 'string', 'max' => 255],
+            ['template', 'string']
         ];
     }
 
@@ -44,6 +49,10 @@ class RequestAddForm extends \yii\db\ActiveRecord
             'form_type' => 'Тип формы',
             'key' => 'Key',
             'name' => 'Название',
+            'template' => 'Шаблон',
+            'placeholder' => 'Placeholder',
+            'input_id' => 'Id',
+            'class' => 'Класс',
         ];
     }
 }

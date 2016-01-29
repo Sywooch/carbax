@@ -1,9 +1,11 @@
 <?php
 $this->registerCssFile('/css/bootstrap.min.css');
 use backend\modules\request_add_form\models\RequestAddForm;
+use common\classes\Debug;
 use common\models\db\AddFieldsGroup;
 use common\models\db\RequestTypeGroup;
 use frontend\modules\services\widgets\GetAllGroupById;
+use frontend\widgets\CustomField;
 use frontend\widgets\RequestAddFieldGroup;
 use frontend\widgets\SelectAddress;
 use frontend\widgets\SelectAuto;
@@ -37,13 +39,29 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
 
         </span>
+        <?/*= CustomField::widget([
+            'name'=>'my',
+            'template' => '<div class="labelBox">{label}</div><div class="inputBox">{input}</div>',
+            'inputOption' => ['class'=>'myClass', 'id'=>'myId'],
+            'labelName' => 'Поле',
+            'value' => 'Привет',
+            'labelOption' => ['for'=>'myId']
+        ])*/?>
         <div class="singleContent__desc">
             <?php
             foreach ($addForm as $f) {
                 $k = RequestAddForm::find()->where(['id' => $f->add_form_id])->one();
                 //\common\classes\Debug::prn($k->form_type);
-
-                if ($k->form_type == 0) {
+                //Debug::prn($k);
+                echo CustomField::widget([
+                    'name' => $k->key,
+                    'template' => $k->template,
+                    'inputOption' => ['class' => $k->class, 'id' => $k->input_id, 'placeholder' => $k->placeholder],
+                    'labelOption' => ['for' => $k->input_id, 'style' => 'width:100%'],
+                    'labelName' => $k->name,
+                    'type' => ($k->form_type == 0) ? 'input' : 'textarea'
+                ]);
+                /*if ($k->form_type == 0) {
                     echo Html::label($k->name, null, ['style' => 'width:100%']);
                     echo "<br />";
                     echo Html::textInput($k->key, null, ['class' => 'addContent__adress']);
@@ -52,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     echo Html::label($k->name, null, ['style' => 'width:100%']);
                     echo "<br />";
                     echo Html::textarea($k->key, '', ['class' => 'addContent__description']);
-                }
+                }*/
             }
             ?>
         </div>
