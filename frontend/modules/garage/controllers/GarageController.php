@@ -108,6 +108,7 @@ class GarageController extends Controller
                 $modelName = CarModel::find()->where(['id_car_model'=>$_POST['model']])->one()->name;
                 $typeName = CarModification::find()->where(['id_car_modification'=>$_POST['types']])->one()->name;
                 $autoWidget->year = 0;
+                $autoWidget->moto_type = $_POST['mototype'];
             }
             $autoWidget->brand_name = $manName;
             $autoWidget->model_name = $modelName;

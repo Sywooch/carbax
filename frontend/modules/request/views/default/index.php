@@ -1,15 +1,17 @@
 <?php
 $this->registerCssFile('/css/bootstrap.min.css');
+
 use backend\modules\request_add_form\models\RequestAddForm;
 use common\classes\Debug;
-use common\models\db\AddFieldsGroup;
 use common\models\db\RequestTypeGroup;
 use frontend\modules\services\widgets\GetAllGroupById;
 use frontend\widgets\CustomField;
+use frontend\widgets\RegionSelect;
 use frontend\widgets\RequestAddFieldGroup;
 use frontend\widgets\SelectAddress;
 use frontend\widgets\SelectAuto;
 use yii\helpers\Html;
+
 $this->title = "Добавить заявку";
 $this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
 $this->params['breadcrumbs'][] = ['label' => 'Мои заявки', 'url' => ['/my_requests']];
@@ -18,8 +20,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <section class="main-container">
     <form id="addForm" action="send_request" method="post">
         <?php
-        echo SelectAddress::widget(['address' => false]);
-        ?>
+/*        echo SelectAddress::widget(['address' => false]);
+
+        */?>
+        <?= RegionSelect::widget() ?>
 
         <span id="selectAuto">
             <?php
@@ -34,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 0,
                 ['1'=>'Легковой автомобиль','2'=>'Грузовой автомобиль','3'=>'Мото транспорт'],
                 ['prompt' => 'Выберите тип авто', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typeAuto', 'required' => 'required']
-            ); 
+            );
             }
             ?>
 

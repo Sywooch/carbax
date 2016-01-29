@@ -53,6 +53,10 @@ foreach($img as $i){
             echo Html::input('hidden','id_info_disk',$auto->id);
             $selected = 3;
         }
+        if($product->prod_type == 4){
+
+            $selected = 4;
+        }
     ?>
 
     <?php if($_GET['type'] == 'zap'){ ?>
@@ -65,7 +69,7 @@ foreach($img as $i){
     <span id="typesBox"><?/*= Html::dropDownList('types',$product->type_id,ArrayHelper::map($type, 'typ_id', 'typ_mmt_cds'), ['class'=>'addContent__adress','prompt'=>'Выберите тип']);*/?></span>-->
 
     <?php
-
+    //Debug::prn($selected);
     if($_GET['type'] == 'zap'){
         echo RadioSelectTypeProduct::widget(['select'=>$selected,'model'=>$auto,'cat'=>$product->category_id_all]);
     }
@@ -82,7 +86,7 @@ foreach($img as $i){
     <div id="addAddressMarket">
         <?= Html::checkbox('addAddressMarket',(empty($product->address) ? false : true),['class'=>'addAddressMarket']);?>
 
-        <?= Html::label('Уточниить адрес'); ?>
+        <?= Html::label('Уточнить адрес'); ?>
 
         <span class="addAddressMarketInp"><?= empty($product->address) ? false : "<input type='text' name='address' class='addContent__title' value='$product->address'>"; ?></span>
     </div>

@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div id="addAddressMarket">
             <?= Html::checkbox('addAddressMarket',false,['class'=>'addAddressMarket']);?>
 
-            <?= Html::label('Уточниить адрес'); ?>
+            <?= Html::label('Уточнить адрес'); ?>
 
             <span class="addAddressMarketInp"></span>
         </div>
