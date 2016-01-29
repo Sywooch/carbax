@@ -51,7 +51,9 @@ $this->title = $product->name;
                         <div class="fleamarket__created">Размещено <?=date('d.m.y в H:i:s',$product->dt_add);?></div>
                         <?php if($product->user_id == Yii::$app->user->id): ?>
                             <span class="operationsAd">
-                    <a href="/flea_market/default/edit_product?id=<?=$product->id;?>">Редактировать,</a> <a href="#">закрыть,</a> <a href="#">поднять</a> объявление
+
+                                <?= Html::a('Редактировать',['/flea_market/default/edit_product', 'id'=>$product->id,'type' => ($product->prod_type != 1) ? 'zap' : '' ])?>
+                    ,</a> <a href="#">закрыть,</a> <a href="#">поднять</a> объявление
                 </span>
                         <?php endif; ?>
                     </div>

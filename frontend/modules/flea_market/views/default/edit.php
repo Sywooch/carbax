@@ -86,7 +86,7 @@ foreach($img as $i){
     <div id="addAddressMarket">
         <?= Html::checkbox('addAddressMarket',(empty($product->address) ? false : true),['class'=>'addAddressMarket']);?>
 
-        <?= Html::label('Уточниить адрес'); ?>
+        <?= Html::label('Уточнить адрес'); ?>
 
         <span class="addAddressMarketInp"><?= empty($product->address) ? false : "<input type='text' name='address' class='addContent__title' value='$product->address'>"; ?></span>
     </div>

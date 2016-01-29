@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
             <tr>
                 <td>
-                    <a href="/flea_market/default/view_product?id=<?=$mark->id?>"><b><?=$mark->name?></b></a>
+                    <a href="/flea_market/default/view?id=<?=$mark->id?>"><b><?=$mark->name?></b></a>
                 </td>
                 <td>
                     <?php
