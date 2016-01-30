@@ -89,7 +89,7 @@ AppAsset::register($this);
             <img src="<?= Url::base() ?>/media/img/smalllogo.png" alt="">
             <h5>Car<span class="orange">bax</span></h5>
         </a>
-        <a href="<?=Url::to(['/profile/default/view'])?>" class="header--autotext"><?= User::getLogin(Yii::$app->user->id);?></a>
+        <a href="<?=Url::to(['/profile/default/view'])?>" class="header--autotext"><?/*= User::getLogin(Yii::$app->user->id);*/?></a>
         <a href="<?=Url::to('/office')?>" class="header--perscab">Личный кабинет</a>
         <form action="#" class="header--region" id="auto_complete_form" method="post">
             <?= CityAutoComplete::widget(); ?>

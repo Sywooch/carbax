@@ -32,7 +32,6 @@ class InfoDisk extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type_disk', 'type_disk_name', 'diameter', 'rim_width', 'number_holes', 'diameter_holest', 'sortie'], 'required'],
             [['type_disk', 'diameter', 'number_holes'], 'integer'],
             [['diameter_holest','rim_width', 'sortie'], 'number'],
             [['type_disk_name'], 'string', 'max' => 255]

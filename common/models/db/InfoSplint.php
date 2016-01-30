@@ -30,7 +30,6 @@ class InfoSplint extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['diameter', 'seasonality', 'seasonality_name', 'section_width', 'section_height'], 'required'],
             [['diameter', 'seasonality', 'section_width', 'section_height'], 'integer'],
             [['seasonality_name'], 'string', 'max' => 255]
         ];
