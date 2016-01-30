@@ -74,7 +74,7 @@ foreach($img as $i){
         echo RadioSelectTypeProduct::widget(['select'=>$selected,'model'=>$auto,'cat'=>$product->category_id_all]);
     }
     else{
-        echo SelectAuto::widget(['view' => ($_GET['type'] == 'auto') ? '1' : '0', 'select_from_garage' => true,'auto'=>$auto]);
+        echo SelectAuto::widget(['view' => ($_GET['type'] == 'auto') ? '1' : '0', 'select_from_garage' => true,'auto'=>$auto,'paramsView'=>true]);
     }
     ?>
 

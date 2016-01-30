@@ -891,7 +891,7 @@ class DefaultController extends Controller
             $auto = AutoWidget::find()->where(['id'=>$product->id_auto_widget])->one();
             $autoParams = AutoWidgetParams::findOne(['id_auto_widget'=>$auto->id]);
         }
-        
+
         if($product->prod_type == 2){
             $auto = InfoSplint::find()->where(['id'=>$product->id_info_splint])->one();
         }

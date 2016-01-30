@@ -5,7 +5,9 @@ use common\models\db\AdditionalFields;
 <?php
     if(!empty($auto)):
 ?>
-
+    <span>Марка:</span><?= $auto->brand_name; ?>
+    <span>Модель:</span><?= $auto->model_name; ?>
+    <span>Тип:</span><?= $auto->type_name; ?>
 <?php
     endif;
 ?>

@@ -58,7 +58,7 @@ if ($product->published != 1) {
                                 <?php
                                     $linkOption = ['/flea_market/default/edit_product', 'id' => $product->id];
                                     if($product->prod_type != 1){
-                                        $linkOption['zap'] = 'zap';
+                                        $linkOption['type'] = 'zap';
                                     }
                                 ?>
                                 <?= Html::a('Редактировать', $linkOption) ?>
