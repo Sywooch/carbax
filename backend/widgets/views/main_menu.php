@@ -32,7 +32,7 @@ use yii\helpers\Html;
 
         <li><?= Html::a('Пользователи', ['/user/admin/index']) ?></li>
         <li><?= Html::a('Объявления', ['/adsmanager']) ?></li>
-        <!--<li><?/*= Html::a('Медиа-менеджер', ['/media']) */?></li>-->
+        <li><?= Html::a('Медиа-менеджер', ['/media']) ?></li>
 
     </ul>
 </nav>
