@@ -1,0 +1,114 @@
+.breadcrumb {
+  padding-left: 0; }
+  .breadcrumb li {
+    display: inline-block; }
+  .breadcrumb > li + li::before {
+    content: ">";
+    padding: 0px 10px;
+    color: #1b1b1b; }
+    .breadcrumb > li + li::before a {
+      color: #777777; }
+
+.news_page_view h1 {
+  margin-top: 10px; }
+.news_page_view .news__descr {
+  color: #373636;
+  font-family: "HelveticaNeueCyrLight";
+  text-align: justify;
+  font-size: 16px; }
+.news_page_view .news__date-add {
+  color: #b3bac1;
+  font-family: "HelveticaNeueCyrLight";
+  font-size: 14px; }
+
+.news__news-list {
+  float: left;
+  width: 700px;
+  margin-right: 60px; }
+  .news__news-list .news__image {
+    width: 100%;
+    margin: 25px 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px; }
+
+.news_page {
+  float: left; }
+  .news_page .pagination {
+    text-align: center; }
+    .news_page .pagination li {
+      display: inline-block;
+      font-family: "HelveticaNeueCyrBold";
+      color: #ff6b00; }
+      .news_page .pagination li a {
+        color: #ff6b00; }
+      .news_page .pagination li.active a {
+        color: #000;
+        pointer-events: none; }
+      .news_page .pagination li.disabled {
+        color: #000; }
+
+.news__more-link {
+  clear: both;
+  display: block;
+  text-align: center; }
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+.offers-form input, .offers-form textarea, .offers-form select {
+  display: block; }
+.offers-form input[type="text"], .offers-form textarea, .offers-form select {
+  width: 239px;
+  height: 30px;
+  border-radius: 3px / 4px;
+  -o-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: #fff;
+  outline-style: none;
+  border: 1px solid #C6CCD2;
+  padding: 0 0px 0 10px;
+  margin-bottom: 15px; }
+.offers-form .field-offers-img_url {
+  margin-bottom: 15px; }
+.offers-form textarea {
+  width: 445px;
+  height: 190px;
+  resize: none;
+  margin-top: 0;
+  padding: 10px; }
+.offers-form label {
+  font-family: "HelveticaNeueCyrMedium";
+  font-size: 15px;
+  margin: 10px 0;
+  display: block; }
+.offers-form .btn {
+  display: block;
+  border: 0;
+  color: #fff;
+  font-family: "HelveticaNeueCyrMedium";
+  text-align: center;
+  font-size: 13px;
+  width: 111px;
+  height: 27px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  -ms-border-radius: 1px;
+  border-radius: 1px;
+  -o-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: #ff6b00;
+  margin: 0 auto;
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -ms-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  transition: all 0.4s linear; }
+  .offers-form .btn:hover {
+    background-color: #cc5600; }
+
+/*# sourceMappingURL=evgeniy-styles.css.map */

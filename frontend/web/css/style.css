@@ -1,0 +1,1014 @@
+.serviceItem {
+    display: block;
+    height: 70px;
+    margin: 20px;
+    float: left;
+    width: 220px;
+}
+
+.serviceIcon, .serviceLink {
+    float: left;
+}
+
+.serviceLink {
+    margin: 22px 0 0 15px;
+    width: 140px;
+}
+
+.wrap {
+    /*margin-left: 200px;*/
+    /*float: left;*/
+    /*width: 55%;*/
+    /*padding: 20px;*/
+    min-height: 400px;
+}
+
+.wrap-page {
+    /*margin-left: 200px;*/
+    float: left;
+    width: 60%;
+    min-height: 400px;
+}
+
+.h2-left {
+    float: left;
+    width: 100%;
+}
+
+.regHeaderLink {
+    color: white;
+}
+
+.loginLinks {
+    position: absolute;
+    right: 30px;
+    width: 160px;
+    color: white;
+}
+
+.garage-create {
+    width: 40%;
+}
+
+.addServiceBtn {
+    margin: 20px;
+}
+
+.addContent {
+   /* width: 90%!important;*/
+}
+
+.singleContent__desc h3 {
+    display: block;
+    width: 100%;
+    float: left;
+}
+
+.header--region--box {
+    line-height: 23px;
+}
+.cleared {
+    display: block;
+    clear: both;
+    float: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+#serviceInfo{
+    background: url("../media/img/success.png") no-repeat;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+
+.cl-column li{
+    margin: 10px 0;
+}
+
+.cl-column li:first-letter{
+    text-transform: uppercase;
+}
+
+.catPath {
+    margin-top: 25px;
+}
+
+section.fleamarket__wrap_view, section.request_autoschool{
+    display: block;
+    float: left;
+    position: relative;
+    width: 76%;
+    padding: 0 15px;
+}
+
+.fleamarket__headProductTop {
+    padding: 15px;
+    margin-top: 5px;
+}
+
+.fleamarket__cat_city {
+    display: block;
+    float: left;
+    width: 740px;
+    font-family: HelveticaNeueCyrLight;
+    font-size: 12.5px;
+}
+
+.fleamarket__views_product{
+    font-family: HelveticaNeueCyrLight;
+    font-size: 12.5px;
+}
+
+.fleamarket__views_product span{
+    color:#20527b;
+    text-decoration: underline;
+}
+
+.fleamarket__head h1{
+    font-family: 'HelveticaNeueCyrBold';
+    font-size: 21px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.fleamarket__created {
+    display: block;
+    /*float: left;*/
+    margin-right: 20px;
+}
+
+.fleamarket__head span.operationsAd{
+    background: url(../media/img/edit_close_product.png) no-repeat 0% 50%;
+    padding-left: 35px;
+}
+
+.fleamarket__head span a{
+    color: #ff6b00;
+}
+
+.price {
+    height: 40px;
+    border-bottom: 1px solid #cfcfcf;
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+.price span{
+    font-size: 15px;
+    color: #fff;
+    background: #ff6b00;
+    padding: 5px;
+    border-radius:5px;
+    margin-left: 165px;
+    font-family: "HelveticaNeueCyrBold";
+}
+
+.fleamarket__company{
+    margin-bottom: 15px;
+}
+
+.fleamarket__company span{
+    margin-left: 130px;
+}
+
+.fleamarket__contact_person span{
+    margin-left: 80px;
+}
+
+span.fleamarket__user_tel {
+    background: #e8e8e8 url(../media/img/tel.png) no-repeat 3% 50%;
+    border:1px solid #90a6b8;
+    /*border-radius: 12px;*/
+    color: #0c4370;
+    font-size: 13px;
+    font-family: HelveticaNeueCyrLight;
+    padding: 4px;
+    padding-left: 18px;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+
+span.fleamarket__user_mes{
+    background: #e8e8e8 url(../media/img/message.png) no-repeat 3% 50%;
+    border:1px solid #90a6b8;
+    /*border-radius: 12px;*/
+    color: #0c4370;
+    font-size: 13px;
+    font-family: HelveticaNeueCyrLight;
+    padding: 4px;
+    padding-left: 18px;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.fleamarket__user_contact {
+    margin: 10px 0;
+    display: block;
+    margin-left: 205px;
+}
+
+span.info {
+    display: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 7px;
+    font-size: 13px;
+}
+
+.fleamarket__city{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #cfcfcf;
+    padding-bottom: 15px;
+}
+
+.fleamarket__city span{
+    margin-left: 160px;
+}
+
+.fleamarket__type_product {
+    margin: 15px 0;
+}
+
+.fleamarket_product_description {
+    margin: 15px 0;
+}
+
+.fleamarket__number_ads {
+    color: #aaaaaa;
+}
+
+.fleamarket__slider {
+    margin: 15px 0;
+}
+
+.fleamarket__footer{
+    margin:15px 0;
+    background: #2B2B2B;
+    /*border:1px solid #90a6b8;*/
+    padding:7px;
+}
+.fleamarket__footer a{
+    font-size: 14px;
+    color:#fff;
+    text-decoration:underline;
+}
+
+a.write_seller{
+    background: url(../media/img/write_seller.png) no-repeat 0% 50%;
+    padding-left: 20px;
+    margin: 0 10px;
+}
+
+a.favorites_products{
+    background: url(../media/img/favorites_products.png) no-repeat 0% 50%;
+    padding-left: 20px;
+    margin: 0 10px;
+}
+
+a.complain_products{
+    background: url(../media/img/complain_products.png) no-repeat 0% 50%;
+    padding-left: 20px;
+    margin: 0 10px;
+}
+
+a.share_products{
+    background: url(../media/img/share_products.png) no-repeat 0% 50%;
+    padding-left: 20px;
+    margin: 0 10px;
+}
+
+.fleamarket__socseti {
+    float: right;
+    margin-right: 30px;
+}
+
+.fleamarket__similar_ads a{
+    display: inline-block;
+    margin-right: 40px;
+}
+
+.fleamarket__similar_ads_product_wr{
+    width:141px;
+}
+
+.fleamarket__similar_ads_product_wr img{
+    width: 141px;
+}
+
+span.fleamarket__similar_ads_product_name{
+    font-family: 'HelveticaNeueCyrBold';
+    display: block;
+    color: #0c4370;
+}
+
+span.fleamarket__similar_ads_product_price{
+    font-family: 'HelveticaNeueCyrLight';
+    color: #282828;
+    display: block;
+    margin: 5px 0;
+}
+
+span.fleamarket__similar_ads_product_city{
+    font-family: 'HelveticaNeueCyrLight';
+    color: #282828;
+    display: block;
+    font-size: 12px;
+}
+
+.profileElement {
+    margin: 10px 0 0 0;
+    font-weight: bold;
+   /* padding: 3px;*/
+}
+
+.regionWidgetBox {
+    width: 100%;
+    float: left;
+    display: block;
+    margin: 10px 0 10px 0;
+}
+
+.requestItem {
+    width: 100%;
+    padding: 10px;
+}
+
+.addContent__adress {
+    width: 93%;
+}
+
+.addContent__description {
+    width: 95%;
+}
+
+.fleamarket__ads__item--desc {
+    display: block;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 40px;
+    position: relative;
+    width: 70%;
+}
+
+.fleamarket__ads__item--desc p.fleamarket__ads__item--desc--specification {
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    height: 35px;
+    vertical-align: bottom;
+    overflow: hidden;
+}
+
+.messsage_view_header {
+    margin-bottom: 5px;
+}
+
+.dateSend{
+    float:right;
+}
+
+input.message_to,input.message_subject {
+    float: none;
+}
+
+.selectFromGarage {
+    width: 100%;
+    float: left;
+}
+
+.header__container {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 1056px;
+}
+
+.filter__container-select--check {
+    display: block;
+    float: left;
+    position: relative;
+    margin-left: -28px;
+    margin-right: -25px;
+}
+
+.filter__container-select--check input[type="checkbox"] + label{
+    font-size: 16px;
+    display: block;
+    float: left;
+    text-transform: inherit;
+    margin: 0;
+    width: 25%;
+   /* margin: 5px auto;*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    margin-bottom: 25px;
+}
+
+
+.filter__container-select--check input[type="checkbox"] + label span, .filter__container-select--check input[type="checkbox"]:checked + label span
+{/*margin: 0px 65px;*/}
+.filter__container-select--check input[type="checkbox"] + label span{
+    display: block;
+}
+
+.news__block {
+    display: block;
+    float: left;
+    width: 286px;
+    margin: 0px 66px 25px 0px;
+    overflow: hidden;
+}
+.contain .news__block:last-of-type{
+    margin: 0px 0px 25px 0px;
+}
+
+.blockTitle-left{
+    margin:25px 0;
+}
+
+/*.deals__line{
+    margin: 0px -3%;
+    margin-bottom: 25px;
+}*/
+
+.news{
+    padding:0;
+}
+
+.header{
+    position: fixed;
+    z-index: 9999;
+}
+
+.news__block img{
+    border-radius:0px;
+}
+
+.filtr_request_type {
+    padding-bottom: 20px;
+}
+
+.myRequest {
+    display: block;
+    float: left;
+}
+
+.blockTitle-left {
+    text-align: center;
+    color: #000;
+    font-family: "Calibri";
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.requestIcon{
+    margin-bottom: 10px;
+}
+
+.offers__image{
+    width:500px;
+}
+
+.selectBrand{
+
+}
+
+.selectCar, .selectCargoCar, .selectMoto {
+    display: inline-block;
+}
+
+.selectCar.selectCarAutoWidget {
+    display: block;
+    width: 100%;
+}
+
+.selectMoto {
+    margin: 0;
+}
+
+input[type="radio"].userOrService {
+    display: inline-block!important;
+}
+
+.form-control {
+    padding:6px 12px 2px 12px;
+}
+
+.modal-backdrop{
+    z-index:0;
+}
+
+.filter{
+    position:static!important;
+}
+
+select.citySearch{
+    width: 105px;
+    height: 30px;
+    padding: 0;
+    display: block;
+    float: left;
+    /*border: 3px solid #ff6b00;
+    margin-top: -6px;*/
+}
+
+input.filter__searchline--search {
+    width:393px
+}
+
+select.brandAutoSearch, select.motoTypeSearch, select.yearSearch{
+    /*width: 198px;
+    height: 30px;
+    padding: 0;
+    display: block;
+    float: left;
+    border: 3px solid #ff6b00;
+    margin-top: -6px;*/
+}
+
+select.yearSearch{
+    /*float: right;
+    margin-right: -395px;*/
+}
+
+.SearchSelectBrand {
+    float: right;
+    margin-right: 198px;
+}
+
+.fleamarket__head h1 span{
+    font-size: 15px;
+}
+
+.delFavorites{
+    background-position: 0px -22px!important;;
+}
+
+.contain_favorites {
+    width: 850px;
+    padding: 0 15px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+}
+
+.contain_favorites .fleamarket__ads__item--desc {
+    display: block;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 40px;
+    position: relative;
+    width: 64%;
+}
+
+.btn-save {
+    background-color: #ff6b00;
+    color: whitesmoke;
+    margin: 0 auto;
+    width: 100px;
+    display: block;
+}
+
+.radio_select {
+    display: inline-block;
+    width: 100%;
+}
+
+.profileAvatar {
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: top;
+}
+
+.profileName {
+    color: #ff6b00;
+    font-size: 17px;
+}
+
+.cleared {
+    display: block;
+    clear: both;
+    float: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.profileEmail{
+    background: url(../media/img/profile/iconEmail.png) no-repeat 0% 94%;;
+    padding-left: 35px;
+}
+
+.profileSkype{
+    background: url(../media/img/profile/iconSkypel.png) no-repeat 0% 50%;;
+    padding-left: 35px;
+}
+
+.profileIcq{
+    background: url(../media/img/profile/iconIsq.png) no-repeat 0% 50%;;
+    padding-left: 35px;
+}
+
+.profileLink_vk{
+    background: url(../media/img/profile/iconVk.png) no-repeat 0% 50%;;
+    padding-left: 35px;
+}
+.profileTelephon{
+    background: url(../media/img/profile/iconTel.png) no-repeat 0% 50%;;
+    padding-left: 35px;
+}
+
+.busiines_user_profile a{
+    color:black;
+}
+
+
+.filter__container-select--check input[type="checkbox"] + label span {
+    display: inline-block;
+    margin: 0px auto 0;
+    vertical-align: middle;
+    cursor: pointer;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    text-align: center;
+    background: none;
+    width: 80px;
+    height: 93px;
+    margin: 0px 65px;
+    margin-bottom: 15px;
+}
+
+.filter__container-select--check input[type="checkbox"] + label {
+    width:16%;
+}
+
+.filter__container-select--check input[type="checkbox"]:checked + label span{
+    background: none;
+}
+
+.main_category_to_map img{
+    margin-bottom: 10px;
+}
+
+.whatIs {
+    background-size: cover;
+}
+
+div#addAddressMarket {
+    display: inline-block;
+    width: 100%;
+}
+
+input.addAddressMarket {
+    float: left;
+    margin-right: 10px;
+}
+
+select.brandAutoSearch {
+    width: 128px;
+    border: none;
+    height: 30px;
+    outline: none;
+}
+
+select.modelAutoSearch {
+    width: 128px;
+    border: none;
+    height: 30px;
+    outline: none;
+}
+
+select.driveSearch {
+    width: 92px;
+    border: none;
+    height: 30px;
+    outline: none;
+}
+
+select.typeMotorSearch {
+    width: 128px;
+    border: none;
+    height: 30px;
+    outline: none;
+}
+
+select.transSearch {
+    width: 140px;
+    border: none;
+    height: 30px;
+    outline: none;
+}
+
+select.bodySearch {
+    width: 128px;
+    border: none;
+    height: 30px;
+    outline: none;
+}
+
+.DopparamsSearch {
+    margin: 10px 0;
+    border: none;
+    outline: none;
+}
+
+select.typeAutoSearch {
+    border: none;
+    height: 30px;
+    outline: none;
+}
+
+select.motoTypeSearch,select.categ,select.diameterSplintSearch,select.seasonalitySearch,select.section_widthSearch,select.section_heightSearch,select.typeDiskSearch,select.typeDiameterDisk,select.rim_widthSearch,select.number_holesSearch,select.diameter_holestSearch,select.sortieSearch {
+    border: none;
+    height: 30px;
+    outline: none;
+}
+
+.infoDopSearch {
+    display: inline-block;
+    padding: 4px;
+    margin: 3px 20px;
+    color: #fff;
+}
+
+.paramsSearch {
+
+}
+
+.infoDopSearch span {
+    display: block;
+    text-align: center;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+input.searchSizeMotor_from,input.searchSizeMotor_to {
+    width: 50px;
+    height: 20px;
+}
+
+input.searchRunFrom,input.searchRunTo {
+    width: 80px;
+    height: 20px;
+}
+
+input.searchPriceFrom,input.searchPriceTo {
+    width: 80px;
+    height: 20px;
+}
+
+.FleaMarketProductNewProduct__wr {
+    display: inline-block;
+    width: 24%;
+}
+
+.FleaMarketProductNewProduct__wr img{
+    display:block;
+    height: 130px;
+    margin: 0 auto;
+}
+
+.nameProduct{
+    text-align:center;
+}
+
+a.header--autotext{
+    height: 37px
+}
+
+.row{
+    margin:0
+}
+
+.hide_filter__map--checklist{
+    width: 25px;
+    height:100%;
+    background: url(../media/img/stock_mail-filters-apply.png) no-repeat 50% 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+.all_news{
+    display: block;
+    float: left;
+    position: relative;
+    width: 80%;
+    padding: 0;
+    padding-right: 20px;
+}
+
+div#video {
+    padding-top: 100px;
+}
+
+
+.request--auto-school {
+    float: left;
+    width: 86%;
+    margin-bottom: 15px;
+}
+
+label.request_label{
+    float: right;
+    width: 11%!important;
+    padding-top: 10px;
+}
+
+.prava_left, .prava_right {
+    display: block;
+    width: 50%;
+    float: left;
+}
+.request_autoschool .addContent{
+    width:100%!important;
+}
+
+.header--label {
+    border-bottom: 1px solid #5d5d5d;
+    margin-bottom: 5px;
+    color: #3f3f3f;
+    font-weight:bold;
+}
+
+.infoCateg {
+    border-bottom: 1px solid #3f3f3f;
+    display: block;
+    height: 30px;
+}
+
+span.categPrav {
+    width: 58px;
+    display: block;
+    float: left;
+    padding-left: 10px;
+    font-size: 18px;
+}
+.img_prava {
+    display: block;
+    float: left;
+    width: 56px;
+}
+.text_prava{
+    width: 157px;
+    display: block;
+    float: left;
+    line-height: 12px;
+}
+
+span.year {
+    display: block;
+    width: 78px;
+    float: right;
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#breadcrumb{
+    background:#2B2B2B;
+}
+
+.breadcrumb{
+    background-color: transparent;
+}
+
+.logo {
+    float: right;
+    margin-top: -46px;
+    margin-right: 16px;
+}
+
+.breadcrumb li a{
+    color: #ff6b00;
+    font-size: 20px;
+    text-transform: lowercase;
+    font-family: calibri;
+}
+
+.breadcrumb > .active {
+    color: #fff;
+}
+
+.breadcrumb > li + li::before {
+    padding: 0 5px!important;
+    color: #ff6b00!important;
+    content: "/"!important;
+}
+.breadcrumb > li + li:nth-child(2)::before {
+    /*padding: 0 5px;*/
+    color: #ccc!important;
+    content: ""!important;
+}
+
+
+.infoProfile {
+    display: inline-block;
+    width: 72%;
+}
+
+.header_block{
+    position:relative;
+    display: block;
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.header_block:before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1px;
+    width: 100%;
+    background: #000;
+    display: block;
+    z-index: 0;
+}
+
+.header_block span{
+    float:left;
+    background:#fff;
+    position: relative;
+    padding-right: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.header_block a{
+    float:right;
+    background:#fff;
+    position: relative;
+    padding-left: 10px;
+    color: #ff6b00;
+    font-style: italic;
+}
+
+a.addBussines{
+    background: #fff url(../media/img/addBuccines.png) 100% 50% no-repeat;
+    padding-right: 18px;
+}
+
+.write_message{
+    display:block;
+    margin-top: 5px;
+}
+
+.headerProfile .deals__block{
+    width:94%;
+}
+
+.requestDiametr {
+    display: block;
+    float: left;
+    width: 185px;
+}
+
+.requestAddFieldGroup .addContent .singleContent__desc--works{
+    display: block;
+    float: left;
+    width: 208px;
+    position: relative;
+}
+
+.requestAddFieldGroup .addContent .singleContent__desc--works input[type="checkbox"] + label{
+    width: 100%;
+}
+
+.requestAddFieldGroup .addContent{
+    width:100%;
+}
+
+.requestDiametr label {
+    display: inline-block;
+    width: 100%;
+    min-height: 40px;
+    vertical-align: middle;
+}
