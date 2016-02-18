@@ -57,7 +57,7 @@ use yii\widgets\ActiveForm;
 
         <?= $form->field($model, 'new_price')->textInput()->label($model->getAttributeLabel('new_price')) ?>
 
-        <?= $form->field($model, 'discount')->textInput(['disabled'=>'disabled'])->label($model->getAttributeLabel('discount')) ?>
+        <?= $form->field($model, 'discount')->textInput()->label($model->getAttributeLabel('discount')) ?>
 
         <?= $form->field($model, 'region_id')->dropDownList(ArrayHelper::map(GeobaseRegion::find()->orderBy('name')->all(), 'id', 'name'),['prompt'=>'Выберите регион']); ?>
         <span class="city">

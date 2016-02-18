@@ -863,6 +863,14 @@ jQuery(document).ready(function ($) {
 
     $(document).on('click', '.deals__menu--service', function(){
         var serviceTypeId = $(this).attr('serviceTypeId');
+        if(serviceTypeId != '0'){
+            $('#allOffers').attr('href','/offers/offers/all_offers?id=' + serviceTypeId);
+        }
+        else{
+            $('#allOffers').attr('href','/offers/offers/all_offers');
+        }
+
+
         $('.deals__menu--service').removeClass('deals__menu--active');
         $(this).addClass('deals__menu--active');
         $.ajax({
@@ -870,7 +878,7 @@ jQuery(document).ready(function ($) {
             url: "/ajax/ajax/show_offers",
             data: 'serviceTypeId=' + serviceTypeId,
             success: function (data) {
-                console.log(data);
+
                 $('.deals__line').html(data);
             }
         });

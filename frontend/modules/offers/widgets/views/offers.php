@@ -11,10 +11,11 @@ use yii\widgets\LinkPager;
         <div class="deals--topline">
             <img src="/media/img/logo2.png" alt="">
             <h3 class="orange">Спецпредложения</h3>
+            <span><a id="allOffers" href="<?= Url::to(['/offers/offers/all_offers']); ?>">Все спецпредложения</a></span>
         </div>
         <div class="deals__menu">
             <ul>
-                <li><a href="#" class="deals__menu--all deals__menu--service deals__menu--active" serviceId="0">Все</a></li>
+                <li><a href="#" class="deals__menu--all deals__menu--service deals__menu--active" serviceTypeId="0">Все</a></li>
                 <li><a href="#" class="deals__menu--service" serviceTypeId="1">Автосалон</a></li>
                 <li><a href="#" class="deals__menu--service" serviceTypeId="4">Шины / Диски</a></li>
                 <li><a href="#" class="deals__menu--service" serviceTypeId="6">Тюнинг</a></li>
@@ -53,9 +54,6 @@ use yii\widgets\LinkPager;
                         </div>
                     </div>
                 <?php endforeach; ?>
-                <?php if($count > 9):?>
-                    <a href="<?= Url::to(['/offers/offers/all_offers']); ?>">Все спецпредложения</a>
-                <?php endif; ?>
             </div>
 
         </div>

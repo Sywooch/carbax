@@ -1015,9 +1015,26 @@ a.addBussines{
 
 .all_offers{
     width: 80%!important;
+    margin: 0!important;
 }
 
 .all_offers .deals__line{
     width: 100%;
     margin: 0;
+}
+
+.all_offers .deals__menu{
+    height: 52px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    width: 760px;
+}
+
+.all_offers .deals__block{
+    width: 91%;
+    margin:0;
+}
+
+.deals--topline span, .news--topline span{
+    float: right;
 }

@@ -1,14 +1,14 @@
 <?php
 use common\classes\Debug;
+use frontend\modules\offers\widgets\MenuOffer;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
 $this->title = (!empty($serviceType)) ? $serviceType->name : 'Все спецпредложения';
-$this->params['breadcrumbs'][] = ['label' => 'Спецпредложения', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <section class="deals all_offers">
-        <?= \frontend\modules\offers\widgets\MenuOffer::widget();?>
+        <?= MenuOffer::widget();?>
         <div class="deals__line">
             <?php
 
@@ -38,9 +38,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
             <?php endforeach; ?>
-            <?php if($count > 9):?>
-                <a href="<?= Url::to(['/offers/offers/all_offers']); ?>">Все спецпредложения</a>
-            <?php endif; ?>
             <div class="cleared"></div>
             <?= LinkPager::widget(['pagination' => $pagination]) ?>
         </div>

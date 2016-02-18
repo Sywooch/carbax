@@ -612,18 +612,15 @@ class AjaxController extends Controller
     public function actionShow_offers(){
         $address = Address::get_geo_info();
         if($_POST['serviceTypeId'] == 0) {
-            $allOffers = Offers::find()->where(['region_id'=>$address['region_id']])->count();
             $offers = Offers::find()->where(['region_id' => $address['region_id']])->orderBy('dt_add DESC')->limit(9)->all();
         }
         else{
-            $allOffers = Offers::find()->where(['region_id'=>$address['region_id'],'service_type_id'=>$_POST['serviceTypeId']])->count();
             $offers = Offers::find()->where(['region_id' => $address['region_id'],'service_type_id'=>$_POST['serviceTypeId']])->orderBy('dt_add DESC')->limit(9)->all();
         }
 
         return $this->renderPartial('offers',
             [
                 'offers' => $offers,
-                'count' => $allOffers,
                 'serviceTypeId' => $_POST['serviceTypeId'],
             ]);
         //Debug::prn($_POST['serviceTypeId']);
