@@ -55,8 +55,6 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php
             foreach ($addForm as $f) {
                 $k = RequestAddForm::find()->where(['id' => $f->add_form_id])->one();
-                //\common\classes\Debug::prn($k->form_type);
-                //Debug::prn($k);
                 echo CustomField::widget([
                     'name' => $k->key,
                     'template' => $k->template,
@@ -65,16 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'labelName' => $k->name,
                     'type' => ($k->form_type == 0) ? 'input' : 'textarea'
                 ]);
-                /*if ($k->form_type == 0) {
-                    echo Html::label($k->name, null, ['style' => 'width:100%']);
-                    echo "<br />";
-                    echo Html::textInput($k->key, null, ['class' => 'addContent__adress']);
-                }
-                if ($k->form_type == 1) {
-                    echo Html::label($k->name, null, ['style' => 'width:100%']);
-                    echo "<br />";
-                    echo Html::textarea($k->key, '', ['class' => 'addContent__description']);
-                }*/
+
             }
             ?>
         </div>

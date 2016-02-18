@@ -25,13 +25,13 @@ class NewsController extends \yii\web\Controller
 		$query = News::find();
 		$countQuery = clone $query;
 		$pages = new Pagination(['totalCount' => $countQuery->count()]);
-		$pages->pageSize = 8;
+		$pages->pageSize = 10;
 		$models = $query->offset($pages->offset)
 			->limit($pages->limit)
 			->orderBy('id DESC')
 			->all();
 		return $this->render('index', [
-			'models' => $models,
+			'news' => $models,
 			'pages' => $pages,
 		]);
 	}

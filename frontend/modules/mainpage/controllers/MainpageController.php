@@ -28,13 +28,31 @@ class MainpageController extends \yii\web\Controller
     public function actionGet_address(){
         //$allTypeids = explode(',', 1);
         $allTypeids = explode(',', $_POST['serviceTypeIds']);
+        $allComfortZoneId = explode(',', $_POST['comfortZoneId']);
+//Debug::prn($allComfortZoneId);
         $services = Services::find()
             ->joinWith('address')
-            ->joinWith('phone')
-            ->where(['service_type_id' => $allTypeids, 'address.region_id' => $_POST['regionId']])
-            ->all();
+            ->joinWith('phone');
+            if(!empty($allComfortZoneId[0])){
+                $services->joinWith('service_comfort_zone');
+            }
+
+            $services->where(['address.region_id' => $_POST['regionId'],]);
+            if(!empty($allTypeids)){
+                $services->andFilterWhere(['service_type_id' => $allTypeids,]);
+            }
+
+            if(!empty($allComfortZoneId[0])){
+                $services->andFilterWhere(['`service_comfort_zone`.`comfort_zone_id`' => $allComfortZoneId]);
+            }
+
+
+       // Debug::prn($services->createCommand()->rawSql);
+
+            $result = $services->all();
+       // Debug::prn($result);
         $address = [];
-        foreach($services as $s){
+        foreach($result as $s){
             $phone = '';
             if(!empty($s->phone)){
                 foreach($s->phone as $p){

@@ -222,4 +222,4 @@ echo Html::label('Диаметр расположения отверстий');
 echo Html::dropDownList('diameter_holest',$model->diameter_holest,$diameter_holes,['prompt'=>'-','class'=>'addContent__adress']);
 
 echo Html::label('Вылет (ET)');
-echo Html::dropDownList('sortie',$model->sortie,$sortie,['class'=>'addContent__adress']);
+echo Html::dropDownList('sortie',$model->sortie,$sortie,['class'=>'addContent__adress','prompt'=>'-']);

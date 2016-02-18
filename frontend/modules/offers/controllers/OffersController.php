@@ -4,12 +4,15 @@
 
 namespace frontend\modules\offers\controllers;
 
+use common\classes\Address;
 use common\classes\Debug;
 use common\models\db\GeobaseCity;
 use common\models\forms\OffersForm;
 use Yii;
 use common\models\db\Offers;
 use yii\data\Pagination;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -22,6 +25,31 @@ use yii\web\UploadedFile;
 class OffersController extends Controller
 {
     public $layout = 'page';
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'send_request' => ['post'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['view'],
+                        'roles' => ['?'],
+                    ],
+                ],
+            ],
+        ];
+    }
 
     public function actionIndex()
     {
@@ -31,7 +59,9 @@ class OffersController extends Controller
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
         $pages->pageSize = 8;
-        $models = $query->offset($pages->offset)
+        $models = $query
+            ->where(['user_id' => Yii::$app->user->id])
+            ->offset($pages->offset)
             ->limit($pages->limit)
 
             ->all();
@@ -52,6 +82,7 @@ class OffersController extends Controller
             move_uploaded_file($_FILES['Offers']['tmp_name']['img_url'], Yii::$app->basePath.'/web/media/img/offers/'.time().$_FILES['Offers']['name']['img_url']);
             $model->img_url = '/frontend/web/media/img/offers/'.time().$_FILES['Offers']['name']['img_url'];
             $model->city_id = $_POST['city'];
+            $model->user_id = Yii::$app->user->id;
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -73,7 +104,7 @@ class OffersController extends Controller
     {
         $city = GeobaseCity::find()->where(['region_id'=>$_POST['region_id']])->all();
         echo Html::label('Город');
-        echo Html::dropDownList('city', 0, ArrayHelper::map($city, 'id', 'name'),['prompt'=>'Выберите город']);
+        echo Html::dropDownList('city', 0, ArrayHelper::map($city, 'id', 'name'),['prompt'=>'Выберите город','class'=>'form-control']);
     }
 
     public function actionEdit($id){
@@ -101,5 +132,22 @@ class OffersController extends Controller
         $model->deleteAll(['id'=>$id]);
 
         return $this->redirect(['index']);
+    }
+
+    public function actionAll_offers($id = false){
+        $address = Address::get_geo_info();
+
+        $offers = Offers::find()
+            ->where(['region_id'=>$address['region_id']])
+            ->filterWhere(['service_type_id'=>$_GET['id']])
+            ->orderBy('dt_add DESC')
+            ->limit(9)
+            ->all();
+        Debug::prn($offers);
+        /*return $this->render('all_offers',
+            [
+                'offers' => $offers,
+            ]);*/
+
     }
 }

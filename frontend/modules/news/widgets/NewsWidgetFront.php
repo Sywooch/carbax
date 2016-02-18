@@ -12,7 +12,7 @@ class NewsWidgetFront extends Widget
 {
 
     public function run(){
-        $news = (new Query())->from('news')->limit(3)->orderBy('id DESC')->all();
+        $news = (new Query())->from('news')->limit(5)->orderBy('id DESC')->all();
         //Debug::prn($news);
         return $this->render('news', ['news' => $news]);
 

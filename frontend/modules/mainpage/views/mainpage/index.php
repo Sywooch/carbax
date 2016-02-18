@@ -10,7 +10,51 @@ use frontend\widgets\SelectRequestTypes;
 $this->title = "Автопортал";
 ?>
 
-<section class="first">
+<section class="initial-screen">
+    <div class="contain">
+        <!--<div class="initial-screen--aside">
+            <a href="#">
+    				<span class="initial-screen--icon initial-screen--icon--1">
+    					<img src="/media/img/autoserv.png" alt="">
+    				</span>
+                Поиск автосервисов
+            </a>
+            <a href="#">
+    				<span class="initial-screen--icon initial-screen--icon--2">
+    					<img src="/media/img/avtorazbor.png" alt="">
+    				</span>
+                Продажа	запчастей и авто
+            </a>
+        </div>-->
+        <div class="initial-screen--center">
+            <div class="initial-screen--logo">
+                <a href="#" class="show_video" data-target="#video"><img src="/media/img/carbax-logo.png" alt=""></a>
+                <h4>Все автоуслуги Вашего <span class="orange">города</span></h4>
+            </div>
+            <!--<a href="#" class="initial-screen--more">Узнать, что такое <span class="orange">Carbax.ru</span></a>-->
+            <a href="#" class="initial-screen--apply first__but--but">Подать заявку</a>
+            <?= SelectRequestTypes::widget(['classNav'=>'first-nav','classUl'=>'first-nav__list']); ?>
+        </div>
+        <!--<div class="initial-screen--aside">
+            <a href="#">
+    				<span class="initial-screen--icon initial-screen--icon--3">
+    					<img src="/media/img/procents.png" alt="">
+    				</span>
+                Спецпредложения
+            </a>
+            <a href="#">
+    				<span class="initial-screen--icon initial-screen--icon--4">
+    					<img src="/media/img/w512h5121380476932megaphone.png" alt="">
+    				</span>
+                Новости
+            </a>
+        </div>-->
+    </div>
+</section>
+
+
+
+<!--<section class="first">
     <div class="first__title__desc">
         <h1><span>CARBAX<span class="orange">.RU</span></span></h1>
         <p>ремонт и обслуживание авто</p>
@@ -19,8 +63,8 @@ $this->title = "Автопортал";
     <div class="first__but">
 
         <!-- <a href="#nowhere">Заявка на ремонт</a> -->
-        <a href="#nowhere" class="first__but--but" >Оформить заявку</a>
-       <?= SelectRequestTypes::widget(['classNav'=>'first-nav','classUl'=>'first-nav__list']); ?>
+        <!--<a href="#nowhere" class="first__but--but" >Оформить заявку</a>-->
+       <?/*= SelectRequestTypes::widget(['classNav'=>'first-nav','classUl'=>'first-nav__list']); */?>
 
         <!--<nav class="first-nav" role="navigation">
             <ul class="first-nav__list">
@@ -35,10 +79,10 @@ $this->title = "Автопортал";
                 <li><a href="#">Запчасти</a></li>
                 <li><a href="#">Тюнинг</a></li>
             </ul>
-        </nav>-->
+        </nav>-
     </div>
 
-</section>
+</section>-->
 
 <!--<section class="filter">
     <div class="contain">
@@ -173,21 +217,34 @@ $this->title = "Автопортал";
 <?= OffersWidgetFront::widget()?>
 <?= NewsWidgetFront::widget()?>
 
+<div class="modal fade" id="video" >
+    <div class="modal-dialog modal-dialog-center">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Что такое <span class="orange">Carbax.ru</span></h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
 
+        </div>
+    </div>
+</div>
 
-<section class="whatIs">
+<!--<section class="whatIs">
     <div class="contain">
         <h1 class="blockTitle white">Что такое CarBax ?</h1>
         <div class="line">
             <div class="whatIs__block">
-                <div class="whatIs__block-img "><img src="<?= \yii\helpers\Url::base() ?>/media/img/whatis1.png" alt=""></div>
+                <div class="whatIs__block-img "><img src="<?/*= \yii\helpers\Url::base() */?>/media/img/whatis1.png" alt=""></div>
                 <div class="whatIs__block-text">
                     <h3>Поиск автосервисов</h3>
                     <p>Поиск лучших предложение по Вашим запросам.</p>
                 </div>
             </div>
             <div class="whatIs__block">
-                <div class="whatIs__block-img "><img src="<?= \yii\helpers\Url::base() ?>/media/img/whatis2.png" alt=""></div>
+                <div class="whatIs__block-img "><img src="<?/*= \yii\helpers\Url::base() */?>/media/img/whatis2.png" alt=""></div>
                 <div class="whatIs__block-text">
                     <h3>Надежность</h3>
                     <p>Надежный партнер между Вами и автосервисом.</p>
@@ -196,7 +253,7 @@ $this->title = "Автопортал";
         </div>
         <div class="line">
             <div class="whatIs__block">
-                <div class="whatIs__block-img "><img src="<?= \yii\helpers\Url::base() ?>/media/img/whatis3.png" alt=""></div>
+                <div class="whatIs__block-img "><img src="<?/*= \yii\helpers\Url::base() */?>/media/img/whatis3.png" alt=""></div>
                 <div class="whatIs__block-text">
                     <h3>Система отзывов</h3>
                     <p>Отзывы о сервиса пишут только реальные
@@ -205,7 +262,7 @@ $this->title = "Автопортал";
                 </div>
             </div>
             <div class="whatIs__block">
-                <div class="whatIs__block-img "><img src="<?= \yii\helpers\Url::base() ?>/media/img/whatis4.png" alt=""></div>
+                <div class="whatIs__block-img "><img src="<?/*= \yii\helpers\Url::base() */?>/media/img/whatis4.png" alt=""></div>
                 <div class="whatIs__block-text">
                     <h3>Удобство</h3>
                     <p>Вам не придется выходить из дома,
@@ -215,4 +272,4 @@ $this->title = "Автопортал";
             </div>
         </div>
     </div>
-</section>
+</section>-->

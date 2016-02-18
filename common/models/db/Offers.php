@@ -19,6 +19,8 @@ use Yii;
  * @property integer $region_id
  * @property integer $city_id
  * @property integer $dt_add
+ * @property integer $service_type_id
+ * @property integer $user_id
  *
  * @property Services $service
  */
@@ -38,8 +40,8 @@ class Offers extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['service_id', 'description', 'short_description'], 'required'],
-            [['service_id', 'new_price', 'old_price', 'region_id', 'city_id', 'dt_add'], 'integer'],
+            [['title','service_id', 'description', 'short_description'], 'required'],
+            [['service_id', 'new_price', 'old_price', 'region_id', 'city_id', 'dt_add','service_type_id'], 'integer'],
             [['description', 'short_description'], 'string'],
             [['title', 'img_url', 'discount'], 'string', 'max' => 255]
         ];
@@ -57,9 +59,9 @@ class Offers extends \yii\db\ActiveRecord
             'img_url' => 'Изображение',
             'description' => 'Описание',
             'short_description' => 'Короткое описание',
-            'new_price' => 'Новая цена',
-            'old_price' => 'Старая цена',
-            'discount' => 'Скидка',
+            'new_price' => 'Новая цена, руб',
+            'old_price' => 'Старая цена, руб',
+            'discount' => 'Скидка, %',
             'region_id' => 'Регион',
             'city_id' => 'Город',
             'dt_add' => 'Dt Add',

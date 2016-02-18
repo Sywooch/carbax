@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </p>
         <hr>
         <p>Ваш новый пароль <?= Html::passwordInput('passwordUserEdit',null,['id'=>'user_password']);?></p>
-        <span>Если не хотите менять пароль оставте поле без изменений</span>
+        <span>Если не хотите менять пароль оставьте поле без изменений</span>
         <hr>
         <!--<div class="addContent--save">
             <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>

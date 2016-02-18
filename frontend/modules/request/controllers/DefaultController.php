@@ -20,6 +20,7 @@ use common\models\db\Request;
 use common\models\db\RequestAddFieldValue;
 use common\models\db\RequestAddForm;
 use common\models\db\RequestAdditionalFields;
+use common\models\db\RequestByServiceType;
 use common\models\db\RequestType;
 use common\models\db\RequestTypeAddForm;
 use common\models\db\RequestTypeGroup;
@@ -67,16 +68,61 @@ class DefaultController extends Controller
 
     public function actionIndex()
     {
-        $requestType = RequestType::find()->where(['id'=>$_GET['id']])->one();
-        $addForm = RequestTypeAddForm::find()->where(['request_type_id'=>$_GET['id']])->all();
-       // $groupService = RequestTypeGroup::find()->where(['request_type_id'=>$_GET['id']])->all();
-        //Debug::prn($addForm);
-        return $this->render('index',
-            [
-                'requestType' => $requestType,
-                'addForm' => $addForm,
-                //'groupService' => $groupService,
-            ]);
+        /**
+         * Проверяем какая завка выбрана и грузим в разные виды
+         */
+        if($_GET['id'] == 11){
+            $this->view->params['officeHide'] = true;
+            $this->view->params['bannersHide'] = false;
+            $requestType = RequestType::find()->where(['id' => $_GET['id']])->one();
+            $addForm = RequestTypeAddForm::find()->where(['request_type_id'=>$_GET['id']])->all();
+            $groupRequest = RequestTypeGroup::find()->where(['request_type_id'=>$_GET['id']])->all();
+            return $this->render('auto_school',
+                [
+                    'requestType' => $requestType,
+                    'addForm' => $addForm,
+                    'groups' =>$groupRequest,
+                    //'groupService' => $groupService,
+                ]);
+
+        }
+        if($_GET['id'] == 6){
+            $requestType = RequestType::find()->where(['id' => $_GET['id']])->one();
+            $addForm = RequestTypeAddForm::find()->where(['request_type_id'=>$_GET['id']])->all();
+            $groupRequest = RequestTypeGroup::find()->where(['request_type_id'=>$_GET['id']])->all();
+            return $this->render('request_splints',
+                [
+                    'requestType' => $requestType,
+                    'addForm' => $addForm,
+                    'groups' =>$groupRequest,
+                    //'groupService' => $groupService,
+                ]);
+        }
+        if($_GET['id'] == 10){
+            $requestType = RequestType::find()->where(['id' => $_GET['id']])->one();
+            $addForm = RequestTypeAddForm::find()->where(['request_type_id'=>$_GET['id']])->all();
+            $groupRequest = RequestTypeGroup::find()->where(['request_type_id'=>$_GET['id']])->all();
+            return $this->render('request_disk',
+                [
+                    'requestType' => $requestType,
+                    'addForm' => $addForm,
+                    'groups' =>$groupRequest,
+                    //'groupService' => $groupService,
+                ]);
+        }
+        else {
+
+            $requestType = RequestType::find()->where(['id' => $_GET['id']])->one();
+            $addForm = RequestTypeAddForm::find()->where(['request_type_id' => $_GET['id']])->all();
+            // $groupService = RequestTypeGroup::find()->where(['request_type_id'=>$_GET['id']])->all();
+            //Debug::prn($addForm);
+            return $this->render('index',
+                [
+                    'requestType' => $requestType,
+                    'addForm' => $addForm,
+                    //'groupService' => $groupService,
+                ]);
+        }
     }
 
     public function actionSend_request(){
@@ -90,7 +136,6 @@ class DefaultController extends Controller
             $fieldsFormName = RequestAddForm::find()->where(['id' => $ff->add_form_id])->one();
             $fieldsFormArr[$fieldsFormName->key] = $fieldsFormName;
         }
-
         $groups = RequestTypeGroup::find()->where(['request_type_id'=>$_POST['request_type_id']])->all();
 
          $autoWidget = new AutoWidget();
@@ -131,6 +176,8 @@ class DefaultController extends Controller
          $request->id_auto_widget = $autoWidget->id;
          $request->save();
 
+        $request_type_id = $_POST['request_type_id'];
+
          unset($_POST['request_type_id']);
 
 
@@ -158,23 +205,47 @@ class DefaultController extends Controller
          }
 
 
+        /**
+         * Получение типов сервисов по которым должен происходить поиск
+         */
+
+        $serviceTypeSearch = RequestByServiceType::find()->where(['request_id' => $request_type_id])->all();
+        $serviceSearch = [];
+        foreach ($serviceTypeSearch as $s) {
+            $serviceSearch[] = $s->service_type_id;
+        }
+
+        /*Debug::prn($serviceSearch);*/
+
         $services = Services::find()
             ->joinWith(['address', 'service_add_fields','service_brand_cars'])
+           // ->where(['`services`.`service_type_id`' => $serviceSearch])
             ->filterWhere([
-                'address.region_id' => $_POST['regions'],
-                'address.city_id' => $_POST['city_widget'],
+                'address.region_id' => $_POST['region'],
+                'address.city_id' => $_POST['city'],
                 'service_brand_cars.brand_cars_id' => $_POST['manufactures'],
+                '`services`.`service_type_id`' => $serviceSearch,
                 'service_add_fields.add_fields_id' => $fields
             ])
+
             ->all();
+
 
         $ids = 0;
 
+       /* Debug::prn($services);
+        Debug::prn($_POST);*/
+
         foreach($services as $service){
-            //$msg = $this->generateRequestMsg($_POST);
-            $msg = $this->renderPartial('request_msg_tpl',['fieldsFormArr'=>$fieldsFormArr,'post'=>$_POST,'name'=>$service->name,'selectFields'=>$fields,'auto'=>$autoWidget]);
+            if($request_type_id == 11){
+                $msg = $this->renderPartial('request_msg_tpl',['fieldsFormArr'=>$fieldsFormArr,'post'=>$_POST,'name'=>$service->name,'selectFields'=>$fields]);
+            }else{
+                $msg = $this->renderPartial('request_msg_tpl',['fieldsFormArr'=>$fieldsFormArr,'post'=>$_POST,'name'=>$service->name,'selectFields'=>$fields,'auto'=>$autoWidget]);
+            }
+
+
             $m = SendingMessages::send_message($service->user_id, Yii::$app->user->id, 'Заявка на сервис ' . $service->name, $msg,'request','0',$request->id);
-            //Debug::prn($m);
+
             $ids++;
         }
 

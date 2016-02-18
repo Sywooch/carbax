@@ -8,6 +8,7 @@ use common\models\db\User;
 use frontend\widgets\CityAutoComplete;
 use frontend\widgets\NumberUnreadMessages;
 use frontend\widgets\SelectRequestTypes;
+use frontend\widgets\ShowFooter;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -76,7 +77,18 @@ AppAsset::register($this);
     <?php
     if(Yii::$app->user->isGuest):
     ?>
+
     <div class="header__container">
+        <a href="/" class="header--logo">
+            <img src="<?= Url::base() ?>/media/img/carbax-logo.png" alt="">
+            <!--<h5>Car<span class="orange">bax</span></h5>-->
+        </a>
+
+        <form action="#" class="header--region" id="auto_complete_form" method="post">
+            <?= CityAutoComplete::widget(); ?>
+            <!--<input type="text" class="header--region--box" placeholder="Город">-->
+        </form>
+
         <div class="loginLinks">
             <?=Html::a('Регистрация', Url::to('/register'), ['class'=>'regHeaderLink']) ." | ". Html::a('Вход', Url::to('/login'), ['class'=>'regHeaderLink']);?>
         </div>
@@ -86,8 +98,8 @@ AppAsset::register($this);
     ?>
     <div class="header__container">
         <a href="/" class="header--logo">
-            <img src="<?= Url::base() ?>/media/img/smalllogo.png" alt="">
-            <h5>Car<span class="orange">bax</span></h5>
+            <img src="<?= Url::base() ?>/media/img/carbax-logo.png" alt="">
+            <!--<h5>Car<span class="orange">bax</span></h5>-->
         </a>
         <a href="<?=Url::to(['/profile/default/view'])?>" class="header--autotext"><?/*= User::getLogin(Yii::$app->user->id);*/?></a>
         <a href="<?=Url::to('/office')?>" class="header--perscab">Личный кабинет</a>
@@ -135,11 +147,11 @@ AppAsset::register($this);
 
 </section>
 
-<footer class="footer">
+<!--<footer class="footer">
     <div class="contain">
         <div class="footer__logo">
             <div class="footer__logo-img">
-                <img src="<?= Url::base() ?>/media/img/sedan4.png" alt="">
+                <img src="<?/*= Url::base() */?>/media/img/sedan4.png" alt="">
             </div>
             <div class="footer__logo-desc">
                 <h1>CARBAX<span class="orange">.RU</span></h1>
@@ -147,7 +159,7 @@ AppAsset::register($this);
             </div>
         </div>
         <div class="footer__nav">
-            <ul class="footer__nav-autoteh"><span class="orange"><?= User::getLogin(Yii::$app->user->id);?></span>
+            <ul class="footer__nav-autoteh"><span class="orange"><?/*= User::getLogin(Yii::$app->user->id);*/?></span>
                 <li><a href="#nowhere">Сообщения</a></li>
                 <li><a href="#nowhere">Мой счет</a></li>
                 <li><a href="#nowhere">Настройки</a></li>
@@ -174,7 +186,9 @@ AppAsset::register($this);
             </div>
         </div>
     </div>
-</footer>
+</footer>-->
+
+<?= ShowFooter::widget(); ?>
 
 <?php $this->endBody() ?>
 </body>

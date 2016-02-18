@@ -9,6 +9,7 @@
 namespace frontend\modules\ajax\controllers;
 
 
+use common\classes\Address;
 use common\classes\Custom_function;
 use common\classes\Debug;
 use common\classes\SendingMessages;
@@ -35,6 +36,7 @@ use common\models\db\Garage;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
 use common\models\db\Msg;
+use common\models\db\Offers;
 use common\models\db\ProductImg;
 use common\models\db\Request;
 use common\models\db\RequestAddFieldValue;
@@ -605,6 +607,31 @@ class AjaxController extends Controller
     public  function actionShow_widget_categ(){
         $cat = TofSearchTree::find()->where(['str_id_parent' => '10001'])->all();
         echo Html::dropDownList('categ',0,ArrayHelper::map($cat,'str_id','str_des'),['prompt'=>'Тип запчасти','class'=>'categ']);
+    }
+
+    public function actionShow_offers(){
+        $address = Address::get_geo_info();
+        if($_POST['serviceTypeId'] == 0) {
+            $allOffers = Offers::find()->where(['region_id'=>$address['region_id']])->count();
+            $offers = Offers::find()->where(['region_id' => $address['region_id']])->orderBy('dt_add DESC')->limit(9)->all();
+        }
+        else{
+            $allOffers = Offers::find()->where(['region_id'=>$address['region_id'],'service_type_id'=>$_POST['serviceTypeId']])->count();
+            $offers = Offers::find()->where(['region_id' => $address['region_id'],'service_type_id'=>$_POST['serviceTypeId']])->orderBy('dt_add DESC')->limit(9)->all();
+        }
+
+        return $this->renderPartial('offers',
+            [
+                'offers' => $offers,
+                'count' => $allOffers,
+                'serviceTypeId' => $_POST['serviceTypeId'],
+            ]);
+        //Debug::prn($_POST['serviceTypeId']);
+    }
+
+    public function actionGet_service_type_id(){
+        $srviceTypeId = Services::findOne($_POST['serviceId'])->service_type_id;
+        echo $srviceTypeId;//$form->field($model, 'service_type_id')->hiddenInput(['value'=>$srviceTypeId]);
     }
 
 }

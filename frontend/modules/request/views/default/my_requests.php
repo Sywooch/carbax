@@ -7,7 +7,7 @@ use yii\helpers\Url;
 $this->title = "Мои заявки";
 $this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
 $this->params['breadcrumbs'][] = $this->title;
-$this->registerCssFile('/css/bootstrap.min.css');
+//$this->registerCssFile('/css/bootstrap.min.css');
 ?>
 
 <section class="main-container">
@@ -17,12 +17,13 @@ $this->registerCssFile('/css/bootstrap.min.css');
 
     <div class="filtr_request_type">
         <?php foreach ($requestType as $rt): ?>
-            <a href="<?= Url::to(['#']) ?> " data-id="<?= $rt->id; ?>" class="link-request-type">
+            <a href="<?= Url::to(['#']) ?> " data-id="<?= $rt->id; ?>" class="link-request-type" title="<?= $rt->name; ?>">
 				<span class="requestIcon icon_b icon_b_autosalon" style="background-image: url('<?= $rt->icon ?>')">
 				</span>
             </a>
         <?php endforeach; ?>
     </div>
+    <div class="cleared"></div>
     <div class="myRequest">
         <h3>Мои заявки</h3>
 

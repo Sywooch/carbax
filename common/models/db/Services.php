@@ -191,4 +191,9 @@ class Services extends \yii\db\ActiveRecord
     public static function getNameTypeServicec($id){
         return ServiceType::findOne($id)->name;
     }
+
+    public function getservice_comfort_zone()
+    {
+        return $this->hasMany(ServiceComfortZone::className(), ['service_id' => 'id']);
+    }
 }

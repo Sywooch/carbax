@@ -19,6 +19,7 @@ use Yii;
  * @property integer $submodel_id
  * @property integer $moto_type
  * @property string $submodel_name
+ * @property string $photo
  */
 class AutoWidget extends \yii\db\ActiveRecord
 {
@@ -38,7 +39,7 @@ class AutoWidget extends \yii\db\ActiveRecord
         return [
             [['auto_type', 'brand_id', 'brand_name', 'model_id', 'model_name', 'type_id', 'type_name'], 'required'],
             [['auto_type', 'brand_id', 'model_id', 'type_id', 'submodel_id'], 'integer'],
-            [['brand_name', 'model_name', 'type_name', 'submodel_name'], 'string', 'max' => 255]
+            [['brand_name', 'model_name', 'type_name', 'submodel_name','photo'], 'string', 'max' => 255]
         ];
     }
 

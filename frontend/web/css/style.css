@@ -55,7 +55,7 @@
 }
 
 .addContent {
-    /*width: 90%!important;*/
+   /* width: 90%!important;*/
 }
 
 .singleContent__desc h3 {
@@ -102,7 +102,7 @@
     margin-top: 25px;
 }
 
-section.fleamarket__wrap_view {
+section.fleamarket__wrap_view, section.request_autoschool{
     display: block;
     float: left;
     position: relative;
@@ -142,7 +142,7 @@ section.fleamarket__wrap_view {
 
 .fleamarket__created {
     display: block;
-    float: left;
+    /*float: left;*/
     margin-right: 20px;
 }
 
@@ -187,7 +187,7 @@ section.fleamarket__wrap_view {
 span.fleamarket__user_tel {
     background: #e8e8e8 url(../media/img/tel.png) no-repeat 3% 50%;
     border:1px solid #90a6b8;
-    border-radius: 12px;
+    /*border-radius: 12px;*/
     color: #0c4370;
     font-size: 13px;
     font-family: HelveticaNeueCyrLight;
@@ -203,7 +203,7 @@ span.fleamarket__user_tel {
 span.fleamarket__user_mes{
     background: #e8e8e8 url(../media/img/message.png) no-repeat 3% 50%;
     border:1px solid #90a6b8;
-    border-radius: 12px;
+    /*border-radius: 12px;*/
     color: #0c4370;
     font-size: 13px;
     font-family: HelveticaNeueCyrLight;
@@ -257,13 +257,13 @@ span.info {
 
 .fleamarket__footer{
     margin:15px 0;
-    background: #e8e8e8;
-    border:1px solid #90a6b8;
+    background: #2B2B2B;
+    /*border:1px solid #90a6b8;*/
     padding:7px;
 }
 .fleamarket__footer a{
     font-size: 14px;
-    color:#0c4370;
+    color:#fff;
     text-decoration:underline;
 }
 
@@ -332,7 +332,7 @@ span.fleamarket__similar_ads_product_city{
 .profileElement {
     margin: 10px 0 0 0;
     font-weight: bold;
-    padding: 3px;
+   /* padding: 3px;*/
 }
 
 .regionWidgetBox {
@@ -396,7 +396,7 @@ input.message_to,input.message_subject {
     display: block;
     position: relative;
     margin: 0 auto;
-    width: 1165px;
+    width: 1056px;
 }
 
 .filter__container-select--check {
@@ -443,10 +443,10 @@ input.message_to,input.message_subject {
     margin:25px 0;
 }
 
-.deals__line{
+/*.deals__line{
     margin: 0px -3%;
     margin-bottom: 25px;
-}
+}*/
 
 .news{
     padding:0;
@@ -520,7 +520,7 @@ input[type="radio"].userOrService {
 }
 
 select.citySearch{
-    width: 198px;
+    width: 105px;
     height: 30px;
     padding: 0;
     display: block;
@@ -594,8 +594,9 @@ select.yearSearch{
 }
 
 .profileAvatar {
-    float: left;
+    display: inline-block;
     margin-right: 15px;
+    vertical-align: top;
 }
 
 .profileName {
@@ -616,7 +617,7 @@ select.yearSearch{
 }
 
 .profileEmail{
-    background: url(../media/img/profile/iconEmail.png) no-repeat 0% 50%;;
+    background: url(../media/img/profile/iconEmail.png) no-repeat 0% 94%;;
     padding-left: 35px;
 }
 
@@ -687,42 +688,74 @@ input.addAddressMarket {
 }
 
 select.brandAutoSearch {
-    width: 134px;
+    width: 128px;
+    border: none;
+    height: 30px;
+    outline: none;
 }
 
 select.modelAutoSearch {
-    width: 134px;
+    width: 128px;
+    border: none;
+    height: 30px;
+    outline: none;
 }
 
 select.driveSearch {
-    width: 105px;
+    width: 92px;
+    border: none;
+    height: 30px;
+    outline: none;
 }
 
 select.typeMotorSearch {
-    width: 134px;
+    width: 128px;
+    border: none;
+    height: 30px;
+    outline: none;
 }
 
 select.transSearch {
-    width: 146px;
+    width: 140px;
+    border: none;
+    height: 30px;
+    outline: none;
 }
 
 select.bodySearch {
-    width: 134px;
+    width: 128px;
+    border: none;
+    height: 30px;
+    outline: none;
 }
 
 .DopparamsSearch {
     margin: 10px 0;
+    border: none;
+    outline: none;
+}
+
+select.typeAutoSearch {
+    border: none;
+    height: 30px;
+    outline: none;
+}
+
+select.motoTypeSearch,select.categ,select.diameterSplintSearch,select.seasonalitySearch,select.section_widthSearch,select.section_heightSearch,select.typeDiskSearch,select.typeDiameterDisk,select.rim_widthSearch,select.number_holesSearch,select.diameter_holestSearch,select.sortieSearch {
+    border: none;
+    height: 30px;
+    outline: none;
 }
 
 .infoDopSearch {
     display: inline-block;
     padding: 4px;
-    margin: 0 21px;
+    margin: 3px 20px;
+    color: #fff;
 }
 
 .paramsSearch {
-    background: rgba(255,107,0,0.4);
-    margin-right: 30px;
+
 }
 
 .infoDopSearch span {
@@ -766,4 +799,216 @@ input.searchPriceFrom,input.searchPriceTo {
 
 a.header--autotext{
     height: 37px
+}
+
+.row{
+    margin:0
+}
+
+.hide_filter__map--checklist{
+    width: 25px;
+    height:100%;
+    background: url(../media/img/stock_mail-filters-apply.png) no-repeat 50% 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+.all_news{
+    display: block;
+    float: left;
+    position: relative;
+    width: 80%;
+    padding: 0;
+    padding-right: 20px;
+}
+
+div#video {
+    padding-top: 100px;
+}
+
+
+.request--auto-school {
+    float: left;
+    width: 86%;
+    margin-bottom: 15px;
+}
+
+label.request_label{
+    float: right;
+    width: 11%!important;
+    padding-top: 10px;
+}
+
+.prava_left, .prava_right {
+    display: block;
+    width: 50%;
+    float: left;
+}
+.request_autoschool .addContent{
+    width:100%!important;
+}
+
+.header--label {
+    border-bottom: 1px solid #5d5d5d;
+    margin-bottom: 5px;
+    color: #3f3f3f;
+    font-weight:bold;
+}
+
+.infoCateg {
+    border-bottom: 1px solid #3f3f3f;
+    display: block;
+    height: 30px;
+}
+
+span.categPrav {
+    width: 58px;
+    display: block;
+    float: left;
+    padding-left: 10px;
+    font-size: 18px;
+}
+.img_prava {
+    display: block;
+    float: left;
+    width: 56px;
+}
+.text_prava{
+    width: 157px;
+    display: block;
+    float: left;
+    line-height: 12px;
+}
+
+span.year {
+    display: block;
+    width: 78px;
+    float: right;
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#breadcrumb{
+    background:#2B2B2B;
+}
+
+.breadcrumb{
+    background-color: transparent;
+}
+
+.logo {
+    float: right;
+    margin-top: -46px;
+    margin-right: 16px;
+}
+
+.breadcrumb li a{
+    color: #ff6b00;
+    font-size: 20px;
+    text-transform: lowercase;
+    font-family: calibri;
+}
+
+.breadcrumb > .active {
+    color: #fff;
+}
+
+.breadcrumb > li + li::before {
+    padding: 0 5px!important;
+    color: #ff6b00!important;
+    content: "/"!important;
+}
+.breadcrumb > li + li:nth-child(2)::before {
+    /*padding: 0 5px;*/
+    color: #ccc!important;
+    content: ""!important;
+}
+
+
+.infoProfile {
+    display: inline-block;
+    width: 72%;
+}
+
+.header_block{
+    position:relative;
+    display: block;
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.header_block:before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1px;
+    width: 100%;
+    background: #000;
+    display: block;
+    z-index: 0;
+}
+
+.header_block span{
+    float:left;
+    background:#fff;
+    position: relative;
+    padding-right: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.header_block a{
+    float:right;
+    background:#fff;
+    position: relative;
+    padding-left: 10px;
+    color: #ff6b00;
+    font-style: italic;
+}
+
+a.addBussines{
+    background: #fff url(../media/img/addBuccines.png) 100% 50% no-repeat;
+    padding-right: 18px;
+}
+
+.write_message{
+    display:block;
+    margin-top: 5px;
+}
+
+.headerProfile .deals__block{
+    width:94%;
+}
+
+.requestDiametr {
+    display: block;
+    float: left;
+    width: 185px;
+}
+
+.requestAddFieldGroup .addContent .singleContent__desc--works{
+    display: block;
+    float: left;
+    width: 208px;
+    position: relative;
+}
+
+.requestAddFieldGroup .addContent .singleContent__desc--works input[type="checkbox"] + label{
+    width: 100%;
+}
+
+.requestAddFieldGroup .addContent{
+    width:100%;
+}
+
+.requestDiametr label {
+    display: inline-block;
+    width: 100%;
+    min-height: 40px;
+    vertical-align: middle;
 }

@@ -4,6 +4,7 @@ namespace frontend\modules\mainpage\widgets;
 use common\classes\Address;
 use common\classes\Custom_function;
 use common\classes\Debug;
+use common\models\db\ComfortZone;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
 use common\models\db\ServiceType;
@@ -89,12 +90,14 @@ class MainPageMap extends Widget
 
         //Debug::prn($cityId);
         $serviceTypes = ServiceType::find()->all();
+        $comfortZone = ComfortZone::find()->all();
         return $this->render('main_map', [
             'serviceType' => $serviceTypes,
             'lat'  => $ip['lat'],
             'lng' => $ip['lng'],
             'region_id' => $regionId,
             'city_id' => $cityId,
+            'comfortZone' => $comfortZone,
         ]);
     }
 }

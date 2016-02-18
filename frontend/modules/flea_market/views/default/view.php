@@ -8,12 +8,18 @@ use common\models\db\GeobaseCity;
 use common\models\db\Services;
 use common\models\db\User;
 use frontend\modules\flea_market\widgets\SimilarAds;
+use frontend\widgets\FleaMarketMostViewed;
+use frontend\widgets\FleaMarketNewProduct;
 use frontend\widgets\FleaMarketSearch;
 use yii\helpers\Html;
 
 $this->registerJsFile('http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js');
 $this->registerCssFile('http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css');
 $this->title = $product->name;
+
+$this->params['breadcrumbs'][] = ['label' => 'продажа авто и запчастей', 'url' => ['/flea_market_search']];
+$this->params['breadcrumbs'][] = $this->title;
+
 //echo FleaMarketSearch::widget(['title'=>false]);?>
 <?php
 if ($product->published != 1) {
@@ -200,7 +206,7 @@ if ($product->published != 1) {
                     <a href="#"><img src="/media/img/mm.png" alt=""></a>
                 </div>
             </div>
-            <?= SimilarAds::widget(['id' => $product->id, 'catid' => $product->category_id]); ?>
+            <?/*= SimilarAds::widget(['id' => $product->id, 'catid' => $product->category_id]); */?>
         </section>
     <?php } else {
         ?>
@@ -214,7 +220,6 @@ if ($product->published != 1) {
     }
 } else {
     ?>
-
 
     <div class="fleamarket__headProductTop">
 
@@ -388,6 +393,8 @@ if ($product->published != 1) {
             </div>
         </div>
         <?= SimilarAds::widget(['id' => $product->id, 'catid' => $product->category_id]); ?>
+        <?= FleaMarketNewProduct::widget(); ?>
+        <?= FleaMarketMostViewed::widget(); ?>
     </section>
     <?php
 }

@@ -121,7 +121,19 @@ class GarageController extends Controller
 
             $garage->title = $manName . ' / ' . $modelName;
 
-
+            if($_FILES['file']['tmp_name']) {
+                if (!file_exists('media/users/' . Yii::$app->user->id)) {
+                    mkdir('media/users/' . Yii::$app->user->id . '/');
+                }
+                if (!file_exists('media/users/' . Yii::$app->user->id . '/' . date('Y-m-d'))) {
+                    mkdir('media/users/' . Yii::$app->user->id . '/' . date('Y-m-d'));
+                }
+                $dir = 'media/users/' . Yii::$app->user->id . '/' . date('Y-m-d') . '/';
+                move_uploaded_file($_FILES['file']['tmp_name'], $dir . $_FILES['file']['name']);
+                $autoWidget->photo = $dir . $_FILES['file']['name'];
+            }else{
+                $autoWidget->photo = $_POST['photo'];
+            }
             $autoWidget->save();
             $garage->id_auto_widget = $autoWidget->id;
 
@@ -181,10 +193,10 @@ class GarageController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+
             return $this->render('update', [
                 'model' => $model,
             ]);

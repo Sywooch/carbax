@@ -28,9 +28,6 @@ use yii\helpers\Url;
 
             </td>
             <td>
-                <a href="" class="btn btn-info btn-xs">Редактировать</a>
-            </td>
-            <td>
                 <?= RequestAddFieldValue::find()->where(['request_id' => $request->id, 'key' => 'title'])->one()->value?>
             </td>
             <td>

@@ -22,13 +22,14 @@ class FleaMarketNewProduct extends Widget
         $product = Market::find()
             ->joinWith('product_img')
             ->where(['region_id'=>$address['region_id'],'published'=>1])
+            ->groupBy('`market`.`id`')
             ->orderBy('dt_add DESC')
             //->with('product_img')
             ->limit(4)
 
             ->all();
 
-        //Debug::prn($product);
+        //Debug::prn($product->createCommand()->rawSql);
         return $this->render('new_product',
             [
                 'product'   => $product,

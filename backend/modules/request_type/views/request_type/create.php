@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'group' => $group,
         'formType' => $form,
-
+        'serviceType' => $serviceType,
     ]) ?>
 
 </div>

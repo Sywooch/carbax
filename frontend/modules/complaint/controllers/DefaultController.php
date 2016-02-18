@@ -41,7 +41,7 @@ class DefaultController extends Controller
             $model->from_user = Yii::$app->user->id;
             $model->save();
             Yii::$app->session->setFlash('success','Жалоба отправленна');
-            $complaint = Complaint::find()->all();
+            $complaint = Complaint::find()->where(['from_user'=>Yii::$app->user->id])->all();
             return $this->render('complaint', ['complaint' => $complaint]);
         }
         else {
@@ -52,7 +52,7 @@ class DefaultController extends Controller
     public function actionDel(){
         $model = Complaint::deleteAll(['id' => $_GET['id']]);
         Yii::$app->session->setFlash('success','Жалоба удалена');
-        $complaint = Complaint::find()->all();
+        $complaint = Complaint::find()->where(['from_user'=>Yii::$app->user->id])->all();
         return $this->render('complaint', ['complaint' => $complaint]);
     }
 
@@ -62,7 +62,7 @@ class DefaultController extends Controller
     }
 
     public function actionComplaint(){
-        $complaint = Complaint::find()->all();
+        $complaint = Complaint::find()->where(['from_user'=>Yii::$app->user->id])->all();
         return $this->render('complaint', ['complaint' => $complaint]);
     }
 }

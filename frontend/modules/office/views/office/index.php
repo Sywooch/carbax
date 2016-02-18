@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="serviceLink">Гараж</div>
         </div>
         <div class="serviceItem">
-            <div class="serviceIcon"><a href="<?= Url::to(['/my_requests']) ?>"><img src="<?= Url::base(true) ?>/media/img/zakaz.png" alt=""></a></div>
+            <div class="serviceIcon"><a href="<?= Url::to('my_requests') ?>"><img src="<?= Url::base(true) ?>/media/img/zakaz.png" alt=""></a></div>
             <div class="serviceLink">Заявка</div>
         </div>
         <!--<div class="serviceItem">
@@ -21,19 +21,19 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="serviceLink">Заявка на запчасти</div>
         </div>-->
         <div class="serviceItem">
-            <div class="serviceIcon"><a href="<?= Url::to(['/flea_market/default/sale_auto']) ?>"><img src="<?= Url::base(true) ?>/media/img/sale_auto.png" alt=""></a></div>
+            <div class="serviceIcon"><a href="<?= Url::to('flea_market/sale_auto') ?>"><img src="<?= Url::base(true) ?>/media/img/sale_auto.png" alt=""></a></div>
             <div class="serviceLink">Продать авто</div>
         </div>
         <div class="serviceItem">
-            <div class="serviceIcon"><a href="<?= Url::to(['/flea_market/default']) ?>"><img src="<?= Url::base(true) ?>/media/img/sale_zap.png" alt=""></a></div>
+            <div class="serviceIcon"><a href="<?= Url::to('flea_market/sale_parts') ?>"><img src="<?= Url::base(true) ?>/media/img/sale_zap.png" alt=""></a></div>
             <div class="serviceLink">Продать запчасти</div>
         </div>
         <div class="serviceItem">
-            <div class="serviceIcon"><a href="<?= Url::to(['/offers/offers/index']) ?>"><img src="<?= Url::base(true) ?>/media/img/spec.png" alt=""></a></div>
-            <div class="serviceLink">Спецпредлжения</div>
+            <div class="serviceIcon"><a href="<?= Url::to('offers') ?>"><img src="<?= Url::base(true) ?>/media/img/spec.png" alt=""></a></div>
+            <div class="serviceLink">Спецпредложения</div>
         </div>
         <div class="serviceItem">
-            <div class="serviceIcon"><a href="<?= Url::to(['/favorites/default']) ?>"><img src="<?= Url::base(true) ?>/media/img/note_o.png" alt=""></a></div>
+            <div class="serviceIcon"><a href="<?= Url::to('favorites') ?>"><img src="<?= Url::base(true) ?>/media/img/note_o.png" alt=""></a></div>
             <div class="serviceLink">Избранное</div>
         </div>
 
@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="serviceLink">История покупок</div>
             </div>
             <div class="serviceItem">
-                <div class="serviceIcon"><a href="<?= Url::to(['/offers/offers/create']) ?>"><img src="<?= Url::base(true) ?>/media/img/procent.png" alt=""></a></div>
+                <div class="serviceIcon"><a href="<?= Url::to('offers/create') ?>"><img src="<?= Url::base(true) ?>/media/img/procent.png" alt=""></a></div>
                 <div class="serviceLink">Создать акцию</div>
             </div>
         <?php endif; ?>

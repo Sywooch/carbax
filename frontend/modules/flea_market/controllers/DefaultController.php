@@ -32,6 +32,7 @@ use common\models\db\TofTypes;
 use frontend\modules\flea_market\widgets\CategoryProductTecDoc;
 use Yii;
 use yii\data\Pagination;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -49,8 +50,23 @@ class DefaultController extends Controller
                     'update_to_sql' => ['post'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['search','view'],
+                        'roles' => ['?'],
+                    ],
+                ],
+            ],
         ];
     }
+
 
     public function beforeAction($action)
     {
@@ -318,7 +334,7 @@ class DefaultController extends Controller
         }
 
 
-
+        $market->published = 0;
         $market->user_id = Yii::$app->user->id;
         $market->save();
 

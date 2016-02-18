@@ -1,9 +1,12 @@
 <?php
+use common\classes\Debug;
 use common\models\db\AdditionalFields;
 ?>
 
 <?php
-    if(!empty($auto)):
+//Debug::prn($auto);
+
+    if(isset($auto)):
 ?>
     <span>Марка:</span><?= $auto->brand_name; ?>
     <span>Модель:</span><?= $auto->model_name; ?>

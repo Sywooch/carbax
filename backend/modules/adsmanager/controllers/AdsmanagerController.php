@@ -2,15 +2,18 @@
 
 namespace backend\modules\adsmanager\controllers;
 
+use common\classes\Debug;
 use common\classes\SendingMessages;
 use common\models\db\Market;
 use common\models\db\User;
 use Yii;
 use backend\modules\adsmanager\models\Adsmanager;
 use backend\modules\adsmanager\models\AdsmanagerSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\base\Component;
 
 /**
  * AdsmanagerController implements the CRUD actions for Adsmanager model.
@@ -24,6 +27,15 @@ class AdsmanagerController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ],
                 ],
             ],
         ];
@@ -130,9 +142,9 @@ class AdsmanagerController extends Controller
 
         SendingMessages::send_message($product->user_id,Yii::$app->user->id,$subject,$msg);
 
-        Yii::$app->mailer->compose()
+        Yii::$app->mailer->compose('n_moder',['product'=>$product])
             ->setTo(User::getEmail($product->user_id))
-            ->setFrom(isset(Yii::$app->params['adminEmail']) ? Yii::$app->params['adminEmail'] : 'no-reply@example.com')
+            ->setFrom(/*isset(Yii::$app->params['adminEmail']) ? Yii::$app->params['adminEmail'] : 'no-reply@example.com'*/'admin@carbax.ru')
             ->setSubject($subject)
             ->setTextBody($msg)
             ->send();
@@ -146,10 +158,9 @@ class AdsmanagerController extends Controller
         $msg = $this->renderPartial('y_moder',['product'=>$product]);
 
         SendingMessages::send_message($product->user_id,Yii::$app->user->id,$subject,$msg);
-
-        Yii::$app->mailer->compose()
+        Yii::$app->mailer->compose('y_moder',['product'=>$product])
             ->setTo(User::getEmail($product->user_id))
-            ->setFrom(isset(Yii::$app->params['adminEmail']) ? Yii::$app->params['adminEmail'] : 'no-reply@example.com')
+            ->setFrom('admin@carbax.ru')
             ->setSubject($subject)
             ->setTextBody($msg)
             ->send();

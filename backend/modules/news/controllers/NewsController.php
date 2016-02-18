@@ -76,6 +76,7 @@ class NewsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $model->img_url = $_POST['mediaUploadInputFile'];
+            $model->dt_add = time();
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

@@ -53,4 +53,12 @@ class Garage extends \yii\db\ActiveRecord
             'title' => 'Title',
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getauto_widget()
+    {
+        return $this->hasMany(AutoWidget::className(), ['id' => 'id_auto_widget']);
+    }
 }

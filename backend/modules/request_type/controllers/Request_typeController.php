@@ -5,8 +5,10 @@ namespace backend\modules\request_type\controllers;
 use common\classes\Debug;
 use common\models\db\AddFieldsGroup;
 use common\models\db\RequestAddForm;
+use common\models\db\RequestByServiceType;
 use common\models\db\RequestTypeAddForm;
 use common\models\db\RequestTypeGroup;
+use common\models\db\ServiceType;
 use Yii;
 use backend\modules\request_type\models\RequestType;
 use backend\modules\request_type\models\RequestTypeSearch;
@@ -83,6 +85,8 @@ class Request_typeController extends Controller
 
         $form = RequestAddForm::find()->all();
 
+        $serviceType = ServiceType::find()->all();
+
         foreach ($form as $f ) {
             $fr[$f->id] = $f->name;
         }
@@ -102,12 +106,20 @@ class Request_typeController extends Controller
                 $rf->save();
             }
 
+            foreach ($_POST['serviceType'] as $st ) {
+                $reqSerType = new RequestByServiceType();
+                $reqSerType->service_type_id = $st;
+                $reqSerType->request_id = $model->id;
+                $reqSerType->save();
+            }
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
                 'group' => $gr,
                 'form' => $fr,
+                'serviceType' => $serviceType,
             ]);
         }
     }
@@ -125,7 +137,7 @@ class Request_typeController extends Controller
         foreach($group as $g){
             $gr[$g->id] = $g->name;
         }
-
+        
         $selected = RequestTypeGroup::find()->where(['request_type_id'=>$id])->all();
         foreach($selected as $s){
             $sel[] = $s->add_fields_group_id;
@@ -158,14 +170,31 @@ class Request_typeController extends Controller
                 $rf->add_form_id = $frt;
                 $rf->save();
             }
+            RequestByServiceType::deleteAll(['request_id' => $id]);
+
+            foreach ($_POST['serviceType'] as $st ) {
+                $reqSerType = new RequestByServiceType();
+                $reqSerType->service_type_id = $st;
+                $reqSerType->request_id = $model->id;
+                $reqSerType->save();
+            }
+
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+            $serviceType = ServiceType::find()->all();
+            $serviceTypeSelect = RequestByServiceType::find()->where(['request_id' => $id])->all();
+            foreach ($serviceTypeSelect as $sf) {
+                $selTS[$sf->service_type_id] = $sf->service_type_id;
+            }
             return $this->render('update', [
                 'model' => $model,
                 'group' => $gr,
                 'selected' => $sel,
                 'formType' => $fr,
                 'selForm' =>  $selF,
+                'serviceType' => $serviceType,
+                'serviceTypeSelect' => $selTS,
             ]);
         }
     }

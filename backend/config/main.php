@@ -73,12 +73,11 @@ return [
                 'adsmanager' => 'adsmanager/adsmanager/index',
             ],
         ],
-        'urlManagerFrontend'=>[
+        'urlManagerFrontend' => [
+            'class' => 'yii\web\urlManager',
+            'baseUrl' => '',
             'enablePrettyUrl' => true,
-            'class' => 'yii\web\UrlManager',
-            'showScriptName'=>false,
-            'hostInfo' => 'http://carbax/frontend',
-            'baseUrl' => '/',
+            'showScriptName' => false,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

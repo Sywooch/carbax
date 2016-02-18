@@ -1,6 +1,7 @@
 <?php
 
 use common\classes\Custom_function;
+use common\classes\Debug;
 use common\models\db\AddFieldsGroup;
 use common\models\db\BcbBrands;
 use common\models\db\TofManufacturers;
@@ -11,8 +12,13 @@ use yii\helpers\Html;
 $this->title = $serviceName;
 $this->registerCssFile('/css/bootstrap_btn.min.css');
 
-    $this->params['breadcrumbs'][] = ['label' => 'Мои сервисы', 'url' => ['select_service']];
+    $this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
+    $this->params['breadcrumbs'][] = ['label' => 'Выбор сервиса', 'url' => ['/select_service']];
+
+    $this->params['breadcrumbs'][] = ['label' => $serviceType->name, 'url' => ['/services/services/my_services', 'service_id' => $serviceType->id]];
     $this->params['breadcrumbs'][] = $this->title;
+
+//Debug::prn($serviceType);
 
 ?>
 

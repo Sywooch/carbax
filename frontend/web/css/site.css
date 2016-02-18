@@ -29,8 +29,8 @@
     display: block;
     float: left;
     background-repeat: no-repeat; }
-.soc__vk {
-    background: url("/media/img/Ikonki_tsve.png") 0 0; }
+/*.soc__vk {
+    background: url("../media/img/Ikonki_tsve.png") 0 0; }
 .soc__vk-b {
     background: url("/media/img/Ikonki_tsve.png") -2px -31px; }
 .soc__fb {
@@ -60,7 +60,7 @@
 .soc__lj {
     background: url("/media/img/Ikonki_tsve.png") -72px 0; }
 .soc__lj-b {
-    background: url("/media/img/Ikonki_tsve.png") -112px -31px; }
+    background: url("/media/img/Ikonki_tsve.png") -112px -31px; }*/
 
 html,
 body {
@@ -303,6 +303,7 @@ input[type="checkbox"] + label {
     display: block;
     float: left;
     padding-right: 5px;
+    padding-bottom: 12px;
     border-style: solid;
     -webkit-border-image: -webkit-gradient(linear, 0 0, 100% 0, from(black), to(rgba(0, 0, 0, 0.5))) 1 100%;
     -webkit-border-image: -webkit-linear-gradient(left, black, rgba(0, 0, 0, 0.5)) 1 100%;
@@ -889,7 +890,7 @@ input[type="checkbox"] + label {
     margin: 25px auto;
     width: 248px;
     position: relative; }
-.first__but--but {
+/*.first__but--but {
     display: block;
     margin: 0 auto;
     background-color: #ff6b00;
@@ -919,13 +920,13 @@ input[type="checkbox"] + label {
 .first__but--but:hover, .first__but--but:active .first__but--but:focus {
     background-color: #cc5600; }
 .first__but--but:hover:after, .first__but--but:active .first__but--but:focus:after {
-    background-color: #ee6401; }
+    background-color: #ee6401; }*/
 .first-nav {
     display: none;
     position: absolute;
     color: #FFF;
-    left: 7px;
-    top: 58px;
+    left: 375px;
+    top: 222px;
     background-color: #2b2b2b;
     width: 235px;
     padding: 0;
@@ -989,12 +990,12 @@ input[type="checkbox"] + label {
     display: inline-block;
     border: 3px solid #ff6b00; }
 .filter__searchline select {
-    width: 195px;
+    /*width: 195px;
     height: 30px;
     padding: 0;
-    display: block;
+    display: block;*/
     float: left;
-    border-right: 3px solid #ff6b00; }
+    /*border-right: 3px solid #ff6b00;*/ }
 .filter__searchline select option {
     height: 30px; }
 .filter__searchline--search {
@@ -1201,14 +1202,16 @@ input[type="checkbox"] + label {
     margin-bottom: 25px; }
 .deals h3 {
     font-size: 20px;
-    font-family: "HelveticaNeueCyrMedium";
+    /*font-family: "HelveticaNeueCyrMedium";*/
     color: #1b1b1b;
     margin-bottom: 15px; }
 .deals__item {
     display: block;
     float: left;
     width: 33%;
-    position: relative; }
+    position: relative;
+    margin-bottom: 30px;
+}
 .deals__line {
     display: block;
     float: left;
@@ -1363,11 +1366,11 @@ input[type="checkbox"] + label {
 .deals__block:hover .deals__block-img-more {
     display: block; }
 
-.news {
+/*.news {
     position: relative;
     padding: 50px 0;
     width: 100%;
-    display: inline-block; }
+    display: inline-block; }*/
 .news:after {
     content: "";
     position: absolute;
@@ -1518,8 +1521,8 @@ input[type="checkbox"] + label {
     display: block;
     float: left;
     position: relative;
-    width: 56%;
-    padding: 0 15px; }
+    width: 80%;
+    padding-right: 10px;}
 .singleContent__title {
     display: block;
     position: relative;
@@ -2497,8 +2500,9 @@ input[type="checkbox"] + label {
 
 .side-nav {
     position: absolute;
-    top: 49px;
-    width: 108%;
+    top: 37px;
+    right: 15px;
+    width: 22%;
     margin-left: -8%;
     background: #000;
     color: #fff;
@@ -2547,7 +2551,7 @@ input[type="checkbox"] + label {
 .main-container .busines-type--link {
     display: block;
     float: left;
-    width: 40%;
+    width: 28%;
     margin-right: 5%;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -2812,7 +2816,9 @@ input[type="checkbox"] + label {
 .fleamarket__wrap {
     display: block;
     width: 100%;
-    position: relative; }
+    position: relative;
+    float: left;
+    margin-top: 30px;}
 
 .fleamarket__ads--list {
     display: block;
@@ -3062,6 +3068,7 @@ ul.pagination {
 ul.pagination li {
     float: left;
     margin-right: 10px;
+    margin-top: 15px;
 }
 ul.pagination li a{
     color: #ff6b00;

@@ -51,18 +51,6 @@ $this->registerCssFile('/css/bootstrap.min.css');
             <h2>Добавить логотип компании</h2>
             <?php
             echo '<label class="control-label">Добавить фото</label>';
-            /*echo FileInput::widget([
-                'name' => 'file',
-                'id' => 'input-4',
-                'attribute' => 'attachment_1',
-                'value' => '/media/img/1.png',
-                'options' => ['multiple' => false,
-                    'language'=> "ru",
-                    'showCaption'=> true,
-                    'maxFileCount'=> 1,
-                    'showRemove'=> false,
-                    'showUpload'=> false],
-            ]);*/
             echo FileInput::widget([
                 'name' => 'file[]',
                 'id' => 'input-5',

@@ -34,6 +34,26 @@ function coverBg(){
 
 jQuery(document).ready(function ($) {
 
+    $('.fileinput-remove').on('click',function(){
+        alert(123);
+        $('.photoAuto').val('');
+    });
+
+    $(document).on('click','.fileinput-remove',function(){
+        alert(123);
+        $('.photoAuto').val('');
+    });
+
+    $('#saveInfoNoValid').on('click', function(){
+        e.preventDefault();
+        if(document.getElementsByClassName('hasEdit').length > 0){
+            $('#addForm').submit();
+        }
+        else {
+            $('#input-5').fileinput('upload');
+        }
+    });
+
     //Загрузка изображений
     $('#saveInfo').on('click', function(e){
         e.preventDefault();
@@ -536,35 +556,40 @@ jQuery(document).ready(function ($) {
         var count = parseInt($('#addressCount').attr('count'), 10);
         var serviceTypeid = $('#service_type_id').val();
         //console.log(serviceTypeid);
+        //console.log(cityId);
+        if(isNaN(regionId) || cityId == '' || address == ''){
+            alert("Необходимо заполнить все поля");
+            return false;
+        }else {
+            $('#' + active).val(region + ', г. ' + city + ', ' + address);
+            if (document.getElementById(active + '_region') !== null) {
+                $('#' + active + '_region').remove();
+                $('#' + active + '_city').remove();
+            }
+            $('#addressCount').append('<input type="hidden" id="' + active + '_region" name="address[' + count + '][regionId]" value="' + regionId + '">');
+            $('#addressCount').append('<input type="hidden" id="' + active + '_city" name="address[' + count + '][cityId]" value="' + cityId + '">');
 
-        $('#' + active).val(region + ', г. ' + city + ', ' + address);
-        if(document.getElementById(active + '_region')!==null) {
-            $('#' + active + '_region').remove();
-            $('#' + active + '_city').remove();
-        }
-        $('#addressCount').append('<input type="hidden" id="' + active + '_region" name="address[' + count + '][regionId]" value="' + regionId + '">');
-        $('#addressCount').append('<input type="hidden" id="' + active + '_city" name="address[' + count + '][cityId]" value="' + cityId + '">');
+            var map = new Map();
+            $('#map').empty();
 
-        var map = new Map();
-        $('#map').empty();
-
-        var address = [];
-        var i = 0;
-        $('.addContent__adress').each(function () {
-            address.push({
-                address:$(this).val(),
-                balloon: {
-                    title: region + ' ' + city,
-                    address: address,
-                    serviceTypeId:serviceTypeid
-                }
+            var address = [];
+            var i = 0;
+            $('.addContent__adress').each(function () {
+                address.push({
+                    address: $(this).val(),
+                    balloon: {
+                        title: region + ' ' + city,
+                        address: address,
+                        serviceTypeId: serviceTypeid
+                    }
+                });
+                //address.push($(this).val());
+                i = i + 1;
             });
-            //address.push($(this).val());
-            i = i + 1;
-        });
-        map.addToMap(address, false);
+            map.addToMap(address, false);
 
-        $('#inputAddressWidget').val('');
+            $('#inputAddressWidget').val('');
+        }
     });
 
     $('#addAddress').on('click', function () {
@@ -835,6 +860,74 @@ jQuery(document).ready(function ($) {
     /*$(document).bind('input', '#itemImg',function(){
         alert("Hello");
     });*/
+
+    $(document).on('click', '.deals__menu--service', function(){
+        var serviceTypeId = $(this).attr('serviceTypeId');
+        $('.deals__menu--service').removeClass('deals__menu--active');
+        $(this).addClass('deals__menu--active');
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/show_offers",
+            data: 'serviceTypeId=' + serviceTypeId,
+            success: function (data) {
+                $('.deals__line').html(data);
+            }
+        });
+
+        return false;
+    });
+
+    $(document).on('change', '.selectSrviceId', function(){
+        var serviceId = $('.selectSrviceId').val();
+        //alert(serviceId);
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_service_type_id",
+            data: 'serviceId=' + serviceId,
+            success: function (data) {
+                $('.service_type_id').val(data);
+            }
+        });
+    });
+
+
+        $('div.filter__map--checklist').hover(function() {
+            // Animate out when hovered, stopping all previous animations
+            $(this)
+                .stop(true, false)
+                .animate({
+                    right: 0
+                }, 400);
+            $('.hide_filter__map--checklist').css('display','none');
+        }, function() {
+            // Animate back in when not hovered, stopping all previous animations
+            $(this)
+                .stop(true, false)
+                .animate({
+                    right: -230
+                }, 400);
+            $('.hide_filter__map--checklist').css('display','block');
+        });
+    $(document).on('click', '.show_video', function(){
+        $('#video').modal('show');
+        return false;
+    });
+
+    $(document).on('change','#offers-old_price',function(){
+        var oldPrice = $(this).val();
+        var newPrice = $('#offers-new_price').val();
+        var discount = Math.round(newPrice*100/oldPrice);
+        $('#offers-discount').val(100 - discount);
+    });
+
+    $(document).on('change','#offers-new_price',function(){
+        var oldPrice = $('#offers-old_price').val();
+        var newPrice = $(this).val();
+        var discount = Math.round(newPrice*100/oldPrice);
+        $('#offers-discount').val(100 - discount);
+    });
+
+
 
 
 });

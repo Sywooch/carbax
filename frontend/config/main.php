@@ -40,10 +40,25 @@ return [
                 'message' => 'message/default',
                 'my_requests' => 'request/default/all_requests',
                 'request_type' => 'request/default/request_type',
-                'favorites' => 'favorites/favorites/default',
+                'favorites' => 'favorites/default',
                 'complaint' => 'complaint/default/complaint',
+                'offers' => 'offers/offers',
+                'offers/create' => 'offers/offers/create',
+                'flea_market' => 'flea_market/default',
+                'flea_market/sale_auto' => 'flea_market/default/sale_auto',
+                'flea_market/sale_parts' => 'flea_market/default',
+                'flea_market/search' => 'flea_market/default/search',
+                'flea_market/view' => 'flea_market/default/view',
+                'news' => 'news/news',
+                'services' => 'services/services',
             ],
         ],
+        /*'urlManagerFrontend' => [
+            'class' => 'yii\web\urlManager',
+            'baseUrl' => '',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+        ],*/
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

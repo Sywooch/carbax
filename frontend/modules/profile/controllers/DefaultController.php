@@ -3,9 +3,11 @@
 namespace frontend\modules\profile\controllers;
 
 use common\classes\Debug;
+use common\models\db\Garage;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
 use common\models\db\Services;
+use common\models\db\ServiceType;
 use Yii;
 use common\models\db\User;
 use yii\filters\AccessControl;
@@ -98,8 +100,25 @@ class DefaultController extends Controller
         $userId = ($id == null) ? Yii::$app->user->id : $id;
 
         $user = User::find()->where(['id' => $userId])->one();
-        $userBusiness = Services::find()->where(['user_id'=>$user->id])->all();
+        $serviceType = ServiceType::find()
+            ->leftJoin('`services`','`services`.`service_type_id` = `service_type`.`id`')
+            ->where(['`services`.`user_id`'=>$user->id])
+            ->all();
+        $autoGarage = Garage::find()
+            ->leftJoin('`auto_widget`', '`auto_widget`.`id` = `garage`.`id_auto_widget`')
+            ->where(['user_id'=>$user->id])
+            ->with('auto_widget')
+            ->all();
+        //Debug::prn($autoGarage[0]->auto_widget[0]->photo);
+        //Debug::prn($autoGarage->createCommand()->rawSql);
+        //$userBusiness = Services::find()->where(['user_id'=>$user->id])->all();
 
-        return $this->render('view', ['user' => $user,'business' => $userBusiness]);
+        return $this->render('view',
+            [
+                'user' => $user,
+                'serviceType' => $serviceType,
+                'autoGarage' => $autoGarage,
+                //'business' => $userBusiness
+            ]);
     }
 }

@@ -181,7 +181,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Добавте адрес</h4>
+                <h4 class="modal-title">Добавьте адрес</h4>
             </div>
             <div class="modal-body" style="float: left; width: 100%; height: 200px">
                 <?= SelectAddress::widget() ?>

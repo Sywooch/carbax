@@ -1,6 +1,7 @@
 <?php
 
 use mihaildev\elfinder\InputFile;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -65,6 +66,23 @@ use yii\widgets\ActiveForm;
 
     <?= Html::label('Выберите формы','formType');?>
     <?= Html::dropDownList('formType',$selForm,$formType,['id'=>'formType','class'=>'form-control','multiple'=>'multiple']); ?>
+
+    <?php
+    //\common\classes\Debug::prn($selForm);
+    if(isset($serviceTypeSelect)){
+
+        $selST = $serviceTypeSelect;
+    }
+    else{
+        $selST = null;
+    }
+
+    ?>
+
+    <?= Html::label('Выберите типы сервисов которые будут учавствовать в поиске','serviceType');?>
+    <?= Html::dropDownList('serviceType', $selST, ArrayHelper::map($serviceType,'id','name'),['id'=>'formType','class'=>'form-control','multiple'=>'multiple']); ?>
+
+
 
     <?= $form->field($model,'view_mark_auto')->checkbox(['label'=>'Отображать только тип авто','class'=>'view_mark_auto']);?>
     <?= $form->field($model,'view_widget_auto')->checkbox(['label'=>'Отображать выбор марки авто','class'=>'view_widget_auto']);?>

@@ -18,13 +18,18 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'css/bootstrap-reset.css',
+        'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',
+
         'css/site.css',
-        'css/font-awesome.min.css',
+        /*'css/font-awesome.min.css',*/
         'css/fotorama.css',
         'css/jquery.datetimepicker.css',
         'css/style.css',
         'css/evgeniy-styles.css',
         'sass/new/new.css',
+        'css/index.css',
+
         /*'/css/bootstrap_btn.min.css'*/
     ];
     public $js = [

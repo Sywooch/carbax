@@ -20,6 +20,8 @@ $this->params['breadcrumbs'][] = 'Редактирование';
         'selected' => $selected,
         'formType' => $formType,
         'selForm' =>  $selForm,
+        'serviceType' => $serviceType,
+        'serviceTypeSelect' => $serviceTypeSelect,
     ]) ?>
 
 </div>
