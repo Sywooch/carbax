@@ -8,7 +8,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Спецпредложения', '
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <section class="deals all_offers">
-
+        <?= \frontend\modules\offers\widgets\MenuOffer::widget();?>
         <div class="deals__line">
             <?php
 

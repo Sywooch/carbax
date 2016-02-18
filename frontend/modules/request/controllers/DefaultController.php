@@ -70,6 +70,7 @@ class DefaultController extends Controller
     {
         /**
          * Проверяем какая завка выбрана и грузим в разные виды
+         * Автошкола
          */
         if($_GET['id'] == 11){
             $this->view->params['officeHide'] = true;
@@ -86,6 +87,9 @@ class DefaultController extends Controller
                 ]);
 
         }
+        /**
+         * Шины
+         */
         if($_GET['id'] == 6){
             $requestType = RequestType::find()->where(['id' => $_GET['id']])->one();
             $addForm = RequestTypeAddForm::find()->where(['request_type_id'=>$_GET['id']])->all();
@@ -98,6 +102,9 @@ class DefaultController extends Controller
                     //'groupService' => $groupService,
                 ]);
         }
+        /**
+         * Диски
+         */
         if($_GET['id'] == 10){
             $requestType = RequestType::find()->where(['id' => $_GET['id']])->one();
             $addForm = RequestTypeAddForm::find()->where(['request_type_id'=>$_GET['id']])->all();
@@ -110,17 +117,111 @@ class DefaultController extends Controller
                     //'groupService' => $groupService,
                 ]);
         }
+        /**
+         *Шиномонтаж
+         */
+        if($_GET['id'] == 1){
+            $requestType = RequestType::find()->where(['id' => $_GET['id']])->one();
+            $addForm = RequestTypeAddForm::find()->where(['request_type_id' => $_GET['id']])->all();
+            return $this->render('request_shinomontag',
+                [
+                    'requestType' => $requestType,
+                    'addForm' => $addForm,
+                ]);
+        }
+        /**
+         * Мойка
+         */
+        if($_GET['id'] == 2){
+            $requestType = RequestType::find()->where(['id' => $_GET['id']])->one();
+            $addForm = RequestTypeAddForm::find()->where(['request_type_id' => $_GET['id']])->all();
+            return $this->render('request_moika',
+                [
+                    'requestType' => $requestType,
+                    'addForm' => $addForm,
+                ]);
+        }
+        /**
+         *Автомагазин
+         */
+        if($_GET['id'] == 3){
+            $requestType = RequestType::find()->where(['id' => $_GET['id']])->one();
+            $addForm = RequestTypeAddForm::find()->where(['request_type_id' => $_GET['id']])->all();
+            return $this->render('request_automagaz',
+                [
+                    'requestType' => $requestType,
+                    'addForm' => $addForm,
+                ]);
+        }
+        /**
+         * Эвакуатор
+         */
+        if($_GET['id'] == 5){
+            $requestType = RequestType::find()->where(['id' => $_GET['id']])->one();
+            $addForm = RequestTypeAddForm::find()->where(['request_type_id' => $_GET['id']])->all();
+            return $this->render('request_evokyator',
+                [
+                    'requestType' => $requestType,
+                    'addForm' => $addForm,
+                ]);
+        }
+        /**
+         *Автосервис
+         */
+        if($_GET['id'] == 7){
+            $requestType = RequestType::find()->where(['id' => $_GET['id']])->one();
+            $addForm = RequestTypeAddForm::find()->where(['request_type_id' => $_GET['id']])->all();
+            return $this->render('request_autoservice',
+                [
+                    'requestType' => $requestType,
+                    'addForm' => $addForm,
+                ]);
+        }
+        /**
+         * Тюнинг
+         */
+        if($_GET['id'] == 8){
+            $requestType = RequestType::find()->where(['id' => $_GET['id']])->one();
+            $addForm = RequestTypeAddForm::find()->where(['request_type_id' => $_GET['id']])->all();
+            return $this->render('request_tuning',
+                [
+                    'requestType' => $requestType,
+                    'addForm' => $addForm,
+                ]);
+        }
+        /**
+         *Запчасти
+         */
+        if($_GET['id'] == 9){
+            $requestType = RequestType::find()->where(['id' => $_GET['id']])->one();
+            $addForm = RequestTypeAddForm::find()->where(['request_type_id' => $_GET['id']])->all();
+            return $this->render('request_zapchasti',
+                [
+                    'requestType' => $requestType,
+                    'addForm' => $addForm,
+                ]);
+        }
+        /**
+         * Автосалон
+         */
+        if($_GET['id'] == 12){
+            $requestType = RequestType::find()->where(['id' => $_GET['id']])->one();
+            $addForm = RequestTypeAddForm::find()->where(['request_type_id' => $_GET['id']])->all();
+            return $this->render('request_autosalon',
+                [
+                    'requestType' => $requestType,
+                    'addForm' => $addForm,
+                ]);
+        }
+
         else {
 
             $requestType = RequestType::find()->where(['id' => $_GET['id']])->one();
             $addForm = RequestTypeAddForm::find()->where(['request_type_id' => $_GET['id']])->all();
-            // $groupService = RequestTypeGroup::find()->where(['request_type_id'=>$_GET['id']])->all();
-            //Debug::prn($addForm);
             return $this->render('index',
                 [
                     'requestType' => $requestType,
                     'addForm' => $addForm,
-                    //'groupService' => $groupService,
                 ]);
         }
     }
