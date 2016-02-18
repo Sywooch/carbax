@@ -139,6 +139,9 @@ class OffersController extends Controller
 
 
     public function actionAll_offers($id = false){
+        $this->view->params['officeHide'] = false;
+        $this->view->params['bannersHide'] = false;
+
         $address = Address::get_geo_info();
 
         $offers = Offers::find()
@@ -147,11 +150,11 @@ class OffersController extends Controller
             ->orderBy('dt_add DESC')
             ->limit(9)
             ->all();
-        Debug::prn($offers);
-        /*return $this->render('all_offers',
+        //Debug::prn($offers);
+        return $this->render('all_offers',
             [
                 'offers' => $offers,
-            ]);*/
+            ]);
 
     }
 

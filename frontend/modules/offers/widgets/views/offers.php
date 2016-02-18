@@ -7,6 +7,7 @@ use yii\widgets\LinkPager;
 ?>
 
 
+<<<<<<< HEAD
     <section class="deals">
         <div class="contain">
             <div class="deals--topline">
@@ -29,6 +30,27 @@ use yii\widgets\LinkPager;
 
             <div class="deals__line">
                 <?php
+=======
+<section class="deals">
+    <div class="contain">
+        <div class="deals--topline">
+            <img src="/media/img/logo2.png" alt="">
+            <h3 class="orange">Спецпредложения</h3>
+        </div>
+        <div class="deals__menu">
+            <ul>
+                <li><a href="#" class="deals__menu--all deals__menu--service deals__menu--active" serviceId="0">Все</a></li>
+                <li><a href="#" class="deals__menu--service" serviceTypeId="1">Автосалон</a></li>
+                <li><a href="#" class="deals__menu--service" serviceTypeId="4">Шины / Диски</a></li>
+                <li><a href="#" class="deals__menu--service" serviceTypeId="6">Тюнинг</a></li>
+                <li><a href="#" class="deals__menu--service" serviceTypeId="11">Автосервис</a></li>
+                <li><a href="#" class="deals__menu--service" serviceTypeId="7">Автошкола</a></li>
+                <li><a href="#" class="deals__menu--service" serviceTypeId="13">Авторазбор</a></li>
+                <li><a href="#" class="deals__menu--service" serviceTypeId="9">Заправка</a></li>
+                <li><a href="#" class="deals__menu--service" serviceTypeId="8">Страховка</a></li>
+            </ul>
+        </div>
+>>>>>>> 7b586c3b3dc1b831760273d7ae6fcf15f4260bd8
 
                 foreach($offers as $offer):?>
                     <div class="deals__item">

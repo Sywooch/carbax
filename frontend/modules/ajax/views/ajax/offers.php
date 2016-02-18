@@ -34,7 +34,8 @@ foreach($offers as $offer):?>
 <?php if($count > 9):?>
     <?php if($serviceTypeId != 0): ?>
         <a href="<?= Url::to(['/offers/offers/all_offers','id'=>$serviceTypeId]); ?>">Все спецпредложения</a>
-    
-    <?php endif;?>
+    <?php else: ?>
+        <a href="<?= Url::to(['/offers/offers/all_offers']); ?>">Все спецпредложения</a>
+    <?php endif ?>
 <?php endif; ?>
 >>>>>>> f8e785566ad1c37d2777049791a074de6d949bf6
