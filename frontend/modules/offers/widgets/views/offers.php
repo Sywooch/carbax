@@ -7,8 +7,6 @@ use yii\widgets\LinkPager;
 ?>
 
 
-</section>-->
-
 <section class="deals">
     <div class="contain">
         <div class="deals--topline">
