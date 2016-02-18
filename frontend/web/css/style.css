@@ -1021,3 +1021,102 @@ a.addBussines{
     width: 100%;
     margin: 0;
 }
+
+/*---AKD47 disc.php style---*/
+
+p.parag_text{
+    font-size: 15px;
+    font-family: HelveticaNeueCyrLight;
+    color: rgb(27, 27, 27);
+    font-weight: 600;
+    text-align: left;
+}
+
+p.parag_text span{
+    font-style: italic;
+    color: rgb(255, 107, 0);
+}
+
+.save{
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.save_btn{
+    display: block;
+    line-height: 27px;
+    color: #fff;
+    font-family: HelveticaNeueCyrMedium;
+    text-align: center;
+    float: left;
+    font-size: 13px;
+    width: 180px;
+    height: 30px;
+    border: 1px solid transparent;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    -ms-border-radius: 1px;
+    border-radius: 2px;
+    -o-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #ff6b00;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+.save_btn:last-of-type{
+    float: none;
+    margin-left: 200px;
+}
+
+.save_btn:hover{
+    color: #000000;
+    background-color: rgb(255,255,255);
+    border-width: 1px;
+    border-color: rgb(208, 213, 218);
+    border-style: solid;
+    border-radius: 3px;
+}
+
+.select_bg{
+    display: block;
+    position: relative;
+    width: 93%;
+    height: 53px;
+    background-color: rgb(232,232,232);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    padding-left: 10px;
+    z-index: 1;
+}
+
+.select_type{
+    position: relative;
+    width: 282px;
+    float: left;
+    margin-top: 11px;
+    z-index: 2;
+}
+
+.select_type:last-of-type{
+    position: relative;
+    width: 152px;
+    float: left;
+    margin-top: 11px;
+    z-index: 2;
+}
+
+.addContent {
+    width: 100%!important;
+}
+
+.addContent .singleContent__desc--works input[type="checkbox"] + label{
+    width: 66%;
+    }
+
+

@@ -215,6 +215,74 @@ $sortie = [
 ?>
 <section class="main-container">
     <form id="addForm" action="send_request" method="post">
+
+        <p class="parag_text">выберите автомобиль из <span>гаража:</span></p>
+
+        <p class="parag_text"><span>у вас нет машин в гараже</span></p>
+
+        <p class="parag_text">Выберите тип Вашего транспортного срества</p>
+
+        <div class="save">
+        <input class="save_btn" type="button" value="Легковой автомобиль">
+        <input class="save_btn" type="button" value="Мотоцикл или скутер">
+        </div>
+
+
+<!--            <a class="save_btn" href="">Легковой автомобиль</a>-->
+<!--            <a class="save_btn" href="">Мотоцикл или скутер</a>-->
+
+        <div class="select_bg">
+            <div class="select_type">
+                <select class="addContent__adress" name="type_disk">
+                <option value="">Марка</option>
+                <option value="1">Кованые</option>
+                <option value="2">Литые</option>
+                <option value="3">Штампованные</option>
+                <option value="4">Спицованные</option>
+                <option value="5">Сборные</option>
+                </select>
+            </div>
+            <div class="select_type">
+                <select class="addContent__adress" name="type_disk">
+                    <option value="">Модель</option>
+                    <option value="1">-</option>
+                    <option value="2">-</option>
+                    <option value="3">-</option>
+                    <option value="4">-</option>
+                    <option value="5">-</option>
+                </select>
+            </div>
+        <div class="select_type">
+            <select class="addContent__adress" name="type_disk">
+                <option value="">Год выпуска</option>
+                <option value="1">-</option>
+                <option value="2">-</option>
+                <option value="3">-</option>
+                <option value="4">-</option>
+                <option value="5">-</option>
+            </select>
+        </div>
+        </div>
+
+        <p class="parag_text">Выберите:</p>
+
+        <div class="addContent">
+            <div class="singleContent__desc">
+                <div class="singleContent__desc--works">
+
+                    <input type="checkbox" id="11_36" name="disk[]" value="36">
+                    <label for="11_36"><span></span>В наличии</label>
+
+                    <input type="checkbox" id="11_36" name="disk[]" value="36">
+                    <label for="11_36"><span></span>Гарантия производителя</label>
+
+                    <input type="checkbox" id="11_36" name="disk[]" value="36">
+                    <label for="11_36"><span></span>Распродажа</label>
+
+                </div>
+            </div>
+        </div>
+
         <h3>Ваш регион и город:</h3>
         <?= RegionSelect::widget() ?>
         <span id="selectAuto">
