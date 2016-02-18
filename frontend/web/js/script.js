@@ -870,6 +870,7 @@ jQuery(document).ready(function ($) {
             url: "/ajax/ajax/show_offers",
             data: 'serviceTypeId=' + serviceTypeId,
             success: function (data) {
+                console.log(data);
                 $('.deals__line').html(data);
             }
         });

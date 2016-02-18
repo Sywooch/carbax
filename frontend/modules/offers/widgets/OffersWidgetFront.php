@@ -15,16 +15,7 @@ class OffersWidgetFront extends Widget
 {
 
     public function run(){
-        /*$region = Yii::$app->ipgeobase->getLocation($_SERVER["REMOTE_ADDR"]);
-        $offers = (new Query())->from('offers')->limit(9)->orderBy('id DESC')->all();*/
-
         $address = Address::get_geo_info();
-
-
-        $offers = Offers::find()->where(['region_id'=>$address['region_id']])->orderBy('dt_add DESC')->limit(9)->all();
-        //Debug::prn($offers);
-        return $this->render('offers', ['offers' => $offers]);
-
         $allOffers = Offers::find()->where(['region_id'=>$address['region_id']])->count();
         $offers = Offers::find()->where(['region_id'=>$address['region_id']])->orderBy('dt_add DESC')->limit(9)->all();
         //Debug::prn($offers);

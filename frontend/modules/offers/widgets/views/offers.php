@@ -6,31 +6,6 @@ use yii\jui\AutoComplete;
 use yii\widgets\LinkPager;
 ?>
 
-
-
-    <section class="deals">
-        <div class="contain">
-            <div class="deals--topline">
-                <img src="/media/img/logo2.png" alt="">
-                <h3 class="orange">Спецпредложения</h3>
-            </div>
-            <div class="deals__menu">
-                <ul>
-                    <li><a href="#" class="deals__menu--all deals__menu--service deals__menu--active" serviceId="0">Все</a></li>
-                    <li><a href="#" class="deals__menu--service" serviceTypeId="1">Автосалон</a></li>
-                    <li><a href="#" class="deals__menu--service" serviceTypeId="4">Шины / Диски</a></li>
-                    <li><a href="#" class="deals__menu--service" serviceTypeId="6">Тюнинг</a></li>
-                    <li><a href="#" class="deals__menu--service" serviceTypeId="11">Автосервис</a></li>
-                    <li><a href="#" class="deals__menu--service" serviceTypeId="7">Автошкола</a></li>
-                    <li><a href="#" class="deals__menu--service" serviceTypeId="13">Авторазбор</a></li>
-                    <li><a href="#" class="deals__menu--service" serviceTypeId="9">Заправка</a></li>
-                    <li><a href="#" class="deals__menu--service" serviceTypeId="8">Страховка</a></li>
-                </ul>
-            </div>
-
-            <div class="deals__line">
-                <?php
-
 <section class="deals">
     <div class="contain">
         <div class="deals--topline">
@@ -50,8 +25,8 @@ use yii\widgets\LinkPager;
                 <li><a href="#" class="deals__menu--service" serviceTypeId="8">Страховка</a></li>
             </ul>
         </div>
-
-
+        <div class="deals__line">
+                <?php
                 foreach($offers as $offer):?>
                     <div class="deals__item">
                         <div class="deals__block">

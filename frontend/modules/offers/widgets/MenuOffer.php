@@ -13,5 +13,5 @@ use yii\base\Widget;
 
 class MenuOffer extends Widget
 {
-    
+
 }
