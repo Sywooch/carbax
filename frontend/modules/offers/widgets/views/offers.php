@@ -7,7 +7,7 @@ use yii\widgets\LinkPager;
 ?>
 
 
-<<<<<<< HEAD
+
     <section class="deals">
         <div class="contain">
             <div class="deals--topline">
@@ -30,7 +30,7 @@ use yii\widgets\LinkPager;
 
             <div class="deals__line">
                 <?php
-=======
+
 <section class="deals">
     <div class="contain">
         <div class="deals--topline">
@@ -50,7 +50,7 @@ use yii\widgets\LinkPager;
                 <li><a href="#" class="deals__menu--service" serviceTypeId="8">Страховка</a></li>
             </ul>
         </div>
->>>>>>> 7b586c3b3dc1b831760273d7ae6fcf15f4260bd8
+
 
                 foreach($offers as $offer):?>
                     <div class="deals__item">
