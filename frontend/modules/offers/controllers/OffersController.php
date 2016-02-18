@@ -4,7 +4,9 @@
 
 namespace frontend\modules\offers\controllers;
 
+
 use common\classes\Address;
+
 use common\classes\Debug;
 use common\models\db\GeobaseCity;
 use common\models\db\ServiceType;
@@ -135,6 +137,8 @@ class OffersController extends Controller
         return $this->redirect(['index']);
     }
 
+
+
     public function actionAll_offers($id = false){
         $this->view->params['officeHide'] = false;
         $this->view->params['bannersHide'] = false;
@@ -164,4 +168,5 @@ class OffersController extends Controller
             ]);
 
     }
+
 }

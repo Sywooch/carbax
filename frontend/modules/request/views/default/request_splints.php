@@ -12,6 +12,10 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <section class="main-container">
     <form id="addForm" action="send_request" method="post">
+
+        <div></div>
+        <div></div>
+
         <h3>Ваш регион и город:</h3>
         <?= RegionSelect::widget() ?>
         <span id="selectAuto">
