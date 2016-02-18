@@ -1012,3 +1012,12 @@ a.addBussines{
     min-height: 40px;
     vertical-align: middle;
 }
+
+.all_offers{
+    width: 80%!important;
+}
+
+.all_offers .deals__line{
+    width: 100%;
+    margin: 0;
+}

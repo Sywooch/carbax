@@ -7,6 +7,7 @@ namespace frontend\modules\offers\controllers;
 use common\classes\Address;
 use common\classes\Debug;
 use common\models\db\GeobaseCity;
+use common\models\db\ServiceType;
 use common\models\forms\OffersForm;
 use Yii;
 use common\models\db\Offers;
@@ -139,17 +140,27 @@ class OffersController extends Controller
         $this->view->params['bannersHide'] = false;
 
         $address = Address::get_geo_info();
+        if($_GET['id']){
+            $serviceType = ServiceType::find()->filterWhere(['id' => $_GET['id']])->one();
+        }
+
+        $pagination = new Pagination([
+            'defaultPageSize' => 9,
+            'totalCount' => Offers::find()->count(),
+        ]);
 
         $offers = Offers::find()
             ->where(['region_id'=>$address['region_id']])
             ->filterWhere(['service_type_id'=>$_GET['id']])
             ->orderBy('dt_add DESC')
-            ->limit(9)
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
             ->all();
-        //Debug::prn($offers);
         return $this->render('all_offers',
             [
                 'offers' => $offers,
+                'serviceType' => $serviceType,
+                'pagination' => $pagination,
             ]);
 
     }
