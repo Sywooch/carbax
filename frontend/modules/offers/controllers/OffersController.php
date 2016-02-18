@@ -4,6 +4,9 @@
 
 namespace frontend\modules\offers\controllers;
 
+
+use common\classes\Address;
+
 use common\classes\Debug;
 use common\models\db\GeobaseCity;
 use common\models\forms\OffersForm;
@@ -132,4 +135,24 @@ class OffersController extends Controller
 
         return $this->redirect(['index']);
     }
+
+
+
+    public function actionAll_offers($id = false){
+        $address = Address::get_geo_info();
+
+        $offers = Offers::find()
+            ->where(['region_id'=>$address['region_id']])
+            ->filterWhere(['service_type_id'=>$_GET['id']])
+            ->orderBy('dt_add DESC')
+            ->limit(9)
+            ->all();
+        Debug::prn($offers);
+        /*return $this->render('all_offers',
+            [
+                'offers' => $offers,
+            ]);*/
+
+    }
+
 }
