@@ -1045,24 +1045,22 @@ p.parag_text span{
     width: 100%;
 }
 
-.save_btn{
-    display: block;
-    line-height: 27px;
-    color: #fff;
-    font-family: HelveticaNeueCyrMedium;
-    text-align: center;
-    float: left;
-    font-size: 13px;
+.save input[type="checkbox"]{
+    display: none;
+}
+
+.save input[type="checkbox"] + label{
     width: 180px;
     height: 30px;
     border: 1px solid transparent;
-    -webkit-border-radius: 1px;
-    -moz-border-radius: 1px;
-    -ms-border-radius: 1px;
     border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    background-color: #ff6b00;
     -o-background-clip: padding-box;
     background-clip: padding-box;
-    background-color: #ff6b00;
+    padding-top: 4px;
     -webkit-transition: all 0.4s linear;
     -moz-transition: all 0.4s linear;
     -ms-transition: all 0.4s linear;
@@ -1070,19 +1068,62 @@ p.parag_text span{
     transition: all 0.4s linear;
 }
 
-.save_btn:last-of-type{
-    float: none;
-    margin-left: 200px;
+.save input[type="checkbox"] + label span{
+    display: block;
+    font-size: 13px;
+    font-family: HelveticaNeueCyrMedium;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
 }
 
-.save_btn:hover{
-    color: #000000;
-    background-color: rgb(255,255,255);
-    border-width: 1px;
-    border-color: rgb(208, 213, 218);
-    border-style: solid;
-    border-radius: 3px;
+.save input[type="checkbox"]:checked + label{
+    width: 50px;
+    background-color: #fff;
+    transition: background-color 0.4s linear;
 }
+.save input[type="checkbox"]:checked + label{
+    transition: background-color 0.4s linear;
+}
+
+
+/*.save_btn{*/
+    /*display: block;*/
+    /*line-height: 27px;*/
+    /*font-family: HelveticaNeueCyrMedium;*/
+    /*text-align: center;*/
+    /*float: left;*/
+    /*font-size: 13px;*/
+    /*width: 180px;*/
+    /*height: 30px;*/
+    /*border: 1px solid transparent;*/
+    /*-webkit-border-radius: 1px;*/
+    /*-moz-border-radius: 1px;*/
+    /*-ms-border-radius: 1px;*/
+    /*border-radius: 2px;*/
+    /*-o-background-clip: padding-box;*/
+    /*background-clip: padding-box;*/
+    /*background-color: #ff6b00;*/
+    /*-webkit-transition: all 0.4s linear;*/
+    /*-moz-transition: all 0.4s linear;*/
+    /*-ms-transition: all 0.4s linear;*/
+    /*-o-transition: all 0.4s linear;*/
+    /*transition: all 0.4s linear;*/
+/*}*/
+
+/*.save_btn:last-of-type{*/
+    /*float: none;*/
+    /*margin-left: 200px;*/
+/*}*/
+
+/*.save_btn:checked{*/
+    /*color: #000000;*/
+    /*background-color: rgb(255,255,255);*/
+    /*border-width: 1px;*/
+    /*border-color: rgb(208, 213, 218);*/
+    /*border-style: solid;*/
+    /*border-radius: 3px;*/
+/*}*/
 
 .select_bg{
     display: block;
@@ -1120,8 +1161,6 @@ p.parag_text span{
 .addContent .singleContent__desc--works input[type="checkbox"] + label{
     width: 66%;
     }
-
-
 
 .all_offers .deals__menu{
     height: 52px;

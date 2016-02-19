@@ -223,8 +223,14 @@ $sortie = [
         <p class="parag_text">Выберите тип Вашего транспортного срества</p>
 
         <div class="save">
-        <input class="save_btn" type="button" value="Легковой автомобиль">
-        <input class="save_btn" type="button" value="Мотоцикл или скутер">
+        <input type="checkbox" value="">
+            <label for="">
+                <span>Легковой автомобиль</span>
+            </label>
+        <input type="checkbox" value="">
+            <label for="">
+                <span>Мотоцикл или скутер</span>
+            </label>
         </div>
 
 
@@ -273,11 +279,11 @@ $sortie = [
                     <input type="checkbox" id="11_36" name="disk[]" value="36">
                     <label class="text" for="11_36"><span></span>В наличии</label>
 
-                    <input type="checkbox" id="11_36" name="disk[]" value="36">
-                    <label class="text" for="11_36"><span></span>Гарантия производителя</label>
+                    <input type="checkbox" id="11_37" name="disk[]" value="37">
+                    <label class="text" for="11_37"><span></span>Гарантия производителя</label>
 
-                    <input type="checkbox" id="11_36" name="disk[]" value="36">
-                    <label class="text" for="11_36"><span></span>Распродажа</label>
+                    <input type="checkbox" id="11_38" name="disk[]" value="38">
+                    <label class="text" for="11_38"><span></span>Распродажа</label>
 
                 </div>
             </div>
