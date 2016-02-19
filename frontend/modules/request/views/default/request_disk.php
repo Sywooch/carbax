@@ -223,13 +223,17 @@ $sortie = [
         <p class="parag_text">Выберите тип Вашего транспортного срества</p>
 
         <div class="save">
-        <input type="checkbox" value="">
-            <label for="">
-                <span>Легковой автомобиль</span>
+        <input type="checkbox" value="none" id="a">
+            <label for="a">
+                <span>
+                    Легковой автомобиль
+                </span>
             </label>
-        <input type="checkbox" value="">
-            <label for="">
-                <span>Мотоцикл или скутер</span>
+        <input type="checkbox" value="none" id="b">
+            <label for="b">
+                <span>
+                    Мотоцикл или скутер
+                </span>
             </label>
         </div>
 
@@ -288,6 +292,35 @@ $sortie = [
                 </div>
             </div>
         </div>
+
+        <p class="parag_text">Производитель:</p>
+
+
+
+        <div class="select_type__manufacturer">
+            <select class="select_type__manufacturer--sel" name="type_disk">
+                <option value="">Выбирите производителя</option>
+                <option value="1">-</option>
+                <option value="2">-</option>
+                <option value="3">-</option>
+                <option value="4">-</option>
+                <option value="5">-</option>
+                <option value="6">-</option>
+                <option value="7">-</option>
+                <option value="8">-</option>
+                <option value="9">-</option>
+                <option value="10">-</option>
+
+
+
+
+
+
+            </select>
+        </div>
+
+
+
 
         <h3>Ваш регион и город:</h3>
         <?= RegionSelect::widget() ?>

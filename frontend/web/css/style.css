@@ -1046,13 +1046,14 @@ p.parag_text span{
 }
 
 .save input[type="checkbox"]{
-    display: none;
+    display:none;
 }
 
 .save input[type="checkbox"] + label{
+    display: inline-block;
     width: 180px;
     height: 30px;
-    border: 1px solid transparent;
+    /*border: 1px solid transparent;*/
     border-radius: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -1060,7 +1061,7 @@ p.parag_text span{
     background-color: #ff6b00;
     -o-background-clip: padding-box;
     background-clip: padding-box;
-    padding-top: 4px;
+    /*padding-top: 6px;*/
     -webkit-transition: all 0.4s linear;
     -moz-transition: all 0.4s linear;
     -ms-transition: all 0.4s linear;
@@ -1069,61 +1070,27 @@ p.parag_text span{
 }
 
 .save input[type="checkbox"] + label span{
-    display: block;
+    display: inherit;
+    width: 100%;
+    height: 100%;
+    border: 1px solid transparent;
     font-size: 13px;
     font-family: HelveticaNeueCyrMedium;
     text-align: center;
     color: #fff;
+    /*padding-top: 6px;*/
     cursor: pointer;
 }
 
-.save input[type="checkbox"]:checked + label{
-    width: 50px;
-    background-color: #fff;
+.save input[type="checkbox"]:checked + label span{
+    padding-top: 0;
+    color: #000000;
+    background-color: rgb(255,255,255);
+    border-color: rgb(208, 213, 218);
+    border-width: 1px;
+    border-style: solid;
     transition: background-color 0.4s linear;
 }
-.save input[type="checkbox"]:checked + label{
-    transition: background-color 0.4s linear;
-}
-
-
-/*.save_btn{*/
-    /*display: block;*/
-    /*line-height: 27px;*/
-    /*font-family: HelveticaNeueCyrMedium;*/
-    /*text-align: center;*/
-    /*float: left;*/
-    /*font-size: 13px;*/
-    /*width: 180px;*/
-    /*height: 30px;*/
-    /*border: 1px solid transparent;*/
-    /*-webkit-border-radius: 1px;*/
-    /*-moz-border-radius: 1px;*/
-    /*-ms-border-radius: 1px;*/
-    /*border-radius: 2px;*/
-    /*-o-background-clip: padding-box;*/
-    /*background-clip: padding-box;*/
-    /*background-color: #ff6b00;*/
-    /*-webkit-transition: all 0.4s linear;*/
-    /*-moz-transition: all 0.4s linear;*/
-    /*-ms-transition: all 0.4s linear;*/
-    /*-o-transition: all 0.4s linear;*/
-    /*transition: all 0.4s linear;*/
-/*}*/
-
-/*.save_btn:last-of-type{*/
-    /*float: none;*/
-    /*margin-left: 200px;*/
-/*}*/
-
-/*.save_btn:checked{*/
-    /*color: #000000;*/
-    /*background-color: rgb(255,255,255);*/
-    /*border-width: 1px;*/
-    /*border-color: rgb(208, 213, 218);*/
-    /*border-style: solid;*/
-    /*border-radius: 3px;*/
-/*}*/
 
 .select_bg{
     display: block;
@@ -1145,6 +1112,22 @@ p.parag_text span{
     margin-top: 11px;
     z-index: 2;
 }
+
+.select_type .addContent__adress{
+    background-color: rgb(243,243,243);
+}
+
+.select_type .addContent__adress{
+    background-color: rgb(243,243,243);
+}
+
+.select_type .addContent__adress:hover,
+.select_type .addContent__adress:active,
+.select_type .addContent__adress:visited,
+.select_type .addContent__adress:focus{
+    background-color: rgb(255,255,255);
+}
+
 
 .select_type:last-of-type{
     position: relative;
@@ -1180,4 +1163,28 @@ p.parag_text span{
 
 label.text{
     font-size: 14px!important;
+}
+
+.select_type__manufacturer{
+    display: block;
+    position: relative;
+    width: 100%;
+    float: left;
+}
+
+.select_type__manufacturer--sel{
+    width: 305px;
+    height: 30px;
+    max-height: 30px;
+    overflow: scroll;
+    border-radius: 3px / 4px;
+    -o-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #fff;
+    outline-style: none;
+    border: 1px solid #C6CCD2;
+    padding: 0 0px 0 10px;
+    margin-bottom: 15px;
+    display: block;
+    float: left;
 }
