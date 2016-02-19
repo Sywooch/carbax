@@ -271,13 +271,13 @@ $sortie = [
                 <div class="singleContent__desc--works">
 
                     <input type="checkbox" id="11_36" name="disk[]" value="36">
-                    <label for="11_36"><span></span>В наличии</label>
+                    <label class="text" for="11_36"><span></span>В наличии</label>
 
                     <input type="checkbox" id="11_36" name="disk[]" value="36">
-                    <label for="11_36"><span></span>Гарантия производителя</label>
+                    <label class="text" for="11_36"><span></span>Гарантия производителя</label>
 
                     <input type="checkbox" id="11_36" name="disk[]" value="36">
-                    <label for="11_36"><span></span>Распродажа</label>
+                    <label class="text" for="11_36"><span></span>Распродажа</label>
 
                 </div>
             </div>

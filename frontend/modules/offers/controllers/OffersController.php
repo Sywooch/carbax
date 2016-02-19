@@ -78,6 +78,7 @@ class OffersController extends Controller
 
         /*$this->view->params['officeHide'] = true;
         $this->view->params['bannersHide'] = true;*/
+
         $model = new Offers();
 
         if ($model->load(Yii::$app->request->post() )&& $model->validate()) {
