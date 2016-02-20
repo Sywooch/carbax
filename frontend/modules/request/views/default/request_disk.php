@@ -499,6 +499,15 @@ $sortie = [
     <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии">
 
     </textarea>
+
+
+    <div class="send">
+        <a class="send_foto" href="#">Добавить фото</a>
+    </div>
+
+    <div class="addContent--save">
+        <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить</a>
+    </div>
 </div>
 
 
@@ -519,9 +528,7 @@ $sortie = [
 //
 ?>
 <!--        </div>-->
-<div class="addContent--save">
-    <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить</a>
-</div>
+
 </form>
 </section>
 <!----AKD47 section end---->
