@@ -1188,3 +1188,43 @@ label.text{
     display: block;
     float: left;
 }
+
+
+.requestDiametr{
+    display: block;
+    float: left;
+    width: 329px;
+    margin-right: 40px;
+}
+
+.requestDiametr:nth-of-type(even){
+    display: block;
+    float: left;
+    width: 329px;
+    margin-left: 44px;
+}
+
+.requestDiametr__next{
+    display: block;
+    float: left;
+    width: 233px;
+    margin-right: 19px;
+}
+
+.requestDiametr label{
+    font-size: 15px;
+    font-family: HelveticaNeueCyrLight;
+    color: rgb(27, 27, 27);
+    font-weight: 600;
+    text-align: left;
+    min-height: 24px;
+}
+
+.requestDiametr__next label{
+    font-size: 15px;
+    font-family: HelveticaNeueCyrLight;
+    color: rgb(27, 27, 27);
+    font-weight: 600;
+    text-align: left;
+    min-height: 24px;
+}
