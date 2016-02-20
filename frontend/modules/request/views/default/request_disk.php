@@ -213,6 +213,8 @@ $sortie = [
     '185' => '185',
 ];
 ?>
+
+<!----AKD47 section---->
 <section class="main-container">
 <form id="addForm" action="send_request" method="post">
 
@@ -236,10 +238,6 @@ $sortie = [
                 </span>
     </label>
 </div>
-
-
-<!--            <a class="save_btn" href="">Легковой автомобиль</a>-->
-<!--            <a class="save_btn" href="">Мотоцикл или скутер</a>-->
 
 <div class="select_bg">
     <div class="select_type">
@@ -526,3 +524,4 @@ $sortie = [
 </div>
 </form>
 </section>
+<!----AKD47 section end---->

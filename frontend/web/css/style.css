@@ -1160,9 +1160,9 @@ p.parag_text span{
     float: right;
 }
 
-label.text{
-    font-size: 14px!important;
-}
+/*label.text{*/
+    /*font-size: 14px!important;*/
+/*}*/
 
 .select_type__manufacturer{
     display: block;
@@ -1220,7 +1220,7 @@ label.text{
 }
 
 .requestDiametr__next label{
-    font-size: 15px;
+    font-size: 14px;
     font-family: HelveticaNeueCyrLight;
     color: rgb(27, 27, 27);
     font-weight: 600;
@@ -1229,7 +1229,7 @@ label.text{
 }
 
 .singleContent__desc label{
-     font-size: 15px;
+     font-size: 12px;
      font-family: HelveticaNeueCyrLight;
      color: rgb(27, 27, 27);
      font-weight: 600;
@@ -1318,3 +1318,42 @@ label.text{
 .selection__content .singleContent__desc input[type="checkbox"] + label span {
     background-color: #c6ccd2;
 }
+
+.send{
+    display: block;
+    position: absolute;
+    text-align: center;
+    bottom: 43px;
+    left: 449px;
+    padding-top: 4px;
+}
+
+.send a.send_foto {
+    display: block;
+    line-height: 27px;
+    font-size: 13px;
+    font-family: HelveticaNeueCyrLight;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    width: 132px;
+    height: 30px;
+    background-color: rgb(114, 114, 114);
+    background-clip: padding-box;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border: 1px transparent solid;
+    transition: all 0.4s linear;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+}
+
+.send a.send_foto:hover{
+    color: rgb(27,27,27);
+    background-color: rgb(255, 255, 255);
+    border: 1px #727272 solid;
+}
+
