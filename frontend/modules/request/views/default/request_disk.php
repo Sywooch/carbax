@@ -399,10 +399,6 @@ $sortie = [
 </div>
 
 
-<!--        <div class="requestAddFieldGroup">-->
-<!--            --><?php //echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]); ?>
-<!--        </div>-->
-
 <p class="parag_text">Ваш регион: <span>Москва</span>. Добавить еще регион</p>
 
 <div class="select_type__manufacturer">
@@ -421,78 +417,6 @@ $sortie = [
     </select>
 </div>
 
-<!--        <h3>Ваш регион и город:</h3>-->
-<!--        --><? //= RegionSelect::widget() ?>
-<!--        <span id="selectAuto">-->
-<!--            --><?php
-//            if ($requestType->view_widget_auto == 1) {
-//                echo SelectAuto::widget(['view' => $requestType->view_category_auto,'select_from_garage'=>true]);
-//            }
-//
-//            if($requestType->view_mark_auto == 1){
-//                echo Html::dropDownList(
-//                    'typeAuto',
-//                    0,
-//                    ['1'=>'Легковой автомобиль','2'=>'Грузовой автомобиль','3'=>'Мото транспорт'],
-//                    ['prompt' => 'Выберите тип авто', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typeAuto', 'required' => 'required']
-//                );
-//            }
-//
-?>
-<!---->
-<!--        </span>-->
-
-<!--        <div class="requestDiametr">-->
-<!--            --><?php
-//                echo Html::label('Тип диска');
-//                echo Html::dropDownList('type_disk',$model->type_disk,$typeDisk,['prompt'=>'-','class'=>'addContent__adress']);
-//
-?>
-<!--        </div>-->
-<!--        <div class="requestDiametr">-->
-<!--            --><?php
-//                echo Html::label('Диаметр');
-//                echo Html::dropDownList('diameter',$model->diameter,$diameter,['prompt'=>'-','class'=>'addContent__adress']);
-//
-?>
-<!--        </div>-->
-<!--        <div class="requestDiametr">-->
-<!--           --><?php
-//                echo Html::label('Ширина обода');
-//                echo Html::dropDownList('rim_width',$model->rim_width,$rim_width,['prompt'=>'-','class'=>'addContent__adress']);
-//
-?>
-<!--        </div>-->
-<!--        <div class="requestDiametr">-->
-<!--            --><?php
-//                echo Html::label('Количество отверстий');
-//                echo Html::dropDownList('number_holes',$model->number_holes,$number_holes, ['prompt'=>'-','class'=>'addContent__adress']);
-//
-?>
-<!--        </div>-->
-<!--        <div class="requestDiametr">-->
-<!--            --><?php
-//                echo Html::label('Диаметр расположения отверстий');
-//                echo Html::dropDownList('diameter_holest',$model->diameter_holest,$diameter_holes,['prompt'=>'-','class'=>'addContent__adress']);
-//
-?>
-<!--        </div>-->
-<!--        <div class="requestDiametr">-->
-<!--            --><?php
-//                echo Html::label('Вылет (ET)');
-//                echo Html::dropDownList('sortie',$model->sortie,$sortie,['class'=>'addContent__adress','prompt'=>'-']);
-//
-?>
-<!--        </div>-->
-<!---->
-<!--        <div class="requestAddFieldGroup">-->
-<!--            --><?php //echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]); ?>
-<!--        </div>-->
-<!---->
-<!---->
-<!--        --><?php //echo Html::hiddenInput('request_type_id', $_GET['id']); ?>
-
-
 <div class="singleContent__desc">
 
     <label for="addContent__description" style="width:100%">Комментарии</label>
@@ -509,25 +433,6 @@ $sortie = [
         <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить заявку</a>
     </div>
 </div>
-
-
-<!--        <div class="singleContent__desc">-->
-<!--            --><?php
-//            foreach ($addForm as $f) {
-//                $k = RequestAddForm::find()->where(['id' => $f->add_form_id])->one();
-//                echo CustomField::widget([
-//                    'name' => $k->key,
-//                    'template' => $k->template,
-//                    'inputOption' => ['class' => $k->class, 'id' => $k->input_id, 'placeholder' => $k->placeholder],
-//                    'labelOption' => ['for' => $k->input_id, 'style' => 'width:100%'],
-//                    'labelName' => $k->name,
-//                    'type' => ($k->form_type == 0) ? 'input' : 'textarea'
-//                ]);
-//
-//            }
-//
-?>
-<!--        </div>-->
 
 </form>
 </section>

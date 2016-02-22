@@ -1360,13 +1360,12 @@ p.parag_text span{
     padding: 10px;
 }
 
-.selection{
+.selection {
     display: block;
     position: relative;
     width: 100%;
     float: left;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 30px;
 }
 
 .selection .selection__content{
@@ -1639,3 +1638,30 @@ p.parag_text span{
     -o-transition: all 0.4s linear;
     transition: all 0.4s linear;
 }
+
+.mileage{
+    display: block;
+    position: relative;
+    width: 100%;
+    float: left;
+    margin: 20px 0 20px 0;
+}
+
+.mileage input.mileage__next{
+    width: 320px;
+    border-color: rgb(208, 213, 218);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 5px 0 5px 23px;
+    background-color: rgb(222, 222, 222);
+    box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 1, 0.47);
+    -webkit-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 1, 0.47);
+    -mox-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 1, 0.47);
+}
+
+.mileage input.mileage__next:focus{
+    outline: none;
+    background-color: rgb(255, 255, 255);
+}
+
