@@ -1257,6 +1257,7 @@ p.parag_text span{
 
 .addContent {
     width: 100%!important;
+    margin-top: 30px;
 }
 
 .addContent .singleContent__desc--works input[type="checkbox"] + label{
