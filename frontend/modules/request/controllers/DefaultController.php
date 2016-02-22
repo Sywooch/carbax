@@ -16,6 +16,7 @@ use common\models\db\BcbModify;
 use common\models\db\CarMark;
 use common\models\db\CarModel;
 use common\models\db\CarModification;
+use common\models\db\Garage;
 use common\models\db\Request;
 use common\models\db\RequestAddFieldValue;
 use common\models\db\RequestAddForm;
@@ -228,11 +229,12 @@ class DefaultController extends Controller
 
     public function actionSend_request(){
 
+        Debug::prn($_POST);
 
         /**
          * получение дополнительных полей
          */
-        $fieldsForm = RequestTypeAddForm::find()->where(['request_type_id'=>$_POST['request_type_id']])->all();
+        /*$fieldsForm = RequestTypeAddForm::find()->where(['request_type_id'=>$_POST['request_type_id']])->all();
         foreach ($fieldsForm as $ff) {
             $fieldsFormName = RequestAddForm::find()->where(['id' => $ff->add_form_id])->one();
             $fieldsFormArr[$fieldsFormName->key] = $fieldsFormName;
@@ -308,7 +310,7 @@ class DefaultController extends Controller
 
         /**
          * Получение типов сервисов по которым должен происходить поиск
-         */
+
 
         $serviceTypeSearch = RequestByServiceType::find()->where(['request_id' => $request_type_id])->all();
         $serviceSearch = [];
@@ -316,11 +318,10 @@ class DefaultController extends Controller
             $serviceSearch[] = $s->service_type_id;
         }
 
-        /*Debug::prn($serviceSearch);*/
+
 
         $services = Services::find()
             ->joinWith(['address', 'service_add_fields','service_brand_cars'])
-           // ->where(['`services`.`service_type_id`' => $serviceSearch])
             ->filterWhere([
                 'address.region_id' => $_POST['region'],
                 'address.city_id' => $_POST['city'],
@@ -334,8 +335,7 @@ class DefaultController extends Controller
 
         $ids = 0;
 
-       /* Debug::prn($services);
-        Debug::prn($_POST);*/
+
 
         foreach($services as $service){
             if($request_type_id == 11){
@@ -350,7 +350,7 @@ class DefaultController extends Controller
             $ids++;
         }
 
-        return $this->render('send_request');
+        return $this->render('send_request');*/
     }
 
     public function actionAll_requests(){

@@ -17,20 +17,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <form id="addForm" action="send_request" method="post">
 
-        <p class="parag_text">выберите автомобиль из <span>гаража:</span></p>
-
-        <p class="parag_text"><span>у вас нет машин в гараже</span></p>
+        <p class="parag_text">выберите автомобиль из <span class="selectAutoGarage">гаража:</span></p>
+        <div id="selectAutoGarage"></div>
+        <!--<p class="parag_text"><span>у вас нет машин в гараже</span></p>-->
 
         <p class="parag_text">Выберите тип Вашего транспортного срества</p>
 
         <div class="save">
-            <input type="checkbox" value="none" id="a">
+            <input type="checkbox" name="typeAuto" value="1" id="a" class="typeAutoRequest">
             <label for="a">
                 <span>
                     Легковой автомобиль
                 </span>
             </label>
-            <input type="checkbox" value="none" id="b">
+            <input type="checkbox" name="typeAuto" value="2" id="g" class="typeAutoRequest">
+            <label for="g">
+                <span>
+                    Грузовой автомобиль
+                </span>
+            </label>
+
+            <input type="checkbox" name="typeAuto" value="3" id="b" class="typeAutoRequest">
             <label for="b">
                 <span>
                     Мотоцикл или скутер
@@ -39,34 +46,19 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <div class="select_bg">
-            <div class="select_type">
-                <select class="addContent__adress" name="type_disk">
+            <div class="select_type requestManufacture">
+                <select class="addContent__adress requestMarkAuto" name="requestMarkAuto">
                     <option value="">Марка</option>
-                    <option value="1">Кованые</option>
-                    <option value="2">Литые</option>
-                    <option value="3">Штампованные</option>
-                    <option value="4">Спицованные</option>
-                    <option value="5">Сборные</option>
                 </select>
             </div>
-            <div class="select_type">
-                <select class="addContent__adress" name="type_disk">
+            <div class="select_type requestModelAuto">
+                <select class="addContent__adress requestModelAuto" name="requestModelAuto">
                     <option value="">Модель</option>
-                    <option value="1">-</option>
-                    <option value="2">-</option>
-                    <option value="3">-</option>
-                    <option value="4">-</option>
-                    <option value="5">-</option>
                 </select>
             </div>
-            <div class="select_type">
-                <select class="addContent__adress" name="type_disk">
+            <div class="select_type requestYear">
+                <select class="addContent__adress requestYear" name="requestYear">
                     <option value="">Год выпуска</option>
-                    <option value="1">-</option>
-                    <option value="2">-</option>
-                    <option value="3">-</option>
-                    <option value="4">-</option>
-                    <option value="5">-</option>
                 </select>
             </div>
         </div>
@@ -129,7 +121,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
 
-        <p class="parag_text">Производитель:</p>
+        <!--<p class="parag_text">Производитель:</p>
 
 
         <div class="select_type__manufacturer">
@@ -146,37 +138,28 @@ $this->params['breadcrumbs'][] = $this->title;
                 <option value="9">-</option>
                 <option value="10">-</option>
             </select>
-        </div>
+        </div>-->
 
 
 
 
+        <!--<span id="selectAuto">
+           <?php
+/*            if ($requestType->view_widget_auto == 1) {
+               echo SelectAuto::widget(['view' => $requestType->view_category_auto,'select_from_garage'=>true]);
+           }
 
+            if($requestType->view_mark_auto == 1){
+                echo Html::dropDownList(
+                    'typeAuto',
+                    0,
+                    ['1'=>'Легковой автомобиль','2'=>'Грузовой автомобиль','3'=>'Мото транспорт'],
+                    ['prompt' => 'Выберите тип авто', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typeAuto', 'required' => 'required']
+                );
+            }
+            */?>
 
-            <form id="addForm" action="send_request" method="post">
-
-        <div></div>
-        <div></div>
-
-<!--        <h3>Ваш регион и город:</h3>-->
-<!--        --><?//= RegionSelect::widget() ?>
-<!--        <span id="selectAuto">-->
-<!--            --><?php
-//            if ($requestType->view_widget_auto == 1) {
-//                echo SelectAuto::widget(['view' => $requestType->view_category_auto,'select_from_garage'=>true]);
-//            }
-//
-//            if($requestType->view_mark_auto == 1){
-//                echo Html::dropDownList(
-//                    'typeAuto',
-//                    0,
-//                    ['1'=>'Легковой автомобиль','2'=>'Грузовой автомобиль','3'=>'Мото транспорт'],
-//                    ['prompt' => 'Выберите тип авто', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typeAuto', 'required' => 'required']
-//                );
-//            }
-//            ?>
-<!---->
-<!--        </span>-->
+       </span>-->
 
         <?php
         $diameter = [];
@@ -215,19 +198,19 @@ $this->params['breadcrumbs'][] = $this->title;
                     echo Html::dropDownList('diameter',$model->diameter,$diameter,['prompt'=>'-','class'=>'addContent__adress']);
                 ?>
             </div>
-<!--            <div class="requestDiametr">-->
-<!--                --><?php
-//                    echo Html::label('Сезонность');
-//                    echo Html::dropDownList('seasonality',$model->seasonality,['1'=>'Летние','2'=>'Зимние нешипованные','3'=>'Зимние шипованные','4'=>'Всесезонные'],['prompt'=>'-','class'=>'addContent__adress requestSeasons']);
-//                ?>
-<!--            </div>-->
+            <!--<div class="requestDiametr">
+<?php
+/*                    echo Html::label('Сезонность');
+                    echo Html::dropDownList('seasonality',$model->seasonality,['1'=>'Летние','2'=>'Зимние нешипованные','3'=>'Зимние шипованные','4'=>'Всесезонные'],['prompt'=>'-','class'=>'addContent__adress requestSeasons']);
+                */?>
+            </div>-->
 
         </div>
-<!--        <div class="requestAddFieldGroup">-->
-<!--            --><?php //echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]);?>
-<!--        </div>-->
+        <div class="requestAddFieldGroup">
+           <?php echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]);?>
+       </div>
 
-                <div class="selection">
+                <!--<div class="selection">
 
 
                     <div class=" selection__content">
@@ -296,11 +279,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         <option value="10">-</option>
                     </select>
                 </div>
-
+-->
 
         <?php echo Html::hiddenInput('request_type_id', $_GET['id']); ?>
 
-
+        <h3>Ваш регион и город:</h3>
+        <?= RegionSelect::widget() ?>
 
         <div class="singleContent__desc">
             <?php
@@ -317,9 +301,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
             }
             ?>
-            <div class="send">
+            <!--<div class="send">
             <a class="send_foto" href="#">Добавить фото</a>
-            </div>
+            </div>-->
         </div>
         <div class="addContent--save">
             <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить</a>

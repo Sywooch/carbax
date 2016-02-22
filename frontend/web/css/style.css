@@ -1363,3 +1363,7 @@ p.parag_text span{
     border: 1px #727272 solid;
 }
 
+.selectAutoGarage{
+    cursor: pointer;
+}
+

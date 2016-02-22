@@ -28,6 +28,7 @@ use common\models\db\BcbModify;
 use common\models\db\BrendYear;
 use common\models\db\CargoautoYear;
 use common\models\db\CarMark;
+use common\models\db\CarMarkByType;
 use common\models\db\CarModel;
 use common\models\db\CarModification;
 use common\models\db\CarType;
@@ -47,6 +48,7 @@ use common\models\db\TofSearchTree;
 use common\models\db\TofTypes;
 use common\models\db\User;
 use frontend\modules\flea_market\widgets\CategoryProductTecDoc;
+use frontend\modules\request\widget\AutoGarage;
 use frontend\widgets\GetSubCategory;
 use frontend\widgets\InfoDisk;
 use frontend\widgets\InfoSplint;
@@ -647,6 +649,102 @@ class AjaxController extends Controller
 
         //Debug::prn($html);
         return($html);
+    }
+
+    public function actionSelect_auto_garage(){
+        echo AutoGarage::widget();
+    }
+
+    public function actionGet_auto_params_auto(){
+        $auto = Garage::find()->where(['id'=>$_POST['id']])->one();
+        $autoWidget = AutoWidget::find()->where(['id'=>$auto['id_auto_widget']])->asArray()->one();
+        $autoWidget =  json_encode($autoWidget);
+        echo $autoWidget;
+
+    }
+
+    public function actionGet_select_car(){
+        $auto = BcbBrands::find()->orderBy('name')->all();
+        echo Html::dropDownList(
+            'requestMarkAuto',
+            null,
+            ArrayHelper::map($auto,'id','name'),
+            ['prompt'=>'Марка','class'=>'addContent__adress requestMarkAuto']
+            );
+    }
+
+    public function actionGet_select_cargo(){
+        $auto = AutoComBrands::find()->orderBy('name')->all();
+        echo Html::dropDownList(
+            'requestMarkAuto',
+            null,
+            ArrayHelper::map($auto,'id','name'),
+            ['prompt'=>'Марка','class'=>'addContent__adress requestMarkAuto']
+            );
+    }
+
+    public function actionGet_select_moto(){
+        $auto = CarMarkByType::find()->orderBy('name')->all();
+        echo Html::dropDownList(
+            'requestMarkAuto',
+            null,
+            ArrayHelper::map($auto,'id_car_mark','name'),
+            ['prompt'=>'Марка','class'=>'addContent__adress requestMarkAuto']
+            );
+    }
+
+    public function actionGet_model_auto(){
+        if($_POST['typeAuto'] == 1){
+            $auto = BcbModels::find()->where(['brand_id'=>$_POST['brandId']])->orderBy('name')->all();
+            echo Html::dropDownList(
+                'requestModelAuto',
+                null,
+                ArrayHelper::map($auto,'id','name'),
+                ['prompt'=>'Модель', 'class'=>'addContent__adress requestModelAuto']
+            );
+        }
+        if($_POST['typeAuto'] == 2){
+            $auto = AutoComModels::find()->where(['brand_id'=>$_POST['brandId']])->orderBy('name')->all();
+            echo Html::dropDownList(
+                'requestModelAuto',
+                null,
+                ArrayHelper::map($auto,'id','name'),
+                ['prompt'=>'Модель', 'class'=>'addContent__adress requestModelAuto']
+            );
+        }
+        if($_POST['typeAuto'] == 3){
+            $auto = CarModel::find()->where(['id_car_mark'=>$_POST['brandId']])->orderBy('name')->all();
+            echo Html::dropDownList(
+                'requestModelAuto',
+                null,
+                ArrayHelper::map($auto,'id_car_model','name'),
+                ['prompt'=>'Модель', 'class'=>'addContent__adress requestModelAuto']
+            );
+        }
+    }
+    public function actionGet_year_auto(){
+        if($_POST['typeAuto'] == 1){
+            $year = BrendYear::find()->where(['id_brand'=>$_POST['brandId']])->one();
+            if($year->max_y == 9999){
+                $yearEnd = 2015;
+            }
+            else{
+                $yearEnd = $year->max_y;
+            }
+            $yearAll = [];
+            for($i=$year->min_y; $i <= $yearEnd; $i++){
+                $yearAll[$i] = $i;
+            }
+            echo Html::dropDownList('requestYear',0,$yearAll,['prompt' => 'Год выпуска', 'class' => 'addContent__adress requestYear']);
+        }
+        if($_POST['typeAuto'] == 2){
+            $year = CargoautoYear::find()->where(['id_brand'=>$_POST['brandId']])->one();
+            $yearAll = [];
+            for($i=$year->min_y; $i<=$year->max_y; $i++){
+                $yearAll[$i] = $i;
+            }
+            echo Html::dropDownList('requestYear',0,$yearAll,['prompt' => 'Год выпуска', 'class' => 'addContent__adress requestYear']);
+        }
     }
 
 }

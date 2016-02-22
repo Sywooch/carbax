@@ -953,6 +953,128 @@ jQuery(document).ready(function ($) {
         return false;
     });
 
+    $(document).on('click','.typeAutoRequest',function(){
+        $(".requestYear").css('display','block');
+        $('#selectAutoGarage').html('');
+        $('.typeAutoRequest').prop('checked', false);
+        $(this).prop('checked', true);
+    });
+
+    $(document).on('click','#a',function(){
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_select_car",
+            data: '',
+            success: function (data) {
+
+                $('.requestManufacture').html(data);
+            }
+        });
+    });
+
+    $(document).on('click','#g',function(){
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_select_cargo",
+            data: '',
+            success: function (data) {
+
+                $('.requestManufacture').html(data);
+            }
+        });
+    });
+
+    $(document).on('click','#b',function(){
+        $(".requestYear").css('display','none');
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_select_moto",
+            data: '',
+            success: function (data) {
+
+                $('.requestManufacture').html(data);
+            }
+        });
+    });
+
+    $(document).on('change', '.requestMarkAuto', function(){
+        var typeAuto = $(".typeAutoRequest:checked").val();
+        var brandId = $(".requestMarkAuto option:selected").val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_model_auto",
+            data: 'typeAuto=' + typeAuto + '&brandId=' + brandId,
+            success: function (data) {
+                console.log(data);
+                $('.requestModelAuto').html(data);
+            }
+        });
+    });
+
+    $(document).on('change', '.requestModelAuto', function(){
+        var typeAuto = $(".typeAutoRequest:checked").val();
+        var brandId = $(".requestMarkAuto option:selected").val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_year_auto",
+            data: 'typeAuto=' + typeAuto + '&brandId=' + brandId,
+            success: function (data) {
+                console.log(data);
+                $('.requestYear').html(data);
+            }
+        });
+    });
+
+    $(document).on('click','.selectAutoGarage',function(){
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/select_auto_garage",
+            data: '',
+            success: function (data) {
+
+                $('#selectAutoGarage').html(data);
+            }
+        });
+        return false;
+    });
+
+    $(document).on('change', '.selAutoGarage', function(){
+        $('.typeAutoRequest').prop('checked', false);
+        $(".requestYear").css('display','block');
+        $(".requestMarkAuto :last").remove();
+        $(".requestModelAuto :last").remove();
+        $(".requestYear :last").remove();
+        var idAuto = $(this).val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_auto_params_auto",
+            data: 'id=' + idAuto,
+            success: function (data) {
+                var params = JSON.parse(data);
+                //Если легковой
+                if(params.auto_type == 1){
+                    $('#a').prop('checked', true);
+                }
+                //если грузовой
+                if(params.auto_type == 2){
+                    $('#g').prop('checked', true);
+                }
+
+                //если мото
+                if(params.auto_type == 3){
+                    $('#b').prop('checked', true);
+                    $(".requestYear").css('display','none');
+                }
+                $("select.requestMarkAuto").append( $('<option selected value="' + params.brand_id + '">' + params.brand_name +'</option>'));
+                $("select.requestModelAuto").append( $('<option selected value="' + params.model_id + '">' + params.model_name +'</option>'));
+                $("select.requestYear").append( $('<option selected value="' + params.year + '">' + params.year +'</option>'));
+
+                //console.log(params);
+                //$('#selectAutoGarage').html(data);
+            }
+        });
+        return false;
+    });
 
 });
 
