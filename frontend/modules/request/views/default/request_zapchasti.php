@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <p class="parag_text"><span>у вас нет машин в гараже</span></p>
 
-<p class="parag_text">выберите автомобиль из <span>гаража:</span></p>
+<p class="parag_text">Выберите тип Вашего транспортного средаства:</span></p>
 
 <div class="save_sm">
     <input type="checkbox" value="none" id="1">
