@@ -390,11 +390,14 @@ $sortie = [
 </div>-->
 
 
+
         <div class="requestAddFieldGroup">
             <?php echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]); ?>
         </div>
 
 <!--<p class="parag_text">Ваш регион: <span>Москва</span>. Добавить еще регион</p>-->
+
+
 
 <!--<div class="select_type__manufacturer">
     <select class="select_type__manufacturer--sel" name="type_disk">
@@ -411,6 +414,7 @@ $sortie = [
         <option value="10">-</option>
     </select>
 </div>-->
+
 
         <h3>Ваш регион и город:</h3>
 <?= RegionSelect::widget() ?>
@@ -486,6 +490,9 @@ $sortie = [
 
 <!--<div class="singleContent__desc">
 
+<div class="singleContent__desc">
+
+
     <label for="addContent__description" style="width:100%">Комментарии</label>
     <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии">
 
@@ -497,9 +504,10 @@ $sortie = [
     </div>
 
     <div class="addContent--save">
-        <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить</a>
+        <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить заявку</a>
     </div>
 </div>-->
+
 
 
         <div class="singleContent__desc">
@@ -522,6 +530,7 @@ $sortie = [
                 <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить</a>
             </div>
         </div>
+
 
 </form>
 </section>
