@@ -59,25 +59,25 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="singleContent__desc--works">
 
                 <input type="checkbox" id="11_45" name="disk[]" value="45">
-                <label class="text" for="11_45"><span></span>Audi</label>
+                <label class="text" for="11_45"><span></span>LADA</label>
 
                 <input type="checkbox" id="11_46" name="disk[]" value="46">
-                <label class="text" for="11_46"><span></span>BMW</label>
+                <label class="text" for="11_46"><span></span>RENO</label>
 
                 <input type="checkbox" id="11_47" name="disk[]" value="47">
-                <label class="text" for="11_47"><span></span>KIA</label>
+                <label class="text" for="11_47"><span></span>PEGO</label>
 
                 <input type="checkbox" id="11_48" name="disk[]" value="48">
-                <label class="text" for="11_48"><span></span>FORD</label>
+                <label class="text" for="11_48"><span></span>LEXUS</label>
 
                 <input type="checkbox" id="11_49" name="disk[]" value="49">
-                <label class="text" for="11_49"><span></span>TOYOTA</label>
+                <label class="text" for="11_49"><span></span>SUZUKI</label>
 
                 <input type="checkbox" id="11_50" name="disk[]" value="50">
-                <label class="text" for="11_50"><span></span>SKODA</label>
+                <label class="text" for="11_50"><span></span>HONDA</label>
 
                 <input type="checkbox" id="11_51" name="disk[]" value="51">
-                <label class="text" for="11_51"><span></span>NISSAN</label>
+                <label class="text" for="11_51"><span></span>SUBARU</label>
 
             </div>
         </div>
@@ -86,12 +86,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="singleContent__desc">
             <div class="singleContent__desc--works">
-<!--                <p class="parag_text">Шипы:</p>-->
-                <input type="checkbox" id="11_46" name="disk[]" value="46">
-                <label class="text" for="11_46"><span></span>С шипами</label>
 
-                <input type="checkbox" id="11_47" name="disk[]" value="47">
-                <label class="text" for="11_47"><span></span>Без шипов</label>
+                <input type="checkbox" id="11_52" name="disk[]" value="52">
+                <label class="text" for="11_53"><span></span>LADA</label>
+
+                <input type="checkbox" id="11_53" name="disk[]" value="53">
+                <label class="text" for="11_53"><span></span>RENO</label>
+
+                <input type="checkbox" id="11_54" name="disk[]" value="54">
+                <label class="text" for="11_54"><span></span>PEGO</label>
+
+                <input type="checkbox" id="11_55" name="disk[]" value="55">
+                <label class="text" for="11_55"><span></span>LEXUS</label>
+
+                <input type="checkbox" id="11_" name="disk[]" value="49">
+                <label class="text" for="11_49"><span></span>SUZUKI</label>
+
+                <input type="checkbox" id="11_50" name="disk[]" value="50">
+                <label class="text" for="11_50"><span></span>HONDA</label>
+
+                <input type="checkbox" id="11_51" name="disk[]" value="51">
+                <label class="text" for="11_51"><span></span>SUBARU</label>
 
             </div>
         </div>
