@@ -9,6 +9,7 @@ use common\classes\Address;
 
 use common\classes\Debug;
 use common\models\db\GeobaseCity;
+use common\models\db\Services;
 use common\models\db\ServiceType;
 use common\models\forms\OffersForm;
 use Yii;
@@ -90,8 +91,11 @@ class OffersController extends Controller
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+            $services = Services::find()->where(['user_id' => Yii::$app->user->id])->all();
+
             return $this->render('create', [
                 'model' => $model,
+                'services' => $services,
             ]);
         }
     }

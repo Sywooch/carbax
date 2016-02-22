@@ -475,7 +475,7 @@ jQuery(document).ready(function ($) {
 
     $(document).on('click', '#delAddress', function(){
         var id = $(this).prev().attr('id');
-        console.log(id);
+        //console.log(id);
         $(this).prev().remove();
         $(this).remove();
         $('#' + id + '_region').remove();
@@ -936,7 +936,22 @@ jQuery(document).ready(function ($) {
         $('#offers-discount').val(100 - discount);
     });
 
-
+    $(document).on('change', '.servId', function(){
+        var servicesId = '';
+        $('.servId:checked').each(function(){
+            servicesId = servicesId + $(this).val() + ',';
+        });
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_address_services",
+            data: 'servicesId=' + servicesId,
+            success: function (data) {
+                console.log(data);
+                $('.selectAddressForServices').html(data);
+            }
+        });
+        return false;
+    });
 
 
 });

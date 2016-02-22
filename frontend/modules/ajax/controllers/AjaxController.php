@@ -628,7 +628,25 @@ class AjaxController extends Controller
 
     public function actionGet_service_type_id(){
         $srviceTypeId = Services::findOne($_POST['serviceId'])->service_type_id;
-        echo $srviceTypeId;//$form->field($model, 'service_type_id')->hiddenInput(['value'=>$srviceTypeId]);
+        echo $srviceTypeId;
+    }
+
+
+    public function actionGet_address_services(){
+        $servicesId = explode(',',substr($_POST['servicesId'], 0, -1));
+        $html = '<h3>Выберите адреса для которых будет действовать предложение</h3>';
+        foreach ($servicesId as $sid) {
+            $service = Services::findOne($sid);
+            $address = \common\models\db\Address::find()->where(['service_id'=>$sid])->all();
+            $html .= $this->renderPartial('address',
+                [
+                    'service' => $service,
+                    'address' => $address,
+                ]);
+        }
+
+        //Debug::prn($html);
+        return($html);
     }
 
 }
