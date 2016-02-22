@@ -12,18 +12,18 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <?php
-$typeDisk = ['1'=>'Кованые','2'=>'Литые','3'=>'Штампованные','4'=>'Спицованные','5'=>'Сборные'];
+$typeDisk = ['1' => 'Кованые', '2' => 'Литые', '3' => 'Штампованные', '4' => 'Спицованные', '5' => 'Сборные'];
 $diameter = [];
-for($i=7;$i<=30;$i+=1){
+for ($i = 7; $i <= 30; $i += 1) {
     $diameter[$i] = $i;
 }
 
 $rim_width = [];
-for($i=4;$i<=13;$i+=0.5){
+for ($i = 4; $i <= 13; $i += 0.5) {
     $rim_width["$i"] = $i;
 }
 
-$number_holes = ['3'=>'3','4'=>'4','5'=>'5','6'=>'6','8'=>'8','9'=>'9','10'=>'10'];
+$number_holes = ['3' => '3', '4' => '4', '5' => '5', '6' => '6', '8' => '8', '9' => '9', '10' => '10'];
 
 
 $diameter_holes = [
@@ -213,92 +213,322 @@ $sortie = [
     '185' => '185',
 ];
 ?>
+
+<!----AKD47 section---->
 <section class="main-container">
-    <form id="addForm" action="send_request" method="post">
-        <h3>Ваш регион и город:</h3>
-        <?= RegionSelect::widget() ?>
-        <span id="selectAuto">
-            <?php
-            if ($requestType->view_widget_auto == 1) {
-                echo SelectAuto::widget(['view' => $requestType->view_category_auto,'select_from_garage'=>true]);
-            }
+<form id="addForm" action="send_request" method="post">
 
-            if($requestType->view_mark_auto == 1){
-                echo Html::dropDownList(
-                    'typeAuto',
-                    0,
-                    ['1'=>'Легковой автомобиль','2'=>'Грузовой автомобиль','3'=>'Мото транспорт'],
-                    ['prompt' => 'Выберите тип авто', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typeAuto', 'required' => 'required']
-                );
-            }
-            ?>
+<p class="parag_text">выберите автомобиль из <span>гаража:</span></p>
 
-        </span>
+<p class="parag_text"><span>у вас нет машин в гараже</span></p>
 
-        <div class="requestDiametr">
-            <?php
-                echo Html::label('Тип диска');
-                echo Html::dropDownList('type_disk',$model->type_disk,$typeDisk,['prompt'=>'-','class'=>'addContent__adress']);
-            ?>
+<p class="parag_text">Выберите тип Вашего транспортного срества</p>
+
+<div class="save">
+    <input type="checkbox" value="none" id="a">
+    <label for="a">
+                <span>
+                    Легковой автомобиль
+                </span>
+    </label>
+    <input type="checkbox" value="none" id="b">
+    <label for="b">
+                <span>
+                    Мотоцикл или скутер
+                </span>
+    </label>
+</div>
+
+<div class="select_bg">
+    <div class="select_type">
+        <select class="addContent__adress" name="type_disk">
+            <option value="">Марка</option>
+            <option value="1">Кованые</option>
+            <option value="2">Литые</option>
+            <option value="3">Штампованные</option>
+            <option value="4">Спицованные</option>
+            <option value="5">Сборные</option>
+        </select>
+    </div>
+    <div class="select_type">
+        <select class="addContent__adress" name="type_disk">
+            <option value="">Модель</option>
+            <option value="1">-</option>
+            <option value="2">-</option>
+            <option value="3">-</option>
+            <option value="4">-</option>
+            <option value="5">-</option>
+        </select>
+    </div>
+    <div class="select_type">
+        <select class="addContent__adress" name="type_disk">
+            <option value="">Год выпуска</option>
+            <option value="1">-</option>
+            <option value="2">-</option>
+            <option value="3">-</option>
+            <option value="4">-</option>
+            <option value="5">-</option>
+        </select>
+    </div>
+</div>
+
+<p class="parag_text">Выберите:</p>
+
+<div class="addContent">
+    <div class="singleContent__desc">
+        <div class="singleContent__desc--works">
+
+            <input type="checkbox" id="11_36" name="disk[]" value="36">
+            <label class="text" for="11_36"><span></span>В наличии</label>
+
+            <input type="checkbox" id="11_37" name="disk[]" value="37">
+            <label class="text" for="11_37"><span></span>Гарантия производителя</label>
+
+            <input type="checkbox" id="11_38" name="disk[]" value="38">
+            <label class="text" for="11_38"><span></span>Распродажа</label>
+
         </div>
-        <div class="requestDiametr">
-            <?php
-                echo Html::label('Диаметр');
-                echo Html::dropDownList('diameter',$model->diameter,$diameter,['prompt'=>'-','class'=>'addContent__adress']);
-            ?>
-        </div>
-        <div class="requestDiametr">
-           <?php
-                echo Html::label('Ширина обода');
-                echo Html::dropDownList('rim_width',$model->rim_width,$rim_width,['prompt'=>'-','class'=>'addContent__adress']);
-           ?>
-        </div>
-        <div class="requestDiametr">
-            <?php
-                echo Html::label('Количество отверстий');
-                echo Html::dropDownList('number_holes',$model->number_holes,$number_holes, ['prompt'=>'-','class'=>'addContent__adress']);
-            ?>
-        </div>
-        <div class="requestDiametr">
-            <?php
-                echo Html::label('Диаметр расположения отверстий');
-                echo Html::dropDownList('diameter_holest',$model->diameter_holest,$diameter_holes,['prompt'=>'-','class'=>'addContent__adress']);
-            ?>
-        </div>
-        <div class="requestDiametr">
-            <?php
-                echo Html::label('Вылет (ET)');
-                echo Html::dropDownList('sortie',$model->sortie,$sortie,['class'=>'addContent__adress','prompt'=>'-']);
-            ?>
-        </div>
+    </div>
+</div>
 
-        <div class="requestAddFieldGroup">
-            <?php echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]); ?>
-        </div>
+<p class="parag_text">Производитель:</p>
 
 
-        <?php echo Html::hiddenInput('request_type_id', $_GET['id']); ?>
+<div class="select_type__manufacturer">
+    <select class="select_type__manufacturer--sel" name="type_disk">
+        <option value="">Выбирите производителя</option>
+        <option value="1">-</option>
+        <option value="2">-</option>
+        <option value="3">-</option>
+        <option value="4">-</option>
+        <option value="5">-</option>
+        <option value="6">-</option>
+        <option value="7">-</option>
+        <option value="8">-</option>
+        <option value="9">-</option>
+        <option value="10">-</option>
+    </select>
+</div>
 
 
+<div class="requestDiametr">
+    <?php
+    echo Html::label('Ширина обода');
+    echo Html::dropDownList('rim_width', $model->rim_width, $rim_width, ['prompt' => '-', 'class' => 'addContent__adress']);
+    ?>
+</div>
+
+<div class="requestDiametr">
+    <?php
+    echo Html::label('Диаметр обода');
+    echo Html::dropDownList('diameter', $model->diameter, $diameter, ['prompt' => '-', 'class' => 'addContent__adress']);
+    ?>
+</div>
+
+<div class="requestDiametr__next">
+    <?php
+    echo Html::label('Количество крепежных отверстий:');
+    echo Html::dropDownList('number_holes', $model->number_holes, $number_holes, ['prompt' => '-', 'class' => 'addContent__adress']);
+    ?>
+</div>
+
+<div class="requestDiametr__next">
+    <?php
+    echo Html::label('Диаметр расположения отверстий:');
+    echo Html::dropDownList('diameter', $model->diameter, $diameter, ['prompt' => '-', 'class' => 'addContent__adress']);
+    ?>
+</div>
+
+<div class="requestDiametr__next">
+    <?php
+    echo Html::label('Диаметр центрального отверстия:');
+    echo Html::dropDownList('diameter', $model->diameter, $diameter, ['prompt' => '-', 'class' => 'addContent__adress']);
+    ?>
+</div>
+
+<div class="selection">
+
+
+    <div class=" selection__content">
 
         <div class="singleContent__desc">
-            <?php
-            foreach ($addForm as $f) {
-                $k = RequestAddForm::find()->where(['id' => $f->add_form_id])->one();
-                echo CustomField::widget([
-                    'name' => $k->key,
-                    'template' => $k->template,
-                    'inputOption' => ['class' => $k->class, 'id' => $k->input_id, 'placeholder' => $k->placeholder],
-                    'labelOption' => ['for' => $k->input_id, 'style' => 'width:100%'],
-                    'labelName' => $k->name,
-                    'type' => ($k->form_type == 0) ? 'input' : 'textarea'
-                ]);
+            <div class="singleContent__desc--works">
+                <p class="parag_text">Выберите тип обслуживания:</p>
+                <input type="checkbox" id="11_39" name="disk[]" value="39">
+                <label class="text" for="11_39"><span></span>с установкой</label>
 
-            }
-            ?>
+                <input type="checkbox" id="11_40" name="disk[]" value="40">
+                <label class="text" for="11_40"><span></span>без Установки</label>
+
+
+            </div>
         </div>
-        <div class="addContent--save">
-            <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить</a>
+    </div>
+    <div class=" selection__content">
+
+        <div class="singleContent__desc">
+            <div class="singleContent__desc--works">
+                <p class="parag_text">Выберите остояние:</p>
+                <input type="checkbox" id="11_41" name="disk[]" value="41">
+                <label class="text" for="11_41"><span></span>новое</label>
+
+                <input type="checkbox" id="11_42" name="disk[]" value="42">
+                <label class="text" for="11_42"><span></span>Б/У</label>
+
+
+            </div>
         </div>
-    </form>
+    </div>
+    <div class=" selection__content">
+
+        <div class="singleContent__desc">
+            <div class="singleContent__desc--works">
+                <p class="parag_text">Способы оплаты:</p>
+                <input type="checkbox" id="11_43" name="disk[]" value="43">
+                <label class="text" for="11_43"><span></span>Наличные</label>
+
+                <input type="checkbox" id="11_44" name="disk[]" value="44">
+                <label class="text" for="11_44"><span></span>Карточка</label>
+
+                <input type="checkbox" id="11_45" name="disk[]" value="45">
+                <label class="text" for="11_45"><span></span>банковский перевод</label>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--        <div class="requestAddFieldGroup">-->
+<!--            --><?php //echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]); ?>
+<!--        </div>-->
+
+<p class="parag_text">Ваш регион: <span>Москва</span>. Добавить еще регион</p>
+
+<div class="select_type__manufacturer">
+    <select class="select_type__manufacturer--sel" name="type_disk">
+        <option value="">Введите название города</option>
+        <option value="1">-</option>
+        <option value="2">-</option>
+        <option value="3">-</option>
+        <option value="4">-</option>
+        <option value="5">-</option>
+        <option value="6">-</option>
+        <option value="7">-</option>
+        <option value="8">-</option>
+        <option value="9">-</option>
+        <option value="10">-</option>
+    </select>
+</div>
+
+<!--        <h3>Ваш регион и город:</h3>-->
+<!--        --><? //= RegionSelect::widget() ?>
+<!--        <span id="selectAuto">-->
+<!--            --><?php
+//            if ($requestType->view_widget_auto == 1) {
+//                echo SelectAuto::widget(['view' => $requestType->view_category_auto,'select_from_garage'=>true]);
+//            }
+//
+//            if($requestType->view_mark_auto == 1){
+//                echo Html::dropDownList(
+//                    'typeAuto',
+//                    0,
+//                    ['1'=>'Легковой автомобиль','2'=>'Грузовой автомобиль','3'=>'Мото транспорт'],
+//                    ['prompt' => 'Выберите тип авто', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typeAuto', 'required' => 'required']
+//                );
+//            }
+//
+?>
+<!---->
+<!--        </span>-->
+
+<!--        <div class="requestDiametr">-->
+<!--            --><?php
+//                echo Html::label('Тип диска');
+//                echo Html::dropDownList('type_disk',$model->type_disk,$typeDisk,['prompt'=>'-','class'=>'addContent__adress']);
+//
+?>
+<!--        </div>-->
+<!--        <div class="requestDiametr">-->
+<!--            --><?php
+//                echo Html::label('Диаметр');
+//                echo Html::dropDownList('diameter',$model->diameter,$diameter,['prompt'=>'-','class'=>'addContent__adress']);
+//
+?>
+<!--        </div>-->
+<!--        <div class="requestDiametr">-->
+<!--           --><?php
+//                echo Html::label('Ширина обода');
+//                echo Html::dropDownList('rim_width',$model->rim_width,$rim_width,['prompt'=>'-','class'=>'addContent__adress']);
+//
+?>
+<!--        </div>-->
+<!--        <div class="requestDiametr">-->
+<!--            --><?php
+//                echo Html::label('Количество отверстий');
+//                echo Html::dropDownList('number_holes',$model->number_holes,$number_holes, ['prompt'=>'-','class'=>'addContent__adress']);
+//
+?>
+<!--        </div>-->
+<!--        <div class="requestDiametr">-->
+<!--            --><?php
+//                echo Html::label('Диаметр расположения отверстий');
+//                echo Html::dropDownList('diameter_holest',$model->diameter_holest,$diameter_holes,['prompt'=>'-','class'=>'addContent__adress']);
+//
+?>
+<!--        </div>-->
+<!--        <div class="requestDiametr">-->
+<!--            --><?php
+//                echo Html::label('Вылет (ET)');
+//                echo Html::dropDownList('sortie',$model->sortie,$sortie,['class'=>'addContent__adress','prompt'=>'-']);
+//
+?>
+<!--        </div>-->
+<!---->
+<!--        <div class="requestAddFieldGroup">-->
+<!--            --><?php //echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]); ?>
+<!--        </div>-->
+<!---->
+<!---->
+<!--        --><?php //echo Html::hiddenInput('request_type_id', $_GET['id']); ?>
+
+
+<div class="singleContent__desc">
+
+    <label for="addContent__description" style="width:100%">Комментарии</label>
+    <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии">
+
+    </textarea>
+
+
+    <div class="send">
+        <a class="send_foto" href="#">Добавить фото</a>
+    </div>
+
+    <div class="addContent--save">
+        <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить</a>
+    </div>
+</div>
+
+
+<!--        <div class="singleContent__desc">-->
+<!--            --><?php
+//            foreach ($addForm as $f) {
+//                $k = RequestAddForm::find()->where(['id' => $f->add_form_id])->one();
+//                echo CustomField::widget([
+//                    'name' => $k->key,
+//                    'template' => $k->template,
+//                    'inputOption' => ['class' => $k->class, 'id' => $k->input_id, 'placeholder' => $k->placeholder],
+//                    'labelOption' => ['for' => $k->input_id, 'style' => 'width:100%'],
+//                    'labelName' => $k->name,
+//                    'type' => ($k->form_type == 0) ? 'input' : 'textarea'
+//                ]);
+//
+//            }
+//
+?>
+<!--        </div>-->
+
+</form>
 </section>
+<!----AKD47 section end---->
