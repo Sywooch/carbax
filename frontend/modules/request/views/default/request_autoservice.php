@@ -56,8 +56,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <p class="parag_text">Укажите пробег автомобиля:</p>
 
     <input class="mileage__next" name="comm" placeholder="Введите пробег">
-</textarea>
-
 </div>
 
 <div class="selection">
