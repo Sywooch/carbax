@@ -1308,7 +1308,7 @@ p.parag_text span{
 
 .selection__content .singleContent__desc input[type="checkbox"]:checked + label span {
     background-color: #ff6b00;
-    /*background-image: url("/media/img/Check-Icon.png");*/
+    background-image: url("/media/img/Check-Icon.png");
     background-position: center;
     background-repeat: no-repeat;
     color: #ff6b00;
