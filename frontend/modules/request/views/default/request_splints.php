@@ -322,7 +322,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
         <div class="addContent--save">
-            <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить</a>
+            <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить заявку</a>
         </div>
     </form>
 </section>
