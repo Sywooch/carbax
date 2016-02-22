@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-    <div class="selection__content">
+    <div class="selection__width">
 
         <div class="singleContent__desc">
             <div class="singleContent__desc--works">
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
-    <div class=" selection__content">
+    <div class="selection__width">
 
         <div class="singleContent__desc">
             <div class="singleContent__desc--works">
@@ -82,7 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
-    <div class=" selection__content">
+    <div class="selection__width">
 
         <div class="singleContent__desc">
             <div class="singleContent__desc--works">
@@ -99,69 +99,53 @@ $this->params['breadcrumbs'][] = $this->title;
                 <input type="checkbox" id="11_55" name="disk[]" value="55">
                 <label class="text" for="11_55"><span></span>LEXUS</label>
 
-                <input type="checkbox" id="11_" name="disk[]" value="49">
-                <label class="text" for="11_49"><span></span>SUZUKI</label>
+                <input type="checkbox" id="11_56" name="disk[]" value="56">
+                <label class="text" for="11_56"><span></span>SUZUKI</label>
 
-                <input type="checkbox" id="11_50" name="disk[]" value="50">
-                <label class="text" for="11_50"><span></span>HONDA</label>
+                <input type="checkbox" id="11_57" name="disk[]" value="57">
+                <label class="text" for="11_57"><span></span>HONDA</label>
 
-                <input type="checkbox" id="11_51" name="disk[]" value="51">
-                <label class="text" for="11_51"><span></span>SUBARU</label>
+                <input type="checkbox" id="11_58" name="disk[]" value="59">
+                <label class="text" for="11_58"><span></span>SUBARU</label>
+
+            </div>
+        </div>
+    </div>
+    <div class="selection__width">
+
+        <div class="singleContent__desc">
+            <div class="singleContent__desc--works">
+
+                <input type="checkbox" id="11_59" name="disk[]" value="59">
+                <label class="text" for="11_59"><span></span>LADA</label>
+
+                <input type="checkbox" id="11_60" name="disk[]" value="60">
+                <label class="text" for="11_60"><span></span>RENO</label>
+
+                <input type="checkbox" id="11_61" name="disk[]" value="61">
+                <label class="text" for="11_61"><span></span>PEGO</label>
+
+                <input type="checkbox" id="11_62" name="disk[]" value="62">
+                <label class="text" for="11_62"><span></span>LEXUS</label>
+
+                <input type="checkbox" id="11_63" name="disk[]" value="63">
+                <label class="text" for="11_63"><span></span>SUZUKI</label>
+
+                <input type="checkbox" id="11_64" name="disk[]" value="64">
+                <label class="text" for="11_64"><span></span>HONDA</label>
+
+                <input type="checkbox" id="11_65" name="disk[]" value="65">
+                <label class="text" for="11_65"><span></span>SUBARU</label>
 
             </div>
         </div>
     </div>
 </div>
 
-
-<p class="parag_text">Производитель:</p>
-
-
-<div class="select_type__manufacturer">
-    <select class="select_type__manufacturer--sel" name="type_disk">
-        <option value="">Выбирите производителя</option>
-        <option value="1">-</option>
-        <option value="2">-</option>
-        <option value="3">-</option>
-        <option value="4">-</option>
-        <option value="5">-</option>
-        <option value="6">-</option>
-        <option value="7">-</option>
-        <option value="8">-</option>
-        <option value="9">-</option>
-        <option value="10">-</option>
-    </select>
-</div>
-
-
-
-
-
-
 <form id="addForm" action="send_request" method="post">
 
     <div></div>
     <div></div>
-
-    <!--        <h3>Ваш регион и город:</h3>-->
-    <!--        --><?//= RegionSelect::widget() ?>
-    <!--        <span id="selectAuto">-->
-    <!--            --><?php
-    //            if ($requestType->view_widget_auto == 1) {
-    //                echo SelectAuto::widget(['view' => $requestType->view_category_auto,'select_from_garage'=>true]);
-    //            }
-    //
-    //            if($requestType->view_mark_auto == 1){
-    //                echo Html::dropDownList(
-    //                    'typeAuto',
-    //                    0,
-    //                    ['1'=>'Легковой автомобиль','2'=>'Грузовой автомобиль','3'=>'Мото транспорт'],
-    //                    ['prompt' => 'Выберите тип авто', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typeAuto', 'required' => 'required']
-    //                );
-    //            }
-    //            ?>
-    <!---->
-    <!--        </span>-->
 
     <?php
     $diameter = [];
@@ -179,90 +163,8 @@ $this->params['breadcrumbs'][] = $this->title;
         $section_height[$i] = $i;
     }
     ?>
-    <div class="view_widget">
-        <div class="requestDiametr__next">
-            <?php
-            echo Html::label('Ширина профиля:');
-            echo Html::dropDownList('section_width',$model->section_width,$section_width,['prompt'=>'-','class'=>'addContent__adress requestWidthProfil']);
-            ?>
-        </div>
-        <div class="requestDiametr__next">
-            <?php
-            echo Html::label('Высота профиля:');
-            echo Html::dropDownList('section_height',$model->section_height,$section_height,['prompt'=>'-','class'=>'addContent__adress requestHeightProfile']);
-            ?>
-        </div>
 
 
-        <div class="requestDiametr__next">
-            <?php
-            echo Html::label('Диаметр профиля:');
-            echo Html::dropDownList('diameter',$model->diameter,$diameter,['prompt'=>'-','class'=>'addContent__adress']);
-            ?>
-        </div>
-        <!--            <div class="requestDiametr">-->
-        <!--                --><?php
-        //                    echo Html::label('Сезонность');
-        //                    echo Html::dropDownList('seasonality',$model->seasonality,['1'=>'Летние','2'=>'Зимние нешипованные','3'=>'Зимние шипованные','4'=>'Всесезонные'],['prompt'=>'-','class'=>'addContent__adress requestSeasons']);
-        //                ?>
-        <!--            </div>-->
-
-    </div>
-    <!--        <div class="requestAddFieldGroup">-->
-    <!--            --><?php //echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]);?>
-    <!--        </div>-->
-
-    <div class="selection">
-
-
-        <div class=" selection__content">
-
-            <div class="singleContent__desc">
-                <div class="singleContent__desc--works">
-                    <p class="parag_text">Выберите тип обслуживания:</p>
-                    <input type="checkbox" id="11_48" name="disk[]" value="48">
-                    <label class="text" for="11_48"><span></span>с установкой</label>
-
-                    <input type="checkbox" id="11_49" name="disk[]" value="49">
-                    <label class="text" for="11_49"><span></span>без Установки</label>
-
-
-                </div>
-            </div>
-        </div>
-        <div class=" selection__content">
-
-            <div class="singleContent__desc">
-                <div class="singleContent__desc--works">
-                    <p class="parag_text">Выберите остояние:</p>
-                    <input type="checkbox" id="11_50" name="disk[]" value="50">
-                    <label class="text" for="11_50"><span></span>новое</label>
-
-                    <input type="checkbox" id="11_51" name="disk[]" value="51">
-                    <label class="text" for="11_52"><span></span>Б/У</label>
-
-
-                </div>
-            </div>
-        </div>
-        <div class=" selection__content">
-
-            <div class="singleContent__desc">
-                <div class="singleContent__desc--works">
-                    <p class="parag_text">Способы оплаты:</p>
-                    <input type="checkbox" id="11_53" name="disk[]" value="53">
-                    <label class="text" for="11_53"><span></span>Наличные</label>
-
-                    <input type="checkbox" id="11_54" name="disk[]" value="54">
-                    <label class="text" for="11_54"><span></span>Карточка</label>
-
-                    <input type="checkbox" id="11_55" name="disk[]" value="55">
-                    <label class="text" for="11_55"><span></span>банковский перевод</label>
-
-                </div>
-            </div>
-        </div>
-    </div>
 
     <p class="parag_text">Ваш регион: <span>Москва</span>. Добавить еще регион</p>
 
@@ -283,29 +185,20 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
 
-    <?php echo Html::hiddenInput('request_type_id', $_GET['id']); ?>
-
-
-
     <div class="singleContent__desc">
-        <?php
-        foreach ($addForm as $f) {
-            $k = RequestAddForm::find()->where(['id' => $f->add_form_id])->one();
-            echo CustomField::widget([
-                'name' => $k->key,
-                'template' => $k->template,
-                'inputOption' => ['class' => $k->class, 'id' => $k->input_id, 'placeholder' => $k->placeholder],
-                'labelOption' => ['for' => $k->input_id, 'style' => 'width:100%'],
-                'labelName' => $k->name,
-                'type' => ($k->form_type == 0) ? 'input' : 'textarea'
-            ]);
 
-        }
-        ?>
-        <div class="send">
-            <a class="send_foto" href="#">Добавить фото</a>
-        </div>
+        <label for="addContent__description" style="width:100%">Комментарии</label>
+
+        <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии"></textarea>
+
+
+        <label for="" style="width:100%">Контакты</label>
+        <input type="text" id="" class="addContent__text" name="title" value="" placeholder="Введите ФИО">
+        <input type="text" id="" class="addContent__text" name="title" value="" placeholder="Введите Ваш номер телефона">
+        <input type="text" id="" class="addContent__text" name="title" value="" placeholder="Введите e-mail">
     </div>
+
+
     <div class="addContent--save">
         <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить</a>
     </div>
