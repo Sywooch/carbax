@@ -1052,27 +1052,57 @@ jQuery(document).ready(function ($) {
             success: function (data) {
                 var params = JSON.parse(data);
                 //Если легковой
-                if(params.auto_type == 1){
+                if(params.autoWidget.auto_type == 1){
                     $('#a').prop('checked', true);
                 }
                 //если грузовой
-                if(params.auto_type == 2){
+                if(params.autoWidget.auto_type == 2){
                     $('#g').prop('checked', true);
                 }
 
                 //если мото
-                if(params.auto_type == 3){
+                if(params.autoWidget.auto_type == 3){
                     $('#b').prop('checked', true);
                     $(".requestYear").css('display','none');
                 }
-                $("select.requestMarkAuto").append( $('<option selected value="' + params.brand_id + '">' + params.brand_name +'</option>'));
-                $("select.requestModelAuto").append( $('<option selected value="' + params.model_id + '">' + params.model_name +'</option>'));
-                $("select.requestYear").append( $('<option selected value="' + params.year + '">' + params.year +'</option>'));
+                $("select.requestMarkAuto").append( $('<option selected value="' + params.autoWidget.brand_id + '">' + params.autoWidget.brand_name +'</option>'));
+                $("select.requestModelAuto").append( $('<option selected value="' + params.autoWidget.model_id + '">' + params.autoWidget.model_name +'</option>'));
+                $("select.requestYear").append( $('<option selected value="' + params.autoWidget.year + '">' + params.autoWidget.year +'</option>'));
 
-                //console.log(params);
+                $('.probeg').val(params.autoParams.run);
+
+                $('#kpp' + params.autoParams.transmission).prop('checked', true);
+                $('#dvs' + params.autoParams.type_motor).prop('checked', true);
+                //console.log(params.autoParams);
                 //$('#selectAutoGarage').html(data);
             }
         });
+        return false;
+    });
+
+    $(document).on('click','.requestBodyType',function(){
+        /*$(".requestYear").css('display','block');
+        $('#selectAutoGarage').html('');*/
+        $('.requestBodyType').prop('checked', false);
+        $(this).prop('checked', true);
+    });
+
+    $(document).on('click','.typeAutoAutosalon',function(){
+        var type = $(this).val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_auto_brand",
+            data: 'id=' + type,
+            success: function (data) {
+                $('.manufactureRequest').html(data);
+            }
+        });
+
+    });
+
+    $(document).on('click', '.allBrands', function(){
+        $('.allBrands').css('display','none');
+        $('.hiddenBrand').css('display','block');
         return false;
     });
 
