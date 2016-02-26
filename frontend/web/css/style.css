@@ -1092,6 +1092,11 @@ p.parag_text span{
     color: #000000;
     cursor: pointer;
     line-height: 27px;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
 }
 
 .save input[type="checkbox"]:checked + label span{
@@ -1149,6 +1154,10 @@ p.parag_text span{
     color: #000000;
     cursor: pointer;
     line-height: 27px;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
 }
 
 .save_sm input[type="checkbox"]:checked + label span{
@@ -1206,6 +1215,10 @@ p.parag_text span{
     color: #000000;
     cursor: pointer;
     line-height: 27px;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
 }
 
 .save_xs input[type="checkbox"]:checked + label span{
@@ -1266,6 +1279,10 @@ p.parag_text span{
     color: #000000;
     cursor: pointer;
     line-height: 24px;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
 }
 
 .save_plus input[type="checkbox"]:checked + label span{
@@ -1398,6 +1415,11 @@ p.parag_text span{
     color: #000000;
     cursor: pointer;
     line-height: 27px;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
 }
 
 .save_auto input[type="checkbox"]:checked + label span{

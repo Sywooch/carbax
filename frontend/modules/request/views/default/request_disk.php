@@ -224,21 +224,21 @@ $sortie = [
     <p class="parag_text">Выберите тип Вашего транспортного средства</p>
 
     <div class="save">
-        <input type="checkbox" name="typeAuto" value="1" id="a" class="typeAutoRequest">
-        <label for="a">
+        <input type="checkbox" value="none" id="1">
+        <label for="1">
                 <span>
                     Легковой автомобиль
                 </span>
         </label>
-        <input type="checkbox" name="typeAuto" value="2" id="g" class="typeAutoRequest">
-        <label for="g">
+        <input type="checkbox" value="none" id="2">
+        <label for="2">
                 <span>
                     Грузовой автомобиль
                 </span>
         </label>
 
-        <input type="checkbox" name="typeAuto" value="3" id="b" class="typeAutoRequest">
-        <label for="b">
+        <input type="checkbox" value="none" id="3">
+        <label for="3">
                 <span>
                     Мотоцикл или скутер
                 </span>
