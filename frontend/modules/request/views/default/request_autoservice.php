@@ -51,7 +51,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <p class="parag_text">Укажите пробег автомобиля:</p>
 
     <input class="mileage__next probeg" name="probeg" placeholder="Введите пробег">
-</textarea>
 
 </div>
 
@@ -191,20 +190,32 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>-->
 
+
 <!--<div class="addContent">
     <p class="parag_text">Способы оплаты:</p>
     <div class="singleContent__desc">
         <div class="singleContent__desc--works">
+=======
+<div class="selection" style="margin-bottom: 30px">
 
-            <input type="checkbox" id="11_36" name="disk[]" value="36">
-            <label class="text" for="11_36"><span></span>Наличные</label>
+    <div class="selection__content--lg">
+        <p class="parag_text">Способы оплаты:</p>
+        <div class="singleContent__desc">
+>>>>>>> 0e2d83c26968b9b4cb801f8b23c53da2fecd65d9
 
-            <input type="checkbox" id="11_37" name="disk[]" value="37">
-            <label class="text" for="11_37"><span></span>Карточка</label>
+            <div class="singleContent__desc--works">
 
-            <input type="checkbox" id="11_38" name="disk[]" value="38">
-            <label class="text" for="11_38"><span></span>Банковский перевод</label>
+                <input type="checkbox" id="11_40" name="disk[]" value="40">
+                <label class="text" for="11_40"><span></span>Наличные</label>
 
+                <input type="checkbox" id="11_41" name="disk[]" value="41">
+                <label class="text" for="11_41"><span></span>Карточка</label>
+
+                <input type="checkbox" id="11_42" name="disk[]" value="42">
+                <label class="text" for="11_42"><span></span>Банковский перевод</label>
+
+
+            </div>
         </div>
     </div>
 </div>-->
@@ -213,7 +224,35 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]); ?>
     <div class="cleared"></div>
 
+
     <!--<p class="parag_text">Ваш регион: <span>Москва</span>. Добавить еще регион</p>
+=======
+<form id="addForm" action="send_request" method="post">
+
+    <div></div>
+    <div></div>
+
+    <?php
+    $diameter = [];
+    for ($i = 7; $i <= 30; $i++) {
+        $diameter[$i] = $i;
+    }
+
+    $section_width = [];
+    for ($i = 60; $i <= 395; $i += 5) {
+        $section_width[$i] = $i;
+    }
+
+    $section_height = [];
+    for ($i = 25; $i <= 110; $i += 5) {
+        $section_height[$i] = $i;
+    }
+    ?>
+
+
+
+    <p class="parag_text">Ваш регион: <span>Москва</span>. Добавить еще регион</p>
+>>>>>>> 0e2d83c26968b9b4cb801f8b23c53da2fecd65d9
 
     <div class="select_type__manufacturer">
         <select class="select_type__manufacturer--sel" name="type_disk">

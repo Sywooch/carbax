@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <form id="addForm" action="send_request" method="post">
 
 
+
     <p class="parag_text">выберите автомобиль из <span class="selectAutoGarage">гаража:</span></p>
     <div id="selectAutoGarage"></div>
     <!--<p class="parag_text"><span>у вас нет машин в гараже</span></p>-->
@@ -219,28 +220,36 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 
-<div class="addContent">
+<div class="selection" style="margin-bottom: 30px">
+<div class="selection__content--lg">
     <p class="parag_text">Способы оплаты:</p>
     <div class="singleContent__desc">
+
         <div class="singleContent__desc--works">
 
-            <input type="checkbox" id="11_36" name="disk[]" value="36">
-            <label class="text" for="11_36"><span></span>Наличные</label>
+            <input type="checkbox" id="11_40" name="disk[]" value="40">
+            <label class="text" for="11_40"><span></span>Наличные</label>
 
-            <input type="checkbox" id="11_37" name="disk[]" value="37">
-            <label class="text" for="11_37"><span></span>Карточка</label>
+            <input type="checkbox" id="11_41" name="disk[]" value="41">
+            <label class="text" for="11_41"><span></span>Карточка</label>
 
-            <input type="checkbox" id="11_38" name="disk[]" value="38">
-            <label class="text" for="11_38"><span></span>Банковский перевод</label>
+            <input type="checkbox" id="11_42" name="disk[]" value="42">
+            <label class="text" for="11_42"><span></span>Банковский перевод</label>
+
 
         </div>
     </div>
+<<<<<<< HEAD
 </div>-->
+
+
+
+
 
     <div class="requestAddFieldGroup">
         <?php echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]); ?>
     </div>
-
+    <div class="cleared"></div>
     <h3>Ваш регион и город:</h3>
     <?= RegionSelect::widget() ?>
 

@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <form id="addForm" action="send_request" method="post">
 
 
+
     <p class="parag_text">выберите автомобиль из <span class="selectAutoGarage">гаража:</span></p>
     <div id="selectAutoGarage"></div>
     <!--<p class="parag_text"><span>у вас нет машин в гараже</span></p>-->
@@ -268,23 +269,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>-->
 
-<!--<div class="addContent">
-    <p class="parag_text">Способы оплаты:</p>
-    <div class="singleContent__desc">
-        <div class="singleContent__desc--works">
 
-            <input type="checkbox" id="11_36" name="disk[]" value="36">
-            <label class="text" for="11_36"><span></span>Наличные</label>
-
-            <input type="checkbox" id="11_37" name="disk[]" value="37">
-            <label class="text" for="11_37"><span></span>Карточка</label>
-
-            <input type="checkbox" id="11_38" name="disk[]" value="38">
-            <label class="text" for="11_38"><span></span>Банковский перевод</label>
-
-        </div>
-    </div>
-</div>-->
 
     <div class="requestAddFieldGroupMoika">
         <?php echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]); ?>
@@ -315,8 +300,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <!--<div class="singleContent__desc">
 
-            <label for="addContent__description" style="width:100%">Комментарии</label>
-            <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии">
+            <label for="addContent__description" style="width:100%; font-size:15px">Комментарии:</label>
+            <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Введите всю дополнительную информацию">
 
             </textarea>
 
@@ -329,6 +314,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить заявку</a>
             </div>
         </div>-->
+
+    <div class="cleared"></div>
     <h3>Ваш регион и город:</h3>
     <?= RegionSelect::widget() ?>
     <div class="singleContent__desc">

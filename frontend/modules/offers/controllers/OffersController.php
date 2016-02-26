@@ -101,8 +101,8 @@ class OffersController extends Controller
     }
     public function actionView($id)
     {
-        /*$this->view->params['officeHide'] = true;
-        $this->view->params['bannersHide'] = true;*/
+        /*$this->view->params['officeHide'] = true;*/
+        $this->view->params['bannersHide'] = true;
         $model = Offers::findOne($id);
         return $this->render('view', [
             'model' => $model

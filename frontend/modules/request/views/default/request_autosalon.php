@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <form id="addForm" action="send_request" method="post">
 
+
 <p class="parag_text">Выберите тип транспортного средства</p>
 
     <div class="save">
@@ -40,12 +41,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 </span>
         </label>
     </div>
+
+
+
+
+
+
 <div class="manufactureRequest"></div>
 
     <div class="requestAddFieldGroup">
         <?php echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]); ?>
     </div>
-
+        <div class="cleared"></div>
 
     <h3>Ваш регион и город:</h3>
     <?= RegionSelect::widget() ?>
@@ -53,12 +60,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="singleContent__desc">
 
-        <label for="addContent__description" style="width:100%">Комментарии</label>
+        <label for="addContent__description" style="width:100%; font-size:15px"">Комментарии:</label>
 
-        <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии"></textarea>
+        <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Введите всю дополнительную информацию"></textarea>
 
 
-        <label for="" style="width:100%">Контакты</label>
+        <label for="" style="width:100%; font-size:15px"">Контакты</label>
         <input type="text" id="" class="addContent__text" name="title" value="" placeholder="Введите ФИО">
         <input type="text" id="" class="addContent__text" name="title" value="" placeholder="Введите Ваш номер телефона">
         <input type="text" id="" class="addContent__text" name="title" value="" placeholder="Введите e-mail">
