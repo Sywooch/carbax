@@ -351,8 +351,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="singleContent__desc">
 
-            <label for="addContent__description" style="width:100%">Комментарии</label>
-            <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии">
+            <label for="addContent__description" style="width:100%; font-size:15px">Комментарии:</label>
+            <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Введите всю дополнительную информацию">
 
             </textarea>
 

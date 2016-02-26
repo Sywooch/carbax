@@ -187,12 +187,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="singleContent__desc">
 
-        <label for="addContent__description" style="width:100%">Комментарии</label>
+        <label for="addContent__description" style="width:100%; font-size:15px"">Комментарии:</label>
 
-        <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии"></textarea>
+        <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Введите всю дополнительную информацию"></textarea>
 
 
-        <label for="" style="width:100%">Контакты</label>
+        <label for="" style="width:100%; font-size:15px"">Контакты</label>
         <input type="text" id="" class="addContent__text" name="title" value="" placeholder="Введите ФИО">
         <input type="text" id="" class="addContent__text" name="title" value="" placeholder="Введите Ваш номер телефона">
         <input type="text" id="" class="addContent__text" name="title" value="" placeholder="Введите e-mail">
