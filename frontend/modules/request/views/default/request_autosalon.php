@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <p class="parag_text">Выберите тип Вашего транспортного срества</p>
 
-<div class="selection">
+<div class="selection"  style="margin-bottom: 30px">
 
 
 

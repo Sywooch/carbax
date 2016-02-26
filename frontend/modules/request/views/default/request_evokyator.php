@@ -18,9 +18,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <form id="addForm" action="send_request" method="post">
 
 
-<p class="parag_text">выберите автомобиль из <span>гаража:</span></p>
+<p class="parag_text">Выберите автомобиль из <span>гаража:</span></p>
 
-<p class="parag_text"><span>у вас нет машин в гараже</span></p>
+<p class="parag_text"><span>у Вас нет машин в гараже</span></p>
 
 <p class="parag_text">Выберите тип кузова автомобиля:</span></p>
 

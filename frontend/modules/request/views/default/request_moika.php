@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <form id="addForm" action="send_request" method="post">
 
 
-<p class="parag_text">выберите автомобиль из <span>гаража:</span></p>
+<p class="parag_text">Выберите автомобиль из <span>гаража:</span></p>
 
 <div class="save_sm">
     <input type="checkbox" value="none" id="1">
@@ -284,22 +284,29 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 
-<div class="addContent">
-    <p class="parag_text">Способы оплаты:</p>
-    <div class="singleContent__desc">
-        <div class="singleContent__desc--works">
+<div class="selection" style="margin-bottom: 30px">
 
-            <input type="checkbox" id="11_36" name="disk[]" value="36">
-            <label class="text" for="11_36"><span></span>Наличные</label>
+    <div class="selection__content--lg">
+        <p class="parag_text">Способы оплаты:</p>
+        <div class="singleContent__desc">
 
-            <input type="checkbox" id="11_37" name="disk[]" value="37">
-            <label class="text" for="11_37"><span></span>Карточка</label>
+            <div class="singleContent__desc--works">
 
-            <input type="checkbox" id="11_38" name="disk[]" value="38">
-            <label class="text" for="11_38"><span></span>Банковский перевод</label>
+                <input type="checkbox" id="11_29" name="disk[]" value="29">
+                <label class="text" for="11_29"><span></span>Наличные</label>
 
+                <input type="checkbox" id="11_30" name="disk[]" value="30">
+                <label class="text" for="11_30"><span></span>Карточка</label>
+
+                <input type="checkbox" id="11_31" name="disk[]" value="31">
+                <label class="text" for="11_31"><span></span>Банковский перевод</label>
+
+
+            </div>
         </div>
+
     </div>
+
 </div>
 
 

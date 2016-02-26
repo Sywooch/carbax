@@ -218,7 +218,7 @@ $sortie = [
 <section class="main-container">
 <form id="addForm" action="send_request" method="post">
 
-    <p class="parag_text">выберите автомобиль из <span class="selectAutoGarage">гаража:</span></p>
+    <p class="parag_text">Выберите автомобиль из <span class="selectAutoGarage">гаража:</span></p>
     <div id="selectAutoGarage"></div>
 
     <p class="parag_text">Выберите тип Вашего транспортного срества</p>
