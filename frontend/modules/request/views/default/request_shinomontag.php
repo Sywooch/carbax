@@ -18,42 +18,51 @@ $this->params['breadcrumbs'][] = $this->title;
 <form id="addForm" action="send_request" method="post">
 
 
-<p class="parag_text">выберите автомобиль из <span>гаража:</span></p>
+    <p class="parag_text">выберите автомобиль из <span class="selectAutoGarage">гаража:</span></p>
+    <div id="selectAutoGarage"></div>
+    <!--<p class="parag_text"><span>у вас нет машин в гараже</span></p>-->
 
-<p class="parag_text"><span>у вас нет машин в гараже</span></p>
+    <p class="parag_text">Выберите тип Вашего транспортного средства</p>
 
-<div class="select_bg">
-    <div class="select_type">
-        <select class="addContent__adress" name="type_disk">
-            <option value="">Марка</option>
-            <option value="1">Кованые</option>
-            <option value="2">Литые</option>
-            <option value="3">Штампованные</option>
-            <option value="4">Спицованные</option>
-            <option value="5">Сборные</option>
-        </select>
+    <div class="save">
+        <input type="checkbox" name="typeAuto" value="1" id="a" class="typeAutoRequest">
+        <label for="a">
+                <span>
+                    Легковой автомобиль
+                </span>
+        </label>
+        <input type="checkbox" name="typeAuto" value="2" id="g" class="typeAutoRequest">
+        <label for="g">
+                <span>
+                    Грузовой автомобиль
+                </span>
+        </label>
+
+        <input type="checkbox" name="typeAuto" value="3" id="b" class="typeAutoRequest">
+        <label for="b">
+                <span>
+                    Мотоцикл или скутер
+                </span>
+        </label>
     </div>
-    <div class="select_type">
-        <select class="addContent__adress" name="type_disk">
-            <option value="">Модель</option>
-            <option value="1">-</option>
-            <option value="2">-</option>
-            <option value="3">-</option>
-            <option value="4">-</option>
-            <option value="5">-</option>
-        </select>
+
+    <div class="select_bg">
+        <div class="select_type requestManufacture">
+            <select class="addContent__adress requestMarkAuto" name="requestMarkAuto">
+                <option value="">Марка</option>
+            </select>
+        </div>
+        <div class="select_type requestModelAuto">
+            <select class="addContent__adress requestModelAuto" name="requestModelAuto">
+                <option value="">Модель</option>
+            </select>
+        </div>
+        <div class="select_type requestYear">
+            <select class="addContent__adress requestYear" name="requestYear">
+                <option value="">Год выпуска</option>
+            </select>
+        </div>
     </div>
-    <div class="select_type">
-        <select class="addContent__adress" name="type_disk">
-            <option value="">Год выпуска</option>
-            <option value="1">-</option>
-            <option value="2">-</option>
-            <option value="3">-</option>
-            <option value="4">-</option>
-            <option value="5">-</option>
-        </select>
-    </div>
-</div>
 
 
 <div class="selection">
@@ -122,7 +131,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
 </div>
-<div class="selection">
+<!--<div class="selection">
     <p class="parag_text">Дополнительно:</p>
     <div class="selection__content--lg">
 
@@ -226,37 +235,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
         </div>
     </div>
-</div>
+</div>-->
 
+    <div class="requestAddFieldGroup">
+        <?php echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]); ?>
+    </div>
 
+    <h3>Ваш регион и город:</h3>
+    <?= RegionSelect::widget() ?>
 
-
-
-<form id="addForm" action="send_request" method="post">
-
-    <div></div>
-    <div></div>
-
-    <?php
-    $diameter = [];
-    for ($i = 7; $i <= 30; $i++) {
-        $diameter[$i] = $i;
-    }
-
-    $section_width = [];
-    for ($i = 60; $i <= 395; $i += 5) {
-        $section_width[$i] = $i;
-    }
-
-    $section_height = [];
-    for ($i = 25; $i <= 110; $i += 5) {
-        $section_height[$i] = $i;
-    }
-    ?>
-
-
-
-    <p class="parag_text">Ваш регион: <span>Москва</span>. Добавить еще регион</p>
+    <!--<p class="parag_text">Ваш регион: <span>Москва</span>. Добавить еще регион</p>
 
     <div class="select_type__manufacturer">
         <select class="select_type__manufacturer--sel" name="type_disk">
@@ -272,7 +260,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <option value="9">-</option>
             <option value="10">-</option>
         </select>
-    </div>
+    </div>-->
 
 
     <div class="singleContent__desc">
@@ -283,9 +271,9 @@ $this->params['breadcrumbs'][] = $this->title;
         </textarea>
 
 
-        <div class="send">
+        <!--<div class="send">
             <a class="send_foto" href="#">Добавить фото</a>
-        </div>
+        </div>-->
 
         <div class="addContent--save">
             <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить заявку</a>

@@ -222,7 +222,7 @@ $sortie = [
     <div id="selectAutoGarage"></div>
     <!--<p class="parag_text"><span>у вас нет машин в гараже</span></p>-->
 
-    <p class="parag_text">Выберите тип Вашего транспортного срества</p>
+    <p class="parag_text">Выберите тип Вашего транспортного средства</p>
 
     <div class="save">
         <input type="checkbox" name="typeAuto" value="1" id="a" class="typeAutoRequest">

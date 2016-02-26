@@ -1255,13 +1255,13 @@ p.parag_text span{
     z-index: 2;
 }
 
-.addContent {
+.main-container.addContent {
     width: 100%!important;
     margin-top: 30px;
 }
 
 .addContent .singleContent__desc--works input[type="checkbox"] + label{
-    width: 66%;
+   /* width: 66%;*/
     }
 
 .all_offers .deals__menu{
@@ -1671,3 +1671,20 @@ p.parag_text span{
     background-color: rgb(255, 255, 255);
 }
 
+.requestAddFieldGroupMoika .addContent .singleContent__desc--works input[type="checkbox"] + label{
+    width:49%;
+}
+
+.wh{
+    width:100%!important;
+}
+
+.hiddenBrand{
+    display:none;
+}
+.allBrands {
+    font-style: italic;
+    color: rgb(255, 107, 0);
+    font-weight: bold;
+    float: right;
+}

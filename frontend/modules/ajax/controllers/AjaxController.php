@@ -18,6 +18,7 @@ use common\models\db\AutoComModels;
 use common\models\db\AutoComModify;
 use common\models\db\AutoComSubmodels;
 use common\models\db\AutoWidget;
+use common\models\db\AutoWidgetParams;
 use common\models\db\AwpBodyType;
 use common\models\db\AwpDrive;
 use common\models\db\AwpTransmission;
@@ -657,9 +658,21 @@ class AjaxController extends Controller
 
     public function actionGet_auto_params_auto(){
         $auto = Garage::find()->where(['id'=>$_POST['id']])->one();
-        $autoWidget = AutoWidget::find()->where(['id'=>$auto['id_auto_widget']])->asArray()->one();
-        $autoWidget =  json_encode($autoWidget);
-        echo $autoWidget;
+        $autoWidget = AutoWidget::find()
+            ->where(['id'=>$auto['id_auto_widget']])
+            ->asArray()
+            ->one();
+        $autoParams = AutoWidgetParams::find()
+            ->where(['id_auto_widget'=>$autoWidget['id']])
+            ->asArray()
+            ->one();
+
+
+        $auto =  json_encode(array(
+            'autoWidget' => $autoWidget,
+            'autoParams' => $autoParams,
+        ));
+        echo $auto;
 
     }
 
@@ -746,5 +759,23 @@ class AjaxController extends Controller
             echo Html::dropDownList('requestYear',0,$yearAll,['prompt' => 'Год выпуска', 'class' => 'addContent__adress requestYear']);
         }
     }
+
+    public  function actionGet_auto_brand(){
+        if($_POST['id'] == 1){
+            $brand = BcbBrands::find()->orderBy('name')->all();
+            return $this->renderPartial('brand_auto',['brand'=>$brand]);
+        }
+
+        if($_POST['id'] == 2){
+            $brand = AutoComBrands::find()->orderBy('name')->all();
+            return $this->renderPartial('brand_auto',['brand'=>$brand]);
+        }
+
+        if($_POST['id'] == 3){
+            $brand = CarMarkByType::find()->orderBy('name')->all();
+            return $this->renderPartial('moto_auto',['brand'=>$brand]);
+        }
+    }
+
 
 }
