@@ -1034,6 +1034,16 @@ p.parag_text{
     text-align: left;
 }
 
+p.parag_text_bold{
+    font-size: 20px;
+    font-family: HelveticaNeueCyrBold;
+    color: rgb(40, 40, 40);
+    font-weight: bold;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 p.parag_text span{
     font-style: italic;
     color: rgb(255, 107, 0);
@@ -1274,9 +1284,133 @@ p.parag_text span{
     -o-transition: all 0.4s linear;
 }
 
+.save_plus--sm{
+    display: block;
+    position: relative;
+    float: left;
+}
 
+.save_plus--sm input[type="checkbox"]{
+    display:none;
+}
 
+.save_plus--sm input[type="checkbox"] + label{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 23px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border: 1px solid transparent;
+    background-color: rgb(255,255,255);
+    -o-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
 
+.save_plus--sm input[type="checkbox"] + label span{
+    display: inherit;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: HelveticaNeueCyrMedium;
+    text-align: center;
+    border-color: rgb(208, 213, 218);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    color: #000000;
+    cursor: pointer;
+    line-height: 24px;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+.save_plus--sm input[type="checkbox"]:checked + label span{
+    padding-top: 0;
+    color: #fff;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    background-color: #ff6b00;
+    border: 1px solid transparent;
+    transition: background-color 0.4s linear;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+}
+
+.save_auto{
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.save_auto input[type="checkbox"]{
+    display:none;
+}
+
+.save_auto input[type="checkbox"] + label{
+    display: inline-block;
+    width: auto;
+    height: 30px;
+    margin-right: 49px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    border: 1px solid transparent;
+    background-color: rgb(255,255,255);
+    -o-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+.save_auto input[type="checkbox"] + label span{
+    display: inherit;
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    font-family: HelveticaNeueCyrMedium;
+    text-align: center;
+    border-color: rgb(208, 213, 218);
+    border-width: 1px;
+    border-style: solid;
+    color: #000000;
+    cursor: pointer;
+    line-height: 27px;
+}
+
+.save_auto input[type="checkbox"]:checked + label span{
+    padding-top: 0;
+    color: #fff;
+    background-color: #ff6b00;
+    border: 1px solid transparent;
+    transition: background-color 0.4s linear;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+}
 
 .select_bg{
     display: block;
@@ -1372,6 +1506,30 @@ p.parag_text span{
     float: left;
 }
 
+.select_type__driver{
+    display: block;
+    position: relative;
+    width: 33%;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.select_type__driver--sel{
+    width: 82%;
+    height: 30px;
+    max-height: 30px;
+    overflow: scroll;
+    border-radius: 3px / 4px;
+    -o-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #fff;
+    outline-style: none;
+    border: 1px solid #C6CCD2;
+    padding: 0 0px 0 10px;
+    margin-bottom: 15px;
+    display: block;
+    float: left;
+}
 
 .requestDiametr{
     display: block;
@@ -1714,12 +1872,12 @@ p.parag_text span{
 }
 
 .mileage{
-    display: block;
-    position: relative;
-    width: 100%;
-    float: left;
-    margin: 20px 0 20px 0;
-}
+     display: block;
+     position: relative;
+     width: 100%;
+     float: left;
+     margin: 20px 0 20px 0;
+ }
 
 .mileage input.mileage__next{
     width: 320px;
@@ -1738,6 +1896,53 @@ p.parag_text span{
     outline: none;
     background-color: rgb(255, 255, 255);
 }
+
+.mileage_sm{
+    display: block;
+    position: relative;
+    width: 50%;
+    float: left;
+    margin: 20px 0 20px 0;
+}
+
+.mileage_sm input.mileage__next{
+    width: 336px;
+    border-color: rgb(208, 213, 218);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 5px 0 5px 23px;
+    background-color: rgb(222, 222, 222);
+    box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 1, 0.47);
+    -webkit-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 1, 0.47);
+    -mox-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 1, 0.47);
+}
+
+.mileage_sm input.mileage__next:focus{
+    outline: none;
+    background-color: rgb(255, 255, 255);
+}
+
+.mileage_sm input.mileage__next--sm{
+    width: 86px;
+    border-color: rgb(208, 213, 218);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px 0 5px 0;
+    margin-right: 35px;
+    background-color: rgb(222, 222, 222);
+    box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 1, 0.47);
+    -webkit-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 1, 0.47);
+    -mox-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 1, 0.47);
+}
+
+.mileage_sm input.mileage__next--sm:focus{
+    outline: none;
+    background-color: rgb(255, 255, 255);
+}
+
 
 .selection .selection__width{
     width: 25%;
@@ -1815,4 +2020,9 @@ p.parag_text span{
     display: block;
     position: relative;
     width: 70%;
+}
+
+form {
+    margin: 0 0 20px;
+    float: left;
 }

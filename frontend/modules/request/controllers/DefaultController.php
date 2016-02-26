@@ -214,6 +214,18 @@ class DefaultController extends Controller
                     'addForm' => $addForm,
                 ]);
         }
+        /**
+         * Автострахование
+         */
+        if($_GET['id'] == 13){
+            $requestType = RequestType::find()->where(['id' => $_GET['id']])->one();
+            $addForm = RequestTypeAddForm::find()->where(['request_type_id' => $_GET['id']])->all();
+            return $this->render('request_avtostrahovka',
+                [
+                    'requestType' => $requestType,
+                    'addForm' => $addForm,
+                ]);
+        }
 
         else {
 

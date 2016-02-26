@@ -40,7 +40,7 @@ $IpGeoBase->updateDB()
 <!--AKD47 section-->
 <section class="main-container">
     <div class="offers_page_view">
-        
+
     </div>
 </section>
 
