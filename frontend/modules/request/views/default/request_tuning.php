@@ -18,9 +18,33 @@ $this->params['breadcrumbs'][] = $this->title;
 <form id="addForm" action="send_request" method="post">
 
 
-<p class="parag_text">Выберите автомобиль из <span>гаража:</span></p>
+    <p class="parag_text">выберите автомобиль из <span class="selectAutoGarage">гаража:</span></p>
+    <div id="selectAutoGarage"></div>
+    <!--<p class="parag_text"><span>у вас нет машин в гараже</span></p>-->
 
-<p class="parag_text"><span>у Вас нет машин в гараже</span></p>
+    <p class="parag_text">Выберите тип Вашего транспортного средства</p>
+
+    <div class="save">
+        <input type="checkbox" name="typeAuto" value="1" id="a" class="typeAutoRequest">
+        <label for="a">
+                <span>
+                    Легковой автомобиль
+                </span>
+        </label>
+        <input type="checkbox" name="typeAuto" value="2" id="g" class="typeAutoRequest">
+        <label for="g">
+                <span>
+                    Грузовой автомобиль
+                </span>
+        </label>
+
+        <input type="checkbox" name="typeAuto" value="3" id="b" class="typeAutoRequest">
+        <label for="b">
+                <span>
+                    Мотоцикл или скутер
+                </span>
+        </label>
+    </div>
 
     <div class="select_bg">
         <div class="select_type requestManufacture">
@@ -41,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
 
-    <div class="selection">
+    <!--<div class="selection">
         <p class="parag_text">Виды работ:</p>
 
         <div class="selection__content--lg">
@@ -145,34 +169,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
         </div>
 
+    </div>-->
+
+    <div class="requestAddFieldGroupMoika">
+        <?php echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]); ?>
     </div>
 
-
-<form id="addForm" action="send_request" method="post">
-
-    <div></div>
-    <div></div>
-
-    <?php
-    $diameter = [];
-    for ($i = 7; $i <= 30; $i++) {
-        $diameter[$i] = $i;
-    }
-
-    $section_width = [];
-    for ($i = 60; $i <= 395; $i += 5) {
-        $section_width[$i] = $i;
-    }
-
-    $section_height = [];
-    for ($i = 25; $i <= 110; $i += 5) {
-        $section_height[$i] = $i;
-    }
-    ?>
-
-
-
-    <p class="parag_text">Ваш регион: <span>Москва</span>. Добавить еще регион</p>
+    <!--<p class="parag_text">Ваш регион: <span>Москва</span>. Добавить еще регион</p>
 
     <div class="select_type__manufacturer">
         <select class="select_type__manufacturer--sel" name="type_disk">
@@ -188,17 +191,20 @@ $this->params['breadcrumbs'][] = $this->title;
             <option value="9">-</option>
             <option value="10">-</option>
         </select>
-    </div>
+    </div>-->
+    <div class="cleared"></div>
 
+    <h3>Ваш регион и город:</h3>
+    <?= RegionSelect::widget() ?>
 
     <div class="singleContent__desc">
 
         <label for="addContent__description" style="width:100%; font-size:15px">Комментарии:</label>
         <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Введите всю дополнительную информацию"></textarea>
 
-        <div class="send">
+        <!--<div class="send">
             <a class="send_foto" href="#">Добавить фото</a>
-        </div>
+        </div>-->
 
         <div class="addContent--save">
             <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить заявку</a>

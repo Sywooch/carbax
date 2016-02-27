@@ -1212,10 +1212,43 @@ p.parag_text span{
 
 .save_plus{
     display: block;
-    position: absolute;
+    /*position: absolute;
     bottom: -4px;
-    left: 330px;
+    left: 330px;*/
+    margin-top: 30px;
 
+}
+
+
+span.add_zap{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: HelveticaNeueCyrMedium;
+    text-align: center;
+    border-color: rgb(208, 213, 218);
+    border-width: 1px;
+    border-style: solid;
+    color: #000000;
+    cursor: pointer;
+    line-height: 24px;
+    display: inline-block;
+    width: 29px;
+    height: 29px;
+}
+
+span.add_zap:hover{
+    color: #fff;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    background-color: #ff6b00;
+    border: 1px solid transparent;
+    transition: background-color 0.4s linear;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
 }
 
 .save_plus input[type="checkbox"]{
@@ -1834,4 +1867,9 @@ p.parag_text span{
     display: block;
     position: relative;
     width: 70%;
+}
+
+.mileage_wr {
+    width: 43%;
+    float: left;
 }

@@ -1070,10 +1070,11 @@ jQuery(document).ready(function ($) {
                 $("select.requestYear").append( $('<option selected value="' + params.autoWidget.year + '">' + params.autoWidget.year +'</option>'));
 
                 $('.probeg').val(params.autoParams.run);
+                $('.vincodeauto').val(params.autoParams.vin);
 
                 $('#kpp' + params.autoParams.transmission).prop('checked', true);
                 $('#dvs' + params.autoParams.type_motor).prop('checked', true);
-                //console.log(params.autoParams);
+                console.log(params.autoParams);
                 //$('#selectAutoGarage').html(data);
             }
         });
@@ -1104,6 +1105,29 @@ jQuery(document).ready(function ($) {
         $('.allBrands').css('display','none');
         $('.hiddenBrand').css('display','block');
         return false;
+    });
+
+    $(document).on('click', '.add_zap_plus', function(){
+        $(this).text('-');
+        $(this).next().remove('.add_zap_del');
+        $(this).removeClass('add_zap_plus');
+        $(this).addClass('add_zap_del');
+        $("<div class='mileage'><div class='mileage_wr'><p class='parag_text'>Укажите наименование запчасти:</p><input class='mileage__next' name='name_zap[]' placeholder='Наименование запчасти'> </div> <div class='mileage_wr'> <p class='parag_text'>Укажите номер детали (если знаете):</p> <input class='mileage__next' name='kod_zap[]' placeholder='Введите код'> </div> <div class='save_plus'> <span class='add_zap add_zap_plus'> + </span><span class='add_zap add_zap_del'> - </span></div></div>").insertBefore('.infoZap');
+    });
+
+    $(document).on('click', '.add_zap_del', function(){
+        $(this).parent().parent().remove();
+        if($(this).prev().hasClass('add_zap_plus')){
+            var elem = $('.mileage:last').children(".save_plus").children(".add_zap_del");
+
+            //console.log(elem);
+            $("<span class='add_zap add_zap_plus'> + </span>").insertBefore(elem);
+        }
+        var count = $(".add_zap_del").length;
+        if(count == 1){
+            $('.add_zap_del').remove();
+        }
+
     });
 
 });

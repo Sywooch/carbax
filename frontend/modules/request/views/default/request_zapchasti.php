@@ -18,147 +18,133 @@ $this->params['breadcrumbs'][] = $this->title;
 <form id="addForm" action="send_request" method="post">
 
 
-<p class="parag_text">выберите автомобиль из <span>гаража:</span></p>
+    <p class="parag_text">выберите автомобиль из <span class="selectAutoGarage">гаража:</span></p>
+    <div id="selectAutoGarage"></div>
+    <!--<p class="parag_text"><span>у вас нет машин в гараже</span></p>-->
 
-<p class="parag_text"><span>у вас нет машин в гараже</span></p>
+    <p class="parag_text">Выберите тип Вашего транспортного средства</p>
 
-<p class="parag_text">Выберите тип Вашего транспортного средаства:</span></p>
-
-<div class="save_sm">
-    <input type="checkbox" value="none" id="1">
-    <label for="1">
+    <div class="save">
+        <input type="checkbox" name="typeAuto" value="1" id="a" class="typeAutoRequest">
+        <label for="a">
                 <span>
                     Легковой автомобиль
                 </span>
-    </label>
-    <input type="checkbox" value="none" id="2">
-    <label for="2">
+        </label>
+        <input type="checkbox" name="typeAuto" value="2" id="g" class="typeAutoRequest">
+        <label for="g">
                 <span>
-                    Автобус
+                    Грузовой автомобиль
                 </span>
-    </label>
-    <input type="checkbox" value="none" id="3">
-    <label for="3">
-                <span>
-                   Грузовой автомобиль
-                </span>
-    </label>
-    <input type="checkbox" value="none" id="4">
-    <label for="4">
+        </label>
+
+        <input type="checkbox" name="typeAuto" value="3" id="b" class="typeAutoRequest">
+        <label for="b">
                 <span>
                     Мотоцикл или скутер
                 </span>
-    </label>
-</div>
-
-
-<div class="select_bg">
-    <div class="select_type">
-        <select class="addContent__adress" name="type_disk">
-            <option value="">Марка</option>
-            <option value="1">Кованые</option>
-            <option value="2">Литые</option>
-            <option value="3">Штампованные</option>
-            <option value="4">Спицованные</option>
-            <option value="5">Сборные</option>
-        </select>
+        </label>
     </div>
-    <div class="select_type">
-        <select class="addContent__adress" name="type_disk">
-            <option value="">Модель</option>
-            <option value="1">-</option>
-            <option value="2">-</option>
-            <option value="3">-</option>
-            <option value="4">-</option>
-            <option value="5">-</option>
-        </select>
-    </div>
-    <div class="select_type">
-        <select class="addContent__adress" name="type_disk">
-            <option value="">Год выпуска</option>
-            <option value="1">-</option>
-            <option value="2">-</option>
-            <option value="3">-</option>
-            <option value="4">-</option>
-            <option value="5">-</option>
-        </select>
-    </div>
-</div>
-
-<div class="selection">
-    <div class="selection__content--lg">
-        <p class="parag_text">КПП:</p>
-        <div class="singleContent__desc">
-            <div class="singleContent__desc--works">
-
-                <input type="checkbox" id="11_1" name="disk[]" value="1">
-                <label class="text" for="11_1"><span></span>Автомат</label>
-
-                <input type="checkbox" id="11_2" name="disk[]" value="2">
-                <label class="text" for="11_2"><span></span>Вариатор</label>
-
-                <input type="checkbox" id="11_3" name="disk[]" value="3">
-                <label class="text" for="11_3"><span></span>Робот</label>
-
-                <input type="checkbox" id="11_4" name="disk[]" value="4">
-                <label class="text" for="11_4"><span></span>Механика</label>
-
-            </div>
+    <div class="select_bg">
+        <div class="select_type requestManufacture">
+            <select class="addContent__adress requestMarkAuto" name="requestMarkAuto">
+                <option value="">Марка</option>
+            </select>
+        </div>
+        <div class="select_type requestModelAuto">
+            <select class="addContent__adress requestModelAuto" name="requestModelAuto">
+                <option value="">Модель</option>
+            </select>
+        </div>
+        <div class="select_type requestYear">
+            <select class="addContent__adress requestYear" name="requestYear">
+                <option value="">Год выпуска</option>
+            </select>
         </div>
     </div>
-    <div class="selection__content--lg">
-        <p class="parag_text">ДВС:</p>
-        <div class="singleContent__desc">
-            <div class="singleContent__desc--works">
+    <div class="selection">
+        <div class="selection__content--lg">
+            <p class="parag_text">КПП:</p>
+            <div class="singleContent__desc">
+                <div class="singleContent__desc--works">
 
-                <input type="checkbox" id="11_15" name="disk[]" value="15">
-                <label class="text" for="11_15"><span></span>Дизель</label>
+                    <input type="checkbox" id="kpp1" class="kpp" name="kpp" value="1">
+                    <label class="text" for="kpp1"><span></span>Механика</label>
 
-                <input type="checkbox" id="11_16" name="disk[]" value="16">
-                <label class="text" for="11_16"><span></span>Бензин</label>
+                    <input type="checkbox" id="kpp2" class="kpp" name="kpp" value="2">
+                    <label class="text" for="kpp2"><span></span>Автомат</label>
 
-                <input type="checkbox" id="11_17" name="disk[]" value="17">
-                <label class="text" for="11_17"><span></span>Газ</label>
+                    <input type="checkbox" id="kpp3" class="kpp" name="kpp" value="3">
+                    <label class="text" for="kpp3"><span></span>Робот</label>
 
+                    <input type="checkbox" id="kpp4" class="kpp" name="kpp" value="4">
+                    <label class="text" for="kpp4"><span></span>Вариатор</label>
 
+                </div>
             </div>
+        </div>
+        <div class="selection__content--lg">
+            <p class="parag_text">ДВС:</p>
+            <div class="singleContent__desc">
+                <div class="singleContent__desc--works">
+
+                    <input type="checkbox" id="dvs2" name="dvs[]" value="2">
+                    <label class="text" for="dvs2"><span></span>Дизель</label>
+
+                    <input type="checkbox" id="dvs1" name="dvs[]" value="1">
+                    <label class="text" for="dvs1"><span></span>Бензин</label>
+
+                    <input type="checkbox" id="dvs5" name="dvs[]" value="5">
+                    <label class="text" for="dvs5"><span></span>Газ</label>
+
+                    <input type="checkbox" id="dvs3" name="dvs[]" value="3">
+                    <label class="text" for="dvs3"><span></span>Гибрид</label>
+
+                    <input type="checkbox" id="dvs4" name="dvs[]" value="4">
+                    <label class="text" for="dvs4"><span></span>Электро</label>
+
+
+                </div>
+            </div>
+
         </div>
 
     </div>
-
-</div>
 
 <div class="mileage">
     <p class="parag_text">Укажите Vin-код атомобиля:</p>
 
-    <input class="mileage__next" name="comm" placeholder="Введите код">
+    <input class="mileage__next vincodeauto" name="vincodeauto" placeholder="Введите код">
 </div>
 
 
 <div class="mileage">
-    <p class="parag_text">Укажите наименование запчасти:</p>
+    <div class="mileage_wr">
+        <p class="parag_text">Укажите наименование запчасти:</p>
 
-    <input class="mileage__next" name="comm" placeholder="Введите код">
+        <input class="mileage__next" name="name_zap[]" placeholder="Наименование запчасти">
+    </div>
 
+    <div class="mileage_wr">
+        <p class="parag_text">Укажите номер детали (если знаете):</p>
+
+        <input class="mileage__next" name="kod_zap[]" placeholder="Введите код">
+    </div>
     <div class="save_plus">
-        <input type="checkbox" value="none" id="5">
-        <label for="5">
-                <span>
-                    +
-                </span>
-        </label>
+        <span class="add_zap add_zap_plus">
+            +
+        </span>
+
     </div>
 
 </div>
 
-<div class="mileage">
-    <p class="parag_text">Укажите номер детали (не обязательно):</p>
-
-    <input class="mileage__next" name="comm" placeholder="Введите код">
-</div>
+    <span class="infoZap"></span>
 
 
-<div class="addContent">
+
+
+<!--<div class="addContent">
     <p class="parag_text">Выберите тип обслуживания:</p>
     <div class="singleContent__desc">
         <div class="singleContent__desc--works">
@@ -224,32 +210,10 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
-
-<form id="addForm" action="send_request" method="post">
-
-    <div></div>
-    <div></div>
-
-    <?php
-    $diameter = [];
-    for ($i = 7; $i <= 30; $i++) {
-        $diameter[$i] = $i;
-    }
-
-    $section_width = [];
-    for ($i = 60; $i <= 395; $i += 5) {
-        $section_width[$i] = $i;
-    }
-
-    $section_height = [];
-    for ($i = 25; $i <= 110; $i += 5) {
-        $section_height[$i] = $i;
-    }
-    ?>
+-->
 
 
-
-    <p class="parag_text">Ваш регион: <span>Москва</span>. Добавить еще регион</p>
+    <!--<p class="parag_text">Ваш регион: <span>Москва</span>. Добавить еще регион</p>
 
     <div class="select_type__manufacturer">
         <select class="select_type__manufacturer--sel" name="type_disk">
@@ -265,9 +229,14 @@ $this->params['breadcrumbs'][] = $this->title;
             <option value="9">-</option>
             <option value="10">-</option>
         </select>
+    </div>-->
+    <div class="requestAddFieldGroupMoika">
+        <?php echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]); ?>
     </div>
+    <div class="cleared"></div>
 
-
+    <h3>Ваш регион и город:</h3>
+    <?= RegionSelect::widget() ?>
     <div class="singleContent__desc">
 
         <label for="addContent__description" style="width:100%; font-size:15px"">Комментарии:</label>
@@ -276,9 +245,9 @@ $this->params['breadcrumbs'][] = $this->title;
         </textarea>
 
 
-        <div class="send">
+       <!-- <div class="send">
             <a class="send_foto" href="#">Добавить фото</a>
-        </div>
+        </div>-->
 
         <div class="addContent--save">
             <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить заявку</a>
