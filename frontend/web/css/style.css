@@ -1034,6 +1034,16 @@ p.parag_text{
     text-align: left;
 }
 
+p.parag_text_bold{
+    font-size: 20px;
+    font-family: HelveticaNeueCyrBold;
+    color: rgb(40, 40, 40);
+    font-weight: bold;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 p.parag_text span{
     font-style: italic;
     color: rgb(255, 107, 0);
@@ -1082,6 +1092,11 @@ p.parag_text span{
     color: #000000;
     cursor: pointer;
     line-height: 27px;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
 }
 
 .save input[type="checkbox"]:checked + label span{
@@ -1139,6 +1154,10 @@ p.parag_text span{
     color: #000000;
     cursor: pointer;
     line-height: 27px;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
 }
 
 .save_sm input[type="checkbox"]:checked + label span{
@@ -1196,6 +1215,10 @@ p.parag_text span{
     color: #000000;
     cursor: pointer;
     line-height: 27px;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
 }
 
 .save_xs input[type="checkbox"]:checked + label span{
@@ -1289,6 +1312,10 @@ span.add_zap:hover{
     color: #000000;
     cursor: pointer;
     line-height: 24px;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
 }
 
 .save_plus input[type="checkbox"]:checked + label span{
@@ -1307,9 +1334,138 @@ span.add_zap:hover{
     -o-transition: all 0.4s linear;
 }
 
+.save_plus--sm{
+    display: block;
+    position: relative;
+    float: left;
+}
 
+.save_plus--sm input[type="checkbox"]{
+    display:none;
+}
 
+.save_plus--sm input[type="checkbox"] + label{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 23px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border: 1px solid transparent;
+    background-color: rgb(255,255,255);
+    -o-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
 
+.save_plus--sm input[type="checkbox"] + label span{
+    display: inherit;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: HelveticaNeueCyrMedium;
+    text-align: center;
+    border-color: rgb(208, 213, 218);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    color: #000000;
+    cursor: pointer;
+    line-height: 24px;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+.save_plus--sm input[type="checkbox"]:checked + label span{
+    padding-top: 0;
+    color: #fff;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    background-color: #ff6b00;
+    border: 1px solid transparent;
+    transition: background-color 0.4s linear;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+}
+
+.save_auto{
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.save_auto input[type="checkbox"]{
+    display:none;
+}
+
+.save_auto input[type="checkbox"] + label{
+    display: inline-block;
+    width: auto;
+    height: 30px;
+    margin-right: 49px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    border: 1px solid transparent;
+    background-color: rgb(255,255,255);
+    -o-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+.save_auto input[type="checkbox"] + label span{
+    display: inherit;
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    font-family: HelveticaNeueCyrMedium;
+    text-align: center;
+    border-color: rgb(208, 213, 218);
+    border-width: 1px;
+    border-style: solid;
+    color: #000000;
+    cursor: pointer;
+    line-height: 27px;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+.save_auto input[type="checkbox"]:checked + label span{
+    padding-top: 0;
+    color: #fff;
+    background-color: #ff6b00;
+    border: 1px solid transparent;
+    transition: background-color 0.4s linear;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+}
 
 .select_bg{
     display: block;
@@ -1405,6 +1561,30 @@ span.add_zap:hover{
     float: left;
 }
 
+.select_type__driver{
+    display: block;
+    position: relative;
+    width: 33%;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.select_type__driver--sel{
+    width: 82%;
+    height: 30px;
+    max-height: 30px;
+    overflow: scroll;
+    border-radius: 3px / 4px;
+    -o-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #fff;
+    outline-style: none;
+    border: 1px solid #C6CCD2;
+    padding: 0 0px 0 10px;
+    margin-bottom: 15px;
+    display: block;
+    float: left;
+}
 
 .requestDiametr{
     display: block;
@@ -1747,12 +1927,12 @@ span.add_zap:hover{
 }
 
 .mileage{
-    display: block;
-    position: relative;
-    width: 100%;
-    float: left;
-    margin: 20px 0 20px 0;
-}
+     display: block;
+     position: relative;
+     width: 100%;
+     float: left;
+     margin: 20px 0 20px 0;
+ }
 
 .mileage input.mileage__next{
     width: 320px;
@@ -1772,6 +1952,52 @@ span.add_zap:hover{
     background-color: rgb(255, 255, 255);
 }
 
+.mileage_sm{
+    display: block;
+    position: relative;
+    width: 50%;
+    float: left;
+    margin: 20px 0 20px 0;
+}
+
+.mileage_sm input.mileage__next{
+    width: 336px;
+    border-color: rgb(208, 213, 218);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 5px 0 5px 23px;
+    background-color: rgb(222, 222, 222);
+    box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 1, 0.47);
+    -webkit-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 1, 0.47);
+    -mox-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 1, 0.47);
+}
+
+.mileage_sm input.mileage__next:focus{
+    outline: none;
+    background-color: rgb(255, 255, 255);
+}
+
+
+.mileage_sm input.mileage__next--sm{
+    width: 86px;
+    border-color: rgb(208, 213, 218);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px 0 5px 0;
+    margin-right: 35px;
+    background-color: rgb(222, 222, 222);
+    box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 1, 0.47);
+    -webkit-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 1, 0.47);
+    -mox-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 1, 0.47);
+}
+
+.mileage_sm input.mileage__next--sm:focus{
+    outline: none;
+    background-color: rgb(255, 255, 255);
+}
 
 .requestAddFieldGroupMoika .addContent .singleContent__desc--works input[type="checkbox"] + label{
     width:49%;
@@ -1790,6 +2016,7 @@ span.add_zap:hover{
     font-weight: bold;
     float: right;
 }
+
 
 .selection .selection__width{
     width: 25%;
@@ -1869,7 +2096,154 @@ span.add_zap:hover{
     width: 70%;
 }
 
+
 .mileage_wr {
     width: 43%;
     float: left;
 }
+
+form {
+    margin: 0 0 20px;
+    float: left;
+}
+
+/*----Offers----*/
+h3.offers_header{
+    font-size: 21px;
+    font-family: HelveticaNeueCyrBold;
+    text-align: left;
+}
+
+.offers_main--img{
+    display: block;
+    position: relative;
+    width: 70%;
+    float: left;
+}
+
+.main__img{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 435px;
+    margin: 10px auto;
+}
+
+.offers_side--img{
+    display: block;
+    position: relative;
+    width: 30%;
+    float: left;
+}
+
+.side__img{
+    display: block;
+    position: relative;
+    width: 226px;
+    height: 101px;
+    overflow: hidden;
+    margin: 10px 10px;
+}
+
+.side__img--sm{
+    display: block;
+    position: relative;
+    width: 100%;
+     transform: translate(0%, -29%);
+     -webkit-transform: translate(0%, -29%);
+     -o-transform: translate(0%, -29%);
+     -moz-transform: translate(0%, -29%);
+     -ms-transform: translate(0%, -29%);
+}
+
+.offers_nav{
+    display: block;
+    position: relative;
+    width: 100%;
+    float: left;
+    text-align: left;
+}
+
+ul.nav_sm{
+    margin-left: 0;
+    border-bottom: 1px solid #ff6b00;
+}
+
+ul.nav_sm li a{
+    font-size: 14px;
+    font-family: HelveticaNeueCyrLight;
+    color: rgb(40, 40, 40);
+}
+
+ul.nav_sm li a:hover{
+    font-size: 14px;
+    font-family: HelveticaNeueCyrLight;
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 107, 0);
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+ul.nav_sm li.active a:focus{
+    font-size: 14px;
+    font-family: HelveticaNeueCyrLight;
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 107, 0);
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+.tab-content{
+    float: left;
+}
+
+p.offers_content{
+    margin-top: 10px;
+}
+
+
+span.question{
+    display: block;
+    position: relative;
+    text-align: center;
+    width: 173px;
+    height: 35px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(211, 94, 0);
+    border-radius: 3px;
+    background-image: -moz-linear-gradient( 90deg, rgb(200,94,0) 0%, rgb(255,107,0) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(200,94,0) 0%, rgb(255,107,0) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(200,94,0) 0%, rgb(255,107,0) 100%);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.34),inset 0px 2px 4px 0px rgba(255, 255, 255, 0.47);
+    cursor: pointer;
+}
+
+span.question a.ask{
+    font-size: 20px;
+    font-family: HelveticaNeueCyrBold;
+    color: rgb(255, 255, 255);
+    text-shadow: 0.5px 0.866px 1px rgba(0, 0, 0, 0.3);
+    line-height: 30px;
+}
+
+span.question:hover a.ask{
+    color: rgb(0, 0, 0);
+    text-shadow: 0.5px 0.866px 1px rgba(0, 0, 0, 0.3);
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+
+
+/*----Offers end----*/
+
