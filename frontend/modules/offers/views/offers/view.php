@@ -40,8 +40,9 @@ $IpGeoBase->updateDB()
 
 
 <!--AKD47 section-->
+
+<section class="offers_container">
 <h3 class="offers_header">Комплексная химчистка салона автомобиля в сети сервисных центров “На колесах.ru”</h3>
-<section class="main-container">
     <div class="offers_page_view">
 
         <div class="offers_main--img">
@@ -74,7 +75,7 @@ $IpGeoBase->updateDB()
         </div>
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane fade in active" id="conditions">
-                <div class="offers_page_view">
+                <div class="offers_condition_view">
                     <div class="row">
 
                         <p class="offers_content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -126,7 +127,7 @@ $IpGeoBase->updateDB()
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="description">
-                <div class="offers_page_view">
+                <div class="offers_condition_view">
                     <div class="row">
 
                         <p class="offers_content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -179,7 +180,7 @@ $IpGeoBase->updateDB()
             </div>
             <div role="tabpanel" class="tab-pane fade" id="reviews">
 
-                <div class="offers_page_view">
+                <div class="offers_condition_view">
                     <div class="row">
 
                         <p class="offers_content"><span>Задайте вопрос или оставьте комментарий</span><br/>
@@ -204,7 +205,72 @@ $IpGeoBase->updateDB()
                                     <p>
                                         25.01.2016 20:55
                                     </p>
+
+                                    <img src="../../media/img/reiting.png" alt=""/>
                                 </div>
+
+
+
+                                <div class="home-comments__item--desc">
+                                    <p>
+                                        Отлична химчистка салона
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="home-comments__body">
+
+                            <div class="home-comments__item__head">
+                                <div class="home-comments__item__head--img">
+                                    <img src="../../media/img/recall_av.png" alt=""/>
+                                </div>
+                                <p>Марина К.</p>
+
+                            </div>
+
+                            <div class="home-comments__item__body">
+
+                                <div class="home-comments__item--date">
+                                    <p>
+                                        25.01.2016 20:55
+                                    </p>
+
+                                    <img src="../../media/img/reiting.png" alt=""/>
+                                </div>
+
+
+
+                                <div class="home-comments__item--desc">
+                                    <p>
+                                        Отлична химчистка салона
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="home-comments__body">
+
+                            <div class="home-comments__item__head">
+                                <div class="home-comments__item__head--img">
+                                    <img src="../../media/img/recall_av.png" alt=""/>
+                                </div>
+                                <p>Марина К.</p>
+
+                            </div>
+
+                            <div class="home-comments__item__body">
+
+                                <div class="home-comments__item--date">
+                                    <p>
+                                        25.01.2016 20:55
+                                    </p>
+
+                                    <img src="../../media/img/reiting.png" alt=""/>
+                                </div>
+
 
 
                                 <div class="home-comments__item--desc">
@@ -228,7 +294,53 @@ $IpGeoBase->updateDB()
 
 
     </div>
+
+
+    <div class="sidebar_right">
+
+        <div class="offers_price">
+            <p>2500 руб</p>
+        </div>
+
+        <div class="offers_discount">
+
+            <div class="offers_discount__interest">
+                 <p>Скидка</p>
+                <p>30%</p>
+            </div>
+
+            <div class="offers_discount__price">
+                <p>1500 руб</p>
+            </div>
+
+        </div>
+
+        <div class="offers_agreement">
+            <div class="offers_agreement--count">
+            <p>2</p>
+            </div>
+            <div class="offers_agreement--text">
+            <p>Я приеду</p>
+            </div>
+        </div>
+
+        <div class="offers_agreement--future">
+            <div class="offers_agreement--count">
+                <p>5</p>
+            </div>
+            <div class="offers_agreement--text">
+                <p>Возможно приеду</p>
+            </div>
+        </div>
+
+
+        
+
+
+    </div>
+
 </section>
+
 
 
 

@@ -2108,6 +2108,16 @@ form {
 }
 
 /*----Offers----*/
+
+.offers_container{
+    display: block;
+    float: left;
+    position: relative;
+    width: 100%;
+    padding-right: 10px;
+}
+
+
 h3.offers_header {
     font-size: 21px;
     font-family: HelveticaNeueCyrBold;
@@ -2119,14 +2129,19 @@ h3.offers_header {
     position: relative;
     width: 70%;
     float: left;
+    overflow: hidden;
 }
 
 .main__img {
     display: block;
     position: relative;
-    width: 100%;
-    height: 435px;
-    margin: 10px auto;
+    width: auto;
+    height: auto;
+    transform: translate(-10%, 0);
+    -webkit-transform: translate(-10%, 0);
+    -o-transform: translate(-10%, 0);
+    -moz-transform: translate(-10%, 0);
+    -ms-transform: translate(-10%, 0);
 }
 
 .offers_side--img {
@@ -2139,16 +2154,21 @@ h3.offers_header {
 .side__img {
     display: block;
     position: relative;
-    width: 226px;
+    width: 178px;
     height: 101px;
     overflow: hidden;
-    margin: 10px 10px;
+    margin-left: 10px;
+}
+
+.side__img:nth-of-type(2), .side__img:nth-of-type(3), .side__img:nth-of-type(4){
+    margin-top: 11px;
 }
 
 .side__img--sm {
     display: block;
     position: relative;
-    width: 100%;
+    width: auto;
+    height: auto;
     transform: translate(0%, -29%);
     -webkit-transform: translate(0%, -29%);
     -o-transform: translate(0%, -29%);
@@ -2209,7 +2229,15 @@ ul.nav_sm li.active a:focus {
 .offers_page_view{
     display: block;
     position: relative;
-    width: 800px;
+    width: 70%;
+    float: left;
+}
+
+.offers_condition_view{
+    display: block;
+    position: relative;
+    width: 100%;
+    float: left;
 }
 
 /*----Offers recall----*/
@@ -2318,8 +2346,231 @@ span.question:hover a.ask {
     padding: 10px 10px;
 }
 
+.home-comments__item--date p{
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.home-comments__item--date img{
+    margin-left: 10px;
+}
+
+.home-comments__item--desc p{
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 30px;
+}
 /*----Offers recall end----*/
 /*----Offers nav content end----*/
 
-/*----Offers end----*/
+/*----Offers sidebar-right----*/
 
+.sidebar_right{
+    display: block;
+    position: relative;
+    width: 30%;
+    float: left;
+}
+
+.offers_price{
+    display: block;
+    position: relative;
+    width: 184px;
+    height: 47px;
+    margin: 10px auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(89, 89, 89);
+    border-radius: 4px;
+    background-image: -moz-linear-gradient( 90deg, rgb(37,39,43) 0%, rgb(115,115,115) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(37,39,43) 0%, rgb(115,115,115) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(37,39,43) 0%, rgb(115,115,115) 100%);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.28),inset 0px 2px 4px 0px rgba(255, 255, 255, 0.35);
+}
+
+.offers_price p{
+    font-size: 26px;
+    font-family: "Open Sans", sans-serif;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-decoration: line-through;
+    text-align: center;
+    line-height: 40px;
+}
+
+.offers_discount{
+    display: block;
+    position: relative;
+    width: 184px;
+    height: 47px;
+    margin: 10px auto;
+
+}
+
+.offers_discount:after{
+    content: "";
+    display: block;
+    position: relative;
+    float: left;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 2px solid #c6c6c6;
+}
+
+.offers_discount__interest{
+    display: block;
+    position: relative;
+    float: left;
+    width: 70px;
+    height: 46px;
+    text-align: center;
+    line-height: 40px;
+    margin-top: 4px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(9, 111, 171);
+    border-radius: 4px 0 0 4px;
+    background-image: -moz-linear-gradient( 90deg, rgb(6,137,204) 0%, rgb(67,181,240) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(6,137,204) 0%, rgb(67,181,240) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(6,137,204) 0%, rgb(67,181,240) 100%);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.28),inset 0px 2px 4px 0px rgba(255, 255, 255, 0.35);
+}
+
+.offers_discount__interest p{
+    font-size: 12px;
+    font-family: "Open Sans", sans-serif;
+    color: rgb(255, 255, 255);
+    line-height: 14px;
+    text-shadow: 0.5px 0.866px 1px rgba(0, 0, 0, 0.3);
+}
+
+.offers_discount__interest p:nth-of-type(2){
+    font-size: 24px;
+    font-family: "Open Sans", sans-serif;
+    color: rgb(255, 255, 255);
+    text-shadow: 0.5px 0.866px 1px rgba(0, 0, 0, 0.3);
+}
+
+.offers_discount__price{
+    display: block;
+    position: relative;
+    float: left;
+    width: 114px;
+    height: 54px;
+    line-height: 40px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(20, 89, 151);
+    border-radius: 4px;
+    background-image: -moz-linear-gradient( 90deg, rgb(25,99,166) 0%, rgb(44,122,192) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(25,99,166) 0%, rgb(44,122,192) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(25,99,166) 0%, rgb(44,122,192) 100%);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.28),inset 0px 2px 4px 0px rgba(255, 255, 255, 0.35);
+}
+
+.offers_discount__price p{
+    font-size: 24px;
+    font-family: "Open Sans", sans-serif;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-align: center;
+    line-height: 51px;
+}
+
+.offers_agreement{
+    display: block;
+    position: relative;
+    width: 184px;
+    height: 47px;
+    margin: 81px auto 0 auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(211, 94, 0);
+    border-radius: 3px;
+    background-image: -moz-linear-gradient( 90deg, rgb(200,94,0) 0%, rgb(255,107,0) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(200,94,0) 0%, rgb(255,107,0) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(200,94,0) 0%, rgb(255,107,0) 100%);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.34),inset 0px 2px 4px 0px rgba(255, 255, 255, 0.47);
+}
+
+
+.offers_agreement--count {
+    display: block;
+    position: relative;
+    width: 30%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    border-right: 1px solid #AF4620;
+    box-shadow: 1px 0px 0px 0px rgba(224, 137, 105, 0.004),inset 1px 0px 0px 0px rgba(224, 137, 105, 0.004);
+}
+
+
+.offers_agreement--text {
+    display: block;
+    position: relative;
+    width: 70%;
+    float: left;
+    text-align: center;
+}
+
+.offers_agreement p {
+    font-size: 24px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-shadow: 0.5px 0.866px 1px rgba(0, 0, 0, 0.4);
+    line-height: 43px;
+}
+
+.offers_agreement--future{
+    display: block;
+    position: relative;
+    width: 184px;
+    height: 47px;
+    margin: 20px auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(74, 74, 74);
+    border-radius: 3px;
+    background-image: -moz-linear-gradient( 90deg, rgb(200,94,0) 0%, rgb(40,40,40) 0%, rgb(93,93,93) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(200,94,0) 0%, rgb(40,40,40) 0%, rgb(93,93,93) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(200,94,0) 0%, rgb(40,40,40) 0%, rgb(93,93,93) 100%);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.34),inset 0px 2px 4px 0px rgba(255, 255, 255, 0.47);
+}
+
+
+.offers_agreement--future .offers_agreement--count {
+    display: block;
+    position: relative;
+    width: 30%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    border-right: 1px solid #292929;
+    box-shadow: 1px 0px 0px 0px rgba(90, 90, 90, 0.004),inset 1px 0px 0px 0px rgba(92, 92, 92, 0.004);
+}
+
+.offers_agreement--future .offers_agreement--count p {
+    font-size: 24px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-shadow: 0.5px 0.866px 1px rgba(0, 0, 0, 0.4);
+    line-height: 43px;
+}
+
+.offers_agreement--future .offers_agreement--text p {
+    font-size: 20px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-shadow: 0.5px 0.866px 1px rgba(0, 0, 0, 0.4);
+    line-height: 22px;
+}
+
+
+/*----Offers sidebar-right end----*/
+/*----Offers end----*/
