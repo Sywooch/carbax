@@ -1245,8 +1245,7 @@ p.parag_text span {
 
 }
 
-
-span.add_zap{
+span.add_zap {
     font-size: 20px;
     font-weight: bold;
     font-family: HelveticaNeueCyrMedium;
@@ -1262,7 +1261,7 @@ span.add_zap{
     height: 29px;
 }
 
-span.add_zap:hover{
+span.add_zap:hover {
     color: #fff;
     border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -2096,7 +2095,6 @@ span.add_zap:hover{
     width: 70%;
 }
 
-
 .mileage_wr {
     width: 43%;
     float: left;
@@ -2109,7 +2107,7 @@ form {
 
 /*----Offers----*/
 
-.offers_container{
+.offers_container {
     display: block;
     float: left;
     position: relative;
@@ -2117,9 +2115,8 @@ form {
     padding-right: 10px;
 }
 
-
 h3.offers_header {
-    font-size: 21px;
+    font-size: 22px;
     font-family: HelveticaNeueCyrBold;
     text-align: left;
 }
@@ -2160,7 +2157,7 @@ h3.offers_header {
     margin-left: 10px;
 }
 
-.side__img:nth-of-type(2), .side__img:nth-of-type(3), .side__img:nth-of-type(4){
+.side__img:nth-of-type(2), .side__img:nth-of-type(3), .side__img:nth-of-type(4) {
     margin-top: 11px;
 }
 
@@ -2219,6 +2216,7 @@ ul.nav_sm li.active a:focus {
     -o-transition: all 0.4s linear;
     transition: all 0.4s linear;
 }
+
 /*----Offers nav end----*/
 
 /*----Offers nav content----*/
@@ -2226,14 +2224,15 @@ ul.nav_sm li.active a:focus {
     float: left;
 }
 
-.offers_page_view{
+.offers_page_view {
     display: block;
     position: relative;
     width: 70%;
     float: left;
+    padding: 0 10px 0 10px;
 }
 
-.offers_condition_view{
+.offers_condition_view {
     display: block;
     position: relative;
     width: 100%;
@@ -2260,6 +2259,7 @@ span.question {
     display: block;
     position: relative;
     text-align: center;
+    float: left;
     width: 173px;
     height: 35px;
     border-style: solid;
@@ -2291,7 +2291,7 @@ span.question:hover a.ask {
     transition: all 0.4s linear;
 }
 
-.home-comments__body{
+.home-comments__body {
     display: block;
     float: left;
     position: relative;
@@ -2305,7 +2305,7 @@ span.question:hover a.ask {
     background-color: rgb(232, 232, 232);
 }
 
-.home-comments__item__head{
+.home-comments__item__head {
     display: block;
     float: left;
     position: relative;
@@ -2317,14 +2317,14 @@ span.question:hover a.ask {
     border-color: rgb(186, 186, 186);
 }
 
-.home-comments__item__head p{
+.home-comments__item__head p {
     font-weight: bold;
     margin-left: 10px;
     margin-right: 10px;
     float: left;
 }
 
-.home-comments__item__head--img{
+.home-comments__item__head--img {
     display: block;
     float: left;
     position: relative;
@@ -2332,12 +2332,12 @@ span.question:hover a.ask {
     height: 60px;
 }
 
-.home-comments__item__head--img img{
+.home-comments__item__head--img img {
     width: 100%;
     height: 100%;
 }
 
-.home-comments__item__body{
+.home-comments__item__body {
     display: block;
     position: relative;
     float: left;
@@ -2346,51 +2346,52 @@ span.question:hover a.ask {
     padding: 10px 10px;
 }
 
-.home-comments__item--date p{
+.home-comments__item--date p {
     font-weight: bold;
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.home-comments__item--date img{
+.home-comments__item--date img {
     margin-left: 10px;
 }
 
-.home-comments__item--desc p{
+.home-comments__item--desc p {
     font-weight: bold;
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 30px;
 }
+
 /*----Offers recall end----*/
 /*----Offers nav content end----*/
 
 /*----Offers sidebar-right----*/
 
-.sidebar_right{
+.sidebar_right {
     display: block;
     position: relative;
     width: 30%;
     float: left;
 }
 
-.offers_price{
+.offers_price {
     display: block;
     position: relative;
-    width: 184px;
+    width: 100%;
     height: 47px;
     margin: 10px auto;
     border-style: solid;
     border-width: 1px;
     border-color: rgb(89, 89, 89);
     border-radius: 4px;
-    background-image: -moz-linear-gradient( 90deg, rgb(37,39,43) 0%, rgb(115,115,115) 100%);
-    background-image: -webkit-linear-gradient( 90deg, rgb(37,39,43) 0%, rgb(115,115,115) 100%);
-    background-image: -ms-linear-gradient( 90deg, rgb(37,39,43) 0%, rgb(115,115,115) 100%);
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.28),inset 0px 2px 4px 0px rgba(255, 255, 255, 0.35);
+    background-image: -moz-linear-gradient(90deg, rgb(37, 39, 43) 0%, rgb(115, 115, 115) 100%);
+    background-image: -webkit-linear-gradient(90deg, rgb(37, 39, 43) 0%, rgb(115, 115, 115) 100%);
+    background-image: -ms-linear-gradient(90deg, rgb(37, 39, 43) 0%, rgb(115, 115, 115) 100%);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.28), inset 0px 2px 4px 0px rgba(255, 255, 255, 0.35);
 }
 
-.offers_price p{
+.offers_price p {
     font-size: 26px;
     font-family: "Open Sans", sans-serif;
     color: rgb(255, 255, 255);
@@ -2400,16 +2401,15 @@ span.question:hover a.ask {
     line-height: 40px;
 }
 
-.offers_discount{
+.offers_discount {
     display: block;
     position: relative;
-    width: 184px;
+    width: 100%;
     height: 47px;
     margin: 10px auto;
-
 }
 
-.offers_discount:after{
+.offers_discount:after {
     content: "";
     display: block;
     position: relative;
@@ -2419,11 +2419,11 @@ span.question:hover a.ask {
     border-bottom: 2px solid #c6c6c6;
 }
 
-.offers_discount__interest{
+.offers_discount__interest {
     display: block;
     position: relative;
     float: left;
-    width: 70px;
+    width: 30%;
     height: 46px;
     text-align: center;
     line-height: 40px;
@@ -2432,13 +2432,13 @@ span.question:hover a.ask {
     border-width: 1px;
     border-color: rgb(9, 111, 171);
     border-radius: 4px 0 0 4px;
-    background-image: -moz-linear-gradient( 90deg, rgb(6,137,204) 0%, rgb(67,181,240) 100%);
-    background-image: -webkit-linear-gradient( 90deg, rgb(6,137,204) 0%, rgb(67,181,240) 100%);
-    background-image: -ms-linear-gradient( 90deg, rgb(6,137,204) 0%, rgb(67,181,240) 100%);
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.28),inset 0px 2px 4px 0px rgba(255, 255, 255, 0.35);
+    background-image: -moz-linear-gradient(90deg, rgb(6, 137, 204) 0%, rgb(67, 181, 240) 100%);
+    background-image: -webkit-linear-gradient(90deg, rgb(6, 137, 204) 0%, rgb(67, 181, 240) 100%);
+    background-image: -ms-linear-gradient(90deg, rgb(6, 137, 204) 0%, rgb(67, 181, 240) 100%);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.28), inset 0px 2px 4px 0px rgba(255, 255, 255, 0.35);
 }
 
-.offers_discount__interest p{
+.offers_discount__interest p {
     font-size: 12px;
     font-family: "Open Sans", sans-serif;
     color: rgb(255, 255, 255);
@@ -2446,31 +2446,31 @@ span.question:hover a.ask {
     text-shadow: 0.5px 0.866px 1px rgba(0, 0, 0, 0.3);
 }
 
-.offers_discount__interest p:nth-of-type(2){
+.offers_discount__interest p:nth-of-type(2) {
     font-size: 24px;
     font-family: "Open Sans", sans-serif;
     color: rgb(255, 255, 255);
     text-shadow: 0.5px 0.866px 1px rgba(0, 0, 0, 0.3);
 }
 
-.offers_discount__price{
+.offers_discount__price {
     display: block;
     position: relative;
     float: left;
-    width: 114px;
+    width: 70%;
     height: 54px;
     line-height: 40px;
     border-style: solid;
     border-width: 1px;
     border-color: rgb(20, 89, 151);
     border-radius: 4px;
-    background-image: -moz-linear-gradient( 90deg, rgb(25,99,166) 0%, rgb(44,122,192) 100%);
-    background-image: -webkit-linear-gradient( 90deg, rgb(25,99,166) 0%, rgb(44,122,192) 100%);
-    background-image: -ms-linear-gradient( 90deg, rgb(25,99,166) 0%, rgb(44,122,192) 100%);
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.28),inset 0px 2px 4px 0px rgba(255, 255, 255, 0.35);
+    background-image: -moz-linear-gradient(90deg, rgb(25, 99, 166) 0%, rgb(44, 122, 192) 100%);
+    background-image: -webkit-linear-gradient(90deg, rgb(25, 99, 166) 0%, rgb(44, 122, 192) 100%);
+    background-image: -ms-linear-gradient(90deg, rgb(25, 99, 166) 0%, rgb(44, 122, 192) 100%);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.28), inset 0px 2px 4px 0px rgba(255, 255, 255, 0.35);
 }
 
-.offers_discount__price p{
+.offers_discount__price p {
     font-size: 24px;
     font-family: "Open Sans", sans-serif;
     color: rgb(255, 255, 255);
@@ -2479,22 +2479,21 @@ span.question:hover a.ask {
     line-height: 51px;
 }
 
-.offers_agreement{
+.offers_agreement {
     display: block;
     position: relative;
-    width: 184px;
+    width: 100%;
     height: 47px;
     margin: 81px auto 0 auto;
     border-style: solid;
     border-width: 1px;
     border-color: rgb(211, 94, 0);
     border-radius: 3px;
-    background-image: -moz-linear-gradient( 90deg, rgb(200,94,0) 0%, rgb(255,107,0) 100%);
-    background-image: -webkit-linear-gradient( 90deg, rgb(200,94,0) 0%, rgb(255,107,0) 100%);
-    background-image: -ms-linear-gradient( 90deg, rgb(200,94,0) 0%, rgb(255,107,0) 100%);
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.34),inset 0px 2px 4px 0px rgba(255, 255, 255, 0.47);
+    background-image: -moz-linear-gradient(90deg, rgb(200, 94, 0) 0%, rgb(255, 107, 0) 100%);
+    background-image: -webkit-linear-gradient(90deg, rgb(200, 94, 0) 0%, rgb(255, 107, 0) 100%);
+    background-image: -ms-linear-gradient(90deg, rgb(200, 94, 0) 0%, rgb(255, 107, 0) 100%);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.34), inset 0px 2px 4px 0px rgba(255, 255, 255, 0.47);
 }
-
 
 .offers_agreement--count {
     display: block;
@@ -2504,9 +2503,8 @@ span.question:hover a.ask {
     float: left;
     text-align: center;
     border-right: 1px solid #AF4620;
-    box-shadow: 1px 0px 0px 0px rgba(224, 137, 105, 0.004),inset 1px 0px 0px 0px rgba(224, 137, 105, 0.004);
+    box-shadow: 1px 0px 0px 0px rgba(224, 137, 105, 0.004), inset 1px 0px 0px 0px rgba(224, 137, 105, 0.004);
 }
-
 
 .offers_agreement--text {
     display: block;
@@ -2514,6 +2512,28 @@ span.question:hover a.ask {
     width: 70%;
     float: left;
     text-align: center;
+}
+
+.offers_agreement--text a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    text-shadow: 0.5px 0.866px 1px rgba(0, 0, 0, 0.4);
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+.offers_agreement--text a:hover{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    text-shadow: 0.5px 0.866px 1px rgba(255, 255, 255, 0.4);
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
 }
 
 .offers_agreement p {
@@ -2525,22 +2545,21 @@ span.question:hover a.ask {
     line-height: 43px;
 }
 
-.offers_agreement--future{
+.offers_agreement--future {
     display: block;
     position: relative;
-    width: 184px;
+    width: 100%;
     height: 47px;
     margin: 20px auto;
     border-style: solid;
     border-width: 1px;
     border-color: rgb(74, 74, 74);
     border-radius: 3px;
-    background-image: -moz-linear-gradient( 90deg, rgb(200,94,0) 0%, rgb(40,40,40) 0%, rgb(93,93,93) 100%);
-    background-image: -webkit-linear-gradient( 90deg, rgb(200,94,0) 0%, rgb(40,40,40) 0%, rgb(93,93,93) 100%);
-    background-image: -ms-linear-gradient( 90deg, rgb(200,94,0) 0%, rgb(40,40,40) 0%, rgb(93,93,93) 100%);
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.34),inset 0px 2px 4px 0px rgba(255, 255, 255, 0.47);
+    background-image: -moz-linear-gradient(90deg, rgb(200, 94, 0) 0%, rgb(40, 40, 40) 0%, rgb(93, 93, 93) 100%);
+    background-image: -webkit-linear-gradient(90deg, rgb(200, 94, 0) 0%, rgb(40, 40, 40) 0%, rgb(93, 93, 93) 100%);
+    background-image: -ms-linear-gradient(90deg, rgb(200, 94, 0) 0%, rgb(40, 40, 40) 0%, rgb(93, 93, 93) 100%);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.34), inset 0px 2px 4px 0px rgba(255, 255, 255, 0.47);
 }
-
 
 .offers_agreement--future .offers_agreement--count {
     display: block;
@@ -2550,7 +2569,7 @@ span.question:hover a.ask {
     float: left;
     text-align: center;
     border-right: 1px solid #292929;
-    box-shadow: 1px 0px 0px 0px rgba(90, 90, 90, 0.004),inset 1px 0px 0px 0px rgba(92, 92, 92, 0.004);
+    box-shadow: 1px 0px 0px 0px rgba(90, 90, 90, 0.004), inset 1px 0px 0px 0px rgba(92, 92, 92, 0.004);
 }
 
 .offers_agreement--future .offers_agreement--count p {
@@ -2563,14 +2582,133 @@ span.question:hover a.ask {
 }
 
 .offers_agreement--future .offers_agreement--text p {
-    font-size: 20px;
+    font-size: 21px;
     font-family: "Open Sans", sans-serif;
     font-weight: bold;
     color: rgb(255, 255, 255);
     text-shadow: 0.5px 0.866px 1px rgba(0, 0, 0, 0.4);
-    line-height: 22px;
+    line-height: 40px;
 }
 
+.offers_address {
+    display: block;
+    position: relative;
+    width: 100%;
+    float: left;
+    padding-left: 10px;
+}
 
+i.fa{
+    font-size: 25px;
+    color: #bfc1c2;
+    float: left;
+}
+
+a.offers_website{
+    font-size: 18px;
+    font-family: HelveticaNeueCyrLight;
+    margin-left: 18px;
+}
+
+/*----yandex map----*/
+
+.map-wrap {
+    display: block;
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 230px;
+    background-color: #bfc1c2;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#map_canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+/*----yandex map end----*/
+
+img.metro{
+    display: block;
+    position: relative;
+    width: 33px;
+    height: 27px;
+    float: left;
+    margin-top: 10px;
+}
+
+.offers_address--icons{
+    display: block;
+    position: relative;
+    width: 10%;
+    float: left;
+}
+
+.offers_address--text{
+    display: block;
+    position: relative;
+    width: 90%;
+    float: left;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+/*----Offers social icons ----*/
+
+.footer__social{
+    display: block;
+    float: left;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.footer__social--link {
+    display: block;
+    float: left;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    font-family: HelveticaNeueCyrLight;
+    font-weight: bold;
+    line-height: 14px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    background-color: #5a738e;
+    -webkit-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.7), inset 0px 1px 1px 0px rgba(0, 39, 117, 0.3);
+    box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.7), inset 0px 1px 1px 0px rgba(0, 39, 117, 0.3);
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 10px;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+.footer__social--link:last-of-type {
+    background-color: #5978d1;
+}
+
+.footer__social--link:hover {
+    text-decoration: none;
+    color: #6b7c96;
+    background-color: white;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+i.fa-vk{
+    font-weight: 10px;
+}
+/*----Offers social icons end----*/
 /*----Offers sidebar-right end----*/
 /*----Offers end----*/

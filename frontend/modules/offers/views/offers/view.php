@@ -130,51 +130,9 @@ $IpGeoBase->updateDB()
                 <div class="offers_condition_view">
                     <div class="row">
 
-                        <p class="offers_content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                            eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat
-                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut
-                            perspiciatis
-                            unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-                            aperiam,
-                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                            explicabo.
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur
-                            magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
-                            dolorem
-                            ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi
-                            tempora
-                            incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-
-                        <p class="offers_content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                            eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat
-                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut
-                            perspiciatis
-                            unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-                            aperiam,
-                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                            explicabo.
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur
-                            magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
-                            dolorem
-                            ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi
-                            tempora
-                            incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                        <p class="offers_content"></p>
 
                     </div>
-
-
-                    <span class="question"><a class="ask" href="#">Задать вопрос</a></span>
-
 
                 </div>
             </div>
@@ -320,7 +278,7 @@ $IpGeoBase->updateDB()
             <p>2</p>
             </div>
             <div class="offers_agreement--text">
-            <p>Я приеду</p>
+            <p><a href="#">Я приеду</a></p>
             </div>
         </div>
 
@@ -329,13 +287,65 @@ $IpGeoBase->updateDB()
                 <p>5</p>
             </div>
             <div class="offers_agreement--text">
-                <p>Возможно приеду</p>
+                <p><a href="#">Возможно приеду</p>
             </div>
         </div>
 
+        <div class="footer__social">
+            <a href="#" class="footer__social--link">
+                в
+            </a>
 
-        
+            <a href="#" class="footer__social--link">
+               f
+            </a>
+        </div>
 
+        <div class="offers_address">
+
+            <h3>На колесах.ru</h3>
+
+            <i class="fa fa-compass"></i>
+            <a class="offers_website" href="#">Посмотрите сайт</a>
+
+            <div class="map-wrap">
+                <div id="map_canvas"></div>
+            </div>
+
+            <div class="offers_address--icons">
+
+                <img class="metro" src="../../media/img/metro.png">
+            </div>
+
+            <div class="offers_address--text">
+                <p>г.Москва, ул. Адмирала Лазарева, д.2 (ТЦ "Виктория", эт.2) Бульвар адмирала Ушакова. <br/>
+                    <a href="#">Посмотреть
+                        на карте</a></p>
+            </div>
+
+            <div class="offers_address--icons">
+
+                <i class="fa fa-phone"></i>
+            </div>
+
+            <div class="offers_address--text">
+                <p>Телефон:<br/>
+                    +7 (499) 793-09-18</p>
+            </div>
+
+            <div class="offers_address--icons">
+
+                <i class="fa fa-clock-o"></i>
+            </div>
+
+            <div class="offers_address--text">
+                <p>Время работы: <br/>
+                 круглосуточно и ежедневно (технический перерыв с 6:00 до 9:00)</p>
+            </div>
+
+        </div>
+
+        <span class="question" style="margin-left: 75px;"><a class="ask" href="#">Все адреса</a></span>
 
     </div>
 
