@@ -2668,7 +2668,7 @@ img.metro{
 .footer__social--link {
     display: block;
     float: left;
-    width: 35px;
+    width: auto;
     height: 35px;
     font-size: 20px;
     font-family: HelveticaNeueCyrLight;
@@ -2677,11 +2677,11 @@ img.metro{
     text-align: center;
     color: white;
     text-decoration: none;
-    background-color: #5a738e;
+    background-color: #5f83aa;
     -webkit-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.7), inset 0px 1px 1px 0px rgba(0, 39, 117, 0.3);
     box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.7), inset 0px 1px 1px 0px rgba(0, 39, 117, 0.3);
     border-radius: 5px;
-    margin-left: 5px;
+    /*margin-left: 5px;*/
     margin-right: 5px;
     padding: 10px;
     -webkit-transition: all 0.4s linear;
@@ -2691,8 +2691,13 @@ img.metro{
     transition: all 0.4s linear;
 }
 
-.footer__social--link:last-of-type {
-    background-color: #5978d1;
+.footer__social--link:before{
+    content: "|";
+    position: absolute;
+    float: left;
+    margin-top: -1px;
+    margin-left: -2px;
+
 }
 
 .footer__social--link:hover {
@@ -2706,9 +2711,123 @@ img.metro{
     transition: all 0.4s linear;
 }
 
-i.fa-vk{
-    font-weight: 10px;
+.footer__social--link span{
+    float: left;
 }
+
+.footer__social--link p{
+    float: left;
+}
+
+.footer__social--link--fb {
+    display: block;
+    float: left;
+    width: auto;
+    height: 35px;
+    font-size: 20px;
+    font-family: HelveticaNeueCyrLight;
+    font-weight: bold;
+    line-height: 14px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    background-color: #5978d1;
+    -webkit-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.7), inset 0px 1px 1px 0px rgba(0, 39, 117, 0.3);
+    box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.7), inset 0px 1px 1px 0px rgba(0, 39, 117, 0.3);
+    border-radius: 5px;
+    /*margin-left: 5px;*/
+    margin-right: 5px;
+    padding: 10px;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+.footer__social--link--fb:hover {
+    text-decoration: none;
+    color: #6b7c96;
+    background-color: rgb(255,255,255);
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+.footer__social--link--fb span.fbook{
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    float: left;
+    font-size: 40px;
+    text-align: right;
+    color: #5978d1;
+    background-color: rgb(255,255,255);
+    border-radius: 2px;
+    margin-top: -5px;
+    padding-right: 4px;
+    line-height: 40px;
+    overflow: hidden;
+}
+
+.footer__social--link--fb p{
+    font-size: 13px;
+    float: left;
+    margin-left: 10px;
+}
+
+i.fa-heart{
+    font-size: 14px;
+    float: left;
+    color: rgb(174,193,212);
+    margin-left: 20px;
+}
+
+span.footer__social--link--counter{
+    display: block;
+    position: relative;
+    float: left;
+    width: auto;
+    height: 35px;
+    font-size: 20px;
+    font-family: HelveticaNeueCyrLight;
+    font-weight: bold;
+    text-align: right;
+    color: #5b6269;
+    border: 3px solid #d3d6da;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+span.footer__social--link--counter:before{
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 10px solid #d3d6da;
+    border-bottom: 10px solid transparent;
+    left: -10px;
+    top: 5px;
+}
+
+span.footer__social--link--counter:after{
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 10px solid #ffffff;
+    border-bottom: 10px solid transparent;
+    left: -5px;
+    top: 5px;
+}
+
 /*----Offers social icons end----*/
 /*----Offers sidebar-right end----*/
 /*----Offers end----*/

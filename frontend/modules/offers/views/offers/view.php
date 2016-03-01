@@ -293,12 +293,20 @@ $IpGeoBase->updateDB()
 
         <div class="footer__social">
             <a href="#" class="footer__social--link">
-                в
+                <span>В</span>
+                <i class="fa fa-heart"></i>
+
             </a>
 
-            <a href="#" class="footer__social--link">
-               f
+            <span class="footer__social--link--counter">+1</span>
+
+            <a href="#" class="footer__social--link--fb">
+               <span class="fbook">f</span>
+                <p>Нравится</p>
             </a>
+
+            <span class="footer__social--link--counter">0</span>
+
         </div>
 
         <div class="offers_address">
