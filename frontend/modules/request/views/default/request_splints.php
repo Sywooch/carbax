@@ -71,34 +71,35 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="singleContent__desc">
                     <div class="singleContent__desc--works">
                         <p class="parag_text">Выберите:</p>
-                        <input type="checkbox" id="11_39" name="disk[]" value="39">
+                        <input type="checkbox" id="11_39" name="infoSplints[]" value="В наличии">
                         <label class="text" for="11_39"><span></span>В наличии</label>
 
-                        <input type="checkbox" id="11_40" name="disk[]" value="40">
+                        <input type="checkbox" id="11_40" name="infoSplints[]" value="Гарантия производителя">
                         <label class="text" for="11_40"><span></span>Гарантия производителя</label>
 
-                        <input type="checkbox" id="11_41" name="disk[]" value="41">
+                        <input type="checkbox" id="11_41" name="infoSplints[]" value="Run on Flat">
                         <label class="text" for="11_41"><span></span>Run on Flat</label>
 
-                        <input type="checkbox" id="11_42" name="disk[]" value="42">
+                        <input type="checkbox" id="11_42" name="infoSplints[]" value="Распродажа">
                         <label class="text" for="11_42"><span></span>Распродажа</label>
 
 
                     </div>
                 </div>
             </div>
+
             <div class=" selection__content">
 
                 <div class="singleContent__desc">
                     <div class="singleContent__desc--works">
                         <p class="parag_text">Сезон:</p>
-                        <input type="checkbox" id="11_43" name="disk[]" value="43">
+                        <input type="checkbox" id="11_43" name="seasonts[]" value="Летние">
                         <label class="text" for="11_43"><span></span>Летние</label>
 
-                        <input type="checkbox" id="11_44" name="disk[]" value="44">
+                        <input type="checkbox" id="11_44" name="seasonts[]" value="Зимние">
                         <label class="text" for="11_44"><span></span>Зимние</label>
 
-                        <input type="checkbox" id="11_45" name="disk[]" value="45">
+                        <input type="checkbox" id="11_45" name="seasonts[]" value="Всесезонные">
                         <label class="text" for="11_45"><span></span>Всесезонные</label>
 
                     </div>
@@ -109,10 +110,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="singleContent__desc">
                     <div class="singleContent__desc--works">
                         <p class="parag_text">Шипы:</p>
-                        <input type="checkbox" id="11_46" name="disk[]" value="46">
+                        <input type="checkbox" id="11_46" name="shipi[]" value="С шипами">
                         <label class="text" for="11_46"><span></span>С шипами</label>
 
-                        <input type="checkbox" id="11_47" name="disk[]" value="47">
+                        <input type="checkbox" id="11_47" name="shipi[]" value="Без шипов">
                         <label class="text" for="11_47"><span></span>Без шипов</label>
 
                     </div>
@@ -141,25 +142,6 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>-->
 
 
-
-
-        <!--<span id="selectAuto">
-           <?php
-/*            if ($requestType->view_widget_auto == 1) {
-               echo SelectAuto::widget(['view' => $requestType->view_category_auto,'select_from_garage'=>true]);
-           }
-
-            if($requestType->view_mark_auto == 1){
-                echo Html::dropDownList(
-                    'typeAuto',
-                    0,
-                    ['1'=>'Легковой автомобиль','2'=>'Грузовой автомобиль','3'=>'Мото транспорт'],
-                    ['prompt' => 'Выберите тип авто', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'typeAuto', 'required' => 'required']
-                );
-            }
-            */?>
-
-       </span>-->
 
         <?php
         $diameter = [];
@@ -198,12 +180,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     echo Html::dropDownList('diameter',$model->diameter,$diameter,['prompt'=>'-','class'=>'addContent__adress']);
                 ?>
             </div>
-            <!--<div class="requestDiametr">
-<?php
-/*                    echo Html::label('Сезонность');
-                    echo Html::dropDownList('seasonality',$model->seasonality,['1'=>'Летние','2'=>'Зимние нешипованные','3'=>'Зимние шипованные','4'=>'Всесезонные'],['prompt'=>'-','class'=>'addContent__adress requestSeasons']);
-                */?>
-            </div>-->
+
 
         </div>
         <div class="requestAddFieldGroup">
@@ -287,20 +264,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= RegionSelect::widget() ?>
 
         <div class="singleContent__desc">
-            <?php
-            foreach ($addForm as $f) {
-                $k = RequestAddForm::find()->where(['id' => $f->add_form_id])->one();
-                echo CustomField::widget([
-                    'name' => $k->key,
-                    'template' => $k->template,
-                    'inputOption' => ['class' => $k->class, 'id' => $k->input_id, 'placeholder' => $k->placeholder],
-                    'labelOption' => ['for' => $k->input_id, 'style' => 'width:100%'],
-                    'labelName' => $k->name,
-                    'type' => ($k->form_type == 0) ? 'input' : 'textarea'
-                ]);
-
-            }
-            ?>
+            <label for="addContent__description" style="width:100%; font-size:15px">Комментарии:</label>
+            <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Введите всю дополнительную информацию"></textarea>
             <!--<div class="send">
             <a class="send_foto" href="#">Добавить фото</a>
             </div>-->

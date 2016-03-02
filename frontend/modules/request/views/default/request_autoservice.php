@@ -60,16 +60,16 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="singleContent__desc">
             <div class="singleContent__desc--works">
 
-                <input type="checkbox" id="kpp1" class="kpp" name="kpp" value="1">
+                <input type="checkbox" id="kpp1" class="kpp" name="kpp[]" value="1">
                 <label class="text" for="kpp1"><span></span>Механика</label>
 
-                <input type="checkbox" id="kpp2" class="kpp" name="kpp" value="2">
+                <input type="checkbox" id="kpp2" class="kpp" name="kpp[]" value="2">
                 <label class="text" for="kpp2"><span></span>Автомат</label>
 
-                <input type="checkbox" id="kpp3" class="kpp" name="kpp" value="3">
+                <input type="checkbox" id="kpp3" class="kpp" name="kpp[]" value="3">
                 <label class="text" for="kpp3"><span></span>Робот</label>
 
-                <input type="checkbox" id="kpp4" class="kpp" name="kpp" value="4">
+                <input type="checkbox" id="kpp4" class="kpp" name="kpp[]" value="4">
                 <label class="text" for="kpp4"><span></span>Вариатор</label>
 
             </div>
@@ -224,62 +224,14 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]); ?>
     <div class="cleared"></div>
 
-
-    <!--<p class="parag_text">Ваш регион: <span>Москва</span>. Добавить еще регион</p>
-=======
-<form id="addForm" action="send_request" method="post">
-
-    <div></div>
-    <div></div>
-
-    <?php
-    $diameter = [];
-    for ($i = 7; $i <= 30; $i++) {
-        $diameter[$i] = $i;
-    }
-
-    $section_width = [];
-    for ($i = 60; $i <= 395; $i += 5) {
-        $section_width[$i] = $i;
-    }
-
-    $section_height = [];
-    for ($i = 25; $i <= 110; $i += 5) {
-        $section_height[$i] = $i;
-    }
-    ?>
-
-
-
-    <p class="parag_text">Ваш регион: <span>Москва</span>. Добавить еще регион</p>
->>>>>>> 0e2d83c26968b9b4cb801f8b23c53da2fecd65d9
-
-    <div class="select_type__manufacturer">
-        <select class="select_type__manufacturer--sel" name="type_disk">
-            <option value="">Введите название города</option>
-            <option value="1">-</option>
-            <option value="2">-</option>
-            <option value="3">-</option>
-            <option value="4">-</option>
-            <option value="5">-</option>
-            <option value="6">-</option>
-            <option value="7">-</option>
-            <option value="8">-</option>
-            <option value="9">-</option>
-            <option value="10">-</option>
-        </select>
-    </div>-->
-
     <h3>Ваш регион и город:</h3>
     <?= RegionSelect::widget() ?>
     <div class="singleContent__desc">
 
         <label for="addContent__description" style="width:100%">Комментарии</label>
-        <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии">
+        <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии"></textarea>
 
-        </textarea>
-
-
+        <?php echo Html::hiddenInput('request_type_id', $_GET['id']); ?>
         <!--<div class="send">
             <a class="send_foto" href="#">Добавить фото</a>
         </div>-->

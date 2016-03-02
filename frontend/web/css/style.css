@@ -1245,7 +1245,7 @@ p.parag_text span {
 
 }
 
-span.add_zap {
+span.add_zap,span.add_infoDriver,span.del_infoDriver{
     font-size: 20px;
     font-weight: bold;
     font-family: HelveticaNeueCyrMedium;
@@ -1261,7 +1261,8 @@ span.add_zap {
     height: 29px;
 }
 
-span.add_zap:hover {
+
+span.add_zap:hover, span.add_infoDriver:hover, span.del_infoDriver:hover{
     color: #fff;
     border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -1275,6 +1276,17 @@ span.add_zap:hover {
     -ms-transition: all 0.4s linear;
     -o-transition: all 0.4s linear;
 }
+
+
+span.del_infoDriver{
+
+}
+
+.save_plus--sm--del{
+    position: absolute!important;
+    right: 70px;
+}
+
 
 .save_plus input[type="checkbox"] {
     display: none;
@@ -1336,7 +1348,11 @@ span.add_zap:hover {
     -o-transition: all 0.4s linear;
 }
 
-.save_plus--sm {
+.separator{
+    width:92%;
+}
+
+.save_plus--sm{
     display: block;
     position: relative;
     float: left;
@@ -1421,7 +1437,7 @@ span.add_zap:hover {
     display: inline-block;
     width: auto;
     height: 30px;
-    margin-right: 49px;
+    margin-right: 23px;
     border-radius: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -1440,6 +1456,7 @@ span.add_zap:hover {
 .save_auto input[type="checkbox"] + label span {
     display: inherit;
     width: 100%;
+    padding: 0 10px;
     height: 100%;
     font-size: 13px;
     font-family: HelveticaNeueCyrMedium;
@@ -2101,8 +2118,13 @@ span.add_zap:hover {
 }
 
 form {
-    margin: 0 0 20px;
-    float: left;
+    /*margin: 0 0 20px;
+    float: left;*/
+}
+
+#changeRegion{
+    color: #ff6b00;
+    font-weight: bold;
 }
 
 /*----Offers----*/
@@ -2777,6 +2799,26 @@ span.footer__social--link--counter:after{
     left: -5px;
     top: 5px;
 }
+
+.addInfoDrive{
+    margin-left: 40px;
+    margin-bottom: 40px!important;
+}
+
+#drivebo .singleContent__desc--works input[type="checkbox"] + label{
+    width:100%;
+}
+
+.p--left{
+    float:left;
+}
+
+div#drivebo {
+    margin-top: 14px;
+    margin-left: 117px;
+}
+
+
 /*----Offers social icons end----*/
 
 /*----Offers slider----*/
@@ -2860,7 +2902,7 @@ span.footer__social--link--counter:after{
     z-index:4;
 }
 
- Panels > Overlay
+ /*Panels > Overlay*/
 .sliderkit .sliderkit-panel .sliderkit-panel-textbox{
     position:absolute;
     z-index:1;
@@ -3057,3 +3099,4 @@ span.footer__social--link--counter:after{
 
 /*----Offers sidebar-right end----*/
 /*----Offers end----*/
+
