@@ -218,27 +218,28 @@ $sortie = [
 <section class="main-container">
 <form id="addForm" action="send_request" method="post">
 
-    <p class="parag_text">Выберите автомобиль из <span class="selectAutoGarage">гаража:</span></p>
+    <p class="parag_text">выберите автомобиль из <span class="selectAutoGarage">гаража:</span></p>
     <div id="selectAutoGarage"></div>
+    <!--<p class="parag_text"><span>у вас нет машин в гараже</span></p>-->
 
     <p class="parag_text">Выберите тип Вашего транспортного средства</p>
 
     <div class="save">
-        <input type="checkbox" value="none" id="1">
-        <label for="1">
+        <input type="checkbox" name="typeAuto" value="1" id="a" class="typeAutoRequest">
+        <label for="a">
                 <span>
                     Легковой автомобиль
                 </span>
         </label>
-        <input type="checkbox" value="none" id="2">
-        <label for="2">
+        <input type="checkbox" name="typeAuto" value="2" id="g" class="typeAutoRequest">
+        <label for="g">
                 <span>
                     Грузовой автомобиль
                 </span>
         </label>
 
-        <input type="checkbox" value="none" id="3">
-        <label for="3">
+        <input type="checkbox" name="typeAuto" value="3" id="b" class="typeAutoRequest">
+        <label for="b">
                 <span>
                     Мотоцикл или скутер
                 </span>
@@ -269,14 +270,14 @@ $sortie = [
     <div class="singleContent__desc">
         <div class="singleContent__desc--works">
 
-            <input type="checkbox" id="11_36" name="disk[]" value="36">
-            <label class="text" for="11_36"><span></span>В наличии</label>
+            <input type="checkbox" id="infoDisk36" name="infoDisk[]" value="В наличии">
+            <label class="text" for="infoDisk36"><span></span>В наличии</label>
 
-            <input type="checkbox" id="11_37" name="disk[]" value="37">
-            <label class="text" for="11_37"><span></span>Гарантия производителя</label>
+            <input type="checkbox" id="infoDisk37" name="infoDisk[]" value="Гарантия производителя">
+            <label class="text" for="infoDisk37"><span></span>Гарантия производителя</label>
 
-            <input type="checkbox" id="11_38" name="disk[]" value="38">
-            <label class="text" for="11_38"><span></span>Распродажа</label>
+            <input type="checkbox" id="infoDisk38" name="infoDisk[]" value="Распродажа">
+            <label class="text" for="infoDisk38"><span></span>Распродажа</label>
 
         </div>
     </div>
@@ -307,14 +308,14 @@ $sortie = [
 <div class="requestDiametr__next">
     <?php
     echo Html::label('Диаметр расположения отверстий:');
-    echo Html::dropDownList('diameter', $model->diameter, $diameter, ['prompt' => '-', 'class' => 'addContent__adress']);
+    echo Html::dropDownList('diameter_holes', $model->diameter, $diameter_holes, ['prompt' => '-', 'class' => 'addContent__adress']);
     ?>
 </div>
 
 <div class="requestDiametr__next">
     <?php
-    echo Html::label('Диаметр центрального отверстия:');
-    echo Html::dropDownList('diameter', $model->diameter, $diameter, ['prompt' => '-', 'class' => 'addContent__adress']);
+    echo Html::label('Вылет (ET):');
+    echo Html::dropDownList('sortie', $model->diameter, $sortie, ['prompt' => '-', 'class' => 'addContent__adress']);
     ?>
 </div>
 
@@ -323,7 +324,7 @@ $sortie = [
             <?php echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]); ?>
         </div>
 
-
+    <div class="cleared"></div>
 
         <h3>Ваш регион и город:</h3>
 <?= RegionSelect::widget() ?>
@@ -332,21 +333,11 @@ $sortie = [
         </span>
 
         <div class="singleContent__desc">
-<?php
-            foreach ($addForm as $f) {
-                $k = RequestAddForm::find()->where(['id' => $f->add_form_id])->one();
-                echo CustomField::widget([
-                    'name' => $k->key,
-                    'template' => $k->template,
-                    'inputOption' => ['class' => $k->class, 'id' => $k->input_id, 'placeholder' => $k->placeholder],
-                    'labelOption' => ['for' => $k->input_id, 'style' => 'width:100%'],
-                    'labelName' => $k->name,
-                    'type' => ($k->form_type == 0) ? 'input' : 'textarea'
-                ]);
+            <label for="addContent__description" style="width:100%; font-size:15px">Комментарии:</label>
+            <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Введите всю дополнительную информацию"></textarea>
 
-            }
+            <?php echo Html::hiddenInput('request_type_id', $_GET['id']); ?>
 
-?>
             <div class="addContent--save">
                 <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить</a>
             </div>

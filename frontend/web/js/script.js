@@ -1074,7 +1074,8 @@ jQuery(document).ready(function ($) {
 
                 $('#kpp' + params.autoParams.transmission).prop('checked', true);
                 $('#dvs' + params.autoParams.type_motor).prop('checked', true);
-                console.log(params.autoParams);
+                $('#bodyAuto' + params.autoParams.body_type).prop('checked', true);
+                //console.log(params.autoParams);
                 //$('#selectAutoGarage').html(data);
             }
         });
@@ -1128,6 +1129,42 @@ jQuery(document).ready(function ($) {
             $('.add_zap_del').remove();
         }
 
+    });
+
+
+    $(document).on('click', '.add_infoDriver', function(){
+        var count =  $('#driveinfo').attr('data-count');
+        count++;
+        $("<div class='driveInfoWr'><hr class='separator'><div class='save_plus--sm save_plus--sm--del'><span class='del_infoDriver'> - </span> </div>" +
+            "<div class='mileage_sm'>" +
+          "<p class='parag_text'>Возраст, лет:</p><input class='mileage__next' name='driveInfo[" + count + "][year]' placeholder='Введите'></div><div class='mileage_sm'><p class='parag_text'>Стаж, лет:</p>" +
+          "<input class='mileage__next' name='driveInfo[" + count + "][stag]' placeholder='Введите'></div><div class='mileage_sm'><p class='parag_text'>Или дата рождения:</p>" +
+          "<input class='mileage__next--sm' name='driveInfo[" + count + "][datarozgd][]]' placeholder='ДД'><input class='mileage__next--sm' name='driveInfo[" + count + "][datarozgd][]' placeholder='ММ'>" +
+          "<input class='mileage__next--sm' name='driveInfo[" + count + "][datarozgd][]' placeholder='ГГГГ'></div><div class='mileage_sm'><p class='parag_text'>Или дата получения:</p>" +
+          "<input class='mileage__next--sm' name='driveInfo[" + count + "][datapol][]' placeholder='ДД'><input class='mileage__next--sm' name='driveInfo[" + count + "][datapol][]' placeholder='ММ'>" +
+          "<input class='mileage__next--sm' name='driveInfo[" + count + "][datapol][]' placeholder='ГГГГ'></div><div class='select_type__driver'> <p class='parag_text'>Пол:</p>" +
+          "<select class='select_type__driver--sel' name='driveInfo[" + count + "][pol]'><option value=''>Выберите</option><option value='Мужской'>Мужской</option><option value='Женский'>Женский</option>" +
+          "</select></div><div class='select_type__driver'><p class='parag_text'>Семейное положение:</p><select class='select_type__driver--sel' name='driveInfo[" + count + "][pologenie]'>" +
+          "<option value=''>Выберите</option><option value='Женат/Замужем'>Женат/Замужем</option><option value='Холост'>Холост</option></select></div>" +
+          "<div class='select_type__driver'><p class='parag_text'>Дети:</p><select class='select_type__driver--sel' name='driveInfo[" + count + "][deti]'><option value=''>Выберите</option>" +
+          "<option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='более'>более</option></select></div></div>" +
+          "<div class='cleared'></div>").insertBefore('#driveinfo');
+
+        $('#driveinfo').attr('data-count', count);
+    });
+
+    $(document).on('click', '.del_infoDriver', function(){
+        $(this).parent().parent().remove();
+    });
+
+    $(document).on('click', '#driveboch', function(){
+        if($(this).prop("checked") == true) {
+            $('.save_plus--sm--wr').css('display','none');
+            $('.driveInfoWr').css('display','none');
+        } else {
+            $('.save_plus--sm--wr').css('display','block');
+            $('.driveInfoWr').css('display','block');
+        }
     });
 
 });

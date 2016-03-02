@@ -68,16 +68,16 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="singleContent__desc">
                 <div class="singleContent__desc--works">
 
-                    <input type="checkbox" id="kpp1" class="kpp" name="kpp" value="1">
+                    <input type="checkbox" id="kpp1" class="kpp" name="kpp[]" value="1">
                     <label class="text" for="kpp1"><span></span>Механика</label>
 
-                    <input type="checkbox" id="kpp2" class="kpp" name="kpp" value="2">
+                    <input type="checkbox" id="kpp2" class="kpp" name="kpp[]" value="2">
                     <label class="text" for="kpp2"><span></span>Автомат</label>
 
-                    <input type="checkbox" id="kpp3" class="kpp" name="kpp" value="3">
+                    <input type="checkbox" id="kpp3" class="kpp" name="kpp[]" value="3">
                     <label class="text" for="kpp3"><span></span>Робот</label>
 
-                    <input type="checkbox" id="kpp4" class="kpp" name="kpp" value="4">
+                    <input type="checkbox" id="kpp4" class="kpp" name="kpp[]" value="4">
                     <label class="text" for="kpp4"><span></span>Вариатор</label>
 
                 </div>
@@ -240,10 +240,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="singleContent__desc">
 
         <label for="addContent__description" style="width:100%; font-size:15px"">Комментарии:</label>
-        <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии">
-
-        </textarea>
-
+        <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии"></textarea>
+        <?php echo Html::hiddenInput('request_type_id', $_GET['id']);?>
 
        <!-- <div class="send">
             <a class="send_foto" href="#">Добавить фото</a>

@@ -201,7 +201,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <label for="addContent__description" style="width:100%; font-size:15px">Комментарии:</label>
         <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Введите всю дополнительную информацию"></textarea>
-
+        <?php echo Html::hiddenInput('request_type_id', $_GET['id']);?>
         <!--<div class="send">
             <a class="send_foto" href="#">Добавить фото</a>
         </div>-->

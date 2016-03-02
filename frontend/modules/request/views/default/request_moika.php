@@ -69,92 +69,92 @@ $this->params['breadcrumbs'][] = $this->title;
 <p class="parag_text">Выберите тип кузова Вашего транспортного срества</p>
 
 <div class="save_xs">
-    <input type="checkbox" value="none" id="5" class="requestBodyType">
-    <label for="5">
+    <input type="checkbox" name="bodyAuto" value="1" id="bodyAuto1" class="requestBodyType">
+    <label for="bodyAuto1">
                 <span>
                     Седан
                 </span>
     </label>
-    <input type="checkbox" value="none" id="6" class="requestBodyType">
-    <label for="6">
+    <input type="checkbox" name="bodyAuto" value="2" id="bodyAuto2" class="requestBodyType">
+    <label for="bodyAuto2">
                 <span>
                    Хэтчбек
                 </span>
     </label>
-    <input type="checkbox" value="none" id="7" class="requestBodyType">
-    <label for="7">
+    <input type="checkbox" name="bodyAuto" value="3" id="bodyAuto3" class="requestBodyType">
+    <label for="bodyAuto3">
                 <span>
                     Универсал
                 </span>
     </label>
-    <input type="checkbox" value="none" id="8" class="requestBodyType">
-    <label for="8">
+    <input type="checkbox" name="bodyAuto" value="13" id="bodyAuto13" class="requestBodyType">
+    <label for="bodyAuto13">
                 <span>
                     Лифтбэк
                 </span>
     </label>
-    <input type="checkbox" value="none" id="9" class="requestBodyType">
-    <label for="9">
+    <input type="checkbox" name="bodyAuto" value="7" id="bodyAuto7" class="requestBodyType">
+    <label for="bodyAuto7">
                 <span>
                     Купе
                 </span>
     </label>
-    <input type="checkbox" value="none" id="10" class="requestBodyType">
-    <label for="10">
+    <input type="checkbox" name="bodyAuto" value="5" id="bodyAuto5" class="requestBodyType">
+    <label for="bodyAuto5">
                 <span>
                     Кабриолет
                 </span>
     </label>
-    <input type="checkbox" value="none" id="11" class="requestBodyType">
-    <label for="11">
+    <input type="checkbox" name="bodyAuto" value="15" id="bodyAuto15" class="requestBodyType">
+    <label for="bodyAuto15">
                 <span>
                     Родстер
                 </span>
     </label>
-    <input type="checkbox" value="none" id="12" class="requestBodyType">
-    <label for="12">
+    <input type="checkbox" name="bodyAuto" value="14" id="bodyAuto14" class="requestBodyType">
+    <label for="bodyAuto14">
                 <span>
                     Тарга
                 </span>
     </label>
-    <input type="checkbox" value="none" id="13" class="requestBodyType">
-    <label for="13">
+    <input type="checkbox" name="bodyAuto" value="8" id="bodyAuto8" class="requestBodyType">
+    <label for="bodyAuto8">
                 <span>
                     Лимузин
                 </span>
     </label>
-    <input type="checkbox" value="none" id="14" class="requestBodyType">
-    <label for="14">
+    <input type="checkbox" name="bodyAuto" value="9" id="bodyAuto9" class="requestBodyType">
+    <label for="bodyAuto9">
                 <span>
                     Стретч
                 </span>
     </label>
-    <input type="checkbox" value="none" id="15" class="requestBodyType">
-    <label for="15">
+    <input type="checkbox" name="bodyAuto" value="4" id="bodyAuto4" class="requestBodyType">
+    <label for="bodyAuto4">
                 <span>
                     Внедорожник
                 </span>
     </label>
-    <input type="checkbox" value="none" id="16" class="requestBodyType">
-    <label for="16">
+    <input type="checkbox" name="bodyAuto" value="6" id="bodyAuto6" class="requestBodyType">
+    <label for="bodyAuto6">
                 <span>
                     Кроссовер
                 </span>
     </label>
-    <input type="checkbox" value="none" id="17" class="requestBodyType">
-    <label for="17">
+    <input type="checkbox" name="bodyAuto" value="10" id="bodyAuto10" class="requestBodyType">
+    <label for="bodyAuto10">
                 <span>
                     Пикап
                 </span>
     </label>
-    <input type="checkbox" value="none" id="18" class="requestBodyType">
-    <label for="18">
+    <input type="checkbox" name="bodyAuto" value="11" id="bodyAuto11" class="requestBodyType">
+    <label for="bodyAuto11">
                 <span>
                     Фургон
                 </span>
     </label>
-    <input type="checkbox" value="none" id="19" class="requestBodyType">
-    <label for="19">
+    <input type="checkbox" name="bodyAuto" value="12" id="bodyAuto12" class="requestBodyType">
+    <label for="bodyAuto12">
                 <span>
                     Микроавтобус
                 </span>
@@ -319,21 +319,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <h3>Ваш регион и город:</h3>
     <?= RegionSelect::widget() ?>
     <div class="singleContent__desc">
-        <?php
-        foreach ($addForm as $f) {
-            $k = RequestAddForm::find()->where(['id' => $f->add_form_id])->one();
-            echo CustomField::widget([
-                'name' => $k->key,
-                'template' => $k->template,
-                'inputOption' => ['class' => $k->class, 'id' => $k->input_id, 'placeholder' => $k->placeholder],
-                'labelOption' => ['for' => $k->input_id, 'style' => 'width:100%'],
-                'labelName' => $k->name,
-                'type' => ($k->form_type == 0) ? 'input' : 'textarea'
-            ]);
+        <label for="addContent__description" style="width:100%">Комментарии</label>
+        <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии"></textarea>
 
-        }
-
-        ?>
+        <?php echo Html::hiddenInput('request_type_id', $_GET['id']);?>
         <div class="addContent--save">
             <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить</a>
         </div>

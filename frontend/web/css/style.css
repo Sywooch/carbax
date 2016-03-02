@@ -1243,7 +1243,7 @@ p.parag_text span{
 }
 
 
-span.add_zap{
+span.add_zap,span.add_infoDriver,span.del_infoDriver{
     font-size: 20px;
     font-weight: bold;
     font-family: HelveticaNeueCyrMedium;
@@ -1259,7 +1259,7 @@ span.add_zap{
     height: 29px;
 }
 
-span.add_zap:hover{
+span.add_zap:hover, span.add_infoDriver:hover, span.del_infoDriver:hover{
     color: #fff;
     border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -1272,6 +1272,15 @@ span.add_zap:hover{
     -moz-transition: all 0.4s linear;
     -ms-transition: all 0.4s linear;
     -o-transition: all 0.4s linear;
+}
+
+span.del_infoDriver{
+
+}
+
+.save_plus--sm--del{
+    position: absolute!important;
+    right: 70px;
 }
 
 .save_plus input[type="checkbox"]{
@@ -1332,6 +1341,10 @@ span.add_zap:hover{
     -moz-transition: all 0.4s linear;
     -ms-transition: all 0.4s linear;
     -o-transition: all 0.4s linear;
+}
+
+.separator{
+    width:92%;
 }
 
 .save_plus--sm{
@@ -1419,7 +1432,7 @@ span.add_zap:hover{
     display: inline-block;
     width: auto;
     height: 30px;
-    margin-right: 49px;
+    margin-right: 23px;
     border-radius: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -1438,6 +1451,7 @@ span.add_zap:hover{
 .save_auto input[type="checkbox"] + label span{
     display: inherit;
     width: 100%;
+    padding: 0 10px;
     height: 100%;
     font-size: 13px;
     font-family: HelveticaNeueCyrMedium;
@@ -2103,8 +2117,13 @@ span.add_zap:hover{
 }
 
 form {
-    margin: 0 0 20px;
-    float: left;
+    /*margin: 0 0 20px;
+    float: left;*/
+}
+
+#changeRegion{
+    color: #ff6b00;
+    font-weight: bold;
 }
 
 /*----Offers----*/
@@ -2247,3 +2266,20 @@ span.question:hover a.ask{
 
 /*----Offers end----*/
 
+.addInfoDrive{
+    margin-left: 40px;
+    margin-bottom: 40px!important;
+}
+
+#drivebo .singleContent__desc--works input[type="checkbox"] + label{
+    width:100%;
+}
+
+.p--left{
+    float:left;
+}
+
+div#drivebo {
+    margin-top: 14px;
+    margin-left: 117px;
+}

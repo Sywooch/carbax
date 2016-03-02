@@ -241,59 +241,65 @@ class DefaultController extends Controller
 
     public function actionSend_request(){
 
-        Debug::prn($_POST);
+        //Debug::prn($_POST);
 
         /**
          * получение дополнительных полей
          */
-        /*$fieldsForm = RequestTypeAddForm::find()->where(['request_type_id'=>$_POST['request_type_id']])->all();
+       /* $fieldsForm = RequestTypeAddForm::find()->where(['request_type_id'=>$_POST['request_type_id']])->all();
         foreach ($fieldsForm as $ff) {
             $fieldsFormName = RequestAddForm::find()->where(['id' => $ff->add_form_id])->one();
             $fieldsFormArr[$fieldsFormName->key] = $fieldsFormName;
-        }
+        }*/
         $groups = RequestTypeGroup::find()->where(['request_type_id'=>$_POST['request_type_id']])->all();
+        $request_type_id = $_POST['request_type_id'];
+        unset($_POST['request_type_id']);
+        $info = json_encode($_POST,JSON_UNESCAPED_UNICODE);
+        //Debug::prn($info);
 
-         $autoWidget = new AutoWidget();
+
+         /*$autoWidget = new AutoWidget();
          $autoWidget->auto_type = $_POST['typeAuto'];
          $autoWidget->year = $_POST['year'];
-         $autoWidget->brand_id = $_POST['manufactures'];
-         $autoWidget->model_id = $_POST['model'];
+         $autoWidget->brand_id = $_POST['requestMarkAuto'];
+         $autoWidget->model_id = $_POST['requestModelAuto'];
          $autoWidget->type_id = $_POST['types'];
         if ($_POST['typeAuto'] == 1) {
-            $manName = BcbBrands::find()->where(['id' => $_POST['manufactures']])->one()->name;
-            $modelName = BcbModels::find()->where(['id' => $_POST['model']])->one()->name;
+            $manName = BcbBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name;
+            $modelName = BcbModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name;
             $typeName = BcbModify::find()->where(['id' => $_POST['types']])->one()->name;
         }
         if ($_POST['typeAuto'] == 2) {
-            $manName = AutoComBrands::find()->where(['id' => $_POST['manufactures']])->one()->name;
-            $modelName = AutoComModels::find()->where(['id' => $_POST['model']])->one()->name;
-            $typeName = AutoComModify::find()->where(['id' => $_POST['model']])->one()->name;
+            $manName = AutoComBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name;
+            $modelName = AutoComModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name;
+            //$typeName = AutoComModify::find()->where(['id' => $_POST['model']])->one()->name;
 
-            $autoWidget->submodel_id = $_POST['submodel'];
-            $autoWidget->submodel_name = AutoComSubmodels::find()->where(['id' => $_POST['submodel']])->one()->name;
+            //$autoWidget->submodel_id = $_POST['submodel'];
+            //$autoWidget->submodel_name = AutoComSubmodels::find()->where(['id' => $_POST['submodel']])->one()->name;
         }
         if ($_POST['typeAuto'] == 3) {
-            $manName = CarMark::find()->where(['id_car_mark' => $_POST['manufactures']])->one()->name;
-            $modelName = CarModel::find()->where(['id_car_model' => $_POST['model']])->one()->name;
-            $typeName = CarModification::find()->where(['id_car_modification' => $_POST['types']])->one()->name;
-            $autoWidget->moto_type = $_POST['mototype'];
+            $manName = CarMark::find()->where(['id_car_mark' => $_POST['requestMarkAuto']])->one()->name;
+            $modelName = CarModel::find()->where(['id_car_model' => $_POST['requestModelAuto']])->one()->name;
+            //$typeName = CarModification::find()->where(['id_car_modification' => $_POST['types']])->one()->name;
+           // $autoWidget->moto_type = $_POST['mototype'];
         }
 
          $autoWidget->brand_name = $manName;
          $autoWidget->model_name = $modelName;
          $autoWidget->type_name = $typeName;
 
-         $autoWidget->save();
+         $autoWidget->save();*/
 
          $request = new Request();
-         $request->request_type_id = $_POST['request_type_id'];
+         $request->request_type_id = $request_type_id;
          $request->user_id = Yii::$app->user->id;
-         $request->id_auto_widget = $autoWidget->id;
+         $request->info_request = $info;
+         //$request->id_auto_widget = $autoWidget->id;
          $request->save();
 
-        $request_type_id = $_POST['request_type_id'];
 
-         unset($_POST['request_type_id']);
+
+
 
 
 
@@ -322,7 +328,7 @@ class DefaultController extends Controller
 
         /**
          * Получение типов сервисов по которым должен происходить поиск
-
+        */
 
         $serviceTypeSearch = RequestByServiceType::find()->where(['request_id' => $request_type_id])->all();
         $serviceSearch = [];
@@ -350,19 +356,15 @@ class DefaultController extends Controller
 
 
         foreach($services as $service){
-            if($request_type_id == 11){
-                $msg = $this->renderPartial('request_msg_tpl',['fieldsFormArr'=>$fieldsFormArr,'post'=>$_POST,'name'=>$service->name,'selectFields'=>$fields]);
-            }else{
-                $msg = $this->renderPartial('request_msg_tpl',['fieldsFormArr'=>$fieldsFormArr,'post'=>$_POST,'name'=>$service->name,'selectFields'=>$fields,'auto'=>$autoWidget]);
-            }
 
+            $msg = $this->renderPartial('request_msg_tpl',['post'=>$_POST,'name'=>$service->name,'selectFields'=>$fields,'requestId'=>$request_type_id]);
 
             $m = SendingMessages::send_message($service->user_id, Yii::$app->user->id, 'Заявка на сервис ' . $service->name, $msg,'request','0',$request->id);
 
             $ids++;
         }
 
-        return $this->render('send_request');*/
+        return $this->render('send_request');
     }
 
     public function actionAll_requests(){
