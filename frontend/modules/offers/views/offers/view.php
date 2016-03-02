@@ -1,11 +1,12 @@
 <?php
 
 use himiklab\ipgeobase\IpGeoBase;
-
+$this->registerJsFile('/js/jquery.sliderkit.1.4.js',['yii\web\JqueryAsset']);
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Спецпредложения', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $checking = $news->img_url;
+
 
 ?>
 <!--    <section class="main-container">-->
@@ -41,31 +42,83 @@ $IpGeoBase->updateDB()
 
 <!--AKD47 section-->
 
+<!-- Launch Slider Kit -->
+<script type="text/javascript">
+    jQuery(window).load(function(){
+
+        // Photo gallery > Vertical
+        jQuery(".photosgallery-vertical").sliderkit({
+            circular:true,
+            mousewheel:true,
+            shownavitems:4,
+            verticalnav:true,
+            navclipcenter:true,
+            auto:false
+        });
+
+
+
+    });
+</script>
+
 <section class="offers_container">
 <h3 class="offers_header">Комплексная химчистка салона автомобиля в сети сервисных центров “На колесах.ru”</h3>
     <div class="offers_page_view">
 
-        <div class="offers_main--img">
-            <img class="main__img" src="../../media/img/request1.png" alt=""/>
-        </div>
 
-        <div class="offers_side--img">
-            <div class="side__img">
-                <img class="side__img--sm" src="../../media/img/request2.png" alt=""/>
-            </div>
-            <div class="side__img">
-                <img class="side__img--sm" src="../../media/img/request2.png" alt=""/>
-            </div>
+            <div id="page" class="inner layout-1col">
+            <!-- Start photosgallery-vertical -->
+            <div class="sliderkit photosgallery-vertical">
+                <div class="sliderkit-nav">
+                    <div class="sliderkit-nav-clip">
+                        <ul>
+                            <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request1.png" alt="[Alternative text]" /></a></li>
+                            <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request2.png" alt="[Alternative text]" /></a></li>
+                            <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request1.png" alt="[Alternative text]" /></a></li>
+                            <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request2.png" alt="[Alternative text]" /></a></li>
+                            <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request1.png" alt="[Alternative text]" /></a></li>
+                            <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request2.png" alt="[Alternative text]" /></a></li>
+                            <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request1.png" alt="[Alternative text]" /></a></li>
+                        </ul>
+                    </div>
+                    <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-prev"><a rel="nofollow" href="#" title="Previous line"><span>Previous</span></a></div>
+                    <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-next"><a rel="nofollow" href="#" title="Next line"><span>Next</span></a></div>
+                </div>
+                <div class="sliderkit-panels">
+                    <div class="sliderkit-panel">
+                        <img src="../../media/img/request1.png" alt="[Alternative text]" />
 
-            <div class="side__img">
-                <img class="side__img--sm" src="../../media/img/request2.png" alt=""/>
-            </div>
+                    </div>
+                    <div class="sliderkit-panel">
+                        <img src="../../media/img/request2.png" alt="[Alternative text]" />
 
-            <div class="side__img">
-                <img class="side__img--sm" src="../../media/img/request2.png" alt=""/>
-            </div>
+                    </div>
+                    <div class="sliderkit-panel">
+                        <img src="../../media/img/request1.png" alt="[Alternative text]" />
 
-        </div>
+                    </div>
+                    <div class="sliderkit-panel">
+                        <img src="../../media/img/request2.png" alt="[Alternative text]" />
+
+                    </div>
+                    <div class="sliderkit-panel">
+                        <img src="../../media/img/request1.png" alt="[Alternative text]" />
+
+                    </div>
+                    <div class="sliderkit-panel">
+                        <img src="../../media/img/request2.png" alt="[Alternative text]" />
+
+                    </div>
+                    <div class="sliderkit-panel">
+                        <img src="../../media/img/request1.png alt="[Alternative text]" />
+
+                    </div>
+                </div>
+            </div>
+            <!-- // end of photosgallery-vertical -->
+
+
+
         <div class="offers_nav">
             <ul class="nav_sm nav nav-tabs">
                 <li><a href="#conditions" role="tab" data-toggle="tab">Условия</a></li>
@@ -251,7 +304,7 @@ $IpGeoBase->updateDB()
         </div>
 
 
-    </div>
+    </div></div>
 
 
     <div class="sidebar_right">
