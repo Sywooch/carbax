@@ -47,6 +47,7 @@ class AppAsset extends AssetBundle
         '/js/jquery.maskedinput.js',
         'js/script.js',
     ];
+    public $jsOptions = [ 'position' => \yii\web\View::POS_HEAD];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',

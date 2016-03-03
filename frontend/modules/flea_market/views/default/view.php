@@ -13,14 +13,33 @@ use frontend\widgets\FleaMarketNewProduct;
 use frontend\widgets\FleaMarketSearch;
 use yii\helpers\Html;
 
-$this->registerJsFile('http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js');
-$this->registerCssFile('http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css');
+$this->registerJsFile('/js/jquery.sliderkit.1.4.js',['yii\web\JqueryAsset']);
+//$this->registerJsFile('http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js');
+//$this->registerCssFile('http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css');
 $this->title = $product->name;
 
 $this->params['breadcrumbs'][] = ['label' => 'продажа авто и запчастей', 'url' => ['/flea_market_search']];
 $this->params['breadcrumbs'][] = $this->title;
 
 //echo FleaMarketSearch::widget(['title'=>false]);?>
+    <script type="text/javascript">
+        jQuery(window).load(function(){
+
+            // Photo gallery > Vertical
+            jQuery(".photosgallery-vertical").sliderkit({
+                circular:true,
+                mousewheel:true,
+                shownavitems:4,
+                verticalnav:true,
+                navclipcenter:true,
+                auto:false
+            });
+
+
+
+        });
+    </script>
+
 <?php
 if ($product->published != 1) {
     //Debug::prn(User::getRoleName());
@@ -72,16 +91,69 @@ if ($product->published != 1) {
                 </span>
                     <?php endif; ?>
                 </div>
-                <!--<div class="fleamarket__slider">
-                    <div class="fotorama" data-nav="thumbs">
-                        <?php /*foreach ($images as $img) {
-                            */?>
-                            <img src="/<?/*= $img->img */?>" alt="">
-                            <?php
-/*                        }
-                        */?>
+<!--                <div class="fleamarket__slider">-->
+<!--                    <div class="fotorama" data-nav="thumbs">-->
+<!--                        --><?php //foreach ($images as $img) {
+//                            ?>
+<!--                            <img src="/--><?//= $img->img ?><!--" alt="">-->
+<!--                            --><?php
+//                        }
+//                        ?>
+<!--                    </div>-->
+<!--                </div>-->
+
+                <div id="page" class="inner layout-1col">
+                    <!-- Start photosgallery-vertical -->
+                    <div class="sliderkit photosgallery-vertical">
+                        <div class="sliderkit-nav">
+                            <div class="sliderkit-nav-clip">
+                                <ul>
+                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                                </ul>
+                            </div>
+                            <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-prev"><a rel="nofollow" href="#" title="Previous line"><span>Previous</span></a></div>
+                            <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-next"><a rel="nofollow" href="#" title="Next line"><span>Next</span></a></div>
+                        </div>
+                        <div class="sliderkit-panels">
+                            <div class="sliderkit-panel">
+                                <img src="media/img/request1.png" alt="[Alternative text]" />
+
+                            </div>
+                            <div class="sliderkit-panel">
+                                <img src="/media/img/request1.png" alt="[Alternative text]" />
+
+                            </div>
+                            <div class="sliderkit-panel">
+                                <img src="/media/img/request1.png" alt="[Alternative text]" />
+
+                            </div>
+                            <div class="sliderkit-panel">
+                                <img src="/media/img/request1.png" alt="[Alternative text]" />
+
+                            </div>
+                            <div class="sliderkit-panel">
+                                <img src="/media/img/request1.png" alt="[Alternative text]" />
+
+                            </div>
+                            <div class="sliderkit-panel">
+                                <img src="/media/img/request2.png" alt="[Alternative text]" />
+
+                            </div>
+                            <div class="sliderkit-panel">
+                                <img src="/media/img/request1.png" alt="[Alternative text]" />
+
+                            </div>
+                        </div>
                     </div>
-                </div>-->
+                    <!-- // end of photosgallery-vertical -->
+
+
                 <div class="fleamarketInfoProduct">
                     <div class="price">
                         Цена
@@ -262,16 +334,69 @@ if ($product->published != 1) {
                 </span>
                 <?php endif; ?>
             </div>
-           <!-- <div class="fleamarket__slider">
-                <div class="fotorama" data-nav="thumbs">
-                    <?php /*foreach ($images as $img) {
-                        */?>
-                        <img src="/<?/*= $img->img */?>" alt="">
-                        <?php
-/*                    }
-                    */?>
+<!--            <div class="fleamarket__slider">-->
+<!--                <div class="fotorama" data-nav="thumbs">-->
+<!--                    --><?php //foreach ($images as $img) {
+//                        ?>
+<!--                        <img src="/--><?//= $img->img ?><!--" alt="">-->
+<!--                        --><?php
+//                    }
+//                    ?>
+<!--                </div>-->
+<!--            </div>-->
+
+            <div id="page" class="inner layout-1col">
+                <!-- Start photosgallery-vertical -->
+                <div class="sliderkit photosgallery-vertical">
+                    <div class="sliderkit-nav">
+                        <div class="sliderkit-nav-clip">
+                            <ul>
+                                <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                                <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
+                                <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                                <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
+                                <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                                <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
+                                <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                            </ul>
+                        </div>
+                        <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-prev"><a rel="nofollow" href="#" title="Previous line"><span>Previous</span></a></div>
+                        <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-next"><a rel="nofollow" href="#" title="Next line"><span>Next</span></a></div>
+                    </div>
+                    <div class="sliderkit-panels">
+                        <div class="sliderkit-panel">
+                            <img src="/media/img/request1.png" alt="[Alternative text]" />
+
+                        </div>
+                        <div class="sliderkit-panel">
+                            <img src="/media/img/request2.png" alt="[Alternative text]" />
+
+                        </div>
+                        <div class="sliderkit-panel">
+                            <img src="/media/img/request1.png" alt="[Alternative text]" />
+
+                        </div>
+                        <div class="sliderkit-panel">
+                            <img src="/media/img/request2.png" alt="[Alternative text]" />
+
+                        </div>
+                        <div class="sliderkit-panel">
+                            <img src="/media/img/request1.png" alt="[Alternative text]" />
+
+                        </div>
+                        <div class="sliderkit-panel">
+                            <img src="/media/img/request2.png" alt="[Alternative text]" />
+
+                        </div>
+                        <div class="sliderkit-panel">
+                            <img src="/media/img/request1.png alt="[Alternative text]" />
+
+                        </div>
+                    </div>
                 </div>
-            </div>-->
+                <!-- // end of photosgallery-vertical -->
+
+
             <div class="fleamarketInfoProduct">
                 <div class="price">
                     Цена

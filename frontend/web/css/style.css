@@ -2143,57 +2143,7 @@ h3.offers_header {
     text-align: left;
 }
 
-.offers_main--img {
-    display: block;
-    position: relative;
-    width: 70%;
-    float: left;
-    overflow: hidden;
-}
 
-.main__img {
-    display: block;
-    position: relative;
-    width: auto;
-    height: auto;
-    transform: translate(-10%, 0);
-    -webkit-transform: translate(-10%, 0);
-    -o-transform: translate(-10%, 0);
-    -moz-transform: translate(-10%, 0);
-    -ms-transform: translate(-10%, 0);
-}
-
-.offers_side--img {
-    display: block;
-    position: relative;
-    width: 30%;
-    float: left;
-}
-
-.side__img {
-    display: block;
-    position: relative;
-    width: 178px;
-    height: 101px;
-    overflow: hidden;
-    margin-left: 10px;
-}
-
-.side__img:nth-of-type(2), .side__img:nth-of-type(3), .side__img:nth-of-type(4) {
-    margin-top: 11px;
-}
-
-.side__img--sm {
-    display: block;
-    position: relative;
-    width: auto;
-    height: auto;
-    transform: translate(0%, -29%);
-    -webkit-transform: translate(0%, -29%);
-    -o-transform: translate(0%, -29%);
-    -moz-transform: translate(0%, -29%);
-    -ms-transform: translate(0%, -29%);
-}
 
 /*----Offers nav----*/
 .offers_nav {
@@ -2850,7 +2800,6 @@ span.footer__social--link--counter:after{
     top: 5px;
 }
 
-
 .addInfoDrive{
     margin-left: 40px;
     margin-bottom: 40px!important;
@@ -2869,7 +2818,284 @@ div#drivebo {
     margin-left: 117px;
 }
 
+
 /*----Offers social icons end----*/
+
+/*----Offers slider----*/
+.sliderkit{
+    display:none;
+    position:relative;
+    overflow:hidden;
+    text-align:left;
+    margin-bottom: 10px;
+}
+.sliderkit a, .sliderkit a:hover{
+    text-decoration:none;
+}
+
+.sliderkit a:focus{
+    outline:1px solid transparent;
+    /*optional*/}
+
+.sliderkit img{
+    border:0;
+    transform: translate(0, -20%);
+    width: 541px;
+    height: 420px;
+}
+
+/*---------------------------------
+ *  Navigation
+ *---------------------------------*/
+/*.sliderkit .sliderkit-nav{*/
+    /*z-index:10;*/
+    /*position:absolute;*/
+    /*text-align:center;*/
+/*}*/
+
+/* Nav > Clip */
+.sliderkit .sliderkit-nav-clip{
+    position:relative;
+    display: block;
+    overflow:hidden;
+    margin:0 auto;
+}
+
+.sliderkit .sliderkit-nav-clip ul{
+    position:relative;
+    left:0;
+    top:0;
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+
+.sliderkit .sliderkit-nav-clip ul li{
+    float:left;
+}
+
+.sliderkit .sliderkit-nav-clip ul li a{
+    display:block;
+    overflow:hidden;
+}
+
+/*---------------------------------
+ *  Buttons
+ *---------------------------------*/
+/*.sliderkit .sliderkit-btn{*/
+    /*z-inde*}*/
+
+/*---------------------------------
+ *  Panels
+ *---------------------------------*/
+.sliderkit .sliderkit-panel{
+    z-index:1;
+    position:absolute;
+    overflow:hidden;
+}
+
+.sliderkit .sliderkit-panel-active{
+    z-index:5;
+}
+.sliderkit .sliderkit-panel-old{
+    z-index:4;
+}
+
+ /*Panels > Overlay*/
+.sliderkit .sliderkit-panel .sliderkit-panel-textbox{
+    position:absolute;
+    z-index:1;
+}
+
+.sliderkit .sliderkit-panel .sliderkit-panel-text{
+    position:absolute;
+    z-index:3;
+    top:0;
+    left:0;
+}
+.sliderkit .sliderkit-panel .sliderkit-panel-overlay{
+    position:absolute;
+    z-index:2;
+    top:0;
+    left:0;
+}
+
+/*---------------------------------
+ *  Photos gallery > Vertical
+ *---------------------------------*/
+.photosgallery-vertical{
+    width:662px;
+    height:335px;
+}
+
+/* Nav */
+.photosgallery-vertical .sliderkit-nav{
+    display: block;
+    position: relative;
+    float: right;
+    width: 95px;
+    height: 100%;
+    background: transparent;
+}
+
+.photosgallery-vertical .sliderkit-nav-clip{
+    left:9px;
+}
+
+.photosgallery-vertical .sliderkit-nav-clip ul li{
+    margin:0;
+    padding:0;
+}
+
+.photosgallery-vertical .sliderkit-nav-clip ul li a{
+    display:block;
+    width:75px;
+    height:50px;
+    overflow:hidden;
+    padding:3px;
+}
+
+.photosgallery-vertical .sliderkit-nav-clip ul li.sliderkit-selected a{
+    padding:0;
+    border:3px solid #c5dbe6;
+}
+
+.photosgallery-vertical .sliderkit-nav-clip ul li img{
+    width:75px;
+    height:50px;
+    margin-bottom:-3px;
+}
+
+/* Nav buttons */
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-btn{
+    position:absolute;
+    left:0;
+}
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-btn a{
+    display:block;
+}
+
+.sliderkit-nav-prev a{
+     position: absolute;
+     content: "";
+     width: 0;
+     height: 0;
+     border-left: 20px solid transparent;
+     border-right: 20px solid transparent;
+     border-bottom: 20px solid #d3d6da;
+     left: 27px;
+     top: 5px;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+.sliderkit-nav-prev a:hover, .sliderkit-nav-prev a:focus{
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #5f83aa;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+    ;
+}
+
+.sliderkit-nav-next a{
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #d3d6da;
+    left: 27px;
+    top: -25px;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+.sliderkit-nav-next a:hover, .sliderkit-nav-next a:focus{
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #5f83aa;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+}
+
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-btn a span{
+    display:none;
+}
+
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev{
+    top:25px;
+}
+
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next{
+    bottom:25px;
+}
+
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a{
+    background-position:center -89px;
+}
+
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a{
+    background-position:center -108px;
+}
+
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a:hover,
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a:focus{
+    background-position:center -126px;
+}
+
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a:hover,
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a:focus{
+    background-position:center -145px;
+}
+
+/* Go Buttons */
+.photosgallery-vertical .sliderkit-go-btn a{
+    width:200px;
+    height:300px;
+    background:#ccc;
+    opacity:.8;
+}
+
+.photosgallery-vertical .sliderkit-go-prev{
+    top:0;
+    left:0;
+}
+
+.photosgallery-vertical .sliderkit-go-next{
+    top:0;
+    right:0;
+}
+
+/* Panel */
+.photosgallery-vertical .sliderkit-panel{
+    top:0;
+    left:0;
+    width:541px;
+    height:335px;}
+
+/* Panel > Textbox */
+/*.photosgallery-vertical .sliderkit-panel .sliderkit-panel-textbox{bottom:0;left:0;height:85px;width:500px;}*/
+/*.photosgallery-vertical .sliderkit-panel .sliderkit-panel-text{height:65px;padding:10px 15px 10px 115px;font-size:0.9em;color:#fff;}*/
+/*.photosgallery-vertical .sliderkit-panel .sliderkit-panel-text h4{height:auto;margin:0 0 7px;line-height:1.1em;font-size:1.1em;font-weight:bold;border:none;}*/
+/*.photosgallery-vertical .sliderkit-panel .sliderkit-panel-overlay{height:85px;width:500px;background:#000;opacity:0.6;}*/
+
+/*----Offers slider end----*/
+
+
 /*----Offers sidebar-right end----*/
 /*----Offers end----*/
 
