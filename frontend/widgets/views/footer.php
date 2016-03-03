@@ -63,7 +63,7 @@ use yii\helpers\Url;
 
             <ul>
                 <li>
-                    <?= Html::a('Запросы',['/request_type'],['foot__sitemap--parent']); ?>
+                    <?= Html::a('Запросы',['/request_type'],['class'=>'foot__sitemap--parent']); ?>
                 </li>
                 <li>
                     <?= Html::a('Автошкола',['/request','id'=>'11']); ?>

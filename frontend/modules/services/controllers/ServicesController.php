@@ -221,12 +221,12 @@ class ServicesController extends Controller
         $serviceTypeId = $_POST['service_type'];
         $service = Services::find()->where(['service_type_id'=>$serviceTypeId,'user_id'=>Yii::$app->user->id])->all();
         Yii::$app->session->setFlash('success','Сервис успешно добавлен');
-        return $this->render('my_services',
+        /*return $this->render('my_services',
             [
                 'serviceTypeId' => $serviceTypeId,
                 'service' => $service,
-            ]);
-
+            ]);*/
+        return $this->redirect(['my_services', 'service_type'=>$serviceTypeId]);
     }
 
     public function actionView_service(){
@@ -445,13 +445,14 @@ class ServicesController extends Controller
         $servicId = $_GET['service_id'];
         $serviceTypeId = $_GET['service_type'];
         $this->del_service($servicId);
-        $service = Services::find()->where(['service_type_id'=>$serviceTypeId,'user_id'=>Yii::$app->user->id])->all();
+        //$service = Services::find()->where(['service_type_id'=>$serviceTypeId,'user_id'=>Yii::$app->user->id])->all();
         Yii::$app->session->setFlash('success','Сервис успешно удален');
-        return $this->render('my_services',
+        /*return $this->render('my_services',
             [
                 'serviceTypeId' => $serviceTypeId,
                 'service' => $service,
-            ]);
+            ]);*/
+        return $this->redirect(['my_services', 'service_type'=>$serviceTypeId]);
     }
 
     public function actionSelect_service(){
@@ -460,7 +461,7 @@ class ServicesController extends Controller
     }
 
     public function actionMy_services(){
-        $serviceTypeId = $_GET['service_id'];
+        $serviceTypeId = $_GET['service_type'];
         $service = Services::find()->where(['service_type_id'=>$serviceTypeId,'user_id'=>Yii::$app->user->id])->all();
         return $this->render('my_services',
             [

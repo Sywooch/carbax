@@ -72,16 +72,16 @@ if ($product->published != 1) {
                 </span>
                     <?php endif; ?>
                 </div>
-                <div class="fleamarket__slider">
+                <!--<div class="fleamarket__slider">
                     <div class="fotorama" data-nav="thumbs">
-                        <?php foreach ($images as $img) {
-                            ?>
-                            <img src="/<?= $img->img ?>" alt="">
+                        <?php /*foreach ($images as $img) {
+                            */?>
+                            <img src="/<?/*= $img->img */?>" alt="">
                             <?php
-                        }
-                        ?>
+/*                        }
+                        */?>
                     </div>
-                </div>
+                </div>-->
                 <div class="fleamarketInfoProduct">
                     <div class="price">
                         Цена
@@ -262,16 +262,16 @@ if ($product->published != 1) {
                 </span>
                 <?php endif; ?>
             </div>
-            <div class="fleamarket__slider">
+           <!-- <div class="fleamarket__slider">
                 <div class="fotorama" data-nav="thumbs">
-                    <?php foreach ($images as $img) {
-                        ?>
-                        <img src="/<?= $img->img ?>" alt="">
+                    <?php /*foreach ($images as $img) {
+                        */?>
+                        <img src="/<?/*= $img->img */?>" alt="">
                         <?php
-                    }
-                    ?>
+/*                    }
+                    */?>
                 </div>
-            </div>
+            </div>-->
             <div class="fleamarketInfoProduct">
                 <div class="price">
                     Цена

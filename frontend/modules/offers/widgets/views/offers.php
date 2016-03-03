@@ -35,7 +35,7 @@ use yii\widgets\LinkPager;
                             <div class="deals__block-img">
                                 <img src="<?= \yii\helpers\Url::base().$offer['img_url'] ?>" alt="">
                                 <div class="deals__block-img-more">
-                                    <p><?= $offer['short_description']?></p>
+                                    <p><?= substr($offer['description'], 68)?></p>
                                     <!--<p>Время продаж ограниченно</p>-->
                                     <a href="<?= Url::to(['/offers/offers/view', 'id' => $offer['id']])?>">Подробнее</a>
                                 </div>

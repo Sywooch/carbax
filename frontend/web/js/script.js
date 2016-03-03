@@ -89,7 +89,6 @@ jQuery(document).ready(function ($) {
             });*/
         }
     });
-
     $('#input-5').on('filedeleted', function(event, key) {
         //alert(123);
     });
@@ -948,6 +947,16 @@ jQuery(document).ready(function ($) {
             success: function (data) {
                 console.log(data);
                 $('.selectAddressForServices').html(data);
+            }
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_info_services",
+            data: 'servicesId=' + servicesId,
+            success: function (data) {
+                console.log(data);
+                $('.addressToServises').html(data);
             }
         });
         return false;

@@ -2873,3 +2873,7 @@ div#drivebo {
 /*----Offers sidebar-right end----*/
 /*----Offers end----*/
 
+a#allOffers,a.allNews {
+    color: #fff;
+}
+
