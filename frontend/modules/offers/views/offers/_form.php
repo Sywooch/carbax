@@ -2,6 +2,7 @@
 
 use app\models\GeobaseRegion;
 
+use common\classes\Debug;
 use common\models\db\GeobaseCity;
 use common\models\db\Services;
 use kartik\file\FileInput;
@@ -14,7 +15,8 @@ use yii\widgets\ActiveForm;
 /* @var $model common\models\db\News */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
+<div class="addContent">
+    <h1><?= Html::encode($this->title) ?></h1>
 
 
         <?php /*$form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); */?><!--
@@ -67,12 +69,12 @@ use yii\widgets\ActiveForm;
 
         --><?php /*ActiveForm::end(); */?>
 
-<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data','id'=>'addForm']]); ?>
     <?= $form->field($model, 'title')->textInput(['maxlength' => true,'placeholder' => $model->getAttributeLabel('title')]) ?>
 
     <h2>Добавить фото</h2>
     <?php
-    echo '<label class="control-label">Добавить фото</label>';
+/*    echo '<label class="control-label">Добавить фото</label>';
     echo FileInput::widget([
         'name' => 'Offers[img_url]',
         'id' => 'input-4',
@@ -85,7 +87,43 @@ use yii\widgets\ActiveForm;
             'showRemove'=> false,
             'showUpload'=> false],
     ]);
+    */?>
+
+    <h2>Добавить фото</h2>
+    <?php
+    echo '<label class="control-label">Добавить фото</label>';
+    /*echo FileInput::widget([
+        'name' => 'file[]',
+        'language' => 'ru',
+        'id' => 'input-4',
+        'options' => [
+            'multiple' => true,
+        ],
+        'pluginOptions' => ['previewFileType' => 'any', 'uploadUrl' => Url::to(['/site/file-upload']),]
+    ]);*/
+    echo FileInput::widget([
+        'name' => 'file[]',
+        'id' => 'input-5',
+        'attribute' => 'attachment_1',
+        'value' => '/media/img/1.png',
+        'options' => [
+            'multiple' => true,
+            'showCaption' => false,
+            /*'showRemove' => true,*/
+            'showUpload' => false,
+            'uploadAsync'=> false,
+        ],
+        'pluginOptions' => [
+            'uploadUrl' => Url::to(['/ajax/ajax/upload_file_offers']),
+            'maxFileCount' => 6,
+            'language' => "ru",
+            'uploadAsync'=> false,
+            'showUpload' => false,
+            'dropZoneEnabled' => false
+        ],
+    ]);
     ?>
+
     <?= $form->field($model, 'old_price')->textInput()->label($model->getAttributeLabel('old_price')) ?>
 
     <?= $form->field($model, 'new_price')->textInput()->label($model->getAttributeLabel('new_price')) ?>
@@ -100,6 +138,14 @@ use yii\widgets\ActiveForm;
 
     <div class="tab-content">
         <div class="tab-pane fade in active" id="circs">
+            <h3>Срок действия акции</h3>
+            <?= $form->field($model, 'dt_start')->input('date')->label('С'); ?>
+            <?php //Debug::prn($model)?>
+            <?= $form->field($model, 'dt_end')->input('date')->label('До'); ?>
+            <label class="control-label" for="offers-duration_action_end">До</label>
+            <?/*= Html::input('date','dae','',['class'=>'form-control','id'=>'offers-duration_action_end']); */?>
+
+
             <h3>Выберите сервисы для которых будет действовать предложение</h3>
             <div class="addContent">
                 <div class="singleContent__desc">
@@ -115,7 +161,7 @@ use yii\widgets\ActiveForm;
             <div class="selectAddressForServices">
 
             </div>
-
+            <?= $form->field($model,'circs')->textarea(['rows' => 6])?>
         </div>
         <div class="tab-pane fade" id="desc">
             <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
@@ -127,6 +173,13 @@ use yii\widgets\ActiveForm;
 
 
     <div class="addContent--save">
-        <input type="submit" value="Сохранить" class="btn btn-save">
+        <input type="submit" value="Сохранить" class="btn btn-save" id="saveInfo">
     </div>
 <?php ActiveForm::end(); ?>
+</div>
+
+<div class="offersRight">
+    <div class="map">Карта</div>
+    <div class="addressToServises"></div>
+
+</div>

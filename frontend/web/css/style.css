@@ -2881,6 +2881,11 @@ div#drivebo {
     overflow:hidden;
 }
 
+/*---------------------------------
+ *  Buttons
+ *---------------------------------*/
+/*.sliderkit .sliderkit-btn{*/
+    /*z-inde*}*/
 
 
 /*---------------------------------
@@ -3392,4 +3397,8 @@ i.fa-chevron-right{
 
 
 /*----All offers end----*/
+
+a#allOffers,a.allNews {
+    color: #fff;
+}
 

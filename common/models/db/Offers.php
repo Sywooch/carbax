@@ -9,18 +9,22 @@ use Yii;
  *
  * @property integer $id
  * @property string $title
- * @property integer $service_id
  * @property string $img_url
  * @property string $description
- * @property string $short_description
  * @property integer $new_price
  * @property integer $old_price
  * @property string $discount
- * @property integer $region_id
- * @property integer $city_id
+ * @property string $region_id
+ * @property string $city_id
  * @property integer $dt_add
- * @property integer $service_type_id
+ * @property string $service_type_id
  * @property integer $user_id
+ * @property $address_selected
+ * @property $dt_start
+ * @property $dt_end
+ * @property integer $status
+ * @property string $service_id_str
+ * @property string $circs
  *
  * @property Services $service
  */
@@ -40,10 +44,10 @@ class Offers extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title','service_id', 'description', 'short_description'], 'required'],
-            [['service_id', 'new_price', 'old_price', 'region_id', 'city_id', 'dt_add','service_type_id'], 'integer'],
-            [['description', 'short_description'], 'string'],
-            [['title', 'img_url', 'discount'], 'string', 'max' => 255]
+            [['title', 'description'], 'required'],
+            [['service_id', 'new_price', 'old_price',  'dt_add'], 'integer'],
+            [['description','dt_start','dt_end'], 'string'],
+            [['title', 'img_url', 'discount','service_id_str','address_selected','service_type_id'], 'string', 'max' => 255]
         ];
     }
 
@@ -65,6 +69,7 @@ class Offers extends \yii\db\ActiveRecord
             'region_id' => 'Регион',
             'city_id' => 'Город',
             'dt_add' => 'Dt Add',
+            'circs' => 'Условия:'
         ];
     }
 

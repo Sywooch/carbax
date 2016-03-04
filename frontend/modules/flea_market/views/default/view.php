@@ -153,6 +153,7 @@ if ($product->published != 1) {
                     </div>
                     <!-- // end of photosgallery-vertical -->
 
+
                 <div class="fleamarketInfoProduct">
                     <div class="price">
                         Цена
@@ -394,6 +395,7 @@ if ($product->published != 1) {
                     </div>
                 </div>
                 <!-- // end of photosgallery-vertical -->
+
 
             <div class="fleamarketInfoProduct">
                 <div class="price">

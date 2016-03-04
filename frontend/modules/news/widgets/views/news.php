@@ -11,7 +11,7 @@ use yii\widgets\LinkPager;
         <div class="news--topline">
             <img src="/media/img/logo2.png" alt="">
             <h3 class="orange">News</h3>
-            <span><a class="" href="<?= Url::to(['/news/news/'])?>">Все новости</a></span>
+            <span><a class="allNews" href="<?= Url::to(['/news/news/'])?>">Все новости</a></span>
         </div>
         <a href="<?= Url::to(['/news/news/view', 'id' => $news[0]['id']])?>" class="news__item--1">
             <img src="<?= $news[0]['img_url'];?>" alt="">

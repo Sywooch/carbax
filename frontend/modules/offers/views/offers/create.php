@@ -11,8 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url
 $this->params['breadcrumbs'][] = ['label' => 'Спецпредложения', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="addContent">
-    <h1><?= Html::encode($this->title) ?></h1>
+
 
     <?= $this->render('_form', [
         'model' => $model,

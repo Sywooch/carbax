@@ -39,6 +39,7 @@ use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
 use common\models\db\Msg;
 use common\models\db\Offers;
+use common\models\db\OffersImages;
 use common\models\db\ProductImg;
 use common\models\db\Request;
 use common\models\db\RequestAddFieldValue;
@@ -521,13 +522,40 @@ class AjaxController extends Controller
         $i = 0;
 
         if(!empty($_FILES['file']['name'][0])){
-            ProductImg::deleteAll(['product_id' => 99999]);
+            ProductImg::deleteAll(['product_id' => 99999, 'user_id'=> Yii::$app->user->id]);
             foreach($_FILES['file']['name'] as $file){
                 move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir.$file);
                 $img = new ProductImg();
                 $img->product_id = 99999;
                 $img->img = $dir.$file;
                 $img->cover = 0;
+                $img->user_id = Yii::$app->user->id;
+                $img->save();
+                $i++;
+            }
+        }
+        echo 1;
+    }
+
+
+    public function actionUpload_file_offers(){
+        //Debug::prn($_FILES);
+        if(!file_exists('media/users/'.Yii::$app->user->id)){
+            mkdir('media/users/'.Yii::$app->user->id.'/');
+        }
+        if(!file_exists('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'))){
+            mkdir('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'));
+        }
+        $dir = 'media/users/'.Yii::$app->user->id.'/'.date('Y-m-d').'/';
+        $i = 0;
+
+        if(!empty($_FILES['file']['name'][0])){
+            OffersImages::deleteAll(['offers_id' => 99999, 'user_id'=> Yii::$app->user->id]);
+            foreach($_FILES['file']['name'] as $file){
+                move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir.$file);
+                $img = new OffersImages();
+                $img->offers_id = 99999;
+                $img->images = $dir.$file;
                 $img->user_id = Yii::$app->user->id;
                 $img->save();
                 $i++;
@@ -650,6 +678,18 @@ class AjaxController extends Controller
 
         //Debug::prn($html);
         return($html);
+    }
+
+    public function actionGet_info_services(){
+        //Debug::prn($_POST['servicesId']);
+        $servicesId = explode(',',substr($_POST['servicesId'],0, -1));
+       // Debug::prn($servicesId);
+        $servicesInfo = Services::find()
+            ->leftJoin('`phone`','`phone`.`service_id` = `services`.`id`')
+            ->where(['`services`.`id`'=>$servicesId])
+            ->with('phone')
+            ->all();
+        return $this->renderPartial('servicesInfo',['servicesInfo' => $servicesInfo]);
     }
 
     public function actionSelect_auto_garage(){

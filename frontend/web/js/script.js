@@ -89,7 +89,6 @@ jQuery(document).ready(function ($) {
             });*/
         }
     });
-
     $('#input-5').on('filedeleted', function(event, key) {
         //alert(123);
     });
@@ -950,6 +949,16 @@ jQuery(document).ready(function ($) {
                 $('.selectAddressForServices').html(data);
             }
         });
+
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_info_services",
+            data: 'servicesId=' + servicesId,
+            success: function (data) {
+                console.log(data);
+                $('.addressToServises').html(data);
+            }
+        });
         return false;
     });
 
@@ -1167,18 +1176,22 @@ jQuery(document).ready(function ($) {
         }
     });
 
+
+    $(".menu-open-flag").click(function () {
+        $(".side-nav").slideToggle('slow');
+    });
+
+    $(".header--request--open").click(function () {
+        $(".head-nav").slideToggle('slow');
+    });
 });
 
 $(".first__but--but").click(function () {
     $(".first-nav").slideToggle('slow');
 });
 
-$(".header--request--open").click(function () {
-    $(".head-nav").slideToggle('slow');
-});
 
-$(".menu-open-flag").click(function () {
-    $(".side-nav").slideToggle('slow');
-});
+
+
 
 
