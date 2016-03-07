@@ -1,5 +1,7 @@
 <?php
 
+use common\classes\Custom_function;
+use common\classes\Debug;
 use himiklab\ipgeobase\IpGeoBase;
 $this->registerJsFile('/js/jquery.sliderkit.1.4.js',['yii\web\JqueryAsset']);
 $this->title = $model->title;
@@ -60,9 +62,9 @@ $IpGeoBase->updateDB()
 
     });
 </script>
-
+<?php //Debug::prn($info);?>
 <section class="offers_container">
-<h3 class="offers_header">Комплексная химчистка салона автомобиля в сети сервисных центров “На колесах.ru”</h3>
+<h3 class="offers_header"><?= $model->title; ?></h3>
     <div class="offers_page_view">
 
 
@@ -72,20 +74,29 @@ $IpGeoBase->updateDB()
                 <div class="sliderkit-nav">
                     <div class="sliderkit-nav-clip">
                         <ul>
-                            <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request1.png" alt="[Alternative text]" /></a></li>
+                            <?php foreach($model['offers_images'] as $img):?>
+                                <li><a href="#"><img src="/<?= $img->images; ?>" /></a></li>
+                            <?php endforeach; ?>
+                            <!--<li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request1.png" alt="[Alternative text]" /></a></li>
                             <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request2.png" alt="[Alternative text]" /></a></li>
                             <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request1.png" alt="[Alternative text]" /></a></li>
                             <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request2.png" alt="[Alternative text]" /></a></li>
                             <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request1.png" alt="[Alternative text]" /></a></li>
                             <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request2.png" alt="[Alternative text]" /></a></li>
-                            <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request1.png" alt="[Alternative text]" /></a></li>
+                            <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request1.png" alt="[Alternative text]" /></a></li>-->
                         </ul>
                     </div>
                     <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-prev"><a rel="nofollow" href="#" title="Previous line"><span>Previous</span></a></div>
                     <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-next"><a rel="nofollow" href="#" title="Next line"><span>Next</span></a></div>
                 </div>
                 <div class="sliderkit-panels">
-                    <div class="sliderkit-panel">
+                    <?php foreach($model['offers_images'] as $img):?>
+                        <div class="sliderkit-panel">
+                            <img src="/<?= $img->images; ?>" alt="[Alternative text]" />
+
+                        </div>
+                    <?php endforeach; ?>
+                    <!--<div class="sliderkit-panel">
                         <img src="../../media/img/request1.png" alt="[Alternative text]" />
 
                     </div>
@@ -112,7 +123,7 @@ $IpGeoBase->updateDB()
                     <div class="sliderkit-panel">
                         <img src="../../media/img/request1.png alt="[Alternative text]" />
 
-                    </div>
+                    </div>-->
                 </div>
             </div>
             <!-- // end of photosgallery-vertical -->
@@ -131,45 +142,7 @@ $IpGeoBase->updateDB()
                 <div class="offers_condition_view">
                     <div class="row">
 
-                        <p class="offers_content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                            eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat
-                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut
-                            perspiciatis
-                            unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-                            aperiam,
-                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                            explicabo.
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur
-                            magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
-                            dolorem
-                            ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi
-                            tempora
-                            incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-
-                        <p class="offers_content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                            eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat
-                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut
-                            perspiciatis
-                            unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-                            aperiam,
-                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                            explicabo.
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur
-                            magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
-                            dolorem
-                            ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi
-                            tempora
-                            incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                        <p class="offers_content"><?= $model->circs; ?></p>
 
                     </div>
 
@@ -183,7 +156,7 @@ $IpGeoBase->updateDB()
                 <div class="offers_condition_view">
                     <div class="row">
 
-                        <p class="offers_content"></p>
+                        <p class="offers_content"><?= $model->description; ?></p>
 
                     </div>
 
@@ -281,26 +254,16 @@ $IpGeoBase->updateDB()
 
                                     <img src="../../media/img/reiting.png" alt=""/>
                                 </div>
-
-
-
                                 <div class="home-comments__item--desc">
                                     <p>
                                         Отлична химчистка салона
                                     </p>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
-
-
-
                 </div>
-
             </div>
-
         </div>
 
 
@@ -310,100 +273,129 @@ $IpGeoBase->updateDB()
     <div class="sidebar_right">
 
         <div class="offers_price">
-            <p>2500 руб</p>
+            <p><?= $model->old_price; ?> руб</p>
         </div>
 
         <div class="offers_discount">
 
             <div class="offers_discount__interest">
                  <p>Скидка</p>
-                <p>30%</p>
+                <p><?= $model->discount; ?>%</p>
             </div>
 
             <div class="offers_discount__price">
-                <p>1500 руб</p>
+                <p><?= $model->new_price?> руб</p>
             </div>
 
         </div>
 
         <div class="offers_agreement">
             <div class="offers_agreement--count">
-            <p>2</p>
+            <p class="decisonY"><?= $decisonY; ?></p>
             </div>
             <div class="offers_agreement--text">
-            <p><a href="#">Я приеду</a></p>
+            <p><a class="offers_attend" decison="1" offersId="<?= $_GET['id']; ?>" href="#">Я приеду</a></p>
             </div>
         </div>
 
         <div class="offers_agreement--future">
             <div class="offers_agreement--count">
-                <p>5</p>
+                <p class="decisonN"><?= $decisonN; ?></p>
             </div>
             <div class="offers_agreement--text">
-                <p><a href="#">Возможно приеду</p>
+                <p><a class="offers_attend" decison="0" offersId="<?= $_GET['id']; ?>" href="#">Возможно приеду</a></p>
             </div>
         </div>
-
+       <!-- <a href="http://vkontakte.ru/" onclick="window.open('http://vkontakte.ru/share.php?url='+encodeURIComponent(location.href));return false;" rel="nofollow" style="text-decoration:none;" title="Поделиться ВКонтакте"> <img class="vk" onmouseout="this.src='images/socseti/vk.png ';" onmouseover="this.src='images/socseti/vk_1.png ';" src="images/socseti/vk.png" style="width: 16px; height: 16px; float: center;margin-right: 10px;" /></a>
+       <a href="http://www.facebook.com/" onclick="window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(location.href));return false;" rel="nofollow" style="text-decoration:none;" title="Поделиться в Facebook"><img class="fc" onmouseout="this.src='images/socseti/fc.png';" onmouseover="this.src='images/socseti/fc_1.png';" src="images/socseti/fc.png" style="width: 16px; height: 16px; float: center;margin-right: 10px; " /> </a> <a href="http://twitter.com/" onclick="window.open('http://twitter.com/home?status=RT @www.webnotes.com.ua '+encodeURIComponent(document.title)+': '+encodeURIComponent(location.href));return false;" rel="nofollow" style="text-decoration:none;" title="Опубликовать в Twitter"><img class="tv" onmouseout="this.src='images/socseti/tv.png';" onmouseover="this.src='images/socseti/tv_1.png';" src="images/socseti/tv.png" style="width: 16px; height: 16px; float: center;margin-right:10px;" /></a> <a href="http://www.google.com/" onclick="window.open('http://www.google.com/bookmarks/mark?op=add&amp;amp;hl=ru&amp;bkmk='+encodeURIComponent(location.href)+'&amp;annotation='+encodeURIComponent(document.title)+'&amp;labels=webnotes&amp;title='+encodeURIComponent(document.title));return false;" rel="nofollow" style="text-decoration:none;" title="Добавить закладку в Google"><img class="gg" onmouseout="this.src='/images/socseti/gg.png';" onmouseover="this.src='images/socseti/gg_1.png';" src="images/socseti/gg.png" style="width: 16px; height: 16px; float: center;margin-right: 10px;" /></a>-->
         <div class="footer__social">
-            <a href="#" class="footer__social--link">
+            <a href="#" class="footer__social--link" onclick="window.open('http://vkontakte.ru/share.php?url='+encodeURIComponent(location.href));return false;" rel="nofollow" style="text-decoration:none;" title="Поделиться ВКонтакте">
                 <span>В</span>
                 <i class="fa fa-heart"></i>
 
             </a>
+            <?php
+            $vk_request = file_get_contents('http://vkontakte.ru/share.php?act=count&index=1&url=http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]);
+            $tmp = array();
+            preg_match('/^VK.Share.count\(1, (\d+)\);$/i',$vk_request,$tmp);
+            ?>
+            <span class="footer__social--link--counter">+<?= $tmp[1];?></span>
 
-            <span class="footer__social--link--counter">+1</span>
 
-            <a href="#" class="footer__social--link--fb">
+            <?php
+
+
+                $fburl = "http://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
+                $facebook_request = file_get_contents("http://graph.facebook.com/?ids=".$fburl);
+                $fb = json_decode($facebook_request);
+
+            ?>
+            <a href="#" class="footer__social--link--fb" onclick="window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(location.href));return false;" rel="nofollow" style="text-decoration:none;" title="Поделиться в Facebook">
                <span class="fbook">f</span>
                 <p>Нравится</p>
             </a>
 
-            <span class="footer__social--link--counter">0</span>
+            <span class="footer__social--link--counter"><?= $fb->{$fburl}->shares;?></span>
 
         </div>
 
         <div class="offers_address">
+            <?php foreach($info as $inf):?>
+                <h3><?= $inf[0]->name; ?></h3>
+                <i class="fa fa-compass"></i>
+                <a class="offers_website" target="_blank" href="<?= $inf[0]->website; ?>">Посмотрите сайт</a>
+                <div class="map-wrap">
+                    <div id="map_canvas"></div>
+                </div>
 
-            <h3>На колесах.ru</h3>
+                <?php foreach($inf[0]['address'] as $seradr):?>
+                    <?php
+                    //Debug::prn($servicesInfo);
+                    if(in_array($seradr->id,$servicesInfo[$seradr['service_id']])): ?>
+                        <div class="offers_address--icons">
+                            <img class="metro" src="../../media/img/metro.png">
+                        </div>
 
-            <i class="fa fa-compass"></i>
-            <a class="offers_website" href="#">Посмотрите сайт</a>
+                        <div class="offers_address--text">
+                            <p> <?= $seradr->address; ?><br/>
+                                <a href="#">Посмотреть
+                                    на карте</a></p>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach;?>
 
-            <div class="map-wrap">
-                <div id="map_canvas"></div>
-            </div>
+                <?php foreach($inf[0]['phone'] as $ph):?>
+                    <div class="offers_address--icons">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <div class="offers_address--text">
+                        <p>Телефон:<br/>
+                            <?= $ph->number; ?></p>
+                    </div>
+                <?php endforeach; ?>
 
-            <div class="offers_address--icons">
 
-                <img class="metro" src="../../media/img/metro.png">
-            </div>
 
-            <div class="offers_address--text">
-                <p>г.Москва, ул. Адмирала Лазарева, д.2 (ТЦ "Виктория", эт.2) Бульвар адмирала Ушакова. <br/>
-                    <a href="#">Посмотреть
-                        на карте</a></p>
-            </div>
-
-            <div class="offers_address--icons">
-
-                <i class="fa fa-phone"></i>
-            </div>
-
-            <div class="offers_address--text">
-                <p>Телефон:<br/>
-                    +7 (499) 793-09-18</p>
-            </div>
-
-            <div class="offers_address--icons">
-
-                <i class="fa fa-clock-o"></i>
-            </div>
-
-            <div class="offers_address--text">
-                <p>Время работы: <br/>
-                 круглосуточно и ежедневно (технический перерыв с 6:00 до 9:00)</p>
-            </div>
-
+                <?php
+                $custFunc = new Custom_function();
+                foreach($inf[0]['work_hours'] as $wh): ?>
+                    <div class="offers_address--icons">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <div class="offers_address--text">
+                        <span><?=$custFunc->get_week_day($wh->day)?></span> - <?php
+                        if($wh->{'24h'} == 1){ ?>
+                            Круглосуточно
+                            <?php
+                        }
+                        else{
+                            ?>
+                            С <?=$wh->hours_from?> ДО <?=$wh->hours_to?>
+                            <?php
+                        }?>
+                    </div>
+                <?php endforeach; ?>
+            <?php endforeach;?>
         </div>
 
         <span class="question" style="margin-left: 75px;"><a class="ask" href="#">Все адреса</a></span>

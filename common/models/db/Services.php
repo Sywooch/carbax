@@ -188,6 +188,14 @@ class Services extends \yii\db\ActiveRecord
         return $this->hasMany(WorkHours::className(), ['service_id' => 'id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getwork_hours()
+    {
+        return $this->hasMany(WorkHours::className(), ['service_id' => 'id']);
+    }
+
     public static function getNameTypeServicec($id){
         return ServiceType::findOne($id)->name;
     }

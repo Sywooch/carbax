@@ -10,6 +10,7 @@ namespace frontend\widgets;
 
 
 use common\classes\Address;
+use common\classes\Debug;
 use common\models\db\Market;
 use yii\base\Widget;
 
@@ -25,8 +26,6 @@ class FleaMarketMostViewed extends Widget
             ->orderBy('views DESC')
             ->limit(4)
             ->all();
-
-        //Debug::prn($product);
         return $this->render('new_product',
             [
                 'product'   =>  $product,

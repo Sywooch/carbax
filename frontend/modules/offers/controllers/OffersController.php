@@ -9,6 +9,7 @@ use common\classes\Address;
 
 use common\classes\Debug;
 use common\models\db\GeobaseCity;
+use common\models\db\OffersAttend;
 use common\models\db\OffersImages;
 use common\models\db\Services;
 use common\models\db\ServiceType;
@@ -99,7 +100,7 @@ class OffersController extends Controller
                 $city .= $service->city_id.',';
             }
             $model->dt_add = time();
-            move_uploaded_file($_FILES['Offers']['tmp_name']['img_url'], Yii::$app->basePath.'/web/media/img/offers/'.time().$_FILES['Offers']['name']['img_url']);
+            //move_uploaded_file($_FILES['Offers']['tmp_name']['img_url'], Yii::$app->basePath.'/web/media/img/offers/'.time().$_FILES['Offers']['name']['img_url']);
             $model->img_url = '/frontend/web/media/img/offers/'.time().$_FILES['Offers']['name']['img_url'];
             $model->user_id = Yii::$app->user->id;
             $model->address_selected = json_encode($adsressService);
@@ -139,9 +140,39 @@ class OffersController extends Controller
     {
         /*$this->view->params['officeHide'] = true;*/
         $this->view->params['bannersHide'] = true;
-        $model = Offers::findOne($id);
+        $model = Offers::find()
+            ->leftJoin('offers_images', '`offers_images`.`offers_id` = `offers`.`id`')
+            ->where(['`offers`.`id`' => $id])
+            ->with('offers_images')
+            ->one();
+        //Debug::prn($model);
+        //$images = OffersImages::find()->where(['offers_id'=>$id])->all();
+        $result = [];
+        $serviseInfo = json_decode($model->address_selected,true);
+       // Debug::prn($serviseInfo);
+        $i = 0;
+        foreach ($serviseInfo as $serId=>$addId) {
+            $result[$i] = Services::find()
+                ->select(' `services`.*, `address`.`id` AS address_id ')
+                ->leftJoin('work_hours','`work_hours`.`service_id` = `services`.`id`')
+                ->leftJoin('address','`address`.`service_id` = `services`.`id`')
+                ->leftJoin('phone','`phone`.`service_id` = `services`.`id`')
+                ->where(['`address`.`id`'=> $addId, '`services`.`id` '=> $serId])
+                ->with('work_hours','address','phone')
+               // Debug::prn($result[$i]->createCommand()->rawSql);
+                ->all();
+            $i++;
+        }
+
+        $decisonY = OffersAttend::find()->where(['offers_id' => $_GET['id'], 'decison' => '1'])->count();
+        $decisonN = OffersAttend::find()->where(['offers_id' => $_GET['id'], 'decison' => '0'])->count();
+
         return $this->render('view', [
-            'model' => $model
+            'model' => $model,
+            'info' => $result,
+            'servicesInfo' => $serviseInfo,
+            'decisonY' => $decisonY,
+            'decisonN' => $decisonN,
         ]);
     }
     public function actionGet_city()

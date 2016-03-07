@@ -1184,10 +1184,31 @@ jQuery(document).ready(function ($) {
     $(".header--request--open").click(function () {
         $(".head-nav").slideToggle('slow');
     });
-});
 
-$(".first__but--but").click(function () {
-    $(".first-nav").slideToggle('slow');
+    $(".first__but--but").click(function () {
+        $(".first-nav").slideToggle('slow');
+    });
+
+    $(document).on('click', '.offers_attend', function(){
+        var decison = $(this).attr('decison');
+        var offersId = $(this).attr('offersId');
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_attend_decison",
+            data: 'decison=' + decison + '&offersId=' + offersId,
+            success: function (data) {
+                //console.log(data.decisonY);
+                var count = JSON.parse(data);
+
+                $('.decisonY').text(count.decisonY);
+                $('.decisonN').text(count.decisonN);
+
+                //$('.manufactureRequest').html(data);
+            }
+        });
+        return false;
+    })
+
 });
 
 

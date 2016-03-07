@@ -108,49 +108,29 @@ if ($product->published != 1) {
                         <div class="sliderkit-nav">
                             <div class="sliderkit-nav-clip">
                                 <ul>
-                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
-                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
-                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
-                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
-                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
-                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
-                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                                    <?php foreach ($images as $img):?>
+                                        <li><a href="#" ><img src="/<?= $img->img;?>" /></a></li>
+                                        <!--<li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
+                                        <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                                        <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
+                                        <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                                        <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
+                                        <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>-->
+                                    <?php endforeach; ?>
                                 </ul>
                             </div>
                             <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-prev"><a rel="nofollow" href="#" title="Previous line"><span>Previous</span></a></div>
                             <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-next"><a rel="nofollow" href="#" title="Next line"><span>Next</span></a></div>
                         </div>
                         <div class="sliderkit-panels">
-                            <div class="sliderkit-panel">
-                                <img src="media/img/request1.png" alt="[Alternative text]" />
-
-                            </div>
-                            <div class="sliderkit-panel">
-                                <img src="/media/img/request1.png" alt="[Alternative text]" />
-
-                            </div>
-                            <div class="sliderkit-panel">
-                                <img src="/media/img/request1.png" alt="[Alternative text]" />
-
-                            </div>
-                            <div class="sliderkit-panel">
-                                <img src="/media/img/request1.png" alt="[Alternative text]" />
-
-                            </div>
-                            <div class="sliderkit-panel">
-                                <img src="/media/img/request1.png" alt="[Alternative text]" />
-
-                            </div>
-                            <div class="sliderkit-panel">
-                                <img src="/media/img/request2.png" alt="[Alternative text]" />
-
-                            </div>
-                            <div class="sliderkit-panel">
-                                <img src="/media/img/request1.png" alt="[Alternative text]" />
-
-                            </div>
+                            <?php foreach ($images as $img):?>
+                                <div class="sliderkit-panel">
+                                    <img src="/<?= $img->img;?>" />
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
+                </div>
                     <!-- // end of photosgallery-vertical -->
 
 
@@ -351,49 +331,29 @@ if ($product->published != 1) {
                     <div class="sliderkit-nav">
                         <div class="sliderkit-nav-clip">
                             <ul>
-                                <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
-                                <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
-                                <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
-                                <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
-                                <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
-                                <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
-                                <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                                <?php foreach ($images as $img):?>
+                                    <li><a href="#" ><img src="/<?= $img->img;?>" /></a></li>
+                                    <!--<li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
+                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
+                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
+                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
+                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>-->
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                         <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-prev"><a rel="nofollow" href="#" title="Previous line"><span>Previous</span></a></div>
                         <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-next"><a rel="nofollow" href="#" title="Next line"><span>Next</span></a></div>
                     </div>
                     <div class="sliderkit-panels">
-                        <div class="sliderkit-panel">
-                            <img src="/media/img/request1.png" alt="[Alternative text]" />
-
-                        </div>
-                        <div class="sliderkit-panel">
-                            <img src="/media/img/request2.png" alt="[Alternative text]" />
-
-                        </div>
-                        <div class="sliderkit-panel">
-                            <img src="/media/img/request1.png" alt="[Alternative text]" />
-
-                        </div>
-                        <div class="sliderkit-panel">
-                            <img src="/media/img/request2.png" alt="[Alternative text]" />
-
-                        </div>
-                        <div class="sliderkit-panel">
-                            <img src="/media/img/request1.png" alt="[Alternative text]" />
-
-                        </div>
-                        <div class="sliderkit-panel">
-                            <img src="/media/img/request2.png" alt="[Alternative text]" />
-
-                        </div>
-                        <div class="sliderkit-panel">
-                            <img src="/media/img/request1.png alt="[Alternative text]" />
-
-                        </div>
+                             <?php foreach ($images as $img):?>
+                                 <div class="sliderkit-panel">
+                                     <img src="/<?= $img->img;?>" />
+                                 </div>
+                             <?php endforeach; ?>
                     </div>
                 </div>
+            </div>
                 <!-- // end of photosgallery-vertical -->
 
 

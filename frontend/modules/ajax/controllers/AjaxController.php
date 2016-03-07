@@ -39,6 +39,7 @@ use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
 use common\models\db\Msg;
 use common\models\db\Offers;
+use common\models\db\OffersAttend;
 use common\models\db\OffersImages;
 use common\models\db\ProductImg;
 use common\models\db\Request;
@@ -642,11 +643,32 @@ class AjaxController extends Controller
 
     public function actionShow_offers(){
         $address = Address::get_geo_info();
-        if($_POST['serviceTypeId'] == 0) {
-            $offers = Offers::find()->where(['region_id' => $address['region_id']])->orderBy('dt_add DESC')->limit(9)->all();
+
+        //Debug::prn($offers->createCommand()->rawSql);
+
+       if($_POST['serviceTypeId'] == 0) {
+            $offers = Offers::find()
+                ->leftJoin('`offers_images`','`offers_images`.`offers_id` = `offers`.`id`')
+                ->where(['LIKE', 'region_id', $address['region_id']])
+                ->andWhere(['status'=>1])
+                ->orderBy('dt_add DESC')
+                ->limit(9)
+                ->with('offers_images')
+                ->all();
         }
         else{
-            $offers = Offers::find()->where(['region_id' => $address['region_id'],'service_type_id'=>$_POST['serviceTypeId']])->orderBy('dt_add DESC')->limit(9)->all();
+            //$offers = Offers::find()->where(['region_id' => $address['region_id'],'service_type_id'=>$_POST['serviceTypeId']])->orderBy('dt_add DESC')->limit(9)->all();
+             $offers = Offers::find()
+            ->leftJoin('`offers_images`','`offers_images`.`offers_id` = `offers`.`id`')
+            ->where(['LIKE', 'region_id', $address['region_id']])
+            ->andWhere(['LIKE', 'service_type_id', $_POST['serviceTypeId'].','])
+            ->andWhere(['status'=>1])
+            ->orderBy('dt_add DESC')
+            ->limit(9)
+            ->with('offers_images')
+            ->all();
+
+            //Debug::prn($offers);
         }
 
         return $this->renderPartial('offers',
@@ -817,5 +839,29 @@ class AjaxController extends Controller
         }
     }
 
+    public function actionGet_attend_decison(){
+        //$attend = new OffersAttend();
+        $userId = Yii::$app->user->id;
+        $decison = OffersAttend::find()
+            ->where(['user_id' => $userId, 'offers_id' => $_POST['offersId']])->one();
 
+        if(empty($decison)){
+            $attendDecison = new OffersAttend();
+            $attendDecison->user_id = $userId;
+            $attendDecison->offers_id = $_POST['offersId'];
+            $attendDecison->decison = $_POST['decison'];
+            $attendDecison->save();
+        }
+        else{
+            OffersAttend::updateAll(['decison' => $_POST['decison']], ['offers_id' => $_POST['offersId'], 'user_id' => $userId]);
+        }
+
+
+        $decisonY = OffersAttend::find()->where(['offers_id' => $_POST['offersId'], 'decison' => '1'])->count();
+        $decisonN = OffersAttend::find()->where(['offers_id' => $_POST['offersId'], 'decison' => '0'])->count();
+
+        $decisonCount = json_encode(['decisonY'=>$decisonY,'decisonN'=>$decisonN]);
+        echo $decisonCount;
+
+    }
 }

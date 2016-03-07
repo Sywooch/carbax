@@ -2,6 +2,7 @@
 
 namespace common\models\db;
 
+use frontend\modules\services\Services;
 use Yii;
 
 /**
@@ -9,7 +10,6 @@ use Yii;
  *
  * @property integer $id
  * @property string $title
- * @property string $img_url
  * @property string $description
  * @property integer $new_price
  * @property integer $old_price
@@ -46,7 +46,7 @@ class Offers extends \yii\db\ActiveRecord
         return [
             [['title', 'description'], 'required'],
             [['service_id', 'new_price', 'old_price',  'dt_add'], 'integer'],
-            [['description','dt_start','dt_end'], 'string'],
+            [['description','dt_start','dt_end','circs'], 'string'],
             [['title', 'img_url', 'discount','service_id_str','address_selected','service_type_id'], 'string', 'max' => 255]
         ];
     }
@@ -79,5 +79,12 @@ class Offers extends \yii\db\ActiveRecord
     public function getService()
     {
         return $this->hasOne(Services::className(), ['id' => 'service_id']);
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getoffers_images()
+    {
+        return $this->hasMany(OffersImages::className(), ['offers_id' => 'id']);
     }
 }

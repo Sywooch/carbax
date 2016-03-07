@@ -16,9 +16,16 @@ class OffersWidgetFront extends Widget
 
     public function run(){
         $address = Address::get_geo_info();
-
-        $offers = Offers::find()->where(['region_id'=>$address['region_id']])->orderBy('dt_add DESC')->limit(9)->all();
-        //Debug::prn($offers);
+       // $region = $address['region_id'];
+        $offers = Offers::find()
+            ->leftJoin('`offers_images`','`offers_images`.`offers_id` = `offers`.`id`')
+            ->where(['LIKE', 'region_id', $address['region_id'].','])
+            ->andWhere(['status'=>1])
+            ->orderBy('dt_add DESC')
+            ->limit(9)
+            ->with('offers_images')
+            ->all();
+        //Debug::prn($offers[0]['offers_images']->images);
         return $this->render('offers',
             [
                 'offers' => $offers,

@@ -52,6 +52,9 @@ return [
         'adsmanager' => [
             'class' => 'backend\modules\adsmanager\Adsmanager',
         ],
+        'offers' => [
+            'class' => 'backend\modules\offers\Offers',
+        ],
     ],
     'components' => [
         'request' => [
