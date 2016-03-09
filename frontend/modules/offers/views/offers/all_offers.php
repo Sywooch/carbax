@@ -8,7 +8,7 @@ $this->registerJsFile('/js/jquery.sliderkit.1.4.js',['yii\web\JqueryAsset']);
 $this->title = (!empty($serviceType)) ? $serviceType->name : 'Все спецпредложения';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<section class="deals all_offers">
+<section class="deals all_offers" xmlns="http://www.w3.org/1999/html">
         <?= MenuOffer::widget();?>
 
     <!----AKD47 section---->
@@ -39,9 +39,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="sliderkit-nav-clip sliderkit-nav-carousel">
                         <ul>
                             <li>
+
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -67,12 +69,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                     </div>
                                 </div>
+
                             </li>
 
                             <li>
+
+
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -98,12 +104,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                     </div>
                                 </div>
+
                             </li>
 
                             <li>
+
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -129,12 +138,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                     </div>
                                 </div>
+
                             </li>
 
                             <li>
+
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -160,12 +172,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                     </div>
                                 </div>
+
                             </li>
 
                             <li>
+
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -191,12 +206,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                     </div>
                                 </div>
+
                             </li>
 
                             <li>
+
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -222,12 +240,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                     </div>
                                 </div>
+
                             </li>
 
                             <li>
+
+
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -253,12 +275,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                     </div>
                                 </div>
+
                             </li>
 
                             <li>
+
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -284,12 +309,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                     </div>
                                 </div>
+
                             </li>
 
                             <li>
+
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -315,12 +343,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                     </div>
                                 </div>
+
                             </li>
 
                             <li>
+
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -346,12 +377,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                     </div>
                                 </div>
+
                             </li>
 
                             <li>
+
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -377,12 +411,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                         </div>
                                     </div>
                                 </div>
+
                             </li>
 
                             <li>
+
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -409,11 +446,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </div>
                                 </div>
                             </li>
-
-<!--                        <li></li>-->
-<!--                        <li></li>-->
-<!--                        <li></li>-->
-
 
                         </ul>
                     </div>

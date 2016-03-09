@@ -790,13 +790,13 @@ a.regHeaderLink {
           display: block;
           text-decoration: none;
           color: #0A0A0A;
-          font-size: 15px;
+          font-size: 12px;/*15px*/
           padding: 15px 20px; }
           .deals__menu ul li a:hover, .deals__menu ul li a:focus {
             background-color: #202020;
             color: #fff; }
         .deals__menu ul li a.deals__menu--all {
-          padding: 15px 26px 15px 25px; }
+          padding: 10px 8px 10px 9px; /*15px 26px 15px 25px*/ }
         .deals__menu ul li a.deals__menu--active {
           background-color: #202020;
           color: #fff; }

@@ -213,7 +213,7 @@ class OffersController extends Controller
 
     public function actionAll_offers($id = false){
         $this->view->params['officeHide'] = false;
-        $this->view->params['bannersHide'] = false;
+        $this->view->params['bannersHide'] = true;
 
         $address = Address::get_geo_info();
         if($_GET['id']){

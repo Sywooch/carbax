@@ -1018,7 +1018,7 @@ a.addBussines {
 }
 
 .all_offers {
-    width: 80% !important;
+    width: 80%;
     margin: 0 !important;
 }
 
@@ -1540,10 +1540,10 @@ span.del_infoDriver{
 }
 
 .all_offers .deals__menu {
-    height: 52px;
+    height: 100%;/*52px*/
     margin-bottom: 12px;
     overflow: hidden;
-    width: 760px;
+    width: 100%;
 }
 
 .all_offers .deals__block {
@@ -2847,8 +2847,8 @@ div#drivebo {
 .sliderkit img{
     border:0;
     transform: translate(0, -20%);
-    width: 541px;
-    height: 420px;
+    width: 100%;
+    /*height: 420px;*/
 }
 
 /*---------------------------------
@@ -2965,7 +2965,7 @@ div#drivebo {
 
 .photosgallery-vertical .sliderkit-nav-clip ul li img{
     width:75px;
-    height:50px;
+    height: auto;
     margin-bottom:-3px;
 }
 
@@ -3128,16 +3128,40 @@ div#drivebo {
     background-color: #ff6b00;
     color: #FFF;
     font-size: 16px;
-    z-index: 99;
+    z-index: 5;
     -webkit-clip-path: polygon(0 0, 100% 0%, 100% 65%, 50% 100%, 0 65%, 0 100%);
     -moz-clip-path: polygon(0 0, 100% 0%, 100% 65%, 50% 100%, 0 65%, 0 100%);
     -ms-clip-path: polygon(0 0, 100% 0%, 100% 65%, 50% 100%, 0 65%, 0 100%);
     clip-path: polygon(0 0, 100% 0%, 100% 65%, 50% 100%, 0 65%, 0 100%);
 }
 
+.slidercit__deals__block-vip {
+    display: block;
+    position: absolute;
+    padding: 4px 10px;
+    font-family: HelveticaNeueCyrBold;
+    height: 45px;
+    line-height: 30px;
+    text-align: center;
+    top: 0;
+    left: 185px;
+    background-color: rgb(14, 64, 154);
+    color: #FFF;
+    font-size: 18px;
+    border-width: 0.625px;
+    border-color: rgb(137, 137, 137);
+    border-style: solid;
+    z-index: 5;
+    -webkit-clip-path: polygon(0 0, 100% 0%, 100% 65%, 50% 100%, 0 65%, 0 100%);
+    -moz-clip-path: polygon(0 0, 100% 0%, 100% 65%, 50% 100%, 0 65%, 0 100%);
+    -ms-clip-path: polygon(0 0, 100% 0%, 100% 65%, 50% 100%, 0 65%, 0 100%);
+    clip-path: polygon(0 0, 100% 0%, 100% 65%, 50% 100%, 0 65%, 0 100%);
+}
+
+
 .slidercit__deals__block-img{
     width: 100%;
-    height: 150px;
+    height: 147px;
     overflow: hidden;
     display: block;
     position: relative;
@@ -3249,7 +3273,7 @@ div#drivebo {
 }
 
 .carousel-continuous{
-    width: 760px;
+    width: 100%;
     height: 250px;
 }
 
@@ -3266,6 +3290,9 @@ div#drivebo {
 }
 
 .carousel-continuous .sliderkit-nav-clip ul li{
+    display: block;
+    position: relative;
+    overflow: hidden;
     border-width: 4px;
     border-color: rgb(255, 107, 0);
     border-style: solid;
@@ -3325,37 +3352,6 @@ i.fa-chevron-right{
     cursor: pointer;
 }
 
-
-/*.carousel-continuous .carousel-nav-next a{*/
-    /*position: absolute;*/
-    /*content: "";*/
-    /*width: 0;*/
-    /*height: 0;*/
-    /*border-top: 60px solid transparent;*/
-    /*border-left: 60px solid #a6a6a6;*/
-    /*border-bottom: 60px solid transparent;*/
-    /*left: -85px;*/
-    /*top: 5px;*/
-    /*-webkit-transition: all 0.4s linear;*/
-    /*-moz-transition: all 0.4s linear;*/
-    /*-ms-transition: all 0.4s linear;*/
-    /*-o-transition: all 0.4s linear;*/
-    /*transition: all 0.4s linear;*/
-/*}*/
-
-/*.carousel-continuous .carousel-nav-next a:hover, .carousel-nav-next a:focus{*/
-    /*border-top: 60px solid transparent;*/
-    /*border-left: 60px solid #a6a6a6;*/
-    /*border-bottom: 60px solid transparent;*/
-    /*left: -85px;*/
-    /*top: 5px;*/
-    /*-webkit-transition: all 0.4s linear;*/
-    /*-moz-transition: all 0.4s linear;*/
-    /*-ms-transition: all 0.4s linear;*/
-    /*-o-transition: all 0.4s linear;*/
-    /*transition: all 0.4s linear;*/
-/*}*/
-
 .carousel-continuous .sliderkit-nav .sliderkit-nav-prev{
     left: -27px;
     top: 67px;
@@ -3389,7 +3385,7 @@ i.fa-chevron-right{
 .sliderkit-nav-clip .slidercit__deals__item{
     display: block;
     position: relative;
-    /*width: 266px;*/
+    width: 258px;
     height: 225px;
     overflow: hidden;
 }
