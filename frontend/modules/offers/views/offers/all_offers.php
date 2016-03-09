@@ -43,171 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
-                                        <div class="slidercit__deals__block-img">
-                                            <img
-                                                src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
-                                                alt="">
-
-                                            <div class="slidercit_deals__block-img-more">
-                                                <p><?= $offer['short_description'] ?></p>
-                                                <!--<p>Время продаж ограниченно</p>-->
-                                                <a href="<?= Url::to(['/offers/offers/view', 'id' => $offer['id']]) ?>">Подробнее</a>
-                                            </div>
-                                        </div>
-                                        <div class="slidercit_deals__block-desc">
-                                            <p>FFF</p>
-
-                                            <div class="slidercit__deals__block-desc-price">
-                                                <div class="slidercit__deals__block-desc-price_old">
-                                                    <p><strike>100руб.</strike></p>
-                                                </div>
-                                                <div class="slidercit__deals__block-desc-price_new">
-                                                    <p>50руб.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </li>
-
-                            <li>
-
-                                <div class="slidercit__deals__item">
-                                    <div class="slidercit__deals__block">
-                                        <div class="slidercit__deals__block-sale">-50%</div>
-                                        <div class="slidercit__deals__block-img">
-                                            <img
-                                                src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
-                                                alt="">
-
-                                            <div class="slidercit_deals__block-img-more">
-                                                <p><?= $offer['short_description'] ?></p>
-                                                <!--<p>Время продаж ограниченно</p>-->
-                                                <a href="<?= Url::to(['/offers/offers/view', 'id' => $offer['id']]) ?>">Подробнее</a>
-                                            </div>
-                                        </div>
-                                        <div class="slidercit_deals__block-desc">
-                                            <p>FFF</p>
-
-                                            <div class="slidercit__deals__block-desc-price">
-                                                <div class="slidercit__deals__block-desc-price_old">
-                                                    <p><strike>100руб.</strike></p>
-                                                </div>
-                                                <div class="slidercit__deals__block-desc-price_new">
-                                                    <p>50руб.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-            </a>
-                            </li>
-
-                            <li>
-
-                                <div class="slidercit__deals__item">
-                                    <div class="slidercit__deals__block">
-                                        <div class="slidercit__deals__block-sale">-50%</div>
-                                        <div class="slidercit__deals__block-img">
-                                            <img
-                                                src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
-                                                alt="">
-
-                                            <div class="slidercit_deals__block-img-more">
-                                                <p><?= $offer['short_description'] ?></p>
-                                                <!--<p>Время продаж ограниченно</p>-->
-                                                <a href="<?= Url::to(['/offers/offers/view', 'id' => $offer['id']]) ?>">Подробнее</a>
-                                            </div>
-                                        </div>
-                                        <div class="slidercit_deals__block-desc">
-                                            <p>FFF</p>
-
-                                            <div class="slidercit__deals__block-desc-price">
-                                                <div class="slidercit__deals__block-desc-price_old">
-                                                    <p><strike>100руб.</strike></p>
-                                                </div>
-                                                <div class="slidercit__deals__block-desc-price_new">
-                                                    <p>50руб.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </li>
-
-                            <li>
-
-                                <div class="slidercit__deals__item">
-                                    <div class="slidercit__deals__block">
-                                        <div class="slidercit__deals__block-sale">-50%</div>
-                                        <div class="slidercit__deals__block-img">
-                                            <img
-                                                src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
-                                                alt="">
-
-                                            <div class="slidercit_deals__block-img-more">
-                                                <p><?= $offer['short_description'] ?></p>
-                                                <!--<p>Время продаж ограниченно</p>-->
-                                                <a href="<?= Url::to(['/offers/offers/view', 'id' => $offer['id']]) ?>">Подробнее</a>
-                                            </div>
-                                        </div>
-                                        <div class="slidercit_deals__block-desc">
-                                            <p>FFF</p>
-
-                                            <div class="slidercit__deals__block-desc-price">
-                                                <div class="slidercit__deals__block-desc-price_old">
-                                                    <p><strike>100руб.</strike></p>
-                                                </div>
-                                                <div class="slidercit__deals__block-desc-price_new">
-                                                    <p>50руб.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </li>
-
-                            <li>
-
-                                <div class="slidercit__deals__item">
-                                    <div class="slidercit__deals__block">
-                                        <div class="slidercit__deals__block-sale">-50%</div>
-                                        <div class="slidercit__deals__block-img">
-                                            <img
-                                                src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
-                                                alt="">
-
-                                            <div class="slidercit_deals__block-img-more">
-                                                <p><?= $offer['short_description'] ?></p>
-                                                <!--<p>Время продаж ограниченно</p>-->
-                                                <a href="<?= Url::to(['/offers/offers/view', 'id' => $offer['id']]) ?>">Подробнее</a>
-                                            </div>
-                                        </div>
-                                        <div class="slidercit_deals__block-desc">
-                                            <p>FFF</p>
-
-                                            <div class="slidercit__deals__block-desc-price">
-                                                <div class="slidercit__deals__block-desc-price_old">
-                                                    <p><strike>100руб.</strike></p>
-                                                </div>
-                                                <div class="slidercit__deals__block-desc-price_new">
-                                                    <p>50руб.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </li>
-
-                            <li>
-
-                                <div class="slidercit__deals__item">
-                                    <div class="slidercit__deals__block">
-                                        <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -242,6 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -275,6 +112,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -308,6 +146,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -341,6 +180,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -374,6 +214,42 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
+                                        <div class="slidercit__deals__block-img">
+                                            <img
+                                                src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
+                                                alt="">
+
+                                            <div class="slidercit_deals__block-img-more">
+                                                <p><?= $offer['short_description'] ?></p>
+                                                <!--<p>Время продаж ограниченно</p>-->
+                                                <a href="<?= Url::to(['/offers/offers/view', 'id' => $offer['id']]) ?>">Подробнее</a>
+                                            </div>
+                                        </div>
+                                        <div class="slidercit_deals__block-desc">
+                                            <p>FFF</p>
+
+                                            <div class="slidercit__deals__block-desc-price">
+                                                <div class="slidercit__deals__block-desc-price_old">
+                                                    <p><strike>100руб.</strike></p>
+                                                </div>
+                                                <div class="slidercit__deals__block-desc-price_new">
+                                                    <p>50руб.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+
+                            <li>
+
+
+                                <div class="slidercit__deals__item">
+                                    <div class="slidercit__deals__block">
+                                        <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -407,6 +283,143 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <div class="slidercit__deals__item">
                                     <div class="slidercit__deals__block">
                                         <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
+                                        <div class="slidercit__deals__block-img">
+                                            <img
+                                                src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
+                                                alt="">
+
+                                            <div class="slidercit_deals__block-img-more">
+                                                <p><?= $offer['short_description'] ?></p>
+                                                <!--<p>Время продаж ограниченно</p>-->
+                                                <a href="<?= Url::to(['/offers/offers/view', 'id' => $offer['id']]) ?>">Подробнее</a>
+                                            </div>
+                                        </div>
+                                        <div class="slidercit_deals__block-desc">
+                                            <p>FFF</p>
+
+                                            <div class="slidercit__deals__block-desc-price">
+                                                <div class="slidercit__deals__block-desc-price_old">
+                                                    <p><strike>100руб.</strike></p>
+                                                </div>
+                                                <div class="slidercit__deals__block-desc-price_new">
+                                                    <p>50руб.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+
+                            <li>
+
+                                <div class="slidercit__deals__item">
+                                    <div class="slidercit__deals__block">
+                                        <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
+                                        <div class="slidercit__deals__block-img">
+                                            <img
+                                                src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
+                                                alt="">
+
+                                            <div class="slidercit_deals__block-img-more">
+                                                <p><?= $offer['short_description'] ?></p>
+                                                <!--<p>Время продаж ограниченно</p>-->
+                                                <a href="<?= Url::to(['/offers/offers/view', 'id' => $offer['id']]) ?>">Подробнее</a>
+                                            </div>
+                                        </div>
+                                        <div class="slidercit_deals__block-desc">
+                                            <p>FFF</p>
+
+                                            <div class="slidercit__deals__block-desc-price">
+                                                <div class="slidercit__deals__block-desc-price_old">
+                                                    <p><strike>100руб.</strike></p>
+                                                </div>
+                                                <div class="slidercit__deals__block-desc-price_new">
+                                                    <p>50руб.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+
+                            <li>
+
+                                <div class="slidercit__deals__item">
+                                    <div class="slidercit__deals__block">
+                                        <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
+                                        <div class="slidercit__deals__block-img">
+                                            <img
+                                                src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
+                                                alt="">
+
+                                            <div class="slidercit_deals__block-img-more">
+                                                <p><?= $offer['short_description'] ?></p>
+                                                <!--<p>Время продаж ограниченно</p>-->
+                                                <a href="<?= Url::to(['/offers/offers/view', 'id' => $offer['id']]) ?>">Подробнее</a>
+                                            </div>
+                                        </div>
+                                        <div class="slidercit_deals__block-desc">
+                                            <p>FFF</p>
+
+                                            <div class="slidercit__deals__block-desc-price">
+                                                <div class="slidercit__deals__block-desc-price_old">
+                                                    <p><strike>100руб.</strike></p>
+                                                </div>
+                                                <div class="slidercit__deals__block-desc-price_new">
+                                                    <p>50руб.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+
+                            <li>
+
+                                <div class="slidercit__deals__item">
+                                    <div class="slidercit__deals__block">
+                                        <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
+                                        <div class="slidercit__deals__block-img">
+                                            <img
+                                                src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
+                                                alt="">
+
+                                            <div class="slidercit_deals__block-img-more">
+                                                <p><?= $offer['short_description'] ?></p>
+                                                <!--<p>Время продаж ограниченно</p>-->
+                                                <a href="<?= Url::to(['/offers/offers/view', 'id' => $offer['id']]) ?>">Подробнее</a>
+                                            </div>
+                                        </div>
+                                        <div class="slidercit_deals__block-desc">
+                                            <p>FFF</p>
+
+                                            <div class="slidercit__deals__block-desc-price">
+                                                <div class="slidercit__deals__block-desc-price_old">
+                                                    <p><strike>100руб.</strike></p>
+                                                </div>
+                                                <div class="slidercit__deals__block-desc-price_new">
+                                                    <p>50руб.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+
+                            <li>
+
+                                <div class="slidercit__deals__item">
+                                    <div class="slidercit__deals__block">
+                                        <div class="slidercit__deals__block-sale">-50%</div>
+                                        <div class="slidercit__deals__block-vip">VIP</div>
                                         <div class="slidercit__deals__block-img">
                                             <img
                                                 src="/frontend/web/media/img/offers/1455544473starcraft-ii-heart-of-the-swarm-pc-1306827260-047.jpg"
@@ -433,11 +446,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </div>
                                 </div>
                             </li>
-
-<!--                        <li></li>-->
-<!--                        <li></li>-->
-<!--                        <li></li>-->
-
 
                         </ul>
                     </div>
