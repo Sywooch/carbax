@@ -1540,6 +1540,9 @@ span.del_infoDriver{
 }
 
 .all_offers .deals__menu {
+    display: block;
+    position: relative;
+    float: left;
     height: 100%;/*52px*/
     margin-bottom: 12px;
     overflow: hidden;
@@ -2143,7 +2146,19 @@ h3.offers_header {
     text-align: left;
 }
 
+.all_offers .deals__menu ul li a {
+    display: block;
+    text-decoration: none;
+    color: #0A0A0A;
+    font-size: 12px;
+    padding: 15px 20px;
+}
 
+.deals .contain .deals__menu ul li:last-of-type {
+    display: block;
+    float: left;
+    width: 123px;
+}
 
 /*----Offers nav----*/
 .offers_nav {
@@ -2821,10 +2836,10 @@ div#drivebo {
 /*----Offers sidebar-right end----*/
 
 /*----Offers slider----*/
-.inner{
+.all_offers .inner{
     display: block;
     position: relative;
-    /*float: left;*/
+    float: left;
     width: 100%;
 }
 

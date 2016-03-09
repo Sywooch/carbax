@@ -446,11 +446,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </div>
                                 </div>
                             </li>
-<!---->
-<!--                            <li></li>-->
-<!--                            <li></li>-->
-<!--                            <li></li>-->
-<!--                            <li></li>-->
 
                         </ul>
                     </div>
