@@ -469,7 +469,7 @@ input.message_to, input.message_subject {
 
 .myRequest {
     display: block;
-    float: left;
+    /*float: left;*/
 }
 
 .blockTitle-left {
@@ -3401,3 +3401,16 @@ a#allOffers,a.allNews {
     color: #fff;
 }
 
+.offersMapWr{
+    width: 196px;
+    height: 480px;
+}
+
+#mapOffers{
+    width: 100%;
+    height: 100%;
+}
+
+.offersRight{
+    float: left;
+}

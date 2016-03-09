@@ -57,8 +57,8 @@ function Map( options ) {
                                         var prop = {
                                             /*iconContent: 'Я тащусь',*/
                                             hintContent: '<b>' + a.balloon.title + '</b><br> ' + a.address,
-                                            balloonContentHeader: '<b>' + a.balloon.title + '</b>',
-                                            balloonContentBody: "<img src='" + a.balloon.photo + "' width='75px'><br>" + "Адврес: " + a.address + "<br>Телефоны: " + a.balloon.phone +"<br>Email: " + a.balloon.email,
+                                            balloonContentHeader: "<a href='/services/services/view_service?service_id=" + a.balloon.serviceId + "'>" + '<b>' + a.balloon.title + '</b>' + '</a>',
+                                            balloonContentBody: "<a href='/services/services/view_service?service_id=" + a.balloon.serviceId + "'>" + "<img src='" + a.balloon.photo + "' width='75px'><br>"+ '</a>' + "Адврес: " + a.address + "<br>Телефоны: " + a.balloon.phone +"<br>Email: " + a.balloon.email,
                                             balloonContentFooter: "<a href='/services/services/view_service?service_id=" + a.balloon.serviceId + "'>Подробнее" + "</a>"
                                         }
                                     }

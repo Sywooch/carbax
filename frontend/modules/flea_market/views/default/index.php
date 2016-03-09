@@ -1,6 +1,6 @@
 <?php
 use yii\widgets\Breadcrumbs;
-$this->title = "Мои запчасти";
+$this->title = "Мои объявления";
 $this->registerCssFile('/css/bootstrap_btn.min.css');
 $this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
     <h1><?= $this->title ?></h1>
-    <button onclick="location.href='/flea_market/default/add?type=zap'" type="button" class="btn btn-success addServiceBtn">Добавить запчасть</button>
+    <button onclick="location.href='/flea_market/default/add?type=zap'" type="button" class="btn btn-success addServiceBtn">Добавить объявление</button>
     <table class="addAllServices">
         <?php
         foreach ($market as $mark) {

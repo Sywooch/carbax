@@ -89,7 +89,6 @@ use yii\widgets\ActiveForm;
     ]);
     */?>
 
-    <h2>Добавить фото</h2>
     <?php
     echo '<label class="control-label">Добавить фото</label>';
     /*echo FileInput::widget([
@@ -132,8 +131,6 @@ use yii\widgets\ActiveForm;
     <ul class="nav nav-tabs">
         <li class="active"><a href="#circs" data-toggle="tab">Условия</a></li>
         <li><a href="#desc" data-toggle="tab">Описание</a></li>
-        <!--<li><a href="#messages" data-toggle="tab">Сообщения</a></li>
-        <li><a href="#settings" data-toggle="tab">Настройки</a></li>-->
     </ul>
 
     <div class="tab-content">
@@ -142,7 +139,6 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'dt_start')->input('date')->label('С'); ?>
             <?php //Debug::prn($model)?>
             <?= $form->field($model, 'dt_end')->input('date')->label('До'); ?>
-            <label class="control-label" for="offers-duration_action_end">До</label>
             <?/*= Html::input('date','dae','',['class'=>'form-control','id'=>'offers-duration_action_end']); */?>
 
 
@@ -179,7 +175,10 @@ use yii\widgets\ActiveForm;
 </div>
 
 <div class="offersRight">
-    <div class="map">Карта</div>
+    <div class="offersMapWr">
+        <div id="mapOffers"></div>
+    </div>
+
     <div class="addressToServises"></div>
 
 </div>

@@ -1,5 +1,6 @@
 <?php
 use common\models\db\RequestAddForm;
+use frontend\modules\request\widget\AutoGarage;
 use frontend\widgets\CustomField;
 use frontend\widgets\RegionSelect;
 use frontend\widgets\RequestAddFieldGroup;
@@ -219,7 +220,7 @@ $sortie = [
 <form id="addForm" action="send_request" method="post">
 
     <p class="parag_text">выберите автомобиль из <span class="selectAutoGarage">гаража:</span></p>
-    <div id="selectAutoGarage"></div>
+    <div id="selectAutoGarage"><?= AutoGarage::widget()?></div>
     <!--<p class="parag_text"><span>у вас нет машин в гараже</span></p>-->
 
     <p class="parag_text">Выберите тип Вашего транспортного средства</p>

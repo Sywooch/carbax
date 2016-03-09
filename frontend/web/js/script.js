@@ -945,7 +945,7 @@ jQuery(document).ready(function ($) {
             url: "/ajax/ajax/get_address_services",
             data: 'servicesId=' + servicesId,
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 $('.selectAddressForServices').html(data);
             }
         });
@@ -1207,7 +1207,52 @@ jQuery(document).ready(function ($) {
             }
         });
         return false;
-    })
+    });
+
+    $(document).on('click', '.addressId', function(){
+        var address = [];
+        $('.addressId:checked').each(function(){
+            address.push([$(this).next().text(),$(this).attr('serviceTypeId')]);
+        });
+        var map = new Map({element:'mapOffers'});
+        var add = [];
+        address.forEach(function(item, i, arr){
+            add.push({
+                address:item[0],
+                balloon: {
+                    serviceTypeId:item[1],
+                    title:item[0],
+                    hintContent:item[0]
+                }
+            });
+        });
+        $('#mapOffers').empty();
+        map.addToMap(add,false);
+
+        console.log(add);
+    });
+
+
+    var address = [];
+    $('.addressToMap').each(function(){
+        address.push([$(this).text(),$(this).attr('serviceTypeId')]);
+    });
+
+    var map = new Map({element:'mapOffers'});
+    var add = [];
+    address.forEach(function(item, i, arr){
+        add.push({
+            address:item[0],
+            balloon: {
+                serviceTypeId:item[1],
+                title:item[0],
+                hintContent:item[0]
+            }
+        });
+    });
+    $('#mapOffers').empty();
+    map.addToMap(add,false);
+    //console.log($(this).text());
 
 });
 

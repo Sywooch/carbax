@@ -147,7 +147,7 @@ $IpGeoBase->updateDB()
                     </div>
 
 
-                    <span class="question"><a class="ask" href="#">Задать вопрос</a></span>
+                    <!--<span class="question"><a class="ask" href="#">Задать вопрос</a></span>-->
 
 
                 </div>
@@ -338,15 +338,15 @@ $IpGeoBase->updateDB()
             <span class="footer__social--link--counter"><?= $fb->{$fburl}->shares;?></span>
 
         </div>
-
+        <div class="map-wrap">
+            <div id="mapOffers"></div>
+        </div>
         <div class="offers_address">
             <?php foreach($info as $inf):?>
                 <h3><?= $inf[0]->name; ?></h3>
                 <i class="fa fa-compass"></i>
                 <a class="offers_website" target="_blank" href="<?= $inf[0]->website; ?>">Посмотрите сайт</a>
-                <div class="map-wrap">
-                    <div id="map_canvas"></div>
-                </div>
+                <div class="cleared"></div>
 
                 <?php foreach($inf[0]['address'] as $seradr):?>
                     <?php
@@ -357,9 +357,9 @@ $IpGeoBase->updateDB()
                         </div>
 
                         <div class="offers_address--text">
-                            <p> <?= $seradr->address; ?><br/>
-                                <a href="#">Посмотреть
-                                    на карте</a></p>
+                            <p><span class="addressToMap" serviceTypeId="<?= $inf[0]->service_type_id; ?>"> <?= $seradr->address; ?></span><br/>
+                                <!--<a href="#">Посмотреть
+                                    на карте</a></p>-->
                         </div>
                     <?php endif; ?>
                 <?php endforeach;?>
@@ -398,7 +398,7 @@ $IpGeoBase->updateDB()
             <?php endforeach;?>
         </div>
 
-        <span class="question" style="margin-left: 75px;"><a class="ask" href="#">Все адреса</a></span>
+        <!--<span class="question" style="margin-left: 75px;"><a class="ask" href="#">Все адреса</a></span>-->
 
     </div>
 

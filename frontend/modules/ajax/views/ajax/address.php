@@ -3,7 +3,7 @@
     <div class="singleContent__desc">
         <div class="singleContent__desc--works">
             <?php foreach($address as $adr): ?>
-                <input type="checkbox"  id="address_<?=$adr->id;?>" name="addressId[]" class="addressId" value="<?= $adr->id?>"/>
+                <input type="checkbox"  id="address_<?=$adr->id;?>" name="addressId[]" class="addressId" serviceTypeId="<?= $service->service_type_id; ?>" value="<?= $adr->id?>"/>
                 <label for="address_<?=$adr->id;?>"><span></span><?= $adr->address; ?></label>
             <?php endforeach;?>
         </div>

@@ -17,7 +17,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
 $this->title = ($_GET['type'] == 'auto') ? 'Добавить автомобиль' : 'Добавить запчасть';
 $this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
 $this->params['breadcrumbs'][] = [
-    'label' => ($_GET['type'] == 'auto') ? 'Мои автомобили' : 'Мои запчасти',
+    'label' => ($_GET['type'] == 'auto') ? 'Мои объявления' : 'Мои объявления',
     'url' => ($_GET['type'] == 'auto') ? 'sale_auto' : 'index'
 ];
 $this->params['breadcrumbs'][] = $this->title;
