@@ -2824,7 +2824,7 @@ div#drivebo {
 .inner{
     display: block;
     position: relative;
-    float: left;
+    /*float: left;*/
     width: 100%;
 }
 
