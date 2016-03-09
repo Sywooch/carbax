@@ -1,8 +1,8 @@
 <div class="deals__menu">
     <ul>
-        <li><a href="#" class="deals__menu--all deals__menu--service" serviceId="0">Все</a></li>
+        <li><a href="/offers/offers/all_offers?id=0" class="deals__menu--all" serviceId="0">Все</a></li>
         <?php foreach($srviceType as $st): ?>
-            <li><a href="#" class="deals__menu--all deals__menu--service"><?= $st->name;?></a></li>
+            <li><a href="/offers/offers/all_offers?id=<?= $st->id;?>" class="deals__menu--all"><?= $st->name;?></a></li>
         <?php endforeach; ?>
     </ul>
 </div>

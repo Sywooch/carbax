@@ -211,27 +211,41 @@ class OffersController extends Controller
 
 
 
-    public function actionAll_offers($id = false){
+    public function actionAll_offers($id){
         $this->view->params['officeHide'] = false;
         $this->view->params['bannersHide'] = true;
 
         $address = Address::get_geo_info();
-        if($_GET['id']){
-            $serviceType = ServiceType::find()->filterWhere(['id' => $_GET['id']])->one();
-        }
-
         $pagination = new Pagination([
             'defaultPageSize' => 9,
-            'totalCount' => Offers::find()->count(),
+            'totalCount' => Offers::find()->where(['status'=>1])->count(),
         ]);
+        if($id !=0){
+            $serviceType = ServiceType::find()->filterWhere(['id' => $id])->one();
 
-        $offers = Offers::find()
-            ->where(['region_id'=>$address['region_id']])
-            ->filterWhere(['service_type_id'=>$_GET['id']])
-            ->orderBy('dt_add DESC')
-            ->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->all();
+            $offers = Offers::find()
+                ->leftJoin('`offers_images`','`offers_images`.`offers_id` = `offers`.`id`')
+                ->where(['LIKE', 'region_id', $address['region_id']])
+                ->andWhere(['LIKE', 'service_type_id', $id.','])
+                ->andWhere(['status'=>1])
+                ->orderBy('dt_add DESC')
+                ->offset($pagination->offset)
+                ->limit($pagination->limit)
+                ->with('offers_images')
+                ->all();
+        }else{
+            $offers = Offers::find()
+                ->leftJoin('`offers_images`','`offers_images`.`offers_id` = `offers`.`id`')
+                ->where(['LIKE', 'region_id', $address['region_id']])
+                ->andWhere(['status'=>1])
+                ->orderBy('dt_add DESC')
+                ->offset($pagination->offset)
+                ->limit($pagination->limit)
+                ->with('offers_images')
+                ->all();
+        }
+
+
         return $this->render('all_offers',
             [
                 'offers' => $offers,

@@ -28,10 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="serviceIcon"><a href="<?= Url::to('flea_market/sale_parts') ?>"><img src="<?= Url::base(true) ?>/media/img/sale_zap.png" alt=""></a></div>
             <div class="serviceLink">Продать запчасти</div>
         </div>
-        <div class="serviceItem">
-            <div class="serviceIcon"><a href="<?= Url::to('offers') ?>"><img src="<?= Url::base(true) ?>/media/img/spec.png" alt=""></a></div>
+       <!-- <div class="serviceItem">
+            <div class="serviceIcon"><a href="<?/*= Url::to('offers') */?>"><img src="<?/*= Url::base(true) */?>/media/img/spec.png" alt=""></a></div>
             <div class="serviceLink">Спецпредложения</div>
-        </div>
+        </div>-->
         <div class="serviceItem">
             <div class="serviceIcon"><a href="<?= Url::to('favorites') ?>"><img src="<?= Url::base(true) ?>/media/img/note_o.png" alt=""></a></div>
             <div class="serviceLink">Избранное</div>
@@ -53,8 +53,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="serviceLink">Мой заявки</div>
             </div>-->
             <div class="serviceItem">
-                <div class="serviceIcon"><img src="<?= Url::base(true) ?>/media/img/sale_history.png" alt=""></div>
-                <div class="serviceLink">История покупок</div>
+                <div class="serviceIcon"><a href="<?= Url::to('offers');?>"><img src="<?= Url::base(true) ?>/media/img/sale_history.png" alt=""></a></div>
+                <div class="serviceLink">Спецпредложения</div>
             </div>
             <div class="serviceItem">
                 <div class="serviceIcon"><a href="<?= Url::to('offers/create') ?>"><img src="<?= Url::base(true) ?>/media/img/procent.png" alt=""></a></div>
