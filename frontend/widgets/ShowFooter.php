@@ -9,11 +9,15 @@
 namespace frontend\widgets;
 
 
+use common\classes\Address;
+use common\classes\Debug;
 use yii\base\Widget;
 
 class ShowFooter extends Widget
 {
+
     public function run(){
-        return $this->render('footer');
+        $address = Address::get_geo_info();
+        return $this->render('footer',['address' => $address]);
     }
 }

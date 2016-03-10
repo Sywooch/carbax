@@ -827,8 +827,18 @@ jQuery(document).ready(function ($) {
     $(".service_phone").mask("+7 (999) 999-9999");
 
     //Запрет ввода букв в поле "Цена"
-    if(document.getElementById('addPrice')) {
+    if(document.getElementById('addPrice') || document.getElementById('probeg') || document.getElementById('summaStrah')) {
         document.getElementById("addPrice").onkeypress = function (event) {
+            event = event || window.event;
+            if (event.charCode && (event.charCode < 48 || event.charCode > 57))// проверка на event.charCode - чтобы пользователь мог нажать backspace, enter, стрелочку назад...
+                return false;
+        };
+        document.getElementById("probeg").onkeypress = function (event) {
+            event = event || window.event;
+            if (event.charCode && (event.charCode < 48 || event.charCode > 57))// проверка на event.charCode - чтобы пользователь мог нажать backspace, enter, стрелочку назад...
+                return false;
+        };
+        document.getElementById("summaStrah").onkeypress = function (event) {
             event = event || window.event;
             if (event.charCode && (event.charCode < 48 || event.charCode > 57))// проверка на event.charCode - чтобы пользователь мог нажать backspace, enter, стрелочку назад...
                 return false;
@@ -848,6 +858,16 @@ jQuery(document).ready(function ($) {
                 return false;
         };
     }
+
+    if(document.getElementsByClassName('number')){
+
+        document.getElementsByClassName("number").onkeypress = function (event) {
+            event = event || window.event;
+            if (event.charCode && (event.charCode < 48 || event.charCode > 57))// проверка на event.charCode - чтобы пользователь мог нажать backspace, enter, стрелочку назад...
+                return false;
+        };
+    }
+
     $(document).on('click','.addAddressMarket',function(){
         if($(".addAddressMarket").prop("checked")){
             $('.addAddressMarketInp').html('<input type="text" name="address" class="addContent__title">');
@@ -1233,27 +1253,29 @@ jQuery(document).ready(function ($) {
     });
 
 
-    var address = [];
-    $('.addressToMap').each(function(){
-        address.push([$(this).text(),$(this).attr('serviceTypeId')]);
-    });
 
-    var map = new Map({element:'mapOffers'});
-    var add = [];
-    address.forEach(function(item, i, arr){
-        add.push({
-            address:item[0],
-            balloon: {
-                serviceTypeId:item[1],
-                title:item[0],
-                hintContent:item[0]
-            }
+    if($(".addressToMap").length>0) {
+        var address = [];
+        $('.addressToMap').each(function () {
+            address.push([$(this).text(), $(this).attr('serviceTypeId')]);
         });
-    });
-    $('#mapOffers').empty();
-    map.addToMap(add,false);
-    //console.log($(this).text());
 
+        var map = new Map({element: 'mapOffers'});
+        var add = [];
+        address.forEach(function (item, i, arr) {
+            add.push({
+                address: item[0],
+                balloon: {
+                    serviceTypeId: item[1],
+                    title: item[0],
+                    hintContent: item[0]
+                }
+            });
+        });
+        $('#mapOffers').empty();
+        map.addToMap(add, false);
+        //console.log($(this).text());
+    }
 });
 
 

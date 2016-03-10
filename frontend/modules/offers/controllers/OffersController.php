@@ -67,9 +67,9 @@ class OffersController extends Controller
         $pages->pageSize = 8;
         $models = $query
             ->where(['user_id' => Yii::$app->user->id])
-            ->offset($pages->offset)
-            ->limit($pages->limit)
-
+            /*->offset($pages->offset)
+            ->limit($pages->limit)*/
+            ->orderBy('dt_add DESC')
             ->all();
         return $this->render('index', [
             'models' => $models,

@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <!----AKD47 section---->
 
 <section class="main-container">
-
+<h1>Заявка в автосалоны</h1>
 <form id="addForm" action="send_request" method="post">
 
 
@@ -67,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <label for="" style="width:100%; font-size:15px">Контакты</label>
         <input type="text" id="" class="addContent__text" name="fio" value="" placeholder="Введите ФИО">
-        <input type="text" id="" class="addContent__text" name="tel" value="" placeholder="Введите Ваш номер телефона">
+        <input type="text" id="user_telephon" class="addContent__text" name="tel" value="" placeholder="Введите Ваш номер телефона" title="Формат: +7 (999) 999-9999">
         <input type="text" id="" class="addContent__text" name="email" value="" placeholder="Введите e-mail">
     </div>
 
