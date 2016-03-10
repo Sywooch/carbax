@@ -15,7 +15,7 @@ use yii\widgets\LinkPager;
         </div>
         <div class="deals__menu">
             <ul>
-                <li><a href="#" class="deals__menu--all deals__menu--service deals__menu--active" serviceTypeId="0">Все</a></li>
+                <li><a href="#" class="deals__menu--service deals__menu--active" serviceTypeId="0">Все</a></li>
                 <li><a href="#" class="deals__menu--service" serviceTypeId="1">Автосалон</a></li>
                 <li><a href="#" class="deals__menu--service" serviceTypeId="4">Шины / Диски</a></li>
                 <li><a href="#" class="deals__menu--service" serviceTypeId="6">Тюнинг</a></li>
