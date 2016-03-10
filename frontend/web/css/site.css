@@ -3052,7 +3052,7 @@ input[type="checkbox"] + label {
 
 .offers__block {
     float: left;
-    width: 50%;
+   /* width: 50%;*/
     margin: 10px 0;
 }
 .offers__block img{

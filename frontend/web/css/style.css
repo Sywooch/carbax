@@ -3428,6 +3428,7 @@ a#allOffers,a.allNews {
     float: left;
 }
 
+
 /*----Avtosalon----*/
 
 /*---------------------------------
@@ -3620,3 +3621,49 @@ a#allOffers,a.allNews {
 /*----Avtosalon address end----*/
 
 /*----Avtosalon end----*/
+.decionOffersWr {
+    display: block;
+    float: left;
+}
+
+.decionOffersWr .offers_agreement--future .offers_agreement--text p{
+    line-height: 22px;
+}
+
+.decionOffersWr .offers_agreement{
+    margin:0;
+}
+
+.offersControl {
+    display: block;
+    float: left;
+}
+
+.myLocationCarbax {
+    z-index: 999999;
+    position: absolute;
+    top: 48px;
+    left: 12px;
+    cursor:pointer;
+    display: block;
+    float: left;
+    width: 178px;
+    border: 1px solid rgba(2, 1, 2, 0.21);
+    background-color: #272727;
+    -moz-box-shadow: 0 2px 4px rgba(2, 1, 2, 0.19), inset 0 2px 2px rgba(255, 255, 255, 0.12);
+    -webkit-box-shadow: 0 2px 4px rgba(2, 1, 2, 0.19), inset 0 2px 2px rgba(255, 255, 255, 0.12);
+    box-shadow: 0 2px 4px rgba(2, 1, 2, 0.19), inset 0 2px 2px rgba(255, 255, 255, 0.12);
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…AiIHdpZHRoPSIxODkiIGhlaWdodD0iMjkiIGZpbGw9InVybCgjaGF0MCkiIC8+Cjwvc3ZnPg==);
+    background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.25) 0%, transparent 100%);
+    background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.25) 0%, transparent 100%);
+    background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.25) 0%, transparent 100%);
+    background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.25) 0%, transparent 100%);
+    color: #ff6b00;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 15px;
+    font-size: 15px;
+    line-height: 29px;
+}
+

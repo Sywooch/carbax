@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <!----AKD47 section---->
 
 <section class="main-container">
-
+<h1>Заявка в автосервисы</h1>
 <form id="addForm" action="send_request" method="post">
 
 
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="mileage">
     <p class="parag_text">Укажите пробег автомобиля:</p>
 
-    <input class="mileage__next probeg" name="probeg" placeholder="Введите пробег">
+    <input class="mileage__next probeg" name="probeg" id="addPrice" placeholder="Введите пробег">
 
 </div>
 

@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <!----AKD47 section---->
 
 <section class="main-container">
-
+<h1>Заявка на автострахование</h1>
 <form id="addForm" action="send_request" method="post">
 
 
@@ -68,27 +68,27 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="mileage_sm">
     <p class="parag_text">Дата начала эксплуатации:</p>
 
-    <input class="mileage__next" name="dateStart" placeholder="Введите дату хх.хх.хххх">
+    <input  class="mileage__next" name="dateStart" placeholder="Введите дату хх.хх.хххх">
 </div>
 
 
 <div class="mileage_sm">
     <p class="parag_text">Количество лошадиных сил:</p>
 
-    <input class="mileage__next" name="kol_Cil" placeholder="Введите ">
+    <input class="mileage__next" id="addPrice" name="kol_Cil" placeholder="Введите ">
 
 </div>
 
 <div class="mileage_sm">
     <p class="parag_text">Пробег:</p>
 
-    <input class="mileage__next probeg" name="probeg" placeholder="Введите значение">
+    <input class="mileage__next probeg" id="probeg" name="probeg" placeholder="Введите значение">
 </div>
 
 <div class="mileage_sm">
     <p class="parag_text">Страховая сумма:</p>
 
-    <input class="mileage__next" name="summaStrah" placeholder="Введите значение">
+    <input class="mileage__next" name="summaStrah" id="summaStrah" placeholder="Введите значение">
 </div>
 
 
@@ -163,9 +163,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="mileage_sm">
             <p class="parag_text">Или дата рождения:</p>
 
-            <input class="mileage__next--sm" name="driveInfo[1][datarozgd][]" placeholder="ДД">
-            <input class="mileage__next--sm" name="driveInfo[1][datarozgd][]" placeholder="ММ">
-            <input class="mileage__next--sm" name="driveInfo[1][datarozgd][]" placeholder="ГГГГ">
+            <input class="mileage__next--sm number" name="driveInfo[1][datarozgd][]" placeholder="ДД">
+            <input class="mileage__next--sm number" name="driveInfo[1][datarozgd][]" placeholder="ММ">
+            <input class="mileage__next--sm number" name="driveInfo[1][datarozgd][]" placeholder="ГГГГ">
         </div>
 
         <div class="mileage_sm">
@@ -328,7 +328,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php echo Html::hiddenInput('request_type_id', $_GET['id']);?>
         <label for="" style="width:100%; font-size:15px">Контакты</label>
         <input type="text" id="" class="addContent__text" name="fio" value="" placeholder="Введите ФИО">
-        <input type="text" id="" class="addContent__text" name="tel" value="" placeholder="Введите Ваш номер телефона">
+        <input type="text" class="addContent__text" name="tel" id="user_telephon" value="" placeholder="Введите Ваш номер телефона" title="Формат: +7 (999) 999-9999">
         <input type="text" id="" class="addContent__text" name="email" value="" placeholder="Введите e-mail">
 
         <label for="addContent__description" style="width:100%; font-size:15px">Комментарии:</label>

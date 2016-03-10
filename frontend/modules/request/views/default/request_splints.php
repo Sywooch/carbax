@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <!----AKD47 section---->
 
 <section class="main-container">
-
+<h1>Заявка на шины</h1>
     <form id="addForm" action="send_request" method="post">
 
         <p class="parag_text">выберите автомобиль из <span class="selectAutoGarage">гаража:</span></p>

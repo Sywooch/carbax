@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <section class="request_autoschool">
     <div class="contain_wr">
+        <h1>Заявка в автошколы</h1>
     <form id="addForm" action="send_request" method="post">
         <div class="singleContent__desc">
             <div class="addContent">

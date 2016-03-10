@@ -247,13 +247,13 @@ Debug::prn($services);*/
 
                 <div id="main_map" style="width:100%; height:100%"></div>
 
-
+            <div class="myLocationCarbax">Мое местоположение</div>
             <div class="filter__map--checklist">
                 <div class="hide_filter__map--checklist"></div>
 
                 <?php foreach($comfortZone as $cf): ?>
                     <input type="checkbox" id="checkbox<?= $cf->id; ?>" name="comfortZone[]" />
-                    <label for="checkbox<?= $cf->id; ?>" class="comfortZone" comfortZoneId="1"><span></span><?= $cf->name; ?></label>
+                    <label for="checkbox<?= $cf->id; ?>" class="comfortZone" comfortZoneId="<?= $cf->id; ?>"><span></span><?= $cf->name; ?></label>
                 <?php endforeach; ?>
 
                 <!--<input type="checkbox" id="checkbox01" name="comfortZone[]" />

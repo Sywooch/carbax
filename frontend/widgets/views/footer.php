@@ -7,7 +7,7 @@ use yii\helpers\Url;
         <div class="foot--logo">
             <img src="/media/img/carbax-logo.png" alt="">
             <h4>Все автоуслуги Вашего <span class="orange">города</span></h4>
-            <a href="#" class="foot--city">Москва</a>
+            <span class="foot--city"><?= $address['city_name']; ?></span>
         </div>
         <div class="foot__sitemap">
             <ul>
