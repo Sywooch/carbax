@@ -55,6 +55,9 @@ return [
         'offers' => [
             'class' => 'backend\modules\offers\Offers',
         ],
+        'static_pages' => [
+            'class' => 'backend\modules\static_pages\Static_pages',
+        ],
     ],
     'components' => [
         'request' => [
@@ -74,6 +77,8 @@ return [
                 'request_add_form' => '/request_add_form/request_add_form',
                 'complaint' => 'complaint/complaint/index',
                 'adsmanager' => 'adsmanager/adsmanager/index',
+                'offers' => 'offers/offers/index',
+                'static_pages' => 'static_pages/static_pages/index',
             ],
         ],
         'urlManagerFrontend' => [

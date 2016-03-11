@@ -90,27 +90,27 @@ use yii\helpers\Url;
 
             <ul>
                 <li>
-                    <a href="#" class="foot__sitemap--parent">Спецпредложения</a></li>
+                    <?= Html::a('Спецпредложения',['/offers/offers/all_offers','id'=>0],['class'=>'foot__sitemap--parent']); ?>
                 <li>
-                    <a href="#">Автосалон</a>
+                    <?= Html::a('Автосалон',['/offers/offers/all_offers','id'=>'1']); ?>
                 </li>
                 <li>
-                    <a href="#">Шиномонтаж</a>
+                    <?= Html::a('Шиномонтаж',['/offers/offers/all_offers','id'=>'2']); ?>
                 </li>
                 <li>
-                    <a href="#">Шины/Диски</a>
+                    <?= Html::a('Шины/Диски',['/offers/offers/all_offers','id'=>'4']); ?>
                 </li>
                 <li>
-                    <a href="#">Тюнинг</a>
+                    <?= Html::a('Тюнинг',['/offers/offers/all_offers','id'=>'6']); ?>
                 </li>
                 <li>
-                    <a href="#">Автомойка</a>
+                    <?= Html::a('Автомойка',['/offers/offers/all_offers','id'=>'10']); ?>
                 </li>
                 <li>
-                    <a href="#">Автосервис</a>
+                    <?= Html::a('Автосервис',['/offers/offers/all_offers','id'=>'11']); ?>
                 </li>
                 <li>
-                    <a href="#">Автомагазин</a>
+                    <?= Html::a('Автомагазин',['/offers/offers/all_offers','id'=>'12']); ?>
                 </li>
             </ul>
         </div>
@@ -128,38 +128,38 @@ use yii\helpers\Url;
                 <li>
                     <a href="#">По моделям</a>
                 </li>
-                <li>
+               <!-- <li>
                     <a href="#">#мойcarbax</a>
-                </li>
+                </li>-->
             </ul>
             <ul>
                 <li>
-                    <a href="#" class="foot__sitemap--parent">Автопортал</a></li>
+                    <a href="<?= Url::to(['/static_pages','id'=>'1']);?>" class="foot__sitemap--parent">Автопортал</a></li>
                 <li>
-                    <a href="#">О нас</a>
+                    <a href="<?= Url::to(['/static_pages','id'=>'1']);?>">О нас</a>
                 </li>
                 <li>
-                    <a href="#">Правила сайта</a>
+                    <a href="<?= Url::to(['/static_pages','id'=>'2']);?>">Правила сайта</a>
                 </li>
                 <li>
-                    <a href="#">Реклама </a>
+                    <a href="<?= Url::to(['/static_pages','id'=>'3']);?>">Реклама </a>
                 </li>
                 <li>
-                    <a href="#">Контакты</a>
+                    <a href="<?= Url::to(['/static_pages','id'=>'4']);?>">Контакты</a>
                 </li>
             </ul>
 
             <ul>
                 <li>
-                    <a href="#" class="foot__sitemap--parent">Управление бизнесом</a></li>
+                    <a href="<?= Url::to('/office');?>" class="foot__sitemap--parent">Управление бизнесом</a></li>
                 <li>
-                    <a href="#">Личный кабинет</a>
+                    <a href="<?= Url::to('/office');?>">Личный кабинет</a>
                 </li>
                 <li>
-                    <a href="#">Мой бизнес</a>
+                    <a href="<?= Url::to('/select_service');?>">Мой бизнес</a>
                 </li>
                 <li>
-                    <a href="#">Создать спецпредложение</a>
+                    <a href="<?= Url::to('/offers/create');?>">Создать спецпредложение</a>
                 </li>
             </ul>
             <div class="foot--social">

@@ -42,7 +42,7 @@ return [
                 'request_type' => 'request/default/request_type',
                 'favorites' => 'favorites/default',
                 'complaint' => 'complaint/default/complaint',
-                'offers' => 'offers/offers',
+                'offers' => '/offers/offers',
                 'offers/create' => 'offers/offers/create',
                 'flea_market' => 'flea_market/default',
                 'flea_market/sale_auto' => 'flea_market/default/sale_auto',
@@ -112,6 +112,9 @@ return [
         ],
         'favorites' => [
             'class' => 'frontend\modules\favorites\Favorites',
+        ],
+        'static_pages' => [
+            'class' => 'frontend\modules\static_pages\Static_pages',
         ],
     ],
     'params' => $params,
