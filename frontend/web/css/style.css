@@ -2910,6 +2910,8 @@ div#drivebo {
     z-index:1;
     position:absolute;
     overflow:hidden;
+    width: 100%;
+    height: 354px;
 }
 
 .sliderkit .sliderkit-panel-active{
@@ -3386,10 +3388,10 @@ i.fa-chevron-right{
 }
 
 
-/*.carousel-continuous .sliderkit-nav .sliderkit-nav-next a:hover,*/
-/*.carousel-continuous .sliderkit-nav .sliderkit-nav-next a:focus{*/
-    /*background-position:-145px center;*/
-/*}*/
+.carousel-continuous .sliderkit-nav .sliderkit-nav-next a:hover,
+.carousel-continuous .sliderkit-nav .sliderkit-nav-next a:focus{
+    background-position:-145px center;
+}
 
 /* Buttons > Disable */
 .carousel-continuous .sliderkit-nav .sliderkit-btn-disable{
@@ -3426,6 +3428,218 @@ a#allOffers,a.allNews {
     float: left;
 }
 
+
+/*----Avtosalon----*/
+
+/*---------------------------------
+ *  Photos gallery > With captions
+ *---------------------------------*/
+.slidkit-nav-img{
+    transform: translate(0%,5%)!important;
+    overflow: hidden;
+    height: 100%;
+}
+
+.photosgallery-captions{
+    width: 100%;
+    height: 424px;
+    /*padding:0 0 76px;*/
+}
+
+/* Navbar */
+.photosgallery-captions .sliderkit-nav{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    z-index: 10;
+}
+
+.photosgallery-captions .sliderkit-nav-clip ul li{
+    float:left;
+    margin:0;
+}
+
+.photosgallery-captions .sliderkit-nav-clip ul li a{
+    display:block;
+    width:75px;
+    height:50px;
+    overflow:hidden;
+    margin:0;
+    padding:3px;
+}
+
+.photosgallery-captions .sliderkit-nav-clip ul li.sliderkit-selected a{
+    padding:0;
+    border:3px solid #fff;
+}
+
+/* Buttons */
+.photosgallery-captions .sliderkit-btn{
+    position:absolute;
+    top:0;
+}
+
+.photosgallery-captions .sliderkit-btn a{
+    display:block;
+    height:76px;
+    background:transparent url("../media/img/arrows-h.png") no-repeat center 0;
+}
+
+.photosgallery-captions .sliderkit-btn span{
+    display:none;
+}
+
+.photosgallery-captions .sliderkit-btn-disable{
+    opacity:0/*can be set to any value until 1*/;
+    cursor:default;
+}
+
+/* Buttons > Navbar buttons */
+.photosgallery-captions .sliderkit-nav-btn{
+    width:15px;
+}
+
+.photosgallery-captions .sliderkit-nav .sliderkit-nav-prev{
+    left:15px;
+}
+
+.photosgallery-captions .sliderkit-nav .sliderkit-nav-next{
+    right:15px;
+}
+
+.photosgallery-captions .sliderkit-nav .sliderkit-nav-prev a{
+    background-position:-89px center;
+}
+
+.photosgallery-captions .sliderkit-nav .sliderkit-nav-next a{
+    background-position:-108px center;
+}
+
+.photosgallery-captions .sliderkit-nav .sliderkit-nav-prev a:hover,
+.photosgallery-captions .sliderkit-nav .sliderkit-nav-prev a:focus{
+    background-position:-126px center;
+}
+
+.photosgallery-captions .sliderkit-nav .sliderkit-nav-next a:hover,
+.photosgallery-captions .sliderkit-nav .sliderkit-nav-next a:focus{
+    background-position:-145px center;
+}
+
+/* Buttons > Go buttons */
+.photosgallery-captions .sliderkit-go-btn{
+    width:10px;
+}
+
+.photosgallery-captions .sliderkit-nav .sliderkit-go-prev{
+    left:40px;
+}
+
+.photosgallery-captions .sliderkit-nav .sliderkit-go-next{
+    right:40px;
+}
+
+.photosgallery-captions .sliderkit-nav .sliderkit-go-prev a{
+    background-position:0 center;
+}
+
+.photosgallery-captions .sliderkit-nav .sliderkit-go-next a{
+    background-position:-20px center;
+}
+
+/*.photosgallery-captions .sliderkit-nav .sliderkit-go-prev a:hover,*/
+/*.photosgallery-captions .sliderkit-nav .sliderkit-go-prev a:focus{*/
+    /*background-position:-40px center;*/
+/*}*/
+
+/*.photosgallery-captions .sliderkit-nav .sliderkit-go-next a:hover,*/
+/*.photosgallery-captions .sliderkit-nav .sliderkit-go-next a:focus{*/
+    /*background-position:-60px center;*/
+/*}*/
+
+.photosgallery-captions .sliderkit-panel .sliderkit-panel-overlay{
+    height:70px;
+    width:500px;
+    background:#000;
+    opacity:0.6;
+}
+/*---------------------------------
+ *  Photos gallery > With captions END
+ *---------------------------------*/
+/*----Avtosalon address----*/
+.singleContent__worksWith-block p{
+    font-size: 15px;
+    font-family: HelveticaNeueCyrLight;
+}
+
+.singleContent__worksWith-block p span{
+    color: rgb(255,106,0);
+    font-weight: bold;
+}
+
+.singleContent__desc{
+    display: block;
+    position: relative;
+    width: 100%;
+    float: left;
+}
+
+.singleContent__desc p{
+    font-size: 16px;
+    font-family: HelveticaNeueCyrMedium;
+    color: #1b1b1b;
+}
+
+.singleContent__desc p span{
+    color: rgb(255,106,0);
+}
+
+.singleContent__desc img.car__logo{
+    margin: 5px 8px 5px 5px;
+}
+
+.singleContent__desc--payment{
+    display: block;
+    position: relative;
+    width: 100%;
+    float: left;
+    margin: 10px 0 10px 0;
+    border-top: 1px solid rgb(202,202,202);
+    border-bottom: 1px solid rgb(202,202,202);
+}
+
+.singleContent__desc--payment span{
+    font-size: 16px;
+    font-family: HelveticaNeueCyrMedium;
+    color: #1b1b1b;
+}
+/*----Avtosalon address end----*/
+
+.comfortZone{
+    display: block;
+    position: relative;
+    width: 100%;
+    float: left;
+    margin: 5px auto;
+}
+
+.comfortZone img{
+    display: block;
+    position: relative;
+    float: left;
+    width: 30px;
+    height: 30px;
+}
+
+.comfortZone span{
+    text-align: center;
+    margin-left: 10px;
+    line-height: 30px;
+}
+
+/*----Avtosalon end----*/
 .decionOffersWr {
     display: block;
     float: left;
@@ -3471,3 +3685,4 @@ a#allOffers,a.allNews {
     font-size: 15px;
     line-height: 29px;
 }
+
