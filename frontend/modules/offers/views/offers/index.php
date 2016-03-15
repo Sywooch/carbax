@@ -23,7 +23,9 @@ $this->registerCssFile('/css/bootstrap.min.css');
 
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="offersActive">
-                    <?php foreach ($models as $n): ?>
+                    <?php
+                    //Debug::prn($models);
+                    foreach ($models as $n): ?>
                         <?php if(strtotime(date('Y-m-d')) < strtotime($n->dt_end)):?>
                             <?php
                                 $decisonY = OffersAttend::find()->where(['offers_id' => $n->id, 'decison' => '1'])->count();

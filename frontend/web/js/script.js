@@ -823,9 +823,16 @@ jQuery(document).ready(function ($) {
     });
 
     //Шаблон телефона
+
     $("#user_telephon").mask("+7 (999) 999-9999");
     $(".service_phone").mask("+7 (999) 999-9999");
+    $("#dateStart").mask("99/99/9999");
 
+    /*//Шаблон сайта
+    $(".service_website").mask("http://!**********************************************************************************");*/
+    $(document).on('click','.service_website', function(){
+        $(this).val('http://');
+    } );
     //Запрет ввода букв в поле "Цена"
     if(document.getElementById('addPrice') || document.getElementById('probeg') || document.getElementById('summaStrah')) {
         document.getElementById("addPrice").onkeypress = function (event) {

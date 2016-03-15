@@ -26,6 +26,31 @@ jQuery(document).ready(function ($){
         }
     }
 
+    if(document.getElementsByClassName('addAddreToMapServicesView').length > 0){//те такие блоки есть
+        var address = $('.addAddreToMapServicesView').text();
+        var addressText = $('.addAddreToMapServicesView').text();
+        var map = new Map();
+        if(address == ''){
+            map.mapInit();
+        }
+        else{
+            var address = [];
+            var i = 0;
+            $('.addAddreToMapServicesView').each(function () {
+                address.push({
+                    address:$(this).text(),
+                    balloon: {
+                        serviceTypeId:$(this).attr('service_type_id'),
+                        title:addressText
+                    }
+                });
+                i = i + 1;
+            });
+            console.log(address);
+            map.addToMap(address, false);
+        }
+    }
+
     if(document.getElementById('main_map')){
         var center = [];
         center.push($('#coordinates').attr('lat'));

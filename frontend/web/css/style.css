@@ -2861,7 +2861,7 @@ div#drivebo {
 
 .sliderkit img{
     border:0;
-    transform: translate(0, -20%);
+    /*transform: translate(0, -20%);*/
     width: 100%;
     /*height: 420px;*/
 }
@@ -3617,15 +3617,15 @@ a#allOffers,a.allNews {
 }
 /*----Avtosalon address end----*/
 
-.comfortZone{
+.comfortZoneWR{
     display: block;
     position: relative;
-    width: 100%;
+    width: 50%;
     float: left;
     margin: 5px auto;
 }
 
-.comfortZone img{
+.comfortZoneWR img{
     display: block;
     position: relative;
     float: left;
@@ -3633,7 +3633,7 @@ a#allOffers,a.allNews {
     height: 30px;
 }
 
-.comfortZone span{
+.comfortZoneWR span{
     text-align: center;
     margin-left: 10px;
     line-height: 30px;
@@ -3686,3 +3686,8 @@ a#allOffers,a.allNews {
     line-height: 29px;
 }
 
+.singleContent__worksWith-blockWR{
+    display: block;
+    float: left;
+    width: 100%;
+}

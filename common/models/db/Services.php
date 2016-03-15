@@ -204,4 +204,9 @@ class Services extends \yii\db\ActiveRecord
     {
         return $this->hasMany(ServiceComfortZone::className(), ['service_id' => 'id']);
     }
+
+    public function getservices_img()
+    {
+        return $this->hasOne(ServicesImg::className(), ['services_id' => 'id']);
+    }
 }

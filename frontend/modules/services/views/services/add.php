@@ -7,9 +7,13 @@ use frontend\widgets\SelectAddress;
 use frontend\widgets\SelectMultiplayAuto;
 use kartik\file\FileInput;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 
 $this->title = "Добавить сервис";
+
+$this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
 $this->params['breadcrumbs'][] = ['label' => 'Мои сервисы', 'url' => ['select_service']];
+$this->params['breadcrumbs'][] = ['label' => \common\models\db\ServiceType::findOne($_GET['service_type'])->name, 'url' => ['services/my_services','service_type'=>$_GET['service_type']]];
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->registerCssFile('/css/bootstrap.min.css');
@@ -30,9 +34,9 @@ $this->registerCssFile('/css/bootstrap.min.css');
         </div>
         <div class="singleContent__desc">
 
-            <h2>Добавить логотип компании</h2>
-            <?php
-            echo '<label class="control-label">Добавить фото</label>';
+            <!--<h2>Добавить логотип компании</h2>
+            --><?php
+/*            echo '<label class="control-label">Добавить фото</label>';
             echo FileInput::widget([
                 'name' => 'file',
                 'id' => 'input-4',
@@ -44,6 +48,31 @@ $this->registerCssFile('/css/bootstrap.min.css');
                     'maxFileCount'=> 1,
                     'showRemove'=> false,
                     'showUpload'=> false],
+            ]);
+            */?>
+
+            <?php
+            echo '<label class="control-label">Добавить фото</label>';
+            echo FileInput::widget([
+                'name' => 'file[]',
+                'id' => 'input-5',
+                'attribute' => 'attachment_1',
+                'value' => '/media/img/1.png',
+                'options' => [
+                    'multiple' => true,
+                    'showCaption' => false,
+                    /*'showRemove' => true,*/
+                    'showUpload' => false,
+                    'uploadAsync'=> false,
+                ],
+                'pluginOptions' => [
+                    'uploadUrl' => Url::to(['/ajax/ajax/upload_file_services']),
+                    'maxFileCount' => 6,
+                    'language' => "ru",
+                    'uploadAsync'=> false,
+                    'showUpload' => false,
+                    'dropZoneEnabled' => false
+                ],
             ]);
             ?>
 
@@ -133,8 +162,9 @@ $this->registerCssFile('/css/bootstrap.min.css');
             <div class="singleContent__desc--contacts">
                 <h3>Контакты</h3>
                 <div class="singleContent__desc--line">
+                    <span></span>
                     <label for="website">Web-сайт</label>
-                    <input type="text" class="addContent__cont" name="website">
+                    <input type="text" class="addContent__cont service_website" name="website">
                 </div>
                 <div class="singleContent__desc--line">
                     <label for="phonenumber">Телефон</label>
@@ -169,7 +199,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Сохранить</a>
             </div>-->
             <div class="addContent--save">
-                <input type="submit" value="Сохранить" class="btn btn-save">
+                <input type="submit" value="Сохранить" class="btn btn-save" id="saveInfo">
 
         </div>
         </div>

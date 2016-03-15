@@ -31,6 +31,7 @@ class MainpageController extends \yii\web\Controller
         $allComfortZoneId = explode(',', $_POST['comfortZoneId']);
 //Debug::prn($allComfortZoneId);
         $services = Services::find()
+            ->joinWith('services_img')
             ->joinWith('address')
             ->joinWith('phone');
             if(!empty($allComfortZoneId[0])){
@@ -50,7 +51,7 @@ class MainpageController extends \yii\web\Controller
        // Debug::prn($services->createCommand()->rawSql);
 
             $result = $services->all();
-       // Debug::prn($result);
+        //Debug::prn($result);
         $address = [];
         foreach($result as $s){
             $phone = '';
@@ -63,7 +64,8 @@ class MainpageController extends \yii\web\Controller
                 foreach($s->address as $a){
                     //Debug::prn($s);
                     $ad = $a['address'];
-                    echo "<span class='main_map_address' service_type_id='$s->service_type_id' phone='$phone' photo='$s->photo' service_id='$s->id' address='$ad' title='$s->name' email='$s->email'></span>";
+                    $img = $s['services_img'];
+                    echo "<span class='main_map_address' service_type_id='$s->service_type_id' phone='$phone' photo='$img->images' service_id='$s->id' address='$ad' title='$s->name' email='$s->email'></span>";
                 }
             }
         }

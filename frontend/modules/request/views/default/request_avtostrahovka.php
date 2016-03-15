@@ -68,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="mileage_sm">
     <p class="parag_text">Дата начала эксплуатации:</p>
 
-    <input  class="mileage__next" name="dateStart" placeholder="Введите дату хх.хх.хххх">
+    <input  class="mileage__next" name="dateStart" id="dateStart" placeholder="Введите дату хх.хх.хххх">
 </div>
 
 

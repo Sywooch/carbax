@@ -1,5 +1,6 @@
 <?php
 use common\classes\Custom_function;
+use common\classes\Debug;
 use frontend\modules\services\widgets\GetAllGroupById;
 use frontend\widgets\AutoType;
 use frontend\widgets\ComfortZone;
@@ -48,8 +49,19 @@ $this->registerCssFile('/css/bootstrap.min.css');
             <div id="map" style="width: 100%; height: 100%"></div>
         </div>
         <div class="singleContent__desc">
-            <h2>Добавить логотип компании</h2>
+
             <?php
+
+            //Debug::prn($img);
+            foreach($img as $i){
+                $preview[] = "<img src='/$i->images' class='file-preview-image'>";
+                $previewConfig[] = [
+                    'caption' => '',
+                    'url' => '/ajax/ajax/pseudo_delete_file_service?id=' . $i->id
+                ];
+            }
+
+
             echo '<label class="control-label">Добавить фото</label>';
             echo FileInput::widget([
                 'name' => 'file[]',
@@ -63,8 +75,8 @@ $this->registerCssFile('/css/bootstrap.min.css');
                     'uploadAsync'=> false,
                 ],
                 'pluginOptions' => [
-                    'uploadUrl' => Url::to(['/ajax/ajax/upload_file_service?id='.$service->id]),
-                    'maxFileCount' => 1,
+                    'uploadUrl' => Url::to(['/ajax/ajax/upload_file_services']),
+                    'maxFileCount' => 6,
                     'language' => "ru",
                     'previewClass' => 'hasEdit',
                     'uploadAsync'=> false,
@@ -72,15 +84,8 @@ $this->registerCssFile('/css/bootstrap.min.css');
                     'dropZoneEnabled' => false,
                     /*'initialPreviewShowDelete' => true,*/
                     'overwriteInitial' => false,
-                    'initialPreview' => [
-                        "<img src='/$service->photo' class='file-preview-image'>"
-                    ],
-                    'initialPreviewConfig' => [
-                        [
-                            'caption' => '',
-                            'url' => '/ajax/ajax/pseudo_delete_file_service?id=' . $service->id
-                        ]
-                    ]
+                    'initialPreview' => $preview,
+                    'initialPreviewConfig' => $previewConfig
                 ],
             ]);
             ?>
@@ -136,7 +141,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 <h3>Контакты</h3>
                 <div class="singleContent__desc--line">
                     <label for="website">Web-сайт</label>
-                    <input type="text" class="addContent__cont" name="website" value="<?=$email?>">
+                    <input type="text" class="addContent__cont service_website" name="website" value="<?=$website?>">
                 </div>
 
                 <?php
@@ -175,7 +180,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 ?>
                 <div class="singleContent__desc--line">
                     <label for="mailadress">Почта</label>
-                    <input type="text" class="addContent__cont" name="mailadress" value="<?=$website?>">
+                    <input type="text" class="addContent__cont" name="mailadress" value="<?=$email?>">
 
                 </div>
             </div>
@@ -210,8 +215,10 @@ $this->registerCssFile('/css/bootstrap.min.css');
         </span>
     </form>
 </div>
-
-<span class="img_link" data-img="<?= $service->photo;?>" data-cover="<?= $service->photo; ?>"></span>
+<?php /*foreach($img as $im): */?><!--
+    <span class="img_link" data-img="<?/*=$im['img']*/?>" data-cover="<?/*= $im['cover'] */?>"></span>
+--><?php /*endforeach; */?>
+<!--<span class="img_link" data-img="<?/*= $service->photo;*/?>" data-cover="<?/*= $service->photo; */?>"></span>-->
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">

@@ -24,6 +24,7 @@ use common\models\db\ServiceAutoType;
 use common\models\db\ServiceBrandCars;
 use common\models\db\ServiceComfortZone;
 use common\models\db\Services;
+use common\models\db\ServicesImg;
 use common\models\db\ServiceType;
 use common\models\db\ServiceTypeGroup;
 use common\models\db\TofManufacturers;
@@ -107,11 +108,11 @@ class ServicesController extends Controller
             mkdir('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'));
         }
         $dir = 'media/users/'.Yii::$app->user->id.'/'.date('Y-m-d').'/';
-        move_uploaded_file($_FILES['file']['tmp_name'], $dir.$_FILES['file']['name']);
+        //move_uploaded_file($_FILES['file']['tmp_name'], $dir.$_FILES['file']['name']);
         $service->photo = $dir.$_FILES['file']['name'];
         //Debug::prn($_FILES);
         $service->save();
-
+        ServicesImg::updateAll(['services_id' => $service->id], ['services_id' => 99999, 'user_id' => Yii::$app->user->id]);
         //Debug::prn($_POST);
 
         //Добавляем зоны комфорта
@@ -250,7 +251,7 @@ class ServicesController extends Controller
             $autoType[] = AutoType::find()->where(['id'=>$st->auto_type_id])->one();
         }
         $serviceType = ServiceType::find()->where(['id'=>$servic->service_type_id])->one();
-
+        $img = ServicesImg::findAll(['services_id'=>$servicId]);
         return $this->render('view',
             [
                 'serviceID' => $servicId,
@@ -266,6 +267,7 @@ class ServicesController extends Controller
                 'autoType' => $autoType,
                 'serviceLogo' => $serviceLogo,
                 'serviceType' => $serviceType,
+                'img' => $img,
             ]);
     }
 
@@ -298,6 +300,7 @@ class ServicesController extends Controller
                 /*'brendSelect' => $brendsSelect,*/
                 'service' => $service,
                 'serviceType' => $serviceType,
+                'img' => ServicesImg::find()->where(['services_id'=>$servicId])->all()
             ]);
     }
 
@@ -485,6 +488,7 @@ class ServicesController extends Controller
         ServiceAutoType::deleteAll(['service_id'=>$id]);
         ServiceComfortZone::deleteAll(['service_id'=>$id]);
         ServiceBrandCars::deleteAll(['service_id'=>$id]);
+        ServicesImg::deleteAll(['service_id'=>$id]);
         Services::deleteAll(['id'=>$id]);
     }
 

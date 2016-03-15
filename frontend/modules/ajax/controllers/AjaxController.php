@@ -46,6 +46,7 @@ use common\models\db\Request;
 use common\models\db\RequestAddFieldValue;
 use common\models\db\RequestAdditionalFields;
 use common\models\db\Services;
+use common\models\db\ServicesImg;
 use common\models\db\TofModels;
 use common\models\db\TofSearchTree;
 use common\models\db\TofTypes;
@@ -565,6 +566,32 @@ class AjaxController extends Controller
         echo 1;
     }
 
+    public function actionUpload_file_services(){
+        //Debug::prn($_FILES);
+        if(!file_exists('media/users/'.Yii::$app->user->id)){
+            mkdir('media/users/'.Yii::$app->user->id.'/');
+        }
+        if(!file_exists('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'))){
+            mkdir('media/users/'.Yii::$app->user->id.'/'.date('Y-m-d'));
+        }
+        $dir = 'media/users/'.Yii::$app->user->id.'/'.date('Y-m-d').'/';
+        $i = 0;
+
+        if(!empty($_FILES['file']['name'][0])){
+            ServicesImg::deleteAll(['services_id' => 99999, 'user_id'=> Yii::$app->user->id]);
+            foreach($_FILES['file']['name'] as $file){
+                move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir.$file);
+                $img = new ServicesImg();
+                $img->services_id = 99999;
+                $img->images = $dir.$file;
+                $img->user_id = Yii::$app->user->id;
+                $img->save();
+                $i++;
+            }
+        }
+        echo 1;
+    }
+
     public function actionUpload_file_service(){
         //Debug::prn($_FILES);
         if(!file_exists('media/users/'.Yii::$app->user->id)){
@@ -590,9 +617,10 @@ class AjaxController extends Controller
         echo 1;
     }
     public function actionPseudo_delete_file_service(){
-        $service = Services::findOne($_GET['id']);
+        ServicesImg::deleteAll(['id' => $_GET['id']]);
+        /*$service = ServicesImg::findOne($_GET['id']);
         $service->photo = '';
-        $service->save();
+        $service->save();*/
         echo 1;
     }
 

@@ -77,13 +77,6 @@ $IpGeoBase->updateDB()
                             <?php foreach($model['offers_images'] as $img):?>
                                 <li><a href="#"><img src="/<?= $img->images; ?>" /></a></li>
                             <?php endforeach; ?>
-                            <!--<li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request1.png" alt="[Alternative text]" /></a></li>
-                            <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request2.png" alt="[Alternative text]" /></a></li>
-                            <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request1.png" alt="[Alternative text]" /></a></li>
-                            <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request2.png" alt="[Alternative text]" /></a></li>
-                            <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request1.png" alt="[Alternative text]" /></a></li>
-                            <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request2.png" alt="[Alternative text]" /></a></li>
-                            <li><a href="#" rel="nofollow" title="[link title]"><img src="../../media/img/request1.png" alt="[Alternative text]" /></a></li>-->
                         </ul>
                     </div>
                     <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-prev"><a rel="nofollow" href="#" title="Previous line"><span>Previous</span></a></div>
@@ -96,34 +89,6 @@ $IpGeoBase->updateDB()
 
                         </div>
                     <?php endforeach; ?>
-                    <!--<div class="sliderkit-panel">
-                        <img src="../../media/img/request1.png" alt="[Alternative text]" />
-
-                    </div>
-                    <div class="sliderkit-panel">
-                        <img src="../../media/img/request2.png" alt="[Alternative text]" />
-
-                    </div>
-                    <div class="sliderkit-panel">
-                        <img src="../../media/img/request1.png" alt="[Alternative text]" />
-
-                    </div>
-                    <div class="sliderkit-panel">
-                        <img src="../../media/img/request2.png" alt="[Alternative text]" />
-
-                    </div>
-                    <div class="sliderkit-panel">
-                        <img src="../../media/img/request1.png" alt="[Alternative text]" />
-
-                    </div>
-                    <div class="sliderkit-panel">
-                        <img src="../../media/img/request2.png" alt="[Alternative text]" />
-
-                    </div>
-                    <div class="sliderkit-panel">
-                        <img src="../../media/img/request1.png alt="[Alternative text]" />
-
-                    </div>-->
                 </div>
             </div>
             <!-- // end of photosgallery-vertical -->

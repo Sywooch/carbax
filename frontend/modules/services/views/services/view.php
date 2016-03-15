@@ -43,7 +43,7 @@ $this->registerCssFile('/css/bootstrap_btn.min.css');
 
 
 <section class="main-container">
-    <h3>ООО Автосервис «Шинка»</h3>
+    <h3><?=$serviceName;?></h3>
 
     <div id="page" class="inner layout-1col">
         <div id="content">
@@ -54,59 +54,32 @@ $this->registerCssFile('/css/bootstrap_btn.min.css');
                 <div class="sliderkit-nav">
                     <div class="sliderkit-nav-clip">
                         <ul>
-                            <li><a href="#" rel="nofollow" title="[link title]"><img class="slidkit-nav-img"
-                                                                                     src="/frontend/web/media/img/avtosalon.png"
-                                                                                     alt="[Alternative text]"/></a></li>
-                            <li><a href="#" rel="nofollow" title="[link title]"><img class="slidkit-nav-img"
-                                                                                     src="/frontend/web/media/img/autosalon2.png"
-                                                                                     alt="[Alternative text]"/></a></li>
-                            <li><a href="#" rel="nofollow" title="[link title]"><img class="slidkit-nav-img"
-                                                                                     src="/frontend/web/media/img/autosalon2.png"
-                                                                                     alt="[Alternative text]"/></a></li>
-                            <li><a href="#" rel="nofollow" title="[link title]"><img class="slidkit-nav-img"
-                                                                                     src="/frontend/web/media/img/autosalon2.png"
-                                                                                     alt="[Alternative text]"/></a></li>
-                            <li><a href="#" rel="nofollow" title="[link title]"><img class="slidkit-nav-img"
-                                                                                     src="/frontend/web/media/img/autosalon2.png"
-                                                                                     alt="[Alternative text]"/></a></li>
+                            <?php foreach($img as $i): ?>
+                            <li><a href="#"><img class="slidkit-nav-img" src="/<?= $i->images; ?>"/></a></li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
-                    <!--                    <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-prev"><a rel="nofollow" href="#" title="Previous line"><span>Previous line</span></a></div>-->
-                    <!--                    <div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-next"><a rel="nofollow" href="#" title="Next line"><span>Next line</span></a></div>-->
-                    <div class="sliderkit-btn sliderkit-go-btn sliderkit-go-prev"><a rel="nofollow" href="#"
-                                                                                     title="Previous photo"><span>Previous photo</span></a>
+                    <div class="sliderkit-btn sliderkit-go-btn sliderkit-go-prev">
+                        <a rel="nofollow" href="#" title="Previous photo"><span>Previous photo</span></a>
                     </div>
-                    <div class="sliderkit-btn sliderkit-go-btn sliderkit-go-next"><a rel="nofollow" href="#"
-                                                                                     title="Next photo"><span>Next photo</span></a>
+                    <div class="sliderkit-btn sliderkit-go-btn sliderkit-go-next">
+                        <a rel="nofollow" href="#" title="Next photo"><span>Next photo</span></a>
                     </div>
                 </div>
                 <div class="sliderkit-panels">
-                    <div class="sliderkit-btn sliderkit-go-btn sliderkit-go-prev"><a rel="nofollow" href="#"
-                                                                                     title="Previous"><span>Previous</span></a>
+                    <div class="sliderkit-btn sliderkit-go-btn sliderkit-go-prev">
+                        <a rel="nofollow" href="#" title="Previous"><span>Previous</span></a>
                     </div>
-                    <div class="sliderkit-btn sliderkit-go-btn sliderkit-go-next"><a rel="nofollow" href="#"
-                                                                                     title="Next"><span>Next</span></a>
+                    <div class="sliderkit-btn sliderkit-go-btn sliderkit-go-next">
+                        <a rel="nofollow" href="#" title="Next"><span>Next</span></a>
                     </div>
 
-                    <div class="sliderkit-panel">
-                        <img src="/frontend/web/media/img/avtosalon.png" alt="[Alternative text]"/>
+                    <?php foreach($img as $i): ?>
+                        <div class="sliderkit-panel">
+                            <img src="/<?= $i->images; ?>" />
+                        </div>
+                    <?php endforeach; ?>
 
-                    </div>
-                    <div class="sliderkit-panel">
-                        <img src="/frontend/web/media/img/autosalon2.png" alt="[Alternative text]"/>
-
-                    </div>
-                    <div class="sliderkit-panel">
-                        <img src="/frontend/web/media/img/autosalon2.png" alt="[Alternative text]"/>
-
-                    </div>
-                    <div class="sliderkit-panel">
-                        <img src="/frontend/web/media/img/autosalon2.png" alt="[Alternative text]"/>
-
-                    </div>
-                    <div class="sliderkit-panel">
-                        <img src="/frontend/web/media/img/autosalon2.png" alt="[Alternative text]"/>
-                    </div>
                 </div>
                 <!-- // end of photosgallery-captions -->
             </div>
@@ -115,32 +88,16 @@ $this->registerCssFile('/css/bootstrap_btn.min.css');
 
     <div class="singleContent__desc">
         <h3>Адреса</h3>
+        <?php foreach($address as $ad): ?>
+            <div class="singleContent__worksWith-block">
+                <p><span class="addAddreToMapServicesView" service_type_id="<?= $serviceType->id;?>"><?=$ad->address;?></span><br></p>
+            </div>
 
-        <div class="singleContent__worksWith-block">
-            <p><span>г. Москва, ул. Уличная 7, 15</span><br>
-                autotech.ru<br>
-                info@autotech.ru<br>
-                тел. 8 (436) 3773232</p>
-        </div>
-        <div class="singleContent__worksWith-block">
-            <p><span>г. Москва, ул. Уличная 7, 15</span><br>
-                autotech.ru<br>
-                info@autotech.ru<br>
-                тел. 8 (436) 3773232</p>
-        </div>
-        <div class="singleContent__worksWith-block">
-            <p><span>г. Москва, ул. Уличная 7, 15</span><br>
-                autotech.ru<br>
-                info@autotech.ru<br>
-                тел. 8 (436) 3773232</p>
-        </div>
+        <?php endforeach; ?>
     </div>
 
-    <div class="filter__map">
-        <span id="setAddress"></span>
-        <span id="coordinates" lat="55.419441" lng="38.27673" cityid="760" regionid="39"></span>
-
-        <div id="main_map" style="width:100%; height:100%"></div>
+    <div class="singleContent__map">
+        <div id="map" style="width: 100%; height: 100%"></div>
     </div>
 
 
@@ -148,122 +105,76 @@ $this->registerCssFile('/css/bootstrap_btn.min.css');
         <h3>О нас</h3>
 
         <p>
-            Здравствуйте! Мы компания ООО «Автосервис-сток» мы крутые, очень крутые круче нас нет никого, только мы
-            самые
-            крутые, если кто-то говорит, что он круче нас не верьте, ему он врет, а если и не врет то значит его тоже
-            прет,
-            так вот, если вы хотите чтобы у вас с машиной было все супер, не надо ходить к другим, просто приезжайте к
-            нам и вы все поймете.
+            <?=$description;?>
         </p>
     </div>
 
     <div class="singleContent__desc">
         <h3>Дни работы</h3>
-
         <p>
-            <span>ПН  - ПТ</span> с 9:00 до 21:00,  <span>СБ</span> с 9:00 до 20:00,  <span>ВС</span> выходной
+        <?php
+        $custFunc = new Custom_function();
+        foreach($workHours as $wh):
+        ?>
+            <span><?= $custFunc->get_week_day($wh->day); ?></span>
+            <?php
+            if($wh->{'24h'} == 1){ ?>
+            Круглосуточно
+            <?php
+            }
+            else{
+            ?>
+            С <?=$wh->hours_from?> ДО <?=$wh->hours_to?>
+
+            <?php } ?>
+            <br />
+        <?php endforeach; ?>
+
         </p>
     </div>
 
-    <div class="singleContent__desc">
+   <!-- <div class="singleContent__desc">
         <h3>Обслуживаем:</h3>
         <img class="car__logo" src="/frontend/web/media/img/mitsubishi.png" alt=""/>
         <img class="car__logo" src="/frontend/web/media/img/lexus.png" alt=""/>
         <img class="car__logo" src="/frontend/web/media/img/honda.png" alt=""/>
-    </div>
+    </div>-->
 
     <div class="singleContent__desc">
-        <h3>Услуги:</h3>
-
-        <div class="singleContent__worksWith-block">
-            <p>Ремонт и диагностика МКПП</p>
-
-            <p>Ремонт выхлопных систем</p>
-
-            <p>Ремонт гидроусилителя руля</p>
-
-            <p>Ремонт и диагностика МКПП</p>
-
-            <p>Ремонт выхлопных систем</p>
-
-            <p>Ремонт гидроусилителя руля</p>
-        </div>
-        <div class="singleContent__worksWith-block">
-            <p>Ремонт и диагностика МКПП</p>
-
-            <p>Ремонт выхлопных систем</p>
-
-            <p>Ремонт гидроусилителя руля</p>
-
-            <p>Ремонт и диагностика МКПП</p>
-
-            <p>Ремонт выхлопных систем</p>
-
-            <p>Ремонт гидроусилителя руля</p>
-        </div>
-
+        <?php
+            echo PrintAdditionalFieldsByServisId::widget(['servicId'=>$serviceID])
+        ?>
     </div>
 
-    <div class="singleContent__desc--payment">
+    <!--<div class="singleContent__desc--payment">
         <h3>Кредит: <span>есть</span></h3>
         <h3>Тест-драйв: <span>есть</span></h3>
         <h3>Принимаем: <span>частное лицо</span></h3>
-    </div>
+    </div>-->
 
     <div class="singleContent__desc">
         <h3>Зоны комфорта</h3>
-
-        <div class="singleContent__worksWith-block">
-
-            <div class="comfortZone">
-                <img src="/frontend/web/media/img/wc-1.png"><span>Туалет</span>
-            </div>
-
-            <div class="comfortZone">
-                <img src="/frontend/web/media/img/wifi-1.png"><span>Wi-Fi</span>
-            </div>
-
-            <div class="comfortZone">
-                <img src="/frontend/web/media/img/shiny.png"><span>Подкачка шин</span>
-            </div>
-
+        <div class="singleContent__worksWith-blockWR">
+            <?php foreach($comfortZone as $cz):?>
+                <div class="comfortZoneWR">
+                    <img src="<?=$cz->img_ulr;?>"><span><?=$cz->name;?></span>
+                </div>
+            <?php endforeach; ?>
         </div>
-        <div class="singleContent__worksWith-block">
-
-            <div class="comfortZone">
-                <img src="/frontend/web/media/img/coffemachine.png"><span>Кофе-автомат</span>
-            </div>
-
-            <div class="comfortZone">
-                <img src="/frontend/web/media/img/payment.png"><span>Оплата картой</span>
-            </div>
-
-            <div class="comfortZone">
-                <img src="/frontend/web/media/img/terminal.png"><span>Терминал оплаты</span>
-            </div>
-
-        </div>
-
     </div>
 
     <div class="singleContent__worksWith">
         <h3>Работаем с:</h3>
-        <div class="singleContent__worksWith-block">
 
-            <h4>С грузовыми авто</h4>
-            <img src="/media/img/gruz.png" alt="">
-        </div>
+        <?php foreach($autoType as $at):?>
+            <div class="singleContent__worksWith-block">
 
+                <h4><?=$at->name?></h4>
+                <img src="<?=$at->img_url;?>" alt="">
+            </div>
 
-        <div class="singleContent__worksWith-block">
-
-            <h4>С легковыми авто</h4>
-            <img src="/media/img/sedan.png" alt="">
-        </div>
-
+        <?php endforeach;?>
     </div>
-
-
 </section>
 <!--AKD47 section end-->
 
