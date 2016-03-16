@@ -34,6 +34,7 @@ use yii\helpers\Html;
         <li><?= Html::a('Объявления', ['/adsmanager']) ?></li>
         <li><?= Html::a('Спецпредложения', ['/offers']) ?></li>
         <li><?= Html::a('Страницы', ['/static_pages']) ?></li>
+        <li><?= Html::a('Отзывы', ['/reviews']) ?></li>
         <li><?= Html::a('Медиа-менеджер', ['/media']) ?></li>
 
     </ul>

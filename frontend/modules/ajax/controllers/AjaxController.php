@@ -45,6 +45,7 @@ use common\models\db\ProductImg;
 use common\models\db\Request;
 use common\models\db\RequestAddFieldValue;
 use common\models\db\RequestAdditionalFields;
+use common\models\db\Reviews;
 use common\models\db\Services;
 use common\models\db\ServicesImg;
 use common\models\db\TofModels;
@@ -772,7 +773,7 @@ class AjaxController extends Controller
             'requestMarkAuto',
             null,
             ArrayHelper::map($auto,'id','name'),
-            ['prompt'=>'Марка','class'=>'addContent__adress requestMarkAuto']
+            ['prompt'=>'Марка','class'=>'addContent__adress requestMarkAuto','required'=>'required']
             );
     }
 
@@ -782,7 +783,7 @@ class AjaxController extends Controller
             'requestMarkAuto',
             null,
             ArrayHelper::map($auto,'id','name'),
-            ['prompt'=>'Марка','class'=>'addContent__adress requestMarkAuto']
+            ['prompt'=>'Марка','class'=>'addContent__adress requestMarkAuto','required'=>'required']
             );
     }
 
@@ -792,7 +793,7 @@ class AjaxController extends Controller
             'requestMarkAuto',
             null,
             ArrayHelper::map($auto,'id_car_mark','name'),
-            ['prompt'=>'Марка','class'=>'addContent__adress requestMarkAuto']
+            ['prompt'=>'Марка','class'=>'addContent__adress requestMarkAuto','required'=>'required']
             );
     }
 
@@ -803,7 +804,7 @@ class AjaxController extends Controller
                 'requestModelAuto',
                 null,
                 ArrayHelper::map($auto,'id','name'),
-                ['prompt'=>'Модель', 'class'=>'addContent__adress requestModelAuto']
+                ['prompt'=>'Модель', 'class'=>'addContent__adress requestModelAuto','required'=>'required']
             );
         }
         if($_POST['typeAuto'] == 2){
@@ -812,7 +813,7 @@ class AjaxController extends Controller
                 'requestModelAuto',
                 null,
                 ArrayHelper::map($auto,'id','name'),
-                ['prompt'=>'Модель', 'class'=>'addContent__adress requestModelAuto']
+                ['prompt'=>'Модель', 'class'=>'addContent__adress requestModelAuto','required'=>'required']
             );
         }
         if($_POST['typeAuto'] == 3){
@@ -821,7 +822,7 @@ class AjaxController extends Controller
                 'requestModelAuto',
                 null,
                 ArrayHelper::map($auto,'id_car_model','name'),
-                ['prompt'=>'Модель', 'class'=>'addContent__adress requestModelAuto']
+                ['prompt'=>'Модель', 'class'=>'addContent__adress requestModelAuto','required'=>'required']
             );
         }
     }
@@ -838,7 +839,7 @@ class AjaxController extends Controller
             for($i=$year->min_y; $i <= $yearEnd; $i++){
                 $yearAll[$i] = $i;
             }
-            echo Html::dropDownList('requestYear',0,$yearAll,['prompt' => 'Год выпуска', 'class' => 'addContent__adress requestYear']);
+            echo Html::dropDownList('requestYear',0,$yearAll,['prompt' => 'Год выпуска', 'class' => 'addContent__adress requestYear','required'=>'required']);
         }
         if($_POST['typeAuto'] == 2){
             $year = CargoautoYear::find()->where(['id_brand'=>$_POST['brandId']])->one();
@@ -846,7 +847,7 @@ class AjaxController extends Controller
             for($i=$year->min_y; $i<=$year->max_y; $i++){
                 $yearAll[$i] = $i;
             }
-            echo Html::dropDownList('requestYear',0,$yearAll,['prompt' => 'Год выпуска', 'class' => 'addContent__adress requestYear']);
+            echo Html::dropDownList('requestYear',0,$yearAll,['prompt' => 'Год выпуска', 'class' => 'addContent__adress requestYear','required'=>'required']);
         }
     }
 
@@ -891,5 +892,16 @@ class AjaxController extends Controller
         $decisonCount = json_encode(['decisonY'=>$decisonY,'decisonN'=>$decisonN]);
         echo $decisonCount;
 
+    }
+
+    public function actionAdd_reviews(){
+        $review = new Reviews();
+        $review->{$_POST['spirit']} = 1;
+        $review->spirit_id = $_POST['id'];
+        $review->text = $_POST['text'];
+        $review->user_id = Yii::$app->user->id;
+        $review->rating = $_POST['raiting'];
+        $review->dt_add = time();
+        $review->save();
     }
 }

@@ -2,6 +2,8 @@
 
 use common\classes\Custom_function;
 use common\classes\Debug;
+use frontend\widgets\AddReviews;
+use frontend\widgets\ShowReviews;
 use himiklab\ipgeobase\IpGeoBase;
 $this->registerJsFile('/js/jquery.sliderkit.1.4.js',['yii\web\JqueryAsset']);
 $this->title = $model->title;
@@ -99,7 +101,7 @@ $IpGeoBase->updateDB()
             <ul class="nav_sm nav nav-tabs">
                 <li><a href="#conditions" role="tab" data-toggle="tab">Условия</a></li>
                 <li><a href="#description" role="tab" data-toggle="tab">Описание</a></li>
-                <li><a href="#reviews" role="tab" data-toggle="tab">Отзывы (125)</a></li>
+                <li><a href="#reviews" role="tab" data-toggle="tab">Отзывы (<?= $countReviews; ?>)</a></li>
             </ul>
         </div>
         <div class="tab-content">
@@ -127,105 +129,14 @@ $IpGeoBase->updateDB()
 
                 </div>
             </div>
+
             <div role="tabpanel" class="tab-pane fade" id="reviews">
 
                 <div class="offers_condition_view">
                     <div class="row">
+                        <?= AddReviews::widget(['spirit'=>'offers','id'=>$_GET['id']]); ?>
+                        <?= ShowReviews::widget(['spirit'=>'offers','id'=>$_GET['id']]); ?>
 
-                        <p class="offers_content"><span>Задайте вопрос или оставьте комментарий</span><br/>
-                            <span>Чтобы оставлять комментарии, Вам нужно подтвердить e-mail.<br/>
-                            Письмо с ссылкой подтверждения должно прийти сразу после регистрации <a href="#">на
-                                    указанный Вами e-mail.</a></span></p>
-
-
-                        <div class="home-comments__body">
-
-                            <div class="home-comments__item__head">
-                                <div class="home-comments__item__head--img">
-                                    <img src="../../media/img/recall_av.png" alt=""/>
-                                </div>
-                                <p>Марина К.</p>
-
-                            </div>
-
-                            <div class="home-comments__item__body">
-
-                                <div class="home-comments__item--date">
-                                    <p>
-                                        25.01.2016 20:55
-                                    </p>
-
-                                    <img src="../../media/img/reiting.png" alt=""/>
-                                </div>
-
-
-
-                                <div class="home-comments__item--desc">
-                                    <p>
-                                        Отлична химчистка салона
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="home-comments__body">
-
-                            <div class="home-comments__item__head">
-                                <div class="home-comments__item__head--img">
-                                    <img src="../../media/img/recall_av.png" alt=""/>
-                                </div>
-                                <p>Марина К.</p>
-
-                            </div>
-
-                            <div class="home-comments__item__body">
-
-                                <div class="home-comments__item--date">
-                                    <p>
-                                        25.01.2016 20:55
-                                    </p>
-
-                                    <img src="../../media/img/reiting.png" alt=""/>
-                                </div>
-
-
-
-                                <div class="home-comments__item--desc">
-                                    <p>
-                                        Отлична химчистка салона
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="home-comments__body">
-
-                            <div class="home-comments__item__head">
-                                <div class="home-comments__item__head--img">
-                                    <img src="../../media/img/recall_av.png" alt=""/>
-                                </div>
-                                <p>Марина К.</p>
-
-                            </div>
-
-                            <div class="home-comments__item__body">
-
-                                <div class="home-comments__item--date">
-                                    <p>
-                                        25.01.2016 20:55
-                                    </p>
-
-                                    <img src="../../media/img/reiting.png" alt=""/>
-                                </div>
-                                <div class="home-comments__item--desc">
-                                    <p>
-                                        Отлична химчистка салона
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

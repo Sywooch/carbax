@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div id="selectAutoGarage"><?= AutoGarage::widget()?></div>
     <!--<p class="parag_text"><span>у вас нет машин в гараже</span></p>-->
 
-    <p class="parag_text">Выберите тип Вашего транспортного средства</p>
+    <p class="parag_text">Выберите тип Вашего транспортного средства <span class="requestErrorTypeAutoRequest">Вы не выбрали тип авто</span></p>
 
     <div class="save">
         <input type="checkbox" name="typeAuto" value="1" id="a" class="typeAutoRequest">
@@ -115,7 +115,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="mileage">
     <p class="parag_text">Укажите Vin-код атомобиля:</p>
 
-    <input class="mileage__next vincodeauto" name="vincodeauto" placeholder="Введите код">
+    <input class="mileage__next vincodeauto" name="vincodeauto" placeholder="Введите код" required="required">
 </div>
 
 
@@ -123,7 +123,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="mileage_wr">
         <p class="parag_text">Укажите наименование запчасти:</p>
 
-        <input class="mileage__next" name="name_zap[]" placeholder="Наименование запчасти">
+        <input class="mileage__next" name="name_zap[]" placeholder="Наименование запчасти" required="required">
     </div>
 
     <div class="mileage_wr">
@@ -142,76 +142,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <span class="infoZap"></span>
 
-
-
-
-<!--<div class="addContent">
-    <p class="parag_text">Выберите тип обслуживания:</p>
-    <div class="singleContent__desc">
-        <div class="singleContent__desc--works">
-
-            <input type="checkbox" id="11_36" name="disk[]" value="36">
-            <label class="text" for="11_36"><span></span>с установкой</label>
-
-            <input type="checkbox" id="11_37" name="disk[]" value="37">
-            <label class="text" for="11_37"><span></span>без установки</label>
-
-        </div>
-    </div>
-</div>
-
-
-<div class="addContent">
-    <p class="parag_text">Выберите состояние:</p>
-    <div class="singleContent__desc">
-        <div class="singleContent__desc--works">
-
-            <input type="checkbox" id="11_38" name="disk[]" value="38">
-            <label class="text" for="11_38"><span></span>новое</label>
-
-            <input type="checkbox" id="11_39" name="disk[]" value="39">
-            <label class="text" for="11_39"><span></span>Б/У</label>
-
-        </div>
-    </div>
-</div>
-
-<div class="addContent">
-    <p class="parag_text">Способы оплаты:</p>
-    <div class="singleContent__desc">
-        <div class="singleContent__desc--works">
-
-            <input type="checkbox" id="11_40" name="disk[]" value="40">
-            <label class="text" for="11_40"><span></span>Наличные</label>
-
-            <input type="checkbox" id="11_41" name="disk[]" value="41">
-            <label class="text" for="11_41"><span></span>Карточка</label>
-
-            <input type="checkbox" id="11_42" name="disk[]" value="42">
-            <label class="text" for="11_42"><span></span>Банковский перевод</label>
-
-        </div>
-    </div>
-</div>
-
-<div class="addContent">
-    <p class="parag_text">Выберите способ доставки:</p>
-    <div class="singleContent__desc">
-        <div class="singleContent__desc--works">
-
-            <input type="checkbox" id="11_43" name="disk[]" value="43">
-            <label class="text" for="11_43"><span></span>Самовывоз</label>
-
-            <input type="checkbox" id="11_44" name="disk[]" value="44">
-            <label class="text" for="11_44"><span></span>Курьер</label>
-
-            <input type="checkbox" id="11_45" name="disk[]" value="45">
-            <label class="text" for="11_45"><span></span>Транспортная</label>
-
-        </div>
-    </div>
-</div>
--->
 
 
     <!--<p class="parag_text">Ваш регион: <span>Москва</span>. Добавить еще регион</p>
@@ -241,7 +171,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="singleContent__desc">
 
         <label for="addContent__description" style="width:100%; font-size:15px"">Комментарии:</label>
-        <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии"></textarea>
+        <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии" required="required"></textarea>
         <?php echo Html::hiddenInput('request_type_id', $_GET['id']);?>
 
        <!-- <div class="send">
@@ -249,7 +179,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>-->
 
         <div class="addContent--save">
-            <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить заявку</a>
+            <input type="submit" value="Отправить" class="btn btn-save" id="sendReq">
         </div>
     </div>
 </form>

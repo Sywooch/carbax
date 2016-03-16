@@ -1,5 +1,6 @@
 <?php
 
+use common\classes\Debug;
 use yii\helpers\Html;
 
 
@@ -11,11 +12,11 @@ $this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url
 $this->params['breadcrumbs'][] = ['label' => 'Спецпредложения', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-
+<?php if(empty($services)): ?>
+    <?= $this->render('error_offers');?>
+<?php else:?>
     <?= $this->render('_form', [
         'model' => $model,
         'services' => $services,
     ]) ?>
-
-</div>
+<?php endif;

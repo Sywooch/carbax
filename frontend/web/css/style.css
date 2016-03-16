@@ -2208,7 +2208,7 @@ ul.nav_sm li.active a:focus {
 
 /*----Offers nav content----*/
 .tab-content {
-    float: left;
+    /*float: left;*/
 }
 
 .offers_page_view {
@@ -2283,7 +2283,7 @@ span.question:hover a.ask {
     float: left;
     position: relative;
     width: 100%;
-    height: 126px;
+    /*height: 126px;*/
     margin: 10px auto;
     border-width: 1px;
     border-color: rgb(186, 186, 186);
@@ -2299,9 +2299,9 @@ span.question:hover a.ask {
     width: 30%;
     height: 100%;
     padding: 10px 10px;
-    border-right-width: 1px;
+    /*border-right-width: 1px;
     border-right-style: solid;
-    border-color: rgb(186, 186, 186);
+    border-color: rgb(186, 186, 186);*/
 }
 
 .home-comments__item__head p {
@@ -2331,6 +2331,7 @@ span.question:hover a.ask {
     width: 70%;
     height: 100%;
     padding: 10px 10px;
+    border-left: 1px solid rgb(186, 186, 186);
 }
 
 .home-comments__item--date p {
@@ -2347,7 +2348,7 @@ span.question:hover a.ask {
     font-weight: bold;
     margin-left: 10px;
     margin-right: 10px;
-    margin-top: 30px;
+   /* margin-top: 30px;*/
 }
 
 /*----Offers recall end----*/
@@ -3690,4 +3691,15 @@ a#allOffers,a.allNews {
     display: block;
     float: left;
     width: 100%;
+}
+
+
+.ui-rater>span {vertical-align:top;}
+.ui-rater-rating {margin-left:.8em}
+.ui-rater-starsOff, .ui-rater-starsOn {display:inline-block; height:18px; background:url(../media/img/starsall.png) repeat-x 0 0px;}
+.ui-rater-starsOn {display:block; max-width:90px; top:0; background-position: 0 0px;}
+.ui-rater-starsHover {background-position: 0 -18px!important;}
+
+.requestErrorTypeAutoRequest, .requestErrorDisk{
+    display: none;
 }

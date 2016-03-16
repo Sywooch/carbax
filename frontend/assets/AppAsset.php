@@ -29,7 +29,8 @@ class AppAsset extends AssetBundle
         'css/evgeniy-styles.css',
         'sass/new/new.css',
         'css/index.css',
-
+        'css/star-rating.css',
+        'css/theme-krajee-svg.css',
         /*'/css/bootstrap_btn.min.css'*/
     ];
     public $js = [
@@ -46,6 +47,7 @@ class AppAsset extends AssetBundle
         'js/jquery.columnizer.js',
         '/js/jquery.maskedinput.js',
         'js/script.js',
+        'js/star-rating.js',
     ];
     public $jsOptions = [ 'position' => \yii\web\View::POS_HEAD];
     public $depends = [

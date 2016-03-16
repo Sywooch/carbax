@@ -58,6 +58,9 @@ return [
         'static_pages' => [
             'class' => 'backend\modules\static_pages\Static_pages',
         ],
+        'reviews' => [
+            'class' => 'backend\modules\reviews\Reviews',
+        ],
     ],
     'components' => [
         'request' => [
@@ -79,6 +82,7 @@ return [
                 'adsmanager' => 'adsmanager/adsmanager/index',
                 'offers' => 'offers/offers/index',
                 'static_pages' => 'static_pages/static_pages/index',
+                'reviews' => 'reviews/default'
             ],
         ],
         'urlManagerFrontend' => [

@@ -834,23 +834,30 @@ jQuery(document).ready(function ($) {
         $(this).val('http://');
     } );
     //Запрет ввода букв в поле "Цена"
-    if(document.getElementById('addPrice') || document.getElementById('probeg') || document.getElementById('summaStrah')) {
+    if(document.getElementById('addPrice') ) {
         document.getElementById("addPrice").onkeypress = function (event) {
             event = event || window.event;
             if (event.charCode && (event.charCode < 48 || event.charCode > 57))// проверка на event.charCode - чтобы пользователь мог нажать backspace, enter, стрелочку назад...
                 return false;
         };
+    }
+
+    if(document.getElementById('probeg') ) {
         document.getElementById("probeg").onkeypress = function (event) {
             event = event || window.event;
             if (event.charCode && (event.charCode < 48 || event.charCode > 57))// проверка на event.charCode - чтобы пользователь мог нажать backspace, enter, стрелочку назад...
                 return false;
         };
+    }
+
+    if(document.getElementById('summaStrah') ) {
         document.getElementById("summaStrah").onkeypress = function (event) {
             event = event || window.event;
             if (event.charCode && (event.charCode < 48 || event.charCode > 57))// проверка на event.charCode - чтобы пользователь мог нажать backspace, enter, стрелочку назад...
                 return false;
         };
     }
+
     if(document.getElementById('run')) {
         document.getElementById("run").onkeypress = function (event) {
             event = event || window.event;
@@ -1283,9 +1290,82 @@ jQuery(document).ready(function ($) {
         map.addToMap(add, false);
         //console.log($(this).text());
     }
+
+
+    $(document).on('click', '#addReviews', function(){
+        var raiting = $('#reatingValue').val();
+        var text = $('#commentText').val();
+        var spirit = $('#reatingValue').attr('data-spirit');
+        var id = $('#reatingValue').attr('data-id-spirit');
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/add_reviews",
+            data: 'text=' + text + '&raiting=' + raiting + '&id=' + id + '&spirit=' + spirit,
+            success: function (data) {
+                $('.addReviewsFormWr').html('<h3>Ваш отзыв добавлен. После модерации он будет опубликован.</h3>')
+            }
+        });
+        return false;
+    });
+
+    $('#input-1-xs').on('rating.change', function(event, value, caption) {
+        $("#reatingValue").val(value);
+    });
+
+    $('.input-2-xs').rating({displayOnly: true, step: 0.5});
+
+
+    $(document).on('click', '#sendReq', function(){
+        var kol = 0;
+        if($('.typeAutoRequest').length) {
+            $(".typeAutoRequest").each(function () {
+                if ($(this).prop("checked")) {
+                    kol++;
+                }
+            });
+
+            if (kol == 0) {
+
+                $('.requestErrorTypeAutoRequest').css('display', 'block');
+                setTimeout(function () {
+                    $('.requestErrorTypeAutoRequest').fadeOut();
+                }, 5000);
+                $('.selAutoGarage').focus();
+
+                return false;
+            }
+        }
+
+        if($('.requestDisk').length) {
+            alert(123);
+            kol = 0;
+            $(".requestDisk").each(function () {
+                if ($(this).prop("checked")) {
+                    kol++;
+                }
+            });
+            if (kol == 0) {
+
+                $('.requestErrorDisk').css('display', 'block');
+                setTimeout(function () {
+                    $('.requestErrorDisk').fadeOut();
+                }, 5000);
+                $('.requestMarkAuto').focus();
+
+                return false;
+            }
+        }
+    });
+    page_height();
 });
 
-
+function page_height(){
+    var win_h = $(window).height();
+    var head_h = $('.header').height();
+    var foot_h = $('.foot').height();
+    var ban_h = $('.singleImg').height();
+    $('.single_wrapper').css("min-height" , win_h - head_h - foot_h - ban_h - 170 + "px");
+};
 
 
 

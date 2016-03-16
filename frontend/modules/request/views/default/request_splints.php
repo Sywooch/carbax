@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div id="selectAutoGarage"><?= AutoGarage::widget()?></div>
         <!--<p class="parag_text"><span>у вас нет машин в гараже</span></p>-->
 
-        <p class="parag_text">Выберите тип Вашего транспортного средства</p>
+        <p class="parag_text">Выберите тип Вашего транспортного средства <span class="requestErrorTypeAutoRequest">Вы не выбрали тип авто</span></p>
 
         <div class="save">
             <input type="checkbox" name="typeAuto" value="1" id="a" class="typeAutoRequest">
@@ -188,76 +188,7 @@ $this->params['breadcrumbs'][] = $this->title;
            <?php echo RequestAddFieldGroup::widget(['groupId' => $_GET['id']]);?>
        </div>
 
-                <!--<div class="selection">
 
-
-                    <div class=" selection__content">
-
-                        <div class="singleContent__desc">
-                            <div class="singleContent__desc--works">
-                                <p class="parag_text">Выберите тип обслуживания:</p>
-                                <input type="checkbox" id="11_48" name="disk[]" value="48">
-                                <label class="text" for="11_48"><span></span>с установкой</label>
-
-                                <input type="checkbox" id="11_49" name="disk[]" value="49">
-                                <label class="text" for="11_49"><span></span>без Установки</label>
-
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class=" selection__content">
-
-                        <div class="singleContent__desc">
-                            <div class="singleContent__desc--works">
-                                <p class="parag_text">Выберите остояние:</p>
-                                <input type="checkbox" id="11_50" name="disk[]" value="50">
-                                <label class="text" for="11_50"><span></span>новое</label>
-
-                                <input type="checkbox" id="11_51" name="disk[]" value="51">
-                                <label class="text" for="11_52"><span></span>Б/У</label>
-
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class=" selection__content">
-
-                        <div class="singleContent__desc">
-                            <div class="singleContent__desc--works">
-                                <p class="parag_text">Способы оплаты:</p>
-                                <input type="checkbox" id="11_53" name="disk[]" value="53">
-                                <label class="text" for="11_53"><span></span>Наличные</label>
-
-                                <input type="checkbox" id="11_54" name="disk[]" value="54">
-                                <label class="text" for="11_54"><span></span>Карточка</label>
-
-                                <input type="checkbox" id="11_55" name="disk[]" value="55">
-                                <label class="text" for="11_55"><span></span>банковский перевод</label>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <p class="parag_text">Ваш регион: <span>Москва</span>. Добавить еще регион</p>
-
-                <div class="select_type__manufacturer">
-                    <select class="select_type__manufacturer--sel" name="type_disk">
-                        <option value="">Введите название города</option>
-                        <option value="1">-</option>
-                        <option value="2">-</option>
-                        <option value="3">-</option>
-                        <option value="4">-</option>
-                        <option value="5">-</option>
-                        <option value="6">-</option>
-                        <option value="7">-</option>
-                        <option value="8">-</option>
-                        <option value="9">-</option>
-                        <option value="10">-</option>
-                    </select>
-                </div>
--->
 
         <?php echo Html::hiddenInput('request_type_id', $_GET['id']); ?>
 
@@ -266,13 +197,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="singleContent__desc">
             <label for="addContent__description" style="width:100%; font-size:15px">Комментарии:</label>
-            <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Введите всю дополнительную информацию"></textarea>
+            <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Введите всю дополнительную информацию" required="required"></textarea>
             <!--<div class="send">
             <a class="send_foto" href="#">Добавить фото</a>
             </div>-->
         </div>
-        <div class="addContent--save">
+        <!--<div class="addContent--save">
             <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить заявку</a>
+        </div>-->
+        <div class="addContent--save">
+            <input type="submit" value="Отправить" class="btn btn-save" id="sendReq">
         </div>
     </form>
 </section>

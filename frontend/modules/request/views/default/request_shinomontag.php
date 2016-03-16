@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div id="selectAutoGarage"><?= AutoGarage::widget()?></div>
     <!--<p class="parag_text"><span>у вас нет машин в гараже</span></p>-->
 
-    <p class="parag_text">Выберите тип Вашего транспортного средства</p>
+    <p class="parag_text">Выберите тип Вашего транспортного средства <span class="requestErrorTypeAutoRequest">Вы не выбрали тип авто</span></p>
 
     <div class="save">
         <input type="checkbox" name="typeAuto" value="1" id="a" class="typeAutoRequest">
@@ -50,17 +50,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="select_bg">
         <div class="select_type requestManufacture">
-            <select class="addContent__adress requestMarkAuto" name="requestMarkAuto">
+            <select class="addContent__adress requestMarkAuto" name="requestMarkAuto" required="required">
                 <option value="">Марка</option>
             </select>
         </div>
         <div class="select_type requestModelAuto">
-            <select class="addContent__adress requestModelAuto" name="requestModelAuto">
+            <select class="addContent__adress requestModelAuto" name="requestModelAuto" required="required">
                 <option value="">Модель</option>
             </select>
         </div>
         <div class="select_type requestYear">
-            <select class="addContent__adress requestYear" name="requestYear">
+            <select class="addContent__adress requestYear" name="requestYear" required="required">
                 <option value="">Год выпуска</option>
             </select>
         </div>
@@ -69,32 +69,32 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="selection">
 
-    <p class="parag_text">Выберите диаметр диска:</p>
+    <p class="parag_text">Выберите диаметр диска:<span class="requestErrorDisk">Вы не выбрали диаметр диска</span></p>
 
     <div class="selection__content--lg">
 
         <div class="singleContent__desc">
             <div class="singleContent__desc--works">
 
-                <input type="checkbox" id="11_1" name="diskDiametr[]" value="13">
+                <input type="checkbox" id="11_1" name="diskDiametr[]" value="13" class="requestDisk">
                 <label class="text" for="11_1"><span></span>13”</label>
 
-                <input type="checkbox" id="11_2" name="diskDiametr[]" value="14">
+                <input type="checkbox" id="11_2" name="diskDiametr[]" value="14" class="requestDisk">
                 <label class="text" for="11_2"><span></span>14”</label>
 
-                <input type="checkbox" id="11_3" name="diskDiametr[]" value="15">
+                <input type="checkbox" id="11_3" name="diskDiametr[]" value="15" class="requestDisk">
                 <label class="text" for="11_3"><span></span>15”</label>
 
-                <input type="checkbox" id="11_4" name="diskDiametr[]" value="16">
+                <input type="checkbox" id="11_4" name="diskDiametr[]" value="16" class="requestDisk">
                 <label class="text" for="11_4"><span></span>16”</label>
 
-                <input type="checkbox" id="11_5" name="diskDiametr[]" value="17">
+                <input type="checkbox" id="11_5" name="diskDiametr[]" value="17" class="requestDisk">
                 <label class="text" for="11_5"><span></span>17”</label>
 
-                <input type="checkbox" id="11_6" name="diskDiametr[]" value="18">
+                <input type="checkbox" id="11_6" name="diskDiametr[]" value="18" class="requestDisk">
                 <label class="text" for="11_6"><span></span>18”</label>
 
-                <input type="checkbox" id="11_7" name="diskDiametr[]" value="19">
+                <input type="checkbox" id="11_7" name="diskDiametr[]" value="19" class="requestDisk">
                 <label class="text" for="11_7"><span></span>19”</label>
 
             </div>
@@ -105,25 +105,25 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="singleContent__desc">
             <div class="singleContent__desc--works">
 
-                <input type="checkbox" id="11_8" name="diskDiametr[]" value="20">
+                <input type="checkbox" id="11_8" name="diskDiametr[]" value="20" class="requestDisk">
                 <label class="text" for="11_8"><span></span>20”</label>
 
-                <input type="checkbox" id="11_9" name="diskDiametr[]" value="21">
+                <input type="checkbox" id="11_9" name="diskDiametr[]" value="21" class="requestDisk">
                 <label class="text" for="11_9"><span></span>21”</label>
 
-                <input type="checkbox" id="11_10" name="diskDiametr[]" value="22">
+                <input type="checkbox" id="11_10" name="diskDiametr[]" value="22" class="requestDisk">
                 <label class="text" for="11_10"><span></span>22”</label>
 
-                <input type="checkbox" id="11_11" name="diskDiametr[]" value="23">
+                <input type="checkbox" id="11_11" name="diskDiametr[]" value="23" class="requestDisk">
                 <label class="text" for="11_11"><span></span>23”</label>
 
-                <input type="checkbox" id="11_12" name="diskDiametr[]" value="24">
+                <input type="checkbox" id="11_12" name="diskDiametr[]" value="24" class="requestDisk">
                 <label class="text" for="11_12"><span></span>24”</label>
 
-                <input type="checkbox" id="11_13" name="diskDiametr[]" value="25">
+                <input type="checkbox" id="11_13" name="diskDiametr[]" value="25" class="requestDisk">
                 <label class="text" for="11_13"><span></span>25”</label>
 
-                <input type="checkbox" id="11_14" name="diskDiametr[]" value="26">
+                <input type="checkbox" id="11_14" name="diskDiametr[]" value="26" class="requestDisk">
                 <label class="text" for="11_14"><span></span>26”</label>
 
 
@@ -142,15 +142,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="singleContent__desc">
 
         <label for="addContent__description" style="width:100%">Комментарии</label>
-        <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии"></textarea>
+        <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Комментарии" required="required"></textarea>
 
         <?php echo Html::hiddenInput('request_type_id', $_GET['id']);?>
         <!--<div class="send">
             <a class="send_foto" href="#">Добавить фото</a>
         </div>-->
 
-        <div class="addContent--save">
+        <!--<div class="addContent--save">
             <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить заявку</a>
+        </div>-->
+        <div class="addContent--save">
+            <input type="submit" value="Отправить" class="btn btn-save" id="sendReq">
         </div>
     </div>
 </form>

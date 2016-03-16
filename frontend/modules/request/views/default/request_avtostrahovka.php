@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div id="selectAutoGarage"><?= AutoGarage::widget()?></div>
     <!--<p class="parag_text"><span>у вас нет машин в гараже</span></p>-->
 
-    <p class="parag_text">Выберите тип Вашего транспортного средства</p>
+    <p class="parag_text">Выберите тип Вашего транспортного средства <span class="requestErrorTypeAutoRequest">Вы не выбрали тип авто</span></p>
 
     <div class="save">
         <input type="checkbox" name="typeAuto" value="1" id="a" class="typeAutoRequest">
@@ -68,27 +68,27 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="mileage_sm">
     <p class="parag_text">Дата начала эксплуатации:</p>
 
-    <input  class="mileage__next" name="dateStart" id="dateStart" placeholder="Введите дату хх.хх.хххх">
+    <input  class="mileage__next" name="dateStart" id="dateStart" placeholder="Введите дату хх.хх.хххх" required="required">
 </div>
 
 
 <div class="mileage_sm">
     <p class="parag_text">Количество лошадиных сил:</p>
 
-    <input class="mileage__next" id="addPrice" name="kol_Cil" placeholder="Введите ">
+    <input class="mileage__next" id="addPrice" name="kol_Cil" placeholder="Введите " required="required">
 
 </div>
 
 <div class="mileage_sm">
     <p class="parag_text">Пробег:</p>
 
-    <input class="mileage__next probeg" id="probeg" name="probeg" placeholder="Введите значение">
+    <input class="mileage__next probeg" id="probeg" name="probeg" placeholder="Введите значение" required="required">
 </div>
 
 <div class="mileage_sm">
     <p class="parag_text">Страховая сумма:</p>
 
-    <input class="mileage__next" name="summaStrah" id="summaStrah" placeholder="Введите значение">
+    <input class="mileage__next" name="summaStrah" id="summaStrah" placeholder="Введите значение" required="required">
 </div>
 
 
@@ -151,36 +151,36 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="mileage_sm">
             <p class="parag_text">Возраст, лет:</p>
 
-            <input class="mileage__next" name="driveInfo[1][year]" placeholder="Введите">
+            <input class="mileage__next" name="driveInfo[1][year]" placeholder="Введите" required="required">
         </div>
 
         <div class="mileage_sm">
             <p class="parag_text">Стаж, лет:</p>
 
-            <input class="mileage__next" name="driveInfo[1][stag]" placeholder="Введите">
+            <input class="mileage__next" name="driveInfo[1][stag]" placeholder="Введите" required="required">
         </div>
 
         <div class="mileage_sm">
             <p class="parag_text">Или дата рождения:</p>
 
-            <input class="mileage__next--sm number" name="driveInfo[1][datarozgd][]" placeholder="ДД">
-            <input class="mileage__next--sm number" name="driveInfo[1][datarozgd][]" placeholder="ММ">
-            <input class="mileage__next--sm number" name="driveInfo[1][datarozgd][]" placeholder="ГГГГ">
+            <input class="mileage__next--sm number" name="driveInfo[1][datarozgd][]" placeholder="ДД" required="required">
+            <input class="mileage__next--sm number" name="driveInfo[1][datarozgd][]" placeholder="ММ" required="required">
+            <input class="mileage__next--sm number" name="driveInfo[1][datarozgd][]" placeholder="ГГГГ" required="required">
         </div>
 
         <div class="mileage_sm">
             <p class="parag_text">Или дата получения:</p>
 
-            <input class="mileage__next--sm" name="driveInfo[1][datapol][]" placeholder="ДД">
-            <input class="mileage__next--sm" name="driveInfo[1][datapol][]" placeholder="ММ">
-            <input class="mileage__next--sm" name="driveInfo[1][datapol][]" placeholder="ГГГГ">
+            <input class="mileage__next--sm" name="driveInfo[1][datapol][]" placeholder="ДД" required="required">
+            <input class="mileage__next--sm" name="driveInfo[1][datapol][]" placeholder="ММ" required="required">
+            <input class="mileage__next--sm" name="driveInfo[1][datapol][]" placeholder="ГГГГ" required="required">
         </div>
 
         <div class="select_type__driver">
 
             <p class="parag_text">Пол:</p>
 
-            <select class="select_type__driver--sel" name="driveInfo[1][pol]">
+            <select class="select_type__driver--sel" name="driveInfo[1][pol]" required="required">
                 <option value="">Выберите</option>
                 <option value="Мужской">Мужской</option>
                 <option value="Женский">Женский</option>
@@ -191,7 +191,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <p class="parag_text">Семейное положение:</p>
 
-            <select class="select_type__driver--sel" name="driveInfo[1][pologenie]">
+            <select class="select_type__driver--sel" name="driveInfo[1][pologenie]" required="required">
                 <option value="">Выберите</option>
                 <option value="Женат/Замужем">Женат/Замужем</option>
                 <option value="Холост">Холост</option>
@@ -203,7 +203,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <p class="parag_text">Дети:</p>
 
-            <select class="select_type__driver--sel" name="driveInfo[1][deti]">
+            <select class="select_type__driver--sel" name="driveInfo[1][deti]" required="required">
                 <option value="">Выберите</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -332,7 +332,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <input type="text" id="" class="addContent__text" name="email" value="" placeholder="Введите e-mail">
 
         <label for="addContent__description" style="width:100%; font-size:15px">Комментарии:</label>
-        <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Введите всю дополнительную информацию"></textarea>
+        <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Введите всю дополнительную информацию" required="required"></textarea>
 
 
         <!--<div class="send">
@@ -340,7 +340,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>-->
 
         <div class="addContent--save">
-            <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить заявку</a>
+            <input type="submit" value="Отправить" class="btn btn-save" id="sendReq">
         </div>
     </div>
 </form>

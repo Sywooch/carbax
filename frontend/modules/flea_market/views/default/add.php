@@ -68,15 +68,6 @@ $this->params['breadcrumbs'][] = $this->title;
             <h2>Добавить фото</h2>
             <?php
             echo '<label class="control-label">Добавить фото</label>';
-            /*echo FileInput::widget([
-                'name' => 'file[]',
-                'language' => 'ru',
-                'id' => 'input-4',
-                'options' => [
-                    'multiple' => true,
-                ],
-                'pluginOptions' => ['previewFileType' => 'any', 'uploadUrl' => Url::to(['/site/file-upload']),]
-            ]);*/
             echo FileInput::widget([
                 'name' => 'file[]',
                 'id' => 'input-5',

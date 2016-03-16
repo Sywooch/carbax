@@ -30,4 +30,17 @@ $(document).ready(function ($) {
         }
     });
 
+    $(document).on('change', '.statusReviews', function(){
+        var status = $(this).val();
+        var id = $(this).attr('data-id');
+        $.ajax({
+            type: 'POST',
+            url: "/secure/reviews/default/set_status",
+            data: 'status=' + status + '&id=' + id,
+            success: function (data) {
+
+            }
+        });
+    });
+
 });

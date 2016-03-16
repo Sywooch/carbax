@@ -224,7 +224,7 @@ $sortie = [
     <div id="selectAutoGarage"><?= AutoGarage::widget()?></div>
     <!--<p class="parag_text"><span>у вас нет машин в гараже</span></p>-->
 
-    <p class="parag_text">Выберите тип Вашего транспортного средства</p>
+    <p class="parag_text">Выберите тип Вашего транспортного средства <span class="requestErrorTypeAutoRequest">Вы не выбрали тип авто</span></p>
 
     <div class="save">
         <input type="checkbox" name="typeAuto" value="1" id="a" class="typeAutoRequest">
@@ -336,12 +336,12 @@ $sortie = [
 
         <div class="singleContent__desc">
             <label for="addContent__description" style="width:100%; font-size:15px">Комментарии:</label>
-            <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Введите всю дополнительную информацию"></textarea>
+            <textarea id="addContent__description" class="addContent__description" name="comm" placeholder="Введите всю дополнительную информацию" required="required"></textarea>
 
             <?php echo Html::hiddenInput('request_type_id', $_GET['id']); ?>
 
             <div class="addContent--save">
-                <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить</a>
+                <input type="submit" value="Отправить" class="btn btn-save" id="sendReq">
             </div>
         </div>
 

@@ -17,8 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <h1>Заявка в автосалоны</h1>
 <form id="addForm" action="send_request" method="post">
 
-
-<p class="parag_text">Выберите тип транспортного средства</p>
+<p class="parag_text">Выберите тип транспортного средства <span class="requestErrorTypeAutoRequest">Вы не выбрали тип авто</span></p>
 
     <div class="save">
         <input type="checkbox" name="typeAuto" value="1" id="car" class="typeAutoRequest typeAutoAutosalon">
@@ -66,14 +65,14 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php echo Html::hiddenInput('request_type_id', $_GET['id']); ?>
 
         <label for="" style="width:100%; font-size:15px">Контакты</label>
-        <input type="text" id="" class="addContent__text" name="fio" value="" placeholder="Введите ФИО">
-        <input type="text" id="user_telephon" class="addContent__text" name="tel" value="" placeholder="Введите Ваш номер телефона" title="Формат: +7 (999) 999-9999">
-        <input type="text" id="" class="addContent__text" name="email" value="" placeholder="Введите e-mail">
+        <input type="text" id="" class="addContent__text" name="fio" value="" placeholder="Введите ФИО" required="required">
+        <input type="text" id="user_telephon" class="addContent__text" name="tel" value="" placeholder="Введите Ваш номер телефона" title="Формат: +7 (999) 999-9999" required="required">
+        <input type="text" id="" class="addContent__text" name="email" value="" placeholder="Введите e-mail" required="required">
     </div>
 
 
     <div class="addContent--save">
-        <a href="#" onclick="document.getElementById('addForm').submit(); return false;">Отправить заявку</a>
+        <input type="submit" value="Отправить" class="btn btn-save" id="sendReq">
     </div>
 </form>
 </section>
