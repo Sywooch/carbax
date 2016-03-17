@@ -50,7 +50,7 @@ class OffersController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['view'],
+                        'actions' => ['view','all_offers'],
                         'roles' => ['?'],
                     ],
                 ],

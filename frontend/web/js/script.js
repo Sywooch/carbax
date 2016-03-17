@@ -1364,7 +1364,7 @@ function page_height(){
     var head_h = $('.header').height();
     var foot_h = $('.foot').height();
     var ban_h = $('.singleImg').height();
-    $('.single_wrapper').css("min-height" , win_h - head_h - foot_h - ban_h - 170 + "px");
+    $('.single_wrapper').css("min-height" , win_h - head_h - foot_h - ban_h - 160 + "px");
 };
 
 

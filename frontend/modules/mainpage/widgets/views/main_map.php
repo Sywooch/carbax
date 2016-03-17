@@ -247,7 +247,7 @@ Debug::prn($services);*/
 
                 <div id="main_map" style="width:100%; height:100%"></div>
 
-            <div class="myLocationCarbax">Мое местоположение</div>
+            <div class="myLocationCarbax myLocationCarbaxMaps" title="Мое местоположение"></div>
             <div class="filter__map--checklist">
                 <div class="hide_filter__map--checklist"></div>
 

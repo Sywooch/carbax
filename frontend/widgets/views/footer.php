@@ -81,7 +81,7 @@ use yii\helpers\Url;
                     <?= Html::a('Мойка',['/request','id'=>'2']); ?>
                 </li>
                 <li>
-                    <?= Html::a('Мойка',['/request','id'=>'8']); ?>
+                    <?= Html::a('Тюнинг',['/request','id'=>'8']); ?>
                 </li>
                 <li>
                     <?= Html::a('Запчасти',['/request','id'=>'9']); ?>

@@ -401,7 +401,9 @@ input[type="checkbox"] + label {
     text-decoration: none; }
 .header--region {
     background-image: url("/media/img/region.png");
-    padding-left: 40px; }
+    padding-left: 40px;
+    position: relative;
+}
 .header--region--box {
     width: 100px;
     height: 23px;

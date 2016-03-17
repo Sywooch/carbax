@@ -33,4 +33,8 @@ echo AutoComplete::widget([
         'source' => $regions,
     ],
 ]);
-echo "<input type='hidden' name='city_id' value='$cityId' id='auto_complete_city_id'>";
+?>
+
+    <div class="myLocationCarbax myLocationCarbaxAutoComplite"></div>
+
+<?php echo "<input type='hidden' name='city_id' value='$cityId' id='auto_complete_city_id'>";
