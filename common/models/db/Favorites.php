@@ -10,6 +10,7 @@ use Yii;
  * @property integer $id
  * @property integer $market_id
  * @property integer $service_id
+ * @property integer $offers_id
  * @property integer $user_id
  */
 class Favorites extends \yii\db\ActiveRecord
@@ -28,7 +29,7 @@ class Favorites extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['market_id', 'service_id', 'user_id'], 'integer'],
+            [['market_id', 'service_id', 'offers_id', 'user_id'], 'integer'],
             [['user_id'], 'required']
         ];
     }

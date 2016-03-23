@@ -2,5 +2,10 @@
 use yii\helpers\Url;
 ?>
 
-<h3>Добавьте свой бизнес и получите возможность создавать акции и спецпредложения. С наилучшими пожеланиями, администрация автопортала Carbax.ru</h3>
-<a href="<?= Url::to('select_service')?>" class="btn btn-addServices">Создать сервис</a>
+<p class="errorOffers">
+    <img src="/media/img/error_offers.png" alt="">
+</p>
+
+<p class="textErrorOffers">
+<a href="<?= Url::to('/select_service')?>">Добавьте свой бизнес</a> и получите возможность создавать акции и спецпредложения.</p>
+<p class="subErrorOffers">С наилучшими пожеланиями, администрация автопортала Carbax.ru</p>

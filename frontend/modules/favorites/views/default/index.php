@@ -4,26 +4,28 @@ $this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<section class="main-container">
-    <div class="contain_favorites">
-    <div class="fleamarket__ads--list">
-    <?php foreach($product as $p):?>
-        <div class="fleamarket__ads__item">
-            <a href="#" class="fleamarket__ads__item--img">
-                <img src="/<?=$p['product_img'][0]->img?>" alt="">
+<?= \frontend\modules\favorites\widgets\FavoritesMenu::widget(); ?>
+<section class="ads">
 
-            </a>
-            <div class="fleamarket__ads__item--desc">
+    <div class="ads__wrap favoritesListAjax">
 
-                <a href="/flea_market/default/view?id=<?=$p->id;?>" class="fleamarket__ads__item--desc--title"><?=$p['name']?></a>
-                <p class="fleamarket__ads__item--desc--price"><?=$p['price']?></p>
-                <p class="fleamarket__ads__item--desc--specification"><?=$p['descr']?></p>
-                <!--<small class="fleamarket__ads__item--desc--contact">Автодилер</small>-->
-                <small class="fleamarket__ads__item--desc--adress"><?= $p['geobase_city']->name; ?></small>
-                <small class="fleamarket__ads__item--desc--time"><?= date('Y-m-d H:i',$p['dt_add']) ?></small>
-            </div>
-        </div>
-    <?php endforeach; ?>
-        </div>
-        </div>
+<?php if(!empty($product)):?>
+
+                <?php
+                foreach ($product as $prod): ?>
+                    <a href="/flea_market/default/view?id=<?=$prod->id;?>" class="ads__item">
+				<span class="ads__item--img">
+					<img src="/<?= $prod['product_img'][0]->img; ?>" alt="">
+                    <!--<span class="ads__item--rating">4,1</span>-->
+				</span>
+				<span class="ads__item--title">
+					<p><?= $prod->name; ?></p>
+				</span>
+                    </a>
+                <?php endforeach; ?>
+<?php else:?>
+    В избранном нет объявлений
+<?php endif; ?>
+    </div>
+
 </section>

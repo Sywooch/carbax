@@ -400,7 +400,7 @@ input[type="checkbox"] + label {
 .header--perscab:hover, .header--region:hover, .header--messages:hover {
     text-decoration: none; }
 .header--region {
-    background-image: url("/media/img/region.png");
+    background-image: url("/media/img/region_.png");
     padding-left: 40px;
     position: relative;
 }

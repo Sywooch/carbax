@@ -796,6 +796,49 @@ jQuery(document).ready(function ($) {
         //alert(productId);
     });
 
+    $(document).on('click','a.favorites_service',function(){
+        var serviceId = $(this).attr('service_id');
+        if($(this).hasClass('del_favorites_service')){
+            $(this).removeClass('del_favorites_service');
+            $(this).text('В избранное');
+        }else{
+            $(this).addClass('del_favorites_service');
+            $(this).text('Из избранного');
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/add_favorites_service",
+            data: 'productid=' + serviceId,
+            success: function (data) {
+            }
+        });
+        return false;
+        //alert(productId);
+    });
+
+    $(document).on('click','a.favorites_offers',function(){
+        var offersId = $(this).attr('offers_id');
+        if($(this).hasClass('del_favorites_offers')){
+            $(this).removeClass('del_favorites_offers');
+            $(this).text('В избранное');
+        }else{
+            $(this).addClass('del_favorites_offers');
+            $(this).text('Из избранного');
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/add_favorites_offers",
+            data: 'productid=' + offersId,
+            success: function (data) {
+                console.log(data);
+            }
+        });
+        return false;
+
+    });
+
     $(document).on('click','.radioTypeSelect',function(){
         var radio = $('input[name=radio_type_product]:checked').val();
         $.ajax({
@@ -1356,7 +1399,22 @@ jQuery(document).ready(function ($) {
             }
         }
     });
+
+
+    $(document).on('click', '.favoritesList', function(){
+        var type = $(this).attr('data-type');
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/show_favorites",
+            data: 'type=' + type,
+            success: function (data) {
+                $('.favoritesListAjax').html(data);
+            }
+        });
+    });
+
     page_height();
+    page_height_reg()
 });
 
 function page_height(){
@@ -1365,6 +1423,15 @@ function page_height(){
     var foot_h = $('.foot').height();
     var ban_h = $('.singleImg').height();
     $('.single_wrapper').css("min-height" , win_h - head_h - foot_h - ban_h - 160 + "px");
+};
+
+function page_height_reg(){
+    var win_h = $(window).height();
+    var head_h = $('.header').height();
+    var foot_h = $('.foot').height();
+    var ban_h = $('.filter').height();
+    $('.filter').css("min-height" , win_h - head_h - foot_h - ban_h + 255 + "px");
+    //console.log(win_h - head_h - foot_h - ban_h + 250);
 };
 
 

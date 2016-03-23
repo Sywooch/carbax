@@ -13,36 +13,11 @@ $checking = $news->img_url;
 
 
 ?>
-<!--    <section class="main-container">-->
-<!--        <div class="offers_page_view">-->
-<!--            <div class="news__date-add"><b>Дата добавления: </b>--><? //= date('d.m.Y G:i', $model->dt_add) ?><!--</div>-->
-<!--            <h1>--><? //= $model->title ?><!--</h1>-->
-<!---->
-<!--            <div class="offers__news-list">-->
-<!--                <div class="offers__descr"><b>Описание: </b>--><? //= $model->description ?><!--</div>-->
-<!--                --><?php
-//                //$news->img_url;
-//                if ($model->img_url != ''):
-?>
-<!--                    <img class="offers__image" src="--><? //= $model->img_url ?><!--" alt="">-->
-<!--                --><?php //endif; ?>
-<!---->
-<!--            </div>-->
-<!---->
-<!--        </div>-->
-<!--    </section>-->
 <?php /*
 $IpGeoBase = new IpGeoBase();
 $IpGeoBase->updateDB()
 */
 ?>
-
-
-
-
-
-
-
 
 <!--AKD47 section-->
 
@@ -59,17 +34,12 @@ $IpGeoBase->updateDB()
             navclipcenter:true,
             auto:false
         });
-
-
-
     });
 </script>
 <?php //Debug::prn($info);?>
 <section class="offers_container">
 <h3 class="offers_header"><?= $model->title; ?></h3>
     <div class="offers_page_view">
-
-
             <div id="page" class="inner layout-1col">
             <!-- Start photosgallery-vertical -->
             <div class="sliderkit photosgallery-vertical">
@@ -94,8 +64,6 @@ $IpGeoBase->updateDB()
                 </div>
             </div>
             <!-- // end of photosgallery-vertical -->
-
-
 
         <div class="offers_nav">
             <ul class="nav_sm nav nav-tabs">
@@ -197,10 +165,7 @@ $IpGeoBase->updateDB()
             ?>
             <span class="footer__social--link--counter">+<?= $tmp[1];?></span>
 
-
             <?php
-
-
                 $fburl = "http://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
                 $facebook_request = file_get_contents("http://graph.facebook.com/?ids=".$fburl);
                 $fb = json_decode($facebook_request);
@@ -212,7 +177,8 @@ $IpGeoBase->updateDB()
             </a>
 
             <span class="footer__social--link--counter"><?= $fb->{$fburl}->shares;?></span>
-
+            <a href="#" class="favorites_offers <?= (!empty($favorites)) ? 'del_favorites_offers' : ''; ?>"
+               offers_id="<?= $_GET['id']; ?>"> <?= (!empty($favorites)) ? 'Из избранного' : 'В избранное'; ?></a>
         </div>
         <div class="map-wrap">
             <div id="mapOffers"></div>

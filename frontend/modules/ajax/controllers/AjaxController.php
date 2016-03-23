@@ -37,6 +37,7 @@ use common\models\db\Favorites;
 use common\models\db\Garage;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
+use common\models\db\Market;
 use common\models\db\Msg;
 use common\models\db\Offers;
 use common\models\db\OffersAttend;
@@ -501,6 +502,38 @@ class AjaxController extends Controller
         }
     }
 
+    public function actionAdd_favorites_service(){
+        $favorites = new Favorites();
+        if(isset($_POST['productid'])){
+            $fav = Favorites::find()->where(['service_id' => $_POST['productid'],'user_id' => Yii::$app->user->id])->one();
+            if(empty($fav)){
+                $favorites->service_id = $_POST['productid'];
+                $favorites->user_id = Yii::$app->user->id;
+                $favorites->save();
+            }
+            else{
+                $fav->delete();
+            }
+        }
+    }
+
+    public function actionAdd_favorites_offers(){
+        $favorites = new Favorites();
+
+        if(isset($_POST['productid'])){
+            $fav = Favorites::find()->where(['offers_id' => $_POST['productid'],'user_id' => Yii::$app->user->id])->one();
+
+            if(empty($fav)){
+                $favorites->offers_id = $_POST['productid'];
+                $favorites->user_id = Yii::$app->user->id;
+                $favorites->save();
+            }
+            else{
+                $fav->delete();
+            }
+        }
+    }
+
     public function actionView_widget(){
         if($_POST['type'] == 1){
             echo SelectAuto::widget(['view' => ($_GET['type'] == 'auto') ? '0' : '1', 'select_from_garage' => true]);
@@ -903,5 +936,40 @@ class AjaxController extends Controller
         $review->rating = $_POST['raiting'];
         $review->dt_add = time();
         $review->save();
+    }
+
+    public function actionShow_favorites(){
+        if($_POST['type'] == 1){
+            $product = Market::find()
+                ->leftJoin('`favorites`', '`favorites`.`market_id` = `market`.`id`')
+                ->leftJoin('`product_img`', '`product_img`.`product_id` = `market`.`id`')
+                ->leftJoin('`geobase_city`', '`geobase_city`.`id` = `market`.`city_id`')
+                ->where(['`favorites`.`user_id`' => Yii::$app->user->id])
+                ->with('product_img','geobase_city')
+                ->all();
+            return $this->renderPartial('favorites/market',['product' => $product]);
+        }
+
+        if($_POST['type'] == 2){
+            $offers = Offers::find()
+                ->leftJoin('`favorites`', '`favorites`.`offers_id` = `offers`.`id`')
+                ->leftJoin('`offers_images`', '`offers_images`.`offers_id` = `offers`.`id`')
+                ->where(['`favorites`.`user_id`' => Yii::$app->user->id])
+                ->with('offers_images')
+                ->all();
+            return $this->renderPartial('favorites/offers',['offers' => $offers]);
+        }
+
+        if($_POST['type'] == 3){
+            $services = Services::find()
+                ->leftJoin('`favorites`', '`favorites`.`service_id` = `services`.`id`')
+                ->leftJoin('`services_img`', '`services_img`.`services_id` = `services`.`id`')
+                ->where(['`favorites`.`user_id`' => Yii::$app->user->id])
+                ->with('services_img')
+                ->all();
+
+            return $this->renderPartial('favorites/services',['services' => $services]);
+        }
+
     }
 }

@@ -17,6 +17,7 @@ use common\models\db\AutoComBrands;
 use common\models\db\AutoType;
 use common\models\db\BrandCars;
 use common\models\db\ComfortZone;
+use common\models\db\Favorites;
 use common\models\db\GeobaseCity;
 use common\models\db\Phone;
 use common\models\db\ServiceAddFields;
@@ -252,6 +253,7 @@ class ServicesController extends Controller
         }
         $serviceType = ServiceType::find()->where(['id'=>$servic->service_type_id])->one();
         $img = ServicesImg::findAll(['services_id'=>$servicId]);
+        $favorites = Favorites::find()->where(['service_id'=>$_GET['service_id'],'user_id'=>Yii::$app->user->id])->one()->id;
         return $this->render('view',
             [
                 'serviceID' => $servicId,
@@ -268,6 +270,8 @@ class ServicesController extends Controller
                 'serviceLogo' => $serviceLogo,
                 'serviceType' => $serviceType,
                 'img' => $img,
+                'servic' => $servic,
+                'favorites' => $favorites,
             ]);
     }
 

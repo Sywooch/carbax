@@ -324,7 +324,7 @@ a.regHeaderLink {
   -webkit-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-position: 50% 50%; }
+  background-position: 50% 50%;    margin-top: -45px; }
   .initial-screen--aside {
     display: block;
     float: left;

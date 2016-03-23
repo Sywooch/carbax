@@ -8,6 +8,7 @@ namespace frontend\modules\offers\controllers;
 use common\classes\Address;
 
 use common\classes\Debug;
+use common\models\db\Favorites;
 use common\models\db\GeobaseCity;
 use common\models\db\OffersAttend;
 use common\models\db\OffersImages;
@@ -168,6 +169,7 @@ class OffersController extends Controller
         $decisonY = OffersAttend::find()->where(['offers_id' => $_GET['id'], 'decison' => '1'])->count();
         $decisonN = OffersAttend::find()->where(['offers_id' => $_GET['id'], 'decison' => '0'])->count();
         $countReviews = Reviews::find()->where(['publ' => 1, 'offers' => 1, 'spirit_id' => $_GET['id']])->count();
+        $favorites = Favorites::find()->where(['offers_id'=>$_GET['id'],'user_id'=>Yii::$app->user->id])->one()->id;
         return $this->render('view', [
             'model' => $model,
             'info' => $result,
@@ -175,6 +177,7 @@ class OffersController extends Controller
             'decisonY' => $decisonY,
             'decisonN' => $decisonN,
             'countReviews' => $countReviews,
+            'favorites' => $favorites,
         ]);
     }
     public function actionGet_city()
