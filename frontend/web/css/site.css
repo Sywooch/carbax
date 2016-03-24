@@ -3058,7 +3058,7 @@ input[type="checkbox"] + label {
     margin: 10px 0;
 }
 .offers__block img{
-    width:100px;
+    width: 250px;
     float: left;
     margin-right: 10px;
 }
@@ -3078,4 +3078,87 @@ ul.pagination li a{
 
 ul.pagination li.active a {
     color: #ccc;
+}
+
+span.offersStatusZag {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+span.offersStatusVal {
+    font-style: italic;
+}
+
+.offersTitle a h3{
+    color:#282828;
+}
+
+
+span.offersVip {
+    background-image: -webkit-gradient(
+            linear,
+            left top,
+            left bottom,
+            color-stop(0.56, #F47474),
+            color-stop(1, #DC2525)
+    );
+    background-image: -o-linear-gradient(bottom, #F47474 56%, #DC2525 100%);
+    background-image: -moz-linear-gradient(bottom, #F47474 56%, #DC2525 100%);
+    background-image: -webkit-linear-gradient(bottom, #F47474 56%, #DC2525 100%);
+    background-image: -ms-linear-gradient(bottom, #F47474 56%, #DC2525 100%);
+    background-image: linear-gradient(to bottom, #F47474 56%, #DC2525 100%);
+    width: 60px;
+    display: block;
+    text-align: center;
+    line-height: 13px;
+    padding: 5px 10px 5px 5px;
+    color: #ffde00;
+    font-weight: bold;
+    border: 1px solid #e64343;
+    border-radius: 6px;
+    float: left;
+    margin-top: 5px;
+}
+
+span.offersVipBuy {
+    background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0.56, #F47474), color-stop(1, #DC2525) );
+    background-image: -o-linear-gradient(bottom, #F47474 56%, #DC2525 100%);
+    background-image: -moz-linear-gradient(bottom, #F47474 56%, #DC2525 100%);
+    background-image: -webkit-linear-gradient(bottom, #F47474 56%, #DC2525 100%);
+    background-image: -ms-linear-gradient(bottom, #F47474 56%, #DC2525 100%);
+    background-image: linear-gradient(to bottom, #F47474 56%, #DC2525 100%);
+    width: 85px;
+    text-align: center;
+    line-height: 36px;
+    height: 49px;
+    padding: 5px;
+    font-weight: bold;
+    border: 1px solid #e64343;
+    border-radius: 6px;
+    display: inline-flex;
+    margin-left: -8px;
+}
+
+span.offersVipBuy a{
+    color: #fff;
+    text-align:center;
+    font-size:20px;
+    width: 100%;
+    font-weight: bold;
+}
+
+.offersVipWr {
+    margin: 0 auto;
+    width: 138px;
+    margin-top: 13px;
+}
+
+a.btn.btn-del {
+    background-image: -webkit-linear-gradient(90deg, rgb(200, 94, 0) 0%, rgb(40, 40, 40) 0%, rgb(93, 93, 93) 100%);
+    background-image: -ms-linear-gradient(90deg, rgb(200, 94, 0) 0%, rgb(40, 40, 40) 0%, rgb(93, 93, 93) 100%);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.34), inset 0px 2px 4px 0px rgba(255, 255, 255, 0.47);
+    color: #fff;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 15px;
 }

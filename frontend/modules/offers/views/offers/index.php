@@ -33,8 +33,28 @@ $this->registerCssFile('/css/bootstrap.min.css');
                             ?>
 
                             <div class="offersInfpWr">
-                                <div class="offersTitle"><?=$n->title;?></div>
-                                <div class="offers__block"><img src="/<?= OffersImages::find()->where(['offers_id'=>$n->id])->one()->images; ?>" alt=""></div>
+                                <div class="offersTitle">
+                                    <a href="/offers/offers/view?id<?=$n->id; ?>"><h3><?=$n->title;?></h3></a>
+                                </div>
+                                <div class="offers__block">
+                                    <img src="/<?= OffersImages::find()->where(['offers_id'=>$n->id])->one()->images; ?>" alt="">
+                                </div>
+
+                                <div class="offersControl">
+                                    <span class="offersStatusZag">Состояние: </span>
+                                    <span class="offersStatusVal"><?= ($n->status == 1) ? 'Опубликовано' : 'Не опубликовано'; ?></span>
+                                    <div class="cleared"></div>
+
+                                    <div class="offersVipWr">
+                                        <span class="offersVip">
+                                            Статус VIP
+                                        </span>
+                                        <span class="offersVipBuy"><a href="<?= Url::to(['#']); ?>">Купить</a></span>
+                                    </div>
+
+                                    <a class="btn btn-del" href="<?= Url::to(['offers/delete', 'id' => $n->id]); ?>">Удалить</a>
+                                </div>
+
                                 <div class="decionOffersWr">
                                     <div class="offers_agreement">
                                         <div class="offers_agreement--count">
@@ -54,11 +74,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                                         </div>
                                     </div>
                                 </div>
-                                <div class="offersControl">
-                                    <a class="btn btn-danger btn-xs" href="<?= Url::to(['#']); ?>">Купить VIP</a>
-                                    <a class="btn btn-danger btn-xs" href="<?= Url::to(['offers/delete', 'id' => $n->id]); ?>">Удалить</a>
 
-                                </div>
                             </div>
                             <div class="cleared"></div>
                         <?php endif; ?>
