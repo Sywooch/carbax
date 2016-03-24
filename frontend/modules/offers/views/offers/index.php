@@ -149,7 +149,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 </tr>
             <?php /*endforeach; */?>
             </table>
-     
+
         --><?php
 /*        // display pagination*/
         //echo LinkPager::widget(['pagination' => $pages]); ?>
