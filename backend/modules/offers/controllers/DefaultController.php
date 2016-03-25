@@ -8,6 +8,8 @@ class DefaultController extends Controller
 {
     public function actionIndex()
     {
-        return $this->render('index');
+        $time = date('H:i:s');
+        return $this->render('index', ['time' => $time]);
+
     }
 }

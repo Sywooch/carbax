@@ -2,6 +2,7 @@
 
 namespace backend\modules\offers\controllers;
 
+use common\models\db\Offers;
 use Yii;
 use backend\modules\offers\models\OffersModels;
 use backend\modules\offers\models\OffersModelsSearch;
@@ -117,5 +118,9 @@ class OffersController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionEdit_status(){
+        Offers::updateAll(['status' => $_POST['status']],['id' => $_POST['id']]);
     }
 }

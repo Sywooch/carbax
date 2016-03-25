@@ -1,12 +1,20 @@
-<div class="offers-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
-    <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
-</div>
+<?php
+use yii\helpers\Html;
+use yii\widgets\Pjax;
+
+?>
+
+<?php
+$script = <<< JS
+$(document).ready(function() {
+    setInterval(function(){ $("#refreshButton").click(); }, 1000);
+});
+JS;
+$this->registerJs($script);
+?>
+
+<?php Pjax::begin();?>
+<?= Html::a("Обновить", ['/offers/default/index'], ['class' => 'btn btn-lg btn-primary','id' => 'refreshButton']);?>
+<h1>Сейчас: <?= $time ?></h1>
+<? Pjax::end();
+?>

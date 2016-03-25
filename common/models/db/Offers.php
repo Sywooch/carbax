@@ -69,7 +69,8 @@ class Offers extends \yii\db\ActiveRecord
             'region_id' => 'Регион',
             'city_id' => 'Город',
             'dt_add' => 'Dt Add',
-            'circs' => 'Условия:'
+            'circs' => 'Условия:',
+            'status' => 'Статус',
         ];
     }
 

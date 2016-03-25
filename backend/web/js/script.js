@@ -43,4 +43,27 @@ $(document).ready(function ($) {
         });
     });
 
+    $(document).on('click', '.offersPubl', function(){
+        var id = $(this).attr('id');
+        var status = $(this).attr('status');
+        if(status == 1){
+            $(this).parent().html('<img class="offersPubl" status="0" id="' + id + '" src="images/publish_x.png"/>');
+            status = 0;
+        }else{
+            status = 1;
+            $(this).parent().html('<img class="offersPubl" status="1" id="' + id + '" src="images/tick.png"/>');
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: "/secure/offers/offers/edit_status",
+            data: 'status=' + status + '&id=' + id,
+            success: function (data) {
+
+            }
+        });
+    });
+
+
+
 });
