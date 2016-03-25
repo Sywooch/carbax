@@ -3779,3 +3779,18 @@ a#allOffers,a.allNews {
 .favoritesListAjax .deals .deals__line{
     margin: 0px -3%;
 }
+
+/*--- request msg----*/
+span.request_msg_type{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+span.request_msg_autotype{
+    padding: 5px;
+    color: #fff;
+    background-color: #ff6b00;
+    border-radius: 3px;
+    font-size: 13px;
+}

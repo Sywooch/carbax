@@ -28,7 +28,7 @@ use common\models\db\CarModel;
      * Легковой транспорт
      */
         if($post['typeAuto'] == 1):?>
-            <div><span>Тип автомобиля: </span> Легковой автомобиль</div>
+            <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Легковой автомобиль</span></div>
             <div><span>Марка: </span><?= BcbBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name; ?></div>
             <div><span>Модель: </span><?= BcbModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name; ?></div>
             <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -45,7 +45,7 @@ use common\models\db\CarModel;
      * Грузовой транспорт
      */
         if($post['typeAuto'] == 2):?>
-            <div><span>Тип автомобиля: </span>Грузовой автомобиль</div>
+            <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Грузовой автомобиль</span></div>
             <div><span>Марка: </span><?= AutoComBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name ?></div>
             <div><span>Модель: </span><?= AutoComModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name ?></div>
             <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -61,7 +61,7 @@ use common\models\db\CarModel;
      * Мото транспорт
      */
         if($post['typeAuto'] == 3):?>
-            <div><span>Тип автомобиля: </span>Мото транспорт</div>
+            <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Мото транспорт</span></div>
             <div><span>Марка: </span><?= CarMark::find()->where(['id_car_mark' => $_POST['requestMarkAuto']])->one()->name ?></div>
             <div><span>Модель: </span><?= CarModel::find()->where(['id_car_model' => $_POST['requestModelAuto']])->one()->name; ?></div>
             <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -81,7 +81,7 @@ use common\models\db\CarModel;
      * Легковой транспорт
      */
     if($post['typeAuto'] == 1):?>
-            <div><span>Тип автомобиля: </span> Легковой автомобиль</div>
+            <div><span class="request_msg_type">Тип автомобиля: </span> <span class="request_msg_autotype">Легковой автомобиль</span></div>
             <div><span>Марка: </span><?= BcbBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name; ?></div>
             <div><span>Модель: </span><?= BcbModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name; ?></div>
             <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -94,7 +94,7 @@ use common\models\db\CarModel;
      * Грузовой транспорт
      */
     if($post['typeAuto'] == 2):?>
-            <div><span>Тип автомобиля: </span>Грузовой автомобиль</div>
+            <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Грузовой автомобиль</span> </div>
             <div><span>Марка: </span><?= AutoComBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name ?></div>
             <div><span>Модель: </span><?= AutoComModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name ?></div>
             <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -106,7 +106,7 @@ use common\models\db\CarModel;
      * Мото транспорт
      */
     if($post['typeAuto'] == 3):?>
-            <div><span>Тип автомобиля: </span>Мото транспорт</div>
+            <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Мото транспорт</span></div>
             <div><span>Марка: </span><?= CarMark::find()->where(['id_car_mark' => $_POST['requestMarkAuto']])->one()->name ?></div>
             <div><span>Модель: </span><?= CarModel::find()->where(['id_car_model' => $_POST['requestModelAuto']])->one()->name; ?></div>
             <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -122,14 +122,14 @@ use common\models\db\CarModel;
      * Легковой транспорт
      */
     if($post['typeAuto'] == 1):?>
-        <div><span>Тип автомобиля: </span> Легковой автомобиль</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span> <span class="request_msg_autotype">Легковой автомобиль</span></div>
     <?php endif;?>
     <?php
     /**
      * Грузовой транспорт
      */
     if($post['typeAuto'] == 2):?>
-        <div><span>Тип автомобиля: </span>Грузовой автомобиль</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Грузовой автомобиль</span></div>
     <?php endif;?>
 
     <?php
@@ -137,7 +137,7 @@ use common\models\db\CarModel;
      * Мото транспорт
      */
     if($post['typeAuto'] == 3):?>
-        <div><span>Тип автомобиля: </span>Мото транспорт</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Мото транспорт</span></div>
     <?php endif;?>
     <div><span>Тип кузова: </span><?= AwpBodyType::find()->where(['id' => $_POST['bodyAuto']])->one()->name; ?></div>
 <?php endif; ?>
@@ -150,7 +150,7 @@ use common\models\db\CarModel;
      * Легковой транспорт
      */
     if($post['typeAuto'] == 1):?>
-        <div><span>Тип автомобиля: </span> Легковой автомобиль</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span> <span class="request_msg_autotype">Легковой автомобиль</span></div>
         <div><span>Марка: </span><?= BcbBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name; ?></div>
         <div><span>Модель: </span><?= BcbModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name; ?></div>
         <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -163,7 +163,7 @@ use common\models\db\CarModel;
      * Грузовой транспорт
      */
     if($post['typeAuto'] == 2):?>
-        <div><span>Тип автомобиля: </span>Грузовой автомобиль</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Грузовой автомобиль</span></div>
         <div><span>Марка: </span><?= AutoComBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name ?></div>
         <div><span>Модель: </span><?= AutoComModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name ?></div>
         <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -175,7 +175,7 @@ use common\models\db\CarModel;
      * Мото транспорт
      */
     if($post['typeAuto'] == 3):?>
-        <div><span>Тип автомобиля: </span>Мото транспорт</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Мото транспорт</span></div>
         <div><span>Марка: </span><?= CarMark::find()->where(['id_car_mark' => $_POST['requestMarkAuto']])->one()->name ?></div>
         <div><span>Модель: </span><?= CarModel::find()->where(['id_car_model' => $_POST['requestModelAuto']])->one()->name; ?></div>
         <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -282,7 +282,7 @@ use common\models\db\CarModel;
      * Легковой транспорт
      */
     if($post['typeAuto'] == 1):?>
-        <div><span>Тип автомобиля: </span> Легковой автомобиль</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype"> Легковой автомобиль</span></div>
         <div><span>Марка: </span><?= BcbBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name; ?></div>
         <div><span>Модель: </span><?= BcbModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name; ?></div>
         <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -292,7 +292,7 @@ use common\models\db\CarModel;
      * Грузовой транспорт
      */
     if($post['typeAuto'] == 2):?>
-        <div><span>Тип автомобиля: </span>Грузовой автомобиль</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Грузовой автомобиль</span></div>
         <div><span>Марка: </span><?= AutoComBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name ?></div>
         <div><span>Модель: </span><?= AutoComModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name ?></div>
         <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -302,7 +302,7 @@ use common\models\db\CarModel;
      * Мото транспорт
      */
     if($post['typeAuto'] == 3):?>
-        <div><span>Тип автомобиля: </span>Мото транспорт</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Мото транспорт</span></div>
         <div><span>Марка: </span><?= CarMark::find()->where(['id_car_mark' => $_POST['requestMarkAuto']])->one()->name ?></div>
         <div><span>Модель: </span><?= CarModel::find()->where(['id_car_model' => $_POST['requestModelAuto']])->one()->name; ?></div>
         <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -342,7 +342,7 @@ use common\models\db\CarModel;
      * Легковой транспорт
      */
     if($post['typeAuto'] == 1):?>
-        <div><span>Тип автомобиля: </span> Легковой автомобиль</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span> <span class="request_msg_autotype">Легковой автомобиль</span></div>
         <div><span>Марка: </span><?= BcbBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name; ?></div>
         <div><span>Модель: </span><?= BcbModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name; ?></div>
         <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -355,7 +355,7 @@ use common\models\db\CarModel;
      * Грузовой транспорт
      */
     if($post['typeAuto'] == 2):?>
-        <div><span>Тип автомобиля: </span>Грузовой автомобиль</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Грузовой автомобиль</span></div>
         <div><span>Марка: </span><?= AutoComBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name ?></div>
         <div><span>Модель: </span><?= AutoComModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name ?></div>
         <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -367,7 +367,7 @@ use common\models\db\CarModel;
      * Мото транспорт
      */
     if($post['typeAuto'] == 3):?>
-        <div><span>Тип автомобиля: </span>Мото транспорт</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Мото транспорт</span></div>
         <div><span>Марка: </span><?= CarMark::find()->where(['id_car_mark' => $_POST['requestMarkAuto']])->one()->name ?></div>
         <div><span>Модель: </span><?= CarModel::find()->where(['id_car_model' => $_POST['requestModelAuto']])->one()->name; ?></div>
         <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -393,7 +393,7 @@ use common\models\db\CarModel;
      * Легковой транспорт
      */
     if($post['typeAuto'] == 1):?>
-        <div><span>Тип автомобиля: </span> Легковой автомобиль</div>
+        <div class="request_msq_"><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Легковой автомобиль</span></div>
         <div><span>Марки авто: </span>
             <?php foreach($_POST['brand'] as $br): ?>
                 <?= BcbBrands::find()->where(['id'=>$br])->one()->name.' '; ?>
@@ -406,7 +406,7 @@ use common\models\db\CarModel;
      * Грузовой транспорт
      */
     if($post['typeAuto'] == 2):?>
-        <div><span>Тип автомобиля: </span>Грузовой автомобиль</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Грузовой автомобиль</span></div>
         <div><span>Марки авто: </span>
             <?php foreach($_POST['brand'] as $br): ?>
                 <?= AutoComBrands::find()->where(['id'=>$br])->one()->name.' '; ?>
@@ -419,7 +419,7 @@ use common\models\db\CarModel;
      * Мото транспорт
      */
     if($post['typeAuto'] == 3):?>
-        <div><span>Тип автомобиля: </span>Мото транспорт</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Мото транспорт</span></div>
         <div><span>Марки авто: </span>
             <?php foreach($_POST['brand'] as $br): ?>
                 <?= CarMark::find()->where(['id_car_mark'=>$br])->one()->name.' '; ?>
@@ -438,7 +438,7 @@ use common\models\db\CarModel;
      * Легковой транспорт
      */
     if($post['typeAuto'] == 1):?>
-        <div><span>Тип автомобиля: </span> Легковой автомобиль</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span> <span class="request_msg_autotype">Легковой автомобиль</span></div>
         <div><span>Марка: </span><?= BcbBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name; ?></div>
         <div><span>Модель: </span><?= BcbModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name; ?></div>
         <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -450,7 +450,7 @@ use common\models\db\CarModel;
      * Грузовой транспорт
      */
     if($post['typeAuto'] == 2):?>
-        <div><span>Тип автомобиля: </span>Грузовой автомобиль</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Грузовой автомобиль</span></div>
         <div><span>Марка: </span><?= AutoComBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name ?></div>
         <div><span>Модель: </span><?= AutoComModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name ?></div>
         <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
@@ -461,7 +461,7 @@ use common\models\db\CarModel;
      * Мото транспорт
      */
     if($post['typeAuto'] == 3):?>
-        <div><span>Тип автомобиля: </span>Мото транспорт</div>
+        <div><span class="request_msg_type">Тип автомобиля: </span><span class="request_msg_autotype">Мото транспорт</span></div>
         <div><span>Марка: </span><?= CarMark::find()->where(['id_car_mark' => $_POST['requestMarkAuto']])->one()->name ?></div>
         <div><span>Модель: </span><?= CarModel::find()->where(['id_car_model' => $_POST['requestModelAuto']])->one()->name; ?></div>
         <div><span>Год выпуска: </span><?= $post['requestYear'] ?></div>
