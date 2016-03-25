@@ -71,7 +71,6 @@ class AjaxController extends Controller
 
     public function actionGet_auto()
     {
-        //Debug::prn($_POST);
         if($_POST['type'] == 'typeAuto'){
             if($_POST['id'] == 1){
                 $man = BcbBrands::find()->orderBy('name')->all();
@@ -97,13 +96,6 @@ class AjaxController extends Controller
                     ArrayHelper::map($type,'id_car_type','name'),
                     ['prompt' => 'Выберите тип', 'class' => 'addContent__adress brand_select_car', 'id' => 'selectAutoWidget', 'type' => 'motocartype']
                 );
-                /*$man = CarMark::find()->orderBy('name')->all();
-                echo Html::dropDownList(
-                    'manufactures',
-                    0,
-                    ArrayHelper::map($man,'id_car_mark','name'),
-                    ['prompt' => 'Выберите бренд', 'class' => 'addContent__adress brand_select_car', 'id' => 'selectAutoWidget', 'type' => 'motooman']
-                );*/
             }
         }
         if ($_POST['type'] == 'man') {
@@ -652,11 +644,15 @@ class AjaxController extends Controller
     }
     public function actionPseudo_delete_file_service(){
         ServicesImg::deleteAll(['id' => $_GET['id']]);
-        /*$service = ServicesImg::findOne($_GET['id']);
-        $service->photo = '';
-        $service->save();*/
         echo 1;
     }
+
+    public function actionPseudo_delete_file_offers(){
+        OffersImages::deleteAll(['id' => $_GET['id']]);
+        echo 1;
+    }
+
+
 
     public function actionGet_auto_params(){
         $drive = AwpDrive::find()->all();

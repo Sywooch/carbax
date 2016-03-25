@@ -80,18 +80,9 @@ class OffersController extends Controller
     }
     public function actionCreate()
     {
-       // Debug::prn($_POST);
         $this->view->params['bannersHide'] = true;
-
         $model = new Offers();
-
-
-       // Debug::prn($serviseIdStr);
-
-
         if ($model->load(Yii::$app->request->post() )&& $model->validate()) {
-
-            //Debug::prn($_POST);
             $region = '';
             $city = '';
             $adsressService = [];
@@ -120,8 +111,6 @@ class OffersController extends Controller
             $model->service_type_id = $serviceTypeId;
             $model->service_id_str = $serviseIdStr;
 
-
-            //$model->dae = $_POST['dae'];
 
             $model->status = 0;
             //Debug::prn($model);
@@ -189,21 +178,55 @@ class OffersController extends Controller
 
     public function actionEdit($id){
        // Debug::prn($_POST);
+        $this->view->params['bannersHide'] = true;
         $model = Offers::findOne($id);
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if(!empty($_FILES['Offers']['tmp_name']['img_url'])){
-                move_uploaded_file($_FILES['Offers']['tmp_name']['img_url'], Yii::$app->basePath.'/web/media/img/offers/'.time().$_FILES['Offers']['name']['img_url']);
-                $model->img_url = '/frontend/web/media/img/offers/'.time().$_FILES['Offers']['name']['img_url'];
+            $region = '';
+            $city = '';
+            $adsressService = [];
+            foreach ($_POST['addressId'] as $adServ) {
+                $service = \common\models\db\Address::find()->where(['id'=>$adServ])->one();
+                $adsressService[$service->service_id][] = $adServ;
+                $region .= $service->region_id.',';
+                $city .= $service->city_id.',';
             }
-            else{
-                $model->img_url = $_POST['img_url_h'];
+            $model->dt_add = time();
+            //move_uploaded_file($_FILES['Offers']['tmp_name']['img_url'], Yii::$app->basePath.'/web/media/img/offers/'.time().$_FILES['Offers']['name']['img_url']);
+            $model->img_url = '/frontend/web/media/img/offers/'.time().$_FILES['Offers']['name']['img_url'];
+            $model->user_id = Yii::$app->user->id;
+            $model->address_selected = json_encode($adsressService);
+
+            $model->region_id = $region;
+            $model->city_id = $city;
+
+            $serviseIdStr = '';
+            $serviceTypeId = '';
+            foreach ($_POST['servisesId'] as $str) {
+                $serviseIdStr .= $str.',';
+                $serviceTypeId .= Services::find()->where(['id'=>$str])->one()->service_type_id.',';
             }
-            $model->city_id = $_POST['city'];
+
+            $model->service_type_id = $serviceTypeId;
+            $model->service_id_str = $serviseIdStr;
+
+
+            $model->status = 0;
+            //Debug::prn($model);
             $model->save();
+
+            OffersImages::updateAll(['offers_id' => $model->id], ['offers_id' => 99999, 'user_id' => Yii::$app->user->id]);
+            return $this->redirect(['view', 'id' => $model->id]);
 
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('edit',['model'=>$model]);
+            $services = Services::find()->where(['user_id' => Yii::$app->user->id])->all();
+            $img = OffersImages::find()->where(['offers_id' => $id])->all();
+            return $this->render('edit',
+                [
+                    'model'=>$model,
+                    'services' => $services,
+                    'img' => $img,
+                ]);
         }
     }
 

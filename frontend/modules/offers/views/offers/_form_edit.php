@@ -2,6 +2,7 @@
 
 use app\models\GeobaseRegion;
 
+use common\classes\Debug;
 use common\models\db\GeobaseCity;
 use common\models\db\Services;
 use kartik\file\FileInput;
@@ -17,85 +18,107 @@ use yii\widgets\ActiveForm;
 
 
 
-<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data','id'=>'addForm']]); ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true,'placeholder' => $model->getAttributeLabel('title')]) ?>
+<div class="addContent">
+    <h2>Добавить фото</h2>
 
-<?= $form->field($model, 'service_id')->dropDownList(ArrayHelper::map(Services::find()->all(), 'id', 'name'),['prompt'=>'Выберите сервис']); ?>
-<?= $form->field($model, 'title')->textInput(['maxlength' => true,'placeholder' => $model->getAttributeLabel('title')]) ?>
 
-<?php if (!empty($model->img_url)){
-            //echo Html::img($model->img_url,['width'=>'100px']);
-            echo Html::hiddenInput('img_url_h',$model->img_url);
-        }
-        //echo $form->field($model, 'img_url')->fileInput();
+    <?php
+    foreach($img as $i){
+        $preview[] = "<img src='/$i->images' class='file-preview-image'>";
+        $previewConfig[] = [
+            'caption' => '',
+            'url' => '/ajax/ajax/pseudo_delete_file_offers?id=' . $i->id
+        ];
+    }
 
-        ?>
-<h2>Добавить фото</h2>
-<?php
-echo '<label class="control-label">Добавить фото</label>';
-echo FileInput::widget([
-    'name' => 'Offers[img_url]',
-    'id' => 'input-5',
-    'attribute' => 'attachment_1',
-    'value' => '/media/img/1.png',
-    'options' => [
-        'multiple' => true,
-        'showCaption' => false,
-        'showUpload' => false,
-        'uploadAsync'=> false,
-    ],
-    'pluginOptions' => [
-        /*'uploadUrl' => Url::to(['/ajax/ajax/upload_file_service?id='.$service->id]),*/
-        'maxFileCount' => 1,
-        'language' => "ru",
-        'previewClass' => 'hasEdit',
-        'uploadAsync'=> false,
-        'showUpload' => false,
-        'dropZoneEnabled' => false,
-        /*'initialPreviewShowDelete' => true,*/
-        'overwriteInitial' => false,
-        'initialPreview' => [
-            "<img src='$model->img_url' class='file-preview-image'>"
+    echo '<label class="control-label">Добавить фото</label>';
+    echo FileInput::widget([
+        'name' => 'file[]',
+        'id' => 'input-5',
+        'attribute' => 'attachment_1',
+        'value' => '/media/img/1.png',
+        'options' => [
+            'multiple' => true,
+            'showCaption' => false,
+            /*'showRemove' => true,*/
+            'showUpload' => false,
+            'uploadAsync'=> false,
         ],
-        'initialPreviewConfig' => [
-            [
-                'caption' => '',
-                'url' => '/ajax/ajax/pseudo_delete_file_service?id=' . $model->id
-            ]
-        ]
-    ],
-]);
-?>
+        'pluginOptions' => [
+            'uploadUrl' => Url::to(['/ajax/ajax/upload_file_offers']),
+            'maxFileCount' => 6,
+            'language' => "ru",
+            'uploadAsync'=> false,
+            'showUpload' => false,
+            'dropZoneEnabled' => false,
+            /*'initialPreviewShowDelete' => true,*/
+            'overwriteInitial' => false,
+            'initialPreview' => $preview,
+            'initialPreviewConfig' => $previewConfig
 
-<?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+        ],
+    ]);
+    ?>
+    
 
-<?= $form->field($model, 'short_description')->textarea(['rows' => 6])?>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#circs" data-toggle="tab">Условия</a></li>
+        <li><a href="#desc" data-toggle="tab">Описание</a></li>
+    </ul>
 
-<?= $form->field($model, 'old_price')->textInput()->label($model->getAttributeLabel('old_price')) ?>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="circs">
+            <h3>Срок действия акции</h3>
+            <?= $form->field($model, 'dt_start')->input('date')->label('С', ['class'=>'dtStartOffers']); ?>
 
-<?= $form->field($model, 'new_price')->textInput()->label($model->getAttributeLabel('new_price')) ?>
+            <?= $form->field($model, 'dt_end')->input('date')->label('До', ['class'=>'dtEndOffers']); ?>
 
-<?= $form->field($model, 'discount')->textInput()->label($model->getAttributeLabel('discount')) ?>
+            <div class="cleared"></div>
 
-<?= $form->field($model, 'region_id')->dropDownList(ArrayHelper::map(GeobaseRegion::find()->all(), 'id', 'name'),['prompt'=>'Выберите регион']); ?>
-<span class="city">
-            <?php
-            if(!empty($model->city_id)){
-                $city = GeobaseCity::find()->where(['region_id'=>$model->region_id])->all();
-                echo Html::label('Город');
-                echo Html::dropDownList('city', $model->city_id, ArrayHelper::map($city, 'id', 'name'),['prompt'=>'Выберите город','class'=>'form-control']);
-            }
-            ?>
+            <h3>Выберите сервисы для которых будет действовать предложение</h3>
+            <div class="addContent">
+                <div class="singleContent__desc">
+                    <div class="singleContent__desc--works">
+                        <?php foreach($services as $serv):?>
+                            <input type="checkbox"  id="services_<?=$serv->id;?>" name="servisesId[]" class="servId" value="<?= $serv->id?>"/>
+                            <label for="services_<?=$serv->id;?>"><span></span><?= $serv->name; ?></label>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+            <div class="cleared"></div>
+            <div class="selectAddressForServices">
 
-        </span>
+            </div>
+            <?= $form->field($model,'circs')->textarea(['rows' => 6])?>
+        </div>
+        <div class="tab-pane fade" id="desc">
+            <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+        </div>
+    </div>
 
 
 
-<!--<div class="form-group">
-            <?/*= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Редактировать', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary','id'=>'saveInfo']) */?>
-        </div>-->
-<div class="addContent--save">
-    <input type="submit" value="Сохранить" class="btn btn-save">
+    <div class="addContent--save">
+        <input type="submit" value="Сохранить" class="btn btn-save" id="saveInfo">
+    </div>
+    <?php ActiveForm::end(); ?>
 </div>
 
-<?php ActiveForm::end(); ?>
+<div class="offersRight">
+    <div class="priceInfo">
+        <?= $form->field($model, 'old_price')->textInput()->label($model->getAttributeLabel('old_price')) ?>
 
+        <?= $form->field($model, 'new_price')->textInput()->label($model->getAttributeLabel('new_price')) ?>
+
+        <?= $form->field($model, 'discount')->textInput()->label($model->getAttributeLabel('discount')) ?>
+    </div>
+    <div class="offersMapWr">
+        <div id="mapOffers"></div>
+    </div>
+
+    <div class="addressToServises"></div>
+
+</div>

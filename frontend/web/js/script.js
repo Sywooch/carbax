@@ -1032,7 +1032,7 @@ jQuery(document).ready(function ($) {
             url: "/ajax/ajax/get_info_services",
             data: 'servicesId=' + servicesId,
             success: function (data) {
-                console.log(data);
+                //console.log(data);
                 $('.addressToServises').html(data);
             }
         });

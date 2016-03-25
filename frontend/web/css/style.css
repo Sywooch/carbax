@@ -3437,6 +3437,7 @@ a#allOffers,a.allNews {
 
 .offersRight{
     float: left;
+    width: 20%;
 }
 
 
@@ -3654,6 +3655,7 @@ a#allOffers,a.allNews {
 .decionOffersWr {
     display: block;
     float: left;
+    margin-top: 30px;
 }
 
 .decionOffersWr .offers_agreement--future .offers_agreement--text p{
