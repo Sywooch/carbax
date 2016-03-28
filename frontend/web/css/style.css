@@ -3801,7 +3801,7 @@ span.request_msg_autotype{
     color: #fff;
     background-color: #ff6b00;
     border-radius: 3px;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 span.request_msg_checked{
@@ -3840,6 +3840,34 @@ span.request_msg_checked{
     z-index: 1;
 }
 
+.request_msg_feald--element{
+    position: relative;
+    width: 175px;
+    height: 30px;
+    float: left;
+    margin-top: 11px;
+    margin-right: 15px;
+    padding: 4px 0 5px 10px;
+    background-color: rgb(243, 243, 243);
+    border: 1px solid #cecece;
+    border-radius: 3px;
+    z-index: 2;
+}
+
+.request_msg_feald--disk{
+    position: relative;
+    width: 132px;
+    height: 30px;
+    float: left;
+    margin-top: 11px;
+    margin-right: 15px;
+    padding: 4px 0 5px 10px;
+    background-color: rgb(243, 243, 243);
+    border: 1px solid #cecece;
+    border-radius: 3px;
+    z-index: 2;
+}
+
 .request_msg_carbrand{
     position: relative;
     width: 224px;
@@ -3861,4 +3889,19 @@ span.request_msg_checked{
     background-color: #dedede;
     border-radius: 6px;
     box-shadow: inset 0.2px 1px 2px rgba(0, 0, 1, 0.47);
+}
+
+.request_msg_add{
+    display: block;
+    position: relative;
+    width: 33%;
+    float: left;
+    margin: 5px auto;
+}
+
+.request_msg_block{
+    display: block;
+    position: relative;
+    width: 100%;
+    float: left;
 }

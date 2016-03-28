@@ -32,22 +32,24 @@ use common\models\db\CarModel;
             <span class="request_msg_type">Тип автомобиля: </span>
             <span class="request_msg_autotype">Легковой автомобиль</span>
         </div>
-        <div>
-            <span>Марка: </span>
-            <?= BcbBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name; ?>
-        </div>
-        <div>
-            <span>Модель: </span>
-            <?= BcbModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name; ?>
-        </div>
-        <div>
-            <span>Год выпуска: </span>
-            <?= $post['requestYear'] ?></div>
-        <div>
-            <span>Диаметр диска: </span>
-            <?php foreach ($post['diskDiametr'] as $d) { ?>
-                <?= $d . ' '; ?>
-            <?php } ?>
+        <div class="request_msg_feald">
+            <div class="request_msg_feald--element">
+<!--                <span>Марка: </span>-->
+                <?= BcbBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name; ?>
+            </div>
+            <div class="request_msg_feald--element">
+<!--                <span>Модель: </span>-->
+                <?= BcbModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name; ?>
+            </div>
+            <div class="request_msg_feald--element">
+<!--                <span>Год выпуска: </span>-->
+                <?= $post['requestYear'] ?></div>
+            <div class="request_msg_feald--disk">
+<!--                <span>Диаметр диска: </span>-->
+                <?php foreach ($post['diskDiametr'] as $d) { ?>
+                    <?= $d . ' '; ?>
+                <?php } ?>
+            </div>
         </div>
     <?php endif; ?>
 
@@ -61,22 +63,24 @@ use common\models\db\CarModel;
             <span class="request_msg_type">Тип автомобиля: </span>
             <span class="request_msg_autotype">Грузовой автомобиль</span>
         </div>
-        <div>
-            <span>Марка: </span>
-            <?= AutoComBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name ?>
-        </div>
-        <div>
-            <span>Модель: </span>
-            <?= AutoComModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name ?>
-        </div>
-        <div>
-            <span>Год выпуска: </span>
-            <?= $post['requestYear'] ?></div>
-        <div>
-            <span>Диаметр диска: </span>
-            <?php foreach ($post['diskDiametr'] as $d) { ?>
-                <?= $d . ' '; ?>
-            <?php } ?>
+        <div class="request_msg_feald">
+            <div class="request_msg_feald--element">
+<!--                <span>Марка: </span>-->
+                <?= AutoComBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name ?>
+            </div>
+            <div class="request_msg_feald--element">
+<!--                <span>Модель: </span>-->
+                <?= AutoComModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name ?>
+            </div>
+            <div class="request_msg_feald--element">
+<!--                <span>Год выпуска: </span>-->
+                <?= $post['requestYear'] ?></div>
+            <div class="request_msg_feald--disk">
+<!--                <span>Диаметр диска: </span>-->
+                <?php foreach ($post['diskDiametr'] as $d) { ?>
+                    <?= $d . ' '; ?>
+                <?php } ?>
+            </div>
         </div>
     <?php endif; ?>
 
@@ -89,22 +93,24 @@ use common\models\db\CarModel;
             <span class="request_msg_type">Тип автомобиля: </span>
             <span class="request_msg_autotype">Мото транспорт</span>
         </div>
-        <div>
-            <span>Марка: </span>
-            <?= CarMark::find()->where(['id_car_mark' => $_POST['requestMarkAuto']])->one()->name ?>
-        </div>
-        <div>
-            <span>Модель: </span>
-            <?= CarModel::find()->where(['id_car_model' => $_POST['requestModelAuto']])->one()->name; ?>
-        </div>
-        <div>
-            <span>Год выпуска: </span>
-            <?= $post['requestYear'] ?></div>
-        <div>
-            <span>Диаметр диска: </span>
-            <?php foreach ($post['diskDiametr'] as $d) { ?>
-                <?= $d . ' '; ?>
-            <?php } ?>
+        <div class="request_msg_feald">
+            <div class="request_msg_feald--element">
+<!--                <span>Марка: </span>-->
+                <?= CarMark::find()->where(['id_car_mark' => $_POST['requestMarkAuto']])->one()->name ?>
+            </div>
+            <div class="request_msg_feald--element">
+<!--                <span>Модель: </span>-->
+                <?= CarModel::find()->where(['id_car_model' => $_POST['requestModelAuto']])->one()->name; ?>
+            </div>
+            <div class="request_msg_feald--element">
+<!--                <span>Год выпуска: </span>-->
+                <?= $post['requestYear'] ?></div>
+            <div class="request_msg_feald--disk">
+<!--                <span>Диаметр диска: </span>-->
+                <?php foreach ($post['diskDiametr'] as $d) { ?>
+                    <?= $d . ' '; ?>
+                <?php } ?>
+            </div>
         </div>
     <?php endif; ?>
 <?php endif; ?>
@@ -121,21 +127,23 @@ use common\models\db\CarModel;
             <span class="request_msg_type">Тип автомобиля: </span>
             <span class="request_msg_autotype">Легковой автомобиль</span>
         </div>
-        <div>
-            <span>Марка: </span>
-            <?= BcbBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name; ?>
-        </div>
-        <div>
-            <span>Модель: </span>
-            <?= BcbModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name; ?>
-        </div>
-        <div>
-            <span>Год выпуска: </span>
-            <?= $post['requestYear'] ?>
-        </div>
-        <div>
-            <span>Тип кузова: </span>
-            <?= AwpBodyType::find()->where(['id' => $_POST['bodyAuto']])->one()->name; ?>
+        <div class="request_msg_feald">
+            <div class="request_msg_feald--element">
+<!--                <span>Марка: </span>-->
+                <?= BcbBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name; ?>
+            </div>
+            <div class="request_msg_feald--element">
+<!--                <span>Модель: </span>-->
+                <?= BcbModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name; ?>
+            </div>
+            <div class="request_msg_feald--element">
+<!--                <span>Год выпуска: </span>-->
+                <?= $post['requestYear'] ?>
+            </div>
+            <div class="request_msg_feald--disk">
+<!--                <span>Тип кузова: </span>-->
+                <?= AwpBodyType::find()->where(['id' => $_POST['bodyAuto']])->one()->name; ?>
+            </div>
         </div>
     <?php endif; ?>
 
@@ -149,21 +157,23 @@ use common\models\db\CarModel;
             <span class="request_msg_type">Тип автомобиля: </span>
             <span class="request_msg_autotype">Грузовой автомобиль</span>
         </div>
-        <div>
-            <span>Марка: </span>
-            <?= AutoComBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name ?>
-        </div>
-        <div>
-            <span>Модель: </span>
-            <?= AutoComModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name ?>
-        </div>
-        <div>
-            <span>Год выпуска: </span>
-            <?= $post['requestYear'] ?>
-        </div>
-        <div>
-            <span>Тип кузова: </span>
-            <?= AwpBodyType::find()->where(['id' => $_POST['bodyAuto']])->one()->name; ?>
+        <div class="request_msg_feald">
+            <div class="request_msg_feald--element">
+<!--                <span>Марка: </span>-->
+                <?= AutoComBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name ?>
+            </div>
+            <div class="request_msg_feald--element">
+<!--                <span>Модель: </span>-->
+                <?= AutoComModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name ?>
+            </div>
+            <div class="request_msg_feald--element">
+<!--                <span>Год выпуска: </span>-->
+                <?= $post['requestYear'] ?>
+            </div>
+            <div class="request_msg_feald--disk">
+<!--                <span>Тип кузова: </span>-->
+                <?= AwpBodyType::find()->where(['id' => $_POST['bodyAuto']])->one()->name; ?>
+            </div>
         </div>
     <?php endif; ?>
 
@@ -176,20 +186,22 @@ use common\models\db\CarModel;
             <span class="request_msg_type">Тип автомобиля: </span>
             <span class="request_msg_autotype">Мото транспорт</span>
         </div>
-        <div>
-            <span>Марка: </span>
-            <?= CarMark::find()->where(['id_car_mark' => $_POST['requestMarkAuto']])->one()->name ?>
-        </div>
-        <div>
-            <span>Модель: </span>
-            <?= CarModel::find()->where(['id_car_model' => $_POST['requestModelAuto']])->one()->name; ?>
-        </div>
-        <div>
-            <span>Год выпуска: </span>
-            <?= $post['requestYear'] ?></div>
-        <div>
-            <span>Тип кузова: </span>
-            <?= AwpBodyType::find()->where(['id' => $_POST['bodyAuto']])->one()->name; ?>
+        <div class="request_msg_feald">
+            <div class="request_msg_feald--element">
+<!--                <span>Марка: </span>-->
+                <?= CarMark::find()->where(['id_car_mark' => $_POST['requestMarkAuto']])->one()->name ?>
+            </div>
+            <div class="request_msg_feald--element">
+<!--                <span>Модель: </span>-->
+                <?= CarModel::find()->where(['id_car_model' => $_POST['requestModelAuto']])->one()->name; ?>
+            </div>
+            <div class="request_msg_feald--element">
+<!--                <span>Год выпуска: </span>-->
+                <?= $post['requestYear'] ?></div>
+            <div class="request_msg_feald--disk">
+<!--                <span>Тип кузова: </span>-->
+                <?= AwpBodyType::find()->where(['id' => $_POST['bodyAuto']])->one()->name; ?>
+            </div>
         </div>
     <?php endif; ?>
 <?php endif; ?>
@@ -229,7 +241,7 @@ use common\models\db\CarModel;
         </div>
     <?php endif; ?>
     <div>
-        <span>Тип кузова: </span>
+        <span class="request_msg_type">Тип кузова: </span>
         <?= AwpBodyType::find()->where(['id' => $_POST['bodyAuto']])->one()->name; ?>
     </div>
 <?php endif; ?>
@@ -248,15 +260,15 @@ use common\models\db\CarModel;
         </div>
         <div class="request_msg_feald">
             <div class="request_msg_carbrand">
-                <span>Марка: </span>
+<!--                <span>Марка: </span>-->
                 <?= BcbBrands::find()->where(['id' => $_POST['requestMarkAuto']])->one()->name; ?>
             </div>
             <div class="request_msg_carbrand">
-                <span>Модель: </span>
+<!--                <span>Модель: </span>-->
                 <?= BcbModels::find()->where(['id' => $_POST['requestModelAuto']])->one()->name; ?>
             </div>
             <div class="request_msg_carbrand">
-                <span>Год выпуска: </span>
+<!--                <span>Год выпуска: </span>-->
                 <?= $post['requestYear'] ?>
             </div>
         </div>
@@ -317,10 +329,19 @@ use common\models\db\CarModel;
     <?php foreach ($_POST['infoSplints'] as $is): ?>
         <div><?= $is; ?></div>
     <?php endforeach; ?>
-    <div><span>Ширина профиля: </span><?= $_POST['section_width']; ?></div>
-    <div><span>Высота профиля: </span><?= $_POST['section_height']; ?></div>
-    <div><span>Диаметр профиля: </span><?= $_POST['diameter']; ?></div>
-    <div><span>Сезонность:</span>
+    <div>
+        <span class="request_msg_type">Ширина профиля: </span>
+        <?= $_POST['section_width']; ?></div>
+    <div>
+        <span class="request_msg_type">Высота профиля: </span>
+        <?= $_POST['section_height']; ?>
+    </div>
+    <div>
+        <span class="request_msg_type">Диаметр профиля: </span>
+        <?= $_POST['diameter']; ?>
+    </div>
+    <div>
+        <span class="request_msg_type">Сезонность:</span>
         <?php foreach ($_POST['seasonts'] as $s): ?>
             <?= $s . ' '; ?>
         <?php endforeach; ?>
@@ -366,7 +387,9 @@ use common\models\db\CarModel;
             <span class="request_msg_autotype">Мото транспорт</span>
         </div>
     <?php endif; ?>
-    <div><span>Пробег автомобиля: </span><?= $_POST['probeg']; ?></div>
+    <div>
+        <span>Пробег автомобиля: </span><?= $_POST['probeg']; ?>
+    </div>
     <div>
         <span class="request_msg_checkelement">КПП:</span>
         <span class="request_msg_checked"></span>
@@ -655,11 +678,26 @@ use common\models\db\CarModel;
     <?php foreach ($_POST['infoDisk'] as $is): ?>
         <div><?= $is; ?></div>
     <?php endforeach; ?>
-    <div><span>Ширина обода: </span><?= $_POST['rim_width']; ?></div>
-    <div><span>Диаметр обода: </span><?= $_POST['diameter']; ?></div>
-    <div><span>Количество крепежных отверстий: </span><?= $_POST['number_holes']; ?></div>
-    <div><span>Диаметр расположения отверстий: </span><?= $_POST['diameter_holes']; ?></div>
-    <div><span>Вылет (ET): </span><?= $_POST['sortie']; ?></div>
+    <div>
+        <span class="request_msg_type">Ширина обода: </span>
+        <span class="request_msg_autotype"><?= $_POST['rim_width']; ?></span>
+    </div>
+    <div>
+        <span class="request_msg_type">Диаметр обода: </span>
+        <span class="request_msg_autotype"><?= $_POST['diameter']; ?></span>
+    </div>
+    <div>
+        <span class="request_msg_type">Количество крепежных отверстий: </span>
+        <span class="request_msg_autotype"><?= $_POST['number_holes']; ?></span>
+    </div>
+    <div>
+        <span class="request_msg_type">Диаметр расположения отверстий: </span>
+        <span class="request_msg_autotype"><?= $_POST['diameter_holes']; ?></span>
+    </div>
+    <div>
+        <span class="request_msg_type">Вылет (ET): </span>
+        <span class="request_msg_autotype"><?= $_POST['sortie']; ?></span>
+    </div>
 
 <?php endif; ?>
 
@@ -791,14 +829,28 @@ use common\models\db\CarModel;
                 <?= CarModel::find()->where(['id_car_model' => $_POST['requestModelAuto']])->one()->name; ?></div>
             <div class="request_msg_carbrand">
                 <!--            <span>Год выпуска: </span>-->
-                <?= $post['requestYear'] ?></div>
+                <?= $post['requestYear'] ?>
+            </div>
         </div>
     <?php endif; ?>
-
-    <div><span>Дата начала эксплуатации:</span><?= $_POST['dateStart']; ?></div>
-    <div><span>Количество лошадиных сил:</span><?= $_POST['kol_Cil']; ?></div>
-    <div><span>Побег:</span><?= $_POST['probeg']; ?></div>
-    <div><span>Страховая сумма:</span><?= $_POST['summaStrah']; ?></div>
+    <div class="request_msg_feald">
+        <div class="request_msg_feald--element">
+<!--            <span>Дата начала эксплуатации:</span>-->
+            <?= $_POST['dateStart']; ?>
+        </div>
+        <div class="request_msg_feald--element">
+<!--            <span>Количество лошадиных сил:</span>-->
+            <?= $_POST['kol_Cil']; ?>
+        </div>
+        <div class="request_msg_feald--element">
+<!--            <span>Побег:</span>-->
+            <?= $_POST['probeg']; ?>
+        </div>
+        <div class="request_msg_feald--disk">
+<!--            <span>Страховая сумма:</span>-->
+            <?= $_POST['summaStrah']; ?>
+        </div>
+    </div>
     <div>
         <span class="request_msg_checkelement">Автомобиль куплен в кредит?</span>
         <span class="request_msg_checked"></span>
@@ -821,27 +873,38 @@ use common\models\db\CarModel;
     <div>
         <span class="request_msg_checkelement">Иммобилайзер:</span>
         <span class="request_msg_checked"></span>
-        <?= $_POST['imobilaizer']; ?></div>
+        <?= $_POST['imobilaizer']; ?>
+    </div>
     <div>
         <span class="request_msg_checkelement">Поисково-спутниковая система:</span>
         <span class="request_msg_checked"></span>
-        <?= $_POST['poiskspytniksystem']; ?></div>
+        <?= $_POST['poiskspytniksystem']; ?>
+    </div>
     <div>
         <span class="request_msg_checkelement">Механические противоугонные устройства:</span>
         <span class="request_msg_checked"></span>
-        <?= $_POST['mexprotivygon']; ?></div>
+        <?= $_POST['mexprotivygon']; ?>
+    </div>
 
 
 <?php endif; ?>
 
 
+<div class="request_msg_block">
+    <h3>Дополнительные работы:</h3>
+    <?php foreach ($selectFields as $fields): ?>
+        <div class="request_msg_add">
+            <span class="request_msg_checked"></span>
+            <?= AdditionalFields::findOne($fields)->name; ?>
+        </div>
+    <?php endforeach; ?>
+</div>
 
-<h3>Дополнительные работы:</h3>
-<?php foreach ($selectFields as $fields): ?>
-    <div><?= AdditionalFields::findOne($fields)->name; ?></div>
-<?php endforeach; ?>
+<div class="request_msg_block">
+    <h3>Комментарий</h3>
 
-<h3>Комментарий</h3>
-<div><?= $_POST['comm']; ?></div>
-
+    <div>
+        <?= $_POST['comm']; ?>
+    </div>
+</div>
 
