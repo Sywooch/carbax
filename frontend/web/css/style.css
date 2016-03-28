@@ -3779,3 +3779,129 @@ a#allOffers,a.allNews {
 .favoritesListAjax .deals .deals__line{
     margin: 0px -3%;
 }
+
+/*--- request msg----*/
+span.request_msg_type{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+span.request_msg_checkelement{
+    display: block;
+    position: relative;
+    width: 100%;
+    font-size: 15px;
+    font-weight: bold;
+    /* float: left; */
+    margin: 10px auto;
+}
+
+span.request_msg_autotype{
+    padding: 5px;
+    color: #fff;
+    background-color: #ff6b00;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+span.request_msg_checked{
+    display: block;
+    /* position: relative; */
+    float: left;
+    width: 19px;
+    height: 19px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: #ff6b00;
+    background-image: url("../media/img/Check-Icon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ff6b00;
+}
+
+.request_msg_vincode{
+    width: 320px;
+    height: 36px;
+    background-color: #dedede;
+    border-radius: 6px;
+    box-shadow: inset 0.2px 1px 2px rgba(0, 0, 1, 0.47);
+}
+
+.request_msg_feald{
+    display: block;
+    position: relative;
+    width: 93%;
+    height: 53px;
+    background-color: rgb(232, 232, 232);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    padding-left: 10px;
+    z-index: 1;
+}
+
+.request_msg_feald--element{
+    position: relative;
+    width: 175px;
+    height: 30px;
+    float: left;
+    margin-top: 11px;
+    margin-right: 15px;
+    padding: 4px 0 5px 10px;
+    background-color: rgb(243, 243, 243);
+    border: 1px solid #cecece;
+    border-radius: 3px;
+    z-index: 2;
+}
+
+.request_msg_feald--disk{
+    position: relative;
+    width: 132px;
+    height: 30px;
+    float: left;
+    margin-top: 11px;
+    margin-right: 15px;
+    padding: 4px 0 5px 10px;
+    background-color: rgb(243, 243, 243);
+    border: 1px solid #cecece;
+    border-radius: 3px;
+    z-index: 2;
+}
+
+.request_msg_carbrand{
+    position: relative;
+    width: 224px;
+    height: 30px;
+    float: left;
+    margin-top: 11px;
+    margin-right: 15px;
+    padding: 4px 0 5px 10px;
+    background-color: rgb(243, 243, 243);
+    border: 1px solid #cecece;
+    border-radius: 3px;
+    z-index: 2;
+}
+
+.request_msg_vincode{
+    width: 320px;
+    height: 36px;
+    padding: 8px 0 5px 10px;
+    background-color: #dedede;
+    border-radius: 6px;
+    box-shadow: inset 0.2px 1px 2px rgba(0, 0, 1, 0.47);
+}
+
+.request_msg_add{
+    display: block;
+    position: relative;
+    width: 33%;
+    float: left;
+    margin: 5px auto;
+}
+
+.request_msg_block{
+    display: block;
+    position: relative;
+    width: 100%;
+    float: left;
+}
