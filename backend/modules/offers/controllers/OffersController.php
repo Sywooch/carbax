@@ -2,7 +2,9 @@
 
 namespace backend\modules\offers\controllers;
 
+use common\classes\SendingMessages;
 use common\models\db\Offers;
+use common\models\db\User;
 use Yii;
 use backend\modules\offers\models\OffersModels;
 use backend\modules\offers\models\OffersModelsSearch;
@@ -122,5 +124,33 @@ class OffersController extends Controller
 
     public function actionEdit_status(){
         Offers::updateAll(['status' => $_POST['status']],['id' => $_POST['id']]);
+
+        $offers = Offers::find()->where(['id' => $_POST['id']])->one();
+
+        if($_POST['status'] == 1){
+            $subject = "Спецпредложение опубликовано";
+            $msg = $this->renderPartial('y_moder',['offers'=>$offers]);
+
+            SendingMessages::send_message($offers->user_id,Yii::$app->user->id,$subject,$msg);
+            Yii::$app->mailer->compose('y_moder_offers',['offers'=>$offers])
+                ->setTo(User::getEmail($offers->user_id))
+                ->setFrom('admin@carbax.ru')
+                ->setSubject($subject)
+                ->setTextBody($msg)
+                ->send();
+        }
+        else{
+            $subject = "Спецпредложение не опубликовано";
+            $msg = $this->renderPartial('n_moder',['offers'=>$offers]);
+            SendingMessages::send_message($offers->user_id,Yii::$app->user->id,$subject,$msg);
+            Yii::$app->mailer->compose('n_moder_offers',['offers'=>$offers])
+                ->setTo(User::getEmail($offers->user_id))
+                ->setFrom('admin@carbax.ru')
+                ->setSubject($subject)
+                ->setTextBody($msg)
+                ->send();
+        }
+
+
     }
 }
