@@ -1380,7 +1380,6 @@ jQuery(document).ready(function ($) {
         }
 
         if($('.requestDisk').length) {
-            alert(123);
             kol = 0;
             $(".requestDisk").each(function () {
                 if ($(this).prop("checked")) {

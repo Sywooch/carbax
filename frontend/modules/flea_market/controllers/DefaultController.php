@@ -86,16 +86,19 @@ class DefaultController extends Controller
     {
         //Yii::$app->session->setFlash('success','Товар успешно обновлен');
         $market = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])
-            ->orWhere(['prod_type' => 2])
-            ->orWhere(['prod_type' => 3])
-            ->orWhere(['prod_type' => 4])
+            ->orWhere(['user_id' => Yii::$app->user->id, 'prod_type' => 2])
+            ->orWhere(['user_id' => Yii::$app->user->id, 'prod_type' => 3])
+            ->orWhere(['user_id' => Yii::$app->user->id, 'prod_type' => 4])
             ->orderBy('dt_add DESC')
             ->all();
+
         return $this->render('index', ['market' => $market]);
     }
 
     public function actionSale_auto(){
         $market = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 1])->orderBy('dt_add DESC')->all();
+
+
         return $this->render('sale_auto', ['market' => $market]);
     }
 
@@ -345,11 +348,12 @@ class DefaultController extends Controller
         /*Конец добавление изображений*/
 
         if($_POST['prod_type'] == 'zap'){
-            $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])
-                ->orWhere(['prod_type' => 2])
-                ->orWhere(['prod_type' => 3])
+            /*$marketAll = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])
+                ->orWhere(['user_id' => Yii::$app->user->id, 'prod_type' => 2])
+                ->orWhere(['user_id' => Yii::$app->user->id, 'prod_type' => 3])
                 ->orderBy('dt_add DESC')
-                ->all();
+                ->all();*/
+            return $this->redirect('index');
         }
         else {
             $marketAll = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 1])->orderBy('dt_add DESC')->all();

@@ -13,6 +13,9 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'errorHandler' => [
+            'errorAction' => 'site/error',
+        ],
         'request'      => [
             'baseUrl' => '',
         ],

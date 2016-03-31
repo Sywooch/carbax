@@ -104,7 +104,7 @@ use yii\widgets\ActiveForm;
     <div class="addContent--save">
         <input type="submit" value="Сохранить" class="btn btn-save" id="saveInfo">
     </div>
-    <?php ActiveForm::end(); ?>
+
 </div>
 
 <div class="offersRight">
@@ -122,3 +122,5 @@ use yii\widgets\ActiveForm;
     <div class="addressToServises"></div>
 
 </div>
+
+<?php ActiveForm::end(); ?>

@@ -27,6 +27,7 @@ use common\models\db\RequestTypeAddForm;
 use common\models\db\RequestTypeGroup;
 use common\models\db\Services;
 use common\models\db\ServiceTypeGroup;
+use common\models\db\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -360,6 +361,13 @@ class DefaultController extends Controller
             $msg = $this->renderPartial('request_msg_tpl',['post'=>$_POST,'name'=>$service->name,'selectFields'=>$fields,'requestId'=>$request_type_id]);
 
             $m = SendingMessages::send_message($service->user_id, Yii::$app->user->id, 'Заявка на сервис ' . $service->name, $msg,'request','0',$request->id);
+
+            Yii::$app->mailer->compose('msg_request',['name'=>$service->name, 'id' => $service->id, 'id_msg' => $m])
+                ->setTo(User::getEmail($service->user_id))
+                ->setFrom('admin@carbax.ru')
+                ->setSubject('Заявка на сервис ' . $service->name)
+                ->setTextBody($msg)
+                ->send();
 
             $ids++;
         }

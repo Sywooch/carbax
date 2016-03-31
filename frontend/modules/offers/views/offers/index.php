@@ -54,6 +54,14 @@ $this->registerCssFile('/css/bootstrap.min.css');
                                         <span class="offersVipBuy"><a href="<?= Url::to(['#']); ?>">Купить</a></span>
                                     </div>
 
+                                    <div class="cleared"></div>
+                                    <div class="offersRenewWr">
+                                        <span class="offersRenew">
+                                            <span class="offerRenewImg"></span>
+                                        </span>
+                                        <span class="offersRenewBuy"><a href="<?= Url::to(['/offers/offers/edit','id'=> $n->id]); ?>">Возобновить</a></span>
+                                    </div>
+
                                     <a class="btn btn-del" href="<?= Url::to(['offers/delete', 'id' => $n->id]); ?>">Удалить</a>
                                 </div>
 

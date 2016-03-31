@@ -108,7 +108,7 @@ $this->registerCssFile('/css/bootstrap_btn.min.css');
     </div>
 
     <div class="singleContent__desc">
-        <h3>Дни работы</h3>
+        <h3>График работы</h3>
         <p>
         <?php
         $custFunc = new Custom_function();
@@ -189,6 +189,8 @@ $this->registerCssFile('/css/bootstrap_btn.min.css');
             </div>
         </div>
     </div>
+
+    <?= \frontend\modules\services\widgets\ShowOffersByService::widget(['serviceId' => $_GET['service_id']]); ?>
 
 
 </section>

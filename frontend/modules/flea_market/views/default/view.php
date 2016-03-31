@@ -247,15 +247,18 @@ if ($product->published != 1) {
                 <?= Html::a('Пожаловаться', ['/complaint/default/add', 'id' => $product->id, 'type' => 'market'], ['class' => 'complain_products']) ?>
                 <a href="#" class="favorites_products <?= (!empty($favorites)) ? 'del_favorites' : ''; ?>"
                    product_id="<?= $_GET['id']; ?>"> <?= (!empty($favorites)) ? 'Из избранного' : 'В избранное'; ?></a>
-                <a href="#" class="share_products">Поделиться</a>
+                <!--<a href="#" class="share_products">Поделиться</a>-->
 
                 <div class="fleamarket__socseti">
-                    <a href="#"><img src="/media/img/vk.png" alt=""></a>
+                    <!--<a href="#"><img src="/media/img/vk.png" alt=""></a>
                     <a href="#"><img src="/media/img/ok.png" alt=""></a>
                     <a href="#"><img src="/media/img/fb.png" alt=""></a>
                     <a href="#"><img src="/media/img/gg.png" alt=""></a>
                     <a href="#"><img src="/media/img/tw.png" alt=""></a>
-                    <a href="#"><img src="/media/img/mm.png" alt=""></a>
+                    <a href="#"><img src="/media/img/mm.png" alt=""></a>-->
+                    <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
+                    <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
+                    <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus" data-counter=""></div>
                 </div>
             </div>
             <?/*= SimilarAds::widget(['id' => $product->id, 'catid' => $product->category_id]); */?>
@@ -466,15 +469,13 @@ if ($product->published != 1) {
             <?= Html::a('Пожаловаться', ['/complaint/default/add', 'id' => $product->id, 'type' => 'market'], ['class' => 'complain_products']) ?>
             <a href="#" class="favorites_products <?= (!empty($favorites)) ? 'del_favorites' : ''; ?>"
                product_id="<?= $_GET['id']; ?>"> <?= (!empty($favorites)) ? 'Из избранного' : 'В избранное'; ?></a>
-            <a href="#" class="share_products">Поделиться</a>
+            <!--<a href="#" class="share_products">Поделиться</a>-->
 
             <div class="fleamarket__socseti">
-                <a href="#"><img src="/media/img/vk.png" alt=""></a>
-                <a href="#"><img src="/media/img/ok.png" alt=""></a>
-                <a href="#"><img src="/media/img/fb.png" alt=""></a>
-                <a href="#"><img src="/media/img/gg.png" alt=""></a>
-                <a href="#"><img src="/media/img/tw.png" alt=""></a>
-                <a href="#"><img src="/media/img/mm.png" alt=""></a>
+
+                <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
+                <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
+                <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus" data-counter=""></div>
             </div>
         </div>
         <?= SimilarAds::widget(['id' => $product->id, 'catid' => $product->category_id]); ?>

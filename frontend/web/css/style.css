@@ -279,7 +279,17 @@ a.favorites_products, a.favorites_service {
     margin: 0 10px;
 }
 
-a.favorites_products, a.favorites_offers {
+a.favorites_products {
+    background: url(../media/img/favorites_products.png) no-repeat 0% 0%;
+    padding-left: 20px;
+    /*display: block;
+    height: 88px;
+    text-align: center;
+    font-size: 23px;
+    margin: 50px 0 -70px 0px;*/
+}
+
+a.favorites_offers{
     background: url(../media/img/favorites_products.png) no-repeat 23% 15%;
     padding-left: 20px;
     display: block;
@@ -3904,4 +3914,53 @@ span.request_msg_checked{
     position: relative;
     width: 100%;
     float: left;
+}
+
+
+p.regInfo {
+    font-size: 22px;
+    text-align: center;
+    color: #282828;
+}
+
+span.regInfoOrange {
+    color: #ff6b00;
+}
+
+span.regInfoMail {
+    font-weight: bold;
+    font-style: italic;
+}
+
+p.regInfoImg img{
+    margin-top: -50px;
+}
+
+p.noMess{
+    font-size: 22px;
+    text-align: center;
+    color: #282828;
+}
+
+p.noMess a{
+    color: #ff6b00;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.offersService{
+    margin-top: 0px!important;
+}
+
+.offersService .contain{
+    padding:0!important;
+}
+
+.offersService .deals__line{
+    margin: -2px -3%!important;
+}
+
+a.delProfile {
+    float: right;
+    color: #ff6b00;
 }

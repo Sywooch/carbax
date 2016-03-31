@@ -40,7 +40,7 @@ $resetLink = Yii::$app->urlManagerFrontend->createAbsoluteUrl(['offers/offers/vi
     </tr>
     <tr>
         <td align="center" valign="top" style="margin: 0px; padding: 0px 10px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(255, 255, 255);">
-            P.S. Если вы получили это сообщение по ошибке, просто удалите его.
+            P.S. Если Вы получили это сообщение ошибочно, просто удалите его.
             <p>С уважением, Администрация сайта <?= Html::a('CARBAX.RU',Yii::$app->urlManagerFrontend->createAbsoluteUrl(),['style' => 'color:#fff;']); ?></p>
         </td>
     </tr>

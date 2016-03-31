@@ -29,10 +29,22 @@ use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 
 
-
 class OffersController extends Controller
 {
     public $layout = 'page';
+    /**
+     * @inheritdoc
+     */
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+                'view' => '@frontend/views/site/error',
+            ],
+        ];
+    }
+
     public function behaviors()
     {
         return [
@@ -58,6 +70,9 @@ class OffersController extends Controller
             ],
         ];
     }
+
+
+
 
     public function actionIndex()
     {
@@ -113,9 +128,10 @@ class OffersController extends Controller
 
 
             $model->status = 0;
-            //Debug::prn($model);
+            //Debug::prn($_POST);
+            //$model->new_price = $
             $model->save();
-
+            //Debug::prn($model);
             OffersImages::updateAll(['offers_id' => $model->id], ['offers_id' => 99999, 'user_id' => Yii::$app->user->id]);
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -136,7 +152,8 @@ class OffersController extends Controller
             ->where(['`offers`.`id`' => $id])
             ->with('offers_images')
             ->one();
-        //Debug::prn($model);
+//Debug::prn($model);
+        if(!empty($model)) {
         //$images = OffersImages::find()->where(['offers_id'=>$id])->all();
         $result = [];
         $serviseInfo = json_decode($model->address_selected,true);
@@ -159,15 +176,29 @@ class OffersController extends Controller
         $decisonN = OffersAttend::find()->where(['offers_id' => $_GET['id'], 'decison' => '0'])->count();
         $countReviews = Reviews::find()->where(['publ' => 1, 'offers' => 1, 'spirit_id' => $_GET['id']])->count();
         $favorites = Favorites::find()->where(['offers_id'=>$_GET['id'],'user_id'=>Yii::$app->user->id])->one()->id;
-        return $this->render('view', [
-            'model' => $model,
-            'info' => $result,
-            'servicesInfo' => $serviseInfo,
-            'decisonY' => $decisonY,
-            'decisonN' => $decisonN,
-            'countReviews' => $countReviews,
-            'favorites' => $favorites,
-        ]);
+
+
+            return $this->render('view', [
+                'model' => $model,
+                'info' => $result,
+                'servicesInfo' => $serviseInfo,
+                'decisonY' => $decisonY,
+                'decisonN' => $decisonN,
+                'countReviews' => $countReviews,
+                'favorites' => $favorites,
+            ]);
+        }
+        else{
+           // Debug::prn($model);
+            //Yii::$app->response->statusCode = 404;
+            //throw new \yii\web\NotFoundHttpException("Your Error Message.");
+            //throw new NotFoundHttpException;
+            /*$exception = Yii::$app->errorHandler->exception;
+            Debug::prn($exception);*/
+            return $this->render('@frontend/views/site/error',['exception' => 404, 'name' => 'Oooops...']);
+
+
+        }
     }
     public function actionGet_city()
     {
@@ -234,6 +265,9 @@ class OffersController extends Controller
         $model = new Offers();
         $model->deleteAll(['id'=>$id]);
 
+        OffersAttend::deleteAll(['offers_id' => $id]);
+        OffersImages::deleteAll(['offers_id' => $id]);
+
         return $this->redirect(['index']);
     }
 
@@ -253,7 +287,7 @@ class OffersController extends Controller
 
             $offers = Offers::find()
                 ->leftJoin('`offers_images`','`offers_images`.`offers_id` = `offers`.`id`')
-                ->where(['LIKE', 'region_id', $address['region_id']])
+                ->where(['LIKE', 'region_id', $address['region_id'].','])
                 ->andWhere(['LIKE', 'service_type_id', $id.','])
                 ->andWhere(['status'=>1])
                 ->orderBy('dt_add DESC')

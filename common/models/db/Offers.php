@@ -2,7 +2,7 @@
 
 namespace common\models\db;
 
-use frontend\modules\services\Services;
+
 use Yii;
 
 /**

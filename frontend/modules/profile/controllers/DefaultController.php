@@ -3,11 +3,23 @@
 namespace frontend\modules\profile\controllers;
 
 use common\classes\Debug;
+use common\models\db\Address;
 use common\models\db\Garage;
 use common\models\db\GeobaseCity;
 use common\models\db\GeobaseRegion;
+use common\models\db\Market;
+use common\models\db\Offers;
+use common\models\db\OffersAttend;
+use common\models\db\OffersImages;
+use common\models\db\Phone;
+use common\models\db\ServiceAddFields;
+use common\models\db\ServiceAutoType;
+use common\models\db\ServiceBrandCars;
+use common\models\db\ServiceComfortZone;
 use common\models\db\Services;
+use common\models\db\ServicesImg;
 use common\models\db\ServiceType;
+use common\models\db\WorkHours;
 use Yii;
 use common\models\db\User;
 use yii\filters\AccessControl;
@@ -120,5 +132,40 @@ class DefaultController extends Controller
                 'autoGarage' => $autoGarage,
                 //'business' => $userBusiness
             ]);
+    }
+
+    public function actionDelete(){
+        return $this->render('delete');
+    }
+
+    public function actionDel_prof(){
+        Debug::prn(Yii::$app->user->id);
+        //$product = Market::find()->where(['user_id' => Yii::$app->user->id])->all();
+        Market::deleteAll(['user_id' => Yii::$app->user->id]);
+
+        $offers = Offers::find()->where(['user_id' => Yii::$app->user->id])->all();
+        foreach($offers as $offer):
+            OffersAttend::deleteAll(['offers_id' => $offer->id]);
+            OffersImages::deleteAll(['offers_id' => $offer->id]);
+        endforeach;
+
+        Offers::deleteAll(['user_id' => Yii::$app->user->id]);
+
+        $services = Services::find()->where(['user_id' => Yii::$app->user->id])->all();
+        foreach($services as $service):
+
+            WorkHours::deleteAll(['service_id'=>$service->id]);
+            Phone::deleteAll(['service_id'=>$service->id]);
+            Address::deleteAll(['service_id'=>$service->id]);
+            ServiceAutoType::deleteAll(['service_id'=>$service->id]);
+            ServiceAddFields::deleteAll(['service_id'=>$service->id]);
+            ServiceComfortZone::deleteAll(['service_id'=>$service->id]);
+            ServiceBrandCars::deleteAll(['service_id'=>$service->id]);
+            ServicesImg::deleteAll(['services_id'=>$service->id]);
+        endforeach;
+        Services::deleteAll(['user_id' => Yii::$app->user->id]);
+        //Debug::prn($product);
+        User::deleteAll(['id' => Yii::$app->user->id]);
+        return $this->redirect(['/']);
     }
 }

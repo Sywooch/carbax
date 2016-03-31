@@ -28,6 +28,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 <?php if(!empty($user['name'])): ?>
                 <div class="profileName profileElement">
                     <?=$user['name']?> <?=$user['last_name']?>
+                    <?= Html::a('Удалить профиль',Url::to(['/profile/default/delete']),['class' => 'delProfile']); ?>
                 </div>
                 <?php endif; ?>
                 <div class="profileLogin profileElement">
