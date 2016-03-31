@@ -142,7 +142,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                         ->where(['`services`.`user_id`'=>$user['id'], 'service_type_id'=>$st->id])
                         ->with('services_img')
                         ->all();
-//Debug::prn($service);
+
                 foreach ($service as $s) :?>
                     <a href="/services/services/view_service?service_id=<?= $s->id; ?>">
                         <div class="deals__item">
