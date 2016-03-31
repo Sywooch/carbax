@@ -137,15 +137,19 @@ $this->registerCssFile('/css/bootstrap.min.css');
                     <?php endif;?>
                 </div>
                 <?php
-                    $service = Services::find()->where(['user_id'=>$user['id'], 'service_type_id'=>$st->id])->all();
-
+                    $service = Services::find()
+                        ->leftJoin('`services_img`','`services_img`.`id` = `services_img`.`services_id`')
+                        ->where(['`services`.`user_id`'=>$user['id'], 'service_type_id'=>$st->id])
+                        ->with('services_img')
+                        ->all();
+//Debug::prn($service);
                 foreach ($service as $s) :?>
                     <a href="/services/services/view_service?service_id=<?= $s->id; ?>">
                         <div class="deals__item">
                             <div class="deals__block">
                                 <div class="deals__block-img">
                                     <?php if(isset($s['photo'])):?>
-                                        <img src="/<?= \yii\helpers\Url::base().$s['photo'] ?>" alt="">
+                                        <img src="/<?= \yii\helpers\Url::base().$s['services_img']->images ?>" alt="">
                                     <?php else: ?>
                                         <img src="/media/img/no_img.jpg" alt="">
                                     <?php endif; ?>
