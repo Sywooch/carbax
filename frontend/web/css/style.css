@@ -259,6 +259,9 @@ span.info {
     background: #2B2B2B;
     /*border:1px solid #90a6b8;*/
     padding: 7px;
+    display: block;
+    float: left;
+    width: 100%;
 }
 
 .fleamarket__footer a {
@@ -3963,4 +3966,15 @@ p.noMess a{
 a.delProfile {
     float: right;
     color: #ff6b00;
+}
+
+.linkService{
+    font-size: 24px;
+    float: left;
+    margin-right: 13px;
+    line-height: 64px;
+}
+
+.news .deals__menu {
+    margin-bottom: 10px;
 }

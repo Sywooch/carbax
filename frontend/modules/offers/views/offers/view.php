@@ -185,7 +185,9 @@ $IpGeoBase->updateDB()
         </div>
         <div class="offers_address">
             <?php foreach($info as $inf):?>
-                <h3><?= $inf[0]->name; ?></h3>
+
+                <a class="linkService" href="/services/services/view_service?service_id=<?= $inf[0]->id; ?>" title="Страница сервиса на карбаксе"><i class="fa fa-location-arrow"></i></a><h3><?= $inf[0]->name; ?></h3>
+                <div class="cleared"></div>
                 <i class="fa fa-compass"></i>
                 <a class="offers_website" target="_blank" href="<?= $inf[0]->website; ?>">Посмотрите сайт</a>
                 <div class="cleared"></div>
@@ -207,13 +209,15 @@ $IpGeoBase->updateDB()
                 <?php endforeach;?>
 
                 <?php foreach($inf[0]['phone'] as $ph):?>
-                    <div class="offers_address--icons">
-                        <i class="fa fa-phone"></i>
-                    </div>
-                    <div class="offers_address--text">
-                        <p>Телефон:<br/>
-                            <?= $ph->number; ?></p>
-                    </div>
+                    <?php if(!empty($ph->number)): ?>
+                        <div class="offers_address--icons">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="offers_address--text">
+                            <p>Телефон:<br/>
+                                <?= $ph->number; ?></p>
+                        </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
 
 
@@ -243,7 +247,7 @@ $IpGeoBase->updateDB()
         <!--<span class="question" style="margin-left: 75px;"><a class="ask" href="#">Все адреса</a></span>-->
 
     </div>
-
+<?= \frontend\modules\offers\widgets\SimilarOffers::widget(['service_type_id' => $model->service_type_id]); ?>
 </section>
 
 

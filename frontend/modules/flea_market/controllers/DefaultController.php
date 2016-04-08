@@ -24,6 +24,7 @@ use common\models\db\InfoDisk;
 use common\models\db\InfoSplint;
 use common\models\db\Market;
 use common\models\db\ProductImg;
+use common\models\db\Reviews;
 use common\models\db\Services;
 use common\models\db\TofManufacturers;
 use common\models\db\TofModels;
@@ -934,6 +935,9 @@ class DefaultController extends Controller
         }
         $images = ProductImg::find()->where(['product_id'=>$_GET['id']])->all();
         $favorites = Favorites::find()->where(['market_id'=>$_GET['id'],'user_id'=>Yii::$app->user->id])->one()->id;
+
+        $countReviews = Reviews::find()->where(['publ' => 1, 'flea_market' => 1, 'spirit_id' => $_GET['id']])->count();
+
         return $this->render('view',
             [
                 'product' => $product,
@@ -945,6 +949,7 @@ class DefaultController extends Controller
                 'images' => $images,
                 'favorites' => $favorites,
                 'autoParams' => $autoParams,
+                'countReviews' => $countReviews,
             ]);
     }
 }

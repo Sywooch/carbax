@@ -8,9 +8,11 @@ use common\models\db\GeobaseCity;
 use common\models\db\Services;
 use common\models\db\User;
 use frontend\modules\flea_market\widgets\SimilarAds;
+use frontend\widgets\AddReviews;
 use frontend\widgets\FleaMarketMostViewed;
 use frontend\widgets\FleaMarketNewProduct;
 use frontend\widgets\FleaMarketSearch;
+use frontend\widgets\ShowReviews;
 use yii\helpers\Html;
 
 $this->registerJsFile('/js/jquery.sliderkit.1.4.js',['yii\web\JqueryAsset']);
@@ -91,16 +93,7 @@ if ($product->published != 1) {
                 </span>
                     <?php endif; ?>
                 </div>
-<!--                <div class="fleamarket__slider">-->
-<!--                    <div class="fotorama" data-nav="thumbs">-->
-<!--                        --><?php //foreach ($images as $img) {
-//                            ?>
-<!--                            <img src="/--><?//= $img->img ?><!--" alt="">-->
-<!--                            --><?php
-//                        }
-//                        ?>
-<!--                    </div>-->
-<!--                </div>-->
+
 
                 <div id="page" class="inner layout-1col">
                     <!-- Start photosgallery-vertical -->
@@ -133,112 +126,134 @@ if ($product->published != 1) {
                 </div>
                     <!-- // end of photosgallery-vertical -->
 
+                <div class="offers_nav">
+                    <ul class="nav_sm nav nav-tabs">
+                        <li><a href="#conditions" role="tab" data-toggle="tab">Информация</a></li>
+                        <li><a href="#reviews" role="tab" data-toggle="tab">Отзывы (<?= $countReviews; ?>)</a></li>
+                    </ul>
+                </div>
 
-                <div class="fleamarketInfoProduct">
-                    <div class="price">
-                        Цена
-                        <span><?= $product->price; ?> руб.</span>
-                    </div>
-                    <?php
-                    if ($product->service_id > 0) {
-                        ?>
-                        <div class="fleamarket__company">
-                            Компания
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="conditions">
+                        <div class="fleamarketInfoProduct">
+                            <div class="price">
+                                Цена
+                                <span><?= $product->price; ?> руб.</span>
+                            </div>
+                            <?php
+                            if ($product->service_id > 0) {
+                                ?>
+                                <div class="fleamarket__company">
+                                    Компания
                             <span><?= Services::find()->where(['id' => $product->service_id])->one()->name ?>
                                 <!--<span class="fleamarket__onCarbax">на Carbax c 14 октября 2015</span>--></span>
-                        </div>
-                    <?php } ?>
-                    <div class="fleamarket__contact_person">
-                        Контактное лицо
-                        <span><?= User::find()->where(['id' => $product->user_id])->one()->username ?></span>
+                                </div>
+                            <?php } ?>
+                            <div class="fleamarket__contact_person">
+                                Контактное лицо
+                                <span><?= User::find()->where(['id' => $product->user_id])->one()->username ?></span>
 
-                        <div class="fleamarket__user_contact">
+                                <div class="fleamarket__user_contact">
                             <span class="fleamarket__user_tel"
                                   user-id="<?= $product->user_id; ?>">Показать телефон</span>
-                            <a href="/message/default/send_message?from=<?= $product->user_id; ?>"><span
-                                    class="fleamarket__user_mes">Написать сообщение</span></a>
+                                    <a href="/message/default/send_message?from=<?= $product->user_id; ?>"><span
+                                            class="fleamarket__user_mes">Написать сообщение</span></a>
                             <span
                                 class="info">Пожалуйста, скажите продавцу, что вы нашли это объявление на Carbax </span>
+                                </div>
+                            </div>
+                            <div class="fleamarket__city">
+                                Город <span><?= $city->name ?></span>
+                            </div>
+                            <?php
+                            if ($product->category_id != '0'):
+                                ?>
+                                <div class="fleamarket__type_product">
+                                    Вид товара: <?= $category; ?>
+                                </div>
+                            <?php endif; ?>
+                            <div class="fleamarket_product_description">
+                                <?= $product->descr; ?>
+                            </div>
+                            <div class="fleaMarketInfoProductAuto">
+                                <?php if ($product->prod_type == 0 || $product->prod_type == 1) {
+                                    ?>
+                                    <span>Марка: <?= $auto->brand_name; ?></span><br/>
+                                    <span>Модель: <?= $auto->model_name; ?></span><br/>
+                                    <span>Модификация: <?= $auto->type_name; ?></span><br/>
+                                    <?php if (!empty($auto->year)): ?>
+                                        <span>Год выпуска: <?= $auto->year; ?></span><br/>
+                                    <?php endif; ?>
+                                    <?php if (!empty($autoParams->body_type)): ?>
+                                        <span>Типе кузова: <?= AwpBodyType::findOne($autoParams->body_type)->name; ?></span>
+                                        <br/>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($autoParams->run)): ?>
+                                        <span>Пробег тыс.км.: <?= $autoParams->run; ?></span><br/>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($autoParams->transmission)): ?>
+                                        <span>Коробка передач: <?= AwpTransmission::findOne($autoParams->transmission)->name; ?></span>
+                                        <br/>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($autoParams->type_motor)): ?>
+                                        <span>Двигатель: <?= AwpTypeMotor::findOne($autoParams->type_motor)->name; ?></span>
+                                        <br/>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($autoParams->size_motor)): ?>
+                                        <span>Объем двигателя: <?= $autoParams->size_motor; ?></span><br/>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($autoParams->drive)): ?>
+                                        <span>Привод: <?= AwpDrive::findOne($autoParams->drive)->name; ?></span><br/>
+                                    <?php endif; ?>
+                                    <?php
+                                }
+                                if ($product->prod_type == 2) {
+                                    ?>
+                                    <span>Диаметр: <?= $auto->diameter; ?></span><br/>
+                                    <span>Сезонность: <?= $auto->seasonality_name; ?></span><br/>
+                                    <span>Ширина профиля: <?= $auto->section_width; ?></span><br/>
+                                    <span>Высота профиля: <?= $auto->section_height; ?></span>
+                                    <?php
+                                }
+                                if ($product->prod_type == 3) {
+                                    ?>
+                                    <span>Тип диска: <?= $auto->type_disk_name; ?></span><br/>
+                                    <span>Диаметр: <?= $auto->diameter; ?></span><br/>
+                                    <span>Ширина обода: <?= $auto->rim_width; ?></span><br/>
+                                    <span>Количество отверстий: <?= $auto->number_holes; ?></span><br/>
+                                    <span>Диаметр расположения отверстий: <?= $auto->diameter_holest; ?></span><br/>
+                                    <span>Вылет (ET): <?= $auto->sortie; ?></span>
+                                    <?php
+                                }
+                                ?>
+
+
+                            </div>
+
+                            <div class="fleamarket__number_ads">
+                                Номер объявления:<?= $product->id; ?>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="fleamarket__city">
-                        Город <span><?= $city->name ?></span>
-                    </div>
-                    <?php
-                    if ($product->category_id != '0'):
-                        ?>
-                        <div class="fleamarket__type_product">
-                            Вид товара: <?= $category; ?>
+
+                    <div role="tabpanel" class="tab-pane fade" id="reviews">
+
+                        <div class="offers_condition_view">
+                            <div class="row">
+                                <?= AddReviews::widget(['spirit'=>'flea_market','id'=>$_GET['id']]); ?>
+                                <?= ShowReviews::widget(['spirit'=>'flea_market','id'=>$_GET['id']]); ?>
+
+                            </div>
                         </div>
-                    <?php endif; ?>
-                    <div class="fleamarket_product_description">
-                        <?= $product->descr; ?>
                     </div>
-                    <div class="fleaMarketInfoProductAuto">
-                        <?php if ($product->prod_type == 0 || $product->prod_type == 1) {
-                            ?>
-                            <span>Марка: <?= $auto->brand_name; ?></span><br/>
-                            <span>Модель: <?= $auto->model_name; ?></span><br/>
-                            <span>Модификация: <?= $auto->type_name; ?></span><br/>
-                            <?php if (!empty($auto->year)): ?>
-                                <span>Год выпуска: <?= $auto->year; ?></span><br/>
-                            <?php endif; ?>
-                            <?php if (!empty($autoParams->body_type)): ?>
-                                <span>Типе кузова: <?= AwpBodyType::findOne($autoParams->body_type)->name; ?></span>
-                                <br/>
-                            <?php endif; ?>
-
-                            <?php if (!empty($autoParams->run)): ?>
-                                <span>Пробег тыс.км.: <?= $autoParams->run; ?></span><br/>
-                            <?php endif; ?>
-
-                            <?php if (!empty($autoParams->transmission)): ?>
-                                <span>Коробка передач: <?= AwpTransmission::findOne($autoParams->transmission)->name; ?></span>
-                                <br/>
-                            <?php endif; ?>
-
-                            <?php if (!empty($autoParams->type_motor)): ?>
-                                <span>Двигатель: <?= AwpTypeMotor::findOne($autoParams->type_motor)->name; ?></span>
-                                <br/>
-                            <?php endif; ?>
-
-                            <?php if (!empty($autoParams->size_motor)): ?>
-                                <span>Объем двигателя: <?= $autoParams->size_motor; ?></span><br/>
-                            <?php endif; ?>
-
-                            <?php if (!empty($autoParams->drive)): ?>
-                                <span>Привод: <?= AwpDrive::findOne($autoParams->drive)->name; ?></span><br/>
-                            <?php endif; ?>
-                            <?php
-                        }
-                        if ($product->prod_type == 2) {
-                            ?>
-                            <span>Диаметр: <?= $auto->diameter; ?></span><br/>
-                            <span>Сезонность: <?= $auto->seasonality_name; ?></span><br/>
-                            <span>Ширина профиля: <?= $auto->section_width; ?></span><br/>
-                            <span>Высота профиля: <?= $auto->section_height; ?></span>
-                            <?php
-                        }
-                        if ($product->prod_type == 3) {
-                            ?>
-                            <span>Тип диска: <?= $auto->type_disk_name; ?></span><br/>
-                            <span>Диаметр: <?= $auto->diameter; ?></span><br/>
-                            <span>Ширина обода: <?= $auto->rim_width; ?></span><br/>
-                            <span>Количество отверстий: <?= $auto->number_holes; ?></span><br/>
-                            <span>Диаметр расположения отверстий: <?= $auto->diameter_holest; ?></span><br/>
-                            <span>Вылет (ET): <?= $auto->sortie; ?></span>
-                            <?php
-                        }
-                        ?>
-
-
-                    </div>
-
-                    <div class="fleamarket__number_ads">
-                        Номер объявления:<?= $product->id; ?>
-                    </div>
-
                 </div>
+
 
             </div>
             <div class="fleamarket__footer">
@@ -250,12 +265,6 @@ if ($product->published != 1) {
                 <!--<a href="#" class="share_products">Поделиться</a>-->
 
                 <div class="fleamarket__socseti">
-                    <!--<a href="#"><img src="/media/img/vk.png" alt=""></a>
-                    <a href="#"><img src="/media/img/ok.png" alt=""></a>
-                    <a href="#"><img src="/media/img/fb.png" alt=""></a>
-                    <a href="#"><img src="/media/img/gg.png" alt=""></a>
-                    <a href="#"><img src="/media/img/tw.png" alt=""></a>
-                    <a href="#"><img src="/media/img/mm.png" alt=""></a>-->
                     <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
                     <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
                     <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus" data-counter=""></div>
@@ -317,16 +326,6 @@ if ($product->published != 1) {
                 </span>
                 <?php endif; ?>
             </div>
-<!--            <div class="fleamarket__slider">-->
-<!--                <div class="fotorama" data-nav="thumbs">-->
-<!--                    --><?php //foreach ($images as $img) {
-//                        ?>
-<!--                        <img src="/--><?//= $img->img ?><!--" alt="">-->
-<!--                        --><?php
-//                    }
-//                    ?>
-<!--                </div>-->
-<!--            </div>-->
 
             <div id="page" class="inner layout-1col">
                 <!-- Start photosgallery-vertical -->
@@ -336,12 +335,6 @@ if ($product->published != 1) {
                             <ul>
                                 <?php foreach ($images as $img):?>
                                     <li><a href="#" ><img src="/<?= $img->img;?>" /></a></li>
-                                    <!--<li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
-                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
-                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
-                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
-                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
-                                    <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>-->
                                 <?php endforeach; ?>
                             </ul>
                         </div>
@@ -359,110 +352,134 @@ if ($product->published != 1) {
             </div>
                 <!-- // end of photosgallery-vertical -->
 
-
-            <div class="fleamarketInfoProduct">
-                <div class="price">
-                    Цена
-                    <span><?= $product->price; ?> руб.</span>
-                </div>
-                <?php
-                if ($product->service_id > 0) {
-                    ?>
-                    <div class="fleamarket__company">
-                        Компания
+            <div class="offers_nav">
+                <ul class="nav_sm nav nav-tabs">
+                    <li><a href="#conditions" role="tab" data-toggle="tab">Информация</a></li>
+                    <li><a href="#reviews" role="tab" data-toggle="tab">Отзывы (<?= $countReviews; ?>)</a></li>
+                </ul>
+            </div>
+            <div class="cleared"></div>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="conditions">
+                    <div class="fleamarketInfoProduct">
+                        <div class="price">
+                            Цена
+                            <span><?= $product->price; ?> руб.</span>
+                        </div>
+                        <?php
+                        if ($product->service_id > 0) {
+                            ?>
+                            <div class="fleamarket__company">
+                                Компания
                         <span><?= Services::find()->where(['id' => $product->service_id])->one()->name ?>
                             <!--<span class="fleamarket__onCarbax">на Carbax c 14 октября 2015</span>--></span>
-                    </div>
-                <?php } ?>
-                <div class="fleamarket__contact_person">
-                    Контактное лицо
-                    <span><?= User::find()->where(['id' => $product->user_id])->one()->username ?></span>
+                            </div>
+                        <?php } ?>
+                        <div class="fleamarket__contact_person">
+                            Контактное лицо
+                            <span><?= User::find()->where(['id' => $product->user_id])->one()->username ?></span>
 
-                    <div class="fleamarket__user_contact">
-                        <span class="fleamarket__user_tel" user-id="<?= $product->user_id; ?>">Показать телефон</span>
-                        <a href="/message/default/send_message?from=<?= $product->user_id; ?>"><span
-                                class="fleamarket__user_mes">Написать сообщение</span></a>
-                        <span class="info">Пожалуйста, скажите продавцу, что вы нашли это объявление на Carbax </span>
-                    </div>
-                </div>
-                <div class="fleamarket__city">
-                    Город <span><?= $city->name ?></span>
-                </div>
-                <?php
-                if ($product->category_id != '0'):
-                    ?>
-                    <div class="fleamarket__type_product">
-                        Вид товара: <?= $category; ?>
-                    </div>
-                <?php endif; ?>
-                <div class="fleamarket_product_description">
-                    <?= $product->descr; ?>
-                </div>
-                <div class="fleaMarketInfoProductAuto">
-                    <?php if ($product->prod_type == 0 || $product->prod_type == 1) {
-                        ?>
-                        <span>Марка: <?= $auto->brand_name; ?></span><br/>
-                        <span>Модель: <?= $auto->model_name; ?></span><br/>
-                        <span>Модификация: <?= $auto->type_name; ?></span><br/>
-                        <?php if (!empty($auto->year)): ?>
-                            <span>Год выпуска: <?= $auto->year; ?></span><br/>
-                        <?php endif; ?>
-                        <?php if (!empty($autoParams->body_type)): ?>
-                            <span>Типе кузова: <?= AwpBodyType::findOne($autoParams->body_type)->name; ?></span><br/>
-                        <?php endif; ?>
-
-                        <?php if (!empty($autoParams->run)): ?>
-                            <span>Пробег тыс.км.: <?= $autoParams->run; ?></span><br/>
-                        <?php endif; ?>
-
-                        <?php if (!empty($autoParams->transmission)): ?>
-                            <span>Коробка передач: <?= AwpTransmission::findOne($autoParams->transmission)->name; ?></span>
-                            <br/>
-                        <?php endif; ?>
-
-                        <?php if (!empty($autoParams->type_motor)): ?>
-                            <span>Двигатель: <?= AwpTypeMotor::findOne($autoParams->type_motor)->name; ?></span><br/>
-                        <?php endif; ?>
-
-                        <?php if (!empty($autoParams->size_motor)): ?>
-                            <span>Объем двигателя: <?= $autoParams->size_motor; ?></span><br/>
-                        <?php endif; ?>
-
-                        <?php if (!empty($autoParams->drive)): ?>
-                            <span>Привод: <?= AwpDrive::findOne($autoParams->drive)->name; ?></span><br/>
-                        <?php endif; ?>
+                            <div class="fleamarket__user_contact">
+                                <span class="fleamarket__user_tel" user-id="<?= $product->user_id; ?>">Показать телефон</span>
+                                <a href="/message/default/send_message?from=<?= $product->user_id; ?>"><span
+                                        class="fleamarket__user_mes">Написать сообщение</span></a>
+                                <span class="info">Пожалуйста, скажите продавцу, что вы нашли это объявление на Carbax </span>
+                            </div>
+                        </div>
+                        <div class="fleamarket__city">
+                            Город <span><?= $city->name ?></span>
+                        </div>
                         <?php
-                    }
-                    if ($product->prod_type == 2) {
-                        ?>
-                        <span>Диаметр: <?= $auto->diameter; ?></span><br/>
-                        <span>Сезонность: <?= $auto->seasonality_name; ?></span><br/>
-                        <span>Ширина профиля: <?= $auto->section_width; ?></span><br/>
-                        <span>Высота профиля: <?= $auto->section_height; ?></span>
-                        <?php
-                    }
-                    if ($product->prod_type == 3) {
-                        ?>
-                        <span>Тип диска: <?= $auto->type_disk_name; ?></span><br/>
-                        <span>Диаметр: <?= $auto->diameter; ?></span><br/>
-                        <span>Ширина обода: <?= $auto->rim_width; ?></span><br/>
-                        <span>Количество отверстий: <?= $auto->number_holes; ?></span><br/>
-                        <span>Диаметр расположения отверстий: <?= $auto->diameter_holest; ?></span><br/>
-                        <span>Вылет (ET): <?= $auto->sortie; ?></span>
-                        <?php
-                    }
-                    ?>
+                        if ($product->category_id != '0'):
+                            ?>
+                            <div class="fleamarket__type_product">
+                                Вид товара: <?= $category; ?>
+                            </div>
+                        <?php endif; ?>
+                        <div class="fleamarket_product_description">
+                            <?= $product->descr; ?>
+                        </div>
+                        <div class="fleaMarketInfoProductAuto">
+                            <?php if ($product->prod_type == 0 || $product->prod_type == 1) {
+                                ?>
+                                <span>Марка: <?= $auto->brand_name; ?></span><br/>
+                                <span>Модель: <?= $auto->model_name; ?></span><br/>
+                                <span>Модификация: <?= $auto->type_name; ?></span><br/>
+                                <?php if (!empty($auto->year)): ?>
+                                    <span>Год выпуска: <?= $auto->year; ?></span><br/>
+                                <?php endif; ?>
+                                <?php if (!empty($autoParams->body_type)): ?>
+                                    <span>Типе кузова: <?= AwpBodyType::findOne($autoParams->body_type)->name; ?></span><br/>
+                                <?php endif; ?>
+
+                                <?php if (!empty($autoParams->run)): ?>
+                                    <span>Пробег тыс.км.: <?= $autoParams->run; ?></span><br/>
+                                <?php endif; ?>
+
+                                <?php if (!empty($autoParams->transmission)): ?>
+                                    <span>Коробка передач: <?= AwpTransmission::findOne($autoParams->transmission)->name; ?></span>
+                                    <br/>
+                                <?php endif; ?>
+
+                                <?php if (!empty($autoParams->type_motor)): ?>
+                                    <span>Двигатель: <?= AwpTypeMotor::findOne($autoParams->type_motor)->name; ?></span><br/>
+                                <?php endif; ?>
+
+                                <?php if (!empty($autoParams->size_motor)): ?>
+                                    <span>Объем двигателя: <?= $autoParams->size_motor; ?></span><br/>
+                                <?php endif; ?>
+
+                                <?php if (!empty($autoParams->drive)): ?>
+                                    <span>Привод: <?= AwpDrive::findOne($autoParams->drive)->name; ?></span><br/>
+                                <?php endif; ?>
+                                <?php
+                            }
+                            if ($product->prod_type == 2) {
+                                ?>
+                                <span>Диаметр: <?= $auto->diameter; ?></span><br/>
+                                <span>Сезонность: <?= $auto->seasonality_name; ?></span><br/>
+                                <span>Ширина профиля: <?= $auto->section_width; ?></span><br/>
+                                <span>Высота профиля: <?= $auto->section_height; ?></span>
+                                <?php
+                            }
+                            if ($product->prod_type == 3) {
+                                ?>
+                                <span>Тип диска: <?= $auto->type_disk_name; ?></span><br/>
+                                <span>Диаметр: <?= $auto->diameter; ?></span><br/>
+                                <span>Ширина обода: <?= $auto->rim_width; ?></span><br/>
+                                <span>Количество отверстий: <?= $auto->number_holes; ?></span><br/>
+                                <span>Диаметр расположения отверстий: <?= $auto->diameter_holest; ?></span><br/>
+                                <span>Вылет (ET): <?= $auto->sortie; ?></span>
+                                <?php
+                            }
+                            ?>
 
 
+                        </div>
+
+                        <div class="fleamarket__number_ads">
+                            Номер объявления:<?= $product->id; ?>
+                        </div>
+
+                    </div>
                 </div>
 
-                <div class="fleamarket__number_ads">
-                    Номер объявления:<?= $product->id; ?>
-                </div>
+                <div role="tabpanel" class="tab-pane fade" id="reviews">
 
+                    <div class="offers_condition_view">
+                        <div class="row">
+                            <?= AddReviews::widget(['spirit'=>'flea_market','id'=>$_GET['id']]); ?>
+                            <?= ShowReviews::widget(['spirit'=>'flea_market','id'=>$_GET['id']]); ?>
+
+                        </div>
+                    </div>
+                </div>
             </div>
 
+
         </div>
+
+
         <div class="fleamarket__footer">
             <a href="/message/default/send_message?from=<?= $product->user_id; ?>" class="write_seller">Написать
                 продавцу</a>

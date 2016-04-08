@@ -44,7 +44,7 @@ class Offers extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description'], 'required'],
+            [['title', 'description', 'new_price', 'old_price'], 'required'],
             [['service_id', 'new_price', 'old_price',  'dt_add'], 'integer'],
             [['description','dt_start','dt_end','circs'], 'string'],
             [['title', 'img_url', 'discount','service_id_str','address_selected','service_type_id'], 'string', 'max' => 255]

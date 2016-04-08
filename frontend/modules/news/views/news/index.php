@@ -45,7 +45,10 @@ $this->params['breadcrumbs'][] = $this->title;
 	echo LinkPager::widget(['pagination' => $pages,]); */?>
 <</div>
 </div>-->
-<section class="all_news">
+<section class="news">
+	<?= \frontend\modules\news\widgets\MenuNewsWidget::widget(); ?>
+
+
 		<a href="<?= Url::to(['/news/news/view', 'id' => $news[0]['id']])?>" class="news__item--1">
 			<img src="<?= $news[0]['img_url'];?>" alt="">
 			<span class="news__item--title">

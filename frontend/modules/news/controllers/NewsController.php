@@ -21,7 +21,7 @@ class NewsController extends \yii\web\Controller
     public function actionIndex()
 	{
 		$this->view->params['officeHide'] = true;
-		$this->view->params['bannersHide'] = false;
+		$this->view->params['bannersHide'] = true;
 		$query = News::find();
 		$countQuery = clone $query;
 		$pages = new Pagination(['totalCount' => $countQuery->count()]);
@@ -45,6 +45,27 @@ class NewsController extends \yii\web\Controller
 		//Debug::prn($news);
 		return $this->render('view', [
 			'news' => $news
+		]);
+	}
+
+	public function actionAll_news_cat(){
+		$this->view->params['officeHide'] = true;
+		$this->view->params['bannersHide'] = true;
+
+		$news = News::find()->where(['cat_id' => $_GET['id']]);
+		$pagination = new Pagination([
+			'defaultPageSize' => 5,
+			'totalCount' => $news->count(),
+		]);
+
+		$models = $news->orderBy('id DESC')
+			->offset($pagination->offset)
+			->limit($pagination->limit)
+			->all();
+
+		return $this->render('index', [
+			'news' => $models,
+			'pages' => $pagination,
 		]);
 	}
 
