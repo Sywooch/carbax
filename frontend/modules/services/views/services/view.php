@@ -4,6 +4,7 @@ use common\classes\Custom_function;
 use common\classes\Debug;
 use common\models\db\AddFieldsGroup;
 use common\models\db\BcbBrands;
+use common\models\db\ServiceType;
 use common\models\db\TofManufacturers;
 use frontend\modules\services\widgets\PrintAdditionalFieldsByServisId;
 use frontend\widgets\AddReviews;
@@ -11,7 +12,9 @@ use frontend\widgets\AutoType;
 use frontend\widgets\ShowReviews;
 use yii\helpers\Html;
 
-$this->title = $serviceName;
+$nameServTypeId = ServiceType::find()->where(['id'=>$servic->service_type_id])->one()->name;
+
+$this->title = $serviceName . ' | ' . $nameServTypeId . ' | CARBAX все автоуслуги Вашего города';
 $this->registerJsFile('/js/jquery.sliderkit.1.4.js',['yii\web\JqueryAsset']);
 $this->registerCssFile('/css/bootstrap_btn.min.css');
 
@@ -19,9 +22,28 @@ $this->registerCssFile('/css/bootstrap_btn.min.css');
     $this->params['breadcrumbs'][] = ['label' => 'Выбор сервиса', 'url' => ['/select_service']];
 
     $this->params['breadcrumbs'][] = ['label' => $serviceType->name, 'url' => ['/services/services/my_services', 'service_id' => $serviceType->id]];
-    $this->params['breadcrumbs'][] = $this->title;
+    $this->params['breadcrumbs'][] = $serviceName;
 
-//Debug::prn($servic);
+
+$this->registerMetaTag([
+    'name' => 'description',
+    'content' => $servic->description,
+]);
+
+$keyword = '';
+
+foreach($address as $addres){
+
+    $city = \common\models\db\GeobaseCity::find()->where(['id'=>$addres->city_id])->one();
+    $keyword = $keyword .' ' . $nameServTypeId . ' ' . $serviceName . ' ' . $city->name .',';
+}
+
+
+
+$this->registerMetaTag([
+    'name' => 'keywords',
+    'content' => $keyword . $nameServTypeId . ' CARBAX',
+]);
 
 ?>
 <!--AKD47 section-->

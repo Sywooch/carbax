@@ -18,9 +18,9 @@ $this->registerCssFile('/css/bootstrap.min.css');
         <div class="headerProfile">
             <?php if(!empty($user['avatar'])): ?>
             <div class="profileAvatar">
-                <?= Html::img('/'.$user['avatar'], ['width' => '200'])?>
+                <?= Html::img('/'.$user['avatar'], ['width' => '200', 'alt'=>'Аватар'])?>
                 <?php if($user['id'] != Yii::$app->user->id): ?>
-                    <a href="/message/default/send_message?from=<?=$_GET['id'];?>" class="btn btn-info btn-xs write_message">Написать сообщение</a>
+                    <a href="/message/default/send_message?from=<?=$_GET['id'];?>" title="Наисать сообщение" class="btn btn-info btn-xs write_message">Написать сообщение</a>
                 <?php endif; ?>
             </div>
             <?php endif; ?>
@@ -28,35 +28,44 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 <?php if(!empty($user['name'])): ?>
                 <div class="profileName profileElement">
                     <?=$user['name']?> <?=$user['last_name']?>
-                    <?= Html::a('Удалить профиль',Url::to(['/profile/default/delete']),['class' => 'delProfile']); ?>
+                    <?/*= Html::a('Удалить профиль',Url::to(['/profile/default/delete']),['class' => 'delProfile', 'title' => 'Удалить профиль']); */?>
                 </div>
                 <?php endif; ?>
                 <div class="profileLogin profileElement">
                     Логин: <?=$user['username']?>
+                    <?= Html::a('Удалить профиль',Url::to(['/profile/default/delete']),['class' => 'delProfile', 'title' => 'Удалить профиль']); ?>
                 </div>
+                <?php
+                $role = Yii::$app->authManager->getRolesByUser(Yii::$app->user->id);
 
-                <div class="header_block">
-                    <span>Бизнес</span>
-                    <?php if($user['id'] == Yii::$app->user->id): ?>
-                        <a href="<?= Url::to('/select_service');?>" class="addBussines">Добавить</a>
-                    <?php endif;?>
-                </div>
-                <?php if(!empty($serviceType)):?>
-                    <?php $i = 1;?>
-                    <?php foreach($serviceType as $st):?>
-                        <div class="userBis">
-                            <span>Бизнес<?= $i; ?>:</span>
-                            <span><?= $st->name; ?></span>
-                        </div>
-                        <?php $i++; ?>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <div class="userBis">У вас нет бизнеса</div>
-                <?php endif;?>
+                if(!empty($role['business']) || !empty($role['admin']) || !empty($role['root'])):
+
+                    ?>
+                    <div class="header_block">
+                        <span>Бизнес</span>
+                        <?php if($user['id'] == Yii::$app->user->id): ?>
+                            <a href="<?= Url::to('/select_service');?>" title="Добавить бизнес" class="addBussines">Добавить</a>
+                        <?php endif;?>
+                    </div>
+
+                    <?php if(!empty($serviceType)):?>
+                        <?php $i = 1;?>
+                        <?php foreach($serviceType as $st):?>
+                            <div class="userBis">
+                                <span>Бизнес<?= $i; ?>:</span>
+                                <span><?= $st->name; ?></span>
+                            </div>
+                            <?php $i++; ?>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="userBis">У вас нет бизнеса</div>
+                    <?php endif;
+                endif;
+                    ?>
                 <div class="header_block">
                     <span>Контактная информация</span>
                     <?php if($user['id'] == Yii::$app->user->id): ?>
-                        <?= Html::a('Редактировать', ['/profile/default/edit_contacts']); ?>
+                        <?= Html::a('Редактировать', ['/profile/default/edit_contacts'],['title'=>'Редактировать информацию']); ?>
                     <?php endif;?>
                 </div>
                 <div class="profileEmail profileElement">
@@ -101,7 +110,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
             <div class="header_block">
                 <span>Мой гараж</span>
                 <?php if($user['id'] == Yii::$app->user->id): ?>
-                    <?= Html::a('Редактировать', ['/garage']); ?>
+                    <?= Html::a('Редактировать', ['/garage'], ['title'=> 'Перейти в гараж']); ?>
                 <?php endif;?>
             </div>
             <?php foreach($autoGarage as $ag): ?>
@@ -133,7 +142,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 <div class="header_block">
                     <span><?= $st->name; ?></span>
                     <?php if($user['id'] == Yii::$app->user->id): ?>
-                        <?= Html::a('Редактировать', ['/services/services/my_services','service_id'=>$st->id]); ?>
+                        <?= Html::a('Редактировать', ['/services/services/my_services','service_id'=>$st->id], ['title'=>'Редактировать '.$st->name]); ?>
                     <?php endif;?>
                 </div>
                 <?php
@@ -144,7 +153,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                         ->all();
 
                 foreach ($service as $s) :?>
-                    <a href="/services/services/view_service?service_id=<?= $s->id; ?>">
+                    <a href="/services/services/view_service?service_id=<?= $s->id; ?>" title="Перейти к сервису <?= $s->name; ?>">
                         <div class="deals__item">
                             <div class="deals__block">
                                 <div class="deals__block-img">

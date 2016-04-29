@@ -78,41 +78,46 @@ AppAsset::register($this);
     if(Yii::$app->user->isGuest):
         ?>
         <div class="header__container">
-            <a href="/" class="header--logo">
-                <img src="<?= Url::base() ?>/media/img/carbax-logo.png" alt="">
+            <a href="/" class="header--logo" title="Главная Carbax">
+                <img src="<?= Url::base() ?>/media/img/carbax-logo.png" alt="Carbax.ru">
                 <!--<h5>Car<span class="orange">bax</span></h5>-->
             </a>
-            <form action="#" class="header--region">
+            <form action="<?=$_SERVER['REQUEST_URI']?>" class="header--region" id="auto_complete_form" method="post">
                 <?= CityAutoComplete::widget(); ?>
+                <?= \frontend\widgets\GetGeoInfo::widget(); ?>
+                <input type="hidden" name="_csrf" value="<?= Yii::$app->request->getCsrfToken(); ?>">
                 <!--<input type="text" class="header--region--box" placeholder="Город">-->
             </form>
 
 
             <div class="loginLinks">
-                <?=Html::a('Регистрация', Url::to('/register'), ['class'=>'regHeaderLink']) ." | ". Html::a('Вход', Url::to('/login'), ['class'=>'regHeaderLink']);?>
+                <?=Html::a('Регистрация', Url::to('/register'), ['class'=>'regHeaderLink','title' => 'Регистрация на автопортале Carbax']) ." | ". Html::a('Вход', Url::to('/login'), ['class'=>'regHeaderLink','title' => 'Вход на автопортал Carbax']);?>
             </div>
         </div>
         <?php
     else:
     ?>
     <div class="header__container">
-        <a href="/" class="header--logo">
-            <img src="<?= Url::base() ?>/media/img/carbax-logo.png" alt="">
+        <a href="/" class="header--logo" title="Главная Carbax">
+            <img src="<?= Url::base() ?>/media/img/carbax-logo.png" alt="Carbax.ru">
             <!--<h5>Car<span class="orange">bax</span></h5>-->
         </a>
-        <a href="<?=Url::to(['/profile/default/view'])?>" class="header--autotext"><?/*= User::getLogin(Yii::$app->user->id);*/?></a>
-        <a href="<?=Url::to('/office')?>" class="header--perscab">Личный кабинет</a>
-        <form action="#" class="header--region">
+        <a href="<?=Url::to(['/profile/default/view'])?>" title="Профиль <?= User::getLogin(Yii::$app->user->id);?>" class="header--autotext"><?/*= User::getLogin(Yii::$app->user->id);*/?></a>
+        <a href="<?=Url::to('/office')?>" title="Личный кабинет" class="header--perscab">Личный кабинет</a>
+
+        <form action="<?=$_SERVER['REQUEST_URI']?>" class="header--region" id="auto_complete_form" method="post">
             <?= CityAutoComplete::widget(); ?>
+            <?= \frontend\widgets\GetGeoInfo::widget(); ?>
+            <input type="hidden" name="_csrf" value="<?= Yii::$app->request->getCsrfToken(); ?>">
             <!--<input type="text" class="header--region--box" placeholder="Город">-->
         </form>
-        <a href="<?=Url::to(['/message'])?>" class="header--messages">Мои сообщения <?= NumberUnreadMessages::widget(); ?></a>
-        <a href="<?=Url::to(['/offers/offers/index']);?>" class="header--sales"><span>Спецпредложения</span></a>
+        <a href="<?=Url::to(['/message'])?>" title="Мои сообщения" class="header--messages">Мои сообщения <?= NumberUnreadMessages::widget(); ?></a>
+        <a href="<?=Url::to(['/offers/offers/index']);?>" title="Спецпредложения" class="header--sales"><span>Спецпредложения</span></a>
         <div class="header--request">
-            <a href="#" class="header--request--open">ЗАЯВКА НА СЕРВИС +</a>
+            <a href="#" class="header--request--open" title="Оставить заявку на сервис">ЗАЯВКА НА СЕРВИС +</a>
             <?= SelectRequestTypes::widget(['classNav'=>'head-nav','classUl'=>'head-nav__list']); ?>
         </div>
-        <?=Html::a('', [Url::to('/logout')], ['class'=>'header--logout', 'data'=>['method' => 'post']]);?>
+        <?=Html::a('', [Url::to('/logout')], ['class'=>'header--logout', 'title'=>'Выйти', 'data'=>['method' => 'post']]);?>
         <!--<a href="<?/*=Url::to('/logout')*/?>" class="header--logout"></a>-->
     </div>
         <?php

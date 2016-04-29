@@ -1061,13 +1061,14 @@ a.regHeaderLink {
     .foot__sitemap--right {
       width: 35%; }
       .foot__sitemap--right ul {
-        padding-left: 12px; }
+        padding-left: 12px;
+        max-width: 127px;}
   .foot--social {
     display: block;
     float: left;
     position: relative;
     padding-left: 12px;
-    margin-top: 25px; }
+    margin-top: 25px;  }
     .foot--social a {
       display: block;
       float: left;

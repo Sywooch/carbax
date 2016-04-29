@@ -848,28 +848,8 @@ class DefaultController extends Controller
                 $result->andWhere(['`info_disk`.`sortie`' => $_GET['sortieSearch']]);
             }
         }
-        /*
-         if(!empty($_GET['typeAuto'])){
-             $result->andWhere(['`auto_widget`.`auto_type`' => $_GET['typeAuto']]);
-         }
-         if($_GET['typeAuto'] == 1 || $_GET['typeAuto'] == 2) {
-            if (!empty($_GET['brandSearch'])) {
-                $result->andWhere(['`auto_widget`.`brand_id`' => $_GET['brandSearch']]);
-            }
 
-            if (!empty($_GET['yearSearch'])) {
-                $result->andWhere(['`auto_widget`.`year`' => $_GET['yearSearch']]);
-            }
-         }
 
-        if($_GET['typeAuto'] == 3) {
-            if(!empty($_GET['motoType'])){
-                $result->andWhere(['`auto_widget`.`moto_type`' => $_GET['motoType']]);
-            }
-            if(!empty($_GET['brandMoto'])){
-                $result->andWhere(['`auto_widget`.`brand_id`' => $_GET['brandMoto']]);
-            }
-        }*/
 
         /**
          * Если выбрана категория
@@ -889,8 +869,57 @@ class DefaultController extends Controller
         $result->limit($pagination->limit);
         $search = $result->all();
         //Debug::prn($search);
+        $cityName = '';
+        $regionName = '';
+        if(!empty($_GET['region'])){
+            $region = GeobaseRegion::find()->where(['id' => $_GET['region']])->one();
+            $regionName = $region->name . ' | ';
+        }
+        if(!empty($_GET['citySearch'])){
+            $city = GeobaseCity::find()->where(['id' => $_GET['citySearch']])->one();
+            $cityName = $city->name . ' | ';
+        }
 
-        return $this->render('search', ['search'=>$search,'pagination' => $pagination,]);
+        $title = 'Объявления CARBAX | ';
+        $keywords = 'Объявления CARBAX,';
+
+        if(!empty($_GET['prod_type'])){
+            switch($_GET['prod_type']){
+                case 2:
+                    $title .= "Транспорт | $regionName $cityName";
+                    $keywords .= "Транспорт $region->name $city->name,";
+                    break;
+                case 1:
+                    $title .= "Запчасти | $regionName $cityName";
+                    $keywords .= "Запчасти $region->name $city->name,";
+                    break;
+                case 3:
+                    $title .= "Шины | $regionName $cityName";
+                    $keywords .= "Шины $region->name $city->name,";
+                    break;
+                case 4:
+                    $title .= "Диски | $regionName $cityName";
+                    $keywords .= "Диски $region->name $city->name,";
+                    break;
+            }
+
+        }else{
+            $title .=  $regionName . $cityName;
+            $keywords .= $regionName . $cityName;
+        }
+
+
+        $title .= 'CARBAX все автоуслуги Вашего города';
+        $keywords .= 'CARBAX все автоуслуги Вашего города';
+        //Debug::prn($keywords);
+
+        return $this->render('search',
+            [
+                'search'=>$search,
+                'pagination' => $pagination,
+                'title' => $title,
+                'keywords' => $keywords,
+            ]);
 
     }
 
@@ -952,4 +981,5 @@ class DefaultController extends Controller
                 'countReviews' => $countReviews,
             ]);
     }
+
 }

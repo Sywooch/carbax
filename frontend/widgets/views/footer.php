@@ -119,18 +119,13 @@ use yii\helpers\Url;
                 <li>
                     <a href="<?= Url::to('news'); ?>" class="foot__sitemap--parent">Новости</a>
                 </li>
-                <li>
-                    <a href="#">Обо всем</a>
-                </li>
-                <li>
-                    <a href="#">По маркам</a>
-                </li>
-                <li>
-                    <a href="#">По моделям</a>
-                </li>
-               <!-- <li>
-                    <a href="#">#мойcarbax</a>
-                </li>-->
+
+                <?php foreach($catNews as $cat):?>
+                    <li>
+                        <a href="<?= Url::to(['/news/news/all_news_cat','id'=>$cat->id])?>"><?= $cat->name; ?></a>
+                    </li>
+                <?php endforeach; ?>
+
             </ul>
             <ul>
                 <li>

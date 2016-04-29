@@ -9,6 +9,7 @@
 namespace frontend\modules\services\controllers;
 
 
+use app\models\GeobaseRegion;
 use common\classes\Debug;
 use common\models\db\AddFieldsGroup;
 use common\models\db\AdditionalFields;
@@ -32,6 +33,7 @@ use common\models\db\ServiceTypeGroup;
 use common\models\db\TofManufacturers;
 use common\models\db\WorkHours;
 use Yii;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
@@ -54,13 +56,19 @@ class ServicesController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['business','admin','root'],
+                        'roles' => ['?','@'],
                     ],
-                    [
+                    /*[
                         'allow' => true,
                         'actions' => ['view_service'],
                         'roles' => ['?'],
+                    ],*/
+                    [
+                        'allow' => true,
+                        'actions' => ['index', 'add', 'add_to_sql', 'edit_service', 'update_to_sql', 'del_service'],
+                        'roles' => ['business','admin','root'],
                     ],
+
                 ],
             ],
         ];
@@ -102,6 +110,7 @@ class ServicesController extends Controller
         $service->website = $_POST['website'];
         $service->email = $_POST['mailadress'];
         $service->user_id = Yii::$app->user->id;
+        $service->dt_add = time();
 
         if(!file_exists('media/users/'.Yii::$app->user->id)){
             mkdir('media/users/'.Yii::$app->user->id.'/');
@@ -485,7 +494,6 @@ class ServicesController extends Controller
         return $this->render('fields_group', ['groups' => $groups]);
     }
 
-
     public function del_service($id){
         WorkHours::deleteAll(['service_id'=>$id]);
         Phone::deleteAll(['service_id'=>$id]);
@@ -513,5 +521,91 @@ class ServicesController extends Controller
     public function actionGet_city_select(){
         $city = GeobaseCity::find()->where(['region_id' => $_POST['region']])->all();
         echo Html::dropDownList('city_widget', 0, ArrayHelper::map($city, 'id', 'name'), ['class' => 'addContent__adress', 'id'=>'selectCityWidget', 'prompt'=>'Город']);
+    }
+
+    public function actionAll_services(){
+
+        if(!empty($_GET['typeId']) || !empty($_GET['idReg']) || !empty($_GET['idCity'])){
+
+            foreach ($_GET as $key => $value) {
+                if ($value == 'undefined') {
+                    unset($_GET[$key]);
+                }
+            }
+
+            if(!empty($_GET['idReg'])){
+                $idReg = $_GET['idReg'];
+                $address['region_id'] = $idReg;
+            }
+
+            if(isset($_GET['idCity'])){
+                $idCity = $_GET['idCity'];
+                $address['city_id'] = $idCity;
+            }
+
+            if(!empty($_GET['typeId'])){
+                $typeId = explode(',', substr($_GET['typeId'], 0, -1));
+            }
+        }
+        else{
+            $address = \common\classes\Address::get_geo_info();
+
+            if(!empty($address)){
+                $idReg = $address['region_id'];
+                $idCity = $address['city_id'];
+            }
+        }
+
+        $services = Services::find()
+            ->leftJoin('address', '`address`.`service_id` = `services`.`id`')
+            ->leftJoin('services_img','`services_img`.`services_id` = `services`.`id`')
+            ->leftJoin('service_type','`service_type`.`id` = `services`.`service_type_id`');
+
+
+
+
+        if (isset($idReg)) {
+            $services->andWhere(['`address`.`region_id`' => $idReg]);
+        }
+
+        if (isset($idCity)) {
+            $services->andWhere(['`address`.`city_id`' => $idCity]);
+        }
+
+        if (isset($typeId)) {
+            $services->andwhere(['`services`.`service_type_id`' => $typeId]);
+        }
+        $services->groupBy('`services`.`id`');
+        $count = $services->count();
+
+        $pagination = new Pagination([
+            /*'forcePageParam' => false,
+            'pageSizeParam' => false,*/
+            'defaultPageSize' => 12,
+            'totalCount' => $services->count(),
+        ]);
+
+        $services->offset($pagination->offset)
+            ->limit($pagination->limit);
+
+
+        $services->with('services_img','service_type');
+
+//Debug::prn($services->createCommand()->rawSql);
+        $services = $services->all();
+
+        $regionName = GeobaseRegion::find()->where(['id' => $idReg])->one()->name;
+        $cityName = GeobaseCity::find()->where(['id' => $idCity])->one()->name;
+        $description = 'Все автосервисы' . (!empty($regionName) ? " | $regionName" : '') . (!empty($cityName) ? " | $cityName" : '');
+
+
+        return $this->render('all_services',
+            [
+                'address' => $address,
+                'services' => $services,
+                'count' => $count,
+                'pagination' => $pagination,
+                'description' => $description,
+            ]);
     }
 }

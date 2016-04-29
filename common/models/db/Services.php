@@ -15,6 +15,7 @@ use Yii;
  * @property string $description
  * @property string $website
  * @property string $photo
+ * @property integer $dt_add
  *
  * @property Address[] $addresses
  * @property Offers[] $offers
@@ -45,7 +46,7 @@ class Services extends \yii\db\ActiveRecord
     {
         return [
             [['service_type_id', 'user_id', 'email', 'description'], 'required'],
-            [['service_type_id', 'user_id'], 'integer'],
+            [['service_type_id', 'user_id', 'dt_add'], 'integer'],
             [['description'], 'string'],
             [['email', 'website'], 'string', 'max' => 255]
         ];
@@ -208,5 +209,10 @@ class Services extends \yii\db\ActiveRecord
     public function getservices_img()
     {
         return $this->hasOne(ServicesImg::className(), ['services_id' => 'id']);
+    }
+
+    public function getservice_type()
+    {
+        return $this->hasOne(ServiceType::className(), ['id' => 'service_type_id']);
     }
 }

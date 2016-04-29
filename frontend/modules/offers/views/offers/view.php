@@ -6,10 +6,20 @@ use frontend\widgets\AddReviews;
 use frontend\widgets\ShowReviews;
 use himiklab\ipgeobase\IpGeoBase;
 $this->registerJsFile('/js/jquery.sliderkit.1.4.js',['yii\web\JqueryAsset']);
-$this->title = $model->title;
+$this->title = $model->title . ' | CARBAX все автоуслуги Вашего города';
 $this->params['breadcrumbs'][] = ['label' => 'Спецпредложения', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
-$checking = $news->img_url;
+$this->params['breadcrumbs'][] = $model->title;
+//$checking = $news->img_url;
+
+$this->registerMetaTag([
+    'name' => 'description',
+    'content' => $model->description,
+]);
+
+$this->registerMetaTag([
+    'name' => 'keywords',
+    'content' => $this->title ,
+]);
 
 
 ?>
@@ -36,7 +46,8 @@ $IpGeoBase->updateDB()
         });
     });
 </script>
-<?php //Debug::prn($info);?>
+<?php //Debug::prn($model); ?>
+
 <section class="offers_container">
 <h3 class="offers_header"><?= $model->title; ?></h3>
     <div class="offers_page_view">
@@ -184,9 +195,11 @@ $IpGeoBase->updateDB()
             <div id="mapOffers"></div>
         </div>
         <div class="offers_address">
-            <?php foreach($info as $inf):?>
 
-                <a class="linkService" href="/services/services/view_service?service_id=<?= $inf[0]->id; ?>" title="Страница сервиса на карбаксе"><i class="fa fa-location-arrow"></i></a><h3><?= $inf[0]->name; ?></h3>
+            <?php foreach($info as $inf):?>
+<?php //Debug::prn($inf)?>
+                <a class="linkService" href="/services/services/view_service?service_id=<?= $inf[0]->id; ?>" title="Страница сервиса на карбаксе"><i class="fa fa-location-arrow"></i></a>
+                <h3><a href="/services/services/view_service?service_id=<?= $inf[0]->id; ?>" title="Страница сервиса на карбаксе"><?= $inf[0]->name; ?></a></h3>
                 <div class="cleared"></div>
                 <i class="fa fa-compass"></i>
                 <a class="offers_website" target="_blank" href="<?= $inf[0]->website; ?>">Посмотрите сайт</a>
@@ -201,7 +214,7 @@ $IpGeoBase->updateDB()
                         </div>
 
                         <div class="offers_address--text">
-                            <p><span class="addressToMap" serviceTypeId="<?= $inf[0]->service_type_id; ?>"> <?= $seradr->address; ?></span><br/>
+                            <p><span class="addressToMap" title="<?=$inf[0]['name']?>" images="<?=$model['offers_images'][0]->images?>" phone="<?=$inf[0]['phone'][0]->number?>" serviceId="<?= $inf[0]->id?>" email="<?= $inf[0]->email?>" serviceTypeId="<?= $inf[0]->service_type_id; ?>"> <?= $seradr->address; ?></span><br/>
                                 <!--<a href="#">Посмотреть
                                     на карте</a></p>-->
                         </div>

@@ -16,12 +16,24 @@ use frontend\widgets\ShowReviews;
 use yii\helpers\Html;
 
 $this->registerJsFile('/js/jquery.sliderkit.1.4.js',['yii\web\JqueryAsset']);
-//$this->registerJsFile('http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js');
-//$this->registerCssFile('http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css');
-$this->title = $product->name;
 
-$this->params['breadcrumbs'][] = ['label' => 'продажа авто и запчастей', 'url' => ['/flea_market_search']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = $product->name . ' | ' . $city->name . ' | CARBAX все автоуслуги Вашего города';
+
+$this->params['breadcrumbs'][] = ['label' => 'продажа авто и запчастей', 'url' => ['/flea_market/search', 'prod_type'=>'','search'=>'','region'=>'']];
+$this->params['breadcrumbs'][] = $product->name;
+
+
+$this->registerMetaTag([
+    'name' => 'description',
+    'content' => $product->descr,
+]);
+
+$this->registerMetaTag([
+    'name' => 'keywords',
+    'content' => $product->name . ' ' . $city->name . ',продам ' . $product->name . ' ' . $city->name . ' запчасти CARBAX, купить carbax, карбакс' ,
+]);
+
+//Debug::prn($product);
 
 //echo FleaMarketSearch::widget(['title'=>false]);?>
     <script type="text/javascript">
@@ -129,7 +141,7 @@ if ($product->published != 1) {
                 <div class="offers_nav">
                     <ul class="nav_sm nav nav-tabs">
                         <li><a href="#conditions" role="tab" data-toggle="tab">Информация</a></li>
-                        <li><a href="#reviews" role="tab" data-toggle="tab">Отзывы (<?= $countReviews; ?>)</a></li>
+                        <li><a href="#reviews" role="tab" data-toggle="tab">Коментарии (<?= $countReviews; ?>)</a></li>
                     </ul>
                 </div>
 
@@ -145,8 +157,8 @@ if ($product->published != 1) {
                                 ?>
                                 <div class="fleamarket__company">
                                     Компания
-                            <span><?= Services::find()->where(['id' => $product->service_id])->one()->name ?>
-                                <!--<span class="fleamarket__onCarbax">на Carbax c 14 октября 2015</span>--></span>
+                            <span><a href="<?= \yii\helpers\Url::to(['/services/services/view_service','service_id' => $product->service_id]);?>"><?= Services::find()->where(['id' => $product->service_id])->one()->name ?></a>
+                                <span class="fleamarket__onCarbax">на Carbax c 14 октября 2015</span></span>
                                 </div>
                             <?php } ?>
                             <div class="fleamarket__contact_person">
@@ -355,7 +367,7 @@ if ($product->published != 1) {
             <div class="offers_nav">
                 <ul class="nav_sm nav nav-tabs">
                     <li><a href="#conditions" role="tab" data-toggle="tab">Информация</a></li>
-                    <li><a href="#reviews" role="tab" data-toggle="tab">Отзывы (<?= $countReviews; ?>)</a></li>
+                    <li><a href="#reviews" role="tab" data-toggle="tab">Коментарии (<?= $countReviews; ?>)</a></li>
                 </ul>
             </div>
             <div class="cleared"></div>
@@ -371,8 +383,11 @@ if ($product->published != 1) {
                             ?>
                             <div class="fleamarket__company">
                                 Компания
-                        <span><?= Services::find()->where(['id' => $product->service_id])->one()->name ?>
-                            <!--<span class="fleamarket__onCarbax">на Carbax c 14 октября 2015</span>--></span>
+                        <span><a href="<?= \yii\helpers\Url::to(['/services/services/view_service','service_id' => $product->service_id]);?>">
+                                <?php $serv = Services::find()->where(['id' => $product->service_id])->one();
+                                echo $serv->name;
+                                ?></a>
+                            <span class="fleamarket__onCarbax">на Carbax c <?= \common\classes\Custom_function::showDate($serv->dt_add); ?></span></span>
                             </div>
                         <?php } ?>
                         <div class="fleamarket__contact_person">
@@ -495,9 +510,11 @@ if ($product->published != 1) {
                 <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus" data-counter=""></div>
             </div>
         </div>
-        <?= SimilarAds::widget(['id' => $product->id, 'catid' => $product->category_id]); ?>
-        <?= FleaMarketNewProduct::widget(); ?>
-        <?= FleaMarketMostViewed::widget(); ?>
+        <div class="adsWr">
+            <?= SimilarAds::widget(['id' => $product->id, 'catid' => $product->category_id]); ?>
+            <?= FleaMarketNewProduct::widget(); ?>
+            <?= FleaMarketMostViewed::widget(); ?>
+        </div>
     </section>
     <?php
 }

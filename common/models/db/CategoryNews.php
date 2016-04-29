@@ -12,6 +12,8 @@ use Yii;
  * @property string $name
  * @property string $key
  * @property string $descr
+ * @property string $meta_keywords
+ * @property string $meta_description
  */
 class CategoryNews extends \yii\db\ActiveRecord
 {
@@ -32,7 +34,7 @@ class CategoryNews extends \yii\db\ActiveRecord
             [['name', 'key', 'descr'], 'required'],
             [['parent_id'], 'integer'],
             [['descr'], 'string'],
-            [['name', 'key'], 'string', 'max' => 255]
+            [['name', 'key', 'meta_description', 'meta_keywords'], 'string', 'max' => 255]
         ];
     }
 
@@ -47,6 +49,8 @@ class CategoryNews extends \yii\db\ActiveRecord
             'name' => 'Название',
             'key' => 'Название латиницей',
             'descr' => 'Описание',
+            'meta_keywords' => 'Meta keywords',
+            'meta_description' => 'Meta description',
         ];
     }
 }

@@ -45,7 +45,5 @@ use yii\widgets\LinkPager;
 				<p><?= $news[4]['title']; ?></p>
 			</span>
         </a>
-
-        <a class="news__more-link news__block-title" href="<?= Url::to(['/news/news/'])?>">Посмотреть все новости</a>
     </div>
 </section>

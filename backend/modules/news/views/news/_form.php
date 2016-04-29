@@ -58,7 +58,8 @@ use mihaildev\ckeditor\CKEditor;
     ]);?>
     <!-- <?= $form->field($model, 'dt_add')->textInput() ?> -->
 
-
+    <?= $form->field($model, 'meta_description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'meta_keywords')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Редактировать', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

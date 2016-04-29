@@ -7,6 +7,34 @@ use yii\widgets\LinkPager;
 $this->registerJsFile('/js/jquery.sliderkit.1.4.js',['yii\web\JqueryAsset']);
 $this->title = (!empty($serviceType)) ? $serviceType->name : 'Все спецпредложения';
 $this->params['breadcrumbs'][] = $this->title;
+
+if($_GET['id'] == 0){
+    $this->title = $seo->name_page;
+    $this->registerMetaTag([
+        'name' => 'description',
+        'content' => $seo->meta_description,
+    ]);
+
+    $this->registerMetaTag([
+        'name' => 'keywords',
+        'content' => $seo->meta_keywords,
+    ]);
+}
+else{
+
+    $this->title = 'Все спецпредложения ' . $serviceType->name . ' | '. $seo->name_page  .  ' | CARBAX все автоуслуги Вашего города';
+    $this->registerMetaTag([
+        'name' => 'description',
+        'content' => $seo->meta_description,
+    ]);
+
+    $this->registerMetaTag([
+        'name' => 'keywords',
+        'content' => "Спецпредложения $serviceType->name, " .$seo->meta_keywords,
+    ]);
+}
+
+//Debug::prn($serviceType);
 ?>
 <section class="deals all_offers" xmlns="http://www.w3.org/1999/html">
         <?= MenuOffer::widget();?>

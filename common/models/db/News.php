@@ -16,6 +16,8 @@ use Yii;
  * @property integer $views
  * @property integer $dt_add
  * @property integer $cat_id
+ * @property string $meta_keywords
+ * @property string $meta_description
  */
 class News extends \yii\db\ActiveRecord
 {
@@ -36,7 +38,7 @@ class News extends \yii\db\ActiveRecord
             [['title','description'], 'required'],
             [['user_id', 'dt_add', 'views','cat_id'], 'integer'],
             [['description', 'short_description'], 'string'],
-            [['title', 'img_url'], 'string', 'max' => 255],
+            [['title', 'img_url','meta_keywords', 'meta_description'], 'string', 'max' => 255],
             [['title'], 'unique']
         ];
     }
@@ -55,6 +57,14 @@ class News extends \yii\db\ActiveRecord
             'short_description' => 'Превью новости',
             'dt_add' => 'Дата добавления',
             'views' => 'Просмотры',
+            'meta_keywords' => 'Meta keywords',
+            'meta_description' => 'Meta description',
         ];
     }
+
+    public function getcategory_news()
+    {
+        return $this->hasOne(CategoryNews::className(), ['id' => 'cat_id']);
+    }
+
 }

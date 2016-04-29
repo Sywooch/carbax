@@ -10,6 +10,8 @@ use Yii;
  * @property integer $id
  * @property string $title
  * @property string $text
+ * @property string $meta_keywords
+ * @property string $meta_description
  */
 class StaticPages extends \yii\db\ActiveRecord
 {
@@ -29,7 +31,7 @@ class StaticPages extends \yii\db\ActiveRecord
         return [
             [['title', 'text'], 'required'],
             [['text'], 'string'],
-            [['title'], 'string', 'max' => 255]
+            [['title', 'meta_keywords', 'meta_description'], 'string', 'max' => 255]
         ];
     }
 
@@ -42,6 +44,8 @@ class StaticPages extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Заголовок',
             'text' => 'Текст',
+            'meta_keywords' => 'Meta keywords',
+            'meta_description' => 'Meta description',
         ];
     }
 }

@@ -16,6 +16,7 @@ use yii\helpers\Html;
                 <li><?= Html::a('Типы авто', ['/auto_type']) ?></li>
                 <li><?= Html::a('Новости', ['/news']) ?></li>
                 <li><?= Html::a('Жалобы', ['/complaint']) ?></li>
+                <li><?= Html::a('Страницы', ['/static_pages']) ?></li>
             </ul>
         </li>
 
@@ -33,9 +34,10 @@ use yii\helpers\Html;
         <li><?= Html::a('Пользователи', ['/user/admin/index']) ?></li>
         <li><?= Html::a('Объявления', ['/adsmanager']) ?></li>
         <li><?= Html::a('Спецпредложения', ['/offers']) ?></li>
-        <li><?= Html::a('Страницы', ['/static_pages']) ?></li>
+
         <li><?= Html::a('Отзывы', ['/reviews']) ?></li>
         <li><?= Html::a('Медиа-менеджер', ['/media']) ?></li>
+        <li><?= Html::a('Настройка SEO', ['/seo/seo']) ?></li>
 
     </ul>
 </nav>

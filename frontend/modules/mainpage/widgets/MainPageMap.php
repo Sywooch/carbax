@@ -15,7 +15,6 @@ use yii\base\Widget;
 class MainPageMap extends Widget
 {
     public function run(){
-
         if(isset($_POST['city_name'])){
             $cookies = Yii::$app->response->cookies;
             $city = GeobaseCity::find()->where(['id'=>$_POST['city_id']])->one();

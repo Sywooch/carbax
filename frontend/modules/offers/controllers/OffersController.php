@@ -13,6 +13,7 @@ use common\models\db\GeobaseCity;
 use common\models\db\OffersAttend;
 use common\models\db\OffersImages;
 use common\models\db\Reviews;
+use common\models\db\Seo;
 use common\models\db\Services;
 use common\models\db\ServiceType;
 use common\models\forms\OffersForm;
@@ -282,8 +283,11 @@ class OffersController extends Controller
             'defaultPageSize' => 9,
             'totalCount' => Offers::find()->where(['status'=>1])->count(),
         ]);
+        $seo = Seo::find()->where(['name_page_key'=>'allOffers'])->one();
         if($id !=0){
             $serviceType = ServiceType::find()->filterWhere(['id' => $id])->one();
+
+
 
             $offers = Offers::find()
                 ->leftJoin('`offers_images`','`offers_images`.`offers_id` = `offers`.`id`')
@@ -296,6 +300,7 @@ class OffersController extends Controller
                 ->with('offers_images')
                 ->all();
         }else{
+
             $offers = Offers::find()
                 ->leftJoin('`offers_images`','`offers_images`.`offers_id` = `offers`.`id`')
                 ->where(['LIKE', 'region_id', $address['region_id']])
@@ -313,6 +318,7 @@ class OffersController extends Controller
                 'offers' => $offers,
                 'serviceType' => $serviceType,
                 'pagination' => $pagination,
+                'seo' => $seo,
             ]);
 
     }

@@ -61,6 +61,9 @@ return [
         'reviews' => [
             'class' => 'backend\modules\reviews\Reviews',
         ],
+        'seo' => [
+            'class' => 'backend\modules\seo\Seo',
+        ],
     ],
     'components' => [
         'request' => [

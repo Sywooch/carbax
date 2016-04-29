@@ -177,7 +177,7 @@ jQuery(document).ready(function ($) {
         })
     })(jQuery)
 
-    $(document).on('change', '.selectAutoNew', function(){
+    $(document).on('change', '.selectauto_complete_city_nameNew', function(){
         $(this).nextAll().remove();
         var step = $(this).attr('step');
         var val = $(this).val();
@@ -1314,19 +1314,32 @@ jQuery(document).ready(function ($) {
     if($(".addressToMap").length>0) {
         var address = [];
         $('.addressToMap').each(function () {
-            address.push([$(this).text(), $(this).attr('serviceTypeId')]);
-        });
 
+            address.push([$(this).text(), $(this).attr('serviceTypeId'), $(this).attr('serviceId'),$(this).attr('email'),$(this).attr('images'),$(this).attr('phone'),$(this).attr('title') ]);
+        });
+        console.log(address);
         var map = new Map({element: 'mapOffers'});
         var add = [];
+        console.log(address);
         address.forEach(function (item, i, arr) {
             add.push({
                 address: item[0],
-                balloon: {
+
+               /* balloon: {
                     serviceTypeId: item[1],
                     title: item[0],
-                    hintContent: item[0]
+                    hintContent: item[0],
+                }*/
+
+                balloon: {
+                    title:item[6],
+                    email:item[3],
+                    serviceId: item[2],
+                    photo:'/' + item[4],
+                    phone:item[5],
+                    serviceTypeId:item[1]
                 }
+
             });
         });
         $('#mapOffers').empty();

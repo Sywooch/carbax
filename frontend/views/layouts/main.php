@@ -79,8 +79,8 @@ AppAsset::register($this);
     ?>
 
     <div class="header__container">
-        <a href="/" class="header--logo">
-            <img src="<?= Url::base() ?>/media/img/carbax-logo.png" alt="">
+        <a href="/" class="header--logo" title="Главная Carbax">
+            <img src="<?= Url::base() ?>/media/img/carbax-logo.png" alt="Carbax.ru">
             <!--<h5>Car<span class="orange">bax</span></h5>-->
         </a>
 
@@ -90,27 +90,27 @@ AppAsset::register($this);
         </form>
 
         <div class="loginLinks">
-            <?=Html::a('Регистрация', Url::to('/register'), ['class'=>'regHeaderLink']) ." | ". Html::a('Вход', Url::to('/login'), ['class'=>'regHeaderLink']);?>
+            <?=Html::a('Регистрация', Url::to('/register'), ['class'=>'regHeaderLink','title' => 'Регистрация на автопортале Carbax']) ." | ". Html::a('Вход', Url::to('/login'), ['class'=>'regHeaderLink','title' => 'Вход на автопортал Carbax']);?>
         </div>
     </div>
     <?php
     else:
     ?>
     <div class="header__container">
-        <a href="/" class="header--logo">
-            <img src="<?= Url::base() ?>/media/img/carbax-logo.png" alt="">
+        <a href="/" class="header--logo" title="Главная Carbax">
+            <img src="<?= Url::base() ?>/media/img/carbax-logo.png" alt="Carbax.ru">
             <!--<h5>Car<span class="orange">bax</span></h5>-->
         </a>
-        <a href="<?=Url::to(['/profile/default/view'])?>" class="header--autotext"><?/*= User::getLogin(Yii::$app->user->id);*/?></a>
-        <a href="<?=Url::to('/office')?>" class="header--perscab">Личный кабинет</a>
+        <a href="<?=Url::to(['/profile/default/view'])?>" title="Профиль <?= User::getLogin(Yii::$app->user->id);?>" class="header--autotext"><?/*= User::getLogin(Yii::$app->user->id);*/?></a>
+        <a href="<?=Url::to('/office')?>" title="Личный кабинет" class="header--perscab">Личный кабинет</a>
         <form action="#" class="header--region" id="auto_complete_form" method="post">
             <?= CityAutoComplete::widget(); ?>
             <!--<input type="text" class="header--region--box" placeholder="Город">-->
         </form>
-        <a href="<?=Url::to(['/message'])?>" class="header--messages">Мои сообщения <?= NumberUnreadMessages::widget(); ?></a>
-        <a href="#" class="header--sales"><span>Спецпредложения</span></a>
+        <a href="<?=Url::to(['/message'])?>" title="Мои сообщения" class="header--messages">Мои сообщения <?= NumberUnreadMessages::widget(); ?></a>
+        <a href="#" class="header--sales" title="Спецпредложения"><span>Спецпредложения</span></a>
         <div class="header--request">
-            <a href="#" class="header--request--open">ЗАЯВКА НА СЕРВИС +</a>
+            <a href="#" class="header--request--open" title="Оставить заявку на сервис">ЗАЯВКА НА СЕРВИС +</a>
             <?= SelectRequestTypes::widget(['classNav'=>'head-nav','classUl'=>'head-nav__list']); ?>
             <!--<nav class="head-nav" role="navigation">
                 <ul class="head-nav__list">
@@ -127,7 +127,7 @@ AppAsset::register($this);
                 </ul>
             </nav>-->
         </div>
-        <?=Html::a('', [Url::to('/logout')], ['class'=>'header--logout', 'data'=>['method' => 'post']]);?>
+        <?=Html::a('', [Url::to('/logout')], ['class'=>'header--logout', 'title'=>'Выйти', 'data'=>['method' => 'post']]);?>
         <!--<a href="#" class="header--logout"></a>-->
     </div>
     <?php
@@ -147,46 +147,7 @@ AppAsset::register($this);
 
 </section>
 
-<!--<footer class="footer">
-    <div class="contain">
-        <div class="footer__logo">
-            <div class="footer__logo-img">
-                <img src="<?/*= Url::base() */?>/media/img/sedan4.png" alt="">
-            </div>
-            <div class="footer__logo-desc">
-                <h1>CARBAX<span class="orange">.RU</span></h1>
-                <p>ремонт и обслуживание авто</p>
-            </div>
-        </div>
-        <div class="footer__nav">
-            <ul class="footer__nav-autoteh"><span class="orange"><?/*= User::getLogin(Yii::$app->user->id);*/?></span>
-                <li><a href="#nowhere">Сообщения</a></li>
-                <li><a href="#nowhere">Мой счет</a></li>
-                <li><a href="#nowhere">Настройки</a></li>
-                <li><a href="#nowhere">Выход</a></li>
-            </ul>
-            <ul class="footer__nav-about">
-                <span>О проекте:</span>
-                <li><a href="#nowhere">Правила сайта</a></li>
-                <li><a href="#nowhere">Советы</a></li>
-                <li><a href="#nowhere">Контакты</a></li>
-                <li><a href="#nowhere">Реклама</a></li>
-            </ul>
-        </div>
-        <div class="footer__contacts">
-            <h3>8-<span class="orange">800</span>-234-21-12</h3>
-            <h3>8-<span class="orange">495</span>-222-44-44</h3>
-            <div class="soc">
-                <a href="#nowhere"><i class="soc__vk-b"></i></a>
-                <a href="#nowhere"><i class="soc__fb-b"></i></a>
-                <a href="#nowhere"><i class="soc__tw-b"></i></a>
-                <a href="#nowhere"><i class="soc__lj-b"></i></a>
-                <a href="#nowhere"><i class="soc__ok-b"></i></a>
-                <a href="#nowhere"><i class="soc__gp-b"></i></a>
-            </div>
-        </div>
-    </div>
-</footer>-->
+
 
 <?= ShowFooter::widget(); ?>
 

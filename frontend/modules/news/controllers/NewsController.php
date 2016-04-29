@@ -3,8 +3,10 @@
 namespace frontend\modules\news\controllers;
 
 
+use common\models\db\CategoryNews;
 use common\models\db\News;
 use common\classes\Debug;
+use common\models\db\Seo;
 use common\models\search\newsSearch;
 use yii\data\Pagination;
 use yii\web\Controller;
@@ -30,18 +32,27 @@ class NewsController extends \yii\web\Controller
 			->limit($pages->limit)
 			->orderBy('id DESC')
 			->all();
+
+		$catInfo = Seo::find()->where(['name_page_key'=>'allNews'])->one();
 		return $this->render('index', [
 			'news' => $models,
 			'pages' => $pages,
+			'titleNews' => 'Все новости',
+			'catInfo' => $catInfo,
 		]);
 	}
 	public function actionView($id)
 	{	$this->view->params['officeHide'] = true;
 		$this->view->params['bannersHide'] = false;
-		//$news = News::find()->where(['id'=>$id])->one();
-		$news = News::findOne($id);
+		$news = News::find()
+			->leftJoin('`category_news`','`category_news`.`id` = `news`.`cat_id`')
+			->where(['`news`.`id`'=>$id])
+			->with('category_news')
+			->one();
+		//$news = News::findOne($id);
 		$news->views++;
 		$news->save();
+		//Debug::prn($news->createCommand()->rawSql);
 		//Debug::prn($news);
 		return $this->render('view', [
 			'news' => $news
@@ -54,7 +65,7 @@ class NewsController extends \yii\web\Controller
 
 		$news = News::find()->where(['cat_id' => $_GET['id']]);
 		$pagination = new Pagination([
-			'defaultPageSize' => 5,
+			'defaultPageSize' => 10,
 			'totalCount' => $news->count(),
 		]);
 
@@ -66,6 +77,7 @@ class NewsController extends \yii\web\Controller
 		return $this->render('index', [
 			'news' => $models,
 			'pages' => $pagination,
+			'catInfo' => CategoryNews::find()->where(['id' => $_GET['id']])->one(),
 		]);
 	}
 

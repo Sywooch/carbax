@@ -1577,7 +1577,7 @@ span.del_infoDriver{
     margin: 0;
 }
 
-.deals--topline span, .news--topline span {
+.deals--topline span, .news--topline span, .filter--topline span {
     float: right;
 }
 
@@ -3434,7 +3434,7 @@ i.fa-chevron-right{
 
 /*----All offers end----*/
 
-a#allOffers,a.allNews {
+a#allOffers,a.allNews, a.allServices {
     color: #fff;
 }
 
@@ -3977,4 +3977,185 @@ a.delProfile {
 
 .news .deals__menu {
     margin-bottom: 10px;
+}
+
+h3 a{
+    color:#333;
+}
+
+.checkTypeServ{
+    display:none;
+}
+
+
+input[type="checkbox"].checkTypeServ + label {
+    font-size:16px;
+    display: inline-block;
+    text-transform: inherit;
+    margin: 10px 15px 10px 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: pointer;
+}
+
+
+
+input[type="checkbox"].checkTypeServ + label span {
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    margin: -1px 7px 0 0;
+    vertical-align: middle;
+    cursor: pointer;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-color: #c6ccd2;
+}
+
+input[type="checkbox"].checkTypeServ:checked + label{
+    color: #ff6b00;
+}
+
+
+input[type="checkbox"].checkTypeServ:checked + label span{
+    background-color: #ff6b00;
+    background-image: url("../media/img/Check-Icon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ff6b00;
+}
+
+select.filterServicesRegion, select.filterServicesCity {
+    outline: none;
+    width: 285px;
+    height: 35px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-left: 10px;
+    background: url("../media/img/arrow_b.png") no-repeat 96% 55%;
+    margin-right:15px;
+    cursor: pointer;
+}
+
+select.filterServicesRegion::-ms-expand {
+    background: url("../media/img/arrow_b.png") no-repeat 96% 55%;
+}
+
+.resultFilter span{
+    color:#ff6b00;
+    background: #fff;
+    display: block;
+    float: left;
+    position: relative;
+    padding-right: 10px;
+}
+
+.resultFilter {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 10px 0;
+    position: relative;
+    display: block;
+    float: left;
+    width: 100%;
+}
+
+.resultFilter:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1px;
+    width: 100%;
+    background: #000;
+    display: block;
+    z-index: 0;
+}
+
+a.showResultFilter {
+    float: right;
+    display: block;
+    position: relative;
+    background: #fff;
+    padding-left: 10px;
+    color: #ff6b00;
+    font-style: italic;
+    padding-right: 22px;
+}
+
+.serviceImg{
+    width: 100%;
+    height: 161px;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    text-align: center;
+    word-spacing: nowrap;
+    vertical-align: middle;
+}
+
+.serviceImg img{
+    max-width: 100%;
+    min-height: 100%;
+    vertical-align: middle;
+}
+
+.allServicesView{
+    width:100%;
+}
+
+
+.nameService{
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    bottom: 0;
+}
+
+.nameService p{
+    color:#fff;
+    border: none;
+}
+
+.deals__block-typeService{
+    display: block;
+    position: absolute;
+    padding: 0 3px;
+
+    width: 40px;
+    text-align: center;
+    top: 7px;
+    left: 10px;
+    z-index: 1;
+}
+
+.deals__block-typeService img{
+    width: 100%;
+}
+
+.allServicesView .deals__block{
+    width:95%;
+}
+
+.news__category a {
+    color: #ff6b00;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.containNewsWr{
+    padding: 0!important;
+    width: 960px!important;
+}
+
+.fleamarket__company a{
+    color: #ff6b00;
+}
+
+.adsWr section.ads .contain{
+    padding: 0;
+    width: 940px;
 }

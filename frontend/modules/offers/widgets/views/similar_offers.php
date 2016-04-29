@@ -16,7 +16,7 @@ if(!empty($offers)): ?>
                 <div class="deals__block">
                     <div class="deals__block-sale">-<?= $offer['discount'] ?>%</div>
                     <div class="deals__block-img">
-                        <img src="<?= \yii\helpers\Url::base().$offer['offers_images'][0]->images ?>" alt="">
+                        <img src="/<?=$offer['offers_images'][0]->images ?>" alt="">
                         <div class="deals__block-img-more">
                             <p><?= substr($offer['description'], 0, 68)?></p>
                             <!--<p>Время продаж ограниченно</p>-->

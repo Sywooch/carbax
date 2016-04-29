@@ -35,6 +35,6 @@ echo AutoComplete::widget([
 ]);
 ?>
 
-    <div class="myLocationCarbax myLocationCarbaxAutoComplite"></div>
+    <div class="myLocationCarbax myLocationCarbaxAutoComplite" title="Мое местоположение"></div>
 
 <?php echo "<input type='hidden' name='city_id' value='$cityId' id='auto_complete_city_id'>";

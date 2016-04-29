@@ -3,7 +3,18 @@ use frontend\widgets\FleaMarketSearch;
 use frontend\widgets\GetModelTypeAuto;
 use frontend\widgets\GetSubCategory;
 use yii\widgets\LinkPager;
-$this->title = 'Поиск';
+$this->title = $title;
+
+$this->registerMetaTag([
+    'name' => 'description',
+    'content' => $keywords,
+]);
+
+$this->registerMetaTag([
+    'name' => 'keywords',
+    'content' => $keywords,
+]);
+
 ?>
 
 <?= FleaMarketSearch::widget(['title'=>false]);?>
