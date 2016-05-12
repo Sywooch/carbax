@@ -49,6 +49,9 @@ class SiteController extends Controller
         ];
     }
 
+
+    public $layout = 'page';
+
     /**
      * @inheritdoc
      */
@@ -73,6 +76,26 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionReklama()
+    {
+        $this->view->params['bannersHide'] = true;
+        return $this->render('reklama');
+    }
+
+    public function actionShops()
+    {
+        $this->view->params['bannersHide'] = true;
+        $this->layout = 'shop';
+        return $this->render('shops');
+    }
+
+    public function actionMedia()
+    {
+        $this->view->params['bannersHide'] = true;
+
+        return $this->render('media');
     }
 
     /**

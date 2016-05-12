@@ -20,10 +20,12 @@ class SimilarNews extends Widget
 
     public function run(){
         $news = News::find()
-            ->where(['cat_id' => $this->idCat])
-            ->andWhere(['!=', 'id', $this->idNews])
+            ->leftJoin('category_news', '`category_news`.`id` = `news`.`cat_id`')
+            ->where(['`news`.`cat_id`' => $this->idCat])
+            ->andWhere(['!=', '`news`.`id`', $this->idNews])
+            ->with('category_news')
             ->orderBy('dt_add DESC')
-            ->limit(5)
+            ->limit(4)
             ->all();
 
         return $this->render('similar-news',['news'=>$news]);
