@@ -4287,34 +4287,33 @@ ul.reklamaMenu li a.active{
     color: #ff6b00;
     font-style: italic;
 }
-/*---carbax magazine---*/
-.title__shop{
+/*---catPath---*/
+.categoryPass{
     display: block;
     position: relative;
     width: 100%;
     float: left;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
-.title__shop__left{
-    display: block;
-    position: relative;
-    width: 50%;
-    height: 435px;
-    float: left;
+.categoryPass span{
+    color: #ff6b00;
 }
-.title__shop__left img{
-    min-width: 100%;
-    height: auto;
-    position: relative;
-    left: -36%;
-    top: 0%;
-    /* transform: translate(-57%,-50%); */
+.categoryPass span a{
+    font-family: "HelveticaNeueCyrBold";
+    font-size: 14px;
+    color: #ff6b00;
 }
-.title__shop__right{
-    display: block;
-    position: relative;
-    width: 50%;
-    float: left;
+.categoryPass span:last-of-type a{
+    font-family: "HelveticaNeueCyrBold";
+    font-size: 14px;
+    color: #282828;
+}
+.categoryName{
+    font-family: "HelveticaNeueCyrBold";
+    font-size: 14px;
+    color: #ff6b00;
 }
 
-
-/*---close carbax magazine---*/
+/*---close catPath---*/
