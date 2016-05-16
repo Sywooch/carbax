@@ -4287,3 +4287,34 @@ ul.reklamaMenu li a.active{
     color: #ff6b00;
     font-style: italic;
 }
+/*---carbax magazine---*/
+.title__shop{
+    display: block;
+    position: relative;
+    width: 100%;
+    float: left;
+}
+.title__shop__left{
+    display: block;
+    position: relative;
+    width: 50%;
+    height: 435px;
+    float: left;
+}
+.title__shop__left img{
+    min-width: 100%;
+    height: auto;
+    position: relative;
+    left: -36%;
+    top: 0%;
+    /* transform: translate(-57%,-50%); */
+}
+.title__shop__right{
+    display: block;
+    position: relative;
+    width: 50%;
+    float: left;
+}
+
+
+/*---close carbax magazine---*/
