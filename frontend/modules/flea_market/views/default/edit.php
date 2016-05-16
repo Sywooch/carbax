@@ -151,7 +151,9 @@ foreach($img as $i){
         --><?php /*endif; */?>
         <h3>Цена</h3>
         <?= Html::input('text','price',$product->price,['class'=>'addPrice','id'=>'addPrice','required'=>'required'])?><span> руб.</span>
-
+        <div class="cleared"></div>
+        <h3>Телефон для связи</h3>
+        <?= Html::input('text', 'phone', $product->phone, ['class' => 'addPhone', 'id' => 'user_telephon', 'required' => 'required']);?><span class="licCabPhone"> Указать из личного кабинета</span>
         <h3>Разместить от</h3>
         <?php
             if($product->service_id == 0){

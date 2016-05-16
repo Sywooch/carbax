@@ -222,13 +222,15 @@ jQuery(document).ready(function ($) {
 
 
     $(document).on('click','.fleamarket__user_tel',function(){
-        var user_id = $(this).attr('user-id');
+        //var user_id = $(this).attr('user-id');
+        var market_id = $(this).attr('data-phone');
         $('.info').css('display','block');
         $.ajax({
             type: 'POST',
             url: "/ajax/ajax/get_tel_user",
-            data: 'id=' + user_id,
+            data: 'id=' + market_id,
             success: function (data) {
+                console.log(data);
                 $('.fleamarket__user_tel').html(data);
             }
         });
@@ -1421,6 +1423,17 @@ jQuery(document).ready(function ($) {
             data: 'type=' + type,
             success: function (data) {
                 $('.favoritesListAjax').html(data);
+            }
+        });
+    });
+
+    $(document).on('click','.licCabPhone', function(){
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_phone_user",
+
+            success: function (data) {
+                $('#user_telephon').val(data);
             }
         });
     });

@@ -24,6 +24,7 @@ use Yii;
  * @property integer $id_info_splint
  * @property integer $new
  * @property integer $published
+ * @property integer $phone
  */
 class Market extends \yii\db\ActiveRecord
 {
@@ -41,10 +42,10 @@ class Market extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'service_id', 'region_id', 'city_id', 'name', 'descr', 'price', 'dt_add'], 'required'],
+            [['user_id', 'service_id', 'region_id', 'city_id', 'name', 'descr', 'price', 'dt_add', 'phone'], 'required'],
             [['user_id', 'service_id', 'region_id', 'city_id', 'dt_add','id_auto_widget','new'], 'integer'],
             [['descr'], 'string'],
-            [['name', 'price'], 'string', 'max' => 255]
+            [['name', 'price', 'phone'], 'string', 'max' => 255]
         ];
     }
 

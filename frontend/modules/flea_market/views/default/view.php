@@ -171,7 +171,7 @@ if ($product->published != 1) {
 
                                 <div class="fleamarket__user_contact">
                                 <span class="fleamarket__user_tel"
-                                      user-id="<?= $product->user_id; ?>">Показать телефон</span>
+                                      data-phone="<?= $product->id; ?>">Показать телефон</span>
                                         <a href="/message/default/send_message?from=<?= $product->user_id; ?>"><span
                                                 class="fleamarket__user_mes">Написать сообщение</span></a>
                                 <span
@@ -403,7 +403,7 @@ if ($product->published != 1) {
                             <?php endif;?>
 
                             <div class="fleamarket__user_contact">
-                                <span class="fleamarket__user_tel" user-id="<?= $product->user_id; ?>">Показать телефон</span>
+                                <span class="fleamarket__user_tel" data-phone="<?= $product->id; ?>">Показать телефон</span>
                                 <a href="/message/default/send_message?from=<?= $product->user_id; ?>"><span
                                         class="fleamarket__user_mes">Написать сообщение</span></a>
                                 <span class="info">Пожалуйста, скажите продавцу, что вы нашли это объявление на Carbax </span>

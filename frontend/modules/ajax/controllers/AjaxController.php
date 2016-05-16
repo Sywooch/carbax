@@ -137,11 +137,15 @@ class AjaxController extends Controller
                 ArrayHelper::map($model, 'id', 'name'),
                 ['prompt' => 'Модель', 'class' => 'addContent__adress', 'id' => 'selectAutoWidget', 'type' => 'group']
             );
-        }
-        if ($_POST['type'] == 'group') {
             if ($_POST['view'] == 1) {
                 echo CategoryProductTecDoc::widget();
             }
+
+        }
+        if ($_POST['type'] == 'group') {
+            /*if ($_POST['view'] == 1) {
+                echo CategoryProductTecDoc::widget();
+            }*/
         }
 
         if ($_POST['type'] == 'cargoman') {
@@ -259,7 +263,7 @@ class AjaxController extends Controller
 
     public function actionGet_tel_user()
     {
-        echo User::findOne($_POST['id'])->telephon;
+        echo Market::find()->where(['id' => $_POST['id']])->one()->phone;
     }
 
     public function actionGet_auto_new()
@@ -1040,5 +1044,9 @@ class AjaxController extends Controller
         //Debug::prn($s);
     }
 
+    public function actionGet_phone_user(){
+        $phone = User::find()->where(['id' => Yii::$app->user->id])->one()->telephon;
+        echo $phone;
+    }
 
 }

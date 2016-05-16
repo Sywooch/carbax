@@ -340,6 +340,7 @@ class DefaultController extends Controller
 
         $market->published = 0;
         $market->user_id = Yii::$app->user->id;
+        $market->phone = $_POST['phone'];
         $market->save();
 
         /*Добавление изображений*/

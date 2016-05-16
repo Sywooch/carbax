@@ -103,6 +103,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <h3>Цена</h3>
             <?= Html::input('text', 'price', null, ['class' => 'addPrice', 'id' => 'addPrice', 'required' => 'required']) ?>
             <span> руб.</span>
+            <div class="cleared"></div>
+            <h3>Телефон для связи</h3>
+            <?= Html::input('text', 'phone', null, ['class' => 'addPhone', 'id' => 'user_telephon', 'required' => 'required']);?><span class="licCabPhone"> Указать из личного кабинета</span>
 
             <?php $role = Yii::$app->authManager->getRolesByUser(Yii::$app->user->id);
             if(!empty($role['business']) || !empty($role['admin']) || !empty($role['root'])):?>
