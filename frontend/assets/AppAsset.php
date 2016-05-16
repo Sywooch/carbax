@@ -31,6 +31,7 @@ class AppAsset extends AssetBundle
         'css/index.css',
         'css/star-rating.css',
         'css/theme-krajee-svg.css',
+        'css/slimbox2.css',
         /*'/css/bootstrap_btn.min.css'*/
     ];
     public $js = [
@@ -48,6 +49,7 @@ class AppAsset extends AssetBundle
         '/js/jquery.maskedinput.js',
         'js/script.js',
         'js/star-rating.js',
+        'js/slimbox2.js',
     ];
     public $jsOptions = [ 'position' => \yii\web\View::POS_HEAD];
     public $depends = [

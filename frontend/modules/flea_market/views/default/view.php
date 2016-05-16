@@ -114,7 +114,7 @@ if ($product->published != 1) {
                             <div class="sliderkit-nav-clip">
                                 <ul>
                                     <?php foreach ($images as $img):?>
-                                        <li><a href="#" ><img src="/<?= $img->img;?>" /></a></li>
+                                        <li><a href="#"><img src="/<?= $img->img;?>" /></a></li>
                                         <!--<li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
                                         <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request1.png" alt="[Alternative text]" /></a></li>
                                         <li><a href="#" rel="nofollow" title="[link title]"><img src="/media/img/request2.png" alt="[Alternative text]" /></a></li>
@@ -130,7 +130,7 @@ if ($product->published != 1) {
                         <div class="sliderkit-panels">
                             <?php foreach ($images as $img):?>
                                 <div class="sliderkit-panel">
-                                    <img src="/<?= $img->img;?>" />
+                                    <a href="/<?= $img->img;?>" rel="lightbox"><img src="/<?= $img->img;?>" /></a>
                                 </div>
                             <?php endforeach; ?>
                         </div>
@@ -360,7 +360,7 @@ if ($product->published != 1) {
                     <div class="sliderkit-panels">
                              <?php foreach ($images as $img):?>
                                  <div class="sliderkit-panel">
-                                     <img src="/<?= $img->img;?>" />
+                                     <a href="/<?= $img->img;?>" rel="lightbox"><img src="/<?= $img->img;?>" /></a>
                                  </div>
                              <?php endforeach; ?>
                     </div>
