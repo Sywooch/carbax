@@ -1,4 +1,4 @@
-<?php
+ф<?php
 
 use mihaildev\elfinder\InputFile;
 use yii\helpers\Html;

@@ -104,8 +104,12 @@ class Custom_function {
             $rating += $review->rating;
             $kol++;
         }
+        if($kol==0){
+            $reting = 0;
+        }else{
+            $reting = $rating/$kol;
+        }
 
-        $reting = $rating/$kol;
         return $reting;
     }
 } 

@@ -193,18 +193,20 @@ $this->registerMetaTag([
                 </div>
             </div>
 
-            <div class="singleContent__worksWith">
-                <h3>Работаем с:</h3>
+            <?php if(!empty($autoType)): ?>
+                <div class="singleContent__worksWith">
+                    <h3>Работаем с:</h3>
 
-                <?php foreach($autoType as $at):?>
-                    <div class="singleContent__worksWith-block">
+                    <?php foreach($autoType as $at):?>
+                        <div class="singleContent__worksWith-block">
 
-                        <h4><?=$at->name?></h4>
-                        <img src="<?=$at->img_url;?>" alt="">
-                    </div>
+                            <h4><?=$at->name?></h4>
+                            <img src="<?=$at->img_url;?>" alt="">
+                        </div>
 
-                <?php endforeach;?>
-            </div>
+                    <?php endforeach;?>
+                </div>
+            <?php endif; ?>
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="reviews">

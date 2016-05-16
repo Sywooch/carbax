@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Html;
-$resetLink = Yii::$app->urlManagerFrontend->createAbsoluteUrl(['flea_market/view','id'=>$product->id]);
+$resetLink = Yii::$app->urlManagerFrontend->createAbsoluteUrl(['flea-market/view','id'=>$product->id]);
 ?>
 <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" data-editable="text">
     <tbody>

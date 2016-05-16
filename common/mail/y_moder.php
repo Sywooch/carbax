@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 //$resetLink = Yii::$app->urlManager->createUrl(['flea_market','id'=>$product->id]);
-$resetLink = Yii::$app->urlManagerFrontend->createAbsoluteUrl(['flea_market/view','id'=>$product->id]);
+$resetLink = Yii::$app->urlManagerFrontend->createAbsoluteUrl(['flea-market/view','id'=>$product->id]);
 //$resetLink = Yii::$app->urlManager->createAbsoluteUrl(['site/reset-password', 'token' => $user->password_reset_token]);\
 //echo $resetLink;
 

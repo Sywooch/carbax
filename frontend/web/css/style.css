@@ -885,7 +885,7 @@ label.request_label {
 .infoCateg {
     border-bottom: 1px solid #3f3f3f;
     display: block;
-    height: 30px;
+    height: 28px;
 }
 
 span.categPrav {
@@ -4316,3 +4316,5 @@ ul.reklamaMenu li a.active{
     color: #ff6b00;
 }
 /*---close catPath---*/
+
+
