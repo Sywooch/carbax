@@ -10,6 +10,7 @@ use Yii;
  * @property integer $id
  * @property string $name
  * @property integer $group_id
+ * @property string $template
  *
  * @property AddFieldsGroup $group
  * @property RequestAddFields[] $requestAddFields
@@ -33,7 +34,8 @@ class AdditionalFields extends \yii\db\ActiveRecord
         return [
             [['name', 'group_id'], 'required'],
             [['group_id'], 'integer'],
-            [['name'], 'string', 'max' => 255]
+            [['name'], 'string', 'max' => 255],
+            [['template'], 'string']
         ];
     }
 
@@ -46,6 +48,7 @@ class AdditionalFields extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Название',
             'group_id' => 'Группа услуг',
+            'template' => 'Шаблон',
         ];
     }
 

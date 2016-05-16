@@ -18,31 +18,39 @@ class SimilarAds extends Widget
 {
     public $catid;
     public $id;
+
+
     public function run(){
-
-        /*$product = Market::find()
-            ->joinWith('product_img')
-            ->where(['category_id'=>$this->catid])
-            ->andWhere(['!=','id',$this->id])
-            ->limit(4)
-            ->all();*/
-
-
-        $address = Address::get_geo_info();
+   // Debug::prn($this->catid);
         $title = 'Похожие объявления';
-        $product = Market::find()
-            ->joinWith('product_img')
-            ->where(['region_id'=>$address['region_id'], 'published'=>1, 'category_id'=>$this->catid])
-            ->andWhere(['!=','`market`.`id`',$this->id])
-            ->orderBy('dt_add DESC')
-            //->with('product_img')
-            ->limit(4)
+        $productInfo = Market::find()->where(['id' => $this->id])->one();
 
-            ->all();
+        if($this->catid == 0){
+            $product = Market::find()
+                ->joinWith('product_img')
+                ->where(['region_id'=>$productInfo->region_id, 'published'=>1, 'prod_type'=>$productInfo->prod_type])
+                ->andWhere(['!=','`market`.`id`',$this->id])
+                ->orderBy('dt_add DESC')
+                //->with('product_img')
+                ->limit(4)
 
-      /* if(!empty($product)) {
-           return $this->render('similar_ads', ['product' => $product]);
-       }*/
+                ->all();
+        }else{
+            //$address = Address::get_geo_info();
+
+            $product = Market::find()
+                ->joinWith('product_img')
+                ->where(['region_id'=>$productInfo->region_id, 'published'=>1, 'category_id'=>$this->catid])
+                ->andWhere(['!=','`market`.`id`',$this->id])
+                ->orderBy('dt_add DESC')
+                //->with('product_img')
+                ->limit(4)
+
+                ->all();
+        }
+
+
+
 
         return $this->render('similar_ads',
             [

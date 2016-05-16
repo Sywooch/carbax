@@ -86,10 +86,12 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         //Yii::$app->session->setFlash('success','Товар успешно обновлен');
-        $market = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 0])
-            ->orWhere(['user_id' => Yii::$app->user->id, 'prod_type' => 2])
-            ->orWhere(['user_id' => Yii::$app->user->id, 'prod_type' => 3])
-            ->orWhere(['user_id' => Yii::$app->user->id, 'prod_type' => 4])
+        $market = Market::find()
+            ->joinWith('product_img')
+            ->where(['`market`.`user_id`' => Yii::$app->user->id, 'prod_type' => 0])
+            ->orWhere(['`market`.`user_id`' => Yii::$app->user->id, 'prod_type' => 2])
+            ->orWhere(['`market`.`user_id`' => Yii::$app->user->id, 'prod_type' => 3])
+            ->orWhere(['`market`.`user_id`' => Yii::$app->user->id, 'prod_type' => 4])
             ->orderBy('dt_add DESC')
             ->all();
 
@@ -97,7 +99,11 @@ class DefaultController extends Controller
     }
 
     public function actionSale_auto(){
-        $market = Market::find()->where(['user_id' => Yii::$app->user->id, 'prod_type' => 1])->orderBy('dt_add DESC')->all();
+        $market = Market::find()
+            ->joinWith('product_img')
+            ->where(['`market`.`user_id`' => Yii::$app->user->id, 'prod_type' => 1])
+            ->orderBy('dt_add DESC')
+            ->all();
 
 
         return $this->render('sale_auto', ['market' => $market]);

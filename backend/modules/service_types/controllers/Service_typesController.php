@@ -2,6 +2,7 @@
 
 namespace backend\modules\service_types\controllers;
 
+use common\classes\Debug;
 use common\models\db\AddFieldsGroup;
 use Yii;
 use backend\modules\service_types\models\Service_types;
@@ -74,6 +75,7 @@ class Service_typesController extends Controller
         $model = new Service_types();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             $group = new AddFieldsGroup();

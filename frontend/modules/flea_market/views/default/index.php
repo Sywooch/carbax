@@ -14,11 +14,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= $this->title ?></h1>
     <button onclick="location.href='/flea_market/default/add?type=zap'" type="button" class="btn btn-success addServiceBtn">Добавить объявление</button>
-    <table class="addAllServices">
+    <table>
         <?php
         foreach ($market as $mark) {
             ?>
             <tr>
+                <td>
+                    <img src="/<?= $mark['product_img'][0]->img; ?>" alt="" width="100px">
+                </td>
             <td>
                 <a href="<?= \yii\helpers\Url::to(['/flea-market/view','id'=>$mark->id])?>"><b><?=$mark->name?></b></a>
             </td>
