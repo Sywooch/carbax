@@ -9,8 +9,10 @@ use yii\widgets\LinkPager;
 <section class="news">
     <div class="contain">
         <div class="news--topline">
-            <img src="/media/img/logo2.png" alt="">
-            <h3 class="orange">News</h3>
+            <a href="<?= Url::to(['/news/news/'])?>">
+                <img src="/media/img/logo2.png" alt="CARBAX">
+                <h3 class="orange">News</h3>
+            </a>
             <span><a class="allNews" href="<?= Url::to(['/news/news/'])?>">Все новости</a></span>
         </div>
         <a href="<?= Url::to(['/news/news/view', 'id' => $news[0]['id']])?>" class="news__item--1">

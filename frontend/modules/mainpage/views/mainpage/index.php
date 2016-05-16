@@ -7,7 +7,9 @@ use frontend\widgets\FleaMarketMostViewed;
 use frontend\widgets\FleaMarketNewProduct;
 use frontend\widgets\FleaMarketSearch;
 use frontend\widgets\SelectRequestTypes;
-$this->title = "Автопортал";
+use yii\helpers\Url;
+
+$this->title = "CARBAX все автоуслуги Вашего города | Автопортал";
 $this->registerMetaTag([
     'name' => 'description',
     'content' => $seo->meta_description,
@@ -17,6 +19,58 @@ $this->registerMetaTag([
     'name' => 'keywords',
     'content' => $seo->meta_keywords,
 ]);
+
+$this->registerMetaTag([
+    'name' => 'og:title',
+    'content' => "CARBAX все автоуслуги Вашего города | Автопортал",
+]);
+
+$this->registerMetaTag([
+    'name' => 'og:type',
+    'content' => "article",
+]);
+
+$this->registerMetaTag([
+    'name' => 'og:image',
+    'content' => 'http://carbax.ru/media/img/carbax-logo.png',
+]);
+
+$this->registerMetaTag([
+    'name' => 'og:url',
+    'content' => 'carbax.ru',
+]);
+
+$this->registerMetaTag([
+    'name' => 'DC.title',
+    'content' => 'CARBAX все автоуслуги Вашего города | Автопортал',
+]);
+
+$this->registerMetaTag([
+    'name' => 'DC.creator',
+    'content' => 'Александр Викторович',
+]);
+
+$this->registerMetaTag([
+    'name' => 'DC.creator.name',
+    'content' => 'Александр Викторович',
+]);
+
+$this->registerMetaTag([
+    'name' => 'DC.subject',
+    'content' => $seo->meta_keywords,
+]);
+
+$this->registerMetaTag([
+    'name' => 'DC.description',
+    'content' => $seo->meta_description,
+]);
+
+$this->registerMetaTag([
+    'name' => 'DC.language',
+    'content' => 'ru-RU',
+]);
+
+
 ?>
 
 <section class="initial-screen">

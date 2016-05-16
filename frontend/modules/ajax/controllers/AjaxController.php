@@ -1011,7 +1011,7 @@ class AjaxController extends Controller
 
         foreach ($_POST as $key => $value) {
             if ($value == 'undefined') {
-                unset($_POST[$key]);
+               $_POST[$key] = '';
             }
         }
 
@@ -1023,16 +1023,17 @@ class AjaxController extends Controller
             ->leftJoin('address', '`address`.`service_id` = `services`.`id`');
 
         if (isset($_POST['idReg'])) {
-            $services->andWhere(['`address`.`region_id`' => $_POST['idReg']]);
+            $services->andFilterWhere(['`address`.`region_id`' => $_POST['idReg']]);
         }
 
         if (isset($_POST['idCity'])) {
-            $services->andWhere(['`address`.`city_id`' => $_POST['idCity']]);
+            $services->andFilterWhere(['`address`.`city_id`' => $_POST['idCity']]);
         }
 
         if (isset($typeId)) {
-            $services->andwhere(['`services`.`service_type_id`' => $typeId]);
+            $services->andFilterWhere(['`services`.`service_type_id`' => $typeId]);
         }
+        $services->groupBy('`services`.`id`');
         $count = $services->count();
 
         return $count;

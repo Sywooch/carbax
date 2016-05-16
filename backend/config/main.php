@@ -64,6 +64,9 @@ return [
         'seo' => [
             'class' => 'backend\modules\seo\Seo',
         ],
+        'reclame_zone' => [
+            'class' => 'backend\modules\reclame_zone\Reclame_zone',
+        ],
     ],
     'components' => [
         'request' => [
@@ -85,7 +88,8 @@ return [
                 'adsmanager' => 'adsmanager/adsmanager/index',
                 'offers' => 'offers/offers/index',
                 'static_pages' => 'static_pages/static_pages/index',
-                'reviews' => 'reviews/default'
+                'reviews' => 'reviews/default',
+                'reclame_zone' => 'reclame_zone/reclame_zone'
             ],
         ],
         'urlManagerFrontend' => [

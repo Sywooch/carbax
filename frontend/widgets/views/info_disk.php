@@ -208,18 +208,28 @@ $sortie = [
 
 echo Html::label('Тип диска');
 echo Html::dropDownList('type_disk',$model->type_disk,$typeDisk,['prompt'=>'-','class'=>'addContent__adress']);
-
+?>
+<div class="cleared"></div>
+<?php
 echo Html::label('Диаметр');
 echo Html::dropDownList('diameter',$model->diameter,$diameter,['prompt'=>'-','class'=>'addContent__adress']);
-
+?>
+    <div class="cleared"></div>
+<?php
 echo Html::label('Ширина обода');
 echo Html::dropDownList('rim_width',$model->rim_width,$rim_width,['prompt'=>'-','class'=>'addContent__adress']);
-
+?>
+    <div class="cleared"></div>
+<?php
 echo Html::label('Количество отверстий');
 echo Html::dropDownList('number_holes',$model->number_holes,$number_holes, ['prompt'=>'-','class'=>'addContent__adress']);
-
+?>
+    <div class="cleared"></div>
+<?php
 echo Html::label('Диаметр расположения отверстий');
 echo Html::dropDownList('diameter_holest',$model->diameter_holest,$diameter_holes,['prompt'=>'-','class'=>'addContent__adress']);
-
+?>
+    <div class="cleared"></div>
+<?php
 echo Html::label('Вылет (ET)');
 echo Html::dropDownList('sortie',$model->sortie,$sortie,['class'=>'addContent__adress','prompt'=>'-']);

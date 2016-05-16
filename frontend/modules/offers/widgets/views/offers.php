@@ -9,8 +9,10 @@ use yii\widgets\LinkPager;
 <section class="deals">
     <div class="contain">
         <div class="deals--topline">
-            <img src="/media/img/logo2.png" alt="">
-            <h3 class="orange">Спецпредложения</h3>
+            <a href="<?= Url::to(['/offers/offers/all_offers','id'=>0]); ?>">
+                <img src="/media/img/logo2.png" alt="CARBAX">
+                <h3 class="orange">Спецпредложения</h3>
+            </a>
             <span><a id="allOffers" href="<?= Url::to(['/offers/offers/all_offers','id'=>0]); ?>">Все спецпредложения</a></span>
         </div>
         <div class="deals__menu">
@@ -44,7 +46,7 @@ use yii\widgets\LinkPager;
                                 <p><?= $offer['title']; ?></p>
                                 <div class="deals__block-desc-price">
                                     <div class="deals__block-desc-price_old">
-                                        <p><strike><?= $offer['old_price'] ?>руб.</strike></p>
+                                        <p><?= $offer['old_price'] ?>руб.</p>
                                     </div>
                                     <div class="deals__block-desc-price_new">
                                         <p><?= $offer['new_price'] ?>руб.</p>

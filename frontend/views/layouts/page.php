@@ -49,7 +49,8 @@ AppAsset::register($this);
                         id:34422170,
                         clickmap:true,
                         trackLinks:true,
-                        accurateTrackBounce:true
+                        accurateTrackBounce:true,
+                        webvisor:true
                     });
                 } catch(e) { }
             });
@@ -147,11 +148,11 @@ AppAsset::register($this);
                         <!-- <li><a href="">Изменить пароль</a></li>
                          <li><a href="#">Изменить e-mail</a></li>-->
                         <li><a href="/profile/default/edit_contacts">Изменить личные данные</a></li>
-                        <li><a href="<?=\yii\helpers\Url::to(['/message'])?>">Сообщения</a></li>
+                        <li><a href="<?= \yii\helpers\Url::to(['/message'])?>">Сообщения</a></li>
                         <li><a href="#">Купить <i class="header__leftSide__menu__vip">Vip</i></a></li>
-                        <li><a href="#">Разместить акцию</a></li>
+                        <li><a href="<?= Url::to(['/offers/create']); ?>">Разместить акцию</a></li>
                         <li><a href="#">Разместить рекламу</a></li>
-                        <li><a href="#">История покупок</a></li>
+                        <!--<li><a href="#">История покупок</a></li>-->
                         <li><a href="/complaint">Мои жалобы</a></li>
                     </ul>
                 </nav>

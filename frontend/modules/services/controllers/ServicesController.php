@@ -475,8 +475,15 @@ class ServicesController extends Controller
     }
 
     public function actionSelect_service(){
-        $serviceTypes = ServiceType::find()->all();
-        return $this->render('select', ['service' => $serviceTypes]);
+        $role = Yii::$app->authManager->getRolesByUser(Yii::$app->user->id);
+        if(!empty($role['business']) || !empty($role['admin']) || !empty($role['root'])){
+            $serviceTypes = ServiceType::find()->all();
+            return $this->render('select', ['service' => $serviceTypes]);
+        }
+        else{
+            $this->view->params['bannersHide'] = true;
+            return $this->render('error-service');
+        }
     }
 
     public function actionMy_services(){
@@ -525,11 +532,11 @@ class ServicesController extends Controller
 
     public function actionAll_services(){
 
-        if(!empty($_GET['typeId']) || !empty($_GET['idReg']) || !empty($_GET['idCity'])){
+        if(isset($_GET['typeId']) || isset($_GET['idReg']) || isset($_GET['idCity'])){
 
             foreach ($_GET as $key => $value) {
                 if ($value == 'undefined') {
-                    unset($_GET[$key]);
+                    $_GET[$key] = '';
                 }
             }
 
@@ -565,11 +572,11 @@ class ServicesController extends Controller
 
 
         if (isset($idReg)) {
-            $services->andWhere(['`address`.`region_id`' => $idReg]);
+            $services->andFilterWhere(['`address`.`region_id`' => $idReg]);
         }
 
         if (isset($idCity)) {
-            $services->andWhere(['`address`.`city_id`' => $idCity]);
+            $services->andFilterWhere(['`address`.`city_id`' => $idCity]);
         }
 
         if (isset($typeId)) {
@@ -591,7 +598,6 @@ class ServicesController extends Controller
 
         $services->with('services_img','service_type');
 
-//Debug::prn($services->createCommand()->rawSql);
         $services = $services->all();
 
         $regionName = GeobaseRegion::find()->where(['id' => $idReg])->one()->name;

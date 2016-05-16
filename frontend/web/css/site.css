@@ -2864,6 +2864,7 @@ input[type="checkbox"] + label {
     overflow: hidden; }
 .fleamarket__ads__item--img img {
     min-width: 100%;
+    max-width:150%;
     height: auto;
     position: relative;
     left: 50%;

@@ -5,9 +5,9 @@
         <div class="ads__wrap">
             <?php
             foreach ($product as $prod): ?>
-                <a href="/flea_market/default/view?id=<?=$prod->id;?>" class="ads__item">
+                <a href="<?= \yii\helpers\Url::to(['/flea-market/view','id'=>$prod->id])?>" class="ads__item">
 				<span class="ads__item--img">
-					<img src="/<?= $prod['product_img'][0]->img; ?>" alt="">
+					<img src="/<?= $prod['product_img'][0]->img; ?>" alt="<?= $prod->name; ?>">
 					<span class="ads__item--rating"><?= \common\classes\Custom_function::showRating($prod->id,'flea_market')?></span>
 				</span>
 				<span class="ads__item--title">

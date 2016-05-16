@@ -10,6 +10,8 @@ AddDefaultCharset UTF-8
   Options +SymLinksIfOwnerMatch
   # Включаем mod_rewrite
   RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+  RewriteRule ^(.*)$ http://%1/$1 [L,R=301]
   IndexIgnore */*
   # Перенаправляем administrator на входной скрипт админки
   RewriteRule ^secure(.*)?$ /backend/web/$1 [L,PT]

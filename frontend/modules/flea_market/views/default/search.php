@@ -49,13 +49,13 @@ $this->registerMetaTag([
                     $count = \common\models\db\ProductImg::find()->where(['product_id'=>$s['id']])->count();
                     ?>
                     <div class="fleamarket__ads__item">
-                        <a href="/flea_market/default/view?id=<?=$s->id;?>" class="fleamarket__ads__item--img">
+                        <a href="<?= \yii\helpers\Url::to(['/flea-market/view','id'=>$s->id])?>" class="fleamarket__ads__item--img">
                             <img src="/<?=$img?>" alt="">
                             <span class="fleamarket__ads__item--img--marker"><?=$count?></span>
                         </a>
                         <div class="fleamarket__ads__item--desc">
                             <a class="fleamarket__ads__item--desc--star <?= (!empty($s->favorites[0])) ? 'delFavorites' : '';?>" product_id="<?= $s['id']?>" title="<?= (!empty($s->favorites[0])) ? 'Убрать из избранного' : 'Добавить в избранное';?>"></a>
-                            <a href="/flea_market/default/view?id=<?=$s->id;?>" class="fleamarket__ads__item--desc--title"><?=$s['name']?></a>
+                            <a href="<?= \yii\helpers\Url::to(['/flea-market/view','id'=>$s->id])?>" class="fleamarket__ads__item--desc--title"><?=$s['name']?></a>
                             <p class="fleamarket__ads__item--desc--price"><?=$s['price']?></p>
                             <p class="fleamarket__ads__item--desc--specification"><?=$s['descr']?></p>
                             <!--<small class="fleamarket__ads__item--desc--contact">Автодилер</small>-->

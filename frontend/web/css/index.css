@@ -706,6 +706,7 @@ a.regHeaderLink {
     font-family: calibri;}
   .ads__wrap {
     display: block;
+    width:100%;
     float: left;
     position: relative;
     margin: 0 -5px; }
@@ -809,9 +810,10 @@ a.regHeaderLink {
     border-bottom: 1px solid #dadada;
     border-top: 1px solid #dadada; }
   .deals .deals__block-desc-price_old p {
-    line-height: 12px; }
+    line-height: 12px;text-decoration: line-through;}
   .deals .deals__block-desc-price_new p {
-    line-height: 10px; }
+    line-height: 10px;
+    }
 
 .news {
   display: block;

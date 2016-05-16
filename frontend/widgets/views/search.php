@@ -36,10 +36,12 @@ if (isset($_GET['search'])) {
     <div class="contain">
         <div class="search__wrap">
             <div class="search--topline">
-                <img src="/media/img/logo2.png" alt="">
-                <h3 class="orange">Продажа авто и запчастей</h3>
+                <a href="<?= \yii\helpers\Url::to(['/flea-market/search','prod_type'=>'','search'=>'','region'=>''])?>">
+                    <img src="/media/img/logo2.png" alt="CARBAX">
+                    <h3 class="orange">Продажа авто и запчастей</h3>
+                </a>
             </div>
-            <form action="/flea_market/search">
+            <form action="/flea-market/search">
                 <div class="filter__searchline">
                     <?= Html::dropDownList('prod_type', $_GET['prod_type'], ['2' => 'Транспорт', '1' => 'Запчасти', '3' => 'Шины', '4' => 'Диски', '5' => 'Прочее'], ['prompt' => 'Что ищите?', 'class' => 'prodTypeSearch']) ?>
                     <?php if(empty($_GET['region'])): ?>

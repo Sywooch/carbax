@@ -47,11 +47,13 @@ return [
                 'complaint' => 'complaint/default/complaint',
                 'offers' => '/offers/offers',
                 'offers/create' => 'offers/offers/create',
-                'flea_market' => 'flea_market/default',
-                'flea_market/sale_auto' => 'flea_market/default/sale_auto',
-                'flea_market/sale_parts' => 'flea_market/default',
-                'flea_market/search' => 'flea_market/default/search',
-                'flea_market/view' => 'flea_market/default/view',
+
+                'flea-market' => 'flea_market/default',
+                'flea-market/sale_auto' => 'flea_market/default/sale_auto',
+                'flea-market/sale_parts' => 'flea_market/default',
+                'flea-market/search' => 'flea_market/default/search',
+                'flea-market/view' => 'flea_market/default/view',
+
                 'news' => 'news/news',
                 'services' => 'services/services',
             ],

@@ -21,11 +21,11 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="serviceLink">Заявка на запчасти</div>
         </div>-->
         <div class="serviceItem">
-            <div class="serviceIcon"><a href="<?= Url::to('flea_market/sale_auto') ?>" title="Продать авто"><img src="<?= Url::base(true) ?>/media/img/sale_auto.png" alt="Продать авто"></a></div>
+            <div class="serviceIcon"><a href="<?= Url::to('flea-market/sale_auto') ?>" title="Продать авто"><img src="<?= Url::base(true) ?>/media/img/sale_auto.png" alt="Продать авто"></a></div>
             <div class="serviceLink">Продать авто</div>
         </div>
         <div class="serviceItem">
-            <div class="serviceIcon"><a href="<?= Url::to('flea_market/sale_parts') ?>" title="Продать запчасти"><img src="<?= Url::base(true) ?>/media/img/sale_zap.png" alt="Продать запчасти"></a></div>
+            <div class="serviceIcon"><a href="<?= Url::to('flea-market/sale_parts') ?>" title="Продать запчасти"><img src="<?= Url::base(true) ?>/media/img/sale_zap.png" alt="Продать запчасти"></a></div>
             <div class="serviceLink">Продать запчасти</div>
         </div>
        <!-- <div class="serviceItem">

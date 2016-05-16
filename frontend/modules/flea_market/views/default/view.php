@@ -19,7 +19,7 @@ $this->registerJsFile('/js/jquery.sliderkit.1.4.js',['yii\web\JqueryAsset']);
 
 $this->title = $product->name . ' | ' . $city->name . ' | CARBAX все автоуслуги Вашего города';
 
-$this->params['breadcrumbs'][] = ['label' => 'продажа авто и запчастей', 'url' => ['/flea_market/search', 'prod_type'=>'','search'=>'','region'=>'']];
+$this->params['breadcrumbs'][] = ['label' => 'продажа авто и запчастей', 'url' => ['/flea-market/search', 'prod_type'=>'','search'=>'','region'=>'']];
 $this->params['breadcrumbs'][] = $product->name;
 
 
@@ -144,7 +144,7 @@ if ($product->published != 1) {
                         <li><a href="#reviews" role="tab" data-toggle="tab">Коментарии (<?= $countReviews; ?>)</a></li>
                     </ul>
                 </div>
-
+                <div class="cleared"></div>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active" id="conditions">
                         <div class="fleamarketInfoProduct">
@@ -163,14 +163,18 @@ if ($product->published != 1) {
                             <?php } ?>
                             <div class="fleamarket__contact_person">
                                 Контактное лицо
-                                <span><?= User::find()->where(['id' => $product->user_id])->one()->username ?></span>
+                                    <?php if(Yii::$app->user->id):?>
+                                    <a href="profile/default/view?id=<?= $product->user_id ?>"><span><?= User::find()->where(['id' => $product->user_id])->one()->username ?></span></a>
+                                    <?php else:?>
+                                    <span><?= User::find()->where(['id' => $product->user_id])->one()->username ?></span>
+                                    <?php endif;?>
 
                                 <div class="fleamarket__user_contact">
-                            <span class="fleamarket__user_tel"
-                                  user-id="<?= $product->user_id; ?>">Показать телефон</span>
-                                    <a href="/message/default/send_message?from=<?= $product->user_id; ?>"><span
-                                            class="fleamarket__user_mes">Написать сообщение</span></a>
-                            <span
+                                <span class="fleamarket__user_tel"
+                                      user-id="<?= $product->user_id; ?>">Показать телефон</span>
+                                        <a href="/message/default/send_message?from=<?= $product->user_id; ?>"><span
+                                                class="fleamarket__user_mes">Написать сообщение</span></a>
+                                <span
                                 class="info">Пожалуйста, скажите продавцу, что вы нашли это объявление на Carbax </span>
                                 </div>
                             </div>
@@ -392,7 +396,11 @@ if ($product->published != 1) {
                         <?php } ?>
                         <div class="fleamarket__contact_person">
                             Контактное лицо
-                            <span><?= User::find()->where(['id' => $product->user_id])->one()->username ?></span>
+                            <?php if(Yii::$app->user->id):?>
+                                <a href="profile/default/view?id=<?= $product->user_id ?>"><span><?= User::find()->where(['id' => $product->user_id])->one()->username ?></span></a>
+                            <?php else:?>
+                                <span><?= User::find()->where(['id' => $product->user_id])->one()->username ?></span>
+                            <?php endif;?>
 
                             <div class="fleamarket__user_contact">
                                 <span class="fleamarket__user_tel" user-id="<?= $product->user_id; ?>">Показать телефон</span>
@@ -417,6 +425,7 @@ if ($product->published != 1) {
                         <div class="fleaMarketInfoProductAuto">
                             <?php if ($product->prod_type == 0 || $product->prod_type == 1) {
                                 ?>
+
                                 <span>Марка: <?= $auto->brand_name; ?></span><br/>
                                 <span>Модель: <?= $auto->model_name; ?></span><br/>
                                 <span>Модификация: <?= $auto->type_name; ?></span><br/>
