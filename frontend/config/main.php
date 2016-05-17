@@ -26,7 +26,8 @@ return [
         'urlManager'   => [
             'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
-            'showScriptName'  => false,
+            'showScriptName' => false,
+            'enableStrictParsing' => false,
             'rules'           => [
                 '' => 'mainpage/mainpage',
                 'login' => 'user/security/login',
@@ -48,11 +49,16 @@ return [
                 'offers' => '/offers/offers',
                 'offers/create' => 'offers/offers/create',
 
+                'flea-market/view' => 'flea_market/default/view',
                 'flea-market' => 'flea_market/default',
                 'flea-market/sale_auto' => 'flea_market/default/sale_auto',
                 'flea-market/sale_parts' => 'flea_market/default',
                 'flea-market/search' => 'flea_market/default/search',
-                'flea-market/view' => 'flea_market/default/view',
+
+                /*[
+                    'pattern' => '<controller>/<action>/<id:\d+>',
+                    'route' => '<controller>/<action>',
+                ],*/
 
                 'news' => 'news/news',
                 'services' => 'services/services',
