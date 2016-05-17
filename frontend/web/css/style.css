@@ -2886,7 +2886,7 @@ div#drivebo {
 .sliderkit img{
     border:0;
     /*transform: translate(0, -20%);*/
-    width: 100%;
+    /*width: 100%;*/
     /*height: 420px;*/
 }
 
@@ -2940,9 +2940,11 @@ div#drivebo {
 
 .sliderkit .sliderkit-panel-active{
     z-index:5;
+    background-color: white;
 }
 .sliderkit .sliderkit-panel-old{
     z-index:4;
+    opacity: 0;
 }
 
  /*Panels > Overlay*/
@@ -2989,6 +2991,8 @@ div#drivebo {
 .photosgallery-vertical .sliderkit-nav-clip ul li{
     margin:0;
     padding:0;
+    text-align: center;
+    overflow: hidden;
 }
 
 .photosgallery-vertical .sliderkit-nav-clip ul li a{
@@ -3005,8 +3009,8 @@ div#drivebo {
 }
 
 .photosgallery-vertical .sliderkit-nav-clip ul li img{
-    width:75px;
-    height: auto;
+    /*width:75px;*/
+    height: 100%;
     margin-bottom:-3px;
 }
 
@@ -3129,7 +3133,9 @@ div#drivebo {
     top:0;
     left:0;
     width:541px;
-    height:335px;}
+    height:335px;
+    text-align: center;
+}
 /*----Offers slider end----*/
 /*----Offers end----*/
 
