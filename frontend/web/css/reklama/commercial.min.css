@@ -14,7 +14,7 @@
 }
 
 .promo {
-    margin-top: 40px;
+    margin-top: 60px;
     width: 100%;
     background-image: url(../../media/img/reklama/mountain_one.png);
     background-repeat: no-repeat;
@@ -35,6 +35,9 @@
 .promo .promo_ad a {
     text-align: left;
     color: #000
+}
+.promo .promo_ad a:hover{
+    color: #ff6b00;
 }
 
 .promo .promo_ad h2 {
@@ -111,6 +114,9 @@
     font-family: HelveticaNeueCyrRoman;
     text-decoration: none;
     color: #000
+}
+.menu ul li a:hover{
+    color: #ff6b00;
 }
 
 .advantages {
