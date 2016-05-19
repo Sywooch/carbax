@@ -125,14 +125,14 @@ AppAsset::register($this);
     endif
     ?>
 </header>
-<section class="single_wrapper">
-    <div class="contain">
+<!--<section class="single_wrapper">
+    <div class="contain">-->
         <?= Alert::widget() ?>
         <?= TogglePrivateOfficeLeft::widget(['print'=>$this->params['officeHide']]); ?>
         <?= $content ?>
         <?= CommercBanners::widget(['print'=>$this->params['bannersHide']]); ?>
-    </div>
-</section>
+ <!--   </div>
+</section>-->
 
 <!-- ___________________ФУТЕР_______________________ -->
 <?= ShowFooter::widget(); ?>
