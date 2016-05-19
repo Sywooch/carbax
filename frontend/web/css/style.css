@@ -2941,6 +2941,7 @@ div#drivebo {
 .sliderkit .sliderkit-panel-active{
     z-index:5;
     background-color: white;
+    text-align: center;
 }
 .sliderkit .sliderkit-panel-old{
     z-index:4;
@@ -4323,4 +4324,6 @@ ul.reklamaMenu li a.active{
 }
 /*---close catPath---*/
 
-
+.logoVk{
+    display: none;
+}

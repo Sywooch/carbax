@@ -73,7 +73,6 @@ AppAsset::register($this);
 <body>
 
 <?php $this->beginBody() ?>
-
 <header class="header">
     <?php
     if(Yii::$app->user->isGuest):

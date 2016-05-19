@@ -33,6 +33,21 @@ $this->registerMetaTag([
     'content' => $product->name . ' ' . $city->name . ',продам ' . $product->name . ' ' . $city->name . ' запчасти CARBAX, купить carbax, карбакс' ,
 ]);
 
+$this->registerMetaTag([
+    'name' => 'og:title',
+    'content' => "CARBAX все автоуслуги Вашего города | Автопортал",
+]);
+
+$this->registerMetaTag([
+    'name' => 'og:type',
+    'content' => "article",
+]);
+
+$this->registerMetaTag([
+    'name' => 'og:image',
+    'content' => 'http://carbax.ru/media/img/LogoBlack.png',
+]);
+
 //Debug::prn($product);
 
 //echo FleaMarketSearch::widget(['title'=>false]);?>

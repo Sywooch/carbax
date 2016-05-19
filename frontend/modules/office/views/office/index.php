@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <h2 class="h2-left">Управление бизнесом</h2>
 
             <div class="serviceItem">
-                <div class="serviceIcon"><a href="<?=Url::to('select_service')?>" title="Управление бизнесом"><img src="<?= Url::base(true) ?>/media/img/my_business.png" alt="Управление бизнесом"></a></div>
+                <div class="serviceIcon"><a href="<?=Url::to('select-service')?>" title="Управление бизнесом"><img src="<?= Url::base(true) ?>/media/img/my_business.png" alt="Управление бизнесом"></a></div>
                 <div class="serviceLink">Мой бизнес</div>
             </div>
             <!--<div class="serviceItem">

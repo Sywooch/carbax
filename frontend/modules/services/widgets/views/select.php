@@ -10,7 +10,8 @@ use yii\helpers\Url;
         <?php
         foreach ($service as $s):
             ?>
-            <a href="<?= Url::to(['my_services', 'service_type' => $s->id]) ?>" class="busines-type--link">
+            <!--<a href="<?/*= Url::to(['/my-services', 'service_type' => $s->id]) */?>" class="busines-type--link">-->
+            <a href="/my-services/<?= $s->id; ?>" class="busines-type--link">
 				<span class="icon_b icon_b_autosalon" style="background-image: url('<?= $s->icon ?>')">
 				</span>
                 <?= $s->name ?>

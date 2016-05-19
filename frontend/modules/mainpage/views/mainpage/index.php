@@ -32,7 +32,7 @@ $this->registerMetaTag([
 
 $this->registerMetaTag([
     'name' => 'og:image',
-    'content' => 'http://carbax.ru/media/img/carbax-logo.png',
+    'content' => 'http://carbax.ru/media/img/LogoBlack.png',
 ]);
 
 $this->registerMetaTag([

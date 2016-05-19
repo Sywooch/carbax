@@ -34,7 +34,7 @@ return [
                 'register' => 'user/registration/register',
                 'logout' => 'user/security/logout',
                 'profile' => 'user/settings/profile',
-                'select_service' => 'services/services/select_service',
+                'select-service' => 'services/services/select_service',
                 'office' => 'office/office',
                 'garage' => 'garage/garage',
                 'add' => 'services/services/add',
@@ -49,16 +49,19 @@ return [
                 'offers' => '/offers/offers',
                 'offers/create' => 'offers/offers/create',
 
-                'flea-market/view' => 'flea_market/default/view',
+
+
+
                 'flea-market' => 'flea_market/default',
                 'flea-market/sale_auto' => 'flea_market/default/sale_auto',
                 'flea-market/sale_parts' => 'flea_market/default',
                 'flea-market/search' => 'flea_market/default/search',
 
-                /*[
-                    'pattern' => '<controller>/<action>/<id:\d+>',
-                    'route' => '<controller>/<action>',
-                ],*/
+                'flea-market/view/<id:\d+>/<slug>' => 'flea_market/default/view',
+
+                'my-services/<service_type:\d+>' => 'services/services/my_services',
+                'view-service/<service_id:\d+>/<slug>' => 'services/services/view_service',
+                'all-services' => 'services/services/all_services',
 
                 'news' => 'news/news',
                 'services' => 'services/services',

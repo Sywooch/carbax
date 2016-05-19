@@ -16,6 +16,7 @@ use Yii;
  * @property string $website
  * @property string $photo
  * @property integer $dt_add
+ * @property integer $slug
  *
  * @property Address[] $addresses
  * @property Offers[] $offers
@@ -31,6 +32,19 @@ use Yii;
  */
 class Services extends \yii\db\ActiveRecord
 {
+
+    public function behaviors()
+    {
+        return [
+            'slug' => [
+                'class' => 'common\behaviors\Slug',
+                'in_attribute' => 'name',
+                'out_attribute' => 'slug',
+                'translit' => true
+            ]
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -48,7 +62,7 @@ class Services extends \yii\db\ActiveRecord
             [['service_type_id', 'user_id', 'email', 'description'], 'required'],
             [['service_type_id', 'user_id', 'dt_add'], 'integer'],
             [['description'], 'string'],
-            [['email', 'website'], 'string', 'max' => 255]
+            [['email', 'website', 'slug'], 'string', 'max' => 255]
         ];
     }
 

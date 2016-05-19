@@ -36,27 +36,27 @@ use yii\helpers\Url;
 
             <ul>
                 <li>
-                    <?= Html::a('Барахолка',['/flea_market/search'],['class'=>'foot__sitemap--parent']); ?>
+                    <?= Html::a('Барахолка',['/flea-market/search'],['class'=>'foot__sitemap--parent']); ?>
                     <!--<a href="#" class="foot__sitemap--parent">Барахолка</a>-->
                 </li>
                 <li>
-                    <?= Html::a('Мототехника',['/flea_market/search','prod_type'=>'2','typeAuto'=>'3']); ?>
+                    <?= Html::a('Мототехника',['/flea-market/search','prod_type'=>'2','typeAuto'=>'3']); ?>
                     <!--<a href="#"></a>-->
                 </li>
                 <li>
-                    <?= Html::a('Легковые авто',['/flea_market/search','prod_type'=>'2','typeAuto'=>'1']); ?>
+                    <?= Html::a('Легковые авто',['/flea-market/search','prod_type'=>'2','typeAuto'=>'1']); ?>
                     <!--<a href="#">Легковые авто</a>-->
                 </li>
                 <li>
-                    <?= Html::a('Грузовые авто',['/flea_market/search','prod_type'=>'2','typeAuto'=>'2']); ?>
+                    <?= Html::a('Грузовые авто',['/flea-market/search','prod_type'=>'2','typeAuto'=>'2']); ?>
                    <!-- <a href="#">Грузовые авто</a>-->
                 </li>
                 <li>
-                    <?= Html::a('Шины',['/flea_market/search','prod_type'=>'3']); ?>
+                    <?= Html::a('Шины',['/flea-market/search','prod_type'=>'3']); ?>
                     <!--<a href="#">Спецтехника</a>-->
                 </li>
                 <li>
-                    <?= Html::a('Диски',['/flea_market/search','prod_type'=>'4']); ?>
+                    <?= Html::a('Диски',['/flea-market/search','prod_type'=>'4']); ?>
                     <!--<a href="#">Запчасти</a>-->
                 </li>
             </ul>

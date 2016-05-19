@@ -645,6 +645,7 @@ class DefaultController extends Controller
                 $result->andWhere(['like', '`market`.`name`', $_GET['search']]);
                 $result->orWhere(['like', '`brand_name`', $_GET['search']]);
                 $result->orWhere(['like', '`model_name`', $_GET['search']]);
+                $result->orWhere(['like', '`market`.`descr`', $_GET['search']]);
             }
         }
 
@@ -936,7 +937,7 @@ class DefaultController extends Controller
     }
 
 
-    public function actionView(){
+    public function actionView($id){
 
         $this->view->params['officeHide'] = true;
         $product = Market::find()->where(['id' => $_GET['id']])->one();

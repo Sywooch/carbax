@@ -17,7 +17,7 @@ use yii\helpers\Url;
 <section class="filter">
     <div class="contain">
         <div class="filter--topline">
-            <a href="<?= Url::to(['/services/services/all_services'])?>">
+            <a href="<?= Url::to(['/all-services'])?>">
                 <img src="/media/img/logo2.png" alt="CARBAX">
                 <h3 class="orange">Автосервисы</h3>
             </a>

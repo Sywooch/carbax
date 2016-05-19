@@ -23,6 +23,8 @@ $this->registerMetaTag([
     'content' => $description ,
 ]);
 
+
+
 ?>
 
 <section class="main-container">
@@ -33,6 +35,7 @@ $this->registerMetaTag([
         <?php foreach($services as $service):
             ?>
             <a href="<?= \yii\helpers\Url::to(['/services/services/view_service','service_id' => $service->id])?>">
+            <a href="/view-service/<?= $service->id; ?>/<?= $service->slug; ?>">
                 <div class="deals__item">
                     <div class="deals__block">
                         <div class="deals__block-typeService"><img src="<?=$service['service_type']['icon']?>" alt=""></div>

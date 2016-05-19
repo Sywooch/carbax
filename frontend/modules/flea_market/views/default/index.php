@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <img src="/<?= $mark['product_img'][0]->img; ?>" alt="" width="100px">
                 </td>
             <td>
-                <a href="<?= \yii\helpers\Url::to(['/flea-market/view','id'=>$mark->id])?>"><b><?=$mark->name?></b></a>
+                <a href="<?= \yii\helpers\Url::to(['view','slug'=>$mark->slug, 'id' => $mark->id])?>"><b><?=$mark->name?></b></a>
             </td>
             <td>
                 <?php

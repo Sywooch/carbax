@@ -45,6 +45,21 @@ $this->registerMetaTag([
     'content' => $keyword . $nameServTypeId . ' CARBAX',
 ]);
 
+$this->registerMetaTag([
+    'name' => 'og:title',
+    'content' => "CARBAX все автоуслуги Вашего города | Автопортал",
+]);
+
+$this->registerMetaTag([
+    'name' => 'og:type',
+    'content' => "article",
+]);
+
+$this->registerMetaTag([
+    'name' => 'og:image',
+    'content' => 'http://carbax.ru/media/img/LogoBlack.png',
+]);
+
 ?>
 <!--AKD47 section-->
 
@@ -98,7 +113,8 @@ $this->registerMetaTag([
 
                     <?php foreach($img as $i): ?>
                         <div class="sliderkit-panel">
-                            <img src="/<?= $i->images; ?>" />
+                            <!--<img src="/<?/*= $i->images; */?>" />-->
+                            <a href="/<?= $i->images;?>" rel="lightbox"><img src="/<?= $i->images;?>" /></a>
                         </div>
                     <?php endforeach; ?>
 

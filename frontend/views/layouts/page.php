@@ -73,7 +73,7 @@ AppAsset::register($this);
 <body>
 
 <?php $this->beginBody() ?>
-
+<div class="logoVk"><img src="<?= Url::base() ?>/media/img/LogoBlack.png" alt="Логотип Carbax"></div>
 <header class="header">
     <?php
     if(Yii::$app->user->isGuest):
