@@ -148,7 +148,7 @@ $this->registerJsFile('/js/reklama/owl.carousel.min.js',['yii\web\JqueryAsset'])
     <div class="container">
         <h2>Отзывы</h2>
         <div class="comment__item">
-            <div class="comment__item_thumb" data-id="1">
+            <div class="comment__item_thumb obvodka" data-id="1">
                 <div class="comment__item_thumb_img">
                     <img src="/media/img/reklama/boy_two.png">
                 </div>
@@ -172,8 +172,9 @@ $this->registerJsFile('/js/reklama/owl.carousel.min.js',['yii\web\JqueryAsset'])
             </div>
         </div>
         <div class="comment__item_text">
-            <p id="1">
+            <p  id="1">
                 Lorem Ipsum - це текст-"риба", що використовується в друкарстві та дизайні. Lorem Ipsum є, фактично, стандартною "рибою" аж з XVI сторіччя, коли невідомий друкар взяв шрифтову гранку та склав на ній підбірку зразків шрифтів. "Риба" не тільки успішно пережила п'ять століть, але й прижилася в електронному верстуванні, залишаючись по суті незмінною. Вона популяризувалась в 60-их роках минулого сторіччя завдяки виданню зразків шрифтів Letraset, які містили уривки з Lorem Ipsum, і вдруге - нещодавно завдяки програмам комп'ютерного верстування на кшталт Aldus Pagemaker, які використовували різні версії Lorem Ipsum.
+                
             <h4><b>Наталья Хомякова</b> <br>
                 Санкт-Петербург, строительная компания «Союз Долевого Строительства»</h4>
             </p>
