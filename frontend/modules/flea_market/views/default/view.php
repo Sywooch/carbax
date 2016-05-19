@@ -16,6 +16,11 @@ use frontend\widgets\ShowReviews;
 use yii\helpers\Html;
 
 $this->registerJsFile('/js/jquery.sliderkit.1.4.js',['yii\web\JqueryAsset']);
+$this->registerJsFile('/js/fancybox/helpers/jquery.mousewheel-3.0.6.pack.js',['yii\web\JqueryAsset']);
+$this->registerJsFile('/js/fancybox/helpers/jquery.fancybox.js',['yii\web\JqueryAsset']);
+$this->registerJsFile('/js/fancybox/helpers/jquery.fancybox-buttons.js',['yii\web\JqueryAsset']);
+$this->registerJsFile('/js/fancybox/helpers/jquery.fancybox-thumbs.js',['yii\web\JqueryAsset']);
+
 
 $this->title = $product->name . ' | ' . $city->name . ' | CARBAX все автоуслуги Вашего города';
 
@@ -67,6 +72,22 @@ $this->registerMetaTag([
 
 
         });
+        $(document).ready(function() {
+        $(".fancybox").fancybox();
+            $(".fancybox-thumb").fancybox({
+                prevEffect  : 'none',
+                nextEffect  : 'none',
+                helpers : {
+                    title   : {
+                        type: 'outside'
+                    },
+                    thumbs  : {
+                        width   : 50,
+                        height  : 50
+                    }
+                }
+            });
+         });
     </script>
 
 <?php
@@ -145,7 +166,7 @@ if ($product->published != 1) {
                         <div class="sliderkit-panels">
                             <?php foreach ($images as $img):?>
                                 <div class="sliderkit-panel">
-                                    <a href="/<?= $img->img;?>" rel="lightbox"><img src="/<?= $img->img;?>" /></a>
+                                    <a class="fancybox-thumb" rel="fancybox-thumb"  href="/<?= $img->img;?>"><img  src="/<?= $img->img;?>" /></a>
                                 </div>
                             <?php endforeach; ?>
                         </div>
