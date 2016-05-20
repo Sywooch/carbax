@@ -10,8 +10,8 @@ $this->params['breadcrumbs'][] = 'Реклама на Carbax';
         <div class="add__sbar-l">
             <ul class="reklamaMenu">
                 <li><a class="active" href="#">Реклама на Carbax</a></li>
-                <li><a href="#">Медийная реклама</a></li>
-                <li><a href="#">Carbax Магазин</a></li>
+
+                <li><a href="<?= \yii\helpers\Url::to(['vip']) ?>">Carbax VIP</a></li>
                 <li><a href="#">Carbax Промо</a></li>
                 <li><a href="#">Carbax Контекст</a></li>
             </ul>

@@ -63,6 +63,9 @@ return [
                 'view-service/<service_id:\d+>/<slug>' => 'services/services/view_service',
                 'all-services' => 'services/services/all_services',
 
+                'reklama' => 'site/reklama',
+                'vip' => 'site/vip',
+
                 'news' => 'news/news',
                 'services' => 'services/services',
             ],

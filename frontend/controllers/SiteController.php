@@ -84,11 +84,11 @@ class SiteController extends Controller
         return $this->render('reklama');
     }
 
-    public function actionShops()
+    public function actionVip()
     {
         $this->view->params['bannersHide'] = true;
         $this->layout = 'shop';
-        return $this->render('shops');
+        return $this->render('vip');
     }
 
     public function actionMedia()

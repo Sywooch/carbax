@@ -1,5 +1,6 @@
 <?php
 
+$this->title = 'Увеличьте продажи — купите Carbax VIP Account прямо сейчас!';
 
 //$this->registerCssFile('/css/reklama/normalize.css');
 $this->registerCssFile('/css/reklama/commercial.min.css');
@@ -15,11 +16,11 @@ $this->registerJsFile('/js/reklama/owl.carousel.min.js',['yii\web\JqueryAsset'])
 <section class="promo">
     <div class="container">
         <div class="promo_ad">
-            <a href="">< Реклама на Carbax</a>
+            <a href="<?= \yii\helpers\Url::to(['reklama']) ?>">< Реклама на Carbax</a>
             <h2>Carbax <span>VIP Account</span></h2>
             <h3>Увеличьте продажи — купите Carbax VIP Account прямо сейчас!</h3>
             <p>Carbax VIP Account— это эффективный способ быстро найти покупателей и увеличить продажи. Он подходит для любого формата бизнеса: как компаниям, так и частным предпринимателям.</p>
-            <a href="" class="knopka1">Оставить заявку</a>
+            <a href="" class="knopka1">Купить VIP</a>
         </div>
     </div>
     <div class="promo_pic">
@@ -29,14 +30,14 @@ $this->registerJsFile('/js/reklama/owl.carousel.min.js',['yii\web\JqueryAsset'])
 <section class="menu">
     <div class="container">
         <ul>
-            <li><a href="#">Преимущества</a></li>
-            <li><a href="#">Мобильная версия</a></li>
-            <li><a href="#">Премиум</a></li>
-            <li><a href="#">Отзывы</a></li>
+            <li><a class="smoothScroll" href="#advantages">Преимущества</a></li>
+            <li><a class="smoothScroll" href="#mobi">Мобильная версия</a></li>
+            <li><a class="smoothScroll" href="#prem">Премиум</a></li>
+            <li><a class="smoothScroll" href="#comment">Отзывы</a></li>
         </ul>
     </div>
 </section>
-<section class="advantages">
+<section class="advantages" id="advantages">
     <div class="container">
         <h2>Преимущества <span>Carbax VIP Account</span></h2>
         <div class="advantages__flex">
@@ -85,13 +86,13 @@ $this->registerJsFile('/js/reklama/owl.carousel.min.js',['yii\web\JqueryAsset'])
         </div>
     </div>
 </section>
-<section class="amount">
+<section class="amount" >
     <div class="container">
         <h2>15 263</h2>
         <h3>Количество Carbax VIP Account</h3>
     </div>
 </section>
-<section class="mobi">
+<section class="mobi" id="mobi">
     <div class="container">
         <h2>Мобильная <span>версия</span></h2>
         <div class="iphone">
@@ -130,7 +131,7 @@ $this->registerJsFile('/js/reklama/owl.carousel.min.js',['yii\web\JqueryAsset'])
         <h3>Ваши аккаунты теперь и в мобильной версии! Более 14 000 000 пользователей мобильных устройств — ваши потенциальные покупатели.</h3>
     </div>
 </section>
-<section class="prem">
+<section class="prem" id="prem">
     <div class="container">
         <h2>Премиум</h2>
         <div class="prem__text_one">
@@ -144,7 +145,7 @@ $this->registerJsFile('/js/reklama/owl.carousel.min.js',['yii\web\JqueryAsset'])
         </div>
     </div>
 </section>
-<section class="comment">
+<section class="comment" id="comment">
     <div class="container">
         <h2>Отзывы</h2>
         <div class="comment__item">
