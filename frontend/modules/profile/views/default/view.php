@@ -33,7 +33,9 @@ $this->registerCssFile('/css/bootstrap.min.css');
                 <?php endif; ?>
                 <div class="profileLogin profileElement">
                     Логин: <?=$user['username']?>
-                    <?= Html::a('Удалить профиль',Url::to(['/profile/default/delete']),['class' => 'delProfile', 'title' => 'Удалить профиль']); ?>
+                    <?php if($user['id'] == Yii::$app->user->id): ?>
+                        <?= Html::a('Удалить профиль',Url::to(['/profile/default/delete']),['class' => 'delProfile', 'title' => 'Удалить профиль']); ?>
+                    <?php endif; ?>
                 </div>
                 <?php
                 $role = Yii::$app->authManager->getRolesByUser(Yii::$app->user->id);
@@ -44,7 +46,7 @@ $this->registerCssFile('/css/bootstrap.min.css');
                     <div class="header_block">
                         <span>Бизнес</span>
                         <?php if($user['id'] == Yii::$app->user->id): ?>
-                            <a href="<?= Url::to('/select_service');?>" title="Добавить бизнес" class="addBussines">Добавить</a>
+                            <a href="<?= Url::to('/select-service');?>" title="Добавить бизнес" class="addBussines">Добавить</a>
                         <?php endif;?>
                     </div>
 

@@ -134,7 +134,7 @@ class OffersController extends Controller
             $model->save();
             //Debug::prn($model);
             OffersImages::updateAll(['offers_id' => $model->id], ['offers_id' => 99999, 'user_id' => Yii::$app->user->id]);
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id, 'slug' => $model->slug]);
         } else {
             $services = Services::find()->where(['user_id' => Yii::$app->user->id])->all();
 
@@ -247,9 +247,9 @@ class OffersController extends Controller
             $model->save();
 
             OffersImages::updateAll(['offers_id' => $model->id], ['offers_id' => 99999, 'user_id' => Yii::$app->user->id]);
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id, 'slug' => $model->slug]);
 
-            return $this->redirect(['view', 'id' => $model->id]);
+
         } else {
             $services = Services::find()->where(['user_id' => Yii::$app->user->id])->all();
             $img = OffersImages::find()->where(['offers_id' => $id])->all();

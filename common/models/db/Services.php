@@ -2,7 +2,9 @@
 
 namespace common\models\db;
 
+use himiklab\sitemap\behaviors\SitemapBehavior;
 use Yii;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "services".
@@ -41,7 +43,24 @@ class Services extends \yii\db\ActiveRecord
                 'in_attribute' => 'name',
                 'out_attribute' => 'slug',
                 'translit' => true
-            ]
+            ],
+            'sitemap' => [
+                'class' => SitemapBehavior::className(),
+                'scope' => function ($model) {
+                    /** @var \yii\db\ActiveQuery $model */
+                    $model->select([]);
+                    //$model->andWhere(['is_deleted' => 0]);
+                },
+                'dataClosure' => function ($model) {
+                    /** @var self $model */
+                    return [
+                        'loc' => Url::to('/view-service/'.$model->id .'/'.$model->slug, true),
+                        'title' => $model->name,
+                        'lastmod' => $model->dt_add,
+                        'changefreq' => SitemapBehavior::CHANGEFREQ_DAILY,
+                    ];
+                }
+            ],
         ];
     }
 

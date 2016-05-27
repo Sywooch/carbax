@@ -45,6 +45,6 @@ class OfficeController extends Controller
 
         }
 
-        return $this->render('index');
+        return $this->redirect('/office');
     }
 }

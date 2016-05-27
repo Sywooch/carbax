@@ -396,7 +396,7 @@ if ($product->published != 1) {
                     <div class="sliderkit-panels">
                              <?php foreach ($images as $img):?>
                                  <div class="sliderkit-panel">
-                                     <a href="/<?= $img->img;?>" rel="lightbox"><img src="/<?= $img->img;?>" /></a>
+                                     <a class="fancybox-thumb" rel="fancybox-thumb"  href="/<?= $img->img;?>"><img  src="/<?= $img->img;?>" /></a>
                                  </div>
                              <?php endforeach; ?>
                     </div>

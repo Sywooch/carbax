@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
             'language'   => 'ru',
             'controller' => 'elfinder', // вставляем название контроллера, по умолчанию равен elfinder
             'filter'     => 'image',    // фильтр файлов, можно задать массив фильтров https://github.com/Studio-42/elFinder/wiki/Client-configuration-options#wiki-onlyMimes
-            'name'       => 'mediaUploadInputFile',
+            'name'       => 'Reclame_zone[img]',
             'id' => 'itemImg',
 
             'template'      => '<div class="input-group">{input}<span class="span-btn">{button}</span></div>',

@@ -64,6 +64,7 @@ use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\imagine\Image;
 use yii\web\Controller;
 
 class AjaxController extends Controller
@@ -143,9 +144,9 @@ class AjaxController extends Controller
 
         }
         if ($_POST['type'] == 'group') {
-            /*if ($_POST['view'] == 1) {
+            if ($_POST['view'] == 1) {
                 echo CategoryProductTecDoc::widget();
-            }*/
+            }
         }
 
         if ($_POST['type'] == 'cargoman') {
@@ -568,7 +569,9 @@ class AjaxController extends Controller
         if (!empty($_FILES['file']['name'][0])) {
             ProductImg::deleteAll(['product_id' => 99999, 'user_id' => Yii::$app->user->id]);
             foreach ($_FILES['file']['name'] as $file) {
-                move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir . $file);
+                Image::watermark($_FILES['file']['tmp_name'][$i], 'http://carbax.ru/media/img/LogoBlack.png')
+                    ->save($dir . $file, ['quality' => 100]);
+                //move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir . $file);
                 $img = new ProductImg();
                 $img->product_id = 99999;
                 $img->img = $dir . $file;
@@ -596,7 +599,9 @@ class AjaxController extends Controller
         if (!empty($_FILES['file']['name'][0])) {
             OffersImages::deleteAll(['offers_id' => 99999, 'user_id' => Yii::$app->user->id]);
             foreach ($_FILES['file']['name'] as $file) {
-                move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir . $file);
+                Image::watermark($_FILES['file']['tmp_name'][$i], 'http://carbax.ru/media/img/LogoBlack.png')
+                    ->save($dir . $file, ['quality' => 100]);
+                //move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir . $file);
                 $img = new OffersImages();
                 $img->offers_id = 99999;
                 $img->images = $dir . $file;
@@ -623,7 +628,9 @@ class AjaxController extends Controller
         if (!empty($_FILES['file']['name'][0])) {
             ServicesImg::deleteAll(['services_id' => 99999, 'user_id' => Yii::$app->user->id]);
             foreach ($_FILES['file']['name'] as $file) {
-                move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir . $file);
+                Image::watermark($_FILES['file']['tmp_name'][$i], 'http://carbax.ru/media/img/LogoBlack.png')
+                    ->save($dir . $file, ['quality' => 100]);
+                //move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir . $file);
                 $img = new ServicesImg();
                 $img->services_id = 99999;
                 $img->images = $dir . $file;
@@ -647,8 +654,17 @@ class AjaxController extends Controller
         $dir = 'media/users/' . Yii::$app->user->id . '/' . date('Y-m-d') . '/';
         $i = 0;
 
-        if (!empty($_FILES['file']['name'][0])) {
-            move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir . $_FILES['file']['name'][0]);
+        if (!empty($_FILES['file']['name'][0])){
+                Image::watermark($_FILES['file']['tmp_name'][$i], 'http://carbax.ru/media/img/LogoBlack.png')
+                ->save($dir . $_FILES['file']['name'][0], ['quality' => 100]);
+
+      //
+
+            //move_uploaded_file($_FILES['file']['tmp_name'][$i], $dir . $_FILES['file']['name'][0]);
+
+
+
+
             $service = Services::findOne($_GET['id']);
             $service->photo = $dir . $_FILES['file']['name'][0];
             $service->save();

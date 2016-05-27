@@ -942,7 +942,7 @@ jQuery(document).ready(function ($) {
     $(document).on('click', '.deals__menu--service', function(){
         var serviceTypeId = $(this).attr('serviceTypeId');
         if(serviceTypeId != '0'){
-            $('#allOffers').attr('href','/offers/offers/all_offers?id=' + serviceTypeId);
+            $('#allOffers').attr('href','all-offers?id=' + serviceTypeId);
         }
         else{
             $('#allOffers').attr('href','/offers/offers/all_offers');

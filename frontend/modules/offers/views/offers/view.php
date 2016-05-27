@@ -6,6 +6,12 @@ use frontend\widgets\AddReviews;
 use frontend\widgets\ShowReviews;
 use himiklab\ipgeobase\IpGeoBase;
 $this->registerJsFile('/js/jquery.sliderkit.1.4.js',['yii\web\JqueryAsset']);
+
+$this->registerJsFile('/js/fancybox/helpers/jquery.mousewheel-3.0.6.pack.js',['yii\web\JqueryAsset']);
+$this->registerJsFile('/js/fancybox/helpers/jquery.fancybox.js',['yii\web\JqueryAsset']);
+$this->registerJsFile('/js/fancybox/helpers/jquery.fancybox-buttons.js',['yii\web\JqueryAsset']);
+$this->registerJsFile('/js/fancybox/helpers/jquery.fancybox-thumbs.js',['yii\web\JqueryAsset']);
+
 $this->title = $model->title . ' | CARBAX все автоуслуги Вашего города';
 $this->params['breadcrumbs'][] = ['label' => 'Спецпредложения', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $model->title;
@@ -45,6 +51,23 @@ $IpGeoBase->updateDB()
             auto:false
         });
     });
+
+    $(document).ready(function() {
+        $(".fancybox").fancybox();
+        $(".fancybox-thumb").fancybox({
+            prevEffect  : 'none',
+            nextEffect  : 'none',
+            helpers : {
+                title   : {
+                    type: 'outside'
+                },
+                thumbs  : {
+                    width   : 50,
+                    height  : 50
+                }
+            }
+        });
+    });
 </script>
 <?php //Debug::prn($model); ?>
 
@@ -68,8 +91,8 @@ $IpGeoBase->updateDB()
                 <div class="sliderkit-panels">
                     <?php foreach($model['offers_images'] as $img):?>
                         <div class="sliderkit-panel">
-                            <img src="/<?= $img->images; ?>" alt="[Alternative text]" />
-
+                           <!-- <img src="/<?/*= $img->images; */?>" alt="[Alternative text]" />-->
+                            <a class="fancybox-thumb" rel="fancybox-thumb"  href="/<?= $img->images;?>"><img  src="/<?= $img->images;?>" /></a>
                         </div>
                     <?php endforeach; ?>
                 </div>

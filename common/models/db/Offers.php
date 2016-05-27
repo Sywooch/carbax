@@ -3,7 +3,9 @@
 namespace common\models\db;
 
 
+use himiklab\sitemap\behaviors\SitemapBehavior;
 use Yii;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "offers".
@@ -25,11 +27,42 @@ use Yii;
  * @property integer $status
  * @property string $service_id_str
  * @property string $circs
+ * @property string $slug
  *
  * @property Services $service
  */
 class Offers extends \yii\db\ActiveRecord
 {
+
+    public function behaviors()
+    {
+        return [
+            'slug' => [
+                'class' => 'common\behaviors\Slug',
+                'in_attribute' => 'title',
+                'out_attribute' => 'slug',
+                'translit' => true
+            ],
+            'sitemap' => [
+                'class' => SitemapBehavior::className(),
+                'scope' => function ($model) {
+                    /** @var \yii\db\ActiveQuery $model */
+                    $model->select([]);
+                    $model->andWhere(['status' => 1]);
+                },
+                'dataClosure' => function ($model) {
+                    /** @var self $model */
+                    return [
+                        'loc' => Url::to('/offers/'.$model->id .'-'.$model->slug, true),
+                        'title' => $model->title,
+                        'lastmod' => $model->dt_add,
+                        'changefreq' => SitemapBehavior::CHANGEFREQ_DAILY,
+                    ];
+                }
+            ],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -47,7 +80,7 @@ class Offers extends \yii\db\ActiveRecord
             [['title', 'description', 'new_price', 'old_price'], 'required'],
             [['service_id', 'new_price', 'old_price',  'dt_add'], 'integer'],
             [['description','dt_start','dt_end','circs'], 'string'],
-            [['title', 'img_url', 'discount','service_id_str','address_selected','service_type_id'], 'string', 'max' => 255]
+            [['title', 'img_url', 'discount','service_id_str','address_selected','service_type_id', 'slug'], 'string', 'max' => 255]
         ];
     }
 

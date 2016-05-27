@@ -11,12 +11,18 @@ use frontend\widgets\AddReviews;
 use frontend\widgets\AutoType;
 use frontend\widgets\ShowReviews;
 use yii\helpers\Html;
+use yii\imagine\Image;
 
 $nameServTypeId = ServiceType::find()->where(['id'=>$servic->service_type_id])->one()->name;
 
 $this->title = $serviceName . ' | ' . $nameServTypeId . ' | CARBAX все автоуслуги Вашего города';
 $this->registerJsFile('/js/jquery.sliderkit.1.4.js',['yii\web\JqueryAsset']);
 $this->registerCssFile('/css/bootstrap_btn.min.css');
+
+$this->registerJsFile('/js/fancybox/helpers/jquery.mousewheel-3.0.6.pack.js',['yii\web\JqueryAsset']);
+$this->registerJsFile('/js/fancybox/helpers/jquery.fancybox.js',['yii\web\JqueryAsset']);
+$this->registerJsFile('/js/fancybox/helpers/jquery.fancybox-buttons.js',['yii\web\JqueryAsset']);
+$this->registerJsFile('/js/fancybox/helpers/jquery.fancybox-thumbs.js',['yii\web\JqueryAsset']);
 
     $this->params['breadcrumbs'][] = ['label' => 'Личный кабинет', 'url' => ['/office']];
     $this->params['breadcrumbs'][] = ['label' => 'Выбор сервиса', 'url' => ['/select_service']];
@@ -76,6 +82,23 @@ $this->registerMetaTag([
             fastchange:false
         });
     });
+
+    $(document).ready(function() {
+        $(".fancybox").fancybox();
+        $(".fancybox-thumb").fancybox({
+            prevEffect  : 'none',
+            nextEffect  : 'none',
+            helpers : {
+                title   : {
+                    type: 'outside'
+                },
+                thumbs  : {
+                    width   : 50,
+                    height  : 50
+                }
+            }
+        });
+    });
 </script>
 
 
@@ -84,8 +107,9 @@ $this->registerMetaTag([
 
     <div id="page" class="inner layout-1col">
         <div id="content">
-
-
+            <?/*= \yii\imagine\BaseImage::watermark('http://carbax/media/img/PbBn4MG5AMQ.jpg', 'http://carbax/media/img/LogoBlack.png')*/?>
+            <?php
+           ?>
             <!-- Start photosgallery-captions -->
             <div class="sliderkit photosgallery-captions">
                 <div class="sliderkit-nav">
@@ -93,6 +117,7 @@ $this->registerMetaTag([
                         <ul>
                             <?php foreach($img as $i): ?>
                             <li><a href="#"><img class="slidkit-nav-img" src="/<?= $i->images; ?>"/></a></li>
+                            <!--<li><a href="#"><img class="slidkit-nav-img" src="/<?/*= \yii\imagine\BaseImage::watermark($i->images, 'http://carbax/media/img/LogoBlack.png')*/?>"/></a></li>-->
                             <?php endforeach; ?>
                         </ul>
                     </div>
@@ -114,7 +139,9 @@ $this->registerMetaTag([
                     <?php foreach($img as $i): ?>
                         <div class="sliderkit-panel">
                             <!--<img src="/<?/*= $i->images; */?>" />-->
-                            <a href="/<?= $i->images;?>" rel="lightbox"><img src="/<?= $i->images;?>" /></a>
+                            <!--<a href="/<?/*= $i->images;*/?>" rel="lightbox"><img src="/<?/*= $i->images;*/?>" /></a>-->
+
+                            <a class="fancybox-thumb" rel="fancybox-thumb"  href="/<?= $i->images;?>"><img  src="/<?= $i->images;?>" /></a>
                         </div>
                     <?php endforeach; ?>
 

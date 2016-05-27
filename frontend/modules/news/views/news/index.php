@@ -24,7 +24,7 @@ $this->registerMetaTag([
 	<?= \frontend\modules\news\widgets\MenuNewsWidget::widget(); ?>
 <h1><?= (isset($_GET['id'])) ? $catInfo->name : $titleNews; ?></h1>
 	<?php if (isset($news[0])): ?>
-		<a href="<?= Url::to(['/news/news/view', 'id' => $news[0]['id']])?>" class="news__item--1">
+		<a href="<?= Url::to(['/news/news/view', 'id' => $news[0]['id'], 'slug' => $news[0]['slug']])?>" class="news__item--1">
 			<img src="<?= $news[0]['img_url'];?>" alt="<?= $news[0]['title']; ?>">
 			<span class="news__item--title">
 				<p><?= $news[0]['title']; ?></p>

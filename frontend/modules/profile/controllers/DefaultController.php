@@ -139,7 +139,7 @@ class DefaultController extends Controller
     }
 
     public function actionDel_prof(){
-        Debug::prn(Yii::$app->user->id);
+        //Debug::prn(Yii::$app->user->id);
         //$product = Market::find()->where(['user_id' => Yii::$app->user->id])->all();
         Market::deleteAll(['user_id' => Yii::$app->user->id]);
 

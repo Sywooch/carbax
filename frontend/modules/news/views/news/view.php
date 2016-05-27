@@ -3,7 +3,7 @@
 use himiklab\ipgeobase\IpGeoBase;
 
 $this->title = $news->title . ' | CARBAX новости | CARBAX все автоуслуги Вашего города' ;
-$this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => \yii\helpers\Url::to(['/news']) ];
 $this->params['breadcrumbs'][] = $news->title;
 $checking=$news->img_url;
 
@@ -19,7 +19,8 @@ $this->registerMetaTag([
 
 ?>
 <div class="news_page_view">
-    <div class="news__category"><a href="/news/news/all_news_cat?id=<?= $news['category_news']->id; ?>"><?= $news['category_news']->name; ?></a></div>
+    <div class="news__category"><a href="/news/all-news/<?= $news['category_news']->id; ?>"><?= $news['category_news']->name; ?></a></div>
+
     <div class="news__date-add"><?= date('d.m.Y G:i', $news->dt_add) ?></div>
     <h1><?= $news->title?></h1>
     <div class="news__news-list">

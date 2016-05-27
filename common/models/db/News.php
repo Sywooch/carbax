@@ -3,6 +3,8 @@
 namespace common\models\db;
 
 use Yii;
+use himiklab\sitemap\behaviors\SitemapBehavior;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "news".
@@ -18,9 +20,39 @@ use Yii;
  * @property integer $cat_id
  * @property string $meta_keywords
  * @property string $meta_description
+ * @property string $slug
  */
 class News extends \yii\db\ActiveRecord
 {
+    public function behaviors()
+    {
+        return [
+            'slug' => [
+                'class' => 'common\behaviors\Slug',
+                'in_attribute' => 'title',
+                'out_attribute' => 'slug',
+                'translit' => true
+            ],
+            'sitemap' => [
+                'class' => SitemapBehavior::className(),
+                'scope' => function ($model) {
+                    /** @var \yii\db\ActiveQuery $model */
+                    $model->select([]);
+                    //$model->andWhere(['is_deleted' => 0]);
+                },
+                'dataClosure' => function ($model) {
+                    /** @var self $model */
+                    return [
+                        'loc' => Url::to('/news/'.$model->id .'-'.$model->slug, true),
+                        'title' => $model->title,
+                        'lastmod' => $model->dt_add,
+                        'changefreq' => SitemapBehavior::CHANGEFREQ_DAILY,
+                    ];
+                }
+            ],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -38,7 +70,7 @@ class News extends \yii\db\ActiveRecord
             [['title','description'], 'required'],
             [['user_id', 'dt_add', 'views','cat_id'], 'integer'],
             [['description', 'short_description'], 'string'],
-            [['title', 'img_url','meta_keywords', 'meta_description'], 'string', 'max' => 255],
+            [['title', 'img_url','meta_keywords', 'meta_description', 'slug'], 'string', 'max' => 255],
             [['title'], 'unique']
         ];
     }

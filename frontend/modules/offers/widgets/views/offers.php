@@ -25,12 +25,14 @@ use yii\widgets\LinkPager;
                 <li><a href="#" class="deals__menu--service" serviceTypeId="7">Автошкола</a></li>
                 <li><a href="#" class="deals__menu--service" serviceTypeId="13">Авторазбор</a></li>
                 <li><a href="#" class="deals__menu--service" serviceTypeId="9">Заправка</a></li>
-                <li><a href="#" class="deals__menu--service" serviceTypeId="8">Страховка</a></li>
+                <li><a href="#" class="deals__menu--service" serviceTypeId="10">Страховка</a></li>
             </ul>
         </div>
         <div class="deals__line">
                 <?php
-                foreach($offers as $offer):?>
+                foreach($offers as $offer):
+                    //Debug::prn($offer);
+                    ?>
                     <div class="deals__item">
                         <div class="deals__block">
                             <div class="deals__block-sale">-<?= $offer['discount'] ?>%</div>
@@ -39,7 +41,8 @@ use yii\widgets\LinkPager;
                                 <div class="deals__block-img-more">
                                     <p><?= substr($offer['description'], 0, 68)?></p>
                                     <!--<p>Время продаж ограниченно</p>-->
-                                    <a href="<?= Url::to(['/offers/offers/view', 'id' => $offer['id']])?>">Подробнее</a>
+                                    <a href="<?= Url::to(['/offers/offers/view', 'id' => $offer['id'], 'slug' => $offer['slug']])?>">Подробнее</a>
+                                    <!--<a href="/offers/<?/*= $offer['id']*/?>-<?/*= $offer['slug']*/?>">Подробнее</a>-->
                                 </div>
                             </div>
                             <div class="deals__block-desc">

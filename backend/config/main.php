@@ -67,6 +67,12 @@ return [
         'reclame_zone' => [
             'class' => 'backend\modules\reclame_zone\Reclame_zone',
         ],
+        'reclame_type' => [
+            'class' => 'backend\modules\reclame_type\Reclame_type',
+        ],
+        'reclame_template' => [
+            'class' => 'backend\modules\reclame_template\Reclame_template',
+        ],
     ],
     'components' => [
         'request' => [
@@ -89,7 +95,9 @@ return [
                 'offers' => 'offers/offers/index',
                 'static_pages' => 'static_pages/static_pages/index',
                 'reviews' => 'reviews/default',
-                'reclame_zone' => 'reclame_zone/reclame_zone'
+                'reclame_zone' => 'reclame_zone/reclame_zone',
+                'reclame_type' => 'reclame_type/reclame_type',
+                'reclame_template' => 'reclame_template/reclame_template',
             ],
         ],
         'urlManagerFrontend' => [

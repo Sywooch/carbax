@@ -144,7 +144,7 @@ else{
                             <div class="deals__block-img-more">
                                 <p><?= substr($offer['description'],0, 68);?></p>
                                 <!--<p>Время продаж ограниченно</p>-->
-                                <a href="<?= Url::to(['/offers/offers/view', 'id' => $offer['id']])?>">Подробнее</a>
+                                <a href="<?= Url::to(['/offers/offers/view', 'id' => $offer['id'], 'slug' => $offer['slug']])?>">Подробнее</a>
                             </div>
                         </div>
                         <div class="deals__block-desc">

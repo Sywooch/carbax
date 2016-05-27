@@ -49,6 +49,9 @@ return [
                 'offers' => '/offers/offers',
                 'offers/create' => 'offers/offers/create',
 
+                'offers/<id:\d+>-<slug>' => 'offers/offers/view',
+                'all-offers' => '/offers/offers/all_offers',
+                'all-offers/<id:\d+>' => '/offers/offers/all_offers',
 
 
 
@@ -63,10 +66,19 @@ return [
                 'view-service/<service_id:\d+>/<slug>' => 'services/services/view_service',
                 'all-services' => 'services/services/all_services',
 
+
+
+
                 'reklama' => 'site/reklama',
                 'vip' => 'site/vip',
 
                 'news' => 'news/news',
+                'news/<id:\d+>-<slug>' => 'news/news/view',
+                'news/all-news/<id:\d+>' => 'news/news/all_news_cat',
+
+
+                ['pattern' => 'sitemap', 'route' => 'sitemap/default/index', 'suffix' => '.xml'],
+
                 'services' => 'services/services',
             ],
         ],
@@ -132,6 +144,51 @@ return [
         ],
         'static_pages' => [
             'class' => 'frontend\modules\static_pages\Static_pages',
+        ],
+        'crone' => [
+            'class' => 'frontend\modules\crone\Crone',
+        ],
+
+        'sitemap' => [
+            'class' => 'himiklab\sitemap\Sitemap',
+            'models' => [
+                // your models
+
+                'common\models\db\Services',
+                'common\models\db\Market',
+                'common\models\db\Offers',
+                'common\models\db\News',
+            ],
+            'urls'=> [
+                // your additional urls
+                [
+                    'loc' => '/',
+                    'lastmod' => '2015-11-06T19:38:59+03:00',
+                    'priority' => 1,
+                ],
+                [
+                    'loc' => '/news',
+                    'lastmod' => '2015-11-06T19:38:59+03:00',
+                    'priority' => 0.5,
+
+
+                ],
+                [
+                    'loc' => '/all-services',
+                    'lastmod' => '2015-11-06T19:38:59+03:00',
+                    'priority' => 0.8,
+
+
+                ],
+                [
+                    'loc' => '/all-offers?id=0',
+                    'lastmod' => '2015-11-06T19:38:59+03:00',
+                    'priority' => 0.8,
+                ],
+
+            ],
+            'enableGzip' => false, // default is false
+            'cacheExpire' => 1, // 1 second. Default is 24 hours
         ],
     ],
     'params' => $params,

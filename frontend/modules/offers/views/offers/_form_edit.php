@@ -56,7 +56,9 @@ use yii\widgets\ActiveForm;
             /*'initialPreviewShowDelete' => true,*/
             'overwriteInitial' => false,
             'initialPreview' => $preview,
-            'initialPreviewConfig' => $previewConfig
+            'initialPreviewConfig' => $previewConfig,
+
+            'previewClass' => 'hasEdit',
 
         ],
     ]);

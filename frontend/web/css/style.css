@@ -4260,6 +4260,7 @@ ul.reklamaMenu li a.active{
 .similarNewsInfo{
     background: url(../media/img/viewsNews.png) no-repeat 0% 50%;
     padding-left: 22px;
+    float: left;
 }
 
 .reklamaMaterial {
@@ -4326,4 +4327,13 @@ ul.reklamaMenu li a.active{
 
 .logoVk{
     display: none;
+}
+
+
+.similarNewsTitle, .similarNewsCat{
+    float:left;
+}
+
+.similarNewsDtAdd {
+    float: right;
 }

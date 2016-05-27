@@ -24,7 +24,9 @@
         "kartik-v/bootstrap-fileinput": "dev-master",
         "dektrium/yii2-rbac": "dev-master",
         "kartik-v/bootstrap-star-rating": "@dev",
-        "2amigos/yii2-transliterator-helper": "*"
+        "2amigos/yii2-transliterator-helper": "*",
+        "himiklab/yii2-sitemap-module" : "*",
+        "yiisoft/yii2-imagine": "~2.0.0"
 
     },
     "require-dev": {

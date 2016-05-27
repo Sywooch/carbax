@@ -10,7 +10,7 @@ use common\models\db\ProductImg;
             <div class="ads__wrap">
                 <?php
                 foreach ($product as $prod): ?>
-                    <a href="/flea_market/default/view?id=<?=$prod->id;?>" class="ads__item">
+                    <a href="<?= \yii\helpers\Url::to(['view','slug'=>$prod->slug, 'id' => $prod->id])?>" class="ads__item">
 				<span class="ads__item--img">
 					<img src="/<?= $prod['product_img'][0]->img; ?>" alt="">
 					<span class="ads__item--rating"><?= \common\classes\Custom_function::showRating($prod->id, 'flea_market')?></span>

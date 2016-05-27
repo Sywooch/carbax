@@ -2,7 +2,9 @@
 
 namespace common\models\db;
 
+use himiklab\sitemap\behaviors\SitemapBehavior;
 use Yii;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "market".
@@ -37,7 +39,24 @@ class Market extends \yii\db\ActiveRecord
                 'in_attribute' => 'name',
                 'out_attribute' => 'slug',
                 'translit' => true
-            ]
+            ],
+            'sitemap' => [
+                'class' => SitemapBehavior::className(),
+                'scope' => function ($model) {
+                    /** @var \yii\db\ActiveQuery $model */
+                    $model->select([]);
+                    $model->andWhere(['published' => 1]);
+                },
+                'dataClosure' => function ($model) {
+                    /** @var self $model */
+                    return [
+                        'loc' => Url::to('/flea-market/view/'.$model->id .'/'.$model->slug, true),
+                        'title' => $model->name,
+                        'lastmod' => $model->dt_add,
+                        'changefreq' => SitemapBehavior::CHANGEFREQ_DAILY,
+                    ];
+                }
+            ],
         ];
     }
 
