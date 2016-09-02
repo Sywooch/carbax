@@ -2,6 +2,7 @@
 
 namespace frontend\modules\flea_market\controllers;
 
+use common\classes\Address;
 use common\classes\Debug;
 use common\models\db\AutoComBrands;
 use common\models\db\AutoComModels;
@@ -60,7 +61,7 @@ class DefaultController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['search','view'],
+                        'actions' => ['search','view', 'show_product'],
                         'roles' => ['?'],
                     ],
                 ],
@@ -988,6 +989,52 @@ class DefaultController extends Controller
                 'autoParams' => $autoParams,
                 'countReviews' => $countReviews,
             ]);
+    }
+
+    public function actionShow_product(){
+        $address = Address::get_geo_info();
+        if($_POST['sort'] == 'new'){
+            $orderBy = 'dt_add DESC';
+        }
+        else{
+            $orderBy = 'views DESC';
+        }
+
+        $product = Market::find()
+            ->joinWith('product_img')
+            ->leftJoin('auto_widget', '`auto_widget`.`id` = `market`.`id_auto_widget`')
+            ->leftJoin('auto_widget_params', '`auto_widget_params`.`id_auto_widget` = `market`.`id_auto_widget`')
+            ->where(['region_id'=>$address['region_id'], 'published'=>1]);
+
+        if($_POST['type'] == 1 || $_POST['type'] == 2 || $_POST['type'] == 3){
+            $product = $product
+                ->andWhere(['prod_type' => 1, 'id_auto_type' => $_POST['type']]);
+        }
+
+        if($_POST['type'] == 'zap'){
+            $product = $product
+                ->andWhere(['prod_type' => 0]);
+        }
+
+        if($_POST['type'] == 'shina'){
+            $product = $product
+                ->andWhere(['prod_type' => 2]);
+        }
+
+        if($_POST['type'] == 'disk'){
+            $product = $product
+                ->andWhere(['prod_type' => 3]);
+        }
+
+        $product = $product
+            ->groupBy('`market`.`id`')
+            ->orderBy($orderBy)
+            ->with('auto_widget','auto_widget_params')
+            ->limit(6)
+            ->all();
+
+        echo $this->renderPartial('show-product', ['product' => $product]);
+        //Debug::prn($_POST);
     }
 
 }

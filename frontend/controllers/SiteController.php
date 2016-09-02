@@ -91,6 +91,20 @@ class SiteController extends Controller
         return $this->render('vip');
     }
 
+    public function actionPromo()
+    {
+        $this->view->params['bannersHide'] = true;
+        $this->layout = 'shop';
+        return $this->render('promo');
+    }
+
+    public function actionContekst()
+    {
+        $this->view->params['bannersHide'] = true;
+        $this->layout = 'shop';
+        return $this->render('contekst');
+    }
+
     public function actionMedia()
     {
         $this->view->params['bannersHide'] = true;

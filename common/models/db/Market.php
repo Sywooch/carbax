@@ -132,6 +132,6 @@ class Market extends \yii\db\ActiveRecord
      */
     public function getauto_widget_params()
     {
-        return $this->hasMany(AutoWidgetParams::className(), ['id_auto_widget' => 'id']);
+        return $this->hasMany(AutoWidgetParams::className(), ['id_auto_widget' => 'id_auto_widget' ]);
     }
 }

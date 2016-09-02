@@ -29,6 +29,7 @@ class Address
      * @return array
      */
     public static function get_geo_info(){
+
         return [
             'region_id' => self::get_region(),
             'region_name' => self::get_region_name(),
@@ -52,6 +53,9 @@ class Address
                 return $cookies->get('city_id')->value;
             }else{
                 $ip = Yii::$app->ipgeobase->getLocation(Custom_function::getRealIpAddr());
+
+
+
                 $regionId = GeobaseRegion::find()->where(['name' => $ip['region']])->one()->id;
                 return $cityId = GeobaseCity::find()->where(['region_id' => $regionId, 'name' => $ip['city']])->one()->id;
             }

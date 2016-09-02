@@ -73,102 +73,21 @@ AppAsset::register($this);
 <body>
 
 <?php $this->beginBody() ?>
-<div class="logoVk"><img src="<?= Url::base() ?>/media/img/LogoBlack.png" alt="Логотип Carbax"></div>
-<header class="header">
-    <?php
-    if(Yii::$app->user->isGuest):
-        ?>
-        <div class="header__container">
-            <a href="/" class="header--logo" title="Главная Carbax">
-                <img src="<?= Url::base() ?>/media/img/carbax-logo.png" alt="Carbax.ru">
-                <!--<h5>Car<span class="orange">bax</span></h5>-->
-            </a>
-            <form action="<?=$_SERVER['REQUEST_URI']?>" class="header--region" id="auto_complete_form" method="post">
-                <?= CityAutoComplete::widget(); ?>
-                <?= \frontend\widgets\GetGeoInfo::widget(); ?>
-                <input type="hidden" name="_csrf" value="<?= Yii::$app->request->getCsrfToken(); ?>">
-                <!--<input type="text" class="header--region--box" placeholder="Город">-->
-            </form>
 
-
-            <div class="loginLinks">
-                <?=Html::a('Регистрация', Url::to('/register'), ['class'=>'regHeaderLink','title' => 'Регистрация на автопортале Carbax']) ." | ". Html::a('Вход', Url::to('/login'), ['class'=>'regHeaderLink','title' => 'Вход на автопортал Carbax']);?>
-            </div>
-        </div>
-        <?php
-    else:
-    ?>
-    <div class="header__container">
-        <a href="/" class="header--logo" title="Главная Carbax">
-            <img src="<?= Url::base() ?>/media/img/carbax-logo.png" alt="Carbax.ru">
-            <!--<h5>Car<span class="orange">bax</span></h5>-->
-        </a>
-        <a href="<?=Url::to(['/profile/default/view'])?>" title="Профиль <?= User::getLogin(Yii::$app->user->id);?>" class="header--autotext"><?/*= User::getLogin(Yii::$app->user->id);*/?></a>
-        <a href="<?=Url::to('/office')?>" title="Личный кабинет" class="header--perscab">Личный кабинет</a>
-
-        <form action="<?=$_SERVER['REQUEST_URI']?>" class="header--region" id="auto_complete_form" method="post">
-            <?= CityAutoComplete::widget(); ?>
-            <?= \frontend\widgets\GetGeoInfo::widget(); ?>
-            <input type="hidden" name="_csrf" value="<?= Yii::$app->request->getCsrfToken(); ?>">
-            <!--<input type="text" class="header--region--box" placeholder="Город">-->
-        </form>
-        <a href="<?=Url::to(['/message'])?>" title="Мои сообщения" class="header--messages">Мои сообщения <?= NumberUnreadMessages::widget(); ?></a>
-        <a href="<?=Url::to(['/offers/offers/index']);?>" title="Спецпредложения" class="header--sales"><span>Спецпредложения</span></a>
-        <div class="header--request">
-            <a href="#" class="header--request--open" title="Оставить заявку на сервис">ЗАЯВКА НА СЕРВИС +</a>
-            <?= SelectRequestTypes::widget(['classNav'=>'head-nav','classUl'=>'head-nav__list']); ?>
-        </div>
-        <?=Html::a('', [Url::to('/logout')], ['class'=>'header--logout', 'title'=>'Выйти', 'data'=>['method' => 'post']]);?>
-        <!--<a href="<?/*=Url::to('/logout')*/?>" class="header--logout"></a>-->
-    </div>
-        <?php
-    endif
-    ?>
-</header>
-<section class="singleImg"></section>
-<section class="single_wrapper">
-    <div class="contain">
-        <div id="breadcrumb">
-            <?=
-            Breadcrumbs::widget([
-                'homeLink' => [
-                    'label' => "",
-                    'url' => Yii::$app->homeUrl,
-                    'template' => "<li><a href='/'><img src='/media/img/logo2.png'></a></li>",
-                ],
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ])
-            ?>
-
-           <?php if(!Yii::$app->user->isGuest):?>
-            <div class="logo">
-                <a href="#" class="menu-open-flag"><span class="menu-icon__lines"></span></a>
-                <nav class="side-nav" role="navigation">
-                    <ul class="side-nav__list">
-                        <!-- <li><a href="">Изменить пароль</a></li>
-                         <li><a href="#">Изменить e-mail</a></li>-->
-                        <li><a href="/profile/default/edit_contacts">Изменить личные данные</a></li>
-                        <li><a href="<?= \yii\helpers\Url::to(['/message'])?>">Сообщения</a></li>
-                        <li><a href="#">Купить <i class="header__leftSide__menu__vip">Vip</i></a></li>
-                        <li><a href="<?= Url::to(['/offers/create']); ?>">Разместить акцию</a></li>
-                        <li><a href="#">Разместить рекламу</a></li>
-                        <!--<li><a href="#">История покупок</a></li>-->
-                        <li><a href="/complaint">Мои жалобы</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <?php endif; ?>
-
-        </div>
+<?= \frontend\widgets\ShowHeader::widget(); ?>
+<main class="page-wrap">
+    <?= \frontend\widgets\ShowSidebar::widget(); ?>
+    <section class="content">
+        <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
         <?= Alert::widget() ?>
-        <?= TogglePrivateOfficeLeft::widget(['print'=>$this->params['officeHide']]); ?>
         <?= $content ?>
-        <?= CommercBanners::widget(['print'=>$this->params['bannersHide']]); ?>
-    </div>
-</section>
+        <?= ShowFooter::widget(); ?>
+    </section>
+</main>
 
-<!-- ___________________ФУТЕР_______________________ -->
-<?= ShowFooter::widget(); ?>
+
 
 <?php $this->endBody() ?>
     </body>

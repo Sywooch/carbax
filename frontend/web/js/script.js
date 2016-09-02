@@ -34,6 +34,14 @@ function coverBg(){
 
 jQuery(document).ready(function ($) {
 
+    /*var cook = $.cookie('region_id');
+    console.log(cook);
+    if(typeof cook == "undefined"){
+        $('#SelectRegion').modal('show');
+        return false;
+    }*/
+
+
     $('.fileinput-remove').on('click',function(){
         alert(123);
         $('.photoAuto').val('');
@@ -168,14 +176,14 @@ jQuery(document).ready(function ($) {
         });
     }
 
-    (function($) {
+    /*(function($) {
         $(function() {
             jQuery('#listColumn').columnize({
                 columns: 4,
                 min: 2
             });
         })
-    })(jQuery)
+    })(jQuery)*/
 
     $(document).on('change', '.selectauto_complete_city_nameNew', function(){
         $(this).nextAll().remove();
@@ -939,30 +947,6 @@ jQuery(document).ready(function ($) {
         alert("Hello");
     });*/
 
-    $(document).on('click', '.deals__menu--service', function(){
-        var serviceTypeId = $(this).attr('serviceTypeId');
-        if(serviceTypeId != '0'){
-            $('#allOffers').attr('href','all-offers?id=' + serviceTypeId);
-        }
-        else{
-            $('#allOffers').attr('href','/offers/offers/all_offers');
-        }
-
-
-        $('.deals__menu--service').removeClass('deals__menu--active');
-        $(this).addClass('deals__menu--active');
-        $.ajax({
-            type: 'POST',
-            url: "/ajax/ajax/show_offers",
-            data: 'serviceTypeId=' + serviceTypeId,
-            success: function (data) {
-
-                $('.deals__line').html(data);
-            }
-        });
-
-        return false;
-    });
 
     $(document).on('change', '.selectSrviceId', function(){
         var serviceId = $('.selectSrviceId').val();
@@ -997,6 +981,11 @@ jQuery(document).ready(function ($) {
         });
     $(document).on('click', '.show_video', function(){
         $('#video').modal('show');
+        return false;
+    });
+
+    $(document).on('click', '.show_select_region', function(){
+        $('#SelectRegion').modal('show');
         return false;
     });
 
@@ -1438,6 +1427,206 @@ jQuery(document).ready(function ($) {
         });
     });
 
+    $(document).on('click','.reclameZone',function(){
+        var idZone = $(this).val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_zone_img",
+            data: 'id=' + idZone,
+            success: function (data) {
+                $('.zoneImg').html(data);
+            }
+        });
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_template_name",
+            data: 'id=' + idZone,
+            success: function (data) {
+                $('.templateSelect').html(data);
+            }
+        });
+    });
+
+    $(document).on('click', '.templateId',function(){
+        $('.reclameInfo').css('display','block');
+        getInfoReclama();
+    });
+
+    $("#addImgReclama").change(function(){
+        readURL(this);
+    });
+
+
+    $("#reclame-title").on('input', function(){
+        var text = $(this).val();
+        $('.templateTitle').html(text);
+    });
+
+    $("#reclame-description").on('input', function(){
+        var text = $(this).val();
+        $('.templateDesc').html(text);
+    });
+
+    $(document).on('click', '.regionSel',function(){
+        var val = $(this).val();
+        if(val == 4){
+            $('.regSel').css('display', 'block');
+        }else{
+            $('.regSel').css('display', 'none');
+        }
+    });
+
+    $(document).on('click', '.typeBudget',function(){
+        var tempId = $('input[name="Reclame[tamplate_id]"]:checked').val();
+        $('.inputPrice').css('display', 'block');
+        $('#reclame-price').val('');
+        $('.overall').html('');
+        $('#reclame-overall').val('');
+        var typeBudget = $(this).val();
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/get_budget",
+            data: 'id=' + tempId + '&typeBudget=' + typeBudget,
+            success: function (data) {
+                $('.budget').html(data);
+            }
+        });
+    });
+
+    $('#reclame-price').on('input', function(){
+        var text = $(this).val();
+        var price = $('.priceReclame').text();
+
+        $('.overall').html(+text * +price);
+        $('#reclame-overall').val(+text * +price);
+    });
+
+
+    /*****Новости главная*******/
+    $(document).on('click', '.home-news__menu_item', function(){
+        var id = $(this).data('id'),
+            csrf = $(this).data('csrf');
+        $('.home-news__menu_item_active').removeClass('home-news__menu_item_active');
+
+        $(this).addClass('home-news__menu_item_active');
+        $.ajax({
+            type: 'POST',
+            url: "/news/news/get_news_cat",
+            data: 'id=' + id + '&_csrf=' + csrf,
+            success: function (data) {
+                $('.home-news__content').html(data);
+            }
+        });
+        if(id !=0){
+            $('.home_new_all').attr('href', '/news/all-news/' +id);
+        }else{
+            $('.home_new_all').attr('href', '/news');
+        }
+
+        return false;
+    });
+    /*************Конец новости главная**********************/
+
+    /*************Спецпредложения на главной*********************/
+    //Клик выбра типа спецпредложения
+    $(document).on('click', '.home-deals__nav_item', function(){
+        var serviceTypeId = $(this).attr('serviceTypeId'),
+            csrf = $(this).data('csrf'),
+            sort = $('a.btn.home-deals__new.btn_controls_active').data('sort');
+        //alert(sort);
+        if(serviceTypeId != '0'){
+            $('#allOffers').attr('href','all-offers?id=' + serviceTypeId);
+        }
+        else{
+            $('#allOffers').attr('href','/offers/offers/all_offers');
+        }
+
+
+        $('.home-deals__nav_item').removeClass('home-deals__nav_item_active');
+        $(this).addClass('home-deals__nav_item_active');
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/show_offers",
+            data: 'serviceTypeId=' + serviceTypeId + '&_csrf=' + csrf + '&sort=' + sort,
+            success: function (data) {
+
+                $('.deals__line').html(data);
+            }
+        });
+
+        return false;
+    });
+
+    //Клик НОВЫЕ/ПОПУЛЯРНЫЕ
+    $(document).on('click', '.home-deals__new', function(){
+        $('.home-deals__new').removeClass('btn_controls_active');
+        $(this).addClass('btn_controls_active');
+
+        var sort = $(this).data('sort'),
+            servId = $('.home-deals__nav_item_active').attr('servicetypeid'),
+            csrf = $(this).data('csrf');
+
+        $.ajax({
+            type: 'POST',
+            url: "/ajax/ajax/show_offers",
+            data: 'serviceTypeId=' + servId + '&_csrf=' + csrf + '&sort=' + sort,
+            success: function (data) {
+
+                $('.deals__line').html(data);
+            }
+        });
+        return false;
+    });
+
+/*********************Конец спецпредложения*********************************/
+
+/*********************Барахолка главная*************************************/
+    //Клик по меню(авто/мото/запчасти)
+    $(document).on('click', '.home-fleamarket__menu_item', function(){
+        $('.home-fleamarket__menu_item').removeClass('home-fleamarket__menu_item_active');
+        $(this).addClass('home-fleamarket__menu_item_active');
+
+        var type = $(this).data('type'),
+            sort = $('.home-fleamarket__new.btn_controls_active').data('sort'),
+            csrf = $(this).data('csrf');
+
+        $.ajax({
+            type: 'POST',
+            url: "/flea_market/default/show_product",
+            data: 'type=' + type + '&_csrf=' + csrf + '&sort=' + sort,
+            success: function (data) {
+
+                $('.home-fleamarket__content').html(data);
+
+            }
+        });
+
+        return false;
+    });
+
+    //Клик НОВЫЕ/ПОПУЛЯРНЫЕ
+    $(document).on('click', '.home-fleamarket__new', function(){
+        $('.home-fleamarket__new').removeClass('btn_controls_active');
+        $(this).addClass('btn_controls_active');
+
+        var type = $('.home-fleamarket__menu_item.home-fleamarket__menu_item_active').data('type'),
+            sort = $(this).data('sort'),
+            csrf = $(this).data('csrf');
+
+        $.ajax({
+            type: 'POST',
+            url: "/flea_market/default/show_product",
+            data: 'type=' + type + '&_csrf=' + csrf + '&sort=' + sort,
+            success: function (data) {
+
+                $('.home-fleamarket__content').html(data);
+
+            }
+        });
+
+        return false;
+    });
+/*********************Конец барахолка главная*******************************/
     page_height();
     page_height_reg()
 });
@@ -1461,4 +1650,29 @@ function page_height_reg(){
 
 
 
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+
+function getInfoReclama(){
+    var tempId = $('input[name="Reclame[tamplate_id]"]:checked').val();
+
+    $.ajax({
+        type: 'POST',
+        url: "/ajax/ajax/get_template_view",
+        data: 'id=' + tempId,
+        success: function (data) {
+            $('.templateView').html(data);
+        }
+    });
+}
 

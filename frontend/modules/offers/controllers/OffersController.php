@@ -153,6 +153,9 @@ class OffersController extends Controller
             ->where(['`offers`.`id`' => $id])
             ->with('offers_images')
             ->one();
+
+        $model->updateCounters(['views'=>1]);
+
 //Debug::prn($model);
         if(!empty($model)) {
         //$images = OffersImages::find()->where(['offers_id'=>$id])->all();

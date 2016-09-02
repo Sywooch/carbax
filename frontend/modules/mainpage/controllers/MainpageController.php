@@ -4,6 +4,7 @@ namespace frontend\modules\mainpage\controllers;
 
 use common\classes\Address;
 use common\classes\Debug;
+use common\classes\Custom_function;
 use common\models\db\Seo;
 use common\models\db\Services;
 use Yii;
@@ -24,6 +25,7 @@ class MainpageController extends \yii\web\Controller
      */
     public function actionIndex()
     {
+
         //Debug::prn(Address::get_geo_info());
         $seo = Seo::find()->where(['name_page_key' => 'mainpage'])->one();
         return $this->render('index',['seo' => $seo]);

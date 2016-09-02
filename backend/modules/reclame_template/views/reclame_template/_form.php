@@ -16,9 +16,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tpl')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'recommend')->textInput(['maxlength' => true]) ?>
+
    <!-- --><?/*= $form->field($model, 'zone_id')->textInput() */?>
 
     <?= $form->field($model,'zone_id')->dropDownList(\yii\helpers\ArrayHelper::map($zone,'id','name'))?>
+
+    <?= $form->field($model,'price_click')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model,'price_show')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

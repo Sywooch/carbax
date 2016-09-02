@@ -25,22 +25,27 @@ class MainPageMap extends Widget
             $cookies->add(new \yii\web\Cookie([
                 'name' => 'city',
                 'value' => $city->name,
+                'httpOnly' => false,
             ]));
             $cookies->add(new \yii\web\Cookie([
                 'name' => 'city_id',
                 'value' => $cityId,
+                'httpOnly' => false,
             ]));
             $cookies->add(new \yii\web\Cookie([
                 'name' => 'region_id',
                 'value' => $regionId,
+                'httpOnly' => false,
             ]));
             $cookies->add(new \yii\web\Cookie([
                 'name' => 'lat',
                 'value' => $ip['lat'],
+                'httpOnly' => false,
             ]));
             $cookies->add(new \yii\web\Cookie([
                 'name' => 'lng',
                 'value' => $ip['lng'],
+                'httpOnly' => false,
             ]));
         }
         else{

@@ -71,6 +71,8 @@ return [
 
                 'reklama' => 'site/reklama',
                 'vip' => 'site/vip',
+                'promo' => 'site/promo',
+                'contekst' => 'site/contekst',
 
                 'news' => 'news/news',
                 'news/<id:\d+>-<slug>' => 'news/news/view',
@@ -80,6 +82,10 @@ return [
                 ['pattern' => 'sitemap', 'route' => 'sitemap/default/index', 'suffix' => '.xml'],
 
                 'services' => 'services/services',
+                'service-map' => 'services/services/map',
+                'my-reklama' => 'reklama/default',
+                'my-reklama/add-promo' => 'reklama/default/add_promo',
+                'my-reklama/my-promo' => 'reklama/default/my_promo',
             ],
         ],
         /*'urlManagerFrontend' => [
@@ -147,6 +153,9 @@ return [
         ],
         'crone' => [
             'class' => 'frontend\modules\crone\Crone',
+        ],
+        'reklama' => [
+            'class' => 'frontend\modules\reklama\Reclama',
         ],
 
         'sitemap' => [

@@ -19,9 +19,11 @@ use yii\helpers\Url;
         <div class="filter--topline">
             <a href="<?= Url::to(['/all-services'])?>">
                 <img src="/media/img/logo2.png" alt="CARBAX">
-                <h3 class="orange">Автосервисы</h3>
+                <h3 class="orange">Автоуслуги</h3>
             </a>
-            <span><a class="allServices" href="<?= Url::to(['/services/services/all_services'])?>">Все сервисы</a></span>
+
+            <span><a class="allServices" href="<?= Url::to(['/services/services/all_services'])?>">Все автоуслуги</a></span>
+            <span><a class="allMap" href="<?= Url::to(['/services/services/map'])?>">Открыть карту</a></span>
         </div>
         <div class="filter--selecter">
             <?php foreach ($serviceType as $st): ?>

@@ -6,46 +6,64 @@ use yii\helpers\Url;
 use yii\jui\AutoComplete;
 use yii\widgets\LinkPager;
 ?>
-<section class="news">
-    <div class="contain">
-        <div class="news--topline">
+
+<!-- open .home-news -->
+<section class="home-news">
+    <!-- open .home-news__topline -->
+    <div class="home-news__topline">
+        <!-- open .container -->
+        <div class="container">
             <a href="<?= Url::to(['/news'])?>">
-                <img src="/media/img/logo2.png" alt="CARBAX">
-                <h3 class="orange">News</h3>
-            </a>
-            <span><a class="allNews" href="<?= Url::to(['/news'])?>">Все новости</a></span>
-        </div>
-        <a href="<?= Url::to(['/news/news/view', 'id' => $news[0]['id'], 'slug' => $news[0]['slug']]) ?>" class="news__item--1">
-            <img src="<?= $news[0]['img_url'];?>" alt="">
-			<span class="news__item--title">
-				<p><?= $news[0]['title']; ?></p>
-			</span>
-        </a>
-        <div class="news--leftside">
-            <a href="<?= Url::to(['/news/news/view', 'id' => $news[1]['id'], 'slug' => $news[1]['slug']])?>" class="news__item--2">
-                <img src="<?= $news[1]['img_url'];?>" alt="">
-				<span class="news__item--title">
-					<p><?= $news[1]['title']; ?></p>
-				</span>
-            </a>
-            <a href="<?= Url::to(['/news/news/view', 'id' => $news[2]['id'],'slug' => $news[2]['slug']])?>" class="news__item--3">
-                <img src="<?= $news[2]['img_url'];?>" alt="">
-				<span class="news__item--title">
-					<p><?= $news[2]['title']; ?></p>
-				</span>
-            </a>
-            <a href="<?= Url::to(['/news/news/view', 'id' => $news[3]['id'],'slug' => $news[3]['slug']])?>" class="news__item--4">
-                <img src="<?= $news[3]['img_url'];?>" alt="">
-				<span class="news__item--title">
-					<p><?= $news[3]['title']; ?></p>
-				</span>
+                <img src="/theme/carbax/img/carbax_logo_2.png" alt="" />
+                <strong>новости</strong>
             </a>
         </div>
-        <a href="<?= Url::to(['/news/news/view', 'id' => $news[4]['id'], 'slug' => $news[4]['slug']])?>" class="news__item--5">
-            <img src="<?= $news[4]['img_url'];?>" alt="">
-			<span class="news__item--title">
-				<p><?= $news[4]['title']; ?></p>
-			</span>
-        </a>
+        <!-- close .container -->
     </div>
+    <!-- close .home-news__topline -->
+    <!-- open .home-news__content -->
+    <div class="home-news__wrap">
+        <!-- open .container -->
+        <div class="container">
+            <!-- open .home-news__nav -->
+            <div class="home-news__menu">
+                <ul>
+                    <li><a href="#" class="home-news__menu_item home-news__menu_item_active" data-csrf="<?= Yii::$app->request->getCsrfToken()?>" data-id="0">Все </a></li>
+                    <?php foreach($category as $cat): ?>
+                        <li><a href="#" class="home-news__menu_item" data-csrf="<?= Yii::$app->request->getCsrfToken()?>" data-id="<?= $cat->id; ?>"><?= $cat->name; ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <!-- close .home-news__nav -->
+            <!-- open .home-news__content -->
+            <div class="home-news__content">
+
+                <?php foreach($news as $item): ?>
+                    <!-- open .home-news__item -->
+                    <div class="home-news__item">
+                        <a href="<?= Url::to(['/news/news/view', 'id' => $item['id'],'slug' => $item['slug']])?>"><img src="<?= $item['img_url']; ?>" alt="" /></a>
+                        <a href="#" class="home-news__item_title"><?= $item['title']; ?></a>
+                        <p><?= $item['short_description']; ?></p>
+                        <!-- open .home-news__item_info -->
+                        <div class="home-news__item_info">
+                            <span class="home-news__item_date">Добавлено <em><?= date('d.m.Y', $item['dt_add'])?></em></span>
+                            <span class="home-news__item_visit"><?= $item['views']; ?></span>
+                        </div>
+                        <!-- close .home-news__item_info -->
+                    </div>
+                    <!-- close .home-news__item -->
+                <?php endforeach; ?>
+
+            </div>
+            <!-- close .home-news__content -->
+        </div>
+        <!-- close .container -->
+    </div>
+    <!-- close .home-news__content -->
+    <!-- open .home-news__controls -->
+    <div class="home-news__controls">
+        <a href="<?= Url::toRoute(['/news'])?>" class="btn btn_orange home-fleamarket__all home_new_all">Посмотреть все</a>
+    </div>
+    <!-- close .home-news__controls -->
 </section>
+<!-- close .home-news -->

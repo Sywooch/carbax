@@ -32,28 +32,29 @@ if (isset($_GET['search'])) {
 ?>
 
 
-<section class="search">
-    <div class="contain">
-        <div class="search__wrap">
-            <div class="search--topline">
-                <a href="<?= \yii\helpers\Url::to(['/flea-market/search','prod_type'=>'','search'=>'','region'=>''])?>">
-                    <img src="/media/img/logo2.png" alt="CARBAX">
-                    <h3 class="orange">Продажа авто и запчастей</h3>
-                </a>
-            </div>
-            <form action="/flea-market/search">
-                <div class="filter__searchline">
-                    <?= Html::dropDownList('prod_type', $_GET['prod_type'], ['2' => 'Транспорт', '1' => 'Запчасти', '3' => 'Шины', '4' => 'Диски', '5' => 'Прочее'], ['prompt' => 'Что ищите?', 'class' => 'prodTypeSearch']) ?>
-                    <?php if(empty($_GET['region'])): ?>
-                        <input value="<?= $sel['search'] ?>" type="text" name="search" class="filter__searchline--search" placeholder="Поиск по объявлениям">
-                    <?php else: ?>
-                        <input value="<?= $sel['search'] ?>" type="text" name="search" class="filter__searchline--search" placeholder="Поиск по объявлениям" style="    width: 195px;">
-                    <?php endif;?>
 
-                    <?= Html::dropDownList('region', $sel['region'], ArrayHelper::map($region, 'id', 'name'), ['prompt' => 'Регион', 'class' => 'regionSearch']) ?>
-                    <span class="citySearch">
+<!-- open .home-salesearch -->
+<section class="home-salesearch">
+    <!-- open .container -->
+    <div class="container">
+        <a href="<?= \yii\helpers\Url::to(['/flea-market/search','prod_type'=>'','search'=>'','region'=>''])?>" class="home-salesearch__link">
+            <img src="/theme/carbax/img/carbax_logo_2.png" alt="" />
+            <strong>Продажа авто и запчастей</strong>
+        </a>
+        <!-- open .home-salesearch__form -->
+        <form action="/flea-market/search" class="home-salesearch__form">
+
+            <?= Html::dropDownList('prod_type', $_GET['prod_type'], ['2' => 'Транспорт', '1' => 'Запчасти', '3' => 'Шины', '4' => 'Диски', '5' => 'Прочее'], ['prompt' => 'Что ищите?', 'class' => 'home-salesearch__form_select']) ?>
+            <?php if(empty($_GET['region'])): ?>
+                <input value="<?= $sel['search'] ?>" type="text" name="search" class="home-salesearch__form_inp" placeholder="Поиск по объявлениям">
+            <?php else: ?>
+                <input value="<?= $sel['search'] ?>" type="text" name="search" class="home-salesearch__form_inp" placeholder="Поиск по объявлениям" style="width: 195px;">
+            <?php endif;?>
+
+            <?= Html::dropDownList('region', $sel['region'], ArrayHelper::map($region, 'id', 'name'), ['prompt' => 'Регион', 'class' => 'home-salesearch__form_select']) ?>
+            <!--<span class="citySearch">
                         <?php
-                        if (!empty($_GET['citySearch']) || !empty($_GET['region'])) {
+/*                        if (!empty($_GET['citySearch']) || !empty($_GET['region'])) {
                             $city = GeobaseCity::find()->where(['region_id' => $_GET['region']])->all();
                             echo Html::dropDownList(
                                 'citySearch',
@@ -62,7 +63,68 @@ if (isset($_GET['search'])) {
                                 ['prompt' => 'Город', 'class' => 'citySearch',]
                             );
                         }
-                        ?>
+                        */?>
+                    </span>-->
+
+
+
+            <!--<select name="prod_type" class="home-salesearch__form_select">
+                <option value=""><i>Что ищите?</i></option>
+                <option value="2">Транспорт</option>
+                <option value="1">Запчасти</option>
+                <option value="3">Шины</option>
+                <option value="4">Диски</option>
+                <option value="5">Прочее</option>
+            </select>
+            <input type="text" name="search" class="home-salesearch__form_inp" placeholder="Поиск по объявлениям"/>
+            <select name="region" class="home-salesearch__form_select">
+                <option value="">Регион</option>
+                <option value="34">Алтайский край</option>
+                <option value="54">Амурская область</option>
+                <option value="50">Архангельская область</option>
+            </select>-->
+            <input type="submit" class="home-salesearch__form_find" value="Найти">
+            <input type="button" class="btn_orange home-salesearch__form_map" value="На карте">
+
+        </form>
+        <!-- close .home-salesearch__form -->
+    </div>
+    <!-- close .container -->
+</section>
+<!-- close .home-salesearch -->
+
+
+<!--<section class="search">
+    <div class="contain">
+        <div class="search__wrap">
+            <div class="search--topline">
+                <a href="<?/*= \yii\helpers\Url::to(['/flea-market/search','prod_type'=>'','search'=>'','region'=>''])*/?>">
+                    <img src="/media/img/logo2.png" alt="CARBAX">
+                    <h3 class="orange">Продажа авто и запчастей</h3>
+                </a>
+            </div>
+            <form action="/flea-market/search">
+                <div class="filter__searchline">
+                    <?/*= Html::dropDownList('prod_type', $_GET['prod_type'], ['2' => 'Транспорт', '1' => 'Запчасти', '3' => 'Шины', '4' => 'Диски', '5' => 'Прочее'], ['prompt' => 'Что ищите?', 'class' => 'prodTypeSearch']) */?>
+                    <?php /*if(empty($_GET['region'])): */?>
+                        <input value="<?/*= $sel['search'] */?>" type="text" name="search" class="filter__searchline--search" placeholder="Поиск по объявлениям">
+                    <?php /*else: */?>
+                        <input value="<?/*= $sel['search'] */?>" type="text" name="search" class="filter__searchline--search" placeholder="Поиск по объявлениям" style="    width: 195px;">
+                    <?php /*endif;*/?>
+
+                    <?/*= Html::dropDownList('region', $sel['region'], ArrayHelper::map($region, 'id', 'name'), ['prompt' => 'Регион', 'class' => 'regionSearch']) */?>
+                    <span class="citySearch">
+                        <?php
+/*                        if (!empty($_GET['citySearch']) || !empty($_GET['region'])) {
+                            $city = GeobaseCity::find()->where(['region_id' => $_GET['region']])->all();
+                            echo Html::dropDownList(
+                                'citySearch',
+                                $_GET['citySearch'],
+                                ArrayHelper::map($city, 'id', 'name'),
+                                ['prompt' => 'Город', 'class' => 'citySearch',]
+                            );
+                        }
+                        */?>
                     </span>
 
 
@@ -70,17 +132,17 @@ if (isset($_GET['search'])) {
                     <input type="button" class="filter__searchline--but" value="На карте">
                 </div>
 
-                <input type="checkbox" <?= (isset($_GET['searchName'])) ? 'checked' : ''?> id="searchName" name="searchName" />
+                <input type="checkbox" <?/*= (isset($_GET['searchName'])) ? 'checked' : ''*/?> id="searchName" name="searchName" />
                 <label for="searchName"><span></span>Искать только в заголовках</label>
 
-                <input type="checkbox" <?= (isset($_GET['newProduct'])) ? 'checked' : ''?> id="newProduct" name="newProduct" />
+                <input type="checkbox" <?/*= (isset($_GET['newProduct'])) ? 'checked' : ''*/?> id="newProduct" name="newProduct" />
                 <label for="newProduct"><span></span>Новые</label>
 
-                <input type="checkbox" <?= (isset($_GET['by'])) ? 'checked' : ''?> id="by" name="by" />
+                <input type="checkbox" <?/*= (isset($_GET['by'])) ? 'checked' : ''*/?> id="by" name="by" />
                 <label for="by"><span></span>Б/У</label>
                 <div class="paramsSearch">
                     <?php
-                    //транспорт
+/*                    //транспорт
                     if ($_GET['prod_type'] == 1) {
                         //
                         echo Html::dropDownList('typeAuto', $_GET['typeAuto'], ['1' => 'Легковой автомобиль', '2' => 'Грузовой автомобиль', '3' => 'Мото техника'], ['prompt' => 'Выберите тип автомобиля', 'class' => 'typeAutoSearch']);
@@ -118,11 +180,11 @@ if (isset($_GET['search'])) {
                                     ArrayHelper::map($brand, 'id', 'name'),
                                     ['prompt' => 'Марка', 'class' => 'brandAutoSearch']
                                 );
-                                ?>
+                                */?>
                                 <span
-                                    class="modelSearch"><?php echo Html::dropDownList('modelAutoSearch', $_GET['modelAutoSearch'], ArrayHelper::map($model,'id','name'), ['prompt' => 'Модель', 'class' => 'modelAutoSearch']); ?></span>
+                                    class="modelSearch"><?php /*echo Html::dropDownList('modelAutoSearch', $_GET['modelAutoSearch'], ArrayHelper::map($model,'id','name'), ['prompt' => 'Модель', 'class' => 'modelAutoSearch']); */?></span>
                                 <?php
-
+/*
                                 echo Html::dropDownList('bodySearch', $_GET['bodySearch'], ArrayHelper::map($body, 'id', 'name'), ['prompt' => 'Тип кузова', 'class' => 'bodySearch']);
 
                                 echo Html::dropDownList('transSearch', $_GET['transSearch'], ArrayHelper::map($trans, 'id', 'name'), ['prompt' => 'Коробка передач', 'class' => 'transSearch']);
@@ -131,44 +193,44 @@ if (isset($_GET['search'])) {
 
                                 echo Html::dropDownList('driveSearch', $_GET['driveSearch'], ArrayHelper::map($drive, 'id', 'name'), ['prompt' => 'Привод', 'class' => 'driveSearch']);
 
-                                ?>
+                                */?>
                                 <div class="DopparamsSearch">
                                     <div class="infoDopSearch">
                                         <span>Год выпуска</span>
-                                        <?= Html::label('От:'); ?>
-                                        <?= Html::dropDownList('search_year_from', $_GET['search_year_from'], $year, ['class' => 'search_year_from', 'prompt' => 'От']); ?>
+                                        <?/*= Html::label('От:'); */?>
+                                        <?/*= Html::dropDownList('search_year_from', $_GET['search_year_from'], $year, ['class' => 'search_year_from', 'prompt' => 'От']); */?>
 
-                                        <?= Html::label('До:'); ?>
-                                        <?= Html::dropDownList('search_year_to', $_GET['search_year_to'], $year, ['class' => 'search_year_to', 'prompt' => 'До']); ?>
+                                        <?/*= Html::label('До:'); */?>
+                                        <?/*= Html::dropDownList('search_year_to', $_GET['search_year_to'], $year, ['class' => 'search_year_to', 'prompt' => 'До']); */?>
                                     </div>
                                     <div class="infoDopSearch">
                                         <span>Объем двигателя</span>
-                                        <?= Html::label('От:'); ?>
-                                        <?= Html::textInput('searchSizeMotor_from', $_GET['searchSizeMotor_from'], ['class' => 'searchSizeMotor_from']); ?>
+                                        <?/*= Html::label('От:'); */?>
+                                        <?/*= Html::textInput('searchSizeMotor_from', $_GET['searchSizeMotor_from'], ['class' => 'searchSizeMotor_from']); */?>
 
 
-                                        <?= Html::label('До:'); ?>
-                                        <?= Html::textInput('searchSizeMotor_to', $_GET['searchSizeMotor_to'], ['class' => 'searchSizeMotor_to']); ?>
+                                        <?/*= Html::label('До:'); */?>
+                                        <?/*= Html::textInput('searchSizeMotor_to', $_GET['searchSizeMotor_to'], ['class' => 'searchSizeMotor_to']); */?>
                                     </div>
                                     <div class="infoDopSearch">
                                         <span>Пробег</span>
-                                        <?= Html::label('От:'); ?>
-                                        <?= Html::textInput('searchRunFrom', $_GET['searchRunFrom'], ['class' => 'searchRunFrom']); ?>
+                                        <?/*= Html::label('От:'); */?>
+                                        <?/*= Html::textInput('searchRunFrom', $_GET['searchRunFrom'], ['class' => 'searchRunFrom']); */?>
 
-                                        <?= Html::label('До:'); ?>
-                                        <?= Html::textInput('searchRunTo', $_GET['searchRunTo'], ['class' => 'searchRunTo']); ?>
+                                        <?/*= Html::label('До:'); */?>
+                                        <?/*= Html::textInput('searchRunTo', $_GET['searchRunTo'], ['class' => 'searchRunTo']); */?>
                                     </div>
                                     <div class="infoDopSearch">
                                         <span>Цена</span>
-                                        <?= Html::label('От:'); ?>
-                                        <?= Html::textInput('searchPriceFrom', $_GET['searchPriceFrom'], ['class' => 'searchPriceFrom']); ?>
+                                        <?/*= Html::label('От:'); */?>
+                                        <?/*= Html::textInput('searchPriceFrom', $_GET['searchPriceFrom'], ['class' => 'searchPriceFrom']); */?>
 
-                                        <?= Html::label('До:'); ?>
-                                        <?= Html::textInput('searchPriceTo', $_GET['searchPriceTo'], ['class' => 'searchPriceTo']); ?>
+                                        <?/*= Html::label('До:'); */?>
+                                        <?/*= Html::textInput('searchPriceTo', $_GET['searchPriceTo'], ['class' => 'searchPriceTo']); */?>
                                     </div>
                                 </div>
                                 <?php
-                            }
+/*                            }
 
                             if($_GET['typeAuto'] == 2){
                                 $year = [];
@@ -184,87 +246,87 @@ if (isset($_GET['search'])) {
                                     ArrayHelper::map($brand,'id','name'),
                                     ['prompt' => 'Марка', 'class' => 'brandAutoSearch']
                                 );
-                                ?>
-                                <span class="modelSearch"><?php echo Html::dropDownList('modelAutoSearch',$_GET['modelAutoSearch'],ArrayHelper::map($model,'id','name'),['prompt'=>'Модель','class'=>'modelAutoSearch']);?></span>
+                                */?>
+                                <span class="modelSearch"><?php /*echo Html::dropDownList('modelAutoSearch',$_GET['modelAutoSearch'],ArrayHelper::map($model,'id','name'),['prompt'=>'Модель','class'=>'modelAutoSearch']);*/?></span>
 
                                 <div class="DopparamsSearch">
                                     <div class="infoDopSearch">
                                         <span>Год выпуска</span>
-                                        <?= Html::label('От:'); ?>
-                                        <?= Html::dropDownList('search_year_from',$_GET['search_year_from'],$year,['class'=>'search_year_from','prompt'=>'От']); ?>
+                                        <?/*= Html::label('От:'); */?>
+                                        <?/*= Html::dropDownList('search_year_from',$_GET['search_year_from'],$year,['class'=>'search_year_from','prompt'=>'От']); */?>
 
-                                        <?= Html::label('До:'); ?>
-                                        <?= Html::dropDownList('search_year_to',$_GET['search_year_to'],$year,['class'=>'search_year_to','prompt'=>'До']); ?>
+                                        <?/*= Html::label('До:'); */?>
+                                        <?/*= Html::dropDownList('search_year_to',$_GET['search_year_to'],$year,['class'=>'search_year_to','prompt'=>'До']); */?>
                                     </div>
                                     <div class="infoDopSearch">
                                         <span>Объем двигателя</span>
-                                        <?= Html::label('От:'); ?>
-                                        <?= Html::textInput('searchSizeMotor_from',$_GET['searchSizeMotor_from'],['class'=>'searchSizeMotor_from']); ?>
+                                        <?/*= Html::label('От:'); */?>
+                                        <?/*= Html::textInput('searchSizeMotor_from',$_GET['searchSizeMotor_from'],['class'=>'searchSizeMotor_from']); */?>
 
-                                        <?= Html::label('До:'); ?>
-                                        <?= Html::textInput('searchSizeMotor_to',$_GET['searchSizeMotor_to'],['class'=>'searchSizeMotor_to']); ?>
+                                        <?/*= Html::label('До:'); */?>
+                                        <?/*= Html::textInput('searchSizeMotor_to',$_GET['searchSizeMotor_to'],['class'=>'searchSizeMotor_to']); */?>
                                     </div>
                                     <div class="infoDopSearch">
                                         <span>Пробег</span>
-                                        <?= Html::label('От:'); ?>
-                                        <?= Html::textInput('searchRunFrom',$_GET['searchRunFrom'],['class'=>'searchRunFrom']); ?>
+                                        <?/*= Html::label('От:'); */?>
+                                        <?/*= Html::textInput('searchRunFrom',$_GET['searchRunFrom'],['class'=>'searchRunFrom']); */?>
 
-                                        <?= Html::label('До:'); ?>
-                                        <?= Html::textInput('searchRunTo',$_GET['searchRunTo'],['class'=>'searchRunTo']); ?>
+                                        <?/*= Html::label('До:'); */?>
+                                        <?/*= Html::textInput('searchRunTo',$_GET['searchRunTo'],['class'=>'searchRunTo']); */?>
                                     </div>
                                     <div class="infoDopSearch">
                                         <span>Цена</span>
-                                        <?= Html::label('От:'); ?>
-                                        <?= Html::textInput('searchPriceFrom',$_GET['searchPriceFrom'],['class'=>'searchPriceFrom']); ?>
+                                        <?/*= Html::label('От:'); */?>
+                                        <?/*= Html::textInput('searchPriceFrom',$_GET['searchPriceFrom'],['class'=>'searchPriceFrom']); */?>
 
-                                        <?= Html::label('До:'); ?>
-                                        <?= Html::textInput('searchPriceTo',$_GET['searchPriceTo'],['class'=>'searchPriceTo']); ?>
+                                        <?/*= Html::label('До:'); */?>
+                                        <?/*= Html::textInput('searchPriceTo',$_GET['searchPriceTo'],['class'=>'searchPriceTo']); */?>
                                     </div>
                                 </div>
                                 <?php
-                            }
+/*                            }
 
                             if($_GET['typeAuto'] == 3){
 
                                 $carType = CarType::find()->orderBy('name')->all();
                                 $brandMoto = CarMark::find()->where(['id_car_type' => $_GET['motoType']])->orderBy('name')->all();
                                 $model = CarModel::find()->where(['id_car_mark'=>$_GET['brandSearch']])->orderBy('name')->all();
-                                echo Html::dropDownList('motoType',$_GET['motoType'],ArrayHelper::map($carType,'id_car_type','name'),['prompt'=>'Тип транспорта','class'=>'motoTypeSearch']);?>
+                                echo Html::dropDownList('motoType',$_GET['motoType'],ArrayHelper::map($carType,'id_car_type','name'),['prompt'=>'Тип транспорта','class'=>'motoTypeSearch']);*/?>
 
 
-                                <span class="motomodelSearch"><?php echo Html::dropDownList('brandSearch', $_GET['brandSearch'], ArrayHelper::map($brandMoto, 'id_car_mark', name), ['prompt' => 'Марка', 'class' => 'brandAutoSearch']); ?></span>
+                                <span class="motomodelSearch"><?php /*echo Html::dropDownList('brandSearch', $_GET['brandSearch'], ArrayHelper::map($brandMoto, 'id_car_mark', name), ['prompt' => 'Марка', 'class' => 'brandAutoSearch']); */?></span>
 
-                                <span class="modelSearch"><?php echo Html::dropDownList('modelAutoSearch',$_GET['modelAutoSearch'],ArrayHelper::map($model,'id_car_model','name'),['prompt'=>'Модель','class'=>'modelAutoSearch']);?></span>
+                                <span class="modelSearch"><?php /*echo Html::dropDownList('modelAutoSearch',$_GET['modelAutoSearch'],ArrayHelper::map($model,'id_car_model','name'),['prompt'=>'Модель','class'=>'modelAutoSearch']);*/?></span>
 
                                 <div class="DopparamsSearch">
                                     <div class="infoDopSearch">
 
                                         <span>Объем двигателя</span>
-                                        <?= Html::label('От:'); ?>
-                                        <?= Html::textInput('searchSizeMotor_from',$_GET['searchSizeMotor_from'],['class'=>'searchSizeMotor_from']); ?>
+                                        <?/*= Html::label('От:'); */?>
+                                        <?/*= Html::textInput('searchSizeMotor_from',$_GET['searchSizeMotor_from'],['class'=>'searchSizeMotor_from']); */?>
 
-                                        <?= Html::label('До:'); ?>
-                                        <?= Html::textInput('searchSizeMotor_to',$_GET['searchSizeMotor_to'],['class'=>'searchSizeMotor_to']); ?>
+                                        <?/*= Html::label('До:'); */?>
+                                        <?/*= Html::textInput('searchSizeMotor_to',$_GET['searchSizeMotor_to'],['class'=>'searchSizeMotor_to']); */?>
                                     </div>
                                     <div class="infoDopSearch">
                                         <span>Пробег</span>
-                                        <?= Html::label('От:'); ?>
-                                        <?= Html::textInput('searchRunFrom',$_GET['searchRunFrom'],['class'=>'searchRunFrom']); ?>
+                                        <?/*= Html::label('От:'); */?>
+                                        <?/*= Html::textInput('searchRunFrom',$_GET['searchRunFrom'],['class'=>'searchRunFrom']); */?>
 
-                                        <?= Html::label('До:'); ?>
-                                        <?= Html::textInput('searchRunTo',$_GET['searchRunTo'],['class'=>'searchRunTo']); ?>
+                                        <?/*= Html::label('До:'); */?>
+                                        <?/*= Html::textInput('searchRunTo',$_GET['searchRunTo'],['class'=>'searchRunTo']); */?>
                                     </div>
                                     <div class="infoDopSearch">
                                         <span>Цена</span>
-                                        <?= Html::label('От:'); ?>
-                                        <?= Html::textInput('searchPriceFrom',$_GET['searchPriceFrom'],['class'=>'searchPriceFrom']); ?>
+                                        <?/*= Html::label('От:'); */?>
+                                        <?/*= Html::textInput('searchPriceFrom',$_GET['searchPriceFrom'],['class'=>'searchPriceFrom']); */?>
 
-                                        <?= Html::label('До:'); ?>
-                                        <?= Html::textInput('searchPriceTo',$_GET['searchPriceTo'],['class'=>'searchPriceTo']); ?>
+                                        <?/*= Html::label('До:'); */?>
+                                        <?/*= Html::textInput('searchPriceTo',$_GET['searchPriceTo'],['class'=>'searchPriceTo']); */?>
                                     </div>
                                 </div>
                                 <?php
-                            }
+/*                            }
                         }
                     }
                     //шины
@@ -522,7 +584,7 @@ if (isset($_GET['search'])) {
 
                         echo Html::dropDownList('sortieSearch',$_GET['sortieSearch'],$sortie,['class'=>'sortieSearch','prompt'=>'Вылет (ET)']);
                     }
-                    ?>
+                    */?>
 
 
                 </div>
@@ -530,4 +592,4 @@ if (isset($_GET['search'])) {
             </form>
         </div>
     </div>
-</section>
+</section>-->

@@ -11,6 +11,9 @@ use Yii;
  * @property string $title
  * @property string $tpl
  * @property integer $zone_id
+ * @property string $recommend
+ * @property integer $price_click
+ * @property integer $price_show
  */
 class ReclameTemplate extends \yii\db\ActiveRecord
 {
@@ -28,9 +31,9 @@ class ReclameTemplate extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'tpl', 'zone_id'], 'required'],
-            [['zone_id'], 'integer'],
-            [['title', 'tpl'], 'string', 'max' => 255],
+            [['title', 'tpl', 'zone_id', 'price_click', 'price_show'], 'required'],
+            [['zone_id', 'price_click', 'price_show'], 'integer'],
+            [['title', 'tpl', 'recommend'], 'string', 'max' => 255],
         ];
     }
 
@@ -44,6 +47,9 @@ class ReclameTemplate extends \yii\db\ActiveRecord
             'title' => 'Title',
             'tpl' => 'Tpl',
             'zone_id' => 'Zone ID',
+            'recommend' => 'Recommend',
+            'price_click' => 'Price Click',
+            'price_show' => 'Price Show',
         ];
     }
 }

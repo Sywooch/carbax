@@ -28,6 +28,7 @@ use yii\helpers\Url;
  * @property string $service_id_str
  * @property string $circs
  * @property string $slug
+ * @property integer $views
  *
  * @property Services $service
  */
@@ -78,7 +79,7 @@ class Offers extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'description', 'new_price', 'old_price'], 'required'],
-            [['service_id', 'new_price', 'old_price',  'dt_add'], 'integer'],
+            [['service_id', 'new_price', 'old_price',  'dt_add', 'views'], 'integer'],
             [['description','dt_start','dt_end','circs'], 'string'],
             [['title', 'img_url', 'discount','service_id_str','address_selected','service_type_id', 'slug'], 'string', 'max' => 255]
         ];

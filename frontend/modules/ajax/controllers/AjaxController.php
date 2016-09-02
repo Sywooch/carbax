@@ -12,6 +12,7 @@ namespace frontend\modules\ajax\controllers;
 use common\classes\Address;
 use common\classes\Custom_function;
 use common\classes\Debug;
+use common\classes\Parser;
 use common\classes\SendingMessages;
 use common\models\db\AutoComBrands;
 use common\models\db\AutoComModels;
@@ -43,6 +44,8 @@ use common\models\db\Offers;
 use common\models\db\OffersAttend;
 use common\models\db\OffersImages;
 use common\models\db\ProductImg;
+use common\models\db\ReclameTemplate;
+use common\models\db\ReclameZone;
 use common\models\db\Request;
 use common\models\db\RequestAddFieldValue;
 use common\models\db\RequestAdditionalFields;
@@ -744,13 +747,20 @@ class AjaxController extends Controller
 
         //Debug::prn($offers->createCommand()->rawSql);
 
+        if($_POST['sort'] == 'news'){
+            $orderBy = 'dt_add DESC';
+        }
+        else{
+            $orderBy = 'views DESC';
+        }
+
         if ($_POST['serviceTypeId'] == 0) {
             $offers = Offers::find()
                 ->leftJoin('`offers_images`', '`offers_images`.`offers_id` = `offers`.`id`')
                 ->where(['LIKE', 'region_id', $address['region_id']])
                 ->andWhere(['status' => 1])
-                ->orderBy('dt_add DESC')
-                ->limit(9)
+                ->orderBy($orderBy)
+                ->limit(6)
                 ->with('offers_images')
                 ->all();
         } else {
@@ -760,8 +770,8 @@ class AjaxController extends Controller
                 ->where(['LIKE', 'region_id', $address['region_id']])
                 ->andWhere(['LIKE', 'service_type_id', $_POST['serviceTypeId'] . ','])
                 ->andWhere(['status' => 1])
-                ->orderBy('dt_add DESC')
-                ->limit(9)
+                ->orderBy($orderBy)
+                ->limit(6)
                 ->with('offers_images')
                 ->all();
 
@@ -1063,6 +1073,44 @@ class AjaxController extends Controller
     public function actionGet_phone_user(){
         $phone = User::find()->where(['id' => Yii::$app->user->id])->one()->telephon;
         echo $phone;
+    }
+
+    public function actionGet_zone_img(){
+        $img = ReclameZone::find()->where(['id' => $_POST['id']])->one()->img;
+        echo "<img src='$img' width='250px' />";
+    }
+
+    public function actionGet_template_name(){
+        $temp = ReclameTemplate::find()->where(['zone_id' => $_POST['id']])->all();
+        echo Html::radioList('Reclame[tamplate_id]', null, ArrayHelper::map($temp,'id','title'),
+            [
+            'item' => function($index, $label, $name, $checked, $value) {
+
+                $return = '<label class="modal-radio">';
+                $return .= '<input type="radio" name="' . $name . '" value="' . $value . '" class="templateId" >';
+                $return .= '<span class="radioSel">' . ucwords($label) . '</span>';
+                $return .= '</label>';
+
+                return $return;
+            }]);
+    }
+
+    public function actionGet_template_view(){
+        $temp = ReclameTemplate::find()->where(['id' =>$_POST['id']])->one();
+
+        echo Parser::parse($temp->tpl,['title' => 'Заголовок','descr'=>'Описание','img'=> '<img id="blah" src="/media/img/no-img.png" />', 'info'=>$temp->recommend],false,false);
+    }
+
+    public function actionGet_budget(){
+        $temp = ReclameTemplate::find()->where(['id' =>$_POST['id']])->one();
+        if($_POST['typeBudget'] == 1){
+            $html = "<div><span>Стоимость: </span><span class='priceReclame'>$temp->price_click</span><span> руб.</span><span> за один клик</span></div>";
+        }
+        if($_POST['typeBudget'] == 2){
+            $html = "<div><span>Стоимость: </span><span class='priceReclame'>$temp->price_show</span><span> руб.</span><span> за 1000 показов</span></div>";
+        }
+        //Debug::prn()
+        echo $html;
     }
 
 }

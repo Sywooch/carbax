@@ -18,7 +18,7 @@ $cityId = (isset($_POST['city_id'])) ? $_POST['city_id'] : '';
 echo AutoComplete::widget([
     'name' => 'city_name',
     'options' => [
-        'class' => 'header--region--box',
+        'class' => 'header__location_field',
         'placeholder' => $cityName,
         'id' => 'auto_complete_city_name'
     ],

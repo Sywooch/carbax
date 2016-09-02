@@ -4,7 +4,7 @@ $this->title = "Реклама CARBAX | CARBAX все автоуслуги Ва�
 $this->params['breadcrumbs'][] = 'Реклама на Carbax';
 ?>
 
-<section class="single_wrapper" style="min-height: 403px;">
+<section class="single_wrapper">
     <div class="contain">
         <!-- ___________________Левый сайдбар_______________________ -->
         <div class="add__sbar-l">
@@ -12,8 +12,8 @@ $this->params['breadcrumbs'][] = 'Реклама на Carbax';
                 <li><a class="active" href="#">Реклама на Carbax</a></li>
 
                 <li><a href="<?= \yii\helpers\Url::to(['vip']) ?>">Carbax VIP</a></li>
-                <li><a href="#">Carbax Промо</a></li>
-                <li><a href="#">Carbax Контекст</a></li>
+                <li><a href="<?= \yii\helpers\Url::to(['promo']) ?>">Carbax Промо</a></li>
+                <li><a href="<?= \yii\helpers\Url::to(['contekst']) ?>">Carbax Контекст</a></li>
             </ul>
         </div>
         <!-- ___________________Левый сайдбар_______________________ -->
@@ -26,28 +26,18 @@ $this->params['breadcrumbs'][] = 'Реклама на Carbax';
                 <span class="orange reklamaText">Продвигайте ваш бизнес, используя рекламные инструменты Carbax!</span>
 
                 <div class="content">
-                    <div class="reklamaWr">
-                        <div class="reklamaImg">
-                            <img src="/media/img/reklama/media.jpg" alt="">
-                        </div>
-                        <a href="">
-                            <div class="reklamaTitle">
-                                <p><span>Медийная реклама</span> — рекламные решения для крупного и малого бизнеса</p>
-                            </div>
-                        </a>
-                    </div>
 
                     <div class="reklamaWr">
                         <div class="reklamaImg">
                             <img src="/media/img/reklama/magaz.jpg" alt="">
                         </div>
-                        <a href="">
+                        <a href="<?= \yii\helpers\Url::to(['vip']) ?>">
                             <div class="reklamaTitle">
-                                <p><span>Carbax магазин</span> — инструмент для работы с объявлениями.</p>
+                                <p><span>Carbax VIP</span> — это эффективный способ быстро найти покупателей и увеличить продажи.</p>
                             </div>
                         </a>
                         <div class="reklamaDesc">
-                            <p>Станьте партнером Carbax  и продавайте больше. Миллионы людей ищут ваши товары у нас.</p>
+                            <p>Он подходит для любого формата бизнеса: как компаниям, так и частным предпринимателям.</p>
                         </div>
                     </div>
 
@@ -55,7 +45,7 @@ $this->params['breadcrumbs'][] = 'Реклама на Carbax';
                         <div class="reklamaImg">
                             <img src="/media/img/reklama/promo.jpg" alt="">
                         </div>
-                        <a href="">
+                        <a href="<?= \yii\helpers\Url::to(['promo']) ?>">
                             <div class="reklamaTitle">
                                 <p><span>Carbax Промо</span> — самостоятельное размещение рекламы.</p>
                             </div>
@@ -69,7 +59,7 @@ $this->params['breadcrumbs'][] = 'Реклама на Carbax';
                         <div class="reklamaImg">
                             <img src="/media/img/reklama/kontext.jpg" alt="">
                         </div>
-                        <a href="">
+                        <a href="<?= \yii\helpers\Url::to(['contekst']) ?>">
                             <div class="reklamaTitle">
                                 <p><span>Carbax Контекстн</span> — инструмент продвижения для интернет-магазинов.</p>
                             </div>

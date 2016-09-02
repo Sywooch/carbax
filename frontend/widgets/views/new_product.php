@@ -1,7 +1,21 @@
-<?php if(!empty($product)):?>
+<?php
+use common\classes\Address;
+?>
+
+<?php if(!empty($product)):
+    $address = Address::get_geo_info();
+?>
 <section class="ads">
     <div class="contain">
-        <h2><?= $title; ?></h2>
+        <div class="search__wrap">
+            <div class="search--topline">
+                <a href="<?= \yii\helpers\Url::to(['/flea-market/search','prod_type'=>'','search'=>'','region'=>$address['region_id']])?>">
+                    <img src="/media/img/logo2.png" alt="CARBAX">
+                    <h3 class="orange"><?= $title; ?></h3>
+                </a>
+            </div>
+        </div>
+       <!-- <h2><?/*= $title; */?></h2>-->
         <div class="ads__wrap">
             <?php
             foreach ($product as $prod): ?>

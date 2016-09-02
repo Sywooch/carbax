@@ -22,7 +22,7 @@ class OffersWidgetFront extends Widget
             ->where(['LIKE', 'region_id', $address['region_id'].','])
             ->andWhere(['status'=>1])
             ->orderBy('dt_add DESC')
-            ->limit(9)
+            ->limit(6)
             ->with('offers_images')
             ->all();
         //Debug::prn($offers[0]['offers_images']->images);

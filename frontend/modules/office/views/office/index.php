@@ -37,6 +37,11 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="serviceLink">Избранное</div>
         </div>
 
+        <div class="serviceItem">
+            <div class="serviceIcon"><a href="<?= Url::to('my-reklama') ?>" title="Избранное"><img src="<?= Url::base(true) ?>/media/img/reclama.png" alt="Избранное"></a></div>
+            <div class="serviceLink">Реклама</div>
+        </div>
+
         <?php
             $role = Yii::$app->authManager->getRolesByUser(Yii::$app->user->id);
             if(!empty($role['business']) || !empty($role['admin']) || !empty($role['root'])):

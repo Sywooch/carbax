@@ -81,4 +81,16 @@ class NewsController extends \yii\web\Controller
 		]);
 	}
 
+	public function actionGet_news_cat(){
+		$id = $_POST['id'];
+
+		if($id != 0){
+			$news = News::find()->where(['cat_id' => $id])->orderBy('dt_add')->limit(6)->all();
+		}
+		else{
+			$news = News::find()->orderBy('dt_add DESC')->limit(6)->all();
+		}
+
+		return $this->renderPartial('news-cat-home',['news' => $news]);
+	}
 }

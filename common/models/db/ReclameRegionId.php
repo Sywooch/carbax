@@ -9,7 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property integer $reclame_id
- * @property integer $regiojn_id
+ * @property integer $region_id
  */
 class ReclameRegionId extends \yii\db\ActiveRecord
 {
@@ -27,8 +27,8 @@ class ReclameRegionId extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['reclame_id', 'regiojn_id'], 'required'],
-            [['reclame_id', 'regiojn_id'], 'integer'],
+            [['reclame_id', 'region_id'], 'required'],
+            [['reclame_id', 'region_id'], 'integer'],
         ];
     }
 
@@ -40,7 +40,7 @@ class ReclameRegionId extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'reclame_id' => 'Reclame ID',
-            'regiojn_id' => 'Regiojn ID',
+            'region_id' => 'Region ID',
         ];
     }
 }

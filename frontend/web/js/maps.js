@@ -239,6 +239,7 @@ jQuery(document).ready(function ($){
                 map.addToMap(addresses, true);
             }
         });
+        return false;
     });
 
 });
